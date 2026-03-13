@@ -1,0 +1,57 @@
+[gd_scene format=3 uid="uid://d0l10wogfc7rc"]
+
+[ext_resource type="Script" uid="uid://b1u5cyxj5mo5h" path="res://Menus/Ui/DeploymentUI.cs" id="1_3y2vr"]
+
+[node name="DeploymentUI" type="CanvasLayer" unique_id=1257122119]
+script = ExtResource("1_3y2vr")
+
+[node name="Control" type="Control" parent="." unique_id=1390184046]
+layout_mode = 3
+anchor_top = 0.66700006
+anchor_right = 0.201
+anchor_bottom = 1.0
+offset_top = -0.21603394
+offset_right = -0.55200195
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="MarginContainer" type="MarginContainer" parent="Control" unique_id=1746437439]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="Panel" type="Panel" parent="Control/MarginContainer" unique_id=1558289523]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/MarginContainer/Panel" unique_id=1843813455]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="RandomButton" type="Button" parent="Control/MarginContainer/Panel/VBoxContainer" unique_id=160660926]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Random Distribution"
+
+[node name="StartButton" type="Button" parent="Control/MarginContainer/Panel/VBoxContainer" unique_id=1423941356]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Start Battle"
+
+[node name="PiecesCountLabel" type="Label" parent="Control/MarginContainer/Panel/VBoxContainer" unique_id=1822873670]
+layout_mode = 2
+size_flags_vertical = 6
+text = "Pieces remaining: 40"
+horizontal_alignment = 1
+vertical_alignment = 1

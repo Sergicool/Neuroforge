@@ -12,7 +12,7 @@ las dificultades técnicas asociadas a su implementación.
 \section{Riesgos}
 
 Durante la fase de planificación se identificaron distintos riesgos que podrían afectar al
-correcto desarrollo del proyecto (Tabla \ref{tab:riesgos}). Para cada uno de ellos se ha analizado su naturaleza y su
+correcto desarrollo del proyecto, los cuales estan recogidos en la Tabla \ref{tab:riesgos}. Para cada uno de ellos se ha analizado su naturaleza y su
 impacto potencial, definiendo también medidas de contingencia orientadas a minimizar sus
 efectos en caso de que llegaran a ocurrir.
 
@@ -42,11 +42,18 @@ contribuyendo a mantener la estabilidad del mismo.
 		\hline
 		\textbf{R6:} Carencia de recursos gráficos o sonoros & Logístico & Bajo & Crear recursos propios o editar recursos de terceros de libre uso. \\
 		\hline
+		\textbf{R7:} Incapacidad temporal de desarrollo & Temporal & Alto & Reorganizar tareas, priorizar funcionalidades críticas y ajustar cronograma. \\
+		\hline
+		\textbf{R8:} Dificultad en aprendizaje o implementación del algoritmo del bot & Técnico & Medio-Alto & Simplificar temporalmente el bot a reglas básicas; mantener versión mínima funcional. \\
+		\hline
+		\textbf{R9:} Complejidad inesperada en reglas modernas o habilidades especiales & Técnico & Bajo & Implementar primero el modo clásico; introducir gradualmente las reglas modernas; validar cada mecánica individualmente. \\
+		\hline
+		\textbf{R10:} Bloqueos por depuración de bugs difíciles & Técnico & Medio & Mantener control de versiones; realizar pruebas unitarias frecuentes; documentar problemas; revisar documentación oficial de Godot y C\#. \\
+		\hline
 	\end{tabular}
-	\caption{Riesgos identificados y planes de contingencia}
+	\caption{Riesgos identificados y planes de contingencia actualizados}
 	\label{tab:riesgos}
 \end{table}
-
 
 \section{Restricciones}
 
@@ -81,11 +88,51 @@ en el alcance final de las funcionalidades implementadas. Siendo las principales
 
 \section{Herramientas}
 
-Para el desarrollo de \textit{NeuroForge} se han empleado distintas herramientas de software (Tabla \ref{tab:Herramientas}),
+Para el desarrollo del TFG se han empleado distintas herramientas de software
 tanto para la implementación del videojuego como para la gestión del proyecto y la redacción
 de la memoria. La selección de estas herramientas se ha realizado atendiendo a criterios de
 adecuación técnica, disponibilidad gratuita y facilidad de uso, buscando en todo momento
-optimizar el proceso de desarrollo.
+optimizar el proceso de desarrollo. En la Tabla \ref{tab:Herramientas} se recoge un resumen
+de las principales herramientas utilizadas y su función dentro del proyecto.
+
+El desarrollo del videojuego se ha realizado utilizando el motor de videojuegos Godot,
+un entorno de desarrollo multiplataforma de código abierto que proporciona un conjunto
+completo de herramientas para la creación de videojuegos, incluyendo sistemas de escena,
+gestión de nodos, físicas, interfaz gráfica y soporte para distintos lenguajes de programación.
+En este proyecto se ha utilizado Godot como base para la implementación de la lógica del
+juego, la gestión del tablero, las interacciones del jugador y la representación visual del
+estado de la partida.
+
+Para la programación de la lógica del juego se ha utilizado el lenguaje C\#, que cuenta con
+soporte oficial dentro del motor Godot. La elección de este lenguaje se debe a su robustez,
+su tipado estático y su amplia adopción en el desarrollo de software, lo que facilita la
+organización del código y el mantenimiento del proyecto a medida que aumenta su complejidad.
+
+Durante el desarrollo también se ha empleado un sistema de control de versiones basado en
+Git, utilizando la plataforma GitHub como repositorio remoto. Esta herramienta ha permitido
+llevar un seguimiento de los cambios realizados en el código, mantener un historial de versiones
+del proyecto y disponer de una copia de seguridad del mismo en la nube.
+
+En cuanto a la creación y edición de recursos visuales, se han utilizado herramientas de
+diseño gráfico como Aseprite y Paint. Estas aplicaciones han servido para generar o modificar
+sprites y otros elementos visuales necesarios para representar el tablero, las piezas y los
+distintos componentes de la interfaz del juego.
+
+Para la gestión de recursos sonoros se han empleado herramientas como Audacity, junto con
+recursos procedentes de la plataforma Freesound. Audacity ha permitido realizar pequeñas
+ediciones o ajustes sobre efectos de sonido, mientras que Freesound se ha utilizado como
+fuente de recursos de audio de libre uso que pueden incorporarse al proyecto respetando sus
+licencias.
+
+La redacción y maquetación de la memoria del TFG se ha realizado mediante
+\LaTeX, un sistema de preparación de documentos ampliamente utilizado en entornos académicos
+y científicos que facilita la estructuración del contenido, la generación automática de
+referencias y la gestión de figuras y tablas.
+
+Finalmente, para la planificación y organización de las tareas del proyecto se ha utilizado
+Notion, una herramienta de gestión que ha permitido estructurar las distintas fases del
+desarrollo, definir hitos y realizar un seguimiento del progreso del trabajo a lo largo del
+tiempo.
 
 \begin{table}[h!]
 	\centering
@@ -118,60 +165,56 @@ optimizar el proceso de desarrollo.
 
 \section{Planificación inicial}
 
-La planificación inicial del proyecto se realizó con el objetivo de establecer una estimación
-razonable del trabajo a desarrollar, sirviendo como referencia para organizar las tareas y
-distribuir el esfuerzo a lo largo del periodo de realización del Trabajo de Fin de Grado.
-Esta planificación no se concibe como un plan rígido, sino como una guía orientativa
-susceptible de ajustes conforme avanzaba el desarrollo del proyecto.
+La planificación inicial del proyecto se realizó con el objetivo de establecer una estimación razonable del trabajo a desarrollar, sirviendo como referencia para organizar las tareas y distribuir el esfuerzo a lo largo del periodo de realización del TFG. Esta planificación no se concibe como un plan rígido, sino como una guía orientativa, susceptible de ajustes conforme avanzaba el desarrollo del proyecto.
 
-El proyecto se estructuró en una serie de fases principales que abarcan desde las actividades
-previas de análisis y organización hasta la implementación del videojuego, las pruebas y la
-redacción de la memoria. Para cada una de estas fases se estimó una dedicación temporal
-aproximada, teniendo en cuenta la complejidad de las tareas y las limitaciones propias de un
-proyecto académico individual.
+El desarrollo del videojuego se planteó siguiendo una metodología iterativa, de modo que cada fase se centra en un conjunto concreto de objetivos y funcionalidades, permitiendo validar progresivamente el estado del proyecto y añadir nuevas capacidades sobre una base previamente funcional. La primera iteración, que se estima en unas 20 horas de trabajo, se dedicó a implementar las mecánicas fundamentales del juego, incluyendo la estructura del tablero, la definición de las piezas, el sistema de movimiento, el combate entre piezas, la gestión del estado del tablero y el sistema de turnos. El objetivo principal de esta fase era obtener una primera versión completamente jugable del juego.
 
-Las fases que contemplan la planificación inicial son las siguientes:
+La segunda iteración, con una duración aproximada de 40 horas, estuvo centrada en el desarrollo del bot, un oponente controlado por inteligencia artificial capaz de identificar movimientos válidos y participar en la partida respetando las reglas del sistema. Inicialmente, se planteó un comportamiento básico basado en la selección de movimientos válidos, dejando abierta la posibilidad de mejorar el algoritmo mediante técnicas de aprendizaje o refinamiento posterior.
 
-\begin{itemize}
-	\item \textbf{Análisis y planificación inicial (50 h):} Definición del concepto del videojuego,
-	análisis de viabilidad, organización del trabajo y elaboración de una primera estimación
-	del esfuerzo necesario.
-	
-	\item \textbf{Implementación del núcleo jugable (90 h):} Desarrollo de las mecánicas básicas del
-	juego, incluyendo el tablero, las piezas, el sistema de turnos y las reglas fundamentales.
-	
-	\item \textbf{Implementación del bot (40 h):} Desarrollo de un oponente controlado por la
-	IA capaz de cumplir las reglas del juego y tomar decisiones básicas durante la partida.
-	
-	\item \textbf{Reglas y mecánicas adicionales (55 h):} Incorporación de variantes y reglas
-	extendidas destinadas a enriquecer la experiencia de juego, siempre que el tiempo
-	disponible lo permitiera.
-	
-	\item \textbf{Pruebas y depuración (40 h):} Verificación del correcto funcionamiento del
-	videojuego, corrección de errores y ajuste del balance de las mecánicas.
-	
-	\item \textbf{Redacción final de la memoria (25 h):} Elaboración y revisión del documento final
-	del Trabajo de Fin de Grado.
-\end{itemize}
+Durante la tercera iteración, que se prolongó durante unas 60 horas, se trabajó en el diseño y desarrollo de la interfaz de usuario del videojuego. Esta fase incluyó la representación visual del tablero y de las piezas, la incorporación de distintos indicadores de estado de la partida, así como el bocetado inicial de la interfaz y la creación de menús básicos de interacción con el jugador.
 
+Finalmente, la cuarta iteración, con una estimación de 40 horas, se centró en las mejoras audiovisuales y el pulido final del proyecto. Durante esta etapa se incorporaron animaciones, efectos sonoros y mejoras visuales, al tiempo que se realizaron tareas de optimización del rendimiento del sistema y corrección de errores detectados durante las pruebas.
 
+Paralelamente al desarrollo técnico del videojuego, se dedicaron aproximadamente 140 horas a la documentación del proyecto. Esta labor consistió en la redacción progresiva de la memoria del Trabajo de Fin de Grado, incluyendo la descripción del diseño del videojuego, la justificación de las decisiones técnicas adoptadas y el análisis de los resultados obtenidos durante el desarrollo.
+
+En conjunto, la estimación total de dedicación para el proyecto asciende a unas 300 horas, de las cuales 160 se destinaron al desarrollo del videojuego distribuido entre las distintas iteraciones, mientras que las 140 restantes se dedicaron a la elaboración progresiva de la documentación, realizada de forma paralela con el desarrollo del sistema.
+
+La Tabla \ref{tab:iteraciones} recoge de forma resumida las iteraciones planificadas
+y la fecha estimada de finalización de cada una de ellas dentro del cronograma
+del proyecto.
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|l|c|}
+		\hline
+		\textbf{Iteración} & \centering{\textbf{Descripción}} & \textbf{Fecha estimada de finalización} \\
+		\hline
+		1 & Desarrollo del juego base & 2026-03-15 \\
+		\hline
+		2 & Implementación del bot & 2026-04-12 \\
+		\hline
+		3 & Desarrollo de la interfaz de usuario & 2026-05-17 \\
+		\hline
+		4 & Mejoras audiovisuales y pulido final & 2026-05-31 \\
+		\hline
+		Documentación & Redacción de la memoria del TFG & 2026-06-7 \\
+		\hline
+	\end{tabular}
+	\caption{Fechas estimadas de finalización de las iteraciones del proyecto}
+	\label{tab:iteraciones}
+\end{table}
+	
 \section{Cronograma del proyecto}
 
-La planificación temporal del desarrollo de \textit{NeuroForge} se ha representado mediante un
-diagrama de Gantt (Figura \ref{fig:gantt}), que permite visualizar de forma clara las distintas fases del proyecto, su
-duración estimada y el solapamiento entre tareas. Este cronograma refleja el enfoque iterativo
-seguido, en el que varias actividades se desarrollan de manera parcialmente paralela y se refinan
-progresivamente.
+La planificación temporal del desarrollo de \textit{NeuroForge} se ha representado mediante un diagrama de Gantt que permite visualizar de forma clara todas las fases del proyecto, su duración estimada y la secuencia de tareas realizadas durante el desarrollo.
 
-El diagrama muestra las fases principales del proyecto, desde el análisis inicial y el diseño del
-juego hasta la implementación, pruebas y redacción de la memoria final, incluyendo los hitos más
-relevantes del desarrollo.
+La Figura \ref{fig:gantt} muestra de manera integral todas las iteraciones del proyecto junto con la tarea de documentación, que se realiza de forma continua desde el inicio hasta la finalización del trabajo.
 
 \begin{landscape}
-	\begin{figure}[p]  % [p] sugiere que vaya a una página propia
+	\begin{figure}[H]
 		\centering
-		\includegraphics[width=\linewidth]{../Imagenes/Gantt.png}
-		\caption{Cronograma del desarrollo de \textit{NeuroForge} por meses}
+		\includegraphics[width=\linewidth]{../Imagenes/Gantt.jpg} % Aquí reemplazas por tu diagrama unificado
+		\caption{Diagrama de Gantt general del desarrollo del TFG, incluyendo todas las iteraciones y la documentación}
 		\label{fig:gantt}
 	\end{figure}
 \end{landscape}
@@ -182,15 +225,48 @@ relevantes del desarrollo.
 
 \section{Costes del proyecto}
 
-El desarrollo de \textit{NeuroForge} se ha realizado en un contexto académico, por lo que no se
-han producido costes económicos directos asociados al proyecto más allá de la matrícula del
-Trabajo de Fin de Grado. Todas las herramientas utilizadas han sido de uso gratuito o de código
-abierto, y no se han efectuado compras de recursos gráficos, sonoros ni licencias de software
-de pago.
+El desarrollo del Trabajo de Fin de Grado se ha realizado en un contexto académico,
+por lo que no se han producido costes económicos directos asociados al proyecto más
+allá de la matrícula correspondiente. Todas las herramientas empleadas durante el
+desarrollo han sido de uso gratuito, de código abierto o bien se han utilizado
+mediante licencias académicas proporcionadas por la universidad.
 
-Desde un punto de vista hipotético, si este proyecto hubiera sido desarrollado en un entorno
-profesional, el principal coste asociado habría sido el correspondiente al tiempo de trabajo
-invertido. La dedicación total estimada para el desarrollo del proyecto es de aproximadamente
-300 horas, distribuidas entre las distintas fases de análisis, implementación, pruebas y
-documentación. Suponiendo un coste medio de 10 euros por hora de trabajo, el coste total estimado del proyecto seria de unos 3.000 euros.
+No obstante, desde un punto de vista hipotético, si este proyecto se hubiera
+desarrollado en un entorno profesional, el principal coste asociado correspondería
+al tiempo de trabajo invertido en su desarrollo.
 
+La dedicación total estimada para el desarrollo del proyecto ha sido de
+aproximadamente 300 horas, distribuidas entre las distintas fases de análisis,
+diseño, implementación, pruebas y documentación. Considerando un salario mensual
+aproximado de 1.800 euros brutos para un desarrollador junior y una jornada laboral
+media de 160 horas mensuales, el coste horario estimado sería de aproximadamente
+11,25 euros por hora.
+
+Bajo estas condiciones, el coste asociado al tiempo de desarrollo sería:
+
+\begin{itemize}
+	\item Coste de desarrollo: 300 h $\times$ 11,25 €/h = 3.375 €
+\end{itemize}
+
+Adicionalmente, en un entorno profesional podrían considerarse ciertos costes
+asociados a herramientas de software utilizadas durante el desarrollo del proyecto.
+Por ejemplo, para la creación y edición de gráficos en pixel art podría utilizarse
+la herramienta Aseprite, cuyo coste aproximado es de 16,79 €. No obstante, en el
+presente proyecto se han utilizado alternativas gratuitas o licencias académicas
+equivalentes.
+
+Asimismo, el desarrollo se ha realizado utilizando un equipo informático personal
+valorado aproximadamente en 1.200 €. Considerando una vida útil estimada del equipo
+de cuatro años y un periodo de desarrollo aproximado de dos meses, el coste imputable
+al proyecto mediante amortización sería de aproximadamente 50 €.
+
+Teniendo en cuenta estos factores, el coste total estimado del proyecto en un
+contexto profesional sería aproximadamente:
+
+\begin{itemize}
+	\item Coste de desarrollo: 3.375 €
+	\item Licencias de software: 16,79 €
+	\item Amortización de hardware: 50 €
+\end{itemize}
+
+\textbf{Coste total estimado del proyecto: 3.441,79 €}

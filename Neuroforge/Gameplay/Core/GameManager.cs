@@ -2,19 +2,21 @@ using Godot;
 
 public enum GameState
 {
+    DEPLOYMENT,
     WAITING_INPUT,
     PIECE_SELECTED,
-    BUSY
+    GAME_OVER
 }
 
 public partial class GameManager : Node
 {
     public static GameManager Instance { get; private set; }
+    private DeploymentUI _deploymentUI;
+    private DeploymentController _deployment;
 
     private const string BOARD_SCENE_PATH = "res://Gameplay/Board/Board.tscn";
 
     private Board _board;
-
     private Camera2D _camera;
 
     public PieceOwner CurrentTurn { get; private set; } = PieceOwner.PLAYER;
@@ -26,11 +28,22 @@ public partial class GameManager : Node
 
         SpawnBoard();
         SpawnCamera();
+
+        _deploymentUI = GetNode<DeploymentUI>("DeploymentUI");
+
+        _deployment = new DeploymentController();
+        AddChild(_deployment);
+
+        _deployment.Initialize(this, _board, _deploymentUI);
+
+        State = GameState.DEPLOYMENT;
+
+        _deploymentUI.ShowUI();
     }
 
     public Board GetBoard() => _board;
 
-    // ================= SETUP =================
+    // SETUP 
 
     private void SpawnBoard()
     {
@@ -53,7 +66,12 @@ public partial class GameManager : Node
         AddChild(_camera);
     }
 
-    // ================= TURN FLOW =================
+    public void StartBattle()
+    {
+        State = GameState.WAITING_INPUT;
+    }
+
+    // TURN FLOW 
 
     public bool CanInteract()
         => State == GameState.WAITING_INPUT;
@@ -68,10 +86,6 @@ public partial class GameManager : Node
             : PieceOwner.PLAYER;
 
         State = GameState.WAITING_INPUT;
-
-        GD.Print($"Turno actual: {CurrentTurn}");
     }
 
-    public void SetBusy()
-        => State = GameState.BUSY;
 }

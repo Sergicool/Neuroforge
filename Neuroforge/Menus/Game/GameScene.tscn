@@ -1,6 +1,9 @@
 [gd_scene format=3 uid="uid://djxc00an328wf"]
 
 [ext_resource type="Script" uid="uid://cwq2sjl1dgkd5" path="res://Gameplay/Core/GameManager.cs" id="1_7e2f7"]
+[ext_resource type="PackedScene" uid="uid://d0l10wogfc7rc" path="res://Menus/Ui/DeploymentUI.tscn" id="2_2gjdv"]
 
 [node name="GameScene" type="Node" unique_id=1935428772]
 script = ExtResource("1_7e2f7")
+
+[node name="DeploymentUI" parent="." unique_id=1078961223 instance=ExtResource("2_2gjdv")]

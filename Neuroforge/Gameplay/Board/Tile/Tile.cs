@@ -50,7 +50,7 @@ public partial class Tile : Area2D
         _sprite.Scale = Board.TILE_SIZE / tex.GetSize();
     }
 
-    // ================= OCCUPANT =================
+    // OCCUPANT
 
     public void SetOccupant(Piece piece)
     {
@@ -61,7 +61,7 @@ public partial class Tile : Area2D
 
     public void ClearOccupant() => Occupant = null;
 
-    // ================= INPUT =================
+    // INPUT
 
     public override void _InputEvent(Viewport viewport, InputEvent e, int shapeIdx)
     {
@@ -73,7 +73,7 @@ public partial class Tile : Area2D
         }
     }
 
-    // ================= HIGHLIGHT =================
+    // HIGHLIGHT
 
     public void HighlightMove() => ApplyTexture(GREEN_TILE);
     public void HighlightAttack() => ApplyTexture(RED_TILE);

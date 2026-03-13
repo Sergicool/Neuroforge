@@ -9,36 +9,42 @@
 
 \section{Objetivos}
 
-Este trabajo tiene como objetivo principal crear un videojuego de estrategia para un jugador. Para alcanzar este objetivo general, es necesario detallar una serie de objetivos específicos que han sido listados a continuación.
+El objetivo principal de este TFG es el diseño y desarrollo de
+un videojuego completamente funcional utilizando el motor de desarrollo Godot y el lenguaje de
+programación C\#. El proyecto tiene como finalidad implementar un sistema completo
+de juego que incluya las mecánicas básicas, un oponente controlado por inteligencia
+artificial y una interfaz de usuario que permita al jugador interactuar de forma
+clara e intuitiva con el sistema.
+
+Para alcanzar este objetivo general, se han definido los siguientes objetivos
+específicos:
 
 \begin{itemize}
-	\item OBJ01: El sistema permitirá al usuario jugar una partida completa contra un bot siguiendo unas reglas de juego.
-	\item OBJ02: El sistema gestionara la toma de decisiones del bot en base a la situación actual de la partida.
+	
+	\item Diseñar e implementar la lógica fundamental del videojuego, incluyendo la
+	estructura del tablero, la definición de las piezas y las reglas de movimiento
+	y combate entre ellas.
+	
+	\item Desarrollar un sistema de control de turnos y gestión del estado del juego
+	que permita ejecutar partidas completas respetando las reglas definidas.
+	
+	\item Implementar un bot inteligente capaz de
+	analizar el estado del tablero y seleccionar movimientos válidos durante la
+	partida.
+	
+	\item Diseñar e implementar una interfaz de usuario clara e intuitiva que
+	proporcione al jugador información visual sobre el estado del juego y permita
+	interactuar con el sistema de manera sencilla.
+	
+	\item Incorporar elementos audiovisuales, como animaciones y efectos sonoros,
+	que mejoren la experiencia de juego y aporten mayor claridad a las acciones
+	realizadas durante la partida.
+	
+	\item Adquirir experiencia práctica en el uso del motor de videojuegos Godot y
+	en el desarrollo de sistemas interactivos utilizando el lenguaje de programación
+	C\#.
+	
 \end{itemize}
-
-\section{Motor de videojuegos utilizado}
-
-Los motores de videojuegos funcionan como un \textit{framework} de desarrollo, proporcionando un conjunto integrado de herramientas, librerías y sistemas que sirven como base tecnológica para la creación de un videojuego. Estos motores abstraen gran parte de la complejidad técnica inherente al desarrollo, ofreciendo soluciones ya implementadas para tareas como el renderizado gráfico, la gestión de escenas, el control de entrada del usuario, la simulación de físicas o la exportación a distintas plataformas. Gracias a esta abstracción, el desarrollador puede centrarse principalmente en la lógica del juego, el diseño de mecánicas y la experiencia del usuario.
-
-La elección del motor de videojuegos influye de manera directa en el proceso de desarrollo y en las características finales del producto. Factores como el flujo de trabajo, el rendimiento, la escalabilidad, la facilidad de mantenimiento del código y los tiempos de implementación están fuertemente condicionados por las herramientas y la arquitectura que ofrece el motor seleccionado. En el contexto de un proyecto académico individual, esta decisión cobra especial relevancia, ya que deben considerarse además aspectos como la curva de aprendizaje, la disponibilidad de documentación y recursos, y la adecuación del motor al alcance real del proyecto.
-
-En la actualidad existen numerosos motores de videojuegos disponibles, tanto comerciales como de código abierto. No obstante, para este proyecto se han considerado tres de los motores más utilizados, de fácil acceso y reconocidos tanto en el ámbito profesional como en el educativo: Unreal Engine, Unity y Godot. Estos motores representan enfoques distintos dentro del desarrollo de videojuegos y cubren un amplio espectro de necesidades técnicas, lo que los convierte en candidatos adecuados para un análisis comparativo inicial \cite{rocketbrush_engines_2025}.
-
-Unreal Engine es un motor de desarrollo ampliamente utilizado en la industria del videojuego, especialmente en producciones de gran presupuesto y alta exigencia visual. Diversos análisis comparativos destacan su enfoque en la creación de experiencias visuales realistas, apoyado en avanzados sistemas de renderizado, iluminación y simulación física, lo que lo convierte en una opción habitual para proyectos tridimensionales de alta fidelidad gráfica. Estas características hacen que Unreal Engine sea especialmente adecuado para títulos que priorizan el apartado visual y la inmersión, como es habitual en producciones de tipo AAA.
-
-No obstante, esta potencia técnica conlleva una mayor complejidad en el flujo de trabajo, unos requerimientos de hardware elevados. Tambien presenta una curva de aprendizaje considerablemente más pronunciada que la de otros motores, especialmente para desarrolladores sin experiencia previa o proyectos desarrollados de forma individual. Además, los tiempos de compilación y el tamaño de los proyectos pueden suponer un inconveniente en contextos académicos o de pequeña escala, donde el tiempo y los recursos disponibles son limitados.
-
-Unity se ha consolidado como uno de los motores de videojuegos más populares tanto en el ámbito independiente como en el educativo, principalmente debido a su versatilidad y a su amplio ecosistema de herramientas, activos y extensiones. La disponibilidad de una gran comunidad de desarrolladores y una extensa documentación facilita el aprendizaje y acelera el desarrollo, permitiendo abordar una gran variedad de géneros y plataformas con un único entorno de trabajo. Esta flexibilidad ha convertido a Unity en una opción habitual para proyectos 2D, 3D, móviles y de realidad virtual.
-
-Sin embargo, diversos análisis técnicos señalan que, en proyectos con altas exigencias gráficas o con estructuras complejas de objetos, Unity puede presentar problemas de rendimiento si no se realiza una gestión cuidadosa de los recursos. Asimismo, aunque ofrece soporte para el desarrollo bidimensional, su arquitectura interna está históricamente orientada al desarrollo tridimensional, lo que puede introducir una sobrecarga innecesaria en proyectos 2D sencillos. A esto se suma la dependencia de un modelo de licencias que, en determinadas circunstancias, puede suponer una limitación para desarrolladores con presupuestos reducidos.
-
-Godot es un motor de desarrollo de código abierto que ha ganado una notable popularidad en el ámbito del desarrollo independiente y educativo. Su filosofía se basa en la simplicidad, la modularidad y la accesibilidad, ofreciendo una experiencia de desarrollo especialmente amigable para proyectos de pequeña y mediana escala. Diversos estudios comparativos destacan que Godot resulta especialmente adecuado para el desarrollo de videojuegos en dos dimensiones, gracias a la solidez de sus herramientas nativas y a su arquitectura basada en nodos, que favorece un diseño claro, modular y fácil de mantener.
-
-La ausencia de costes de licencia y el acceso completo a su código fuente convierten a Godot en una opción especialmente atractiva para desarrolladores independientes y proyectos académicos, permitiendo una mayor libertad de experimentación y personalización. Además, su lenguaje de scripting y su entorno de trabajo facilitan un prototipado rápido y ciclos de desarrollo ágiles, aspectos clave cuando el proyecto es desarrollado por una única persona.
-
-Como principal limitación, Godot presenta capacidades menos maduras en el desarrollo de entornos tridimensionales complejos en comparación con motores comerciales como Unreal Engine o Unity, así como un ecosistema de extensiones más reducido. No obstante, diferentes comparativas coinciden en señalar que estas limitaciones resultan poco relevantes en proyectos que no requieren gráficos 3D avanzados ni una amplia integración con herramientas de terceros, como es el caso de muchos videojuegos 2D de estrategia.
-
-Tras el análisis de los distintos motores considerados, se ha determinado que Godot es el motor más adecuado para el desarrollo del proyecto \textit{NeuroForge}. Dado que se trata de un videojuego de estrategia por turnos en dos dimensiones, con un alcance controlado y desarrollado en un contexto académico individual, las ventajas de Godot en términos de simplicidad, rendimiento en 2D y ausencia de costes de licencia superan claramente sus limitaciones técnicas. Asimismo, su bajo consumo de recursos y su rapidez en los ciclos de desarrollo favorecen un enfoque iterativo basado en pruebas frecuentes y refinamiento progresivo, alineándose de forma coherente con la metodología adoptada en el proyecto.
 
 \section{Estructura del documento}
 Este documento se organiza en distintos capítulos, que dividen el proyecto en ... 

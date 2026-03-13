@@ -24,24 +24,22 @@ public static class MovementSystem
         Vector2I from = piece.CurrentTile.GridPosition;
         Vector2I to = target.GridPosition;
 
-        // SCOUT: movimiento libre en línea recta
+        // Movimiento especial del Scout, linea vertical y horizontal
         if (piece.Type == PieceType.SCOUT)
             return IsScoutPathValid(piece.CurrentTile, target);
 
-        // Resto: 1 casilla ortogonal
+        // Movimiento general de 1 casilla
         int dx = Mathf.Abs(from.X - to.X);
         int dy = Mathf.Abs(from.Y - to.Y);
         return dx + dy == 1;
     }
-
-    // ================= SCOUT =================
 
     private static bool IsScoutPathValid(Tile from, Tile to)
     {
         Vector2I start = from.GridPosition;
         Vector2I end = to.GridPosition;
 
-        // Debe ser línea recta
+        // Debe ser linea recta
         if (start.X != end.X && start.Y != end.Y)
             return false;
 
@@ -65,18 +63,18 @@ public static class MovementSystem
             if (tile.IsOccupied && tile.Occupant.PlayerOwner == from.Occupant.PlayerOwner)
                 return false;
 
-            // Si llegamos al destino
+            // Destino
             if (current == end)
             {
-                // Vacía → mover
+                // Vacía: mover
                 if (!tile.IsOccupied)
                     return true;
 
-                // Enemiga → atacar
+                // Enemigo: atacar
                 return true;
             }
 
-            // Enemigo antes del destino → no se puede pasar
+            // Enemigo antes del destino: no se puede pasar
             if (tile.IsOccupied && tile.Occupant.PlayerOwner != from.Occupant.PlayerOwner)
                 return false;
 

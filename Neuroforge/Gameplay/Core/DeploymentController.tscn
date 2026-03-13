@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://w4ruubxap6y6"]
+
+[ext_resource type="Script" uid="uid://534hgpdyli6e" path="res://Gameplay/Core/DeploymentController.cs" id="1_mjwmk"]
+
+[node name="DeploymentController" type="Node" unique_id=1744145225]
+script = ExtResource("1_mjwmk")

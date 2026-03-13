@@ -13,7 +13,6 @@ public partial class Board : Node2D
     private GameManager _game;
 
     public static readonly Vector2 TILE_SIZE = new(90, 90);
-
     private const string TILE_SCENE_PATH = "res://Gameplay/Board/Tile/Tile.tscn";
     private const string BOARD_LAYOUT_PATH = "res://Gameplay/Board/BoardLayout.txt";
     private const string PIECE_SCENE_PATH = "res://Gameplay/Pieces/Piece.tscn";
@@ -24,14 +23,14 @@ public partial class Board : Node2D
     private PackedScene _tileScene;
     private PackedScene _pieceScene;
 
-    private readonly Dictionary<Vector2I, Tile> _grid = new();
-    public IEnumerable<Tile> AllTiles => _grid.Values;
-
     private Piece _selectedPiece;
     private readonly List<Tile> _highlightedTiles = new();
 
     private GameState _state = GameState.WAITING_INPUT;
     private PieceOwner _currentTurn = PieceOwner.PLAYER;
+    
+    private readonly Dictionary<Vector2I, Tile> _grid = new();
+    public IEnumerable<Tile> AllTiles => _grid.Values;
 
     public override void _Ready()
     {
@@ -45,7 +44,6 @@ public partial class Board : Node2D
         AddChild(_piecesManager);
 
         GenerateBoard();
-        SpawnTestPieces();
 
         AddToGroup("board");
     }
@@ -55,10 +53,13 @@ public partial class Board : Node2D
         _game = gameManager;
     }
 
-    // ================= INPUT =================
+    // INPUT
 
     public void OnTileClicked(Tile tile)
     {
+        if (_game.State == GameState.DEPLOYMENT)
+            return;
+
         if (!_game.CanInteract())
             return;
 
@@ -96,7 +97,7 @@ public partial class Board : Node2D
         ShowPossibleActions(piece);
     }
 
-    // ================= ACTIONS =================
+    // ACTIONS
 
     private void ShowPossibleActions(Piece piece)
     {
@@ -162,7 +163,7 @@ public partial class Board : Node2D
         }
     }
 
-    // ================= TURN =================
+    // TURN
 
     private void ClearSelection()
     {
@@ -179,7 +180,7 @@ public partial class Board : Node2D
         _highlightedTiles.Clear();
     }
 
-    // ================= BOARD =================
+    // BOARD
 
     public Tile GetTileAt(Vector2I pos)
         => _grid.TryGetValue(pos, out var tile) ? tile : null;
