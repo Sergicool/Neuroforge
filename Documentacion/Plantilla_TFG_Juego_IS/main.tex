@@ -1,0 +1,89 @@
+\documentclass[a4paper, 12pt]{book}
+\input{style} 
+
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\setlength{\emergencystretch}{3em} % Flexibilidad adicional para cortes de línea
+
+
+
+%\glsaddall
+
+\begin{document}
+	\sloppy
+	\pagenumbering{roman}
+	\input{Chapters/Portada}
+	\mbox{}
+	\thispagestyle{empty}
+	\clearpage
+	\newpage
+	%----------------------------------------------------------------------------------------
+	%	Resumen y Abstract
+	%----------------------------------------------------------------------------------------
+
+	\input{Chapters/resumen}
+	\input{Chapters/abstract}
+	
+	%----------------------------------------------------------------------------------------
+	%	Tabla de contenidos, figuras y tablas
+	%----------------------------------------------------------------------------------------
+	
+	\cleardoublepage % Para asegurar que el contenido comience en una página nueva
+	\pagenumbering{roman} % Cambio a numeración de páginas romanos
+	\setcounter{page}{1} % Reinicio de la numeración de páginas
+	
+	\tableofcontents
+	\listoffigures
+	\listoftables
+	
+	%----------------------------------------------------------------------------------------
+	%	Contenido principal
+	%----------------------------------------------------------------------------------------
+	
+	\mainmatter % Cambio al estilo de numeración de páginas arábigos para el contenido principal
+	\input{Chapters/Agradecimientos}
+	\input{Chapters/Glosario}
+	\input{Chapters/Introduccion}
+
+	\input{Chapters/Metodología}
+	
+	\input{Chapters/Antecedentes}
+	
+	\input{Chapters/Especificación del juego}
+		
+	\input{Chapters/Planificacion}
+	
+	\input{Chapters/Analisis}
+
+	\input{Chapters/Diseño}
+	
+	\input{Chapters/Desarrollo}
+	
+	\input{Chapters/Conclusiones}
+	
+	\appendix
+		\input{Chapters/AnexoI}
+		\input{Chapters/AnexoII}
+		\input{Chapters/AnexoIII}
+		\input{Chapters/AnexoIV}
+		%...
+	
+	
+	%----------------------------------------------------------------------------------------
+	%	Bibliografía
+	%----------------------------------------------------------------------------------------
+	
+	\cleardoublepage
+	\addcontentsline{toc}{chapter}{Bibliografía}
+	
+	\bibliographystyle{unsrt}
+	\bibliography{bibliografia}
+	
+	
+
+
+\end{document}

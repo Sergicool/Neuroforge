@@ -1,0 +1,250 @@
+
+
+
+\usepackage[a4paper]{geometry}
+\usepackage{ifthen}
+
+\ifodd\value{page}
+	\geometry{
+		top=1.5cm,
+		bottom=1.5cm,
+		inner=2cm,
+		outer=1.5cm,
+		heightrounded
+	}
+\else
+	\geometry{
+		top=1.5cm,
+		bottom=1.5cm,
+		inner=1.5cm,
+		outer=2cm,
+		heightrounded
+	}
+\fi
+
+\usepackage{setspace}
+\setstretch{1.2}
+
+\usepackage{indentfirst}
+\setlength{\parindent}{0.5cm}
+\usepackage{ragged2e}
+\justifying
+
+
+
+\usepackage[spanish,es-lcroman,es-tabla]{babel} % espanol
+\usepackage[utf8]{inputenc} % acentos sin codigo
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{graphicx} % gráficos
+\usepackage{pdflscape}
+\usepackage{fancyvrb}
+
+\usepackage{wrapfig}
+\usepackage{xpatch}
+\usepackage{titlesec}
+\usepackage{titletoc}
+\usepackage{subcaption}
+\usepackage{enumerate}
+\usepackage{multicol}
+\usepackage{multirow}
+\usepackage{booktabs}
+\usepackage[dvipsnames,table,xcdraw]{xcolor}
+\usepackage{ragged2e}
+\usepackage{tabularx}
+\usepackage{ifthen} % para la tabla de riesgos
+\usepackage{longtable}
+\usepackage{float}
+\usepackage{eurosym} % para el euro
+\usepackage{listings}
+\usepackage{framed}
+\usepackage{newfloat}
+\usepackage{caption}
+\usepackage{enumitem}
+\usepackage{makecell}
+\usepackage{longtable}
+\usepackage{acronym}
+\usepackage{xurl}
+\usepackage[colorlinks]{hyperref}
+\usepackage{breakurl}
+\usepackage{amsthm}
+\usepackage{tcolorbox}
+\usepackage{adjustbox}
+\usepackage[none]{hyphenat}
+
+\usepackage{pgfgantt}
+
+\usepackage{xcolor} % Colores para los cuadros
+\usepackage{framed} % Para los recuadros
+\usepackage{listings} % Para el formato de código
+\usepackage{amsmath} % Símbolos matemáticos, si se necesitan
+
+
+
+\definecolor{exerciseColor}{HTML}{A2B9BC} % Color azul americano para enunciados
+\definecolor{answerColor}{HTML}{F0F0F0} % Color gris claro para respuestas
+\definecolor{codebg}{rgb}{0.95,0.95,0.95} % Fondo gris claro para código
+
+
+\definecolor{headerblue}{HTML}{33b2ff} % Azul para la cabecera
+\definecolor{rowblue}{HTML}{b3d3e7} % Azul claro desaturado para filas alternadas
+
+
+
+
+% Configuración para los enunciados de los ejercicios
+\newenvironment{exercise}[1][]{
+	\def\FrameCommand{\fboxsep=8pt \colorbox{exerciseColor}}
+	\MakeFramed{\advance\hsize-\width \FrameRestore}
+	\noindent
+	\textbf{\textcolor{black}{Ejercicio:}} #1 \vspace{5pt} \\
+}{
+	\endMakeFramed
+	\vspace{10pt}
+}
+
+% Configuración para las respuestas
+\newenvironment{answer}[1][]{
+	\def\FrameCommand{\fboxsep=8pt \colorbox{answerColor}}
+	\MakeFramed{\advance\hsize-\width \FrameRestore}
+	\noindent
+	\textbf{\textcolor{black}{Respuesta:}} #1 \vspace{5pt} \\
+}{
+	\endMakeFramed
+	\vspace{10pt}
+}
+
+% Configuración para el código
+\lstset{
+	backgroundcolor=\color{codebg},
+	basicstyle=\ttfamily\small,
+	keywordstyle=\color{blue}\bfseries,
+	commentstyle=\color{gray},
+	stringstyle=\color{red},
+	showstringspaces=false,
+	frame=single,
+	framerule=0.5pt,
+	framesep=5pt,
+	rulecolor=\color{gray},
+	breaklines=true,
+}
+
+\hypersetup{
+	allcolors = {blue}
+}
+
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{output}{
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\ttfamily\footnotesize,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	%numbers=left,                    
+	numbersep=5pt,                  
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2
+}
+
+
+\lstdefinestyle{outputtiny}{
+	backgroundcolor=\color{backcolour},   
+	commentstyle=\color{codegreen},
+	keywordstyle=\color{magenta},
+	numberstyle=\tiny\color{codegray},
+	stringstyle=\color{codepurple},
+	basicstyle=\ttfamily\tiny,
+	breakatwhitespace=false,         
+	breaklines=true,                 
+	captionpos=b,                    
+	keepspaces=true,                 
+	showspaces=false,                
+	showstringspaces=false,
+	showtabs=false,                  
+	tabsize=2
+}
+
+% Configuración para el código Prolog
+\lstset{
+	language=Prolog,
+	backgroundcolor=\color{codebg},
+	basicstyle=\ttfamily\small,
+	keywordstyle=\color{prologKeyword}\bfseries,
+	commentstyle=\color{gray},
+	stringstyle=\color{red},
+	showstringspaces=false,
+	frame=single,
+	framerule=0.5pt,
+	framesep=5pt,
+	rulecolor=\color{gray},
+	breaklines=true,
+	morekeywords={:-, is, not, member, write, fail} % Palabras clave adicionales de Prolog
+}
+
+\lstset{style=output}
+
+\date{2025}
+\author{Nombre Apellido1 Apellido2}
+\title{Título del TFG}
+
+\makeatletter
+\edef\mytitle{\@title}
+\makeatother
+
+
+\setlength{\parskip}{10pt plus 1pt minus 1pt}
+
+\newcolumntype{L}{>{\raggedright\arraybackslash}X} % for ragged-right material
+\newcolumntype{Z}{>{\hsize=\dimexpr2\hsize-29\tabcolsep+\arrayrulewidth\relax}X}
+\newcolumntype{P}{p{0.22\textwidth}L p{0.78\textwidth}L}
+%\newcolumntype{C}{>{\centering\arraybackslash}X}   % for centered material
+
+\extrarowheight = +0.5ex
+
+
+\renewcommand{\chaptermark}[1]{\markboth{#1}{}}
+\renewcommand{\sectionmark}[1]{\markright{#1}}
+
+
+% Configuración de las páginas pares e impares
+\usepackage{fancyhdr}
+
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[LE,RO]{\thepage}
+% Redefine the plain page style
+\fancypagestyle{plain}{%
+	\fancyhf{}%
+	\fancyfoot[LE,RO]{\thepage}
+}
+
+\fancyhead[RO]{\leftmark}
+\fancyhead[LE]{\mytitle}
+
+%para cambiar el formato del título y número de cada capítulo
+\newcommand{\bigrule}{\titlerule[0.5mm]}
+\titleformat{\chapter}[display]
+{\bfseries\Huge}
+{
+	\filleft %texto alineado a la derecha
+	\Huge\chaptertitlename\
+	\Huge\thechapter
+	\hrule
+}
+{0mm} {\filright} [\bigrule]
+
+
+

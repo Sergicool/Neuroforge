@@ -1,0 +1,82 @@
+\glossarysection[\glossarytoctitle]{\glossarytitle}\glossarypreamble
+\begin{theglossary}\glossaryheader
+\glsgroupheading{A}\relax \glsresetentrylist %
+\glossentry{api}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsnumberformat{23}\delimN 
+		\setentrycounter[]{page}\glsnumberformat{58}\delimN 
+		\setentrycounter[]{page}\glsnumberformat{81}\delimN 
+		\setentrycounter[]{page}\glsnumberformat{95\delimN 96}}}\glsgroupskip
+\glsgroupheading{B}\relax \glsresetentrylist %
+\glossentry{bbdd}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsnumberformat{43\delimN 44}\delimN 
+		\setentrycounter[]{page}\glsnumberformat{95\delimR 97}}}%
+\glossentry{bfs}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsnumberformat{12}}}\glsgroupskip
+\glsgroupheading{C}\relax \glsresetentrylist %
+\glossentry{cu}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glslocationcstoencap{glsnumberformat}{es@scroman}{ii}\delimN 
+		\setentrycounter[]{page}\glslocationcstoencap{glsnumberformat}{es@scroman}{v\delimN vi}\delimN 
+		\setentrycounter[]{page}\glslocationcstoencap{glsnumberformat}{es@scroman}{ix}\delimN 
+		\setentrycounter[]{page}\glsnumberformat{50\delimR 57}\delimN 
+		\setentrycounter[]{page}\glsnumberformat{62\delimR 68}\delimN 
+		\setentrycounter[]{page}\glsnumberformat{113}\delimN 
+		\setentrycounter[]{page}\glsnumberformat{115\delimR 117}\delimN 
+		\setentrycounter[]{page}\glsnumberformat{119\delimR 126}}}\glsgroupskip
+\glsgroupheading{D}\relax \glsresetentrylist %
+\glossentry{dfs}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsnumberformat{12}}}\glsgroupskip
+\glsgroupheading{E}\relax \glsresetentrylist %
+\glossentry{ecs}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsnumberformat{78\delimN 79}}}\glsgroupskip
+\glsgroupheading{G}\relax \glsresetentrylist %
+\glossentry{gps}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsnumberformat{9}}}%
+\glossentry{gui}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsnumberformat{82}}}\glsgroupskip
+\glsgroupheading{I}\relax \glsresetentrylist %
+\glossentry{ia}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsnumberformat{7\delimN 8}\delimN 
+		\setentrycounter[]{page}\glsnumberformat{10\delimR 12}}}\glsgroupskip
+\glsgroupheading{M}\relax \glsresetentrylist %
+\glossentry{mec}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsnumberformat{32}}}%
+\glossentry{mvc}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glslocationcstoencap{glsnumberformat}{es@scroman}{ii}\delimN 
+		\setentrycounter[]{page}\glsnumberformat{78\delimN 79}\delimN 
+		\setentrycounter[]{page}\glsnumberformat{95}}}\glsgroupskip
+\glsgroupheading{N}\relax \glsresetentrylist %
+\glossentry{npc}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsnumberformat{12}}}\glsgroupskip
+\glsgroupheading{R}\relax \glsresetentrylist %
+\glossentry{rf}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsnumberformat{46\delimN 47}}}%
+\glossentry{rl}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsnumberformat{23}}}%
+\glossentry{rnf}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsnumberformat{47\delimN 48}}}\glsgroupskip
+\glsgroupheading{S}\relax \glsresetentrylist %
+\glossentry{sgbd}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsnumberformat{43}}}%
+\glossentry{svg}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsnumberformat{41}}}%
+\glossentry{swmp}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsnumberformat{82}}}\glsgroupskip
+\glsgroupheading{T}\relax \glsresetentrylist %
+\glossentry{tfg}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsnumberformat{3}\delimN 
+		\setentrycounter[]{page}\glsnumberformat{27\delimN 28}\delimN 
+		\setentrycounter[]{page}\glsnumberformat{30}\delimN 
+		\setentrycounter[]{page}\glsnumberformat{34}\delimN 
+		\setentrycounter[]{page}\glsnumberformat{40}\delimN 
+		\setentrycounter[]{page}\glsnumberformat{111}}}\glsgroupskip
+\glsgroupheading{U}\relax \glsresetentrylist %
+\glossentry{uml}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsnumberformat{40}}}%
+\glossentry{uva}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsnumberformat{11}\delimN 
+		\setentrycounter[]{page}\glsnumberformat{29}\delimN 
+		\setentrycounter[]{page}\glsnumberformat{31}}}\glsgroupskip
+\glsgroupheading{V}\relax \glsresetentrylist %
+\glossentry{vsc}{\glossaryentrynumbers{\relax 
+		\setentrycounter[]{page}\glsnumberformat{43}}}%
+\end{theglossary}\glossarypostamble

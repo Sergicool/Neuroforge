@@ -1,0 +1,81 @@
+\chapter{Análisis}
+\label{chap:Capitulo4}
+
+\section{Actores y roles}
+
+\section{Modelado de Requisitos}
+
+Los requisitos describen las condiciones, capacidades y restricciones que debe cumplir un sistema software para satisfacer las necesidades de sus usuarios y los objetivos de la organización.
+
+Se distinguen principalmente tres tipos de requisitos: los requisitos funcionales (RF), que especifican los servicios y comportamientos que debe ofrecer el sistema; los requisitos no funcionales (RNF), que establecen restricciones y propiedades de calidad como rendimiento, fiabilidad o usabilidad; y los requisitos de información (RI), que definen los datos que el sistema debe almacenar y gestionar para proporcionar dichos servicios.
+
+\subsection*{Lista de Requisitos Funcionales}
+
+\begin{itemize}
+	
+	\item RF01: El sistema permitirá iniciar una nueva partida desde un estado inicial controlado, inicializando el tablero, las piezas y el turno inicial conforme a las reglas del juego.
+	
+	\item RF02: El sistema permitirá al jugador colocar sus piezas al inicio de la partida dentro de la zona de despliegue definida.
+	
+	\item RF03: El sistema gestionará los turnos alternos entre el jugador y el bot, impidiendo la realización de acciones fuera de turno.
+	
+	\item RF04: El sistema validará las acciones realizadas por los jugadores, evitando movimientos o ataques no permitidos por las reglas del juego.
+	
+	\item RF05: El sistema revelará la identidad de las piezas implicadas cuando se produzca un combate, manteniendo visible la información revelada durante el resto de la partida.
+	
+	\item RF06: El bot tomará decisiones de movimiento y ataque de forma autónoma, respetando las reglas y restricciones del juego.
+	
+	\item RF07: El sistema mantendrá y actualizará el estado de la partida durante su desarrollo, gestionando turnos, acciones válidas y transiciones entre estados.
+	
+	\item RF08: El sistema determinará automáticamente el final de la partida cuando se cumpla una condición de victoria o derrota, mostrando el resultado al jugador.
+	
+	\item RF09: El sistema permitirá activar o desactivar mecánicas opcionales, como refuerzos o ventaja de ataque, antes del inicio de la partida.
+	
+	\item RF10: La interfaz mostrará información visual y sonora relacionada con las acciones realizadas, los combates y los cambios de estado de la partida.
+	
+	\item RF11: La interfaz del juego deberá ser completamente manejable mediante ratón.
+	
+	\item RF12: El sistema permitirá al jugador abandonar la partida en curso de forma controlada.
+\end{itemize}
+
+\subsection*{Requisitos no funcionales}
+
+\begin{itemize}
+	\item RNF01: El sistema deberá ser compatible con sistemas operativos Windows.
+	
+	\item RNF02: La interfaz deberá ser clara e intuitiva, proporcionando retroalimentación visual y sonora ante las acciones del jugador.
+	
+	\item RNF03: Todos los recursos gráficos y sonoros deberán ser de libre uso o de creación propia.
+\end{itemize}
+
+\subsection*{Lista de Requisitos Funcionales de Información}
+
+\begin{itemize}
+	\item RI01: Juego, el sistema gestionara una sesión de juego tratando la siguiente información de una partida:
+	\begin{itemize}
+		\item Lista de casillas que conforman el tablero.
+		\item Lista de todas las piezas. 
+		\item Turno actual (Jugador o Bot)
+	\end{itemize}
+	\item RI02: Casillas, las cuales tendrán las siguientes propiedades:
+	\begin{itemize}
+		\item Posición (x, y).
+		\item Tipo (No transitable, transitable, zona de despliegue para el jugador o el bot).
+		\item Referencia a la pieza que la esta ocupando.
+	\end{itemize}
+	\item RI03: Piezas, de las cuales se deberán saber las siguientes características:
+	\begin{itemize}
+		\item Nombre
+		\item Rango
+		\item Propietario (Jugador o Bot)
+		\item Estado (Oculta, revelada o eliminada)
+	\end{itemize}
+	
+\end{itemize}
+
+\section{Casos de Uso}
+
+\section{Modelo de dominio}
+
+\section{Modelo de proceso de negocio}
+

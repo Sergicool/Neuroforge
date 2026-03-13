@@ -1,0 +1,196 @@
+\chapter{Planificación}
+
+En este capítulo se presenta la planificación del desarrollo del proyecto \textit{NeuroForge},
+definiendo la organización temporal del trabajo, los recursos empleados, las restricciones
+existentes y los posibles riesgos identificados.
+
+La planificación se ha concebido como una guía flexible, susceptible de ser ajustada a lo largo
+del desarrollo conforme se adquiría una visión más precisa del alcance real del proyecto y de
+las dificultades técnicas asociadas a su implementación.
+
+
+\section{Riesgos}
+
+Durante la fase de planificación se identificaron distintos riesgos que podrían afectar al
+correcto desarrollo del proyecto (Tabla \ref{tab:riesgos}). Para cada uno de ellos se ha analizado su naturaleza y su
+impacto potencial, definiendo también medidas de contingencia orientadas a minimizar sus
+efectos en caso de que llegaran a ocurrir.
+
+La identificación temprana de estos riesgos permite anticipar posibles problemas técnicos
+y organizativos, facilitando la toma de decisiones durante el desarrollo del proyecto y
+contribuyendo a mantener la estabilidad del mismo.
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|
+			>{\centering\arraybackslash}p{4cm}|
+			>{\centering\arraybackslash}p{2.5cm}|
+			>{\centering\arraybackslash}p{2cm}|
+			>{\centering\arraybackslash}p{6cm}|}
+		\hline
+		\textbf{Riesgo} & \textbf{Tipo} & \textbf{Impacto} & \textbf{Plan de contingencia} \\
+		\hline
+		\textbf{R1:} Fallos del motor o incompatibilidades & Técnico & Alto & Revisar dependencias o adaptar scripts. \\
+		\hline
+		\textbf{R2:} Retrasos en el cronograma & Temporal & Medio & Reajustar tareas no prioritarias y reducir funcionalidades accesorias. \\
+		\hline
+		\textbf{R3:} Errores en el Bot o en las reglas del juego & Técnico & Medio & Simplificar el comportamiento de la IA y priorizar mecánicas estables. \\
+		\hline
+		\textbf{R4:} Pérdida de datos o código fuente & Técnico & Alto & Uso de control de versiones y copias de seguridad en la nube. \\
+		\hline
+		\textbf{R5:} Falta de tiempo para testeo o balanceo & Temporal & Alto & Priorizar pruebas de jugabilidad y corregir errores críticos. \\
+		\hline
+		\textbf{R6:} Carencia de recursos gráficos o sonoros & Logístico & Bajo & Crear recursos propios o editar recursos de terceros de libre uso. \\
+		\hline
+	\end{tabular}
+	\caption{Riesgos identificados y planes de contingencia}
+	\label{tab:riesgos}
+\end{table}
+
+
+\section{Restricciones}
+
+El desarrollo de \textit{NeuroForge} ha estado condicionado por una serie de restricciones que
+han influido directamente en la planificación del proyecto, en la selección de herramientas y
+en el alcance final de las funcionalidades implementadas. Siendo las principales restricciones:
+
+\begin{itemize}
+	\item \textbf{Técnicas:} Se establece el uso del motor de videojuegos
+	\textit{Godot} junto con el lenguaje de programación \textit{C\#}. Aunque Godot emplea de
+	forma nativa GDScript, se ha optado por C\# debido a su soporte oficial y a su adecuación al
+	desarrollo del proyecto. Asimismo, únicamente se utilizan librerías y recursos gratuitos o
+	de código abierto.
+	
+	\item \textbf{Temporales:} El desarrollo del proyecto se limita al periodo de
+	realización del Trabajo de Fin de Grado, lo que impone una duración finita y condiciona la
+	cantidad de funcionalidades que pueden implementarse.
+	
+	\item \textbf{Económicas:} No se dispone de presupuesto para la adquisición de
+	licencias de software de pago, la contratación de personal adicional ni la compra de recursos
+	gráficos o sonoros.
+	
+	\item \textbf{Personales:} El proyecto es desarrollado íntegramente por un
+	único estudiante, lo que limita la paralelización de tareas y requiere una gestión eficiente
+	del tiempo disponible.
+	
+	\item \textbf{Académicas:} El trabajo debe ajustarse a la normativa, estructura
+	y requisitos establecidos por la Escuela de Ingeniería Informática de Valladolid para los
+	Trabajos de Fin de Grado.
+\end{itemize}
+
+
+\section{Herramientas}
+
+Para el desarrollo de \textit{NeuroForge} se han empleado distintas herramientas de software (Tabla \ref{tab:Herramientas}),
+tanto para la implementación del videojuego como para la gestión del proyecto y la redacción
+de la memoria. La selección de estas herramientas se ha realizado atendiendo a criterios de
+adecuación técnica, disponibilidad gratuita y facilidad de uso, buscando en todo momento
+optimizar el proceso de desarrollo.
+
+\begin{table}[h!]
+	\centering
+	\begin{tabularx}{\textwidth}{|
+			>{\centering\arraybackslash}X|
+			>{\centering\arraybackslash}X|
+			>{\centering\arraybackslash}p{8cm}|}
+		\hline
+		\textbf{Tipo} & \textbf{Herramienta} & \textbf{Uso principal} \\
+		\hline
+		Motor de juego & Godot & Desarrollo del videojuego, lógica, interfaz... \\
+		\hline
+		Lenguaje de programación & C\# & Programación de la lógica de juego y scripts. \\
+		\hline
+		Control de versiones & Git / GitHub & Gestión de versiones, control de cambios y copia de seguridad del código. \\
+		\hline
+		Diseño gráfico & Aseprite / Paint & Creación y/o edición de sprites, texturas y elementos visuales en caso de necesitarse. \\
+		\hline
+		Audio & Audacity / Freesound & Creación y/o de efectos sonoros y música de fondo en caso de necesitarse. \\
+		\hline
+		Documentación & \LaTeX & Redacción y maquetación del presente documento del TFG. \\
+		\hline
+		Gestión de tareas & Notion & Planificación de fases, control de hitos y organización del flujo de trabajo. \\
+		\hline
+	\end{tabularx}
+	\caption{Herramientas}
+	\label{tab:Herramientas}
+\end{table}
+
+
+\section{Planificación inicial}
+
+La planificación inicial del proyecto se realizó con el objetivo de establecer una estimación
+razonable del trabajo a desarrollar, sirviendo como referencia para organizar las tareas y
+distribuir el esfuerzo a lo largo del periodo de realización del Trabajo de Fin de Grado.
+Esta planificación no se concibe como un plan rígido, sino como una guía orientativa
+susceptible de ajustes conforme avanzaba el desarrollo del proyecto.
+
+El proyecto se estructuró en una serie de fases principales que abarcan desde las actividades
+previas de análisis y organización hasta la implementación del videojuego, las pruebas y la
+redacción de la memoria. Para cada una de estas fases se estimó una dedicación temporal
+aproximada, teniendo en cuenta la complejidad de las tareas y las limitaciones propias de un
+proyecto académico individual.
+
+Las fases que contemplan la planificación inicial son las siguientes:
+
+\begin{itemize}
+	\item \textbf{Análisis y planificación inicial (50 h):} Definición del concepto del videojuego,
+	análisis de viabilidad, organización del trabajo y elaboración de una primera estimación
+	del esfuerzo necesario.
+	
+	\item \textbf{Implementación del núcleo jugable (90 h):} Desarrollo de las mecánicas básicas del
+	juego, incluyendo el tablero, las piezas, el sistema de turnos y las reglas fundamentales.
+	
+	\item \textbf{Implementación del bot (40 h):} Desarrollo de un oponente controlado por la
+	IA capaz de cumplir las reglas del juego y tomar decisiones básicas durante la partida.
+	
+	\item \textbf{Reglas y mecánicas adicionales (55 h):} Incorporación de variantes y reglas
+	extendidas destinadas a enriquecer la experiencia de juego, siempre que el tiempo
+	disponible lo permitiera.
+	
+	\item \textbf{Pruebas y depuración (40 h):} Verificación del correcto funcionamiento del
+	videojuego, corrección de errores y ajuste del balance de las mecánicas.
+	
+	\item \textbf{Redacción final de la memoria (25 h):} Elaboración y revisión del documento final
+	del Trabajo de Fin de Grado.
+\end{itemize}
+
+
+\section{Cronograma del proyecto}
+
+La planificación temporal del desarrollo de \textit{NeuroForge} se ha representado mediante un
+diagrama de Gantt (Figura \ref{fig:gantt}), que permite visualizar de forma clara las distintas fases del proyecto, su
+duración estimada y el solapamiento entre tareas. Este cronograma refleja el enfoque iterativo
+seguido, en el que varias actividades se desarrollan de manera parcialmente paralela y se refinan
+progresivamente.
+
+El diagrama muestra las fases principales del proyecto, desde el análisis inicial y el diseño del
+juego hasta la implementación, pruebas y redacción de la memoria final, incluyendo los hitos más
+relevantes del desarrollo.
+
+\begin{landscape}
+	\begin{figure}[p]  % [p] sugiere que vaya a una página propia
+		\centering
+		\includegraphics[width=\linewidth]{../Imagenes/Gantt.png}
+		\caption{Cronograma del desarrollo de \textit{NeuroForge} por meses}
+		\label{fig:gantt}
+	\end{figure}
+\end{landscape}
+
+\section{Variación de planificación}
+
+...
+
+\section{Costes del proyecto}
+
+El desarrollo de \textit{NeuroForge} se ha realizado en un contexto académico, por lo que no se
+han producido costes económicos directos asociados al proyecto más allá de la matrícula del
+Trabajo de Fin de Grado. Todas las herramientas utilizadas han sido de uso gratuito o de código
+abierto, y no se han efectuado compras de recursos gráficos, sonoros ni licencias de software
+de pago.
+
+Desde un punto de vista hipotético, si este proyecto hubiera sido desarrollado en un entorno
+profesional, el principal coste asociado habría sido el correspondiente al tiempo de trabajo
+invertido. La dedicación total estimada para el desarrollo del proyecto es de aproximadamente
+300 horas, distribuidas entre las distintas fases de análisis, implementación, pruebas y
+documentación. Suponiendo un coste medio de 10 euros por hora de trabajo, el coste total estimado del proyecto seria de unos 3.000 euros.
+

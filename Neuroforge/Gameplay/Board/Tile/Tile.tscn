@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://grgvuwuv1nlx"]
+
+[ext_resource type="Script" uid="uid://bjysqnrahr7jq" path="res://Gameplay/Board/Tile/Tile.cs" id="1_fc4j8"]
+[ext_resource type="Texture2D" uid="uid://bqjn31gfwfdkg" path="res://Gameplay/Board/Tile/BlueTile.png" id="2_fc4j8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xbpwq"]
+size = Vector2(68, 68)
+
+[node name="Tile" type="Area2D"]
+script = ExtResource("1_fc4j8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_xbpwq")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("2_fc4j8")

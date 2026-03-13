@@ -1,0 +1,277 @@
+\chapter{Concepto del videojuego}
+
+En este capítulo se describe el diseño general de \textbf{NeuroForge}, abordando sus mecánicas principales, reglas de juego y elementos que definen la experiencia estratégica. Se detallan tanto el funcionamiento básico del juego como las variaciones introducidas en sus distintos modos, junto con aspectos de interacción, ambientación y público objetivo.
+
+\section{Resumen del juego}
+
+\textbf{\textit{NeuroForge}} es un videojuego de \textit{estrategia por turnos} inspirado en el clásico \textit{Stratego}. 
+En él, dos oponentes se enfrentan en un tablero de $10 \times 10$ casillas con el objetivo de destruir el 
+\textbf{núcleo de energía} rival o dejarlo sin movimientos posibles.
+
+Cada oponente recibe un conjunto de piezas de distintos rangos, que coloca en secreto dentro de su zona de despliegue (las 4 filas más cercanas a su borde del tablero).
+Las piezas permanecen ocultas para el oponente hasta que entren en combate.
+
+En su turno, cada oponente puede realizar una de 2 acciones
+\begin{itemize}
+	\item \textbf{Moverse}, que consiste en desplazar una pieza a una de sus 4 casillas ortogonales adyacentes, salvo algunas que no puedan moverse o un tipo de pieza en especial, que se pueden mover varias casillas en línea recta.
+	\item \textbf{Atacar}, cuando una pieza se mueve a una casilla ocupada por un enemigo, ambas revelan su identidad y se resuelve el combate según su rango.
+\end{itemize}
+
+Por lo general el combate de las piezas se resuelve de la siguiente forma:
+\begin{itemize}
+	\item La pieza de mayor rango vence a la de menor rango, y ocupa la casilla enemiga o conserva la suya en caso de que la atacante sea la perdedora.
+	\item Si ambas piezas tienen el mismo rango, ambas pierden y se eliminan del tablero.
+\end{itemize}
+Luego existen algunas piezas que tienen habilidades o interacciones especiales que se explicaran más adelante, como que la del rango mas bajo puede eliminar a la del mas alto si ataca primero.
+
+El juego finaliza cuando o bien, un jugador destruye el \textbf{núcleo de energía} del oponente, o uno de los oponentes no tiene la capacidad de realizar mas movimientos.
+
+%--------------------------------------------------------------------%
+
+\section{Mecánicas}
+
+\textbf{\textit{NeuroForge}} en principio contara con un oponente humano, el jugador, y el otro sera la propia maquina, un bot que controlara el bando enemigo.
+
+Gran parte del atractivo de \textbf{\textit{NeuroForge}} reside en el desconocimiento de la identidad de las piezas de ambos oponentes, lo que resulta en la deducción y el engaño como parte de la estrategia. Sin embargo, este mismo factor puede generar situaciones frustrantes o en algunos casos depender excesivamente del azar, o incluso llegar generar situaciones de pasividad en las que ambos oponentes se quedan a la espera de que el otro ataque primero. Por ello, se han definido dos modos de juego distintos:
+
+\begin{itemize}
+	\item \textbf{Clásico:} Modo basado en la experiencia del juego base, con mecánicas sencillas y un fuerte componente estratégico en el que la deducción es el factor principal.
+	\item \textbf{Moderno:} Incluye más piezas y reglas adicionales, con el objetivo de disminuir el peso de la deducción y ofrecer partidas más claras y menos ambiguas respecto a la identidad de las piezas sin excederse.
+\end{itemize}
+
+A continuación se explicará en profundidad el contenido del juego y todas sus mecánicas, y las diferencias o añadidos que tiene el modo \textbf{Moderno} frente al \textbf{Clásico}
+
+\subsection{Tablero}
+\textbf{\textit{NeuroForge}} inicialmente cuenta con un tablero cuya estructura es una cuadrícula de $10 \times 10$ casillas (Figura \ref{fig:EsquemaTablero}). Cada oponente dispone de las $4$ filas más cercanas a su lado ($10 \times 4$) como área de despliegue, para la colocación inicial de sus piezas sin que el rival conozca ninguna de sus identidades. Una vez comenzada la partida ya se pueden mover libremente.
+
+También existen \textbf{casillas intransitables}, es decir, que ninguna pieza bajo ningún concepto puede moverse a ellas o saltarlas. En este tablero se encuentran en el centro, formando 2 zonas de dimensiones $2 \times 2$.
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.32\linewidth]{D:/Personal/Ingenieria Informatica/TFG/Imagenes/EsquemaTablero}
+	\caption{Esquema tablero}
+	\label{fig:EsquemaTablero}
+\end{figure}
+
+\subsection{Colocación inicial}
+Al inicio de una partida, cada oponente colocará sus piezas dentro de su respectiva área de despliegue con la distribución que quieran siempre. No se le permitirá colocar ninguna pieza fuera de dicho área antes de comenzar la partida, las 2 filas centrales del tablero permanecerán despejadas al inicio de la partida.
+
+Una vez la colocación de las piezas esté decidida, se podrá comenzar la partida. El jugador no conocerá la identidad de ninguna de las piezas rivales, y el bot tampoco sabrá cuales son las del jugador.
+
+\subsection{Piezas}
+Principalmente las piezas se rigen por un sistema de rangos a la hora de combatir, donde las de mayor rango ganan a las de menor rango, y hay una cantidad limitada por cada tipo de pieza. Hay piezas que tienen propiedades adicionales, ya sea en combate o en su movimiento. Los tipos de piezas y sus propiedades son los siguientes:
+
+\begin{itemize}
+	\item \textbf{Núcleo de energía (cantidad 1):} Es la pieza mas importante, su destrucción implica la derrota inmediata del propietario. No puede moverse y puede ser destruido por cualquier pieza enemiga que lo ataque.
+	\item \textbf{Torretas automáticas (cantidad 6):} Permanecen inmóviles, no tienen la capacidad de atacar pero destruyen cualquier pieza que las ataque independientemente de su rango, salvo los \textbf{saboteadores} que son los únicos capaces de destruirlas.
+	\item \textbf{C.O.R.E. (cantidad 1, rango 10):} Si es atacado por el \textbf{Phantom} pierde.
+	\item \textbf{Guardia Nova (cantidad 1, rango 9)}
+	\item \textbf{Mecha (cantidad 2, rango 8)}
+	\item \textbf{Androide de élite (cantidad 3, rango 7)}
+	\item \textbf{Unidad de combate (cantidad 4, rango 6)}
+	\item \textbf{Armero (cantidad 4, rango 5)}
+	\item \textbf{Soldado (cantidad 4, rango 4)}
+	\item \textbf{Saboteadores (cantidad 5, rango 3):} Es la única pieza capaz de destruir las \textbf{torretas automáticas}.
+	\item \textbf{Exploradores (cantidad 6, rango 2):} Son capaces de desplazarse cualquier número de casillas en línea recta tanto horizontal como verticalmente siempre y cuando no haya obstáculos u otra pieza en medio que le impidan su paso. En caso de que se muevan mas de una casilla en un solo movimiento, \textbf{su identidad sera revelada}.
+	\item \textbf{Phantom (cantidad 1, rango 1):} Es capaz de derrotar al \textbf{C.O.R.E.} solo si \textbf{ataca primero}.
+\end{itemize}
+
+
+\subsubsection{Piezas especiales}
+En el caso del modo \textbf{Moderno} se añadirían $2$ piezas nuevas:
+
+\begin{itemize}
+	\item \textbf{Torre de radar (1 por jugador):} 
+	Esta pieza dispone de un máximo de \textbf{5 cargas}. 
+	Cada vez que su dueño participe en un combate (independientemente del resultado), la torre gana 1 carga. 
+	Cuando alcanza las 5 cargas, la torre queda \textbf{lista para activarse}.  
+	
+	El jugador puede entonces usar la torre para \textbf{revelar la identidad} de una pieza enemiga de su elección que aún no haya sido descubierta. 
+	Tras su activación, la torre se vacía y vuelve a 0 cargas, por lo que deberá recargarse de nuevo para poder usarse otra vez.  
+	Si la torre ya está cargada al máximo y se producen nuevos combates sin haberla activado, esas cargas se \textbf{pierden}.
+	
+	\item \textbf{Inhibidor (cantidad 1):} Genera un campo de interferencia en su propia casilla y en las ocho adyacentes. Mientras permanezca en el tablero, las piezas de su campo no pueden ser reveladas por el radar enemigo. Se introduce como un contrapeso a la ventaja que supone la \textbf{torre de radar}.
+\end{itemize}
+
+Ambas piezas, al igual que el núcleo, no pueden moverse y pueden ser destruidas por cualquier pieza enemiga que las ataquen.
+
+El papel de estas piezas, es el de \textbf{desincentivar la pasividad}, se premia al oponente que inicia los ataques, con una herramienta para poder revelar la identidad de una pieza a elección, dándole una ventaja sobre el rival en caso de jugar mas agresivo. Pero que no merezca la pena, en caso de que haga ataques sin pensar, ya que el escaneo se puede ver frustrado por el \textbf{Inhibidor}.
+
+\subsection{Turnos}
+La partida se desarrolla por turnos alternos, en el que el jugador empieza primero. En un turno pueden hacerse 2 cosas, \textbf{mover} o \textbf{atacar} con una pieza.
+
+No se puede moverse y atacar en el mismo turno, a excepción de los \textbf{exploradores} al poder moverse varias casillas. Si ninguna de las piezas de un bando son capaces de moverse o de atacar, la partida se acaba y dicho bando pierde.
+
+\subsubsection{Reglas para moverse}
+\begin{itemize}
+	\item Solo se puede mover una pieza por turno, y solo una casilla (excepto el \textbf{explorador}). Pueden moverse en cualquiera de las 4 direcciones adyacentes (al frente, atrás, izquierda y derecha), pero nunca en diagonal.
+	\item No puede haber más de una pieza ocupando la misma casilla al mismo tiempo.
+	\item Las piezas no pueden saltar o atravesar una casilla ocupada por otra pieza.
+	\item Las piezas no podrán moverse ni estar en casillas intransitables, tampoco se podran saltar o atravesar por ellas.
+	\item Una vez desplazada la pieza (explicado mejor en la sección de interacción y control), el turno habrá finalizado y sera turno del oponente.
+	\item Una pieza no puede desplazarse de manera repetitiva entre las mismas casillas. 
+	En concreto, una vez que una pieza abandona una casilla, deberá esperar al menos \textbf{tres turnos completos} 
+	antes de poder volver a ocuparla. 
+	Este límite solo afecta a la pieza que salió de la casilla: otras piezas sí pueden entrar en ella sin restricción.
+	\item La pieza tiene que tener la capacidad de poder moverse, por ejemplo el \textbf{núcleo de energía} y las \textbf{torretas automáticas} no pueden moverse, su posición es permanente para el resto de la partida.
+\end{itemize}
+
+\subsubsection{Reglas para atacar}
+\begin{itemize}
+	\item Si te mueves a una casilla ocupada por una pieza del oponente, cuenta como atacar. Si la pieza no puede moverse a esa casilla, no se puede atacar.
+	\item Una vez se ha decidido atacar a una pieza rival se entra en combate (mas adelante se explica la resolución del mismo).
+	\item Si la pieza atacante gana el combate, pasa a ocupar la casilla rival y esta es destruida. Si pierde el combate, esta se destruye, y la pieza rival a la que ataco, permanece en su sitio.
+\end{itemize}
+
+En caso de estar jugando en el \textbf{modo moderno}, la \textbf{torre de radar} no puede moverse, por ende no puede atacar, pero si uno de los oponentes puede activarla, se podrá seleccionar dicha pieza y acto seguido poder seleccionar una pieza rival sin identificar, para revelarla. Esta acción contara como ataque y \textbf{consumirá el turno} de quien la use.
+
+\subsection{Resolución de combates}
+Como bien se ha dicho, cuando una pieza se mueve una casilla ya ocupada por una pieza rival, se produce un combate. Cuando se produce un combate, la identidad de ambas piezas se revelan, y el resultado está determinado por una serie de reglas:
+\begin{itemize}
+	\item Si la pieza atacante tiene \textbf{mayor rango} que la pieza defendida, \textbf{vence} el combate: la pieza rival es destruida y el atacante ocupa su casilla.
+	\item Si la pieza atacante tiene \textbf{menor rango}, \textbf{pierde} automáticamente: es destruida y la pieza defendida permanece en su posición.
+	\item Si ambas piezas tienen el \textbf{mismo rango}, el combate termina en \textbf{empate} y ambas son destruidas.
+	\item Una \textbf{torreta automática} destruye a cualquier pieza que la ataque, excepto a los \textbf{exploradores}.
+	\item Si un \textbf{explorador} ataca a una \textbf{torreta automática}, la destruye y ocupa su casilla.
+	\item Si un \textbf{Phantom} ataca a un \textbf{C.O.R.E.}, el \textbf{Phantom vence}, eliminando al C.O.R.E.
+\end{itemize}
+
+Reglas adicionales para el \textbf{modo moderno}:
+\begin{itemize}
+	\item \textbf{La torre de radar} solo podrá revelar una unidad rival que no este identificada.
+	\item La \textbf{torre de radar} solo podrá revelar si esta cargada al máximo, de lo contrario no podrá activarse.
+	\item La \textbf{torre de radar} y el \textbf{inhibidor} son destruidas al recibir el ataque de cualquier pieza enemiga.
+\end{itemize}
+
+Adicionalmente en el \textbf{modo moderno}, antes de iniciar la partida, se podrán decidir que reglas adicionales de las siguientes poder activarse o no para una partida:
+
+\begin{itemize}
+	\item \textbf{Refuerzos:} Si una pieza alcanza la última fila del tablero, puede \textbf{solicitar refuerzos} de una pieza eliminada en combate, devolviendo al tablero la pieza donde \textbf{el solicitante elija} dentro de su zona de despliegue. Si se da el caso de no haber una libre para ello no se podrá solicitar refuerzos.
+	
+	El  rival recibe únicamente la notificación de que se su oponente ha solicitado un refuerzo, pero no cual. 
+	
+	La acción de solicitar refuerzos consumirá el turno del propietario, por lo que ya tiene que haber una pieza suya a su otro extremo del tablero para poder hacerlo.
+	
+	Existen las siguientes restricciones:
+	\begin{itemize}
+		\item Solo se pueden solicitar \textbf{piezas con rango} que hayan sido eliminadas, es decir \textbf{torretas automáticas}, \textbf{torre de radar} y el \textbf{inhibidor} no pueden ser solicitados.
+		\item Los \textbf{exploradores} no pueden solicitar refuerzos.
+		\item Cada jugador dispone de un \textbf{máximo de dos solicitudes} de refuerzo.
+		\item Una misma pieza \textbf{no puede solicitar} más de un refuerzo.
+	\end{itemize}
+	\item \textbf{Ventaja de Ataque:} En el caso de que en un combate, ambas piezas enfrentadas tengan de mismo rango, ganara la pieza que inicio el combate.
+	
+\end{itemize}
+
+\subsection{Condiciones de victoria}
+Existen solo 2 formas de ganar:
+\begin{itemize}
+	\item El núcleo de energía rival es destruido.
+	\item El rival se ha quedado sin movimientos posibles que hacer, todas sus piezas con capacidad de moverse han sido destruidas.
+\end{itemize}
+
+
+\subsection{Interacción y control}
+El usuario desde principio a fin de la partida podrá realizar todas las acciones que necesite con el ratón. El flujo de acciones está diseñado para que todas las posibilidades sean intuitivas y visualmente claras, de la siguiente forma:
+
+\begin{itemize}
+	\item \textbf{Turno del jugador:} al comenzar su turno, el jugador solo ve resaltadas las piezas que pueden moverse, mientras que el resto que no puedan moverse no destacaran.
+	\item \textbf{Acción:} 
+	Para mover una pieza resaltada, el jugador debe mantener pulsado el botón del ratón sobre ella. Mientras la mantenga seleccionada, se mostrarán las casillas disponibles para su desplazamiento. El jugador deberá arrastrar la pieza hasta la casilla resaltada deseada y, al soltar el ratón, el movimiento queda confirmado. El juego no le permitirá mover la pieza a una casilla que no pueda (solo las resaltadas).
+	Si la pieza se suelta en su casilla de origen, la acción no se considera válida y el jugador podrá volver a mover hasta realizar un movimiento valido. Esto último es la única forma de cancelar un movimiento en caso de arrepentirse antes de llevarlo a cabo. Al realizar un movimiento válido sucederá una de las siguientes posibilidades:
+	\begin{itemize}
+		\item \textbf{Movimiento:} Si pieza se desplaza a una casilla vacía no sucede nada más y se pasa el turno.
+		\item \textbf{Combate:} Al desplazarse a una casilla ocupada por una pieza enemiga, ambas piezas entrarán en combate. Mediante una breve animación se resaltan ambas piezas en pantalla. Si la pieza enemiga estaba oculta, se revela con un efecto adicional. Se decide la pieza vencedora de acuerdo a las reglas de combate, y la pieza perdedora se destruye y desaparece del tablero. Posteriormente se verá la pieza vencedora en la casilla en la que se originó el combate.
+	\end{itemize}
+	\item \textbf{Retroalimentación audiovisual:} cada acción se acompaña de animaciones breves y efectos sonoros.
+	\item \textbf{Turno del bot:} una vez concluida la acción del jugador, se inicia el turno del oponente. El jugador observa su jugada y espera hasta recuperar nuevamente el control.
+\end{itemize}
+
+Para las reglas adicionales del \textbf{modo moderno}:
+\begin{itemize}
+	\item \textbf{Radar:} 
+	La pieza no se resalta en el tablero, pero su estado puede consultarse en la interfaz, donde se muestra el número de cargas acumuladas y un botón de activación. 
+	Cuando la torre alcanza todas sus cargas, el botón se habilita y el jugador puede decidir activarla.  
+	Una vez activada, el botón cambia para mostrar la posibilidad la opción de cancelar la habilidad en caso de retractarse. También, se resaltan las piezas enemigas ocultas como posibles objetivos. 
+	
+	Al seleccionar una de ellas, una animación revela su identidad. Si el escaneo es bloqueado por un \textbf{inhibidor}, se notificará al jugador mediante un aviso visual y sonoro.  
+	
+	Tras el uso de la habilidad, todas las cargas se consumen y el botón de activación permanece bloqueado hasta que la torre vuelva a recargarse por completo.
+	
+	\item \textbf{Refuerzos:} 
+	Si un jugador consigue situar una de sus piezas en el extremo opuesto del tablero, la interfaz mostrará una opción adicional para ejecutar la acción de \textbf{refuerzo}. 
+	Al igual que con la habilidad del radar, esta acción puede confirmarse o cancelarse en cualquier momento.  
+	
+	Al activarla, el jugador debe elegir qué pieza solicitar como refuerzo. 
+	Una vez seleccionada, se abre un menú con las piezas eliminadas disponibles para ser recuperadas como refuerzo. 
+	En este punto, es posible volver atrás para elegir otra pieza para solicitar o cancelar la acción.  
+	
+	Tras escoger la unidad a solicitar, el jugador selecciona una casilla libre dentro de su zona de despliegue para colocarla. 
+	Si todas las casillas de la zona están ocupadas, no será posible completar la solicitud de refuerzo, y al jugador no le quedará mas remedio que cancelar el rescate. El juego informa al jugador del motivo.
+\end{itemize}
+
+% ---------------------------------------------------------
+
+\section{Ambientación}
+
+La narrativa de \textbf{\textit{NeuroForge}} sitúa al jugador en un universo de 
+\textbf{ciencia ficción futurista}, donde la guerra se libra en entornos dominados por inteligencias artificiales, drones y armamento avanzado. 
+El propio título del juego, \textit{NeuroForge}, hace referencia al proceso de 
+\textbf{forjar una red neuronal}, cada partida representa un ciclo de entrenamiento intensivo en el que el jugador moldea y perfecciona una IA militar para prepararla frente a futuros conflictos.
+
+De este modo, el enfrentamiento entre bandos no es una batalla real, sino parte de un 
+\textbf{programa avanzado de simulación}, diseñado para medir, reforzar y optimizar las capacidades estratégicas de estas inteligencias. 
+Cada combate, victoria o derrota contribuye al forjado de la red neuronal de esa IA, preparándola cada vez mas para distintos escenarios.
+
+\subsection*{Descripción de piezas}
+A continuación, se presenta una breve descripción de las distintas unidades y estructuras que intervienen en el juego:
+
+\begin{itemize}
+	\item \textbf{Núcleo de energía:} Centro vital de cada bando, representa la fuente principal de energía que mantiene a las unidades en pie. Su destrucción implica la perdida de suministro de energía y por tanto la inminente derrota del adversario.
+	\item \textbf{Torretas automáticas:} Sistemas defensivos estáticos con la potencia capaz de eliminar a cualquier amenaza, salvo los \textbf{saboteadores} que las eluden.  
+	\item \textbf{C.O.R.E. (Command Operations and Recon Elite):} Robot mecha instruida personalmente por la inteligencia artificial de máximo nivel a cargo de su bando, la unidad más poderosa del campo de batalla.
+	\item \textbf{Guardia Nova:} Líder cyborg con partes orgánicas casi inexistentes de alto rango que coordina el despliegue de las fuerzas en el campo de batalla.
+	\item \textbf{Mecha:} Robots pesados a menor escala que el del \textbf{C.O.R.E.} diseñados para resistir y dominar en combate directo.  
+	\item \textbf{Androide de élite:} Androides hábiles y optimizados para dominar en la mayoría de combates a corta distancia.  
+	\item \textbf{Unidad de combate:} Androides con un amplio arsenal para valerse en batalla y con la capacidad de mando sobre fuerzas menores.
+	\item \textbf{Armero:} Soldados rápidos y eficaces con ligeros implantes cibernéticos.
+	\item \textbf{Soldado:} Refuerzos para mantener la líneas de combate completamente humanos.  
+	\item \textbf{Saboteador:} Soldados especializados capaces de disuadir y desactivar torretas automáticas mediante camuflaje de alta tecnología, pero indefensos en combate.  
+	\item \textbf{Explorador:} Drones de reconocimiento bastante ágiles que pueden recorrer largas distancias para explorar y obtener información. No van armados mas allá de sus herramientas para repararse de daños ambientales.  
+	\item \textbf{Phantom:} Dron ágil diseñado para infiltrarse y destruir a la IA de máximo nivel con el uso de malware, siempre que ataque primero. No son muy eficientes debido a que el malware que portan capaz de colapsar un modelo de \textbf{C.O.R.E.}, los ciegan a cumplir ese único propósito, haciéndolos fáciles de destruir por otras unidades en combate.
+\end{itemize}
+
+\subsection*{Escenario}
+Como ya se mencionó, en el mapa existen zonas intransitables, las cuales consisten en cúmulos de \textbf{campos de plasma inestable}. Se trata de restos de antiguas batallas, cementerios energéticos formados por residuos de armamento avanzado.
+
+Estas áreas generan descargas aleatorias e intensas interferencias que no solo las convierten en territorios letales, sino que además \textbf{imposibilitan el funcionamiento} de cualquier unidad dependiente de tecnología o con capacidad de sobrevolarlas. Su letalidad unicamente se puede reducir con el paso del tiempo en caso de no ser contenido adecuadamente. 
+
+\section{Diseño de niveles}
+
+\textbf{\textit{NeuroForge}} parte de una base sencilla: un \textbf{tablero de $10 \times 10$ casillas}. 
+Pese a su aparente simplicidad, este escenario ofrece una amplia profundidad táctica gracias a la presencia de 
+\textbf{zonas intransitables} en el centro, que actúan como cuellos de botella. 
+Estos obstáculos dividen el tablero en dos mitades y obligan a los jugadores a planificar cuidadosamente 
+sus rutas de ataque, defensa y exploración, condicionando las aperturas iniciales y las estrategias de movimiento.  
+
+Actualmente, el diseño se centra exclusivamente en este tablero estándar. 
+Sin embargo, el planteamiento del juego abre la puerta a una serie de posibilidades de expansión futura:  
+
+\begin{itemize}
+	\item \textbf{Mapas irregulares:} Tableros con dimensiones distintas al estándar (por ejemplo, $12 \times 12$ o rectangulares $8 \times 14$), que modifiquen la densidad de las tropas y el tiempo de las partidas. También que el tablero no sea simétrico o bordes imperfectos. 
+	\item \textbf{Eventos ambientales:} Incorporación de fenómenos que alteren temporalmente el tablero (tormentas de plasma, desprendimientos...) y afecten a la movilidad o visibilidad de ciertas piezas temporal o permanentemente durante el resto de la partida.
+	\item \textbf{Zonas estratégicas:} Casillas especiales que otorguen ventajas al ser controladas (por ejemplo, teletransportes, potenciador de rango para la pieza que la obtenga, recuperación de piezas eliminadas o cargas adicionales para el radar).
+\end{itemize}
+
+De esta forma, aunque el juego base se centra en un único tablero, su diseño modular, permite 
+imaginar un ecosistema y crear niveles con facilidad, permitiendo tener un \textbf{alto nivel de rejugabilidad}, sin llegar a alterar las mecánicas fundamentales del combate por turnos.
+
+\section{Audiencia - Población objetivo}
+
+El videojuego está orientado a \textbf{jugadores interesados en la estrategia por turnos}, 
+tanto aquellos con experiencia previa en el género como quienes quieran adentrarse en él por primera vez.  
+El público objetivo incluye a personas con afinidad por juegos de lógica, planificación y táctica, como el \textbf{ajedrez} o títulos clásicos de estrategia, independientemente de su edad.  
+
+Aunque por su estilo visual y sus reglas puede resultar especialmente atractivo para un público \textbf{joven y adulto}, el diseño busca ser accesible y comprensible para cualquier jugador con interés en los retos estratégicos, priorizando la claridad en las mecánicas y la profundidad en la toma de decisiones.
+
+

@@ -1,0 +1,672 @@
+\glsdefs@newdocentry{ia}%
+{%
+name={IA},%
+sort={IA},%
+type={main},%
+first={IA},%
+firstplural={IAs},%
+text={IA},%
+plural={IAs},%
+description={Inteligencia Artificial},%
+descriptionplural={Inteligencia Artificial},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{gps}%
+{%
+name={GPS},%
+sort={GPS},%
+type={main},%
+first={GPS},%
+firstplural={GPSs},%
+text={GPS},%
+plural={GPSs},%
+description={Global Positioning System (Sistema de Posicionamiento Global)},%
+descriptionplural={Global Positioning System (Sistema de Posicionamiento Global)},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{tfg}%
+{%
+name={TFG},%
+sort={TFG},%
+type={main},%
+first={TFG},%
+firstplural={TFGs},%
+text={TFG},%
+plural={TFGs},%
+description={Trabajo de Fin de Grado},%
+descriptionplural={Trabajo de Fin de Grado},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{bfs}%
+{%
+name={BFS},%
+sort={BFS},%
+type={main},%
+first={BFS},%
+firstplural={BFSs},%
+text={BFS},%
+plural={BFSs},%
+description={Breadth First Search (Busqueda Aprimero en Anchura)},%
+descriptionplural={Breadth First Search (Busqueda Aprimero en Anchura)},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{dfs}%
+{%
+name={DFS},%
+sort={DFS},%
+type={main},%
+first={DFS},%
+firstplural={DFSs},%
+text={DFS},%
+plural={DFSs},%
+description={Depth Firsth Search (Busqueda Primero en Profundidad)},%
+descriptionplural={Depth Firsth Search (Busqueda Primero en Profundidad)},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{npc}%
+{%
+name={NPC},%
+sort={NPC},%
+type={main},%
+first={NPC},%
+firstplural={NPCs},%
+text={NPC},%
+plural={NPCs},%
+description={Non Playable Character (Personaje No Jugable)},%
+descriptionplural={Non Playable Character (Personaje No Jugable)},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{rl}%
+{%
+name={RL},%
+sort={RL},%
+type={main},%
+first={RL},%
+firstplural={RLs},%
+text={RL},%
+plural={RLs},%
+description={Reinforcement Learning (Aprendizaje por Refuerzo)},%
+descriptionplural={Reinforcement Learning (Aprendizaje por Refuerzo)},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{api}%
+{%
+name={API},%
+sort={API},%
+type={main},%
+first={API},%
+firstplural={APIs},%
+text={API},%
+plural={APIs},%
+description={Application Programming Interface (Interfaz de Programación de Aplicaciones)},%
+descriptionplural={Application Programming Interface (Interfaz de Programación de Aplicaciones)},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{uva}%
+{%
+name={UVa},%
+sort={UVa},%
+type={main},%
+first={UVa},%
+firstplural={UVas},%
+text={UVa},%
+plural={UVas},%
+description={Universidad de Valladolid},%
+descriptionplural={Universidad de Valladolid},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{mec}%
+{%
+name={MEC},%
+sort={MEC},%
+type={main},%
+first={MEC},%
+firstplural={MECs},%
+text={MEC},%
+plural={MECs},%
+description={Minisiterio de Educación y Cultura},%
+descriptionplural={Minisiterio de Educación y Cultura},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{uml}%
+{%
+name={UML},%
+sort={UML},%
+type={main},%
+first={UML},%
+firstplural={UMLs},%
+text={UML},%
+plural={UMLs},%
+description={Unified Modeling Language (Lenguaje Unificado de Modelado)},%
+descriptionplural={Unified Modeling Language (Lenguaje Unificado de Modelado)},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{svg}%
+{%
+name={SVG},%
+sort={SVG},%
+type={main},%
+first={SVG},%
+firstplural={SVGs},%
+text={SVG},%
+plural={SVGs},%
+description={Scalable Vector Graphics (Graficos Vectoriales Escalables)},%
+descriptionplural={Scalable Vector Graphics (Graficos Vectoriales Escalables)},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{vsc}%
+{%
+name={VSC},%
+sort={VSC},%
+type={main},%
+first={VSC},%
+firstplural={VSCs},%
+text={VSC},%
+plural={VSCs},%
+description={Visual Studio Code},%
+descriptionplural={Visual Studio Code},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{bbdd}%
+{%
+name={BBDD},%
+sort={BBDD},%
+type={main},%
+first={BBDD},%
+firstplural={BBDDs},%
+text={BBDD},%
+plural={BBDDs},%
+description={Base de Datos},%
+descriptionplural={Base de Datos},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{sgbd}%
+{%
+name={SGBD},%
+sort={SGBD},%
+type={main},%
+first={SGBD},%
+firstplural={SGBDs},%
+text={SGBD},%
+plural={SGBDs},%
+description={Sistema Gestor de Bases de Datos},%
+descriptionplural={Sistema Gestor de Bases de Datos},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{sql}%
+{%
+name={SQL},%
+sort={SQL},%
+type={main},%
+first={SQL},%
+firstplural={SQLs},%
+text={SQL},%
+plural={SQLs},%
+description={Structured Query Language (Lenguaje de Consulta Estructurada)},%
+descriptionplural={Structured Query Language (Lenguaje de Consulta Estructurada)},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{rf}%
+{%
+name={RF},%
+sort={RF},%
+type={main},%
+first={RF},%
+firstplural={RFs},%
+text={RF},%
+plural={RFs},%
+description={Requisito Funcional},%
+descriptionplural={Requisito Funcional},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{rnf}%
+{%
+name={RNF},%
+sort={RNF},%
+type={main},%
+first={RNF},%
+firstplural={RNFs},%
+text={RNF},%
+plural={RNFs},%
+description={Requisito No Funcional},%
+descriptionplural={Requisito No Funcional},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{cu}%
+{%
+name={CU},%
+sort={CU},%
+type={main},%
+first={CU},%
+firstplural={CUs},%
+text={CU},%
+plural={CUs},%
+description={Caso de Uso},%
+descriptionplural={Caso de Uso},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{mvc}%
+{%
+name={MVC},%
+sort={MVC},%
+type={main},%
+first={MVC},%
+firstplural={MVCs},%
+text={MVC},%
+plural={MVCs},%
+description={Modelo-Vista-Controlador},%
+descriptionplural={Modelo-Vista-Controlador},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{ecs}%
+{%
+name={ECS},%
+sort={ECS},%
+type={main},%
+first={ECS},%
+firstplural={ECSs},%
+text={ECS},%
+plural={ECSs},%
+description={Entidad-Componente-Sistema},%
+descriptionplural={Entidad-Componente-Sistema},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{swmp}%
+{%
+name={SWMP},%
+sort={SWMP},%
+type={main},%
+first={SWMP},%
+firstplural={SWMPs},%
+text={SWMP},%
+plural={SWMPs},%
+description={Sketch-Wireframe-Mockup-Prototype},%
+descriptionplural={Sketch-Wireframe-Mockup-Prototype},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{gui}%
+{%
+name={GUI},%
+sort={GUI},%
+type={main},%
+first={GUI},%
+firstplural={GUIs},%
+text={GUI},%
+plural={GUIs},%
+description={Interfaz Gráfica de Usuario},%
+descriptionplural={Interfaz Gráfica de Usuario},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
+\glsdefs@newdocentry{fia}%
+{%
+name={FIA},%
+sort={FIA},%
+type={main},%
+first={FIA},%
+firstplural={FIAs},%
+text={FIA},%
+plural={FIAs},%
+description={Fundamentos de Inteligencia Artificial},%
+descriptionplural={Fundamentos de Inteligencia Artificial},%
+symbol={\relax },%
+symbolplural={\relax },%
+user1={},%
+user2={},%
+user3={},%
+user4={},%
+user5={},%
+user6={},%
+long={},%
+longplural={},%
+short={},%
+shortplural={},%
+counter={page},%
+parent={},%
+%
+}%
+
