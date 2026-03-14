@@ -1,157 +1,34 @@
 using Godot;
 using System.Collections.Generic;
 
+public class PieceDefinition
+{
+    public PieceType Type;
+    public int Rank;
+    public bool CanMove;
+    public bool CanAttack;
+    public int MaxCount;
+    public int AtlasColumn;
+}
 
 public partial class PiecesData : Node
 {
     public static readonly Texture2D Atlas = GD.Load<Texture2D>("res://Gameplay/Pieces/PiecesPlaceholders.png");
     public const int HIDDEN_ATLAS_COLUMN = 13;
-    public static readonly Dictionary<PieceType, PieceDefinition> Data =
-        new()
-        {
-            {
-                PieceType.ENERGY_CORE,
-                new PieceDefinition
-                {
-                    Type = PieceType.ENERGY_CORE,
-                    Rank = 0,
-                    CanMove = false,
-                    CanAttack = false,
-                    MaxCount = 1,
-                    AtlasColumn = 12
-                }
-            },
-            {
-                PieceType.TURRET,
-                new PieceDefinition
-                {
-                    Type = PieceType.TURRET,
-                    Rank = 0,
-                    CanMove = false,
-                    CanAttack = false,
-                    MaxCount = 6,
-                    AtlasColumn = 11
-                }
-            },
-            {
-                PieceType.CORE,
-                new PieceDefinition
-                {
-                    Type = PieceType.CORE,
-                    Rank = 10,
-                    CanMove = true,
-                    CanAttack = true,
-                    MaxCount = 1,
-                    AtlasColumn = 10
-                }
-            },
-            {
-                PieceType.GUARD,
-                new PieceDefinition
-                {
-                    Type = PieceType.GUARD,
-                    Rank = 9,
-                    CanMove = true,
-                    CanAttack = true,
-                    MaxCount = 1,
-                    AtlasColumn = 9
-                }
-            },
-            {
-                PieceType.MECHA,
-                new PieceDefinition
-                {
-                    Type = PieceType.MECHA,
-                    Rank = 8,
-                    CanMove = true,
-                    CanAttack = true,
-                    MaxCount = 2,
-                    AtlasColumn = 8
-                }
-            },
-            {
-                PieceType.ANDROID,
-                new PieceDefinition
-                {
-                    Type = PieceType.ANDROID,
-                    Rank = 7,
-                    CanMove = true,
-                    CanAttack = true,
-                    MaxCount = 3,
-                    AtlasColumn = 7
-                }
-            },
-            {
-                PieceType.COMBAT_UNIT,
-                new PieceDefinition
-                {
-                    Type = PieceType.COMBAT_UNIT,
-                    Rank = 6,
-                    CanMove = true,
-                    CanAttack = true,
-                    MaxCount = 4,
-                    AtlasColumn = 6
-                }
-            },
-            {
-                PieceType.ARMORER,
-                new PieceDefinition
-                {
-                    Type = PieceType.ARMORER,
-                    Rank = 5,
-                    CanMove = true,
-                    CanAttack = true,
-                    MaxCount = 4,
-                    AtlasColumn = 5
-                }
-            },
-            {
-                PieceType.SOLDIER,
-                new PieceDefinition
-                {
-                    Type = PieceType.SOLDIER,
-                    Rank = 4,
-                    CanMove = true,
-                    CanAttack = true,
-                    MaxCount = 4,
-                    AtlasColumn = 4
-                }
-            },
-            {
-                PieceType.SABOTEUR,
-                new PieceDefinition
-                {
-                    Type = PieceType.SABOTEUR,
-                    Rank = 3,
-                    CanMove = true,
-                    CanAttack = true,
-                    MaxCount = 5,
-                    AtlasColumn = 3
-                }
-            },
-            {
-                PieceType.SCOUT,
-                new PieceDefinition
-                {
-                    Type = PieceType.SCOUT,
-                    Rank = 2,
-                    CanMove = true,
-                    CanAttack = true,
-                    MaxCount = 8,
-                    AtlasColumn = 2
-                }
-            },
-            {
-                PieceType.PHANTOM,
-                new PieceDefinition
-                {
-                    Type = PieceType.PHANTOM,
-                    Rank = 1,
-                    CanMove = true,
-                    CanAttack = true,
-                    MaxCount = 1,
-                    AtlasColumn = 1
-                }
-            }
-        };
+
+    public static readonly Dictionary<PieceType, PieceDefinition> Data = new()
+    {
+        { PieceType.ENERGY_CORE, new PieceDefinition { Type = PieceType.ENERGY_CORE, Rank = 0, CanMove=false, CanAttack=false, MaxCount=1, AtlasColumn=12 } },
+        { PieceType.TURRET,      new PieceDefinition { Type = PieceType.TURRET, Rank = 0, CanMove=false, CanAttack=false, MaxCount=6, AtlasColumn=11 } },
+        { PieceType.CORE,        new PieceDefinition { Type = PieceType.CORE, Rank=10, CanMove=true, CanAttack=true, MaxCount=1, AtlasColumn=10 } },
+        { PieceType.GUARD,       new PieceDefinition { Type = PieceType.GUARD, Rank=9, CanMove=true, CanAttack=true, MaxCount=1, AtlasColumn=9 } },
+        { PieceType.MECHA,       new PieceDefinition { Type = PieceType.MECHA, Rank=8, CanMove=true, CanAttack=true, MaxCount=2, AtlasColumn=8 } },
+        { PieceType.ANDROID,     new PieceDefinition { Type = PieceType.ANDROID, Rank=7, CanMove=true, CanAttack=true, MaxCount=3, AtlasColumn=7 } },
+        { PieceType.COMBAT_UNIT, new PieceDefinition { Type = PieceType.COMBAT_UNIT, Rank=6, CanMove=true, CanAttack=true, MaxCount=4, AtlasColumn=6 } },
+        { PieceType.ARMORER,     new PieceDefinition { Type = PieceType.ARMORER, Rank=5, CanMove=true, CanAttack=true, MaxCount=4, AtlasColumn=5 } },
+        { PieceType.SOLDIER,     new PieceDefinition { Type = PieceType.SOLDIER, Rank=4, CanMove=true, CanAttack=true, MaxCount=4, AtlasColumn=4 } },
+        { PieceType.SABOTEUR,    new PieceDefinition { Type = PieceType.SABOTEUR, Rank=3, CanMove=true, CanAttack=true, MaxCount=5, AtlasColumn=3 } },
+        { PieceType.SCOUT,       new PieceDefinition { Type = PieceType.SCOUT, Rank=2, CanMove=true, CanAttack=true, MaxCount=8, AtlasColumn=2 } },
+        { PieceType.PHANTOM,     new PieceDefinition { Type = PieceType.PHANTOM, Rank=1, CanMove=true, CanAttack=true, MaxCount=1, AtlasColumn=1 } }
+    };
 }

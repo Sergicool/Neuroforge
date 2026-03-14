@@ -4,7 +4,6 @@ using System.Collections.Generic;
 public partial class DeploymentController : Node
 {
     private DeploymentUI _ui;
-
     private GameManager _game;
     private Board _board;
 
@@ -25,58 +24,31 @@ public partial class DeploymentController : Node
         UpdateUI();
     }
 
-    // ARMY SETUP
-
     private void InitializeArmy()
     {
         _remainingPieces.Clear();
-
         foreach (var kv in PiecesData.Data)
-        {
             _remainingPieces[kv.Key] = kv.Value.MaxCount;
-        }
     }
 
     private int GetRemainingCount()
     {
         int total = 0;
-
-        foreach (var v in _remainingPieces.Values)
-            total += v;
-
+        foreach (var v in _remainingPieces.Values) total += v;
         return total;
     }
 
-    private void UpdateUI()
-    {
-        _ui.SetRemainingPieces(GetRemainingCount());
-    }
-
-    // RANDOM DEPLOYMENT
+    private void UpdateUI() => _ui.SetRemainingPieces(GetRemainingCount());
 
     private void RandomizePlayerDeployment()
     {
         ClearPlayerDeployment();
-
         List<PieceType> army = BuildArmyList();
+        List<Tile> tiles = GetPlayerDeploymentTiles();
+        Util.Shuffle(tiles);
 
-        RandomNumberGenerator rng = new();
-        rng.Randomize();
-
-        List<Tile> playerTiles = GetPlayerDeploymentTiles();
-
-        Shuffle(playerTiles, rng);
-
-        int index = 0;
-
-        foreach (Tile tile in playerTiles)
-        {
-            if (index >= army.Count)
-                break;
-
-            SpawnPiece(army[index], PieceOwner.PLAYER, tile);
-            index++;
-        }
+        for (int i = 0; i < tiles.Count && i < army.Count; i++)
+            _board.SpawnPiece(army[i], PieceOwner.PLAYER, tiles[i]);
 
         UpdateRemainingFromBoard();
         UpdateUI();
@@ -84,125 +56,58 @@ public partial class DeploymentController : Node
 
     private List<PieceType> BuildArmyList()
     {
-        var army = new List<PieceType>();
-
+        List<PieceType> army = new();
         foreach (var kv in PiecesData.Data)
-        {
-            for (int i = 0; i < kv.Value.MaxCount; i++)
-                army.Add(kv.Key);
-        }
-
+            for (int i = 0; i < kv.Value.MaxCount; i++) army.Add(kv.Key);
         return army;
     }
 
     private List<Tile> GetPlayerDeploymentTiles()
     {
         List<Tile> tiles = new();
-
         foreach (Tile t in _board.AllTiles)
-        {
-            if (t.TileType == TileType.PLAYER_DEPLOYMENT)
-                tiles.Add(t);
-        }
-
+            if (t.TileType == TileType.PLAYER_DEPLOYMENT) tiles.Add(t);
         return tiles;
     }
 
-    private void Shuffle<T>(List<T> list, RandomNumberGenerator rng)
-    {
-        for (int i = list.Count - 1; i > 0; i--)
-        {
-            int j = rng.RandiRange(0, i);
-            (list[i], list[j]) = (list[j], list[i]);
-        }
-    }
-
-    // PIECE SPAWN
-
-    private void SpawnPiece(PieceType type, PieceOwner owner, Tile tile)
-    {
-        Piece piece = _pieceScene.Instantiate<Piece>();
-        piece.Initialize(type, owner);
-
-        piece.Position = tile.Position;
-        tile.SetOccupant(piece);
-
-        _board.AddChild(piece);
-    }
-
-    // CLEANUP
-
     private void ClearPlayerDeployment()
     {
-        foreach (Tile tile in _board.AllTiles)
-        {
-            if (!tile.IsOccupied)
-                continue;
-
-            if (tile.Occupant.PlayerOwner == PieceOwner.PLAYER)
+        foreach (Tile t in _board.AllTiles)
+            if (t.IsOccupied && t.Occupant.PlayerOwner == PieceOwner.PLAYER)
             {
-                tile.Occupant.QueueFree();
-                tile.ClearOccupant();
+                t.Occupant.QueueFree();
+                t.ClearOccupant();
             }
-        }
     }
 
     private void UpdateRemainingFromBoard()
     {
         InitializeArmy();
-
-        foreach (Tile tile in _board.AllTiles)
-        {
-            if (!tile.IsOccupied)
-                continue;
-
-            if (tile.Occupant.PlayerOwner != PieceOwner.PLAYER)
-                continue;
-
-            _remainingPieces[tile.Occupant.Type]--;
-        }
+        foreach (Tile t in _board.AllTiles)
+            if (t.IsOccupied && t.Occupant.PlayerOwner == PieceOwner.PLAYER)
+                _remainingPieces[t.Occupant.Type]--;
     }
-
-    // START BATTLE
 
     private void StartBattle()
     {
-        if (GetRemainingCount() > 0)
-            return;
+        if (GetRemainingCount() > 0) return;
 
         SpawnBotArmy();
-
         _ui.HideUI();
-
         _game.StartBattle();
     }
 
     private void SpawnBotArmy()
     {
         List<PieceType> army = BuildArmyList();
-
-        RandomNumberGenerator rng = new();
-        rng.Randomize();
-
         List<Tile> tiles = new();
 
         foreach (Tile t in _board.AllTiles)
-        {
-            if (t.TileType == TileType.BOT_DEPLOYMENT)
-                tiles.Add(t);
-        }
+            if (t.TileType == TileType.BOT_DEPLOYMENT) tiles.Add(t);
 
-        Shuffle(tiles, rng);
+        Util.Shuffle(tiles);
 
-        int index = 0;
-
-        foreach (Tile tile in tiles)
-        {
-            if (index >= army.Count)
-                break;
-
-            SpawnPiece(army[index], PieceOwner.BOT, tile);
-            index++;
-        }
+        for (int i = 0; i < tiles.Count && i < army.Count; i++)
+            _board.SpawnPiece(army[i], PieceOwner.BOT, tiles[i]);
     }
 }
