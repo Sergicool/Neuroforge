@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bfn2dfnxr8n6e"]
+
+[ext_resource type="PackedScene" uid="uid://d0l10wogfc7rc" path="res://Menus/Ui/DeploymentUI.tscn" id="1_gcvor"]
+
+[sub_resource type="CSharpScript" id="CSharpScript_gcvor"]
+script/source = "using Godot;
+using System;
+
+public partial class GameUI : CanvasLayer
+{
+
+}
+"
+
+[node name="GameUI" type="CanvasLayer" unique_id=1846249012]
+script = SubResource("CSharpScript_gcvor")
+
+[node name="DeploymentUI" parent="." unique_id=1257122119 instance=ExtResource("1_gcvor")]

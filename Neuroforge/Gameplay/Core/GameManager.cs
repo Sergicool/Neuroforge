@@ -2,20 +2,22 @@ using Godot;
 
 public partial class GameManager : Node
 {
-    public static GameManager Instance { get; private set; }
+    // Externo
+    private const string BOARD_SCENE_PATH = "res://Gameplay/Board/Board.tscn";
 
+    public static GameManager Instance { get; private set; }    // Instancia que se crea al iniciarse la escena de la partida
     private Board _board;
     private Camera2D _camera;
-    private DeploymentUI _deploymentUI;
-    private DeploymentController _deployment;
+    private DeploymentUI _deploymentUI;                         // Interfaz del despliegue de piezas
+    private DeploymentController _deployment;                   // Logica del despliegue de piezas
 
+    // Controla el estado y el turno actual de la partida
     public PieceOwner CurrentTurn { get; private set; } = PieceOwner.PLAYER;
     public GameState State { get; private set; } = GameState.WAITING_INPUT;
 
-    private const string BOARD_SCENE_PATH = "res://Gameplay/Board/Board.tscn";
-
     public override void _Ready()
     {
+        // Crea manager, el tablero, controlador de las interfaces e inicializa el estado del juego en fase de despliegue
         Instance = this;
         SpawnBoard();
         SpawnCamera();
@@ -30,14 +32,17 @@ public partial class GameManager : Node
         _deploymentUI.ShowUI();
     }
 
+    // Instancia el tablero
     private void SpawnBoard()
     {
         PackedScene boardScene = GD.Load<PackedScene>(BOARD_SCENE_PATH);
         _board = boardScene.Instantiate<Board>();
         AddChild(_board);
+        // Lo inicializa con referencia al game manager
         _board.Initialize(this);
     }
 
+    // Crea una camara en el centro del tablero
     private void SpawnCamera()
     {
         _camera = new Camera2D
@@ -49,13 +54,14 @@ public partial class GameManager : Node
         AddChild(_camera);
     }
 
+    // Getters
     public Board GetBoard() => _board;
-
-    public void StartBattle() => State = GameState.WAITING_INPUT;
-
+    public DeploymentController GetDeploymentController() => _deployment;
     public bool CanInteract() => State == GameState.WAITING_INPUT;
     public bool IsPlayersTurn(PieceOwner owner) => owner == CurrentTurn;
+    public void StartGame() => State = GameState.WAITING_INPUT;
 
+    // Cambia el turno
     public void EndTurn()
     {
         CurrentTurn = CurrentTurn == PieceOwner.PLAYER ? PieceOwner.BOT : PieceOwner.PLAYER;

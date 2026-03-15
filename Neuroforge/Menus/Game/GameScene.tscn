@@ -6,4 +6,4 @@
 [node name="GameScene" type="Node" unique_id=1935428772]
 script = ExtResource("1_7e2f7")
 
-[node name="DeploymentUI" parent="." unique_id=1078961223 instance=ExtResource("2_2gjdv")]
+[node name="DeploymentUI" parent="." unique_id=1257122119 instance=ExtResource("2_2gjdv")]

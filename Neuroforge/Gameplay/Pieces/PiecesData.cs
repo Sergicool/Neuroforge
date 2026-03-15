@@ -1,6 +1,7 @@
 using Godot;
 using System.Collections.Generic;
 
+// Caracteristicas que definen el comportamiento de una pieza
 public class PieceDefinition
 {
     public PieceType Type;
@@ -11,10 +12,14 @@ public class PieceDefinition
     public int AtlasColumn;
 }
 
-public partial class PiecesData : Node
+// Datos de piezas
+public partial class PiecesData
 {
     public static readonly Texture2D Atlas = GD.Load<Texture2D>("res://Gameplay/Pieces/PiecesPlaceholders.png");
     public const int HIDDEN_ATLAS_COLUMN = 13;
+
+    public const int ATLAS_COLUMN_WIDTH = 16;
+    public const int ATLAS_HEIGHT = 32;
 
     public static readonly Dictionary<PieceType, PieceDefinition> Data = new()
     {

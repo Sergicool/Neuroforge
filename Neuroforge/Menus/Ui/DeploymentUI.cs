@@ -1,28 +1,53 @@
 using Godot;
 using System;
+using System.Collections.Generic;
+using static Godot.Control;
 
 public partial class DeploymentUI : CanvasLayer
 {
-    public static DeploymentUI Instance { get; private set; }
+    // Acciones
     public event Action OnRandomPressed;
     public event Action OnStartPressed;
+    public event Action<PieceType> OnPieceSelected;
 
+    // Componentes
+    private Label _remainingLabel;
+    private GridContainer _gridContainer;
     private Button _randomButton;
     private Button _startButton;
-    private Label _remainingLabel;
+
+    private Dictionary<PieceType, Button> _pieceButtons = new();
 
     public override void _Ready()
     {
-        Instance = this;
+        _remainingLabel = GetNode<Label>("Control/MarginContainer/Panel/VBoxContainer/PiecesCountLabel");
+        _gridContainer = GetNode<GridContainer>("Control/MarginContainer/Panel/VBoxContainer/GridContainer");
         _randomButton = GetNode<Button>("Control/MarginContainer/Panel/VBoxContainer/RandomButton");
         _startButton = GetNode<Button>("Control/MarginContainer/Panel/VBoxContainer/StartButton");
-        _remainingLabel = GetNode<Label>("Control/MarginContainer/Panel/VBoxContainer/PiecesCountLabel");
+
+        foreach (var kv in PiecesData.Data)
+        {
+            PieceType type = kv.Key;
+            var def = kv.Value;
+
+            Button btn = new Button();
+
+            btn.Text = BuildPieceText(type, def.MaxCount);
+            btn.SizeFlagsHorizontal = SizeFlags.ExpandFill;
+
+            btn.Pressed += () => OnPieceSelected?.Invoke(type);
+
+            _pieceButtons[type] = btn;
+
+            _gridContainer.AddChild(btn);
+        }
 
         _randomButton.Pressed += () => OnRandomPressed?.Invoke();
         _startButton.Pressed += () => OnStartPressed?.Invoke();
 
         _startButton.Disabled = true;
     }
+    public GridContainer GetGridContainer() => _gridContainer;
 
     public void SetRemainingPieces(int remaining)
     {
@@ -32,4 +57,25 @@ public partial class DeploymentUI : CanvasLayer
 
     public void ShowUI() => Visible = true;
     public void HideUI() => Visible = false;
+
+    public void UpdatePieceCounts(Dictionary<PieceType, int> remaining)
+    {
+        foreach (var kv in remaining)
+        {
+            if (!_pieceButtons.TryGetValue(kv.Key, out var btn))
+                continue;
+
+            btn.Text = BuildPieceText(kv.Key, kv.Value);
+            btn.Disabled = kv.Value == 0;
+        }
+    }
+
+    private string BuildPieceText(PieceType type, int remaining)
+    {
+        var def = PiecesData.Data[type];
+
+        string rankText = def.Rank > 0 ? $" [{def.Rank}]" : "";
+
+        return $"{type}{rankText} x{remaining:00}";
+    }
 }

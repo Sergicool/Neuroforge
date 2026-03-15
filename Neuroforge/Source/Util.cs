@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 public static class Util
 {
+    // Mezcla una lista
     public static void Shuffle<T>(List<T> list)
     {
         RandomNumberGenerator rng = new();
