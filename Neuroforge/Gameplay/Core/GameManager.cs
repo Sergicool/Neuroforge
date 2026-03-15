@@ -59,12 +59,47 @@ public partial class GameManager : Node
     public DeploymentController GetDeploymentController() => _deployment;
     public bool CanInteract() => State == GameState.WAITING_INPUT;
     public bool IsPlayersTurn(PieceOwner owner) => owner == CurrentTurn;
-    public void StartGame() => State = GameState.WAITING_INPUT;
+    public void StartGame()
+    {
+        State = GameState.WAITING_INPUT;
+        CheckGameEnd();
+    }
 
     // Cambia el turno
     public void EndTurn()
     {
         CurrentTurn = CurrentTurn == PieceOwner.PLAYER ? PieceOwner.BOT : PieceOwner.PLAYER;
         State = GameState.WAITING_INPUT;
+
+        CheckGameEnd();
     }
+
+    private void CheckGameEnd()
+    {
+        bool playerCoreAlive = _board.HasEnergyCore(PieceOwner.PLAYER);
+        bool botCoreAlive = _board.HasEnergyCore(PieceOwner.BOT);
+        bool currentHasMoves = _board.HasAnyMoves(CurrentTurn);
+
+        if (!playerCoreAlive)
+        {
+            GD.Print("GAME OVER: PLAYER perdió su CORE. Gana BOT.");
+            State = GameState.GAME_OVER;
+            return;
+        }
+
+        if (!botCoreAlive)
+        {
+            GD.Print("GAME OVER: BOT perdió su CORE. Gana PLAYER.");
+            State = GameState.GAME_OVER;
+            return;
+        }
+
+        if (!currentHasMoves)
+        {
+            PieceOwner winner = CurrentTurn == PieceOwner.PLAYER ? PieceOwner.BOT : PieceOwner.PLAYER;
+            GD.Print($"GAME OVER: {CurrentTurn} no tiene movimientos posibles. Gana {winner}.");
+            State = GameState.GAME_OVER;
+        }
+    }
+
 }

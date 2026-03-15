@@ -216,4 +216,40 @@ public partial class Board : Node2D
         tile.SetOccupant(piece);
         _piecesManager.AddChild(piece);
     }
+
+    public bool HasEnergyCore(PieceOwner owner)
+    {
+        foreach (Tile tile in AllTiles)
+        {
+            if (!tile.IsOccupied) continue;
+
+            Piece piece = tile.Occupant;
+            if (piece.PlayerOwner == owner && piece.Type == PieceType.ENERGY_CORE)
+                return true;
+        }
+
+        return false;
+    }
+
+    public bool HasAnyMoves(PieceOwner owner)
+    {
+        foreach (Tile tile in AllTiles)
+        {
+            if (!tile.IsOccupied) continue;
+
+            Piece piece = tile.Occupant;
+            if (piece.PlayerOwner != owner) continue;
+            if (!piece.CanMove) continue;
+
+            foreach (Tile target in AllTiles)
+            {
+                if (target == piece.CurrentTile) continue;
+
+                if (MovementSystem.CanMove(piece, target))
+                    return true;
+            }
+        }
+
+        return false;
+    }
 }
