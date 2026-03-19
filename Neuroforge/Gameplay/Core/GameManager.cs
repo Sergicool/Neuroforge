@@ -1,4 +1,5 @@
 using Godot;
+using System;
 
 public partial class GameManager : Node
 {
@@ -10,6 +11,7 @@ public partial class GameManager : Node
     private Camera2D _camera;
     private DeploymentUI _deploymentUI;                         // Interfaz del despliegue de piezas
     private DeploymentController _deployment;                   // Logica del despliegue de piezas
+    private Random _rng = new Random();
 
     // Controla el estado y el turno actual de la partida
     public PieceOwner CurrentTurn { get; private set; } = PieceOwner.PLAYER;
@@ -68,10 +70,16 @@ public partial class GameManager : Node
     // Cambia el turno
     public void EndTurn()
     {
+        CheckGameEnd();
+        if (State == GameState.GAME_OVER) return;
+
         CurrentTurn = CurrentTurn == PieceOwner.PLAYER ? PieceOwner.BOT : PieceOwner.PLAYER;
         State = GameState.WAITING_INPUT;
 
-        CheckGameEnd();
+        if (CurrentTurn == PieceOwner.BOT)
+        {
+            PlayBotTurn();
+        }
     }
 
     private void CheckGameEnd()
@@ -100,6 +108,23 @@ public partial class GameManager : Node
             GD.Print($"GAME OVER: {CurrentTurn} no tiene movimientos posibles. Gana {winner}.");
             State = GameState.GAME_OVER;
         }
+    }
+
+    private void PlayBotTurn()
+    {
+        var actions = _board.GetAllPossibleActions(PieceOwner.BOT);
+
+        if (actions.Count == 0)
+        {
+            EndTurn();
+            return;
+        }
+
+        var action = actions[_rng.Next(actions.Count)];
+
+        _board.ExecuteBotAction(action);
+
+        EndTurn();
     }
 
 }

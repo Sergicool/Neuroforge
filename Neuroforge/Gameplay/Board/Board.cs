@@ -1,6 +1,12 @@
 using Godot;
 using System.Collections.Generic;
 
+public struct BotAction
+{
+    public Vector2I From;
+    public Vector2I To;
+}
+
 public partial class Board : Node2D
 {
     // Externo
@@ -251,5 +257,56 @@ public partial class Board : Node2D
         }
 
         return false;
+    }
+
+    // ==================== Comportamiento del bot ====================
+
+    public List<BotAction> GetAllPossibleActions(PieceOwner owner)
+    {
+        List<BotAction> actions = new();
+
+        foreach (Tile tile in AllTiles)
+        {
+            if (!tile.IsOccupied) continue;
+
+            Piece piece = tile.Occupant;
+
+            if (piece.PlayerOwner != owner) continue;
+            if (!piece.CanMove) continue;
+
+            foreach (Tile target in AllTiles)
+            {
+                if (target == tile) continue;
+
+                if (MovementSystem.CanMove(piece, target))
+                {
+                    actions.Add(new BotAction
+                    {
+                        From = tile.GridPosition,
+                        To = target.GridPosition
+                    });
+                }
+            }
+        }
+
+        return actions;
+    }
+
+    public void ExecuteBotAction(BotAction action)
+    {
+        Tile from = GetTileAt(action.From);
+        Tile to = GetTileAt(action.To);
+
+        if (from == null || to == null) return;
+        if (!from.IsOccupied) return;
+
+        Piece piece = from.Occupant;
+
+        TileAction tileAction = MovementSystem.GetAction(piece, to);
+
+        if (tileAction == TileAction.MOVE)
+            MovePiece(piece, to);
+        else if (tileAction == TileAction.ATTACK)
+            ResolveCombat(piece, to.Occupant);
     }
 }
