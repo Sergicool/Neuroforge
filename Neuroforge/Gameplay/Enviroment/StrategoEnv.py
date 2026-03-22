@@ -1,3 +1,6 @@
+import os
+import glob
+from datetime import datetime
 import gymnasium as gym
 from gymnasium import spaces
 import numpy as np
@@ -258,6 +261,7 @@ class StrategoEnv(gym.Env):
         self.board_layout = BOARD_4x4.copy()
         self.pieces: dict[tuple, Piece] = {}
         self.turn = 0
+        self.opponent_model = None  # None = aleatorio, modelo = self-play
         self.reset()
 
     def reset(self, seed=None, options=None):
@@ -330,7 +334,7 @@ class StrategoEnv(gym.Env):
                 terminated = True
                 reward    += 10.0
             else:
-                pf, pt = player_moves[np.random.randint(len(player_moves))]
+                pf, pt = self._choose_opponent_move(player_moves)
                 p_reward, p_terminated = self._execute_move(PLAYER, pf, pt)
                 reward += -p_reward
                 if p_terminated:
@@ -348,6 +352,110 @@ class StrategoEnv(gym.Env):
                 reward    -= 10.0
 
         return self._get_obs(), reward, terminated, truncated, {}
+
+    def _choose_opponent_move(self, player_moves: list) -> tuple:
+        """
+        Elige el movimiento del jugador (oponente).
+        - Si opponent_model es None: movimiento aleatorio.
+        - Si opponent_model es un modelo: self-play, el modelo elige
+          desde la perspectiva del jugador (tablero invertido).
+        """
+        if self.opponent_model is None:
+            return player_moves[np.random.randint(len(player_moves))]
+
+        # Self-play: construir observacion desde la perspectiva del JUGADOR
+        # (intercambia los canales BOT <-> PLAYER y gira el tablero verticalmente)
+        obs_bot = self._get_obs()
+        obs_player = self._get_obs_as_player()
+
+        # Calcular mascara de acciones legales para el jugador
+        mask = self._get_opponent_masks()
+
+        action, _ = self.opponent_model.predict(
+            obs_player, deterministic=False, action_masks=mask
+        )
+
+        # Decodificar accion desde perspectiva del jugador (tablero girado)
+        n_tiles  = ROWS * COLS
+        from_idx = int(action) // n_tiles
+        to_idx   = int(action) % n_tiles
+        # Invertir filas (el jugador ve el tablero al reves)
+        from_r = (ROWS - 1) - (from_idx // COLS)
+        from_c = from_idx % COLS
+        to_r   = (ROWS - 1) - (to_idx   // COLS)
+        to_c   = to_idx % COLS
+        from_pos = (from_r, from_c)
+        to_pos   = (to_r,   to_c)
+
+        # Verificar que la accion es legal; si no, caer en aleatorio
+        piece = self.pieces.get(from_pos)
+        if (piece is not None and piece.owner == PLAYER and
+                can_move(piece, from_pos, to_pos, self.board_layout, self.pieces, self.turn)):
+            return from_pos, to_pos
+
+        return player_moves[np.random.randint(len(player_moves))]
+
+    def _get_obs_as_player(self) -> np.ndarray:
+        """
+        Observacion desde la perspectiva del JUGADOR:
+        - Intercambia canales BOT <-> PLAYER
+        - Gira el tablero verticalmente (el jugador "ve" desde abajo)
+        Esto permite usar el mismo modelo entrenado como BOT para jugar como PLAYER.
+        """
+        obs = np.zeros((N_CHANNELS, ROWS, COLS), dtype=np.float32)
+
+        for r in range(ROWS):
+            r_flip = (ROWS - 1) - r
+            for c in range(COLS):
+                if self.board_layout[r, c] == NO_PASSABLE:
+                    obs[3, r_flip, c] = 1.0
+
+        for (r, c), piece in self.pieces.items():
+            r_flip = (ROWS - 1) - r
+            if piece.owner == PLAYER:
+                # Las piezas del JUGADOR se convierten en "propias" del modelo
+                if piece.rank == RANK_TURRET:
+                    obs[4, r_flip, c] = 1.0
+                elif piece.rank == RANK_ENERGY_CORE:
+                    obs[6, r_flip, c] = 1.0
+                else:
+                    obs[0, r_flip, c] = piece.rank / MAX_RANK
+            else:
+                # Las piezas del BOT se convierten en "enemigas"
+                if not piece.revealed:
+                    obs[2, r_flip, c] = 1.0
+                elif piece.rank == RANK_TURRET:
+                    obs[5, r_flip, c] = 1.0
+                elif piece.rank == RANK_ENERGY_CORE:
+                    obs[7, r_flip, c] = 1.0
+                else:
+                    obs[1, r_flip, c] = piece.rank / MAX_RANK
+        return obs
+
+    def _get_opponent_masks(self) -> np.ndarray:
+        """Mascara de acciones legales para el JUGADOR (tablero girado)."""
+        n_tiles = ROWS * COLS
+        mask = np.zeros(self.action_space.n, dtype=bool)
+
+        for from_idx in range(n_tiles):
+            # Invertir fila para pasar de coordenadas giradas a reales
+            from_r_flip = from_idx // COLS
+            from_c      = from_idx % COLS
+            from_r_real = (ROWS - 1) - from_r_flip
+            from_pos    = (from_r_real, from_c)
+
+            piece = self.pieces.get(from_pos)
+            if piece is None or piece.owner != PLAYER:
+                continue
+
+            for to_pos in get_all_valid_moves(piece, from_pos, self.board_layout, self.pieces, self.turn):
+                to_r_flip = (ROWS - 1) - to_pos[0]
+                to_idx    = to_r_flip * COLS + to_pos[1]
+                mask[from_idx * n_tiles + to_idx] = True
+
+        if not mask.any():
+            mask[:] = True
+        return mask
 
     def _execute_move(self, actor: int, from_pos: tuple, to_pos: tuple):
         piece      = self.pieces[from_pos]
@@ -505,17 +613,50 @@ def random_reset(env: StrategoEnv) -> np.ndarray:
 # ENTRENAMIENTO Y TESTS
 # ==============================================================================
 
+# Nombre base del modelo
+MODEL_BASE = "ppo_stratego_4x4"
+
+def find_latest_model() -> str | None:
+    """
+    Busca el modelo mas reciente disponible.
+    Prioridad: versiones con timestamp > modelo base.
+    Devuelve la ruta sin extension, o None si no hay ninguno.
+    """
+    # Buscar versiones con timestamp primero
+    timestamped = sorted(glob.glob(f"{MODEL_BASE}_v*.zip"), reverse=True)
+    if timestamped:
+        return timestamped[0].replace(".zip", "")
+    # Caer en el modelo base si existe
+    if os.path.exists(f"{MODEL_BASE}.zip"):
+        return MODEL_BASE
+    return None
+
+
 if __name__ == "__main__":
 
-    # ------------------------------------------------------------------
-    # ENTRENAMIENTO
-    # ------------------------------------------------------------------
     env = StrategoEnv()
 
     print("Verificando entorno...")
     check_env(env, warn=True)
     print("Entorno OK.\n")
 
+    # ------------------------------------------------------------------
+    # Decidir modo de entrenamiento
+    # ------------------------------------------------------------------
+    latest = find_latest_model()
+
+    if latest:
+        print(f"Modelo encontrado: {latest}.zip")
+        print("Modo: SELF-PLAY — el oponente usara el modelo anterior.\n")
+        opponent = MaskablePPO.load(latest)
+        env.opponent_model = opponent
+    else:
+        print("No se encontro ningun modelo guardado.")
+        print("Modo: ALEATORIO — el oponente movera al azar.\n")
+
+    # ------------------------------------------------------------------
+    # Crear y entrenar el nuevo modelo
+    # ------------------------------------------------------------------
     policy_kwargs = dict(
         features_extractor_class  = StrategoCNN,
         features_extractor_kwargs = dict(features_dim=64),
@@ -535,6 +676,12 @@ if __name__ == "__main__":
     )
 
     print("Iniciando entrenamiento...")
-    model.learn(total_timesteps=100_000)
-    model.save("ppo_stratego_4x4")
-    print("\nModelo guardado en ppo_stratego_4x4.zip\n")
+    model.learn(total_timesteps=1_000_000)
+
+    # Guardar con timestamp para no sobreescribir el anterior
+    timestamp   = datetime.now().strftime("%Y%m%d_%H%M%S")
+    save_name   = f"{MODEL_BASE}_v{timestamp}"
+    model.save(save_name)
+    print(f"\nModelo guardado en {save_name}.zip")
+    if latest:
+        print(f"Modelo anterior conservado en {latest}.zip\n")

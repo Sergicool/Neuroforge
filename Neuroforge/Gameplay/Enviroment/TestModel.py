@@ -283,7 +283,7 @@ if __name__ == "__main__":
 
     # Cargar el modelo guardado — no hace falta reentrenar
     print("Cargando modelo...")
-    model = MaskablePPO.load("ppo_stratego_4x4")
+    model = MaskablePPO.load("ppo_stratego_4x4_v20260322_213502")
     print("Modelo cargado.\n")
 
     env_verbose = StrategoEnvVerbose()
