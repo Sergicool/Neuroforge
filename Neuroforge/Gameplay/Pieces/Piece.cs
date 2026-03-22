@@ -1,4 +1,5 @@
 using Godot;
+using System.Collections.Generic;
 
 public partial class Piece : Node2D
 {
@@ -10,8 +11,9 @@ public partial class Piece : Node2D
     public int Rank { get; private set; }
     public bool CanMove { get; private set; }
     public PieceState State { get; private set; }
-    // TODO: Posiblemente habra que añadir un bool para indicar si el bot conoce la pieza o no (revelada para el bot)
+    public BotKnowledgeState BotKnowledge { get; private set; } = BotKnowledgeState.UNKNOWN;
     public Tile CurrentTile { get; set; }
+    private Dictionary<Vector2I, int> _tileCooldowns = new();
 
     public override void _Ready()
     {
@@ -31,11 +33,18 @@ public partial class Piece : Node2D
         CanMove = def.CanMove;
 
         State = owner == PieceOwner.PLAYER ? PieceState.REVEALED : PieceState.HIDDEN;
+
+        // El bot conoce sus piezas pero no las del jugador
+        if (owner == PieceOwner.BOT)
+            BotKnowledge = BotKnowledgeState.KNOWN;
+        else
+            BotKnowledge = BotKnowledgeState.UNKNOWN;
+
         UpdateVisual();
     }
 
     // Comprueba si la pieza puede moverse a una casilla
-    public bool IsValidMove(Tile tile) => MovementSystem.CanMove(this, tile);
+    public bool IsValidMove(Tile tile, int turn) => MovementSystem.CanMove(this, tile, turn);
 
     // Devuelve el resultado del combate dada la pieza a la que ataca
     public CombatResult ResolveCombat(Piece defender) => CombatSystem.Resolve(this, defender);
@@ -43,9 +52,42 @@ public partial class Piece : Node2D
     // Revela la pieza en el tablero
     public void Reveal()
     {
-        if (State == PieceState.REVEALED) return;
+        if (State == PieceState.REVEALED && BotKnowledge == BotKnowledgeState.KNOWN) return;
         State = PieceState.REVEALED;
+        BotKnowledge = BotKnowledgeState.KNOWN;
         UpdateVisual();
+    }
+
+    // Registra la posicion de una casilla de la que sale
+    public void RegisterTileExit(Vector2I tile, int turn)
+    {
+        _tileCooldowns[tile] = turn;
+    }
+
+    // Comprueba si puede volver a una casilla
+    public bool CanReturnToTile(Vector2I tile, int currentTurn)
+    {
+        CleanupCooldowns(currentTurn);
+
+        if (!_tileCooldowns.ContainsKey(tile)) return true;
+
+        int lastTurn = _tileCooldowns[tile];
+
+        return (currentTurn - lastTurn) >= 3;
+    }
+
+    public void CleanupCooldowns(int currentTurn)
+    {
+        var toRemove = new List<Vector2I>();
+
+        foreach (var kvp in _tileCooldowns)
+        {
+            if (currentTurn - kvp.Value >= 3)
+                toRemove.Add(kvp.Key);
+        }
+
+        foreach (var t in toRemove)
+            _tileCooldowns.Remove(t);
     }
 
     // Actualiza su visualizacion

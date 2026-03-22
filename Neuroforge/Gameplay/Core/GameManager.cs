@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class GameManager : Node
 {
@@ -16,6 +17,7 @@ public partial class GameManager : Node
     // Controla el estado y el turno actual de la partida
     public PieceOwner CurrentTurn { get; private set; } = PieceOwner.PLAYER;
     public GameState State { get; private set; } = GameState.WAITING_INPUT;
+    public int TurnNumber { get; private set; } = 0;
 
     public override void _Ready()
     {
@@ -72,6 +74,8 @@ public partial class GameManager : Node
     {
         CheckGameEnd();
         if (State == GameState.GAME_OVER) return;
+
+        TurnNumber++;
 
         CurrentTurn = CurrentTurn == PieceOwner.PLAYER ? PieceOwner.BOT : PieceOwner.PLAYER;
         State = GameState.WAITING_INPUT;

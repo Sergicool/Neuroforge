@@ -49,6 +49,12 @@ public enum PieceState
     DESTROYED
 }
 
+public enum BotKnowledgeState
+{
+    UNKNOWN,
+    KNOWN
+}
+
 // Tipo de tile
 public enum TileType
 {

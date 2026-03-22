@@ -96,7 +96,7 @@ public partial class Board : Node2D
         ClearHighlights();
         foreach (Tile tile in AllTiles)
         {
-            TileAction action = MovementSystem.GetAction(piece, tile);
+            TileAction action = MovementSystem.GetAction(piece, tile, _game.TurnNumber);
             if (action == TileAction.NONE) continue;
 
             _highlightedTiles.Add(tile);
@@ -108,7 +108,7 @@ public partial class Board : Node2D
     // Ejecuta la accion de la pieza seleccionada, sobre una casilla objetivo
     private void ExecuteAction(Tile target)
     {
-        TileAction action = MovementSystem.GetAction(_selectedPiece, target);
+        TileAction action = MovementSystem.GetAction(_selectedPiece, target, _game.TurnNumber);
         if (action == TileAction.MOVE)
             MovePiece(_selectedPiece, target);
         else if (action == TileAction.ATTACK)
@@ -118,7 +118,11 @@ public partial class Board : Node2D
     // Mueve una pieza a una casilla
     private void MovePiece(Piece piece, Tile target)
     {
-        piece.CurrentTile.ClearOccupant();
+        Tile origin = piece.CurrentTile;
+
+        piece.RegisterTileExit(origin.GridPosition, _game.TurnNumber);
+
+        origin.ClearOccupant();
         target.SetOccupant(piece);
         piece.Position = target.Position;
     }
@@ -166,7 +170,7 @@ public partial class Board : Node2D
     // Logica para generar el tablero, leyendo el fichero con el layout, va creando e instanciando cada casilla con su respectivo tipo y posicion
     private void GenerateBoard()
     {
-        using var file = FileAccess.Open("res://Gameplay/Board/BoardLayout.txt", FileAccess.ModeFlags.Read);
+        using var file = FileAccess.Open("res://Gameplay/Board/BoardLayoutTest.txt", FileAccess.ModeFlags.Read);
         int y = 0;
         Tile tile;
         while (!file.EofReached())
@@ -251,7 +255,7 @@ public partial class Board : Node2D
             {
                 if (target == piece.CurrentTile) continue;
 
-                if (MovementSystem.CanMove(piece, target))
+                if (MovementSystem.CanMove(piece, target, _game.TurnNumber))
                     return true;
             }
         }
@@ -278,7 +282,7 @@ public partial class Board : Node2D
             {
                 if (target == tile) continue;
 
-                if (MovementSystem.CanMove(piece, target))
+                if (MovementSystem.CanMove(piece, target, _game.TurnNumber))
                 {
                     actions.Add(new BotAction
                     {
@@ -302,11 +306,49 @@ public partial class Board : Node2D
 
         Piece piece = from.Occupant;
 
-        TileAction tileAction = MovementSystem.GetAction(piece, to);
+        TileAction tileAction = MovementSystem.GetAction(piece, to, _game.TurnNumber);
 
         if (tileAction == TileAction.MOVE)
             MovePiece(piece, to);
         else if (tileAction == TileAction.ATTACK)
             ResolveCombat(piece, to.Occupant);
+    }
+
+    public float[] GetState()
+    {
+        List<float> state = new();
+
+        foreach (Tile tile in AllTiles)
+        {
+            if (!tile.IsOccupied)
+            {
+                state.Add(0);
+                continue;
+            }
+
+            Piece p = tile.Occupant;
+
+            float value = p.Rank;
+
+            if (p.PlayerOwner == PieceOwner.BOT)
+                value *= -1;
+
+            if (p.PlayerOwner == PieceOwner.PLAYER)
+            {
+                if (p.BotKnowledge == BotKnowledgeState.UNKNOWN)
+                    value = 0; // o valor especial
+                else
+                    value = p.Rank;
+            }
+
+            state.Add(value);
+        }
+
+        return state.ToArray();
+    }
+
+    public List<BotAction> GetAllPossibleActionsIndexed(PieceOwner owner)
+    {
+        return GetAllPossibleActions(owner);
     }
 }
