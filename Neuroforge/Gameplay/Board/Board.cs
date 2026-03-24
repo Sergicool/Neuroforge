@@ -170,7 +170,7 @@ public partial class Board : Node2D
     // Logica para generar el tablero, leyendo el fichero con el layout, va creando e instanciando cada casilla con su respectivo tipo y posicion
     private void GenerateBoard()
     {
-        using var file = FileAccess.Open("res://Gameplay/Board/BoardLayoutTest.txt", FileAccess.ModeFlags.Read);
+        using var file = FileAccess.Open("res://Gameplay/Board/BoardLayout.txt", FileAccess.ModeFlags.Read);
         int y = 0;
         Tile tile;
         while (!file.EofReached())

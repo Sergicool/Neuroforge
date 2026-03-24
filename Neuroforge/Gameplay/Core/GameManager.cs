@@ -112,6 +112,23 @@ public partial class GameManager : Node
             GD.Print($"GAME OVER: {CurrentTurn} no tiene movimientos posibles. Gana {winner}.");
             State = GameState.GAME_OVER;
         }
+
+        if (!currentHasMoves)
+        {
+            PieceOwner opponent = CurrentTurn == PieceOwner.PLAYER ? PieceOwner.BOT : PieceOwner.PLAYER;
+            bool opponentHasMoves = _board.HasAnyMoves(opponent);
+
+            if (!opponentHasMoves)
+            {
+                GD.Print("GAME OVER: Ningún bando tiene movimientos posibles. Empate.");
+            }
+            else
+            {
+                GD.Print($"GAME OVER: {CurrentTurn} no tiene movimientos posibles. Gana {opponent}.");
+            }
+
+            State = GameState.GAME_OVER;
+        }
     }
 
     private void PlayBotTurn()
