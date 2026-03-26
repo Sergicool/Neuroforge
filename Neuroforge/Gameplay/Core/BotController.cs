@@ -2,7 +2,7 @@ using Godot;
 using System;
 
 // Accion que realiza el bot
-public struct BotAction
+public struct MovementAction
 {
     public Vector2I From;
     public Vector2I To;
@@ -30,7 +30,7 @@ public class BotController
             return;
         }
 
-        BotAction action = actions[_rng.Next(actions.Count)];
+        MovementAction action = actions[_rng.Next(actions.Count)];
         _board.ExecuteBotAction(action);
 
         game.EndTurn();

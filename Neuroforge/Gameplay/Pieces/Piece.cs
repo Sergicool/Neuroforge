@@ -20,7 +20,7 @@ public partial class Piece : Node2D
 
     public Tile CurrentTile { get; set; }
 
-    private readonly Dictionary<Vector2I, int> _tileCooldowns = new();
+    private readonly Dictionary<Tile, int> _tileCooldowns = new();
 
     public override void _Ready()
     {
@@ -61,26 +61,26 @@ public partial class Piece : Node2D
     }
 
     // Registra la casilla de la que sale la pieza y limpia cooldowns expirados
-    public void RegisterTileExit(Vector2I tile, int turn)
+    public void RegisterTileExit(Tile tile, int turn)
     {
         _tileCooldowns[tile] = turn;
         CleanupCooldowns(turn);
     }
 
     // Devuelve true si la pieza puede volver a esa casilla en el turno actual
-    public bool CanReturnToTile(Vector2I tile, int currentTurn)
+    public bool CanReturnToTile(Tile tile, int turn)
     {
         if (!_tileCooldowns.TryGetValue(tile, out int lastTurn)) return true;
-        return (currentTurn - lastTurn) >= 3;
+        return (turn - lastTurn) >= 3;
     }
 
     // Elimina cooldowns que ya han expirado (llamado únicamente desde RegisterTileExit)
-    private void CleanupCooldowns(int currentTurn)
+    private void CleanupCooldowns(int turn)
     {
-        var toRemove = new List<Vector2I>();
+        var toRemove = new List<Tile>();
 
         foreach (var kvp in _tileCooldowns)
-            if (currentTurn - kvp.Value >= 3)
+            if (turn - kvp.Value >= 3)
                 toRemove.Add(kvp.Key);
 
         foreach (var t in toRemove)

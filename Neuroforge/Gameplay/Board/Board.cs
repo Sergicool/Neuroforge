@@ -100,7 +100,7 @@ public partial class Board : Node2D
     public void MovePiece(Piece piece, Tile target)
     {
         Tile origin = piece.CurrentTile;
-        piece.RegisterTileExit(origin.GridPosition, _game.TurnNumber);
+        piece.RegisterTileExit(origin, _game.TurnNumber);
         origin.ClearOccupant();
         target.SetOccupant(piece);
         piece.Position = target.Position;
@@ -144,9 +144,9 @@ public partial class Board : Node2D
 
     // ==================== Comportamiento del bot ====================
 
-    public List<BotAction> GetAllPossibleActions(PieceOwner owner)
+    public List<MovementAction> GetAllPossibleActions(PieceOwner owner)
     {
-        List<BotAction> actions = new();
+        List<MovementAction> actions = new();
 
         foreach (Tile tile in AllTiles)
         {
@@ -158,14 +158,14 @@ public partial class Board : Node2D
             {
                 if (target == tile) continue;
                 if (MovementSystem.CanMove(piece, target, _game.TurnNumber, this))
-                    actions.Add(new BotAction { From = tile.GridPosition, To = target.GridPosition });
+                    actions.Add(new MovementAction { From = tile.GridPosition, To = target.GridPosition });
             }
         }
 
         return actions;
     }
 
-    public void ExecuteBotAction(BotAction action)
+    public void ExecuteBotAction(MovementAction action)
     {
         Tile from = GetTileAt(action.From);
         Tile to   = GetTileAt(action.To);
@@ -180,20 +180,20 @@ public partial class Board : Node2D
     }
 
     // Devuelve el estado del tablero como array de floats para la IA del bot.
-    // Usa 8 canales para separar tipos de pieza y lo que el bot REALMENTE conoce,
-    // sin incluir información de piezas del jugador que no han sido reveladas en combate.
+    // 9 canales — estructura idéntica a _get_obs() del entorno Python de entrenamiento.
     //
-    // Canal 0 — piezas del BOT móviles:        rank / maxRank  (positivo)
-    // Canal 1 — piezas del PLAYER reveladas:   rank / maxRank  (el bot las conoce)
-    // Canal 2 — piezas del PLAYER ocultas:     1f              (el bot sabe que hay algo, no qué)
-    // Canal 3 — casillas intransitables:        1f
-    // Canal 4 — TURRET del BOT:                1f
-    // Canal 5 — TURRET del PLAYER revelada:    1f
-    // Canal 6 — ENERGY_CORE del BOT:           1f
-    // Canal 7 — ENERGY_CORE del PLAYER:        1f              (siempre visible, es el objetivo)
+    // Canal 0 — piezas del BOT móviles             rank / maxRank
+    // Canal 1 — piezas del PLAYER reveladas         rank / maxRank
+    // Canal 2 — piezas del PLAYER ocultas           1f  (el bot sabe que hay algo, no qué tipo)
+    // Canal 3 — casillas intransitables             1f
+    // Canal 4 — TURRET del BOT                      1f
+    // Canal 5 — TURRET del PLAYER revelada          1f
+    // Canal 6 — ENERGY_CORE del BOT                 1f
+    // Canal 7 — ENERGY_CORE del PLAYER localizado   1f  (solo si fue revelado en combate)
+    // Canal 8 — zona de despliegue del PLAYER        1f  (el Core oculto comenzó aquí; el bot infiere por descarte)
     public float[] GetState()
     {
-        const int CHANNELS = 8;
+        const int   CHANNELS = 9;
         const float MAX_RANK = 10f;
 
         int rows = 0, cols = 0;
@@ -212,11 +212,18 @@ public partial class Board : Node2D
             int r = tile.GridPosition.Y;
             int c = tile.GridPosition.X;
 
+            // Canal 3: casillas intransitables
             if (tile.TileType == TileType.NO_PASSABLE)
             {
                 state[GetIndex(3, r, c)] = 1f;
                 continue;
             }
+
+            // Canal 8: zona de despliegue del jugador (estático, igual que en Python)
+            // El bot sabe que el Core rival empezó aquí; a medida que ataca piezas ocultas
+            // en esta zona y no aparece el Core, puede inferir su posición por descarte.
+            if (tile.TileType == TileType.PLAYER_DEPLOYMENT)
+                state[GetIndex(8, r, c)] = 1f;
 
             if (!tile.IsOccupied) continue;
 
@@ -236,22 +243,22 @@ public partial class Board : Node2D
             {
                 if (p.Type == PieceType.ENERGY_CORE)
                 {
-                    // El ENERGY_CORE del jugador es el objetivo: siempre conocido
-                    state[GetIndex(7, r, c)] = 1f;
+                    if (p.IsRevealedToBot)
+                        state[GetIndex(7, r, c)] = 1f;  // Core localizado tras combate
+                    else
+                        state[GetIndex(2, r, c)] = 1f;  // Oculto: el bot no sabe que es el Core
                 }
                 else if (!p.IsRevealedToBot)
                 {
-                    // El bot sabe que hay una pieza pero no conoce su tipo ni rango
-                    state[GetIndex(2, r, c)] = 1f;
+                    state[GetIndex(2, r, c)] = 1f;      // Pieza oculta desconocida
                 }
                 else if (p.Type == PieceType.TURRET)
                 {
-                    state[GetIndex(5, r, c)] = 1f;
+                    state[GetIndex(5, r, c)] = 1f;      // Turret revelada en combate
                 }
                 else
                 {
-                    // Pieza revelada en combate: el bot conoce su rango
-                    state[GetIndex(1, r, c)] = p.Rank / MAX_RANK;
+                    state[GetIndex(1, r, c)] = p.Rank / MAX_RANK;  // Pieza revelada con rango conocido
                 }
             }
         }
@@ -300,7 +307,7 @@ public partial class Board : Node2D
         }
     }
 
-    private static TileType CharToTileType(char c) => c switch
+    private TileType CharToTileType(char c) => c switch
     {
         'X' => TileType.NO_PASSABLE,
         'P' => TileType.PLAYER_DEPLOYMENT,

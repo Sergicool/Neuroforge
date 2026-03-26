@@ -21,7 +21,7 @@ public static class MovementSystem
         // La pieza no puede volver a la misma casilla hasta dentro de 3 turnos,
         // salvo que pueda atacar una pieza rival en ella
         bool isAttack = target.IsOccupied && target.Occupant.PlayerOwner != piece.PlayerOwner;
-        if (!isAttack && !piece.CanReturnToTile(target.GridPosition, turn)) return false;
+        if (!isAttack && !piece.CanReturnToTile(target, turn)) return false;
 
         // Movimiento especial SCOUT: cualquier distancia en línea recta horizontal o vertical
         if (piece.Type == PieceType.SCOUT) return IsScoutPathValid(piece.CurrentTile, target, board);

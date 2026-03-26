@@ -66,8 +66,7 @@
               "RelativeToolTip": "Gameplay\\Core\\GameManager.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-14T13:32:08.095Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-14T13:32:08.095Z"
             },
             {
               "$type": "Document",
@@ -79,8 +78,7 @@
               "RelativeToolTip": "Gameplay\\Pieces\\Piece.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAxAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-26T10:57:06.223Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-26T10:57:06.223Z"
             },
             {
               "$type": "Document",
@@ -92,8 +90,7 @@
               "RelativeToolTip": "Menus\\Ui\\DeploymentUI.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-15T15:54:48.48Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-15T15:54:48.48Z"
             },
             {
               "$type": "Document",
@@ -105,8 +102,7 @@
               "RelativeToolTip": "Gameplay\\Core\\DeploymentController.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-15T15:54:01.193Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-15T15:54:01.193Z"
             },
             {
               "$type": "Document",
@@ -118,8 +114,7 @@
               "RelativeToolTip": "Gameplay\\Core\\CombatSystem.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-15T17:23:27.673Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-15T17:23:27.673Z"
             },
             {
               "$type": "Document",
@@ -131,8 +126,7 @@
               "RelativeToolTip": "Gameplay\\Core\\MovementSystem.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-15T17:26:31.428Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-15T17:26:31.428Z"
             },
             {
               "$type": "Document",
@@ -142,7 +136,7 @@
               "RelativeDocumentMoniker": "Gameplay\\Board\\Board.cs",
               "ToolTip": "D:\\Personal\\Ingenieria Informatica\\TFG\\Neuroforge\\Gameplay\\Board\\Board.cs",
               "RelativeToolTip": "Gameplay\\Board\\Board.cs",
-              "ViewState": "AgIAACQBAAAAAAAAAAA9wCgBAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAH0AAAAAAAAAAAAnwJIAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-15T16:30:24.448Z",
               "EditorCaption": ""
@@ -157,8 +151,7 @@
               "RelativeToolTip": "Gameplay\\Board\\Tile\\Tile.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-15T16:50:38.949Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-15T16:50:38.949Z"
             },
             {
               "$type": "Document",
@@ -170,8 +163,7 @@
               "RelativeToolTip": "Gameplay\\Pieces\\PiecesData.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAC4AAAA6AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-17T20:16:55.415Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-17T20:16:55.415Z"
             },
             {
               "$type": "Document",
@@ -183,8 +175,7 @@
               "RelativeToolTip": "Source\\Enums.cs",
               "ViewState": "AgIAACMAAAAAAAAAAAAwwEQAAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-19T09:13:11.063Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-19T09:13:11.063Z"
             },
             {
               "$type": "Document",
@@ -196,8 +187,7 @@
               "RelativeToolTip": "Source\\Util.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-22T09:22:18.014Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-03-22T09:22:18.014Z"
             }
           ]
         }
