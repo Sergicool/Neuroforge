@@ -10,8 +10,13 @@ public partial class Piece : Node2D
     public int Rank              { get; private set; }
     public bool CanMove          { get; private set; }
 
-    // Una pieza es visible para el jugador si es suya o ha sido revelada en combate
-    public bool IsRevealed       { get; private set; }
+    // Controla el render: las piezas del jugador siempre son visibles para él en pantalla.
+    // Las piezas del bot se muestran ocultas hasta que combaten.
+    public bool IsVisibleToPlayer { get; private set; }
+
+    // Controla el conocimiento real del bot: solo true tras haber combatido con la pieza.
+    // El bot NO conoce las piezas del jugador por el hecho de que estén visibles en pantalla.
+    public bool IsRevealedToBot   { get; private set; }
 
     public Tile CurrentTile { get; set; }
 
@@ -34,8 +39,10 @@ public partial class Piece : Node2D
         Rank    = def.Rank;
         CanMove = def.CanMove;
 
-        // Las piezas del jugador empiezan visibles para él; las del bot, ocultas
-        IsRevealed = owner == PieceOwner.PLAYER;
+        // Las piezas del jugador siempre son visibles en pantalla para él.
+        // El bot no conoce ninguna pieza del jugador hasta que combate con ella.
+        IsVisibleToPlayer = owner == PieceOwner.PLAYER;
+        IsRevealedToBot   = owner == PieceOwner.BOT; // Las propias del bot siempre las conoce
 
         UpdateVisual();
     }
@@ -43,11 +50,13 @@ public partial class Piece : Node2D
     // Devuelve el resultado del combate contra un defensor
     public CombatResult ResolveCombat(Piece defender) => CombatSystem.Resolve(this, defender);
 
-    // Revela la pieza para ambos jugadores (ocurre al combatir)
+    // Llamado al combatir: revela la pieza para ambos bandos.
+    // El jugador puede ver las piezas del bot, y el bot aprende el tipo/rango de las del jugador.
     public void Reveal()
     {
-        if (IsRevealed) return;
-        IsRevealed = true;
+        if (IsVisibleToPlayer && IsRevealedToBot) return;
+        IsVisibleToPlayer = true;
+        IsRevealedToBot   = true;
         UpdateVisual();
     }
 
@@ -88,8 +97,8 @@ public partial class Piece : Node2D
         _sprite.Texture      = PiecesData.Atlas;
         _sprite.RegionEnabled = true;
 
-        // Las piezas del bot no reveladas muestran el sprite oculto
-        bool showHidden = PlayerOwner == PieceOwner.BOT && !IsRevealed;
+        // Las piezas del bot se muestran ocultas hasta que el jugador las revela en combate
+        bool showHidden = PlayerOwner == PieceOwner.BOT && !IsVisibleToPlayer;
         int x = showHidden
             ? PiecesData.HIDDEN_ATLAS_COLUMN * spriteWidth
             : def.AtlasColumn * spriteWidth;

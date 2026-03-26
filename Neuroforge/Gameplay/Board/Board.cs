@@ -3,7 +3,6 @@ using System.Collections.Generic;
 
 public partial class Board : Node2D
 {
-    private const string BOARD_LAYOUT_PATH = "res://Gameplay/Board/BoardLayout.txt";
     private const string TILE_SCENE_PATH  = "res://Gameplay/Board/Tile/Tile.tscn";
     private const string PIECE_SCENE_PATH = "res://Gameplay/Pieces/Piece.tscn";
 
@@ -17,6 +16,7 @@ public partial class Board : Node2D
 
     private GameManager _game;
 
+    // Lógica de selección de piezas delegada a InputController
     private BoardInputController _input;
 
     private readonly Dictionary<Vector2I, Tile> _grid = new();
@@ -179,27 +179,39 @@ public partial class Board : Node2D
         else if (tileAction == TileAction.ATTACK) ResolveCombat(piece, to.Occupant);
     }
 
-    // TODO Arreglar el entorno para que no conozca siempre el core enemigo y pensar en el tema de lo que el jugador ve y el bot conoce
+    // Devuelve el estado del tablero como array de floats para la IA del bot.
+    // Usa 8 canales para separar tipos de pieza y lo que el bot REALMENTE conoce,
+    // sin incluir información de piezas del jugador que no han sido reveladas en combate.
+    //
+    // Canal 0 — piezas del BOT móviles:        rank / maxRank  (positivo)
+    // Canal 1 — piezas del PLAYER reveladas:   rank / maxRank  (el bot las conoce)
+    // Canal 2 — piezas del PLAYER ocultas:     1f              (el bot sabe que hay algo, no qué)
+    // Canal 3 — casillas intransitables:        1f
+    // Canal 4 — TURRET del BOT:                1f
+    // Canal 5 — TURRET del PLAYER revelada:    1f
+    // Canal 6 — ENERGY_CORE del BOT:           1f
+    // Canal 7 — ENERGY_CORE del PLAYER:        1f              (siempre visible, es el objetivo)
     public float[] GetState()
     {
         const int CHANNELS = 8;
-        int rows = 4;
-        int cols = 4;
-        float maxRank = 10f;
+        const float MAX_RANK = 10f;
+
+        int rows = 0, cols = 0;
+        foreach (var pos in _grid.Keys)
+        {
+            rows = Mathf.Max(rows, pos.Y + 1);
+            cols = Mathf.Max(cols, pos.X + 1);
+        }
 
         float[] state = new float[CHANNELS * rows * cols];
 
-        int GetIndex(int ch, int r, int c)
-        {
-            return ch * rows * cols + r * cols + c;
-        }
+        int GetIndex(int ch, int r, int c) => ch * rows * cols + r * cols + c;
 
         foreach (Tile tile in AllTiles)
         {
             int r = tile.GridPosition.Y;
             int c = tile.GridPosition.X;
 
-            // Canal 3: casillas intransitables
             if (tile.TileType == TileType.NO_PASSABLE)
             {
                 state[GetIndex(3, r, c)] = 1f;
@@ -210,28 +222,37 @@ public partial class Board : Node2D
 
             Piece p = tile.Occupant;
 
-            // ================= BOT =================
             if (p.PlayerOwner == PieceOwner.BOT)
             {
+                // El bot siempre conoce sus propias piezas
                 if (p.Type == PieceType.TURRET)
                     state[GetIndex(4, r, c)] = 1f;
                 else if (p.Type == PieceType.ENERGY_CORE)
                     state[GetIndex(6, r, c)] = 1f;
                 else
-                    state[GetIndex(0, r, c)] = p.Rank / maxRank;
+                    state[GetIndex(0, r, c)] = p.Rank / MAX_RANK;
             }
-
-            // ================= PLAYER =================
-            else
+            else // PLAYER
             {
                 if (p.Type == PieceType.ENERGY_CORE)
+                {
+                    // El ENERGY_CORE del jugador es el objetivo: siempre conocido
                     state[GetIndex(7, r, c)] = 1f;
-                else if (!p.IsRevealed)
+                }
+                else if (!p.IsRevealedToBot)
+                {
+                    // El bot sabe que hay una pieza pero no conoce su tipo ni rango
                     state[GetIndex(2, r, c)] = 1f;
+                }
                 else if (p.Type == PieceType.TURRET)
+                {
                     state[GetIndex(5, r, c)] = 1f;
+                }
                 else
-                    state[GetIndex(1, r, c)] = p.Rank / maxRank;
+                {
+                    // Pieza revelada en combate: el bot conoce su rango
+                    state[GetIndex(1, r, c)] = p.Rank / MAX_RANK;
+                }
             }
         }
 
@@ -256,7 +277,7 @@ public partial class Board : Node2D
 
     private void GenerateBoard()
     {
-        using var file = FileAccess.Open(BOARD_LAYOUT_PATH, FileAccess.ModeFlags.Read);
+        using var file = FileAccess.Open("res://Gameplay/Board/BoardLayout.txt", FileAccess.ModeFlags.Read);
         int y = 0;
 
         while (!file.EofReached())

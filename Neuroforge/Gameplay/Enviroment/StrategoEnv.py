@@ -68,10 +68,7 @@ PIECE_NAMES = {
 }
 
 # Piezas que no pueden moverse (siguen las reglas normales de combate)
-UNMOVABLE_PIECES = {
-    RANK_TURRET,
-    RANK_ENERGY_CORE
-}
+UNMOVABLE_PIECES = {RANK_TURRET, RANK_ENERGY_CORE}
 
 class Piece:
     # Cada pieza conoce su propio rango, propietario y si ha sido revelada para el bot en combate.
@@ -252,19 +249,20 @@ def get_all_valid_moves(piece: Piece, from_pos: tuple, board_layout: np.ndarray,
 # ===================================================================================== #
 
 # ==============================================================================
-# CANALES DE OBSERVACION (8 canales)
+# CANALES DE OBSERVACION (9 canales)
 #
-# Canal 0: piezas propias del BOT          - rango normalizado (0,1]
-# Canal 1: piezas enemigas reveladas       - rango normalizado (0,1]
-# Canal 2: piezas enemigas ocultas         - 1.0
-# Canal 3: casillas intransitables         - 1.0
-# Canal 4: TURRET propia                   - 1.0
-# Canal 5: TURRET enemiga revelada         - 1.0
-# Canal 6: ENERGY_CORE propio              - 1.0
-# Canal 7: ENERGY_CORE enemigo             - 1.0 (aunque este oculto, el bot sabe que existe)
+# Canal 0: piezas propias del BOT móviles        - rango normalizado (0,1]
+# Canal 1: piezas enemigas reveladas             - rango normalizado (0,1]
+# Canal 2: piezas enemigas ocultas               - 1.0
+# Canal 3: casillas intransitables               - 1.0
+# Canal 4: TURRET propia                         - 1.0
+# Canal 5: TURRET enemiga revelada               - 1.0
+# Canal 6: ENERGY_CORE propio                    - 1.0
+# Canal 7: ENERGY_CORE enemigo localizado        - 1.0  (solo tras haberlo visto en combate)
+# Canal 8: zona de despliegue enemiga            - 1.0  (donde puede estar el Core oculto)
 # ==============================================================================
 
-N_CHANNELS = 8
+N_CHANNELS = 9
 MAX_RANK   = 10.0
 
 # ==============================================================================
@@ -281,26 +279,24 @@ class StrategoCNN(BaseFeaturesExtractor):
         # BLOQUE CNN (extracción de patrones espaciales)
         self.cnn = nn.Sequential(
             # Conv1: detecta patrones simples (vecindad 2x2)
-            nn.Conv2d(n_channels, 32, kernel_size=2, stride=1, padding=1),  # salida: 32 canales
-            nn.ReLU(),                                                      # no-linealidad
-
+            nn.Conv2d(n_channels, 32, kernel_size=2, stride=1, padding=1),
+            nn.ReLU(),
             # Conv2: combina patrones en otros más complejos
-            nn.Conv2d(32, 64, kernel_size=2, stride=1, padding=0),          # salida: 64 canales (reduce tamaño espacial)
-            nn.ReLU(),                                                      # no-linealidad
-
+            nn.Conv2d(32, 64, kernel_size=2, stride=1, padding=0),
+            nn.ReLU(),
             # Convierte (C, H, W) → vector plano
             nn.Flatten(),
         )
 
         # CALCULAR TAMAÑO DE SALIDA DE LA CNN
-        with torch.no_grad():                                   # no necesita gradientes
-            sample = torch.zeros(1, *observation_space.shape)   # input ficticio (batch=1)
-            cnn_out_size = self.cnn(sample).shape[1]            # tamaño del vector resultante
+        with torch.no_grad():
+            sample       = torch.zeros(1, *observation_space.shape)
+            cnn_out_size = self.cnn(sample).shape[1]
 
         # CAPA FINAL (MLP)
         self.linear = nn.Sequential(
-            nn.Linear(cnn_out_size, features_dim),  # comprime a vector de tamaño fijo (features_dim)
-            nn.ReLU(),                              # no-linealidad
+            nn.Linear(cnn_out_size, features_dim),
+            nn.ReLU(),
         )
 
     # FORWARD (flujo de datos) tablero → CNN → vector → capa linear → features
@@ -421,7 +417,7 @@ class StrategoEnv(gym.Env):
                         to_idx = r2 * COLS + c2
                         mask[from_idx * n_tiles + to_idx] = True
                         return mask
-            mask[0] = True  # Ultimo recurso para evitar errores de mascara vacia
+            mask[0] = True
 
         return mask
 
@@ -592,15 +588,34 @@ class StrategoEnv(gym.Env):
 
     def _get_obs(self) -> np.ndarray:
         """
-        Construye la observación actual del entorno según la descripción de canales.
+        Construye la observacion actual del entorno desde la perspectiva del BOT.
+
+        Canal 0: piezas propias moviles          - rango normalizado
+        Canal 1: piezas enemigas reveladas        - rango normalizado
+        Canal 2: piezas enemigas ocultas          - 1.0
+        Canal 3: casillas intransitables          - 1.0
+        Canal 4: TURRET propia                   - 1.0
+        Canal 5: TURRET enemiga revelada          - 1.0
+        Canal 6: ENERGY_CORE propio              - 1.0
+        Canal 7: ENERGY_CORE enemigo localizado  - 1.0 (solo si fue revelado en combate)
+        Canal 8: zona de despliegue enemiga      - 1.0 (busqueda: el Core esta en alguna de estas casillas)
         """
         obs = np.zeros((N_CHANNELS, ROWS, COLS), dtype=np.float32)
 
-        # Canal 3: casillas intransitables
+        # Canal 3: casillas intransitables (estatico, no cambia durante la partida)
         for r in range(ROWS):
             for c in range(COLS):
                 if self.board_layout[r, c] == NO_PASSABLE:
                     obs[3, r, c] = 1.0
+
+        # Canal 8: zona de despliegue enemiga
+        # El bot sabe que el Core rival comenzó en esta zona, aunque no sepa exactamente dónde.
+        # A medida que ataca piezas ocultas en esa zona y no aparece el Core, puede inferir
+        # por descarte dónde está. Esto le da información estructural sin revelar la posición exacta.
+        for r in range(ROWS):
+            for c in range(COLS):
+                if self.board_layout[r, c] == PLAYER_DEPLOYMENT:
+                    obs[8, r, c] = 1.0
 
         for (r, c), piece in self.pieces.items():
             # Piezas del bot
@@ -610,18 +625,24 @@ class StrategoEnv(gym.Env):
                 elif piece.rank == RANK_ENERGY_CORE:
                     obs[6, r, c] = 1.0                      # Canal 6: ENERGY_CORE propio
                 else:
-                    obs[0, r, c] = piece.rank / MAX_RANK    # Canal 0: otras piezas propias (rango normalizado)
+                    obs[0, r, c] = piece.rank / MAX_RANK    # Canal 0: piezas moviles propias
 
             # Piezas del jugador
             else:
                 if piece.rank == RANK_ENERGY_CORE:
-                    obs[7, r, c] = 1.0                      # Canal 7: ENERGY_CORE enemigo
+                    if piece.revealed:
+                        obs[7, r, c] = 1.0                  # Canal 7: Core localizado (fue revelado)
+                    # Si no está revelado: no se muestra en ningún canal individual,
+                    # pero el canal 8 ya indica que la zona de despliegue existe.
+                    # El bot debe inferirlo por descarte.
+                    else:
+                        obs[2, r, c] = 1.0                  # Sigue siendo una pieza oculta desconocida
                 elif not piece.revealed:
                     obs[2, r, c] = 1.0                      # Canal 2: pieza enemiga oculta
                 elif piece.rank == RANK_TURRET:
                     obs[5, r, c] = 1.0                      # Canal 5: TURRET enemiga revelada
                 else:
-                    obs[1, r, c] = piece.rank / MAX_RANK    # Canal 1: pieza revelada
+                    obs[1, r, c] = piece.rank / MAX_RANK    # Canal 1: pieza revelada con rango conocido
 
         return obs
 
@@ -630,6 +651,7 @@ class StrategoEnv(gym.Env):
         Elige el movimiento del jugador oponente.
         Si hay modelo de self-play, lo usa; si no, elige aleatoriamente.
         """
+
         if self.opponent_model is None:
             return player_moves[np.random.randint(len(player_moves))]
 
@@ -652,7 +674,8 @@ class StrategoEnv(gym.Env):
         to_pos   = (to_r, to_c)
 
         piece = self.pieces.get(from_pos)
-        if (piece is not None and piece.owner == PLAYER and can_move(piece, from_pos, to_pos, self.board_layout, self.pieces, self.turn)):
+        if (piece is not None and piece.owner == PLAYER
+                and can_move(piece, from_pos, to_pos, self.board_layout, self.pieces, self.turn)):
             return from_pos, to_pos
 
         # Fallback aleatorio si la accion del modelo no es valida
@@ -660,8 +683,9 @@ class StrategoEnv(gym.Env):
 
     def _get_obs_as_player(self) -> np.ndarray:
         """
-        Observacion girada verticalmente para el oponente (el jugador ve el tablero
-        desde abajo, el modelo siempre juega como si fuera el BOT desde arriba).
+        Observacion girada verticalmente para el oponente.
+        Aplica la misma logica de ocultacion que _get_obs pero desde la perspectiva del PLAYER:
+        el jugador tampoco conoce la posicion del ENERGY_CORE del bot hasta combatir con él.
         """
         obs = np.zeros((N_CHANNELS, ROWS, COLS), dtype=np.float32)
 
@@ -671,20 +695,28 @@ class StrategoEnv(gym.Env):
                 if self.board_layout[r, c] == NO_PASSABLE:
                     obs[3, r_flip, c] = 1.0
 
+        # Canal 8 girado: zona de despliegue del BOT (enemigo del jugador)
+        for r in range(ROWS):
+            r_flip = (ROWS - 1) - r
+            for c in range(COLS):
+                if self.board_layout[r, c] == BOT_DEPLOYMENT:
+                    obs[8, r_flip, c] = 1.0
+
         for (r, c), piece in self.pieces.items():
             r_flip = (ROWS - 1) - r
             if piece.owner == PLAYER:
-                # Desde la perspectiva del jugador, sus piezas son las "propias"
                 if piece.rank == RANK_TURRET:
                     obs[4, r_flip, c] = 1.0
                 elif piece.rank == RANK_ENERGY_CORE:
                     obs[6, r_flip, c] = 1.0
                 else:
                     obs[0, r_flip, c] = piece.rank / MAX_RANK
-            else:
-                # Las piezas del BOT son el "enemigo"
+            else:  # BOT = enemigo del jugador
                 if piece.rank == RANK_ENERGY_CORE:
-                    obs[7, r_flip, c] = 1.0
+                    if piece.revealed:
+                        obs[7, r_flip, c] = 1.0             # Core localizado
+                    else:
+                        obs[2, r_flip, c] = 1.0             # Oculto: pieza desconocida
                 elif not piece.revealed:
                     obs[2, r_flip, c] = 1.0
                 elif piece.rank == RANK_TURRET:
@@ -765,7 +797,6 @@ def random_reset(env: StrategoEnv) -> np.ndarray:
     np.random.shuffle(bot_tiles)
     np.random.shuffle(player_tiles)
 
-    # Ejercito del BOT: 1 ENERGY_CORE, 1 TURRET, 1 SABOTEUR, 1 SCOUT
     bot_army = [
         Piece(RANK_ENERGY_CORE, BOT, revealed=True),
         Piece(RANK_TURRET,      BOT, revealed=True),
@@ -775,7 +806,6 @@ def random_reset(env: StrategoEnv) -> np.ndarray:
     for i, piece in enumerate(bot_army):
         env.pieces[bot_tiles[i]] = piece
 
-    # Ejercito del PLAYER: 1 ENERGY_CORE, 1 TURRET, 1 SABOTEUR, 1 SCOUT
     player_army = [
         Piece(RANK_ENERGY_CORE, PLAYER, revealed=False),
         Piece(RANK_TURRET,      PLAYER, revealed=False),
@@ -789,7 +819,7 @@ def random_reset(env: StrategoEnv) -> np.ndarray:
 
 
 # ==============================================================================
-# SELF-PLAY: buscar modelo previo automaticamente
+# SELF-PLAY
 # ==============================================================================
 
 MODEL_BASE = "ppo_stratego_4x4"
@@ -807,7 +837,7 @@ def find_latest_model() -> str | None:
 # ENTRENAMIENTO
 # ==============================================================================
 
-TOTAL_TIMESTEPS = 500_000
+TOTAL_TIMESTEPS = 50_000
 
 if __name__ == "__main__":
 
@@ -844,7 +874,6 @@ if __name__ == "__main__":
         clip_range    = 0.2,
         ent_coef      = 0.01,   # Entropia: incentiva explorar
         verbose       = 1,
-        # tensorboard_log = "./tb_logs/",
     )
 
     print(f"Iniciando entrenamiento ({TOTAL_TIMESTEPS} pasos)...")
