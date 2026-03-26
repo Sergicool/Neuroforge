@@ -3,32 +3,30 @@ using System.Collections.Generic;
 
 public partial class Board : Node2D
 {
-    // Externo
-    private const string TILE_SCENE_PATH = "res://Gameplay/Board/Tile/Tile.tscn";
+    private const string BOARD_LAYOUT_PATH = "res://Gameplay/Board/BoardLayout.txt";
+    private const string TILE_SCENE_PATH  = "res://Gameplay/Board/Tile/Tile.tscn";
     private const string PIECE_SCENE_PATH = "res://Gameplay/Pieces/Piece.tscn";
+
     private PackedScene _tileScene;
     private PackedScene _pieceScene;
 
-    // Gestión interna
     private Node2D _tilesManager;
     private Node2D _piecesManager;
 
-    public static readonly Vector2 TILE_SIZE = new(90, 90); // Tamaño de las casillas que se utilizara para posicionarlas
+    public static readonly Vector2 TILE_SIZE = new(90, 90);
 
-    private GameManager _game;      // Referencia al game manager
+    private GameManager _game;
 
-    private Piece _selectedPiece;                           // Pieza seleccionada
-    private readonly List<Tile> _highlightedTiles = new();  // Movimientos posibles de la casilla seleccionada
+    private BoardInputController _input;
 
-    private readonly Dictionary<Vector2I, Tile> _grid = new();  // Diccionario de las casillas que conforma el tablero
+    private readonly Dictionary<Vector2I, Tile> _grid = new();
 
     public override void _Ready()
     {
-        // Genera e instancia el tablero
-        _tileScene = GD.Load<PackedScene>(TILE_SCENE_PATH);
+        _tileScene  = GD.Load<PackedScene>(TILE_SCENE_PATH);
         _pieceScene = GD.Load<PackedScene>(PIECE_SCENE_PATH);
 
-        _tilesManager = new Node2D { Name = "Tiles" };
+        _tilesManager  = new Node2D { Name = "Tiles" };
         _piecesManager = new Node2D { Name = "Pieces" };
 
         AddChild(_tilesManager);
@@ -37,16 +35,52 @@ public partial class Board : Node2D
         GenerateBoard();
     }
 
-    // Inicializa con referencia al game manager
-    public void Initialize(GameManager gameManager) => _game = gameManager;
+    // Inicializa el tablero con referencia al game manager
+    public void Initialize(GameManager gameManager)
+    {
+        _game  = gameManager;
+        _input = new BoardInputController(this, gameManager);
+    }
 
-    // Devuelve una lista de todas las casillas
+    // ==================== Consultas del tablero ====================
+
     public IEnumerable<Tile> AllTiles => _grid.Values;
 
-    // Devuelve una casilla dada su posicion
     public Tile GetTileAt(Vector2I pos) => _grid.TryGetValue(pos, out var tile) ? tile : null;
 
-    // Procesa la interaccion con una casilla
+    public bool HasEnergyCore(PieceOwner owner)
+    {
+        foreach (Tile tile in AllTiles)
+        {
+            if (!tile.IsOccupied) continue;
+            Piece piece = tile.Occupant;
+            if (piece.PlayerOwner == owner && piece.Type == PieceType.ENERGY_CORE)
+                return true;
+        }
+        return false;
+    }
+
+    public bool HasAnyMoves(PieceOwner owner)
+    {
+        foreach (Tile tile in AllTiles)
+        {
+            if (!tile.IsOccupied) continue;
+            Piece piece = tile.Occupant;
+            if (piece.PlayerOwner != owner || !piece.CanMove) continue;
+
+            foreach (Tile target in AllTiles)
+            {
+                if (target == tile) continue;
+                if (MovementSystem.CanMove(piece, target, _game.TurnNumber, this))
+                    return true;
+            }
+        }
+        return false;
+    }
+
+    // ==================== Interacción con casillas ====================
+
+    // Punto de entrada del input: delega al controlador de input
     public void OnTileClicked(Tile tile)
     {
         if (_game.State == GameState.DEPLOYMENT)
@@ -57,72 +91,23 @@ public partial class Board : Node2D
 
         if (!_game.CanInteract()) return;
 
-        if (_selectedPiece == null)
-        {
-            TrySelectPiece(tile);
-            return;
-        }
-
-        // Si se hace click en una casilla resaltada se procede con su accion respectiva
-        if (_highlightedTiles.Contains(tile))
-        {
-            ExecuteAction(tile);
-            _game.EndTurn();
-        }
-        ClearSelection();
+        _input.HandleTileClick(tile);
     }
 
-    // Prueba a seleccionarse la pieza de una casilla, y en caso de exito se selecciona mostrando sus posibles acciones
-    private void TrySelectPiece(Tile tile)
-    {
-        if (!tile.IsOccupied) return;
+    // ==================== Acciones de juego ====================
 
-        Piece piece = tile.Occupant;
-        if (!_game.IsPlayersTurn(piece.PlayerOwner) || !piece.CanMove) return;
-
-        _selectedPiece = piece;
-        ShowPossibleActions(piece);
-    }
-
-    // Dependiendo de la pieza, se resaltan todas las casillas en las que pueda actuar dependiendo del tipo de accion
-    private void ShowPossibleActions(Piece piece)
-    {
-        ClearHighlights();
-        foreach (Tile tile in AllTiles)
-        {
-            TileAction action = MovementSystem.GetAction(piece, tile, _game.TurnNumber);
-            if (action == TileAction.NONE) continue;
-
-            _highlightedTiles.Add(tile);
-            if (action == TileAction.MOVE) tile.HighlightMove();
-            else if (action == TileAction.ATTACK) tile.HighlightAttack();
-        }
-    }
-
-    // Ejecuta la accion de la pieza seleccionada, sobre una casilla objetivo
-    private void ExecuteAction(Tile target)
-    {
-        TileAction action = MovementSystem.GetAction(_selectedPiece, target, _game.TurnNumber);
-        if (action == TileAction.MOVE)
-            MovePiece(_selectedPiece, target);
-        else if (action == TileAction.ATTACK)
-            ResolveCombat(_selectedPiece, target.Occupant);
-    }
-
-    // Mueve una pieza a una casilla
-    private void MovePiece(Piece piece, Tile target)
+    // Mueve una pieza a una casilla destino
+    public void MovePiece(Piece piece, Tile target)
     {
         Tile origin = piece.CurrentTile;
-
         piece.RegisterTileExit(origin.GridPosition, _game.TurnNumber);
-
         origin.ClearOccupant();
         target.SetOccupant(piece);
         piece.Position = target.Position;
     }
 
-    // Procesa el combate entre 2 piezas
-    private void ResolveCombat(Piece attacker, Piece defender)
+    // Resuelve el combate entre atacante y defensor
+    public void ResolveCombat(Piece attacker, Piece defender)
     {
         Tile targetTile = defender.CurrentTile;
         CombatResult result = attacker.ResolveCombat(defender);
@@ -147,26 +132,133 @@ public partial class Board : Node2D
         }
     }
 
-    // Limpia la pieza seleccionada y casillas resaltadas
-    private void ClearSelection()
+    // Crea e instancia una pieza en una casilla
+    public void SpawnPiece(PieceType type, PieceOwner owner, Tile tile)
     {
-        _selectedPiece = null;
-        ClearHighlights();
+        Piece piece = _pieceScene.Instantiate<Piece>();
+        piece.Initialize(type, owner);
+        piece.Position = tile.Position;
+        tile.SetOccupant(piece);
+        _piecesManager.AddChild(piece);
     }
 
-    // Limpia cualquier efecto de resaltado en las casillas resaltadas
-    private void ClearHighlights()
+    // ==================== Comportamiento del bot ====================
+
+    public List<BotAction> GetAllPossibleActions(PieceOwner owner)
     {
-        foreach (Tile t in _highlightedTiles) t.ClearHighlight();
-        _highlightedTiles.Clear();
+        List<BotAction> actions = new();
+
+        foreach (Tile tile in AllTiles)
+        {
+            if (!tile.IsOccupied) continue;
+            Piece piece = tile.Occupant;
+            if (piece.PlayerOwner != owner || !piece.CanMove) continue;
+
+            foreach (Tile target in AllTiles)
+            {
+                if (target == tile) continue;
+                if (MovementSystem.CanMove(piece, target, _game.TurnNumber, this))
+                    actions.Add(new BotAction { From = tile.GridPosition, To = target.GridPosition });
+            }
+        }
+
+        return actions;
     }
 
-    // Logica para generar el tablero, leyendo el fichero con el layout, va creando e instanciando cada casilla con su respectivo tipo y posicion
+    public void ExecuteBotAction(BotAction action)
+    {
+        Tile from = GetTileAt(action.From);
+        Tile to   = GetTileAt(action.To);
+
+        if (from == null || to == null || !from.IsOccupied) return;
+
+        Piece piece      = from.Occupant;
+        TileAction tileAction = MovementSystem.GetAction(piece, to, _game.TurnNumber, this);
+
+        if (tileAction == TileAction.MOVE)   MovePiece(piece, to);
+        else if (tileAction == TileAction.ATTACK) ResolveCombat(piece, to.Occupant);
+    }
+
+    // TODO Arreglar el entorno para que no conozca siempre el core enemigo y pensar en el tema de lo que el jugador ve y el bot conoce
+    public float[] GetState()
+    {
+        const int CHANNELS = 8;
+        int rows = 4;
+        int cols = 4;
+        float maxRank = 10f;
+
+        float[] state = new float[CHANNELS * rows * cols];
+
+        int GetIndex(int ch, int r, int c)
+        {
+            return ch * rows * cols + r * cols + c;
+        }
+
+        foreach (Tile tile in AllTiles)
+        {
+            int r = tile.GridPosition.Y;
+            int c = tile.GridPosition.X;
+
+            // Canal 3: casillas intransitables
+            if (tile.TileType == TileType.NO_PASSABLE)
+            {
+                state[GetIndex(3, r, c)] = 1f;
+                continue;
+            }
+
+            if (!tile.IsOccupied) continue;
+
+            Piece p = tile.Occupant;
+
+            // ================= BOT =================
+            if (p.PlayerOwner == PieceOwner.BOT)
+            {
+                if (p.Type == PieceType.TURRET)
+                    state[GetIndex(4, r, c)] = 1f;
+                else if (p.Type == PieceType.ENERGY_CORE)
+                    state[GetIndex(6, r, c)] = 1f;
+                else
+                    state[GetIndex(0, r, c)] = p.Rank / maxRank;
+            }
+
+            // ================= PLAYER =================
+            else
+            {
+                if (p.Type == PieceType.ENERGY_CORE)
+                    state[GetIndex(7, r, c)] = 1f;
+                else if (!p.IsRevealed)
+                    state[GetIndex(2, r, c)] = 1f;
+                else if (p.Type == PieceType.TURRET)
+                    state[GetIndex(5, r, c)] = 1f;
+                else
+                    state[GetIndex(1, r, c)] = p.Rank / maxRank;
+            }
+        }
+
+        return state;
+    }
+
+    // ==================== Generación del tablero ====================
+
+    public Vector2 GetBoardCenter()
+    {
+        if (_grid.Count == 0) return Vector2.Zero;
+
+        int maxX = 0, maxY = 0;
+        foreach (var pos in _grid.Keys)
+        {
+            maxX = Mathf.Max(maxX, pos.X);
+            maxY = Mathf.Max(maxY, pos.Y);
+        }
+
+        return new Vector2((maxX + 1) * TILE_SIZE.X / 2f, (maxY + 1) * TILE_SIZE.Y / 2f);
+    }
+
     private void GenerateBoard()
     {
-        using var file = FileAccess.Open("res://Gameplay/Board/BoardLayout.txt", FileAccess.ModeFlags.Read);
+        using var file = FileAccess.Open(BOARD_LAYOUT_PATH, FileAccess.ModeFlags.Read);
         int y = 0;
-        Tile tile;
+
         while (!file.EofReached())
         {
             string line = file.GetLine().Trim();
@@ -174,7 +266,7 @@ public partial class Board : Node2D
 
             for (int x = 0; x < line.Length; x++)
             {
-                tile = _tileScene.Instantiate<Tile>();
+                Tile tile = _tileScene.Instantiate<Tile>();
                 tile.Initialize(this);
                 tile.GridPosition = new Vector2I(x, y);
                 tile.SetType(CharToTileType(line[x]));
@@ -187,162 +279,11 @@ public partial class Board : Node2D
         }
     }
 
-    // Traduce de letra a tipo de casilla
-    private TileType CharToTileType(char c) => c switch
+    private static TileType CharToTileType(char c) => c switch
     {
         'X' => TileType.NO_PASSABLE,
         'P' => TileType.PLAYER_DEPLOYMENT,
         'B' => TileType.BOT_DEPLOYMENT,
-        _ => TileType.PASSABLE
+        _   => TileType.PASSABLE
     };
-
-    // Obtiene el punto central del tablero
-    public Vector2 GetBoardCenter()
-    {
-        if (_grid.Count == 0) return Vector2.Zero;
-
-        int maxX = 0, maxY = 0;
-        foreach (var pos in _grid.Keys)
-        {
-            maxX = Mathf.Max(maxX, pos.X);
-            maxY = Mathf.Max(maxY, pos.Y);
-        }
-
-        return new Vector2((maxX + 1) * TILE_SIZE.X / 2, (maxY + 1) * TILE_SIZE.Y / 2);
-    }
-
-    // Crea e instancia una pieza dado su tipo, propietario y casilla en la que se crea
-    public void SpawnPiece(PieceType type, PieceOwner owner, Tile tile)
-    {
-        Piece piece = _pieceScene.Instantiate<Piece>();
-        piece.Initialize(type, owner);
-        piece.Position = tile.Position;
-        tile.SetOccupant(piece);
-        _piecesManager.AddChild(piece);
-    }
-
-    public bool HasEnergyCore(PieceOwner owner)
-    {
-        foreach (Tile tile in AllTiles)
-        {
-            if (!tile.IsOccupied) continue;
-
-            Piece piece = tile.Occupant;
-            if (piece.PlayerOwner == owner && piece.Type == PieceType.ENERGY_CORE)
-                return true;
-        }
-
-        return false;
-    }
-
-    public bool HasAnyMoves(PieceOwner owner)
-    {
-        foreach (Tile tile in AllTiles)
-        {
-            if (!tile.IsOccupied) continue;
-
-            Piece piece = tile.Occupant;
-            if (piece.PlayerOwner != owner) continue;
-            if (!piece.CanMove) continue;
-
-            foreach (Tile target in AllTiles)
-            {
-                if (target == piece.CurrentTile) continue;
-
-                if (MovementSystem.CanMove(piece, target, _game.TurnNumber))
-                    return true;
-            }
-        }
-
-        return false;
-    }
-
-    // ==================== Comportamiento del bot ====================
-
-    public List<BotAction> GetAllPossibleActions(PieceOwner owner)
-    {
-        List<BotAction> actions = new();
-
-        foreach (Tile tile in AllTiles)
-        {
-            if (!tile.IsOccupied) continue;
-
-            Piece piece = tile.Occupant;
-
-            if (piece.PlayerOwner != owner) continue;
-            if (!piece.CanMove) continue;
-
-            foreach (Tile target in AllTiles)
-            {
-                if (target == tile) continue;
-
-                if (MovementSystem.CanMove(piece, target, _game.TurnNumber))
-                {
-                    actions.Add(new BotAction
-                    {
-                        From = tile.GridPosition,
-                        To = target.GridPosition
-                    });
-                }
-            }
-        }
-
-        return actions;
-    }
-
-    public void ExecuteBotAction(BotAction action)
-    {
-        Tile from = GetTileAt(action.From);
-        Tile to = GetTileAt(action.To);
-
-        if (from == null || to == null) return;
-        if (!from.IsOccupied) return;
-
-        Piece piece = from.Occupant;
-
-        TileAction tileAction = MovementSystem.GetAction(piece, to, _game.TurnNumber);
-
-        if (tileAction == TileAction.MOVE)
-            MovePiece(piece, to);
-        else if (tileAction == TileAction.ATTACK)
-            ResolveCombat(piece, to.Occupant);
-    }
-
-    public float[] GetState()
-    {
-        List<float> state = new();
-
-        foreach (Tile tile in AllTiles)
-        {
-            if (!tile.IsOccupied)
-            {
-                state.Add(0);
-                continue;
-            }
-
-            Piece p = tile.Occupant;
-
-            float value = p.Rank;
-
-            if (p.PlayerOwner == PieceOwner.BOT)
-                value *= -1;
-
-            if (p.PlayerOwner == PieceOwner.PLAYER)
-            {
-                if (p.State == PieceState.REVEALED_FOR_PLAYER)
-                    value = 0; // o valor especial
-                else
-                    value = p.Rank;
-            }
-
-            state.Add(value);
-        }
-
-        return state.ToArray();
-    }
-
-    public List<BotAction> GetAllPossibleActionsIndexed(PieceOwner owner)
-    {
-        return GetAllPossibleActions(owner);
-    }
 }

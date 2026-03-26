@@ -1,0 +1,88 @@
+using System.Collections.Generic;
+
+// Gestiona la selección de piezas y el resaltado de acciones posibles
+public class BoardInputController
+{
+    private readonly Board _board;
+    private readonly GameManager _game;
+
+    private Piece _selectedPiece;
+    private readonly List<Tile> _highlightedTiles = new();
+
+    public BoardInputController(Board board, GameManager game)
+    {
+        _board = board;
+        _game  = game;
+    }
+
+    // Punto de entrada: procesa el click sobre una casilla durante la partida
+    public void HandleTileClick(Tile tile)
+    {
+        if (_selectedPiece == null)
+        {
+            TrySelectPiece(tile);
+            return;
+        }
+
+        if (_highlightedTiles.Contains(tile))
+        {
+            ExecuteAction(tile);
+            _game.EndTurn();
+        }
+
+        ClearSelection();
+    }
+
+    // Intenta seleccionar la pieza de la casilla; muestra sus acciones si tiene turno
+    private void TrySelectPiece(Tile tile)
+    {
+        if (!tile.IsOccupied) return;
+
+        Piece piece = tile.Occupant;
+        if (!_game.IsPlayersTurn(piece.PlayerOwner) || !piece.CanMove) return;
+
+        _selectedPiece = piece;
+        ShowPossibleActions(piece);
+    }
+
+    // Resalta todas las casillas sobre las que la pieza puede actuar
+    private void ShowPossibleActions(Piece piece)
+    {
+        ClearHighlights();
+
+        foreach (Tile tile in _board.AllTiles)
+        {
+            TileAction action = MovementSystem.GetAction(piece, tile, _game.TurnNumber, _board);
+            if (action == TileAction.NONE) continue;
+
+            _highlightedTiles.Add(tile);
+
+            if (action == TileAction.MOVE)   tile.HighlightMove();
+            else if (action == TileAction.ATTACK) tile.HighlightAttack();
+        }
+    }
+
+    // Ejecuta la acción de la pieza seleccionada sobre la casilla destino
+    private void ExecuteAction(Tile target)
+    {
+        TileAction action = MovementSystem.GetAction(_selectedPiece, target, _game.TurnNumber, _board);
+
+        if (action == TileAction.MOVE)
+            _board.MovePiece(_selectedPiece, target);
+        else if (action == TileAction.ATTACK)
+            _board.ResolveCombat(_selectedPiece, target.Occupant);
+    }
+
+    // Limpia la selección y los resaltados
+    private void ClearSelection()
+    {
+        _selectedPiece = null;
+        ClearHighlights();
+    }
+
+    private void ClearHighlights()
+    {
+        foreach (Tile t in _highlightedTiles) t.ClearHighlight();
+        _highlightedTiles.Clear();
+    }
+}

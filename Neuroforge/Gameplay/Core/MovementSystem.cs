@@ -2,49 +2,48 @@ using Godot;
 
 public static class MovementSystem
 {
-    // Se obtiene la accion que se puede llevar a cabo en una casilla
-    public static TileAction GetAction(Piece piece, Tile target, int turn)
+    // Devuelve la accion que se puede llevar a cabo sobre una casilla
+    public static TileAction GetAction(Piece piece, Tile target, int turn, Board board)
     {
-        if (!CanMove(piece, target, turn)) return TileAction.NONE;
-        
+        if (!CanMove(piece, target, turn, board)) return TileAction.NONE;
+
         return target.IsOccupied ? TileAction.ATTACK : TileAction.MOVE;
     }
 
-    // Determina si una pieza se puede mover a una casilla
-    public static bool CanMove(Piece piece, Tile target, int turn)
+    // Determina si una pieza puede moverse a una casilla
+    public static bool CanMove(Piece piece, Tile target, int turn, Board board)
     {
-        // No puede moverse a una casilla intransitable o que tenga una pieza del mismo equipo
         if (!piece.CanMove || target.TileType == TileType.NO_PASSABLE) return false;
+
+        // No puede moverse a una casilla ocupada por una pieza aliada
         if (target.IsOccupied && target.Occupant.PlayerOwner == piece.PlayerOwner) return false;
 
-        Vector2I from = piece.CurrentTile.GridPosition;
-        Vector2I to = target.GridPosition;
-
-        // La pieza no puede volver a la mismas casillas hasta dentro de 3 turnos, a excepcion de que puedas atacar a una pieza rival
+        // La pieza no puede volver a la misma casilla hasta dentro de 3 turnos,
+        // salvo que pueda atacar una pieza rival en ella
         bool isAttack = target.IsOccupied && target.Occupant.PlayerOwner != piece.PlayerOwner;
-        if (!isAttack && !piece.CanReturnToTile(target.GridPosition, GameManager.Instance.TurnNumber))
-            return false;
+        if (!isAttack && !piece.CanReturnToTile(target.GridPosition, turn)) return false;
 
-        // Movimiento especial SCOUT: Cualquier casilla en horizontal, hasta encontrarse con una obstaculo (pieza aliada, enemiga o casilla intransitable)
-        if (piece.Type == PieceType.SCOUT) return IsScoutPathValid(piece.CurrentTile, target);
+        // Movimiento especial SCOUT: cualquier distancia en línea recta horizontal o vertical
+        if (piece.Type == PieceType.SCOUT) return IsScoutPathValid(piece.CurrentTile, target, board);
 
-        // Movimiento normal: 1 casilla en las 4 direcciones
+        // Movimiento normal: 1 casilla en las 4 direcciones cardinales
+        Vector2I from = piece.CurrentTile.GridPosition;
+        Vector2I to   = target.GridPosition;
         int dx = Mathf.Abs(from.X - to.X);
         int dy = Mathf.Abs(from.Y - to.Y);
         return dx + dy == 1;
     }
 
-    // Determina si una casilla esta en el posible movimiento de un SCOUT
-    private static bool IsScoutPathValid(Tile from, Tile to)
+    // Determina si el camino en línea recta del SCOUT hasta el destino es válido
+    private static bool IsScoutPathValid(Tile from, Tile to, Board board)
     {
         Vector2I start = from.GridPosition;
-        Vector2I end = to.GridPosition;
+        Vector2I end   = to.GridPosition;
 
         if (start.X != end.X && start.Y != end.Y) return false;
 
-        Vector2I dir = (end - start).Sign();
+        Vector2I dir     = (end - start).Sign();
         Vector2I current = start + dir;
-        Board board = GameManager.Instance.GetBoard();
 
         while (true)
         {
@@ -54,7 +53,9 @@ public static class MovementSystem
 
             if (tile.IsOccupied)
             {
+                // Aliado en el camino: bloquea completamente
                 if (tile.Occupant.PlayerOwner == from.Occupant.PlayerOwner) return false;
+                // Enemigo: solo puede atacar si es el destino final
                 if (current != end) return false;
             }
 

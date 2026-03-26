@@ -5,53 +5,48 @@ using static Godot.Control;
 
 public partial class DeploymentUI : CanvasLayer
 {
-    // Acciones
-    public event Action OnRandomPressed;
-    public event Action OnStartPressed;
-    public event Action<PieceType> OnPieceSelected;
+    public event Action             OnRandomPressed;
+    public event Action             OnStartPressed;
+    public event Action<PieceType>  OnPieceSelected;
 
-    // Componentes
-    private Label _remainingLabel;
+    private Label         _remainingLabel;
     private GridContainer _gridContainer;
-    private Button _randomButton;
-    private Button _startButton;
+    private Button        _randomButton;
+    private Button        _startButton;
 
-    private Dictionary<PieceType, Button> _pieceButtons = new();
+    private readonly Dictionary<PieceType, Button> _pieceButtons = new();
 
     public override void _Ready()
     {
-        _remainingLabel = GetNode<Label>("Control/MarginContainer/Panel/VBoxContainer/PiecesCountLabel");
-        _gridContainer = GetNode<GridContainer>("Control/MarginContainer/Panel/VBoxContainer/GridContainer");
-        _randomButton = GetNode<Button>("Control/MarginContainer/Panel/VBoxContainer/RandomButton");
-        _startButton = GetNode<Button>("Control/MarginContainer/Panel/VBoxContainer/StartButton");
+        _remainingLabel = GetNode<Label>        ("Control/MarginContainer/Panel/VBoxContainer/PiecesCountLabel");
+        _gridContainer  = GetNode<GridContainer>("Control/MarginContainer/Panel/VBoxContainer/GridContainer");
+        _randomButton   = GetNode<Button>       ("Control/MarginContainer/Panel/VBoxContainer/RandomButton");
+        _startButton    = GetNode<Button>       ("Control/MarginContainer/Panel/VBoxContainer/StartButton");
 
         foreach (var kv in PiecesData.Data)
         {
             PieceType type = kv.Key;
-            var def = kv.Value;
-
-            Button btn = new Button();
-
-            btn.Text = BuildPieceText(type, def.MaxCount);
-            btn.SizeFlagsHorizontal = SizeFlags.ExpandFill;
+            Button btn = new Button
+            {
+                Text               = BuildPieceText(type, kv.Value.MaxCount),
+                SizeFlagsHorizontal = SizeFlags.ExpandFill
+            };
 
             btn.Pressed += () => OnPieceSelected?.Invoke(type);
-
             _pieceButtons[type] = btn;
-
             _gridContainer.AddChild(btn);
         }
 
         _randomButton.Pressed += () => OnRandomPressed?.Invoke();
-        _startButton.Pressed += () => OnStartPressed?.Invoke();
-
-        _startButton.Disabled = true;
+        _startButton.Pressed  += () => OnStartPressed?.Invoke();
+        _startButton.Disabled  = true;
     }
+
     public GridContainer GetGridContainer() => _gridContainer;
 
     public void SetRemainingPieces(int remaining)
     {
-        _remainingLabel.Text = $"Pieces Remaining: {remaining}";
+        _remainingLabel.Text  = $"Pieces Remaining: {remaining}";
         _startButton.Disabled = remaining > 0;
     }
 
@@ -62,20 +57,16 @@ public partial class DeploymentUI : CanvasLayer
     {
         foreach (var kv in remaining)
         {
-            if (!_pieceButtons.TryGetValue(kv.Key, out var btn))
-                continue;
-
-            btn.Text = BuildPieceText(kv.Key, kv.Value);
+            if (!_pieceButtons.TryGetValue(kv.Key, out var btn)) continue;
+            btn.Text     = BuildPieceText(kv.Key, kv.Value);
             btn.Disabled = kv.Value == 0;
         }
     }
 
     private string BuildPieceText(PieceType type, int remaining)
     {
-        var def = PiecesData.Data[type];
-
-        string rankText = def.Rank > 0 ? $" [{def.Rank}]" : "";
-
-        return $"{type}{rankText} x{remaining:00}";
+        var def      = PiecesData.Data[type];
+        string rank  = def.Rank > 0 ? $" [{def.Rank}]" : "";
+        return $"{type}{rank} x{remaining:00}";
     }
 }
