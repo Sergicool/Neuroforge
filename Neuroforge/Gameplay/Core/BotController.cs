@@ -1,4 +1,12 @@
+using Godot;
 using System;
+
+// Accion que realiza el bot
+public struct BotAction
+{
+    public Vector2I From;
+    public Vector2I To;
+}
 
 // Lógica de decisión del bot
 public class BotController

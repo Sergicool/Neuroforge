@@ -65,10 +65,3 @@ public enum TileAction
     MOVE,
     ATTACK
 }
-
-// Accion que realiza el bot
-public struct BotAction
-{
-    public Vector2I From;
-    public Vector2I To;
-}
