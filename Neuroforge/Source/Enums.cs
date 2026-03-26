@@ -44,15 +44,9 @@ public enum PieceType
 // Estado de una pieza
 public enum PieceState
 {
-    HIDDEN,
-    REVEALED,
-    DESTROYED
-}
-
-public enum BotKnowledgeState
-{
-    UNKNOWN,
-    KNOWN
+    REVEALED_FOR_PLAYER,
+    REVEALED_FOR_BOT,
+    REVEALED_FOR_BOTH
 }
 
 // Tipo de tile
@@ -70,4 +64,11 @@ public enum TileAction
     NONE,
     MOVE,
     ATTACK
+}
+
+// Accion que realiza el bot
+public struct BotAction
+{
+    public Vector2I From;
+    public Vector2I To;
 }

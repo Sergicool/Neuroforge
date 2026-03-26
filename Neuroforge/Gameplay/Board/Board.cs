@@ -1,12 +1,6 @@
 using Godot;
 using System.Collections.Generic;
 
-public struct BotAction
-{
-    public Vector2I From;
-    public Vector2I To;
-}
-
 public partial class Board : Node2D
 {
     // Externo
@@ -335,7 +329,7 @@ public partial class Board : Node2D
 
             if (p.PlayerOwner == PieceOwner.PLAYER)
             {
-                if (p.BotKnowledge == BotKnowledgeState.UNKNOWN)
+                if (p.State == PieceState.REVEALED_FOR_PLAYER)
                     value = 0; // o valor especial
                 else
                     value = p.Rank;

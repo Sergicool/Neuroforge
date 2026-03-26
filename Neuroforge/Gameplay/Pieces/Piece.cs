@@ -11,7 +11,6 @@ public partial class Piece : Node2D
     public int Rank { get; private set; }
     public bool CanMove { get; private set; }
     public PieceState State { get; private set; }
-    public BotKnowledgeState BotKnowledge { get; private set; } = BotKnowledgeState.UNKNOWN;
     public Tile CurrentTile { get; set; }
     private Dictionary<Vector2I, int> _tileCooldowns = new();
 
@@ -32,13 +31,7 @@ public partial class Piece : Node2D
         Rank = def.Rank;
         CanMove = def.CanMove;
 
-        State = owner == PieceOwner.PLAYER ? PieceState.REVEALED : PieceState.HIDDEN;
-
-        // El bot conoce sus piezas pero no las del jugador
-        if (owner == PieceOwner.BOT)
-            BotKnowledge = BotKnowledgeState.KNOWN;
-        else
-            BotKnowledge = BotKnowledgeState.UNKNOWN;
+        State = owner == PieceOwner.PLAYER ? PieceState.REVEALED_FOR_PLAYER : PieceState.REVEALED_FOR_BOT;
 
         UpdateVisual();
     }
@@ -52,9 +45,8 @@ public partial class Piece : Node2D
     // Revela la pieza en el tablero
     public void Reveal()
     {
-        if (State == PieceState.REVEALED && BotKnowledge == BotKnowledgeState.KNOWN) return;
-        State = PieceState.REVEALED;
-        BotKnowledge = BotKnowledgeState.KNOWN;
+        if (State == PieceState.REVEALED_FOR_BOTH) return;
+        State = PieceState.REVEALED_FOR_BOTH;
         UpdateVisual();
     }
 
@@ -101,7 +93,7 @@ public partial class Piece : Node2D
         _sprite.RegionEnabled = true;
 
         // Dependiendo de si esta revelada o no
-        int x = State == PieceState.HIDDEN
+        int x = State == PieceState.REVEALED_FOR_BOT
             ? PiecesData.HIDDEN_ATLAS_COLUMN * sprite_width
             : def.AtlasColumn * sprite_width;
 
