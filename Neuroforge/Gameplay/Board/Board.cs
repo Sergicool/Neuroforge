@@ -12,7 +12,7 @@ public partial class Board : Node2D
     private Node2D _tilesManager;
     private Node2D _piecesManager;
 
-    public static readonly Vector2 TILE_SIZE = new(90, 90);
+    public static readonly Vector2 TILE_SIZE = new(80, 80);
 
     private GameManager _game;
 
@@ -279,7 +279,7 @@ public partial class Board : Node2D
             maxY = Mathf.Max(maxY, pos.Y);
         }
 
-        return new Vector2((maxX + 1) * TILE_SIZE.X / 2f, (maxY + 1) * TILE_SIZE.Y / 2f);
+        return new Vector2(maxX * TILE_SIZE.X / 2f, maxY * TILE_SIZE.Y / 2f);
     }
 
     private void GenerateBoard()

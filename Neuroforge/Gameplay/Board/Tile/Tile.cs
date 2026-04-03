@@ -29,7 +29,8 @@ public partial class Tile : Area2D
     {
         TileType     = type;
         _baseTexture = type == TileType.NO_PASSABLE ? GREY_TILE : BLUE_TILE;
-        if (IsInsideTree()) ApplyTexture(_baseTexture);
+        if (IsInsideTree())
+            ApplyTexture(_baseTexture);
     }
 
     public void SetOccupant(Piece piece)

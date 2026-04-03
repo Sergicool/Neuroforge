@@ -106,6 +106,6 @@ public partial class Piece : Node2D
         int y = PlayerOwner == PieceOwner.PLAYER ? 0 : spriteHeight;
 
         _sprite.RegionRect = new Rect2(x, y, spriteWidth, spriteHeight);
-        _sprite.Scale      = new Vector2(4, 4);
+        _sprite.Scale      = new Vector2(3.6f, 3.6f);
     }
 }
