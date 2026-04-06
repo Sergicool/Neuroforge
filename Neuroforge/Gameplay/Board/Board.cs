@@ -12,7 +12,7 @@ public partial class Board : Node2D
     private Node2D _tilesManager;
     private Node2D _piecesManager;
 
-    public static readonly Vector2 TILE_SIZE = new(80, 80);
+    public static readonly Vector2 TILE_SIZE = new(64, 64);
 
     private GameManager _game;
 

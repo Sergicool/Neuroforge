@@ -1,72 +1,113 @@
 using Godot;
 using System;
 using System.Collections.Generic;
-using static Godot.Control;
 
 public partial class DeploymentUI : CanvasLayer
 {
-    public event Action             OnRandomPressed;
-    public event Action             OnStartPressed;
-    public event Action<PieceType>  OnPieceSelected;
+    public event Action OnRandomPressed;
+    public event Action OnStartPressed;
+    public event Action<PieceType> OnPieceSelected;
 
-    private Label         _remainingLabel;
-    private GridContainer _gridContainer;
-    private Button        _randomButton;
-    private Button        _startButton;
+    // Ruta a la escena del botón — ajusta según tu estructura de carpetas
+    private const string PIECE_BUTTON_SCENE = "res://Menus/Ui/PieceButton.tscn";
 
-    private readonly Dictionary<PieceType, Button> _pieceButtons = new();
+    private Label _remainingLabel;
+    private Button _randomButton;
+    private Button _startButton;
+    private GridContainer _pieceGrid;        // grid donde van los PieceButton
+
+    private readonly Dictionary<PieceType, PieceButton> _pieceButtons = new();
+    private PieceType? _activeType = null;
+
+    private PackedScene _pieceButtonScene;
 
     public override void _Ready()
     {
-        _remainingLabel = GetNode<Label>        ("Control/MarginContainer/Panel/VBoxContainer/PiecesCountLabel");
-        _gridContainer  = GetNode<GridContainer>("Control/MarginContainer/Panel/VBoxContainer/GridContainer");
-        _randomButton   = GetNode<Button>       ("Control/MarginContainer/Panel/VBoxContainer/RandomButton");
-        _startButton    = GetNode<Button>       ("Control/MarginContainer/Panel/VBoxContainer/StartButton");
+        _pieceButtonScene = GD.Load<PackedScene>(PIECE_BUTTON_SCENE);
+
+        _remainingLabel = GetNode<Label>("Control/PanelContainer/MarginContainer/VBoxContainer/RemainingLabel");
+        _pieceGrid = GetNode<GridContainer>("Control/PanelContainer/MarginContainer/VBoxContainer/PieceGrid");
+        _randomButton = GetNode<Button>("Control/PanelContainer/MarginContainer/VBoxContainer/RandomButton");
+        _startButton = GetNode<Button>("Control/PanelContainer/MarginContainer/VBoxContainer/StartButton");
 
         foreach (var kv in PiecesData.Data)
         {
             PieceType type = kv.Key;
-            Button btn = new Button
-            {
-                Text               = BuildPieceText(type, kv.Value.MaxCount),
-                SizeFlagsHorizontal = SizeFlags.ExpandFill
-            };
 
-            btn.Pressed += () => OnPieceSelected?.Invoke(type);
+            PieceButton btn = _pieceButtonScene.Instantiate<PieceButton>();
+            _pieceGrid.AddChild(btn);           // AddChild ANTES de Setup para que _Ready() corra
+            btn.Setup(kv.Value, PieceOwner.PLAYER);
+
+            btn.Toggled += (pressed) => OnPieceToggled(type, pressed);
             _pieceButtons[type] = btn;
-            _gridContainer.AddChild(btn);
         }
 
-        _randomButton.Pressed += () => OnRandomPressed?.Invoke();
-        _startButton.Pressed  += () => OnStartPressed?.Invoke();
-        _startButton.Disabled  = true;
+        _randomButton.Pressed += () => { OnRandomPressed?.Invoke(); ClearActiveButton(); };
+        _startButton.Pressed += () => OnStartPressed?.Invoke();
+        _startButton.Disabled = true;
     }
 
-    public GridContainer GetGridContainer() => _gridContainer;
+    // ── Toggle exclusivo ──────────────────────────────────────────────────────
+
+    private void OnPieceToggled(PieceType type, bool pressed)
+    {
+        if (!pressed)
+        {
+            if (_activeType == type) _activeType = null;
+            return;
+        }
+
+        if (_activeType.HasValue && _activeType != type)
+            _pieceButtons[_activeType.Value].SetPressedNoSignal(false);
+
+        _activeType = type;
+        OnPieceSelected?.Invoke(type);
+    }
+
+    // Limpia la selección visual (usado tras Random, que coloca todo automáticamente)
+    private void ClearActiveButton()
+    {
+        if (_activeType.HasValue)
+            _pieceButtons[_activeType.Value].SetPressedNoSignal(false);
+        _activeType = null;
+    }
+
+    // ── API pública ───────────────────────────────────────────────────────────
 
     public void SetRemainingPieces(int remaining)
     {
-        _remainingLabel.Text  = $"Pieces Remaining: {remaining}";
+        _remainingLabel.Text = $"Restantes: {remaining}";
         _startButton.Disabled = remaining > 0;
     }
-
-    public void ShowUI() => Visible = true;
-    public void HideUI() => Visible = false;
 
     public void UpdatePieceCounts(Dictionary<PieceType, int> remaining)
     {
         foreach (var kv in remaining)
         {
             if (!_pieceButtons.TryGetValue(kv.Key, out var btn)) continue;
-            btn.Text     = BuildPieceText(kv.Key, kv.Value);
-            btn.Disabled = kv.Value == 0;
+            btn.SetCount(kv.Value);
+
+            if (kv.Value == 0 && _activeType == kv.Key)
+            {
+                btn.SetPressedNoSignal(false);
+                _activeType = null;
+            }
         }
     }
 
-    private string BuildPieceText(PieceType type, int remaining)
+    // Sincroniza el botón activo cuando el controller cambia la selección
+    // (ej: al quitar una pieza del tablero se reactiva ese tipo)
+    public void SetActiveType(PieceType? type)
     {
-        var def      = PiecesData.Data[type];
-        string rank  = def.Rank > 0 ? $" [{def.Rank}]" : "";
-        return $"{type}{rank} x{remaining:00}";
+        if (_activeType.HasValue && _activeType != type)
+            _pieceButtons[_activeType.Value].SetPressedNoSignal(false);
+
+        _activeType = type;
+
+        if (type.HasValue && _pieceButtons.TryGetValue(type.Value, out var btn))
+            btn.SetPressedNoSignal(true);
     }
+
+    public void ShowUI() => Visible = true;
+    public void HideUI() => Visible = false;
 }

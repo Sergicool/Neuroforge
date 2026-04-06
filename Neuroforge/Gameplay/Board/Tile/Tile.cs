@@ -9,6 +9,7 @@ public partial class Tile : Area2D
 
     private Board    _board;
     private Sprite2D _sprite;
+    private CollisionShape2D _collisionShape;
     private Texture2D _baseTexture;
 
     public Vector2I GridPosition { get; set; }
@@ -19,6 +20,7 @@ public partial class Tile : Area2D
     public override void _Ready()
     {
         _sprite = GetNode<Sprite2D>("Sprite2D");
+        _collisionShape = GetNode<CollisionShape2D>("CollisionShape2D");
         if (_baseTexture != null) ApplyTexture(_baseTexture);
     }
 
@@ -50,6 +52,7 @@ public partial class Tile : Area2D
     {
         _sprite.Texture = tex;
         _sprite.Scale   = Board.TILE_SIZE / tex.GetSize();
+        _collisionShape.Scale = Board.TILE_SIZE / tex.GetSize();
     }
 
     public override void _InputEvent(Viewport viewport, InputEvent e, int shapeIdx)

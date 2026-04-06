@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bqjn31gfwfdkg" path="res://Gameplay/Board/Tile/BlueTile.png" id="2_fc4j8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xbpwq"]
-size = Vector2(68, 68)
+size = Vector2(112, 112)
 
 [node name="Tile" type="Area2D" unique_id=422311828]
 script = ExtResource("1_fc4j8")

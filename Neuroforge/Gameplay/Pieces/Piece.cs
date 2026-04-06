@@ -20,7 +20,8 @@ public partial class Piece : Node2D
 
     public Tile CurrentTile { get; set; }
 
-    private readonly Dictionary<Tile, int> _tileCooldowns = new();
+    private static int _tileCooldownTurns = 3;
+    private readonly Dictionary<Tile, int> _tilesInCooldown = new();
 
     public override void _Ready()
     {
@@ -63,15 +64,15 @@ public partial class Piece : Node2D
     // Registra la casilla de la que sale la pieza y limpia cooldowns expirados
     public void RegisterTileExit(Tile tile, int turn)
     {
-        _tileCooldowns[tile] = turn;
+        _tilesInCooldown[tile] = turn;
         CleanupCooldowns(turn);
     }
 
     // Devuelve true si la pieza puede volver a esa casilla en el turno actual
     public bool CanReturnToTile(Tile tile, int turn)
     {
-        if (!_tileCooldowns.TryGetValue(tile, out int lastTurn)) return true;
-        return (turn - lastTurn) >= 3;
+        if (!_tilesInCooldown.TryGetValue(tile, out int lastTurn)) return true;
+        return (turn - lastTurn) >= _tileCooldownTurns;
     }
 
     // Elimina cooldowns que ya han expirado (llamado únicamente desde RegisterTileExit)
@@ -79,12 +80,12 @@ public partial class Piece : Node2D
     {
         var toRemove = new List<Tile>();
 
-        foreach (var kvp in _tileCooldowns)
-            if (turn - kvp.Value >= 3)
+        foreach (var kvp in _tilesInCooldown)
+            if (turn - kvp.Value >= _tileCooldownTurns)
                 toRemove.Add(kvp.Key);
 
         foreach (var t in toRemove)
-            _tileCooldowns.Remove(t);
+            _tilesInCooldown.Remove(t);
     }
 
     // Actualiza el sprite según propietario y estado de revelación
@@ -106,6 +107,6 @@ public partial class Piece : Node2D
         int y = PlayerOwner == PieceOwner.PLAYER ? 0 : spriteHeight;
 
         _sprite.RegionRect = new Rect2(x, y, spriteWidth, spriteHeight);
-        _sprite.Scale      = new Vector2(3.6f, 3.6f);
+        _sprite.Scale      = new Vector2(3f, 3f);
     }
 }

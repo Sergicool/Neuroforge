@@ -68,6 +68,7 @@ public partial class DeploymentController : Node
         tile.ClearOccupant();
         _remainingPieces[type]++;
         _selectedPieceType = type;
+        _ui.SetActiveType(type);
         UpdateUI();
     }
 
