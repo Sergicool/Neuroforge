@@ -1,5 +1,6 @@
 using Godot;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 public partial class Board : Node2D
 {
@@ -12,7 +13,8 @@ public partial class Board : Node2D
     private Node2D _tilesManager;
     private Node2D _piecesManager;
 
-    public static readonly Vector2 TILE_SIZE = new(64, 64);
+    public static readonly Vector2I TILE_SIZE = new(80, 80);
+    public static float TileScale => TILE_SIZE.X / 16f;
 
     private GameManager _game;
 
@@ -54,7 +56,7 @@ public partial class Board : Node2D
         {
             if (!tile.IsOccupied) continue;
             Piece piece = tile.Occupant;
-            if (piece.PlayerOwner == owner && piece.Type == PieceType.ENERGY_CORE)
+            if (piece.PlayerOwner == owner && piece.Type == PieceType.NEXUS)
                 return true;
         }
         return false;
@@ -81,7 +83,7 @@ public partial class Board : Node2D
     // ==================== Interacción con casillas ====================
 
     // Punto de entrada del input: delega al controlador de input
-    public void OnTileClicked(Tile tile)
+    public async Task OnTileClicked(Tile tile)
     {
         if (_game.State == GameState.DEPLOYMENT)
         {
@@ -91,33 +93,47 @@ public partial class Board : Node2D
 
         if (!_game.CanInteract()) return;
 
-        _input.HandleTileClick(tile);
+        await _input.HandleTileClick(tile);
     }
 
     // ==================== Acciones de juego ====================
 
     // Mueve una pieza a una casilla destino
-    public void MovePiece(Piece piece, Tile target)
+    public async Task MovePiece(Piece piece, Tile target, bool animated = true)
     {
         Tile origin = piece.CurrentTile;
         piece.RegisterTileExit(origin, _game.TurnNumber);
         origin.ClearOccupant();
         target.SetOccupant(piece);
+
+        if (animated)
+            await piece.AnimateMoveTo(target.Position);
+
         piece.Position = target.Position;
     }
 
     // Resuelve el combate entre atacante y defensor
-    public void ResolveCombat(Piece attacker, Piece defender)
+    public async Task ResolveCombat(Piece attacker, Piece defender)
     {
-        Tile targetTile = defender.CurrentTile;
+        Tile defenderTile = defender.CurrentTile;
         CombatResult result = attacker.ResolveCombat(defender);
+
+        attacker.ZIndex = defenderTile.ZIndex + 1;
+        await attacker.AnimateMoveTo(defenderTile.Position);
+
+        // TODO Llamar a la interfaz de combate antes de revelar a las piezas
+
+        attacker.ZIndex = defenderTile.ZIndex;
+        // Ambas piezas se revelan al entrar en combate
+        attacker.Reveal();
+        defender.Reveal();
 
         switch (result)
         {
             case CombatResult.DEFENDER_DIES:
                 defender.QueueFree();
-                targetTile.ClearOccupant();
-                MovePiece(attacker, targetTile);
+                defenderTile.ClearOccupant();
+                await MovePiece(attacker, defenderTile, animated: false);
                 break;
             case CombatResult.ATTACKER_DIES:
                 attacker.CurrentTile.ClearOccupant();
@@ -125,7 +141,7 @@ public partial class Board : Node2D
                 break;
             case CombatResult.BOTH_DIE:
                 attacker.CurrentTile.ClearOccupant();
-                targetTile.ClearOccupant();
+                defenderTile.ClearOccupant();
                 attacker.QueueFree();
                 defender.QueueFree();
                 break;
@@ -234,14 +250,14 @@ public partial class Board : Node2D
                 // El bot siempre conoce sus propias piezas
                 if (p.Type == PieceType.TURRET)
                     state[GetIndex(4, r, c)] = 1f;
-                else if (p.Type == PieceType.ENERGY_CORE)
+                else if (p.Type == PieceType.NEXUS)
                     state[GetIndex(6, r, c)] = 1f;
                 else
                     state[GetIndex(0, r, c)] = p.Rank / MAX_RANK;
             }
             else // PLAYER
             {
-                if (p.Type == PieceType.ENERGY_CORE)
+                if (p.Type == PieceType.NEXUS)
                 {
                     if (p.IsRevealedToBot)
                         state[GetIndex(7, r, c)] = 1f;  // Core localizado tras combate

@@ -35,7 +35,7 @@ public partial class DeploymentUI : CanvasLayer
             PieceType type = kv.Key;
 
             PieceButton btn = _pieceButtonScene.Instantiate<PieceButton>();
-            _pieceGrid.AddChild(btn);           // AddChild ANTES de Setup para que _Ready() corra
+            _pieceGrid.AddChild(btn);
             btn.Setup(kv.Value, PieceOwner.PLAYER);
 
             btn.Toggled += (pressed) => OnPieceToggled(type, pressed);
@@ -49,6 +49,7 @@ public partial class DeploymentUI : CanvasLayer
 
     // ── Toggle exclusivo ──────────────────────────────────────────────────────
 
+    // TODO: Arreglar que al deseleccionar una pieza se pueda seguir colocando aunque el boton de dicha pieza no este activada
     private void OnPieceToggled(PieceType type, bool pressed)
     {
         if (!pressed)

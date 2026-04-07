@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 // Gestiona la selección de piezas y el resaltado de acciones posibles
 public class BoardInputController
@@ -16,7 +17,7 @@ public class BoardInputController
     }
 
     // Punto de entrada: procesa el click sobre una casilla durante la partida
-    public void HandleTileClick(Tile tile)
+    public async Task HandleTileClick(Tile tile)
     {
         if (_selectedPiece == null)
         {
@@ -26,7 +27,7 @@ public class BoardInputController
 
         if (_highlightedTiles.Contains(tile))
         {
-            ExecuteAction(tile);
+            await ExecuteAction(tile);
             _game.EndTurn();
         }
 
@@ -63,14 +64,15 @@ public class BoardInputController
     }
 
     // Ejecuta la acción de la pieza seleccionada sobre la casilla destino
-    private void ExecuteAction(Tile target)
+    private async Task ExecuteAction(Tile target)
     {
+        _game.SetState(GameState.EXECUTING_ACTION);
         TileAction action = MovementSystem.GetAction(_selectedPiece, target, _game.TurnNumber, _board);
 
         if (action == TileAction.MOVE)
-            _board.MovePiece(_selectedPiece, target);
+            await _board.MovePiece(_selectedPiece, target);
         else if (action == TileAction.ATTACK)
-            _board.ResolveCombat(_selectedPiece, target.Occupant);
+            await _board.ResolveCombat(_selectedPiece, target.Occupant);
     }
 
     // Limpia la selección y los resaltados

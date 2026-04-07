@@ -3,10 +3,6 @@ public static class CombatSystem
     // Resuelve el combate entre un atacante y un defensor
     public static CombatResult Resolve(Piece attacker, Piece defender)
     {
-        // Ambas piezas se revelan al entrar en combate
-        attacker.Reveal();
-        defender.Reveal();
-
         // La torreta siempre gana como defensora, salvo contra el SABOTEUR
         if (defender.Type == PieceType.TURRET)
         {

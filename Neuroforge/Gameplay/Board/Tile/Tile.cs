@@ -51,8 +51,8 @@ public partial class Tile : Area2D
     private void ApplyTexture(Texture2D tex)
     {
         _sprite.Texture = tex;
-        _sprite.Scale   = Board.TILE_SIZE / tex.GetSize();
-        _collisionShape.Scale = Board.TILE_SIZE / tex.GetSize();
+        _sprite.Scale = Board.TILE_SIZE / tex.GetSize();
+        _collisionShape.Scale = _sprite.Scale;
     }
 
     public override void _InputEvent(Viewport viewport, InputEvent e, int shapeIdx)

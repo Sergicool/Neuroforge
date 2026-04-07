@@ -34,7 +34,7 @@ public partial class PieceButton : Button
 
     public void SetCount(int count)
     {
-        _countLabel.Text = $"×{count:00}";
+        _countLabel.Text = $"{count:00}";
         Disabled         = count <= 0;
         if (count <= 0) SetPressedNoSignal(false);
     }

@@ -21,9 +21,9 @@ layout_mode = 1
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 47.0
+offset_left = 17.0
 offset_top = -239.0
-offset_right = 263.0
+offset_right = 233.0
 offset_bottom = 240.0
 grow_vertical = 2
 

@@ -1,5 +1,7 @@
 using Godot;
+using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 public partial class Piece : Node2D
 {
@@ -91,22 +93,35 @@ public partial class Piece : Node2D
     // Actualiza el sprite según propietario y estado de revelación
     private void UpdateVisual()
     {
-        int spriteWidth  = PiecesData.ATLAS_COLUMN_WIDTH;
+        int spriteWidth = PiecesData.ATLAS_COLUMN_WIDTH;
         int spriteHeight = PiecesData.ATLAS_HEIGHT / 2;
 
         var def = PiecesData.Data[Type];
-        _sprite.Texture      = PiecesData.Atlas;
+
+        _sprite.Texture = PiecesData.Atlas;
         _sprite.RegionEnabled = true;
 
-        // Las piezas del bot se muestran ocultas hasta que el jugador las revela en combate
         bool showHidden = PlayerOwner == PieceOwner.BOT && !IsVisibleToPlayer;
         int x = showHidden
             ? PiecesData.HIDDEN_ATLAS_COLUMN * spriteWidth
             : def.AtlasColumn * spriteWidth;
-
         int y = PlayerOwner == PieceOwner.PLAYER ? 0 : spriteHeight;
 
         _sprite.RegionRect = new Rect2(x, y, spriteWidth, spriteHeight);
-        _sprite.Scale      = new Vector2(3f, 3f);
+
+        // Escala derivada: la pieza ocupa exactamente una casilla
+        float scale = Board.TILE_SIZE.X / spriteWidth;
+        _sprite.Scale = new Vector2(scale, scale);
+    }
+
+    // Mueve la pieza visualmente hasta una posición destino
+    public async Task AnimateMoveTo(Vector2 targetPos, float duration = 0.25f)
+    {
+        // TODO Hacer que duration sea el tiempo que tarda en recorrer una casilla (Calcular la distancia de movimiento)
+        Tween tween = CreateTween();
+        tween.TweenProperty(this, "position", targetPos, duration)
+             .SetTrans(Tween.TransitionType.Sine)
+             .SetEase(Tween.EaseType.InOut);
+        await ToSignal(tween, Tween.SignalName.Finished);
     }
 }

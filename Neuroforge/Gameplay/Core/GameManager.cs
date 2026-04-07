@@ -14,6 +14,7 @@ public partial class GameManager : Node
 
     public PieceOwner CurrentTurn { get; private set; } = PieceOwner.PLAYER;
     public GameState  State       { get; private set; } = GameState.WAITING_INPUT;
+    public void SetState(GameState state) => State = state;
     public int        TurnNumber  { get; private set; } = 0;
 
     public override void _Ready()

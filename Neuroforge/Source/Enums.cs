@@ -5,7 +5,8 @@ public enum GameState
 {
     DEPLOYMENT,
     WAITING_INPUT,
-    PIECE_SELECTED,
+    EXECUTING_ACTION,
+    COMBAT,
     GAME_OVER
 }
 
@@ -27,10 +28,10 @@ public enum PieceOwner
 // Tipo de pieza
 public enum PieceType
 {
-    ENERGY_CORE,
+    NEXUS,
     TURRET,
     CORE,
-    GUARD,
+    NOVA,
     MECHA,
     ANDROID,
     COMBAT_UNIT,
