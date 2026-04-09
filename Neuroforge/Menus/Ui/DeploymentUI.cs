@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Collections.Generic;
 
-public partial class DeploymentUI : CanvasLayer
+public partial class DeploymentUI : Control
 {
     public event Action OnRandomPressed;
     public event Action OnStartPressed;
@@ -25,10 +25,10 @@ public partial class DeploymentUI : CanvasLayer
     {
         _pieceButtonScene = GD.Load<PackedScene>(PIECE_BUTTON_SCENE);
 
-        _remainingLabel = GetNode<Label>("Control/PanelContainer/MarginContainer/VBoxContainer/RemainingLabel");
-        _pieceGrid = GetNode<GridContainer>("Control/PanelContainer/MarginContainer/VBoxContainer/PieceGrid");
-        _randomButton = GetNode<Button>("Control/PanelContainer/MarginContainer/VBoxContainer/RandomButton");
-        _startButton = GetNode<Button>("Control/PanelContainer/MarginContainer/VBoxContainer/StartButton");
+        _remainingLabel = GetNode<Label>("MarginContainer/VBoxContainer/RemainingLabel");
+        _pieceGrid = GetNode<GridContainer>("MarginContainer/VBoxContainer/PieceGrid");
+        _randomButton = GetNode<Button>("MarginContainer/VBoxContainer/RandomButton");
+        _startButton = GetNode<Button>("MarginContainer/VBoxContainer/StartButton");
 
         foreach (var kv in PiecesData.Data)
         {

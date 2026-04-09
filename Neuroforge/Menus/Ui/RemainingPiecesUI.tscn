@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://okvqrm2pdwpe"]
+
+[ext_resource type="Script" uid="uid://dckpgfus3iow1" path="res://Menus/Ui/RemainingPiecesUI.cs" id="1_dqb5n"]
+
+[node name="RemainingPiecesUI" type="Control" unique_id=1224883348]
+layout_mode = 3
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+grow_vertical = 2
+size_flags_horizontal = 0
+script = ExtResource("1_dqb5n")
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1425373045]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -277.0
+offset_right = 232.0
+offset_bottom = -12.0
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=1160035920]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=867861170]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=707682772]
+layout_mode = 2
+text = "Bot"
+horizontal_alignment = 1
+
+[node name="GridContainer" type="GridContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=535944189]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+columns = 4
+
+[node name="PanelContainer2" type="PanelContainer" parent="." unique_id=2076998857]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = 20.0
+offset_right = 232.0
+offset_bottom = 285.0
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer2" unique_id=421341394]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer2/MarginContainer" unique_id=1923609848]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="PanelContainer2/MarginContainer/VBoxContainer" unique_id=1573405353]
+layout_mode = 2
+text = "Player"
+horizontal_alignment = 1
+
+[node name="GridContainer2" type="GridContainer" parent="PanelContainer2/MarginContainer/VBoxContainer" unique_id=585377518]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+columns = 4

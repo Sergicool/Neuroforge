@@ -80,6 +80,19 @@ public partial class Board : Node2D
         return false;
     }
 
+    public Dictionary<PieceType, int> GetRemainingCounts(PieceOwner owner)
+    {
+        var counts = new Dictionary<PieceType, int>();
+        foreach (var kv in PiecesData.Data)
+            counts[kv.Key] = 0;
+
+        foreach (Tile tile in AllTiles)
+            if (tile.IsOccupied && tile.Occupant.PlayerOwner == owner)
+                counts[tile.Occupant.Type]++;
+
+        return counts;
+    }
+
     // ==================== Interacción con casillas ====================
 
     // Punto de entrada del input: delega al controlador de input

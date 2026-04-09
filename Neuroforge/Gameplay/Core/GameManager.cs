@@ -10,6 +10,7 @@ public partial class GameManager : Node
     private Camera2D _camera;
     private DeploymentUI _deploymentUI;
     private DeploymentController _deployment;
+    private RemainingPiecesUI _remainingPiecesUI;
     private BotController _bot;
 
     public PieceOwner CurrentTurn { get; private set; } = PieceOwner.PLAYER;
@@ -24,7 +25,8 @@ public partial class GameManager : Node
         SpawnBoard();
         SpawnCamera();
 
-        _deploymentUI = GetNode<DeploymentUI>("DeploymentUI");
+        _deploymentUI = GetNode<DeploymentUI>("CanvasLayer/DeploymentUI");
+        _remainingPiecesUI = GetNode<RemainingPiecesUI>("CanvasLayer/RemainingPiecesUI");
 
         _deployment = new DeploymentController();
         _deployment.Initialize(this, _board, _deploymentUI);
@@ -33,6 +35,7 @@ public partial class GameManager : Node
 
         State = GameState.DEPLOYMENT;
         _deploymentUI.ShowUI();
+        _remainingPiecesUI.HideUI();
     }
 
     // ==================== Getters ====================
@@ -46,12 +49,15 @@ public partial class GameManager : Node
 
     public void StartGame()
     {
+        _remainingPiecesUI.ShowUI();
+        RefreshRemainingPiecesUI();
         State = GameState.WAITING_INPUT;
         CheckGameEnd();
     }
 
     public void EndTurn()
     {
+        RefreshRemainingPiecesUI();
         CheckGameEnd();
         if (State == GameState.GAME_OVER) return;
 
@@ -61,6 +67,7 @@ public partial class GameManager : Node
 
         if (CurrentTurn == PieceOwner.BOT)
             _bot.PlayTurn(this);
+
     }
 
     // Comprueba las condiciones de fin de partida
@@ -95,6 +102,12 @@ public partial class GameManager : Node
         }
     }
 
+    public void RefreshRemainingPiecesUI()
+    {
+        _remainingPiecesUI.UpdateCounts(PieceOwner.PLAYER, _board.GetRemainingCounts(PieceOwner.PLAYER));
+        _remainingPiecesUI.UpdateCounts(PieceOwner.BOT, _board.GetRemainingCounts(PieceOwner.BOT));
+    }
+
     // ==================== Inicialización de escena ====================
 
     private void SpawnBoard()
@@ -110,7 +123,7 @@ public partial class GameManager : Node
         _camera = new Camera2D
         {
             Zoom     = new Godot.Vector2(0.8f, 0.8f),
-            Position = _board.GetBoardCenter(),
+            Position = _board.GetBoardCenter() + new Vector2(-40f, 0),
             Enabled  = true
         };
         AddChild(_camera);

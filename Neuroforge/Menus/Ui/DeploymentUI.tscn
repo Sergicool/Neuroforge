@@ -2,49 +2,34 @@
 
 [ext_resource type="Script" uid="uid://b1u5cyxj5mo5h" path="res://Menus/Ui/DeploymentUI.cs" id="1_3y2vr"]
 
-[node name="DeploymentUI" type="CanvasLayer" unique_id=1257122119]
-script = ExtResource("1_3y2vr")
-
-[node name="Control" type="Control" parent="." unique_id=1390184046]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-mouse_filter = 2
-
-[node name="PanelContainer" type="PanelContainer" parent="Control" unique_id=493194820]
-layout_mode = 1
+[node name="DeploymentUI" type="PanelContainer" unique_id=1994863403]
 anchors_preset = 4
 anchor_top = 0.5
 anchor_bottom = 0.5
-offset_left = 17.0
-offset_top = -239.0
-offset_right = 233.0
-offset_bottom = 240.0
+offset_top = -67.5
+offset_right = 190.0
+offset_bottom = 67.5
 grow_vertical = 2
+script = ExtResource("1_3y2vr")
 
-[node name="MarginContainer" type="MarginContainer" parent="Control/PanelContainer" unique_id=948502381]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=948502381]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/PanelContainer/MarginContainer" unique_id=1843813455]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=1843813455]
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="RemainingLabel" type="Label" parent="Control/PanelContainer/MarginContainer/VBoxContainer" unique_id=1822873670]
+[node name="RemainingLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1822873670]
 layout_mode = 2
 text = "Label"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="PieceGrid" type="GridContainer" parent="Control/PanelContainer/MarginContainer/VBoxContainer" unique_id=2058637322]
+[node name="PieceGrid" type="GridContainer" parent="MarginContainer/VBoxContainer" unique_id=2058637322]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
@@ -52,10 +37,10 @@ theme_override_constants/h_separation = 8
 theme_override_constants/v_separation = 8
 columns = 3
 
-[node name="RandomButton" type="Button" parent="Control/PanelContainer/MarginContainer/VBoxContainer" unique_id=160660926]
+[node name="RandomButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=160660926]
 layout_mode = 2
 text = "Random Distribution"
 
-[node name="StartButton" type="Button" parent="Control/PanelContainer/MarginContainer/VBoxContainer" unique_id=1423941356]
+[node name="StartButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1423941356]
 layout_mode = 2
 text = "Start Battle"
