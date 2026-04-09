@@ -27,7 +27,6 @@ public partial class GameManager : Node
         _deploymentUI = GetNode<DeploymentUI>("DeploymentUI");
 
         _deployment = new DeploymentController();
-        AddChild(_deployment);
         _deployment.Initialize(this, _board, _deploymentUI);
 
         _bot = new BotController(_board);

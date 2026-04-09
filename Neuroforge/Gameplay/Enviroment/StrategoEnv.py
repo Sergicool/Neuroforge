@@ -1,3 +1,4 @@
+import math
 import os
 import glob
 from datetime import datetime
@@ -129,6 +130,12 @@ def resolve_combat(attacker: Piece, defender: Piece) -> int:
 
     # Si hay empate ambas piezas mueren
     return BOTH_DIE
+
+def combat_reward(rank: int, is_turret: bool = False) -> float:
+    if is_turret:
+        return 0.25  # Valor fijo moderado
+    # log2(rango+1) normalizado por log2(MAX_RANK+1) → siempre entre 0 y 1
+    return round(math.log2(rank + 1) / math.log2(MAX_RANK + 1), 3)
 
 # ==============================================================================
 # MOVIMIENTO
@@ -307,15 +314,15 @@ class StrategoCNN(BaseFeaturesExtractor):
 # CONSTANTES DE RECOMPENSA
 # ==============================================================================
 
-R_WIN                   =  10.0 # Destruir el ENERGY_CORE rival
-R_LOSE                  = -10.0 # Perder el ENERGY_CORE propio
-R_NO_MOVES_WIN          =  10.0 # El rival se queda sin movimientos
-R_NO_MOVES_LOSE         = -10.0 # El bot se queda sin movimientos
-R_MOVE                  = -0.01 # Coste por turno (incentiva terminar rapido)
+R_WIN                   =  1.0  # Destruir el ENERGY_CORE rival
+R_LOSE                  = -1.0 # Perder el ENERGY_CORE propio
+R_NO_MOVES_WIN          =  1.0 # El rival se queda sin movimientos
+R_NO_MOVES_LOSE         = -1.0 # El bot se queda sin movimientos
+R_MOVE                  = -0.002 # Coste por turno (incentiva terminar rapido)
 R_PIECE_SCALE           =  5.0  # Escala para recompensas de combate
 R_TIE                   =  0.0  # Recompensa por empate
 R_TURRET_VALUE          =  2.0  # Valor de rango asignado a la TURRET
-ILLEGAL_MOVE_PENALTY    = -10.0 # Penalización por intentar un movimiento ilegal (MaskablePPO debería evitarlo)
+ILLEGAL_MOVE_PENALTY    = -1.0 # Penalización por intentar un movimiento ilegal (MaskablePPO debería evitarlo)
 
 # ==============================================================================
 # ENTORNO GYM
@@ -434,6 +441,11 @@ class StrategoEnv(gym.Env):
         terminated = False
         truncated  = False
 
+        # Comprobar si la partida ha terminado antes del turno del bot
+        terminated, end_reward = self._check_game_over()
+        if terminated:
+            return self._get_obs(), reward, terminated, truncated, {}
+
         n_tiles  = ROWS * COLS
         from_idx = int(action) // n_tiles
         to_idx   = int(action) % n_tiles
@@ -446,37 +458,34 @@ class StrategoEnv(gym.Env):
 
         # Con MaskablePPO no deberiamos llegar aqui con una accion ilegal.
         if piece is None or piece.owner != BOT:
-            reward     = ILLEGAL_MOVE_PENALTY
-            terminated = True
+            return self._get_obs(), ILLEGAL_MOVE_PENALTY, True, False, {}
         elif not can_move(piece, from_pos, to_pos, self.board_layout, self.pieces, self.turn):
-            reward     = ILLEGAL_MOVE_PENALTY
-            terminated = True
+            return self._get_obs(), ILLEGAL_MOVE_PENALTY, True, False, {}
         else:
             # Ejecutar el movimiento del bot y obtener recompensa inmediata por ese movimiento (incluye combate si lo hay)
             reward, terminated = self._execute_move(BOT, from_pos, to_pos)
 
-        # Si el movimiento del bot terminó la partida, retornamos sin seguir.
-        if terminated:
-            return self._get_obs(), reward, terminated, truncated, {}
-
         # Comprobar fin de la partida tras turno del bot (puede haber terminado por
         # falta de movimientos del player aunque _execute_move no lo detecte).
-        terminated, end_reward = self._check_game_over()
         if terminated:
-            reward += end_reward
-            return self._get_obs(), reward, terminated, truncated, {}
+            return self._get_obs(), reward, True, False, {}
 
         # --- TURNO DEL PLAYER ---
         # El jugador elige su movimiento y lo ejecuta, obteniendo recompensa negativa para el bot (ventaja del jugador).
         self.turn += 1
         player_moves = self._get_all_moves(PLAYER)
+        if not player_moves:
+            terminated, end_reward = self._check_game_over()
+            reward += end_reward
+            return self._get_obs(), reward, True, False, {}
+        
         pf, pt = self._choose_opponent_move(player_moves)
         p_reward, p_terminated = self._execute_move(PLAYER, pf, pt)
         reward += -p_reward
 
         # Si el movimiento del jugador terminó la partida, retornamos con la recompensa acumulada.
         if p_terminated:
-            return self._get_obs(), reward, p_terminated, truncated, {}
+            return self._get_obs(), reward, True, False, {}
 
         # Comprobar fin de la partida tras turno del jugador
         terminated, end_reward = self._check_game_over()
@@ -509,12 +518,13 @@ class StrategoEnv(gym.Env):
 
             # El resultado del combate determina qué piezas mueren y qué recompensas se otorgan
             if result == DEFENDER_DIES:
-                rank_value = R_TURRET_VALUE if target.rank == RANK_TURRET else max(abs(target.rank), 0.5)
                 if target.rank == RANK_ENERGY_CORE:
                     reward     = R_WIN if attacker_is_bot else R_LOSE
                     terminated = True
                 else:
-                    reward = (rank_value / R_PIECE_SCALE) if attacker_is_bot else -(rank_value / R_PIECE_SCALE)
+                    reward = combat_reward(target.rank, is_turret=(target.rank == RANK_TURRET))
+                    if not attacker_is_bot:
+                        reward = -reward
 
                 piece.register_exit(from_pos, self.turn)
                 del self.pieces[from_pos]
@@ -523,12 +533,13 @@ class StrategoEnv(gym.Env):
                 self.pieces[to_pos] = piece
 
             elif result == ATTACKER_DIES:
-                rank_value = R_TURRET_VALUE if piece.rank == RANK_TURRET else max(abs(piece.rank), 0.5)
                 if piece.rank == RANK_ENERGY_CORE:
                     reward     = R_LOSE if attacker_is_bot else R_WIN
                     terminated = True
                 else:
-                    reward = -(rank_value / R_PIECE_SCALE) if attacker_is_bot else (rank_value / R_PIECE_SCALE)
+                    reward = combat_reward(piece.rank, is_turret=(piece.rank == RANK_TURRET))
+                    if not attacker_is_bot:
+                        reward = -reward
 
                 piece.register_exit(from_pos, self.turn) # No es necesario, solo por consistencia
                 if from_pos in self.pieces:
@@ -837,7 +848,7 @@ def find_latest_model() -> str | None:
 # ENTRENAMIENTO
 # ==============================================================================
 
-TOTAL_TIMESTEPS = 50_000
+TOTAL_TIMESTEPS = 400_000
 
 if __name__ == "__main__":
 

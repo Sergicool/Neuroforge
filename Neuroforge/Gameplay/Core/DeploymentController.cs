@@ -1,7 +1,7 @@
 using Godot;
 using System.Collections.Generic;
 
-public partial class DeploymentController : Node
+public class DeploymentController
 {
     private DeploymentUI _ui;
     private GameManager  _game;

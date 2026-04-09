@@ -277,17 +277,15 @@ if __name__ == "__main__":
     model = MaskablePPO.load(model_path)
     print("Modelo cargado.\n")
 
-    if not args.watch:
-        run_stats(model, n_games=args.games)
-        exit()
-
     if args.watch:
         env = StrategoEnv()
-        play_one_game(
-            model, env,
-            watch=True,
-            delay=args.delay,
-            max_turns=args.max_turns,
-        )
-
-    run_stats(model, n_games=args.games, max_turns=args.max_turns)
+        for _ in range(args.games):
+            play_one_game(
+                model, env,
+                watch=True,
+                delay=args.delay,
+                max_turns=args.max_turns,
+            )
+            input("  [Enter para siguiente partida]")
+    else:
+        run_stats(model, n_games=args.games, max_turns=args.max_turns)
