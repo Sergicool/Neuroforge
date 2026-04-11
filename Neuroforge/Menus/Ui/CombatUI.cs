@@ -31,6 +31,9 @@ public partial class CombatUI : Control
     private const int BLINK_COUNT = 3;
     private const int REVEAL_DELAY_MS = 700;
 
+    private Color _attackerIconColor;
+    private Color _defenderIconColor;
+
     public override void _Ready()
     {
         _background = GetNode<Panel>("Background");
@@ -40,11 +43,13 @@ public partial class CombatUI : Control
         _attackerSprite = GetNode<TextureRect>("Popup/AttackerScreen/AttackerPiece");
         _attackerLabel = GetNode<Label>("Popup/AttackerScreen/AttackerName");
         _attackerIcon = GetNode<TextureRect>("Popup/AttackerScreen/AttackerIconBorder/AttackerIcon");
+        _attackerIconColor = _attackerIcon.Modulate;
 
         _defenderSlot = GetNode<Panel>("Popup/DefenderScreen");
         _defenderSprite = GetNode<TextureRect>("Popup/DefenderScreen/DefenderPiece");
         _defenderLabel = GetNode<Label>("Popup/DefenderScreen/DefenderName");
         _defenderIcon = GetNode<TextureRect>("Popup/DefenderScreen/DefenderIconBorder/DefenderIcon");
+        _defenderIconColor = _defenderIcon.Modulate;
 
         _resultLabel = GetNode<Label>("Popup/ResultLabel");
 
@@ -102,8 +107,8 @@ public partial class CombatUI : Control
         _attackerLabel.Text = attackerHidden ? "" : GetPieceLabel(attacker);
         _defenderLabel.Text = defenderHidden ? "" : GetPieceLabel(defender);
 
-        _attackerIcon.Modulate = COLOR_PIECE_NORMAL;
-        _defenderIcon.Modulate = COLOR_PIECE_NORMAL;
+        _attackerIcon.Modulate = _attackerIconColor;
+        _defenderIcon.Modulate = _defenderIconColor;
 
         _resultLabel.Text = "";
     }
