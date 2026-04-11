@@ -9,6 +9,7 @@ public class BoardInputController
 
     private Piece _selectedPiece;
     private readonly List<Tile> _highlightedTiles = new();
+    private static bool IsValidPiece(Piece piece) => Godot.GodotObject.IsInstanceValid(piece) && piece.IsInsideTree();
 
     public BoardInputController(Board board, GameManager game)
     {
@@ -19,6 +20,12 @@ public class BoardInputController
     // Punto de entrada: procesa el click sobre una casilla durante la partida
     public async Task HandleTileClick(Tile tile)
     {
+        if (_selectedPiece != null && !IsValidPiece(_selectedPiece))
+        {
+            ClearSelection();
+            return;
+        }
+
         if (_selectedPiece == null)
         {
             TrySelectPiece(tile);
@@ -76,7 +83,7 @@ public class BoardInputController
     }
 
     // Limpia la selección y los resaltados
-    private void ClearSelection()
+    public void ClearSelection()
     {
         _selectedPiece = null;
         ClearHighlights();

@@ -15,8 +15,8 @@ public partial class RemainingPiecesUI : Control
 
     public override void _Ready()
     {
-        _botGrid = GetNode<GridContainer>("PanelContainer/MarginContainer/VBoxContainer/GridContainer");
-        _playerGrid = GetNode<GridContainer>("PanelContainer2/MarginContainer/VBoxContainer/GridContainer2");
+        _botGrid = GetNode<GridContainer>("MarginContainer/VBoxContainer/GridContainer");
+        _playerGrid = GetNode<GridContainer>("MarginContainer/VBoxContainer/GridContainer2");
 
         _pieceButtonScene = GD.Load<PackedScene>(PIECE_BUTTON_SCENE);
 

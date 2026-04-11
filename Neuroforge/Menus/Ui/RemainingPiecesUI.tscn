@@ -1,73 +1,65 @@
 [gd_scene format=3 uid="uid://okvqrm2pdwpe"]
 
 [ext_resource type="Script" uid="uid://dckpgfus3iow1" path="res://Menus/Ui/RemainingPiecesUI.cs" id="1_dqb5n"]
+[ext_resource type="Theme" uid="uid://5l3frbb482sx" path="res://Assets/DefaultTheme.tres" id="2_dqb5n"]
+[ext_resource type="StyleBox" uid="uid://bdxgr8713bpqu" path="res://Assets/Frames/PanelBorder.tres" id="2_l3fwi"]
 
-[node name="RemainingPiecesUI" type="Control" unique_id=1224883348]
-layout_mode = 3
-anchors_preset = 4
+[node name="RemainingPiecesUI" type="PanelContainer" unique_id=76577576]
+anchors_preset = 8
+anchor_left = 0.5
 anchor_top = 0.5
+anchor_right = 0.5
 anchor_bottom = 0.5
+offset_left = -55.5
+offset_top = -56.0
+offset_right = 55.5
+offset_bottom = 56.0
+grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 0
+size_flags_horizontal = 4
+theme = ExtResource("2_dqb5n")
 script = ExtResource("1_dqb5n")
 
-[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1425373045]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = -277.0
-offset_right = 232.0
-offset_bottom = -12.0
-grow_vertical = 2
+[node name="MarginContainer2" type="MarginContainer" parent="." unique_id=840408416]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = -16
+theme_override_constants/margin_top = -16
+theme_override_constants/margin_right = -16
+theme_override_constants/margin_bottom = -16
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=1160035920]
+[node name="Panel" type="Panel" parent="MarginContainer2" unique_id=656314439]
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("2_l3fwi")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1160035920]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=867861170]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=867861170]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=707682772]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer" unique_id=707682772]
 layout_mode = 2
 text = "Bot"
 horizontal_alignment = 1
 
-[node name="GridContainer" type="GridContainer" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=535944189]
+[node name="GridContainer" type="GridContainer" parent="MarginContainer/VBoxContainer" unique_id=535944189]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 columns = 4
 
-[node name="PanelContainer2" type="PanelContainer" parent="." unique_id=2076998857]
-layout_mode = 1
-anchors_preset = 4
-anchor_top = 0.5
-anchor_bottom = 0.5
-offset_top = 20.0
-offset_right = 232.0
-offset_bottom = 285.0
-grow_vertical = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer2" unique_id=421341394]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer2/MarginContainer" unique_id=1923609848]
-layout_mode = 2
-
-[node name="Label2" type="Label" parent="PanelContainer2/MarginContainer/VBoxContainer" unique_id=1573405353]
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1573405353]
 layout_mode = 2
 text = "Player"
 horizontal_alignment = 1
 
-[node name="GridContainer2" type="GridContainer" parent="PanelContainer2/MarginContainer/VBoxContainer" unique_id=585377518]
+[node name="GridContainer2" type="GridContainer" parent="MarginContainer/VBoxContainer" unique_id=585377518]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6

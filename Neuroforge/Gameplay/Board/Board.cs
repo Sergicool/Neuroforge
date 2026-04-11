@@ -17,6 +17,7 @@ public partial class Board : Node2D
     public static float TileScale => TILE_SIZE.X / 16f;
 
     private GameManager _game;
+    private CombatUI _combatUI;
 
     // Lógica de selección de piezas delegada a InputController
     private BoardInputController _input;
@@ -43,6 +44,8 @@ public partial class Board : Node2D
         _game  = gameManager;
         _input = new BoardInputController(this, gameManager);
     }
+
+    public void SetCombatUI(CombatUI ui) => _combatUI = ui;
 
     // ==================== Consultas del tablero ====================
 
@@ -131,16 +134,21 @@ public partial class Board : Node2D
         Tile defenderTile = defender.CurrentTile;
         CombatResult result = attacker.ResolveCombat(defender);
 
+        // Animación de avance
         attacker.ZIndex = defenderTile.ZIndex + 1;
         await attacker.AnimateMoveTo(defenderTile.Position);
-
-        // TODO Llamar a la interfaz de combate antes de revelar a las piezas
-
         attacker.ZIndex = defenderTile.ZIndex;
-        // Ambas piezas se revelan al entrar en combate
+
+        bool attackerHiddenForUI = !attacker.IsVisibleToPlayer || !attacker.IsRevealedToBot;
+        bool defenderHiddenForUI = !defender.IsVisibleToPlayer || !defender.IsRevealedToBot;
+
+        if (_combatUI != null)
+            await _combatUI.ShowCombat(attacker, defender, result, attackerHiddenForUI, defenderHiddenForUI);
+
         attacker.Reveal();
         defender.Reveal();
 
+        // Aplicar resultado sobre el tablero
         switch (result)
         {
             case CombatResult.DEFENDER_DIES:
@@ -194,18 +202,22 @@ public partial class Board : Node2D
         return actions;
     }
 
-    public void ExecuteBotAction(MovementAction action)
+    public async Task ExecuteBotAction(MovementAction action)
     {
+        _input.ClearSelection();
+
         Tile from = GetTileAt(action.From);
-        Tile to   = GetTileAt(action.To);
+        Tile to = GetTileAt(action.To);
 
         if (from == null || to == null || !from.IsOccupied) return;
 
-        Piece piece      = from.Occupant;
+        Piece piece = from.Occupant;
         TileAction tileAction = MovementSystem.GetAction(piece, to, _game.TurnNumber, this);
 
-        if (tileAction == TileAction.MOVE)   MovePiece(piece, to);
-        else if (tileAction == TileAction.ATTACK) ResolveCombat(piece, to.Occupant);
+        if (tileAction == TileAction.MOVE)
+            await MovePiece(piece, to);
+        else if (tileAction == TileAction.ATTACK)
+            await ResolveCombat(piece, to.Occupant);
     }
 
     // Devuelve el estado del tablero como array de floats para la IA del bot.

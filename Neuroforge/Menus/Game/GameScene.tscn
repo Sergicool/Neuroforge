@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cwq2sjl1dgkd5" path="res://Gameplay/Core/GameManager.cs" id="1_7e2f7"]
 [ext_resource type="PackedScene" uid="uid://d0l10wogfc7rc" path="res://Menus/Ui/DeploymentUI.tscn" id="2_2gjdv"]
 [ext_resource type="PackedScene" uid="uid://okvqrm2pdwpe" path="res://Menus/Ui/RemainingPiecesUI.tscn" id="3_qpaim"]
+[ext_resource type="PackedScene" uid="uid://xgxlt5mk0kuq" path="res://Menus/Ui/CombatUI.tscn" id="4_svygl"]
 
 [node name="GameScene" type="Node" unique_id=1935428772]
 script = ExtResource("1_7e2f7")
@@ -10,11 +11,23 @@ script = ExtResource("1_7e2f7")
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=461224670]
 
 [node name="DeploymentUI" parent="CanvasLayer" unique_id=1994863403 instance=ExtResource("2_2gjdv")]
-offset_left = 35.0
-offset_top = -67.0
-offset_right = 225.0
-offset_bottom = 68.0
+anchors_preset = 4
+anchor_left = 0.0
+anchor_right = 0.0
+offset_left = 26.0
+offset_top = -73.0
+offset_right = 258.0
+offset_bottom = 73.0
+grow_horizontal = 1
 
 [node name="RemainingPiecesUI" parent="CanvasLayer" unique_id=1224883348 instance=ExtResource("3_qpaim")]
-offset_left = 14.0
-offset_right = 14.0
+anchors_preset = 4
+anchor_left = 0.0
+anchor_right = 0.0
+offset_left = 17.0
+offset_top = -64.0
+offset_right = 128.0
+offset_bottom = 62.0
+grow_horizontal = 1
+
+[node name="CombatUI" parent="CanvasLayer" unique_id=1511178520 instance=ExtResource("4_svygl")]

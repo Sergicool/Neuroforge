@@ -1,16 +1,40 @@
 [gd_scene format=3 uid="uid://d0l10wogfc7rc"]
 
 [ext_resource type="Script" uid="uid://b1u5cyxj5mo5h" path="res://Menus/Ui/DeploymentUI.cs" id="1_3y2vr"]
+[ext_resource type="StyleBox" uid="uid://d18i0sxg56l1v" path="res://Assets/Frames/PanelBackground.tres" id="1_2038p"]
+[ext_resource type="Theme" uid="uid://5l3frbb482sx" path="res://Assets/DefaultTheme.tres" id="4_6n2p2"]
+[ext_resource type="StyleBox" uid="uid://bdxgr8713bpqu" path="res://Assets/Frames/PanelBorder.tres" id="4_r3fl2"]
 
-[node name="DeploymentUI" type="PanelContainer" unique_id=1994863403]
-anchors_preset = 4
+[node name="DeploymentUI" type="PanelContainer" unique_id=555482865]
+anchors_preset = 8
+anchor_left = 0.5
 anchor_top = 0.5
+anchor_right = 0.5
 anchor_bottom = 0.5
-offset_top = -67.5
-offset_right = 190.0
-offset_bottom = 67.5
+offset_left = -106.5
+offset_top = -91.0
+offset_right = 106.5
+offset_bottom = 91.0
+grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("4_6n2p2")
+theme_override_styles/panel = ExtResource("1_2038p")
 script = ExtResource("1_3y2vr")
+
+[node name="MarginContainer2" type="MarginContainer" parent="." unique_id=647408284]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = -16
+theme_override_constants/margin_top = -16
+theme_override_constants/margin_right = -16
+theme_override_constants/margin_bottom = -16
+
+[node name="Panel" type="Panel" parent="MarginContainer2" unique_id=2067441927]
+layout_mode = 2
+mouse_filter = 2
+theme_override_styles/panel = ExtResource("4_r3fl2")
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=948502381]
 layout_mode = 2
@@ -25,6 +49,7 @@ theme_override_constants/separation = 10
 
 [node name="RemainingLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1822873670]
 layout_mode = 2
+theme = ExtResource("4_6n2p2")
 text = "Label"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -39,8 +64,10 @@ columns = 3
 
 [node name="RandomButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=160660926]
 layout_mode = 2
-text = "Random Distribution"
+theme = ExtResource("4_6n2p2")
+text = "Random Placement"
 
 [node name="StartButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1423941356]
 layout_mode = 2
+theme = ExtResource("4_6n2p2")
 text = "Start Battle"

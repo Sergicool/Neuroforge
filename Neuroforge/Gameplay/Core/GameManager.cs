@@ -11,6 +11,7 @@ public partial class GameManager : Node
     private DeploymentUI _deploymentUI;
     private DeploymentController _deployment;
     private RemainingPiecesUI _remainingPiecesUI;
+    private CombatUI _combatUI;
     private BotController _bot;
 
     public PieceOwner CurrentTurn { get; private set; } = PieceOwner.PLAYER;
@@ -27,15 +28,16 @@ public partial class GameManager : Node
 
         _deploymentUI = GetNode<DeploymentUI>("CanvasLayer/DeploymentUI");
         _remainingPiecesUI = GetNode<RemainingPiecesUI>("CanvasLayer/RemainingPiecesUI");
+        _combatUI = GetNode<CombatUI>("CanvasLayer/CombatUI");
 
         _deployment = new DeploymentController();
         _deployment.Initialize(this, _board, _deploymentUI);
-
-        _bot = new BotController(_board);
-
-        State = GameState.DEPLOYMENT;
         _deploymentUI.ShowUI();
         _remainingPiecesUI.HideUI();
+        _board.SetCombatUI(_combatUI);
+
+        _bot = new BotController(_board);
+        State = GameState.DEPLOYMENT;
     }
 
     // ==================== Getters ====================
@@ -55,6 +57,7 @@ public partial class GameManager : Node
         CheckGameEnd();
     }
 
+    // TODO Comprobar o evitar que si el jugador pierde pueda hacer un movimiento mas antes de acabar la partida
     public void EndTurn()
     {
         RefreshRemainingPiecesUI();
@@ -123,7 +126,7 @@ public partial class GameManager : Node
         _camera = new Camera2D
         {
             Zoom     = new Godot.Vector2(0.8f, 0.8f),
-            Position = _board.GetBoardCenter() + new Vector2(-40f, 0),
+            Position = _board.GetBoardCenter() + new Vector2(-60f, 0),
             Enabled  = true
         };
         AddChild(_camera);

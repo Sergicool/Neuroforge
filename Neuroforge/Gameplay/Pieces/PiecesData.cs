@@ -17,8 +17,8 @@ public partial class PiecesData
     public static readonly Texture2D Atlas = GD.Load<Texture2D>("res://Gameplay/Pieces/AtlasPiezas.png");
     public const int HIDDEN_ATLAS_COLUMN = 12;
 
-    public const int ATLAS_COLUMN_WIDTH = 64;
-    public const int ATLAS_HEIGHT = 128;
+    public const int ATLAS_COLUMN_WIDTH = 32;
+    public const int ATLAS_HEIGHT = 64;
 
     public static readonly Dictionary<PieceType, PieceDefinition> Data = new()
     {
