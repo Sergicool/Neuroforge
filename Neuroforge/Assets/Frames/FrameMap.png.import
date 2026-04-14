@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c4rat2mm37kgu"
-path="res://.godot/imported/FrameMap.png-3f066bb75f9329d5565e3421f1608a1e.ctex"
+path="res://.godot/imported/FrameMap.png-25a2dc73036d75a73bfe88159d77eb14.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Frames/FrameMap.png"
-dest_files=["res://.godot/imported/FrameMap.png-3f066bb75f9329d5565e3421f1608a1e.ctex"]
+source_file="res://assets/frames/FrameMap.png"
+dest_files=["res://.godot/imported/FrameMap.png-25a2dc73036d75a73bfe88159d77eb14.ctex"]
 
 [params]
 

@@ -1,0 +1,13 @@
+[gd_resource type="StyleBoxTexture" format=3 uid="uid://tjcegfoo4wit"]
+
+[ext_resource type="Texture2D" uid="uid://com1k4h0xhlpg" path="res://assets/frames/Logo.png" id="1_lid2d"]
+
+[resource]
+texture = ExtResource("1_lid2d")
+texture_margin_left = 16.0
+texture_margin_top = 34.0
+texture_margin_right = 28.0
+texture_margin_bottom = 19.0
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
+region_rect = Rect2(3, 0, 282, 80)

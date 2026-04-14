@@ -1,0 +1,102 @@
+[gd_scene format=3 uid="uid://c8md1qmlasci5"]
+
+[ext_resource type="Theme" uid="uid://5l3frbb482sx" path="res://assets/styles/DefaultTheme.tres" id="1_yqorp"]
+[ext_resource type="StyleBox" uid="uid://btp23gt0ooehf" path="res://assets/styles/ScreenText.tres" id="2_0ykhv"]
+[ext_resource type="StyleBox" uid="uid://tjcegfoo4wit" path="res://assets/styles/ScreenBackground.tres" id="2_2wh52"]
+[ext_resource type="Script" uid="uid://b5643cqgointl" path="res://scenes/MainMenu.cs" id="2_ow34m"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ow34m"]
+
+[node name="MainMenu" type="Control" unique_id=1305887855]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_yqorp")
+script = ExtResource("2_ow34m")
+
+[node name="TitlePanel" type="Panel" parent="." unique_id=854666511]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -306.0
+offset_top = 128.0
+offset_right = 298.0
+offset_bottom = 248.0
+grow_horizontal = 2
+theme_override_styles/panel = ExtResource("2_2wh52")
+
+[node name="Title" type="Label" parent="TitlePanel" unique_id=783250757]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -7.5
+offset_top = -17.0
+offset_right = 7.5
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = SubResource("StyleBoxEmpty_ow34m")
+text = "NEUROFORGE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ButtonsPanel" type="Panel" parent="." unique_id=1002405695]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -76.0
+offset_right = 200.0
+offset_bottom = 172.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("2_0ykhv")
+
+[node name="MarginContainer" type="MarginContainer" parent="ButtonsPanel" unique_id=286396221]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ButtonsPanel/MarginContainer" unique_id=485081719]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="PlayButton" type="Button" parent="ButtonsPanel/MarginContainer/VBoxContainer" unique_id=1795021600]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 28
+text = "Play"
+
+[node name="RulesButton" type="Button" parent="ButtonsPanel/MarginContainer/VBoxContainer" unique_id=1354232600]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 28
+text = "Rules"
+
+[node name="ExitButton" type="Button" parent="ButtonsPanel/MarginContainer/VBoxContainer" unique_id=1772577512]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 28
+text = "Exit"
