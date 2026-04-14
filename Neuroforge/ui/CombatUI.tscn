@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://xgxlt5mk0kuq"]
 
 [ext_resource type="Texture2D" uid="uid://bv8bihvx22sjn" path="res://assets/icon.svg" id="1_mvwh1"]
-[ext_resource type="Script" uid="uid://cjx5rvqvucvku" path="res://scenes/ui_elements/CombatUI.cs" id="1_y57do"]
+[ext_resource type="Script" uid="uid://cjx5rvqvucvku" path="res://ui/CombatUI.cs" id="1_y57do"]
 [ext_resource type="Theme" uid="uid://5l3frbb482sx" path="res://assets/styles/DefaultTheme.tres" id="2_ppsyc"]
 [ext_resource type="StyleBox" uid="uid://tjcegfoo4wit" path="res://assets/styles/ScreenBackground.tres" id="3_ppsyc"]
 [ext_resource type="StyleBox" uid="uid://btp23gt0ooehf" path="res://assets/styles/ScreenText.tres" id="4_sklqs"]

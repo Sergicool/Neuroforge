@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cram0l1kvcqvh"
-path="res://.godot/imported/GreenTile.png-2517ff4ec2a066f7b7d80650556d30ee.ctex"
+uid="uid://biyfx0kdv7syj"
+path="res://.godot/imported/PauseIcon.png-1951b8abc9cabb4ac1fedbb6452b3a44.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/tile/GreenTile.png"
-dest_files=["res://.godot/imported/GreenTile.png-2517ff4ec2a066f7b7d80650556d30ee.ctex"]
+source_file="res://assets/icons/PauseIcon.png"
+dest_files=["res://.godot/imported/PauseIcon.png-1951b8abc9cabb4ac1fedbb6452b3a44.ctex"]
 
 [params]
 

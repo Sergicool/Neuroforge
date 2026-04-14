@@ -19,7 +19,7 @@ public partial class MainMenu : Control
 
     private async void OnPlayPressed()
     {
-        await SceneManager.GoTo("res://scenes/GameScene.tscn", SceneManager.Transition.Fade, 0.5f);
+        await SceneManager.GoTo("res://scenes/GameScene.tscn", SceneManager.Transition.Fade, 0.25f);
     }
 
     private void OnRulesPressed()

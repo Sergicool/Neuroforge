@@ -1,0 +1,39 @@
+[gd_resource type="SpriteFrames" format=3 uid="uid://xi7v7cy7i1mw"]
+
+[ext_resource type="Texture2D" uid="uid://bsepmh8eohnm5" path="res://assets/board/MarkerSpriteSheet.png" id="1_7x37k"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7kxjm"]
+atlas = ExtResource("1_7x37k")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yarp3"]
+atlas = ExtResource("1_7x37k")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8dlub"]
+atlas = ExtResource("1_7x37k")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kstgd"]
+atlas = ExtResource("1_7x37k")
+region = Rect2(0, 0, 48, 48)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7kxjm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yarp3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8dlub")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kstgd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]

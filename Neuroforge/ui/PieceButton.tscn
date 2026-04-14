@@ -1,13 +1,13 @@
 [gd_scene format=3 uid="uid://b278ignvit3ut"]
 
-[ext_resource type="Script" uid="uid://d1kq5ks4kp4wj" path="res://scenes/ui_elements/PieceButton.cs" id="1_8chlk"]
+[ext_resource type="Script" uid="uid://d1kq5ks4kp4wj" path="res://ui/PieceButton.cs" id="1_8chlk"]
 [ext_resource type="Theme" uid="uid://5l3frbb482sx" path="res://assets/styles/DefaultTheme.tres" id="1_hrbqm"]
 [ext_resource type="Texture2D" uid="uid://bv8bihvx22sjn" path="res://assets/icon.svg" id="2_ud7e2"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hrbqm"]
 
 [node name="PieceButton" type="Button" unique_id=1636165539]
-custom_minimum_size = Vector2(56, 78)
+custom_minimum_size = Vector2(40, 62)
 offset_right = 56.0
 offset_bottom = 78.0
 theme = ExtResource("1_hrbqm")
@@ -20,10 +20,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 5
-theme_override_constants/margin_top = 9
-theme_override_constants/margin_right = 5
-theme_override_constants/margin_bottom = 5
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 4
+theme_override_constants/margin_bottom = 4
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=735085104]
 layout_mode = 2

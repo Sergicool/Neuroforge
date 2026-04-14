@@ -1,5 +1,8 @@
 using Godot;
 
+// Poner en el editor una escala de forma que:
+// X sea multiplo de 16 + 8
+// Y sea multiplo de 16 + 30
 public partial class PieceButton : Button
 {
     private TextureRect _icon;

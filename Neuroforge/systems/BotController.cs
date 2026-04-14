@@ -20,7 +20,7 @@ public class BotController
     }
 
     // Ejecuta el turno del bot: elige una acción aleatoria y la lleva a cabo
-        public async void PlayTurn(GameManager game)
+        public async void PlayTurn(GameScene game)
     {
         var actions = _board.GetAllPossibleActions(PieceOwner.BOT);
  

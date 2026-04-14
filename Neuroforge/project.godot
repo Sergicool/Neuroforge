@@ -30,7 +30,7 @@ project/assembly_name="TFG Tests"
 [file_customization]
 
 folder_colors={
-"res://scenes/ui_elements/": "teal"
+"res://ui/": "teal"
 }
 
 [gui]

@@ -1,5 +1,6 @@
 using Godot;
 using System.Threading.Tasks;
+using static Godot.HttpRequest;
 
 public partial class CombatUI : Control
 {
@@ -27,9 +28,9 @@ public partial class CombatUI : Control
     private static readonly Color COLOR_BG_HIDDEN = new(0, 0, 0, 0);
     private static readonly Color COLOR_BG_VISIBLE = new(0, 0, 0, 0.65f);
 
-    private const float BLINK_HALF = 0.08f;
+    private const float BLINK_HALF = 0.07f;
     private const int BLINK_COUNT = 3;
-    private const int REVEAL_DELAY_MS = 700;
+    private const int REVEAL_DELAY_MS = 300;
 
     private Color _attackerIconColor;
     private Color _defenderIconColor;
@@ -59,6 +60,7 @@ public partial class CombatUI : Control
 
     private void OnBackgroundInput(InputEvent @event)
     {
+        if (_resultLabel.Text == "") return; // Para evitar salir rapidamente sin ver el resultado
         if (_clickTcs == null || _clickTcs.Task.IsCompleted) return;
         if (@event is InputEventMouseButton mb && mb.Pressed && mb.ButtonIndex == MouseButton.Left)
             _clickTcs.TrySetResult(true);

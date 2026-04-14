@@ -1,0 +1,101 @@
+[gd_scene format=3 uid="uid://chpxvag2fuk7p"]
+
+[ext_resource type="Theme" uid="uid://5l3frbb482sx" path="res://assets/styles/DefaultTheme.tres" id="1_x0pcj"]
+[ext_resource type="Script" uid="uid://dvoo85rdfnbte" path="res://ui/EndGameUI.cs" id="2_47wwn"]
+[ext_resource type="StyleBox" uid="uid://tjcegfoo4wit" path="res://assets/styles/ScreenBackground.tres" id="3_0etcm"]
+[ext_resource type="StyleBox" uid="uid://btp23gt0ooehf" path="res://assets/styles/ScreenText.tres" id="4_q5fuq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7l63v"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7l63v"]
+
+[node name="EndGameUI" type="Control" unique_id=617267958]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_x0pcj")
+script = ExtResource("2_47wwn")
+
+[node name="Background" type="Panel" parent="." unique_id=578223150]
+modulate = Color(0, 0, 0, 0.68235296)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_7l63v")
+
+[node name="PopUp" type="Panel" parent="." unique_id=1672649693]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -289.5
+offset_top = -122.5
+offset_right = 289.5
+offset_bottom = 34.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("3_0etcm")
+
+[node name="Label" type="Label" parent="PopUp" unique_id=835846097]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 42
+theme_override_styles/normal = SubResource("StyleBoxEmpty_7l63v")
+text = "Victory"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Panel2" type="Panel" parent="PopUp" unique_id=1772238937]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -277.0
+offset_top = 78.0
+offset_right = 277.0
+offset_bottom = 141.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = ExtResource("4_q5fuq")
+
+[node name="MarginContainer" type="MarginContainer" parent="PopUp/Panel2" unique_id=1655417979]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PopUp/Panel2/MarginContainer" unique_id=801475076]
+layout_mode = 2
+
+[node name="Button" type="Button" parent="PopUp/Panel2/MarginContainer/HBoxContainer" unique_id=641567006]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 32
+text = "Play Again"
+
+[node name="Button2" type="Button" parent="PopUp/Panel2/MarginContainer/HBoxContainer" unique_id=1026907781]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 26
+text = "Return To menu"

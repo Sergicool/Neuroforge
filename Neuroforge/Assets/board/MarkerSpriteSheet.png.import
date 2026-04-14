@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8ht0lo4aylq6"
-path="res://.godot/imported/RedTile.png-e705b68d83cc5705fc3467c11b85b3e5.ctex"
+uid="uid://bsepmh8eohnm5"
+path="res://.godot/imported/MarkerSpriteSheet.png-89e06ea48ddd85c7274719439938c189.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/tile/RedTile.png"
-dest_files=["res://.godot/imported/RedTile.png-e705b68d83cc5705fc3467c11b85b3e5.ctex"]
+source_file="res://assets/board/MarkerSpriteSheet.png"
+dest_files=["res://.godot/imported/MarkerSpriteSheet.png-89e06ea48ddd85c7274719439938c189.ctex"]
 
 [params]
 

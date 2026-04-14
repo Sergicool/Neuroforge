@@ -9,7 +9,7 @@ public partial class DeploymentUI : Control
     public event Action<PieceType> OnPieceSelected;
 
     // Ruta a la escena del botón — ajusta según tu estructura de carpetas
-    private const string PIECE_BUTTON_SCENE = "res://scenes/ui_elements/PieceButton.tscn";
+    private const string PIECE_BUTTON_SCENE = "res://ui/PieceButton.tscn";
 
     private Label _remainingLabel;
     private Button _randomButton;

@@ -108,10 +108,6 @@ public partial class Piece : Node2D
         int y = PlayerOwner == PieceOwner.PLAYER ? 0 : spriteHeight;
 
         _sprite.RegionRect = new Rect2(x, y, spriteWidth, spriteHeight);
-
-        // Escala derivada: la pieza ocupa exactamente una casilla
-        float scale = Board.TILE_SIZE.X / spriteWidth;
-        _sprite.Scale = new Vector2(scale, scale);
     }
 
     // Mueve la pieza visualmente hasta una posición destino

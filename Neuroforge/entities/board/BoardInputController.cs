@@ -5,13 +5,13 @@ using System.Threading.Tasks;
 public class BoardInputController
 {
     private readonly Board _board;
-    private readonly GameManager _game;
+    private readonly GameScene _game;
 
     private Piece _selectedPiece;
     private readonly List<Tile> _highlightedTiles = new();
     private static bool IsValidPiece(Piece piece) => Godot.GodotObject.IsInstanceValid(piece) && piece.IsInsideTree();
 
-    public BoardInputController(Board board, GameManager game)
+    public BoardInputController(Board board, GameScene game)
     {
         _board = board;
         _game  = game;
@@ -20,6 +20,7 @@ public class BoardInputController
     // Punto de entrada: procesa el click sobre una casilla durante la partida
     public async Task HandleTileClick(Tile tile)
     {
+        ClearHighlights();
         if (_selectedPiece != null && !IsValidPiece(_selectedPiece))
         {
             ClearSelection();
@@ -37,7 +38,6 @@ public class BoardInputController
             await ExecuteAction(tile);
             _game.EndTurn();
         }
-
         ClearSelection();
     }
 
@@ -86,12 +86,11 @@ public class BoardInputController
     public void ClearSelection()
     {
         _selectedPiece = null;
-        ClearHighlights();
+        _highlightedTiles.Clear();
     }
 
     private void ClearHighlights()
     {
         foreach (Tile t in _highlightedTiles) t.ClearHighlight();
-        _highlightedTiles.Clear();
     }
 }

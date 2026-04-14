@@ -4,14 +4,14 @@ using System.Collections.Generic;
 public class DeploymentController
 {
     private DeploymentUI _ui;
-    private GameManager  _game;
+    private GameScene  _game;
     private Board        _board;
 
     private readonly Dictionary<PieceType, int> _remainingPieces = new();
     private PieceType? _selectedPieceType;
 
     // Inicializa el controlador con referencias al game manager, tablero e interfaz
-    public void Initialize(GameManager game, Board board, DeploymentUI ui)
+    public void Initialize(GameScene game, Board board, DeploymentUI ui)
     {
         _game  = game;
         _board = board;

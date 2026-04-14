@@ -13,10 +13,10 @@ public partial class Board : Node2D
     private Node2D _tilesManager;
     private Node2D _piecesManager;
 
-    public static readonly Vector2I TILE_SIZE = new(80, 80);
+    public static readonly Vector2I TILE_SIZE = new(48, 48);
     public static float TileScale => TILE_SIZE.X / 16f;
 
-    private GameManager _game;
+    private GameScene _game;
     private CombatUI _combatUI;
 
     // Lógica de selección de piezas delegada a InputController
@@ -39,7 +39,7 @@ public partial class Board : Node2D
     }
 
     // Inicializa el tablero con referencia al game manager
-    public void Initialize(GameManager gameManager)
+    public void Initialize(GameScene gameManager)
     {
         _game  = gameManager;
         _input = new BoardInputController(this, gameManager);

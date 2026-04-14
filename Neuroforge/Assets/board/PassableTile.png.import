@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ee4jyrl1yhse"
-path="res://.godot/imported/BlueTile.png-c2cd06f71af9a1319dbea4ec088750e2.ctex"
+uid="uid://dutbljyih7wcu"
+path="res://.godot/imported/PassableTile.png-050fb576ee8b4f91d3cfa45b9496e47d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/tile/BlueTile.png"
-dest_files=["res://.godot/imported/BlueTile.png-c2cd06f71af9a1319dbea4ec088750e2.ctex"]
+source_file="res://assets/board/PassableTile.png"
+dest_files=["res://.godot/imported/PassableTile.png-050fb576ee8b4f91d3cfa45b9496e47d.ctex"]
 
 [params]
 

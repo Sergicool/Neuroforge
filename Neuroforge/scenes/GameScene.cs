@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Threading.Tasks;
 
-public partial class GameManager : Node
+public partial class GameScene : Node
 {
     private const string BOARD_SCENE_PATH = "res://entities/board/Board.tscn";
 
@@ -12,7 +12,7 @@ public partial class GameManager : Node
     private readonly Color _botColor = new Color(1f, 0.839f, 0.49f);
     private readonly Color _colorHidden = new Color(1f, 1f, 1f, 0f);
 
-    public static GameManager Instance { get; private set; }
+    public static GameScene Instance { get; private set; }
 
     private Board _board;
     private Camera2D _camera;
@@ -20,9 +20,15 @@ public partial class GameManager : Node
     private DeploymentController _deployment;
     private RemainingPiecesUI _remainingPiecesUI;
     private CombatUI _combatUI;
+    private Button _pauseButton;
+    private PauseMenu _pauseMenu;
+    private bool _isPaused = false;
+    private EndGameUI _endGameUI;
+
     private BotController _bot;
     private TextureRect _turnIcon;
     private Panel _turnIndicarotUI;
+
     public PieceOwner CurrentTurn { get; private set; } = PieceOwner.PLAYER;
     public GameState State { get; private set; } = GameState.WAITING_INPUT;
     public void SetState(GameState state) => State = state;
@@ -31,15 +37,24 @@ public partial class GameManager : Node
     public override void _Ready()
     {
         Instance = this;
+        ProcessMode = ProcessModeEnum.Always;
 
         SpawnBoard();
-        SpawnCamera();
+
+        _camera = GetNode<Camera2D>("Camera2D");
+        _camera.Position = _board.GetBoardCenter();
 
         _deploymentUI = GetNode<DeploymentUI>("CanvasLayer/DeploymentUI");
         _remainingPiecesUI = GetNode<RemainingPiecesUI>("CanvasLayer/RemainingPiecesUI");
         _combatUI = GetNode<CombatUI>("CanvasLayer/CombatUI");
         _turnIcon = GetNode<TextureRect>("CanvasLayer/PanelContainer/TextureRect");
         _turnIndicarotUI = GetNode<Panel>("CanvasLayer/PanelContainer");
+        _pauseButton = GetNode<Button>("CanvasLayer/PauseButton");
+        _pauseButton.Pressed += PauseGame;
+        _pauseMenu = GetNode<PauseMenu>("CanvasLayer/PauseMenu");
+        _pauseMenu.Visible = false;
+        _pauseMenu.Init(this);
+        _endGameUI = GetNode<EndGameUI>("CanvasLayer/EndGameUI"); 
 
         _deployment = new DeploymentController();
         _deployment.Initialize(this, _board, _deploymentUI);
@@ -98,7 +113,7 @@ public partial class GameManager : Node
 
     private async Task BlinkTurnIcon(PieceOwner newTurn)
     {
-        const float HALF = 0.08f;
+        const float HALF = 0.05f;
 
         Texture2D newTexture = newTurn == PieceOwner.PLAYER ? _playerIcon : _botIcon;
         Color newColor = newTurn == PieceOwner.PLAYER ? _playerColor : _botColor;
@@ -119,33 +134,66 @@ public partial class GameManager : Node
 
     private void CheckGameEnd()
     {
+        string endMessage = "";
+        bool isGameOver = false;
+        int gameResult = 0; // 0: Lose, 1: Win, 2: Draw
+
+        // Chequeo de Energy cores
         if (!_board.HasEnergyCore(PieceOwner.PLAYER))
         {
-            GD.Print("GAME OVER: PLAYER perdió su ENERGY CORE. Gana BOT.");
-            State = GameState.GAME_OVER;
-            return;
+            endMessage = "DEFEAT!\nYour energy core has been destroyed";
+            gameResult = 0;
+            isGameOver = true;
         }
-
-        if (!_board.HasEnergyCore(PieceOwner.BOT))
+        else if (!_board.HasEnergyCore(PieceOwner.BOT))
         {
-            GD.Print("GAME OVER: BOT perdió su ENERGY CORE. Gana PLAYER.");
-            State = GameState.GAME_OVER;
-            return;
+            endMessage = "VICTORY!\nYou have destroyed the enemy's energy core";
+            gameResult = 1;
+            isGameOver = true;
         }
 
-        bool currentHasMoves = _board.HasAnyMoves(CurrentTurn);
-        if (!currentHasMoves)
+        // Chequeo de Movimientos Bloqueados
+        if (!isGameOver)
         {
-            PieceOwner opponent = CurrentTurn == PieceOwner.PLAYER ? PieceOwner.BOT : PieceOwner.PLAYER;
-            bool opponentHasMoves = _board.HasAnyMoves(opponent);
+            bool currentHasMoves = _board.HasAnyMoves(CurrentTurn);
+            if (!currentHasMoves)
+            {
+                PieceOwner opponent = (CurrentTurn == PieceOwner.PLAYER) ? PieceOwner.BOT : PieceOwner.PLAYER;
+                bool opponentHasMoves = _board.HasAnyMoves(opponent);
 
-            string msg = opponentHasMoves
-                ? $"GAME OVER: {CurrentTurn} no tiene movimientos. Gana {opponent}."
-                : "GAME OVER: Ningún bando tiene movimientos. Empate.";
-
-            GD.Print(msg);
-            State = GameState.GAME_OVER;
+                if (opponentHasMoves)
+                {
+                    if (CurrentTurn == PieceOwner.BOT)
+                    {
+                        endMessage = "VICTORY!\nThe opponent has run out of moves.";
+                        gameResult = 1;
+                    }
+                    else
+                    {
+                        endMessage = "DEFEAT!\nYou've run out of moves";
+                        gameResult = 0;
+                    }
+                }
+                else
+                {
+                    endMessage = "DRAW!\nNo one has any pieces left to move";
+                    gameResult = 2;
+                }
+                isGameOver = true;
+            }
         }
+
+        if (isGameOver)
+        {
+            TriggerEndGame(endMessage, gameResult);
+        }
+    }
+
+    private void TriggerEndGame(string message, int result)
+    {
+        State = GameState.GAME_OVER;
+        GetTree().Paused = true;
+        _endGameUI.Show(message, result);
     }
 
     public void RefreshRemainingPiecesUI()
@@ -164,14 +212,47 @@ public partial class GameManager : Node
         _board.Initialize(this);
     }
 
-    private void SpawnCamera()
+    // ==================== Input ====================
+
+    public override void _UnhandledInput(InputEvent @event)
     {
-        _camera = new Camera2D
+        if (@event.IsActionPressed("ui_cancel"))
         {
-            Zoom = new Godot.Vector2(0.8f, 0.8f),
-            Position = _board.GetBoardCenter() + new Vector2(-90f, 0),
-            Enabled = true
-        };
-        AddChild(_camera);
+            TryTogglePause();
+        }
     }
+
+    private void TryTogglePause()
+    {
+        if (_isPaused)
+        {
+            ResumeGame();
+            return;
+        }
+
+        if (!CanPause())
+            return;
+
+        PauseGame();
+    }
+
+    private bool CanPause()
+    {
+        return State == GameState.WAITING_INPUT || State == GameState.DEPLOYMENT;
+    }
+
+    private void PauseGame()
+    {
+        _isPaused = true;
+        GetTree().Paused = true;
+        _ = _pauseMenu.ShowMenu();
+    }
+
+    public void ResumeGame()
+    {
+        _isPaused = false;
+        GetTree().Paused = false;
+        _ = _pauseMenu.HideMenu();
+    }
+
 }

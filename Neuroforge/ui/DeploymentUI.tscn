@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d0l10wogfc7rc"]
 
-[ext_resource type="Script" uid="uid://b1u5cyxj5mo5h" path="res://scenes/ui_elements/DeploymentUI.cs" id="1_3y2vr"]
+[ext_resource type="Script" uid="uid://b1u5cyxj5mo5h" path="res://ui/DeploymentUI.cs" id="1_3y2vr"]
 [ext_resource type="StyleBox" uid="uid://d18i0sxg56l1v" path="res://assets/styles/PanelBackground.tres" id="1_2038p"]
 [ext_resource type="Theme" uid="uid://5l3frbb482sx" path="res://assets/styles/DefaultTheme.tres" id="4_6n2p2"]
 [ext_resource type="StyleBox" uid="uid://bdxgr8713bpqu" path="res://assets/styles/PanelBorder.tres" id="4_r3fl2"]
@@ -60,7 +60,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 6
 theme_override_constants/h_separation = 8
 theme_override_constants/v_separation = 8
-columns = 3
+columns = 4
 
 [node name="RandomButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=160660926]
 layout_mode = 2

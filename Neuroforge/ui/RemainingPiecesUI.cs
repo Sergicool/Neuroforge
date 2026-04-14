@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public partial class RemainingPiecesUI : Control
 {
-    private const string PIECE_BUTTON_SCENE = "res://scenes/ui_elements/PieceButton.tscn";
+    private const string PIECE_BUTTON_SCENE = "res://ui/PieceButton.tscn";
 
     private GridContainer _botGrid;
     private GridContainer _playerGrid;

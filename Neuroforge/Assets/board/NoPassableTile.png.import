@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dlld3e1jkxocp"
-path="res://.godot/imported/GreyTile.png-ff90d989356f70daf0fc82c0a5af96a6.ctex"
+uid="uid://yj14rgfjcrqf"
+path="res://.godot/imported/NoPassableTile.png-d865d09c325f4e3b42a0dda257e8e901.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/tile/GreyTile.png"
-dest_files=["res://.godot/imported/GreyTile.png-ff90d989356f70daf0fc82c0a5af96a6.ctex"]
+source_file="res://assets/board/NoPassableTile.png"
+dest_files=["res://.godot/imported/NoPassableTile.png-d865d09c325f4e3b42a0dda257e8e901.ctex"]
 
 [params]
 
