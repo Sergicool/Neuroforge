@@ -61,8 +61,7 @@ theme_override_constants/separation = 10
 [node name="PlayButton" type="Button" parent="PopUp/MarginContainer/VBoxContainer" unique_id=545789163]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/outline_size = 6
-theme_override_font_sizes/font_size = 26
+theme_override_font_sizes/font_size = 32
 text = "Resume"
 
 [node name="RemainingLabel" type="Label" parent="PopUp/MarginContainer/VBoxContainer/PlayButton" unique_id=946662481]
@@ -71,7 +70,7 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -203.0
-offset_top = -124.0
+offset_top = -133.0
 offset_right = 203.0
 offset_bottom = -20.0
 grow_horizontal = 2
@@ -80,18 +79,16 @@ theme_override_font_sizes/font_size = 48
 theme_override_styles/normal = ExtResource("4_ptdjk")
 text = "Pause"
 horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="RulesButton" type="Button" parent="PopUp/MarginContainer/VBoxContainer" unique_id=168947438]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/outline_size = 6
-theme_override_font_sizes/font_size = 26
+theme_override_font_sizes/font_size = 32
 text = "Rules"
 
 [node name="ExitButton" type="Button" parent="PopUp/MarginContainer/VBoxContainer" unique_id=984851177]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/outline_size = 6
-theme_override_font_sizes/font_size = 26
+theme_override_font_sizes/font_size = 32
 text = "Return to menu"
+expand_icon = true

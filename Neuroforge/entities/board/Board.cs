@@ -4,6 +4,8 @@ using System.Threading.Tasks;
 
 public partial class Board : Node2D
 {
+    [Export] private TileMapLayer _mapLayer;
+
     private const string TILE_SCENE_PATH  = "res://entities/tile/Tile.tscn";
     private const string PIECE_SCENE_PATH = "res://entities/pieces/Piece.tscn";
 
@@ -325,34 +327,35 @@ public partial class Board : Node2D
 
     private void GenerateBoard()
     {
-        using var file = FileAccess.Open("res://entities/board/layouts/BoardLayout.txt", FileAccess.ModeFlags.Read);
-        int y = 0;
+        var usedCells = _mapLayer.GetUsedCells();
 
-        while (!file.EofReached())
+        foreach (Vector2I coords in usedCells)
         {
-            string line = file.GetLine().Trim();
-            if (line.Length == 0) continue;
+            Vector2I atlasCoords = _mapLayer.GetCellAtlasCoords(coords);
 
-            for (int x = 0; x < line.Length; x++)
-            {
-                Tile tile = _tileScene.Instantiate<Tile>();
-                tile.Initialize(this);
-                tile.GridPosition = new Vector2I(x, y);
-                tile.SetType(CharToTileType(line[x]));
-                tile.Position = new Vector2(x * TILE_SIZE.X, y * TILE_SIZE.Y);
+            Tile tile = _tileScene.Instantiate<Tile>();
+            tile.Initialize(this);
+            tile.GridPosition = coords;
+            tile.SetType(AtlasToTileType(atlasCoords));
 
-                _tilesManager.AddChild(tile);
-                _grid[tile.GridPosition] = tile;
-            }
-            y++;
+            // MapToLocal nos da el centro de la celda en coordenadas del mundo
+            tile.Position = _mapLayer.MapToLocal(coords);
+
+            _tilesManager.AddChild(tile);
+            _grid[coords] = tile;
         }
     }
 
-    private TileType CharToTileType(char c) => c switch
+    private TileType AtlasToTileType(Vector2I atlasCoords)
     {
-        'X' => TileType.NO_PASSABLE,
-        'P' => TileType.PLAYER_DEPLOYMENT,
-        'B' => TileType.BOT_DEPLOYMENT,
-        _   => TileType.PASSABLE
-    };
+        // Aquí defines tus "4 posiciones específicas" de la primera fila
+        return atlasCoords switch
+        {
+            { X: 0, Y: 0 } => TileType.PASSABLE,
+            { X: 1, Y: 0 } => TileType.NO_PASSABLE,
+            { X: 2, Y: 0 } => TileType.PLAYER_DEPLOYMENT,
+            { X: 3, Y: 0 } => TileType.BOT_DEPLOYMENT,
+            _ => TileType.NO_PASSABLE // Por defecto
+        };
+    }
 }

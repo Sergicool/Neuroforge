@@ -15,7 +15,6 @@ public partial class GameScene : Node
     public static GameScene Instance { get; private set; }
 
     private Board _board;
-    private Camera2D _camera;
     private DeploymentUI _deploymentUI;
     private DeploymentController _deployment;
     private RemainingPiecesUI _remainingPiecesUI;
@@ -40,9 +39,6 @@ public partial class GameScene : Node
         ProcessMode = ProcessModeEnum.Always;
 
         SpawnBoard();
-
-        _camera = GetNode<Camera2D>("Camera2D");
-        _camera.Position = _board.GetBoardCenter();
 
         _deploymentUI = GetNode<DeploymentUI>("CanvasLayer/DeploymentUI");
         _remainingPiecesUI = GetNode<RemainingPiecesUI>("CanvasLayer/RemainingPiecesUI");

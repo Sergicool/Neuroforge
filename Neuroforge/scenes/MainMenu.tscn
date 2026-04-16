@@ -4,6 +4,9 @@
 [ext_resource type="StyleBox" uid="uid://btp23gt0ooehf" path="res://assets/styles/ScreenText.tres" id="2_0ykhv"]
 [ext_resource type="StyleBox" uid="uid://tjcegfoo4wit" path="res://assets/styles/ScreenBackground.tres" id="2_2wh52"]
 [ext_resource type="Script" uid="uid://b5643cqgointl" path="res://scenes/MainMenu.cs" id="2_ow34m"]
+[ext_resource type="Texture2D" uid="uid://cvb8hxxjnssxi" path="res://assets/icons/PlayIcon.png" id="5_l72w3"]
+[ext_resource type="Texture2D" uid="uid://bv4pbh4ce6388" path="res://assets/icons/RulesIcon.png" id="6_ucygd"]
+[ext_resource type="Texture2D" uid="uid://bx2acahh5t52f" path="res://assets/icons/ExitIcon.png" id="7_mipys"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ow34m"]
 
@@ -22,14 +25,15 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -306.0
+offset_left = -507.0
 offset_top = 128.0
-offset_right = 298.0
+offset_right = -73.0
 offset_bottom = 248.0
 grow_horizontal = 2
 theme_override_styles/panel = ExtResource("2_2wh52")
 
 [node name="Title" type="Label" parent="TitlePanel" unique_id=783250757]
+modulate = Color(0.68400395, 1, 0.95507187, 1)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -42,10 +46,10 @@ offset_right = 7.5
 offset_bottom = 17.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/outline_size = 8
+theme_override_constants/outline_size = 0
 theme_override_font_sizes/font_size = 48
 theme_override_styles/normal = SubResource("StyleBoxEmpty_ow34m")
-text = "NEUROFORGE"
+text = "Neuroforge"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -56,10 +60,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -200.0
+offset_left = -407.0
 offset_top = -76.0
-offset_right = 200.0
-offset_bottom = 172.0
+offset_right = -165.0
+offset_bottom = 166.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = ExtResource("2_0ykhv")
@@ -83,20 +87,32 @@ theme_override_constants/separation = 10
 [node name="PlayButton" type="Button" parent="ButtonsPanel/MarginContainer/VBoxContainer" unique_id=1795021600]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/outline_size = 6
-theme_override_font_sizes/font_size = 28
+theme_override_constants/h_separation = 10
+theme_override_constants/icon_max_width = 32
+theme_override_font_sizes/font_size = 32
 text = "Play"
+icon = ExtResource("5_l72w3")
+alignment = 0
+expand_icon = true
 
 [node name="RulesButton" type="Button" parent="ButtonsPanel/MarginContainer/VBoxContainer" unique_id=1354232600]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/outline_size = 6
-theme_override_font_sizes/font_size = 28
+theme_override_constants/h_separation = 10
+theme_override_constants/icon_max_width = 32
+theme_override_font_sizes/font_size = 32
 text = "Rules"
+icon = ExtResource("6_ucygd")
+alignment = 0
+expand_icon = true
 
 [node name="ExitButton" type="Button" parent="ButtonsPanel/MarginContainer/VBoxContainer" unique_id=1772577512]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/outline_size = 6
-theme_override_font_sizes/font_size = 28
+theme_override_constants/h_separation = 10
+theme_override_constants/icon_max_width = 32
+theme_override_font_sizes/font_size = 32
 text = "Exit"
+icon = ExtResource("7_mipys")
+alignment = 0
+expand_icon = true

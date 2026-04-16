@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://grgvuwuv1nlx"]
 
 [ext_resource type="Script" uid="uid://bjysqnrahr7jq" path="res://entities/tile/Tile.cs" id="1_fc4j8"]
-[ext_resource type="Texture2D" uid="uid://dutbljyih7wcu" path="res://assets/board/PassableTile.png" id="2_gxcy2"]
+[ext_resource type="Texture2D" uid="uid://cpbd0xskpx1by" path="res://assets/board/BoardSpriteSheet.png" id="2_2u6ca"]
 [ext_resource type="SpriteFrames" uid="uid://xi7v7cy7i1mw" path="res://entities/tile/MarkerSpriteFrames.tres" id="3_2u6ca"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xbpwq"]
@@ -13,9 +13,12 @@ script = ExtResource("1_fc4j8")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1038058569]
 shape = SubResource("RectangleShape2D_xbpwq")
 
-[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1583298928]
+[node name="Sprite2D (Debug)" type="Sprite2D" parent="." unique_id=1583298928]
+visible = false
 texture_filter = 1
-texture = ExtResource("2_gxcy2")
+texture = ExtResource("2_2u6ca")
+region_enabled = true
+region_rect = Rect2(0, 0, 48, 48)
 
 [node name="Marker" type="AnimatedSprite2D" parent="." unique_id=1450125609]
 z_index = 2

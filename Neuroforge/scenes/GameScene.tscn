@@ -33,9 +33,9 @@ anchor_left = 1.0
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_left = -183.0
+offset_left = -235.0
 offset_top = -63.0
-offset_right = -49.125244
+offset_right = -101.125244
 offset_bottom = 63.0
 grow_horizontal = 0
 grow_vertical = 2
@@ -75,15 +75,15 @@ grow_vertical = 2
 texture = ExtResource("4_xhjei")
 
 [node name="DeploymentUI" parent="CanvasLayer" unique_id=1994863403 instance=ExtResource("5_6vvcf")]
-offset_left = -560.0
+offset_left = -535.0
 offset_top = -82.0
-offset_right = -328.0
+offset_right = -303.0
 offset_bottom = 68.0
 
 [node name="RemainingPiecesUI" parent="CanvasLayer" unique_id=1224883348 instance=ExtResource("6_cr6v8")]
-offset_left = -546.0
+offset_left = -521.0
 offset_top = -70.0
-offset_right = -342.0
+offset_right = -317.0
 
 [node name="CombatUI" parent="CanvasLayer" unique_id=1511178520 instance=ExtResource("7_f43ej")]
 visible = false

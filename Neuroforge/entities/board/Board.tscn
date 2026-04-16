@@ -1,6 +1,10 @@
 [gd_scene format=3 uid="uid://bwm3jngkr8b5v"]
 
 [ext_resource type="Script" uid="uid://biqlb57sp72f3" path="res://entities/board/Board.cs" id="1_oa5e1"]
+[ext_resource type="PackedScene" uid="uid://mgfishieaa7j" path="res://entities/board/layouts/BoardStandar.tscn" id="2_l6yca"]
 
-[node name="Board" type="Node2D" unique_id=1349807744]
+[node name="Board" type="Node2D" unique_id=1349807744 node_paths=PackedStringArray("_mapLayer")]
 script = ExtResource("1_oa5e1")
+_mapLayer = NodePath("BoardStandar")
+
+[node name="BoardStandar" parent="." unique_id=515359995 instance=ExtResource("2_l6yca")]

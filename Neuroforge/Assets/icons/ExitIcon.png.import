@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dutbljyih7wcu"
-path="res://.godot/imported/PassableTile.png-050fb576ee8b4f91d3cfa45b9496e47d.ctex"
+uid="uid://bx2acahh5t52f"
+path="res://.godot/imported/ExitIcon.png-322253616d0bf3c26da1e566d5db1db3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/board/PassableTile.png"
-dest_files=["res://.godot/imported/PassableTile.png-050fb576ee8b4f91d3cfa45b9496e47d.ctex"]
+source_file="res://assets/icons/ExitIcon.png"
+dest_files=["res://.godot/imported/ExitIcon.png-322253616d0bf3c26da1e566d5db1db3.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://yj14rgfjcrqf"
-path="res://.godot/imported/NoPassableTile.png-d865d09c325f4e3b42a0dda257e8e901.ctex"
+uid="uid://cvb8hxxjnssxi"
+path="res://.godot/imported/PlayIcon.png-4d3e01d9449f1d0de7d9923feab3d586.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/board/NoPassableTile.png"
-dest_files=["res://.godot/imported/NoPassableTile.png-d865d09c325f4e3b42a0dda257e8e901.ctex"]
+source_file="res://assets/icons/PlayIcon.png"
+dest_files=["res://.godot/imported/PlayIcon.png-4d3e01d9449f1d0de7d9923feab3d586.ctex"]
 
 [params]
 
