@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cnl18tgns0edh"]
 
 [ext_resource type="Script" uid="uid://l5hy8rx568au" path="res://entities/pieces/Piece.cs" id="1_4lrql"]
-[ext_resource type="Texture2D" uid="uid://b61x2x6y0wrwl" path="res://entities/pieces/AtlasPiezas.png" id="2_4lrql"]
+[ext_resource type="Texture2D" uid="uid://b61x2x6y0wrwl" path="res://assets/board/PiecesAtlas.png" id="2_4lrql"]
 
 [node name="Piece" type="Node2D" unique_id=754140522]
 script = ExtResource("1_4lrql")

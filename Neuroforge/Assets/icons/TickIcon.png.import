@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b61x2x6y0wrwl"
-path="res://.godot/imported/AtlasPiezas.png-a1b19b9e2aa28c279e4944d8ef1d44d4.ctex"
+uid="uid://bj3sxwhqt4siy"
+path="res://.godot/imported/TickIcon.png-67c288e065465f86ea02cbb98e733ab1.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://entities/pieces/AtlasPiezas.png"
-dest_files=["res://.godot/imported/AtlasPiezas.png-a1b19b9e2aa28c279e4944d8ef1d44d4.ctex"]
+source_file="res://assets/icons/TickIcon.png"
+dest_files=["res://.godot/imported/TickIcon.png-67c288e065465f86ea02cbb98e733ab1.ctex"]
 
 [params]
 

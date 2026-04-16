@@ -1,0 +1,601 @@
+[gd_scene format=3 uid="uid://258k7vtgqkj2"]
+
+[ext_resource type="Theme" uid="uid://5l3frbb482sx" path="res://assets/styles/DefaultTheme.tres" id="1_67rkp"]
+[ext_resource type="Texture2D" uid="uid://dytj15tpopunc" path="res://assets/icons/LeftArrowIcon.png" id="2_smjmi"]
+[ext_resource type="Texture2D" uid="uid://b61x2x6y0wrwl" path="res://assets/board/PiecesAtlas.png" id="3_3f65f"]
+[ext_resource type="Texture2D" uid="uid://cpbd0xskpx1by" path="res://assets/board/BoardSpriteSheet.png" id="4_3j4i5"]
+[ext_resource type="Texture2D" uid="uid://bj3sxwhqt4siy" path="res://assets/icons/TickIcon.png" id="5_qtll2"]
+[ext_resource type="Texture2D" uid="uid://c3x8xjtgaxkyp" path="res://assets/icons/CrossIcon.png" id="6_2aaax"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fswxo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_smjmi"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3f65f"]
+atlas = ExtResource("3_3f65f")
+region = Rect2(384, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_70de8"]
+atlas = ExtResource("3_3f65f")
+region = Rect2(384, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6h1ot"]
+atlas = ExtResource("3_3f65f")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ncap"]
+atlas = ExtResource("3_3f65f")
+region = Rect2(128, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tbltk"]
+atlas = ExtResource("4_3j4i5")
+region = Rect2(0, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hs0h6"]
+atlas = ExtResource("3_3f65f")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_28n4c"]
+atlas = ExtResource("4_3j4i5")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_alw0o"]
+atlas = ExtResource("4_3j4i5")
+region = Rect2(48, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_656dg"]
+atlas = ExtResource("4_3j4i5")
+region = Rect2(96, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1jlss"]
+atlas = ExtResource("4_3j4i5")
+region = Rect2(144, 0, 48, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f06um"]
+atlas = ExtResource("3_3f65f")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ck6xp"]
+atlas = ExtResource("3_3f65f")
+region = Rect2(160, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3j4i5"]
+atlas = ExtResource("3_3f65f")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qtll2"]
+atlas = ExtResource("3_3f65f")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2aaax"]
+atlas = ExtResource("3_3f65f")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3i0l2"]
+atlas = ExtResource("3_3f65f")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yrnu3"]
+atlas = ExtResource("3_3f65f")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hdmxa"]
+atlas = ExtResource("3_3f65f")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hsnq3"]
+atlas = ExtResource("3_3f65f")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oo82t"]
+atlas = ExtResource("3_3f65f")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_73q5t"]
+atlas = ExtResource("3_3f65f")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hhp5e"]
+atlas = ExtResource("3_3f65f")
+region = Rect2(320, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m88yg"]
+atlas = ExtResource("3_3f65f")
+region = Rect2(352, 0, 32, 32)
+
+[node name="RulesScene" type="Control" unique_id=247626373]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="Panel" parent="." unique_id=1615807102]
+modulate = Color(0, 0, 0, 0.68235296)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fswxo")
+
+[node name="BackButton" type="Button" parent="." unique_id=1406849834]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 11.0
+offset_right = 122.0
+offset_bottom = 40.0
+theme = ExtResource("1_67rkp")
+text = "Go Back"
+icon = ExtResource("2_smjmi")
+
+[node name="TabContainer" type="TabContainer" parent="." unique_id=1846786732]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 65.0
+offset_top = 31.0
+offset_right = -65.0
+offset_bottom = -47.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_67rkp")
+theme_override_constants/tab_separation = 0
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 20
+tab_alignment = 1
+current_tab = 1
+tab_0/title = " Objective "
+tab_1/title = " Board "
+tab_2/title = " Pieces "
+
+[node name="Tab1" type="Panel" parent="TabContainer" unique_id=1043312812]
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_smjmi")
+metadata/_tab_index = 0
+metadata/_tab_name = " Objective "
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Tab1" unique_id=1671890938]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 19.0
+offset_top = 11.0
+offset_right = -14.0
+offset_bottom = 55.0
+grow_horizontal = 2
+size_flags_vertical = 0
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/normal_font_size = 20
+text = "Commander, you have an army of 40 units. Your main objective is to destroy the enemy Energy Core or leave him without any possible movements."
+fit_content = true
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="TabContainer/Tab1" unique_id=1220908717]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 19.0
+offset_top = 125.0
+offset_right = -4.0
+offset_bottom = 269.0
+grow_horizontal = 2
+size_flags_vertical = 0
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/normal_font_size = 20
+text = "Important to know:
+	- The game is turn-based. You can only perform one action per turn, attack or move.
+	- The identities of your pieces will be unknown to the enemy, just as you will not know theirs. Their identities will be revealed once they enter in combat."
+fit_content = true
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Tab1" unique_id=1106262532]
+layout_mode = 0
+offset_left = 148.0
+offset_top = 363.0
+offset_right = 180.0
+offset_bottom = 395.0
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_3f65f")
+
+[node name="TextureRect2" type="TextureRect" parent="TabContainer/Tab1" unique_id=281749090]
+layout_mode = 0
+offset_left = 228.0
+offset_top = 363.0
+offset_right = 260.0
+offset_bottom = 395.0
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_70de8")
+
+[node name="Arrow" type="TextureRect" parent="TabContainer/Tab1" unique_id=78538648]
+layout_mode = 0
+offset_left = 317.0
+offset_top = 363.0
+offset_right = 349.0
+offset_bottom = 395.0
+scale = Vector2(2, 2)
+texture = ExtResource("2_smjmi")
+flip_h = true
+
+[node name="Label3" type="Label" parent="TabContainer/Tab1" unique_id=324478050]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 399.0
+offset_top = 370.0
+offset_right = -412.0
+offset_bottom = 420.0
+grow_horizontal = 2
+size_flags_vertical = 0
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 32
+text = "Combat"
+horizontal_alignment = 1
+
+[node name="Arrow2" type="TextureRect" parent="TabContainer/Tab1" unique_id=2058226409]
+layout_mode = 0
+offset_left = 583.0
+offset_top = 363.0
+offset_right = 615.0
+offset_bottom = 395.0
+scale = Vector2(2, 2)
+texture = ExtResource("2_smjmi")
+flip_h = true
+
+[node name="TextureRect3" type="TextureRect" parent="TabContainer/Tab1" unique_id=1145910416]
+layout_mode = 0
+offset_left = 670.0
+offset_top = 363.0
+offset_right = 702.0
+offset_bottom = 395.0
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_6h1ot")
+
+[node name="TextureRect4" type="TextureRect" parent="TabContainer/Tab1" unique_id=1056506125]
+layout_mode = 0
+offset_left = 750.0
+offset_top = 363.0
+offset_right = 782.0
+offset_bottom = 395.0
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_6ncap")
+
+[node name="Tab2" type="Panel" parent="TabContainer" unique_id=1438035175]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_smjmi")
+metadata/_tab_index = 1
+metadata/_tab_name = " Board "
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Tab2" unique_id=547062669]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 19.0
+offset_top = 11.0
+offset_right = 6.0
+offset_bottom = 77.0
+grow_horizontal = 2
+size_flags_vertical = 0
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/normal_font_size = 20
+text = "At the start, you must place your pieces on the designated tiles. Once your placement is confirmed, the enemy will do the same, and the game will begin."
+fit_content = true
+
+[node name="Label3" type="Label" parent="TabContainer/Tab2" unique_id=1945888967]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -76.0
+offset_top = -153.0
+offset_right = 76.0
+offset_bottom = -103.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 0
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 32
+text = "Types of Tiles"
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="TabContainer/Tab2" unique_id=924782190]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -416.0
+offset_top = -54.0
+offset_right = -191.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 0
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 24
+text = "Transitable"
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="TabContainer/Tab2" unique_id=2118968480]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -113.0
+offset_top = -54.0
+offset_right = 113.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 0
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 24
+text = "Untransitable"
+horizontal_alignment = 1
+
+[node name="Label6" type="Label" parent="TabContainer/Tab2" unique_id=1699556810]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 201.0
+offset_top = -54.0
+offset_right = 426.0
+offset_bottom = -12.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 0
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/font_size = 24
+text = "Deployment"
+horizontal_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Tab2" unique_id=1916317874]
+layout_mode = 0
+offset_left = 73.0
+offset_top = 262.0
+offset_right = 121.0
+offset_bottom = 310.0
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_tbltk")
+
+[node name="TextureRect2" type="TextureRect" parent="TabContainer/Tab2" unique_id=667939927]
+layout_mode = 0
+offset_left = 198.0
+offset_top = 262.0
+offset_right = 246.0
+offset_bottom = 310.0
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_tbltk")
+
+[node name="TextureRect7" type="TextureRect" parent="TabContainer/Tab2/TextureRect2" unique_id=945836876]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_hs0h6")
+
+[node name="TextureRect5" type="TextureRect" parent="TabContainer/Tab2" unique_id=616235305]
+modulate = Color(0, 1, 0.024491787, 1)
+layout_mode = 0
+offset_left = 221.0
+offset_top = 388.0
+offset_right = 269.0
+offset_bottom = 436.0
+texture = ExtResource("5_qtll2")
+
+[node name="TextureRect3" type="TextureRect" parent="TabContainer/Tab2" unique_id=1779453165]
+layout_mode = 0
+offset_left = 381.0
+offset_top = 262.0
+offset_right = 429.0
+offset_bottom = 310.0
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_28n4c")
+
+[node name="TextureRect4" type="TextureRect" parent="TabContainer/Tab2" unique_id=377353488]
+layout_mode = 0
+offset_left = 506.0
+offset_top = 262.0
+offset_right = 554.0
+offset_bottom = 310.0
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_alw0o")
+
+[node name="TextureRect7" type="TextureRect" parent="TabContainer/Tab2/TextureRect4" unique_id=1787790808]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_hs0h6")
+
+[node name="TextureRect6" type="TextureRect" parent="TabContainer/Tab2" unique_id=1687736700]
+modulate = Color(1, 0.006200731, 0, 1)
+layout_mode = 0
+offset_left = 531.0
+offset_top = 388.0
+offset_right = 579.0
+offset_bottom = 436.0
+texture = ExtResource("6_2aaax")
+
+[node name="TextureRect7" type="TextureRect" parent="TabContainer/Tab2" unique_id=772060314]
+layout_mode = 0
+offset_left = 666.0
+offset_top = 262.0
+offset_right = 714.0
+offset_bottom = 310.0
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_656dg")
+
+[node name="TextureRect8" type="TextureRect" parent="TabContainer/Tab2" unique_id=1803654537]
+layout_mode = 0
+offset_left = 666.0
+offset_top = 366.0
+offset_right = 714.0
+offset_bottom = 414.0
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_1jlss")
+
+[node name="TextureRect9" type="TextureRect" parent="TabContainer/Tab2" unique_id=445691521]
+layout_mode = 0
+offset_left = 841.0
+offset_top = 262.0
+offset_right = 889.0
+offset_bottom = 310.0
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_656dg")
+
+[node name="TextureRect3" type="TextureRect" parent="TabContainer/Tab2/TextureRect9" unique_id=1588944946]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_f06um")
+
+[node name="TextureRect10" type="TextureRect" parent="TabContainer/Tab2" unique_id=974851275]
+layout_mode = 0
+offset_left = 841.0
+offset_top = 366.0
+offset_right = 889.0
+offset_bottom = 414.0
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_1jlss")
+
+[node name="TextureRect3" type="TextureRect" parent="TabContainer/Tab2/TextureRect10" unique_id=1956809777]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -16.0
+offset_right = 16.0
+offset_bottom = 16.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("AtlasTexture_ck6xp")
+
+[node name="Arrow" type="TextureRect" parent="TabContainer/Tab2" unique_id=246428785]
+layout_mode = 0
+offset_left = 768.0
+offset_top = 279.0
+offset_right = 800.0
+offset_bottom = 311.0
+scale = Vector2(2, 2)
+texture = ExtResource("2_smjmi")
+flip_h = true
+
+[node name="Arrow2" type="TextureRect" parent="TabContainer/Tab2" unique_id=1621915265]
+layout_mode = 0
+offset_left = 768.0
+offset_top = 381.0
+offset_right = 800.0
+offset_bottom = 413.0
+scale = Vector2(2, 2)
+texture = ExtResource("2_smjmi")
+flip_h = true
+
+[node name="Tab5" type="Panel" parent="TabContainer" unique_id=1683429640]
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_smjmi")
+metadata/_tab_index = 2
+metadata/_tab_name = " Pieces "
+
+[node name="GridContainer" type="GridContainer" parent="TabContainer/Tab5" unique_id=250312335]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -209.0
+offset_top = -103.0
+offset_right = 3.0
+offset_bottom = -35.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+columns = 6
+
+[node name="TextureRect" type="TextureRect" parent="TabContainer/Tab5/GridContainer" unique_id=1537439045]
+layout_mode = 2
+texture = SubResource("AtlasTexture_3j4i5")
+
+[node name="TextureRect1" type="TextureRect" parent="TabContainer/Tab5/GridContainer" unique_id=2108997108]
+layout_mode = 2
+texture = SubResource("AtlasTexture_qtll2")
+
+[node name="TextureRect2" type="TextureRect" parent="TabContainer/Tab5/GridContainer" unique_id=2122345606]
+layout_mode = 2
+texture = SubResource("AtlasTexture_2aaax")
+
+[node name="TextureRect3" type="TextureRect" parent="TabContainer/Tab5/GridContainer" unique_id=1886232053]
+layout_mode = 2
+texture = SubResource("AtlasTexture_6h1ot")
+
+[node name="TextureRect4" type="TextureRect" parent="TabContainer/Tab5/GridContainer" unique_id=98529688]
+layout_mode = 2
+texture = SubResource("AtlasTexture_3i0l2")
+
+[node name="TextureRect5" type="TextureRect" parent="TabContainer/Tab5/GridContainer" unique_id=1369483452]
+layout_mode = 2
+texture = SubResource("AtlasTexture_yrnu3")
+
+[node name="TextureRect6" type="TextureRect" parent="TabContainer/Tab5/GridContainer" unique_id=876786139]
+layout_mode = 2
+texture = SubResource("AtlasTexture_hdmxa")
+
+[node name="TextureRect7" type="TextureRect" parent="TabContainer/Tab5/GridContainer" unique_id=1778833268]
+layout_mode = 2
+texture = SubResource("AtlasTexture_hsnq3")
+
+[node name="TextureRect8" type="TextureRect" parent="TabContainer/Tab5/GridContainer" unique_id=931973506]
+layout_mode = 2
+texture = SubResource("AtlasTexture_oo82t")
+
+[node name="TextureRect9" type="TextureRect" parent="TabContainer/Tab5/GridContainer" unique_id=1001621742]
+layout_mode = 2
+texture = SubResource("AtlasTexture_73q5t")
+
+[node name="TextureRect10" type="TextureRect" parent="TabContainer/Tab5/GridContainer" unique_id=148847044]
+layout_mode = 2
+texture = SubResource("AtlasTexture_hhp5e")
+
+[node name="TextureRect11" type="TextureRect" parent="TabContainer/Tab5/GridContainer" unique_id=798121442]
+layout_mode = 2
+texture = SubResource("AtlasTexture_m88yg")

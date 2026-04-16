@@ -7,6 +7,7 @@
 [ext_resource type="StyleBox" uid="uid://c3pfdh2svd0ya" path="res://assets/styles/GreyButtonPressed.tres" id="4_ru5vq"]
 [ext_resource type="StyleBox" uid="uid://d18i0sxg56l1v" path="res://assets/styles/PanelBackground.tres" id="6_dyudt"]
 [ext_resource type="StyleBox" uid="uid://dhxqq4vty0ayj" path="res://assets/styles/LabelBackground.tres" id="6_woj82"]
+[ext_resource type="StyleBox" uid="uid://tjcegfoo4wit" path="res://assets/styles/ScreenBackground.tres" id="8_mu5uu"]
 
 [resource]
 Button/colors/font_color = Color(1, 1, 1, 1)
@@ -24,3 +25,8 @@ Label/fonts/font = ExtResource("1_no7qj")
 Label/styles/normal = ExtResource("6_woj82")
 Panel/styles/panel = ExtResource("6_dyudt")
 PanelContainer/styles/panel = ExtResource("6_dyudt")
+TabContainer/colors/font_unselected_color = Color(1, 1, 1, 1)
+TabContainer/styles/panel = ExtResource("8_mu5uu")
+TabContainer/styles/tab_hovered = ExtResource("2_woj82")
+TabContainer/styles/tab_selected = ExtResource("4_ru5vq")
+TabContainer/styles/tab_unselected = ExtResource("3_uqdmw")

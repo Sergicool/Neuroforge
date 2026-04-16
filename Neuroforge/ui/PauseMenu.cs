@@ -32,8 +32,9 @@ public partial class PauseMenu : Control
         _resume.Pressed += parentScene.ResumeGame;
     }
 
-    private void OnRulesPressed()
+    private async void OnRulesPressed()
     {
+        await SceneManager.GoTo("res://scenes/RulesScene.tscn", SceneManager.Transition.Fade, 0.15f);
 
     }
 

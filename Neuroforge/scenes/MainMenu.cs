@@ -22,9 +22,9 @@ public partial class MainMenu : Control
         await SceneManager.GoTo("res://scenes/GameScene.tscn", SceneManager.Transition.Fade, 0.25f);
     }
 
-    private void OnRulesPressed()
+    private async void OnRulesPressed()
     {
-
+        await SceneManager.GoTo("res://scenes/RulesScene.tscn", SceneManager.Transition.Fade, 0.15f);
     }
 
     private void OnExitPressed()
