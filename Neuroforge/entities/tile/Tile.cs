@@ -2,7 +2,7 @@ using Godot;
 
 public partial class Tile : Area2D
 {
-    private static readonly Color MOVEMENT_MARKER_COLOR = new Color(0.659f, 1.0f, 0.337f);
+    private static readonly Color MOVEMENT_MARKER_COLOR = new Color(0.598f, 1.0f, 0.226f);
     private static readonly Color ATTACK_MARKER_COLOR = new Color(1.0f, 0.004f, 0.071f);
 
     private Board _board;
