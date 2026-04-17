@@ -1,9 +1,8 @@
 [gd_scene format=3 uid="uid://258k7vtgqkj2"]
 
-[ext_resource type="Script" uid="uid://ctcaosucciull" path="res://scenes/RulesOverlay.cs" id="1_600gv"]
+[ext_resource type="Script" uid="uid://ctcaosucciull" path="res://ui/RulesOverlay.cs" id="1_600gv"]
 [ext_resource type="Theme" uid="uid://5l3frbb482sx" path="res://assets/styles/DefaultTheme.tres" id="2_281x5"]
 [ext_resource type="Texture2D" uid="uid://dytj15tpopunc" path="res://assets/icons/LeftArrowIcon.png" id="3_2gm7s"]
-[ext_resource type="Texture2D" uid="uid://b61x2x6y0wrwl" path="res://assets/board/PiecesAtlas.png" id="4_dxjg2"]
 [ext_resource type="Texture2D" uid="uid://cpbd0xskpx1by" path="res://assets/board/BoardSpriteSheet.png" id="5_dcdb4"]
 [ext_resource type="Texture2D" uid="uid://bj3sxwhqt4siy" path="res://assets/icons/TickIcon.png" id="6_sg0yw"]
 [ext_resource type="Texture2D" uid="uid://c3x8xjtgaxkyp" path="res://assets/icons/CrossIcon.png" id="7_csaun"]
@@ -20,20 +19,23 @@
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_smjmi"]
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2gm7s"]
+load_path = "res://.godot/imported/PiecesAtlas.png-76eabf75b6e525198bb57281439c75c3.ctex"
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_3f65f"]
-atlas = ExtResource("4_dxjg2")
+atlas = SubResource("CompressedTexture2D_2gm7s")
 region = Rect2(384, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_70de8"]
-atlas = ExtResource("4_dxjg2")
+atlas = SubResource("CompressedTexture2D_2gm7s")
 region = Rect2(384, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6h1ot"]
-atlas = ExtResource("4_dxjg2")
+atlas = SubResource("CompressedTexture2D_2gm7s")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6ncap"]
-atlas = ExtResource("4_dxjg2")
+atlas = SubResource("CompressedTexture2D_2gm7s")
 region = Rect2(128, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tbltk"]
@@ -41,7 +43,7 @@ atlas = ExtResource("5_dcdb4")
 region = Rect2(0, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hs0h6"]
-atlas = ExtResource("4_dxjg2")
+atlas = SubResource("CompressedTexture2D_2gm7s")
 region = Rect2(224, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_28n4c"]
@@ -61,19 +63,19 @@ atlas = ExtResource("5_dcdb4")
 region = Rect2(144, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_f06um"]
-atlas = ExtResource("4_dxjg2")
+atlas = SubResource("CompressedTexture2D_2gm7s")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ck6xp"]
-atlas = ExtResource("4_dxjg2")
+atlas = SubResource("CompressedTexture2D_2gm7s")
 region = Rect2(160, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yrnu3"]
-atlas = ExtResource("4_dxjg2")
+atlas = SubResource("CompressedTexture2D_2gm7s")
 region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2aaax"]
-atlas = ExtResource("4_dxjg2")
+atlas = SubResource("CompressedTexture2D_2gm7s")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k04bo"]
@@ -81,185 +83,185 @@ atlas = ExtResource("5_dcdb4")
 region = Rect2(48, 0, 48, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s2mht"]
-atlas = ExtResource("4_dxjg2")
+atlas = SubResource("CompressedTexture2D_2gm7s")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_a0vpd"]
-atlas = ExtResource("4_dxjg2")
+atlas = SubResource("CompressedTexture2D_2gm7s")
 region = Rect2(384, 32, 32, 32)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yrnu3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fqja6"]
-atlas = ExtResource("4_dxjg2")
+atlas = SubResource("CompressedTexture2D_2gm7s")
 region = Rect2(352, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_e5sy4"]
-atlas = ExtResource("4_dxjg2")
+atlas = SubResource("CompressedTexture2D_2gm7s")
 region = Rect2(320, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jih4g"]
-atlas = ExtResource("4_dxjg2")
+atlas = SubResource("CompressedTexture2D_2gm7s")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qknee"]
-atlas = ExtResource("4_dxjg2")
+atlas = SubResource("CompressedTexture2D_2gm7s")
 region = Rect2(352, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_koaka"]
-atlas = ExtResource("4_dxjg2")
+atlas = SubResource("CompressedTexture2D_2gm7s")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xn6lu"]
-atlas = ExtResource("4_dxjg2")
+atlas = SubResource("CompressedTexture2D_2gm7s")
 region = Rect2(320, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ew2o3"]
-atlas = ExtResource("4_dxjg2")
+atlas = SubResource("CompressedTexture2D_2gm7s")
 region = Rect2(192, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dh8ri"]
-atlas = ExtResource("4_dxjg2")
+atlas = SubResource("CompressedTexture2D_2gm7s")
 region = Rect2(32, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tbva2"]
-atlas = ExtResource("4_dxjg2")
+atlas = SubResource("CompressedTexture2D_2gm7s")
 region = Rect2(320, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tfno3"]
-atlas = ExtResource("4_dxjg2")
+atlas = SubResource("CompressedTexture2D_2gm7s")
 region = Rect2(320, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3j4i5"]
-atlas = ExtResource("4_dxjg2")
+atlas = SubResource("CompressedTexture2D_2gm7s")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qtll2"]
-atlas = ExtResource("4_dxjg2")
+atlas = SubResource("CompressedTexture2D_2gm7s")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3i0l2"]
-atlas = ExtResource("4_dxjg2")
+atlas = SubResource("CompressedTexture2D_2gm7s")
 region = Rect2(128, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hdmxa"]
-atlas = ExtResource("4_dxjg2")
+atlas = SubResource("CompressedTexture2D_2gm7s")
 region = Rect2(192, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_600gv"]
-atlas = ExtResource("4_dxjg2")
+atlas = SubResource("CompressedTexture2D_2gm7s")
 region = Rect2(224, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oo82t"]
-atlas = ExtResource("4_dxjg2")
+atlas = SubResource("CompressedTexture2D_2gm7s")
 region = Rect2(256, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_73q5t"]
-atlas = ExtResource("4_dxjg2")
+atlas = SubResource("CompressedTexture2D_2gm7s")
 region = Rect2(288, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hhp5e"]
-atlas = ExtResource("4_dxjg2")
+atlas = SubResource("CompressedTexture2D_2gm7s")
 region = Rect2(320, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_m88yg"]
-atlas = ExtResource("4_dxjg2")
+atlas = SubResource("CompressedTexture2D_2gm7s")
 region = Rect2(352, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_281x5"]
-atlas = ExtResource("4_dxjg2")
+atlas = SubResource("CompressedTexture2D_2gm7s")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2gm7s"]
-atlas = ExtResource("4_dxjg2")
+atlas = SubResource("CompressedTexture2D_2gm7s")
 region = Rect2(0, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dxjg2"]
-atlas = ExtResource("4_dxjg2")
+atlas = SubResource("CompressedTexture2D_2gm7s")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_dcdb4"]
-atlas = ExtResource("4_dxjg2")
+atlas = SubResource("CompressedTexture2D_2gm7s")
 region = Rect2(32, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sg0yw"]
-atlas = ExtResource("4_dxjg2")
+atlas = SubResource("CompressedTexture2D_2gm7s")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_csaun"]
-atlas = ExtResource("4_dxjg2")
+atlas = SubResource("CompressedTexture2D_2gm7s")
 region = Rect2(64, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mvfy0"]
-atlas = ExtResource("4_dxjg2")
+atlas = SubResource("CompressedTexture2D_2gm7s")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yvu6n"]
-atlas = ExtResource("4_dxjg2")
+atlas = SubResource("CompressedTexture2D_2gm7s")
 region = Rect2(96, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7ibit"]
-atlas = ExtResource("4_dxjg2")
+atlas = SubResource("CompressedTexture2D_2gm7s")
 region = Rect2(128, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_anm1l"]
-atlas = ExtResource("4_dxjg2")
+atlas = SubResource("CompressedTexture2D_2gm7s")
 region = Rect2(128, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1uw66"]
-atlas = ExtResource("4_dxjg2")
+atlas = SubResource("CompressedTexture2D_2gm7s")
 region = Rect2(160, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fbaj6"]
-atlas = ExtResource("4_dxjg2")
+atlas = SubResource("CompressedTexture2D_2gm7s")
 region = Rect2(160, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vy7h3"]
-atlas = ExtResource("4_dxjg2")
+atlas = SubResource("CompressedTexture2D_2gm7s")
 region = Rect2(192, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k7xrq"]
-atlas = ExtResource("4_dxjg2")
+atlas = SubResource("CompressedTexture2D_2gm7s")
 region = Rect2(192, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ls55g"]
-atlas = ExtResource("4_dxjg2")
+atlas = SubResource("CompressedTexture2D_2gm7s")
 region = Rect2(224, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pvy62"]
-atlas = ExtResource("4_dxjg2")
+atlas = SubResource("CompressedTexture2D_2gm7s")
 region = Rect2(224, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ifvde"]
-atlas = ExtResource("4_dxjg2")
+atlas = SubResource("CompressedTexture2D_2gm7s")
 region = Rect2(256, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_opfbp"]
-atlas = ExtResource("4_dxjg2")
+atlas = SubResource("CompressedTexture2D_2gm7s")
 region = Rect2(256, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aqci1"]
-atlas = ExtResource("4_dxjg2")
+atlas = SubResource("CompressedTexture2D_2gm7s")
 region = Rect2(288, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xd5sq"]
-atlas = ExtResource("4_dxjg2")
+atlas = SubResource("CompressedTexture2D_2gm7s")
 region = Rect2(288, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_84rud"]
-atlas = ExtResource("4_dxjg2")
+atlas = SubResource("CompressedTexture2D_2gm7s")
 region = Rect2(320, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_oejmk"]
-atlas = ExtResource("4_dxjg2")
+atlas = SubResource("CompressedTexture2D_2gm7s")
 region = Rect2(320, 32, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6by83"]
-atlas = ExtResource("4_dxjg2")
+atlas = SubResource("CompressedTexture2D_2gm7s")
 region = Rect2(352, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7aidw"]
-atlas = ExtResource("4_dxjg2")
+atlas = SubResource("CompressedTexture2D_2gm7s")
 region = Rect2(352, 32, 32, 32)
 
 [node name="RulesOverlay" type="Control" unique_id=247626373]
@@ -2165,7 +2167,7 @@ offset_right = 118.0
 offset_bottom = 51.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 24
-text = "Armorer"
+text = "cYBORG"
 horizontal_alignment = 1
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel5" unique_id=303368742]
@@ -2256,7 +2258,7 @@ offset_right = 118.0
 offset_bottom = 51.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 24
-text = "Combat Unit"
+text = "Canine"
 horizontal_alignment = 1
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel6" unique_id=883767753]
@@ -2290,7 +2292,7 @@ grow_horizontal = 2
 size_flags_vertical = 0
 theme_override_constants/outline_size = 6
 theme_override_font_sizes/normal_font_size = 20
-text = "Versatile androids with a broad arsenal and the tactical capacity to lead smaller forces.
+text = "High mobility mechanical quadrupeds designed for rapid interception.
 
 No special properties."
 fit_content = true
@@ -2347,7 +2349,7 @@ offset_right = 118.0
 offset_bottom = 51.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 24
-text = "Android"
+text = "Sentinel"
 horizontal_alignment = 1
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel7" unique_id=173952088]
@@ -2381,7 +2383,7 @@ grow_horizontal = 2
 size_flags_vertical = 0
 theme_override_constants/outline_size = 6
 theme_override_font_sizes/normal_font_size = 20
-text = "Highly skilled units optimized for close to mid range technical combat.
+text = "Mechanized assault units optimized for combat and possessing a structural resistance superior to any human,
 
 No special properties."
 fit_content = true
@@ -2544,7 +2546,7 @@ grow_horizontal = 2
 size_flags_vertical = 0
 theme_override_constants/outline_size = 6
 theme_override_font_sizes/normal_font_size = 20
-text = "Ammount: 2
+text = "Ammount: 1
 
 Can Move: Yes
 

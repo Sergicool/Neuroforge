@@ -4,7 +4,7 @@
 [ext_resource type="Theme" uid="uid://5l3frbb482sx" path="res://assets/styles/DefaultTheme.tres" id="2_8tehv"]
 [ext_resource type="StyleBox" uid="uid://btp23gt0ooehf" path="res://assets/styles/ScreenText.tres" id="3_4dg4t"]
 [ext_resource type="StyleBox" uid="uid://tjcegfoo4wit" path="res://assets/styles/ScreenBackground.tres" id="4_ptdjk"]
-[ext_resource type="PackedScene" uid="uid://258k7vtgqkj2" path="res://scenes/RulesOverlay.tscn" id="5_ptdjk"]
+[ext_resource type="PackedScene" uid="uid://258k7vtgqkj2" path="res://ui/RulesOverlay.tscn" id="5_ptdjk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fenq7"]
 

@@ -237,14 +237,14 @@ public partial class CombatUI : Control
 
     private static string GetPieceLabel(Piece piece) => piece.Type switch
     {
-        PieceType.NEXUS => "Nexus",
+        PieceType.NEXUS => "Energy Core",
         PieceType.TURRET => "Turret",
         PieceType.CORE => "C.O.R.E",
         PieceType.NOVA => "Nova",
         PieceType.MECHA => "Mecha",
-        PieceType.ANDROID => "Android",
-        PieceType.COMBAT_UNIT => "Combat Unit",
-        PieceType.ARMORER => "Armorer",
+        PieceType.SENTINEL => "Sentinel",
+        PieceType.CANINE => "Canine",
+        PieceType.CYBORG => "Cyborg",
         PieceType.SOLDIER => "Soldier",
         PieceType.SABOTEUR => "Saboteur",
         PieceType.SCOUT => "Scout",
