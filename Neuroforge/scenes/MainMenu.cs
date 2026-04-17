@@ -5,12 +5,15 @@ using System.Threading.Tasks;
 public partial class MainMenu : Control
 {
     private Button _play, _rules, _exit;
+    private RulesOverlay _rulesOverlay;
 
     public override void _Ready()
     {
         _play = GetNode<Button>("ButtonsPanel/MarginContainer/VBoxContainer/PlayButton");
         _rules = GetNode<Button>("ButtonsPanel/MarginContainer/VBoxContainer/RulesButton");
         _exit = GetNode<Button>("ButtonsPanel/MarginContainer/VBoxContainer/ExitButton");
+
+        _rulesOverlay = GetNode<RulesOverlay>("RulesOverlay");
 
         _play.Pressed += OnPlayPressed;
         _rules.Pressed += OnRulesPressed;
@@ -24,7 +27,7 @@ public partial class MainMenu : Control
 
     private async void OnRulesPressed()
     {
-        await SceneManager.GoTo("res://scenes/RulesScene.tscn", SceneManager.Transition.Fade, 0.15f);
+        await _rulesOverlay.ShowOverlay();
     }
 
     private void OnExitPressed()

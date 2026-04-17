@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cvb8hxxjnssxi" path="res://assets/icons/PlayIcon.png" id="5_l72w3"]
 [ext_resource type="Texture2D" uid="uid://bv4pbh4ce6388" path="res://assets/icons/RulesIcon.png" id="6_ucygd"]
 [ext_resource type="Texture2D" uid="uid://bx2acahh5t52f" path="res://assets/icons/ExitIcon.png" id="7_mipys"]
+[ext_resource type="PackedScene" uid="uid://258k7vtgqkj2" path="res://scenes/RulesOverlay.tscn" id="8_mipys"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ow34m"]
 
@@ -116,3 +117,6 @@ text = "Exit"
 icon = ExtResource("7_mipys")
 alignment = 0
 expand_icon = true
+
+[node name="RulesOverlay" parent="." unique_id=247626373 instance=ExtResource("8_mipys")]
+layout_mode = 1

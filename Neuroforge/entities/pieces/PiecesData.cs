@@ -14,7 +14,7 @@ public struct PieceDefinition
 // Datos de piezas
 public partial class PiecesData
 {
-    public static readonly Texture2D Atlas = GD.Load<Texture2D>("res://entities/pieces/AtlasPiezas.png");
+    public static readonly Texture2D Atlas = GD.Load<Texture2D>("res://assets/board/PiecesAtlas.png");
     public const int HIDDEN_ATLAS_COLUMN = 12;
 
     public const int ATLAS_COLUMN_WIDTH = 32;

@@ -4,6 +4,7 @@
 [ext_resource type="Theme" uid="uid://5l3frbb482sx" path="res://assets/styles/DefaultTheme.tres" id="2_8tehv"]
 [ext_resource type="StyleBox" uid="uid://btp23gt0ooehf" path="res://assets/styles/ScreenText.tres" id="3_4dg4t"]
 [ext_resource type="StyleBox" uid="uid://tjcegfoo4wit" path="res://assets/styles/ScreenBackground.tres" id="4_ptdjk"]
+[ext_resource type="PackedScene" uid="uid://258k7vtgqkj2" path="res://scenes/RulesOverlay.tscn" id="5_ptdjk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fenq7"]
 
@@ -92,3 +93,7 @@ size_flags_vertical = 3
 theme_override_font_sizes/font_size = 32
 text = "Return to menu"
 expand_icon = true
+
+[node name="RulesOverlay" parent="." unique_id=247626373 instance=ExtResource("5_ptdjk")]
+visible = false
+layout_mode = 1

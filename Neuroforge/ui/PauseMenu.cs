@@ -11,6 +11,8 @@ public partial class PauseMenu : Control
     private Button _resume, _rules, _menu;
     private GameScene _gameScene;
 
+    private RulesOverlay _rulesOverlay;
+
     public override void _Ready()
     {
         ProcessMode = ProcessModeEnum.Always;
@@ -21,6 +23,8 @@ public partial class PauseMenu : Control
         _resume = GetNode<Button>("PopUp/MarginContainer/VBoxContainer/PlayButton");
         _rules = GetNode<Button>("PopUp/MarginContainer/VBoxContainer/RulesButton");
         _menu = GetNode<Button>("PopUp/MarginContainer/VBoxContainer/ExitButton");
+
+        _rulesOverlay = GetNode<RulesOverlay>("RulesOverlay");
 
         _rules.Pressed += OnRulesPressed;
         _menu.Pressed += OnMenuPressed;
@@ -34,8 +38,7 @@ public partial class PauseMenu : Control
 
     private async void OnRulesPressed()
     {
-        await SceneManager.GoTo("res://scenes/RulesScene.tscn", SceneManager.Transition.Fade, 0.15f);
-
+        await _rulesOverlay.ShowOverlay();
     }
 
     private async void OnMenuPressed()
