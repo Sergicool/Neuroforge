@@ -10,6 +10,9 @@
 [ext_resource type="SpriteFrames" uid="uid://xi7v7cy7i1mw" path="res://entities/tile/MarkerSpriteFrames.tres" id="8_mvfy0"]
 [ext_resource type="Texture2D" uid="uid://cxihsmeihbaw" path="res://assets/icons/TrophyIcon.png" id="9_yvu6n"]
 [ext_resource type="Texture2D" uid="uid://cfcrfbcwh1lev" path="res://assets/icons/SkullIcon.png" id="10_7ibit"]
+[ext_resource type="StyleBox" uid="uid://dmqqqq40dv3p5" path="res://assets/styles/PieceButtonBackground.tres" id="11_281x5"]
+[ext_resource type="Texture2D" uid="uid://dk0smljkc6jgg" path="res://assets/icons/SightIcon.png" id="11_dxjg2"]
+[ext_resource type="Texture2D" uid="uid://dhgv3p4imyuna" path="res://assets/icons/ShieldIcon.png" id="12_dcdb4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fswxo"]
 
@@ -163,6 +166,102 @@ region = Rect2(320, 0, 32, 32)
 atlas = ExtResource("4_dxjg2")
 region = Rect2(352, 0, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_281x5"]
+atlas = ExtResource("4_dxjg2")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2gm7s"]
+atlas = ExtResource("4_dxjg2")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dxjg2"]
+atlas = ExtResource("4_dxjg2")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dcdb4"]
+atlas = ExtResource("4_dxjg2")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sg0yw"]
+atlas = ExtResource("4_dxjg2")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_csaun"]
+atlas = ExtResource("4_dxjg2")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mvfy0"]
+atlas = ExtResource("4_dxjg2")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yvu6n"]
+atlas = ExtResource("4_dxjg2")
+region = Rect2(96, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ibit"]
+atlas = ExtResource("4_dxjg2")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_anm1l"]
+atlas = ExtResource("4_dxjg2")
+region = Rect2(128, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1uw66"]
+atlas = ExtResource("4_dxjg2")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fbaj6"]
+atlas = ExtResource("4_dxjg2")
+region = Rect2(160, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vy7h3"]
+atlas = ExtResource("4_dxjg2")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k7xrq"]
+atlas = ExtResource("4_dxjg2")
+region = Rect2(192, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ls55g"]
+atlas = ExtResource("4_dxjg2")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pvy62"]
+atlas = ExtResource("4_dxjg2")
+region = Rect2(224, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ifvde"]
+atlas = ExtResource("4_dxjg2")
+region = Rect2(256, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_opfbp"]
+atlas = ExtResource("4_dxjg2")
+region = Rect2(256, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aqci1"]
+atlas = ExtResource("4_dxjg2")
+region = Rect2(288, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xd5sq"]
+atlas = ExtResource("4_dxjg2")
+region = Rect2(288, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_84rud"]
+atlas = ExtResource("4_dxjg2")
+region = Rect2(320, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oejmk"]
+atlas = ExtResource("4_dxjg2")
+region = Rect2(320, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6by83"]
+atlas = ExtResource("4_dxjg2")
+region = Rect2(352, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7aidw"]
+atlas = ExtResource("4_dxjg2")
+region = Rect2(352, 32, 32, 32)
+
 [node name="RulesOverlay" type="Control" unique_id=247626373]
 layout_mode = 3
 anchors_preset = 15
@@ -217,7 +316,7 @@ theme_override_constants/tab_separation = 0
 theme_override_constants/outline_size = 6
 theme_override_font_sizes/font_size = 20
 tab_alignment = 1
-current_tab = 4
+current_tab = 0
 tab_0/title = " Objective "
 tab_1/title = " Board "
 tab_2/title = " Movement "
@@ -225,7 +324,6 @@ tab_3/title = " Combat "
 tab_4/title = " Pieces "
 
 [node name="Tab1" type="Panel" parent="PopUp/TabContainer" unique_id=1043312812]
-visible = false
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_smjmi")
 metadata/_tab_index = 0
@@ -1221,6 +1319,16 @@ offset_bottom = 474.0
 scale = Vector2(1.4, 1.4)
 texture = ExtResource("9_yvu6n")
 
+[node name="TextureRect39" type="TextureRect" parent="PopUp/TabContainer/Tab4" unique_id=358337050]
+modulate = Color(1, 0.21871096, 0.22617161, 1)
+layout_mode = 0
+offset_left = 754.0
+offset_top = 383.0
+offset_right = 786.0
+offset_bottom = 415.0
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("11_dxjg2")
+
 [node name="TextureRect38" type="TextureRect" parent="PopUp/TabContainer/Tab4" unique_id=458169145]
 modulate = Color(1, 0.25069177, 0.17597568, 1)
 layout_mode = 0
@@ -1230,6 +1338,16 @@ offset_right = 913.99994
 offset_bottom = 475.0
 scale = Vector2(1.4, 1.4)
 texture = ExtResource("10_7ibit")
+
+[node name="TextureRect40" type="TextureRect" parent="PopUp/TabContainer/Tab4" unique_id=328991201]
+modulate = Color(0.28867626, 1, 0.97761476, 1)
+layout_mode = 0
+offset_left = 933.0
+offset_top = 383.0
+offset_right = 965.0
+offset_bottom = 415.0
+scale = Vector2(1.4, 1.4)
+texture = ExtResource("12_dcdb4")
 
 [node name="TextureRect19" type="TextureRect" parent="PopUp/TabContainer/Tab4" unique_id=868370102]
 layout_mode = 0
@@ -1308,6 +1426,7 @@ scale = Vector2(1.4, 1.4)
 texture = ExtResource("10_7ibit")
 
 [node name="Tab5" type="Panel" parent="PopUp/TabContainer" unique_id=1683429640]
+visible = false
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_smjmi")
 metadata/_tab_index = 4
@@ -1316,9 +1435,9 @@ metadata/_tab_name = " Pieces "
 [node name="GridContainer" type="GridContainer" parent="PopUp/TabContainer/Tab5" unique_id=263829298]
 layout_mode = 0
 offset_left = 41.0
-offset_top = 33.0
+offset_top = 24.0
 offset_right = 177.5
-offset_bottom = 246.0
+offset_bottom = 237.0
 scale = Vector2(2, 2)
 columns = 3
 
@@ -1568,6 +1687,7 @@ offset_left = 340.0
 offset_top = 5.0
 offset_right = 972.0
 offset_bottom = 470.0
+theme_override_styles/panel = ExtResource("11_281x5")
 
 [node name="Label" type="Label" parent="PopUp/TabContainer/Tab5/PiecePanel0" unique_id=2120715410]
 layout_mode = 1
@@ -1575,228 +1695,1089 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -118.0
-offset_top = 14.0
+offset_top = 9.0
 offset_right = 118.0
-offset_bottom = 48.0
+offset_bottom = 51.0
 grow_horizontal = 2
-text = "0"
+theme_override_font_sizes/font_size = 24
+text = "Energy core"
+horizontal_alignment = 1
 
-[node name="PiecePanel1" type="Panel" parent="PopUp/TabContainer/Tab5" unique_id=631640337]
+[node name="RichTextLabel2" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel0" unique_id=1714934289]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 19.0
+offset_top = 71.0
+offset_right = -31.0
+offset_bottom = 181.0
+grow_horizontal = 2
+size_flags_vertical = 0
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/normal_font_size = 20
+text = "Ammount: 1
+
+Can Move: No
+
+Rank: 0"
+fit_content = true
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel0" unique_id=1677237496]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 19.0
+offset_top = 219.0
+offset_right = -31.0
+offset_bottom = 351.0
+grow_horizontal = 2
+size_flags_vertical = 0
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/normal_font_size = 20
+text = "The vital heart of each faction. It is immobile and defenseless.
+
+Its destruction results in an immediate power collapse and total defeat.
+
+Protect it at all costs."
+fit_content = true
+
+[node name="TextureRect" type="TextureRect" parent="PopUp/TabContainer/Tab5/PiecePanel0" unique_id=107828794]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -170.5
+offset_right = 7.0
+offset_bottom = -138.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+texture = SubResource("AtlasTexture_281x5")
+
+[node name="TextureRect2" type="TextureRect" parent="PopUp/TabContainer/Tab5/PiecePanel0" unique_id=1710706787]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 152.0
+offset_top = -170.5
+offset_right = 184.0
+offset_bottom = -138.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+texture = SubResource("AtlasTexture_2gm7s")
+
+[node name="PiecePanel1" type="Panel" parent="PopUp/TabContainer/Tab5" unique_id=936534399]
 visible = false
 layout_mode = 0
 offset_left = 340.0
 offset_top = 5.0
 offset_right = 972.0
 offset_bottom = 470.0
+theme_override_styles/panel = ExtResource("11_281x5")
 
-[node name="Label" type="Label" parent="PopUp/TabContainer/Tab5/PiecePanel1" unique_id=651246398]
+[node name="Label" type="Label" parent="PopUp/TabContainer/Tab5/PiecePanel1" unique_id=122644665]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -118.0
-offset_top = 14.0
+offset_top = 9.0
 offset_right = 118.0
-offset_bottom = 48.0
+offset_bottom = 51.0
 grow_horizontal = 2
-text = "1"
+theme_override_font_sizes/font_size = 24
+text = "Phantom"
+horizontal_alignment = 1
 
-[node name="PiecePanel2" type="Panel" parent="PopUp/TabContainer/Tab5" unique_id=964784397]
+[node name="RichTextLabel2" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel1" unique_id=2084248686]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 19.0
+offset_top = 71.0
+offset_right = -31.0
+offset_bottom = 181.0
+grow_horizontal = 2
+size_flags_vertical = 0
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/normal_font_size = 20
+text = "Ammount: 1
+
+Can Move: Yes
+
+Rank: 1"
+fit_content = true
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel1" unique_id=1969146738]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 19.0
+offset_top = 219.0
+offset_right = -31.0
+offset_bottom = 351.0
+grow_horizontal = 2
+size_flags_vertical = 0
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/normal_font_size = 20
+text = "An agile drone designed for a single purpose: high-level infiltration.
+
+While it is the weakest unit in a fair fight, it can instantly destroy the enemy C.O.R.E. if it strikes first.
+
+Make it count."
+fit_content = true
+
+[node name="TextureRect" type="TextureRect" parent="PopUp/TabContainer/Tab5/PiecePanel1" unique_id=1271973990]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -170.5
+offset_right = 7.0
+offset_bottom = -138.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+texture = SubResource("AtlasTexture_dxjg2")
+
+[node name="TextureRect2" type="TextureRect" parent="PopUp/TabContainer/Tab5/PiecePanel1" unique_id=1179650876]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 152.0
+offset_top = -170.5
+offset_right = 184.0
+offset_bottom = -138.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+texture = SubResource("AtlasTexture_dcdb4")
+
+[node name="PiecePanel2" type="Panel" parent="PopUp/TabContainer/Tab5" unique_id=169217182]
 visible = false
 layout_mode = 0
 offset_left = 340.0
 offset_top = 5.0
 offset_right = 972.0
 offset_bottom = 470.0
+theme_override_styles/panel = ExtResource("11_281x5")
 
-[node name="Label" type="Label" parent="PopUp/TabContainer/Tab5/PiecePanel2" unique_id=1685281852]
+[node name="Label" type="Label" parent="PopUp/TabContainer/Tab5/PiecePanel2" unique_id=364003366]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -118.0
-offset_top = 14.0
+offset_top = 9.0
 offset_right = 118.0
-offset_bottom = 48.0
+offset_bottom = 51.0
 grow_horizontal = 2
-text = "2"
+theme_override_font_sizes/font_size = 24
+text = "Scout"
+horizontal_alignment = 1
 
-[node name="PiecePanel3" type="Panel" parent="PopUp/TabContainer/Tab5" unique_id=132889970]
+[node name="RichTextLabel2" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel2" unique_id=476015817]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 19.0
+offset_top = 71.0
+offset_right = -31.0
+offset_bottom = 181.0
+grow_horizontal = 2
+size_flags_vertical = 0
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/normal_font_size = 20
+text = "Ammount: 8
+
+Can Move: Yes
+
+Rank: 2"
+fit_content = true
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel2" unique_id=1918883664]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 19.0
+offset_top = 219.0
+offset_right = -31.0
+offset_bottom = 351.0
+grow_horizontal = 2
+size_flags_vertical = 0
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/normal_font_size = 20
+text = "Agile reconnaissance drones.
+
+They can move any number of tiles in a straight line (horizontal or vertical).
+
+However, moving more than one piece at a time will spoil her identity, since she is the only one who has that type of movement.
+
+Use them strategically"
+fit_content = true
+
+[node name="TextureRect" type="TextureRect" parent="PopUp/TabContainer/Tab5/PiecePanel2" unique_id=626795065]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -170.5
+offset_right = 7.0
+offset_bottom = -138.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+texture = SubResource("AtlasTexture_sg0yw")
+
+[node name="TextureRect2" type="TextureRect" parent="PopUp/TabContainer/Tab5/PiecePanel2" unique_id=1828536111]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 152.0
+offset_top = -170.5
+offset_right = 184.0
+offset_bottom = -138.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+texture = SubResource("AtlasTexture_csaun")
+
+[node name="PiecePanel3" type="Panel" parent="PopUp/TabContainer/Tab5" unique_id=1268395035]
 visible = false
 layout_mode = 0
 offset_left = 340.0
 offset_top = 5.0
 offset_right = 972.0
 offset_bottom = 470.0
+theme_override_styles/panel = ExtResource("11_281x5")
 
-[node name="Label" type="Label" parent="PopUp/TabContainer/Tab5/PiecePanel3" unique_id=2016722958]
+[node name="Label" type="Label" parent="PopUp/TabContainer/Tab5/PiecePanel3" unique_id=2042554201]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -118.0
-offset_top = 14.0
+offset_top = 9.0
 offset_right = 118.0
-offset_bottom = 48.0
+offset_bottom = 51.0
 grow_horizontal = 2
-text = "3"
+theme_override_font_sizes/font_size = 24
+text = "Saboteur"
+horizontal_alignment = 1
 
-[node name="PiecePanel4" type="Panel" parent="PopUp/TabContainer/Tab5" unique_id=1299884249]
+[node name="RichTextLabel2" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel3" unique_id=686260086]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 19.0
+offset_top = 71.0
+offset_right = -31.0
+offset_bottom = 181.0
+grow_horizontal = 2
+size_flags_vertical = 0
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/normal_font_size = 20
+text = "Ammount: 5
+
+Can Move: Yes
+
+Rank: 3"
+fit_content = true
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel3" unique_id=250416155]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 19.0
+offset_top = 219.0
+offset_right = -31.0
+offset_bottom = 351.0
+grow_horizontal = 2
+size_flags_vertical = 0
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/normal_font_size = 20
+text = "Specialized units equipped with high-tech camouflage.
+
+They are the only pieces capable of safely dismantling automated Turrets, though they are weak in standard combat.
+
+It wouldn't be a good idea to risk putting them in an unknown combat."
+fit_content = true
+
+[node name="TextureRect" type="TextureRect" parent="PopUp/TabContainer/Tab5/PiecePanel3" unique_id=282748319]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -170.5
+offset_right = 7.0
+offset_bottom = -138.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+texture = SubResource("AtlasTexture_mvfy0")
+
+[node name="TextureRect2" type="TextureRect" parent="PopUp/TabContainer/Tab5/PiecePanel3" unique_id=951893299]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 152.0
+offset_top = -170.5
+offset_right = 184.0
+offset_bottom = -138.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+texture = SubResource("AtlasTexture_yvu6n")
+
+[node name="PiecePanel4" type="Panel" parent="PopUp/TabContainer/Tab5" unique_id=707441331]
 visible = false
 layout_mode = 0
 offset_left = 340.0
 offset_top = 5.0
 offset_right = 972.0
 offset_bottom = 470.0
+theme_override_styles/panel = ExtResource("11_281x5")
 
-[node name="Label" type="Label" parent="PopUp/TabContainer/Tab5/PiecePanel4" unique_id=1364606932]
+[node name="Label" type="Label" parent="PopUp/TabContainer/Tab5/PiecePanel4" unique_id=757537369]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -118.0
-offset_top = 14.0
+offset_top = 9.0
 offset_right = 118.0
-offset_bottom = 48.0
+offset_bottom = 51.0
 grow_horizontal = 2
-text = "4"
+theme_override_font_sizes/font_size = 24
+text = "Soldier"
+horizontal_alignment = 1
 
-[node name="PiecePanel5" type="Panel" parent="PopUp/TabContainer/Tab5" unique_id=934170500]
+[node name="RichTextLabel2" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel4" unique_id=779627053]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 19.0
+offset_top = 71.0
+offset_right = -31.0
+offset_bottom = 181.0
+grow_horizontal = 2
+size_flags_vertical = 0
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/normal_font_size = 20
+text = "Ammount: 4
+
+Can Move: Yes
+
+Rank: 4"
+fit_content = true
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel4" unique_id=915841766]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 19.0
+offset_top = 219.0
+offset_right = -31.0
+offset_bottom = 351.0
+grow_horizontal = 2
+size_flags_vertical = 0
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/normal_font_size = 20
+text = "Standard human reinforcements used to hold the frontline.
+
+No special properties, just the weakest normal unit."
+fit_content = true
+
+[node name="TextureRect" type="TextureRect" parent="PopUp/TabContainer/Tab5/PiecePanel4" unique_id=1832195693]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -170.5
+offset_right = 7.0
+offset_bottom = -138.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+texture = SubResource("AtlasTexture_7ibit")
+
+[node name="TextureRect2" type="TextureRect" parent="PopUp/TabContainer/Tab5/PiecePanel4" unique_id=351292201]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 152.0
+offset_top = -170.5
+offset_right = 184.0
+offset_bottom = -138.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+texture = SubResource("AtlasTexture_anm1l")
+
+[node name="PiecePanel5" type="Panel" parent="PopUp/TabContainer/Tab5" unique_id=456731681]
 visible = false
 layout_mode = 0
 offset_left = 340.0
 offset_top = 5.0
 offset_right = 972.0
 offset_bottom = 470.0
+theme_override_styles/panel = ExtResource("11_281x5")
 
-[node name="Label" type="Label" parent="PopUp/TabContainer/Tab5/PiecePanel5" unique_id=806446094]
+[node name="Label" type="Label" parent="PopUp/TabContainer/Tab5/PiecePanel5" unique_id=1559183797]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -118.0
-offset_top = 14.0
+offset_top = 9.0
 offset_right = 118.0
-offset_bottom = 48.0
+offset_bottom = 51.0
 grow_horizontal = 2
-text = "5"
+theme_override_font_sizes/font_size = 24
+text = "Armorer"
+horizontal_alignment = 1
 
-[node name="PiecePanel6" type="Panel" parent="PopUp/TabContainer/Tab5" unique_id=979322328]
+[node name="RichTextLabel2" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel5" unique_id=303368742]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 19.0
+offset_top = 71.0
+offset_right = -31.0
+offset_bottom = 181.0
+grow_horizontal = 2
+size_flags_vertical = 0
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/normal_font_size = 20
+text = "Ammount: 4
+
+Can Move: Yes
+
+Rank: 5"
+fit_content = true
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel5" unique_id=1482533037]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 19.0
+offset_top = 219.0
+offset_right = -31.0
+offset_bottom = 351.0
+grow_horizontal = 2
+size_flags_vertical = 0
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/normal_font_size = 20
+text = "Fast and efficient soldiers enhanced with light cybernetic implants.
+
+No special properties."
+fit_content = true
+
+[node name="TextureRect" type="TextureRect" parent="PopUp/TabContainer/Tab5/PiecePanel5" unique_id=144580955]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -170.5
+offset_right = 7.0
+offset_bottom = -138.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+texture = SubResource("AtlasTexture_1uw66")
+
+[node name="TextureRect2" type="TextureRect" parent="PopUp/TabContainer/Tab5/PiecePanel5" unique_id=2128375933]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 152.0
+offset_top = -170.5
+offset_right = 184.0
+offset_bottom = -138.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+texture = SubResource("AtlasTexture_fbaj6")
+
+[node name="PiecePanel6" type="Panel" parent="PopUp/TabContainer/Tab5" unique_id=1844761673]
 visible = false
 layout_mode = 0
 offset_left = 340.0
 offset_top = 5.0
 offset_right = 972.0
 offset_bottom = 470.0
+theme_override_styles/panel = ExtResource("11_281x5")
 
-[node name="Label" type="Label" parent="PopUp/TabContainer/Tab5/PiecePanel6" unique_id=1447184569]
+[node name="Label" type="Label" parent="PopUp/TabContainer/Tab5/PiecePanel6" unique_id=795660805]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -118.0
-offset_top = 14.0
+offset_top = 9.0
 offset_right = 118.0
-offset_bottom = 48.0
+offset_bottom = 51.0
 grow_horizontal = 2
-text = "6"
+theme_override_font_sizes/font_size = 24
+text = "Combat Unit"
+horizontal_alignment = 1
 
-[node name="PiecePanel7" type="Panel" parent="PopUp/TabContainer/Tab5" unique_id=611725243]
+[node name="RichTextLabel2" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel6" unique_id=883767753]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 19.0
+offset_top = 71.0
+offset_right = -31.0
+offset_bottom = 181.0
+grow_horizontal = 2
+size_flags_vertical = 0
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/normal_font_size = 20
+text = "Ammount: 4
+
+Can Move: Yes
+
+Rank: 6"
+fit_content = true
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel6" unique_id=1939239258]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 19.0
+offset_top = 219.0
+offset_right = -31.0
+offset_bottom = 351.0
+grow_horizontal = 2
+size_flags_vertical = 0
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/normal_font_size = 20
+text = "Versatile androids with a broad arsenal and the tactical capacity to lead smaller forces.
+
+No special properties."
+fit_content = true
+
+[node name="TextureRect" type="TextureRect" parent="PopUp/TabContainer/Tab5/PiecePanel6" unique_id=945112962]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -170.5
+offset_right = 7.0
+offset_bottom = -138.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+texture = SubResource("AtlasTexture_vy7h3")
+
+[node name="TextureRect2" type="TextureRect" parent="PopUp/TabContainer/Tab5/PiecePanel6" unique_id=1301743377]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 152.0
+offset_top = -170.5
+offset_right = 184.0
+offset_bottom = -138.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+texture = SubResource("AtlasTexture_k7xrq")
+
+[node name="PiecePanel7" type="Panel" parent="PopUp/TabContainer/Tab5" unique_id=409189998]
 visible = false
 layout_mode = 0
 offset_left = 340.0
 offset_top = 5.0
 offset_right = 972.0
 offset_bottom = 470.0
+theme_override_styles/panel = ExtResource("11_281x5")
 
-[node name="Label" type="Label" parent="PopUp/TabContainer/Tab5/PiecePanel7" unique_id=1283312933]
+[node name="Label" type="Label" parent="PopUp/TabContainer/Tab5/PiecePanel7" unique_id=516681523]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -118.0
-offset_top = 14.0
+offset_top = 9.0
 offset_right = 118.0
-offset_bottom = 48.0
+offset_bottom = 51.0
 grow_horizontal = 2
-text = "7"
+theme_override_font_sizes/font_size = 24
+text = "Android"
+horizontal_alignment = 1
 
-[node name="PiecePanel8" type="Panel" parent="PopUp/TabContainer/Tab5" unique_id=432961241]
+[node name="RichTextLabel2" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel7" unique_id=173952088]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 19.0
+offset_top = 71.0
+offset_right = -31.0
+offset_bottom = 181.0
+grow_horizontal = 2
+size_flags_vertical = 0
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/normal_font_size = 20
+text = "Ammount: 3
+
+Can Move: Yes
+
+Rank: 7"
+fit_content = true
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel7" unique_id=2110304799]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 19.0
+offset_top = 219.0
+offset_right = -31.0
+offset_bottom = 351.0
+grow_horizontal = 2
+size_flags_vertical = 0
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/normal_font_size = 20
+text = "Highly skilled units optimized for close to mid range technical combat.
+
+No special properties."
+fit_content = true
+
+[node name="TextureRect" type="TextureRect" parent="PopUp/TabContainer/Tab5/PiecePanel7" unique_id=1650532208]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -170.5
+offset_right = 7.0
+offset_bottom = -138.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+texture = SubResource("AtlasTexture_ls55g")
+
+[node name="TextureRect2" type="TextureRect" parent="PopUp/TabContainer/Tab5/PiecePanel7" unique_id=1066643996]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 152.0
+offset_top = -170.5
+offset_right = 184.0
+offset_bottom = -138.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+texture = SubResource("AtlasTexture_pvy62")
+
+[node name="PiecePanel8" type="Panel" parent="PopUp/TabContainer/Tab5" unique_id=234568846]
 visible = false
 layout_mode = 0
 offset_left = 340.0
 offset_top = 5.0
 offset_right = 972.0
 offset_bottom = 470.0
+theme_override_styles/panel = ExtResource("11_281x5")
 
-[node name="Label" type="Label" parent="PopUp/TabContainer/Tab5/PiecePanel8" unique_id=908211255]
+[node name="Label" type="Label" parent="PopUp/TabContainer/Tab5/PiecePanel8" unique_id=1700519335]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -118.0
-offset_top = 14.0
+offset_top = 9.0
 offset_right = 118.0
-offset_bottom = 48.0
+offset_bottom = 51.0
 grow_horizontal = 2
-text = "8"
+theme_override_font_sizes/font_size = 24
+text = "Mecha"
+horizontal_alignment = 1
 
-[node name="PiecePanel9" type="Panel" parent="PopUp/TabContainer/Tab5" unique_id=465827466]
+[node name="RichTextLabel2" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel8" unique_id=1530103648]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 19.0
+offset_top = 71.0
+offset_right = -31.0
+offset_bottom = 181.0
+grow_horizontal = 2
+size_flags_vertical = 0
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/normal_font_size = 20
+text = "Ammount: 2
+
+Can Move: Yes
+
+Rank: 8"
+fit_content = true
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel8" unique_id=488570394]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 19.0
+offset_top = 219.0
+offset_right = -31.0
+offset_bottom = 351.0
+grow_horizontal = 2
+size_flags_vertical = 0
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/normal_font_size = 20
+text = "Heavy-duty robots built to endure and dominate in direct engagement.
+
+No special properties."
+fit_content = true
+
+[node name="TextureRect" type="TextureRect" parent="PopUp/TabContainer/Tab5/PiecePanel8" unique_id=714466131]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -170.5
+offset_right = 7.0
+offset_bottom = -138.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+texture = SubResource("AtlasTexture_ifvde")
+
+[node name="TextureRect2" type="TextureRect" parent="PopUp/TabContainer/Tab5/PiecePanel8" unique_id=625829933]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 152.0
+offset_top = -170.5
+offset_right = 184.0
+offset_bottom = -138.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+texture = SubResource("AtlasTexture_opfbp")
+
+[node name="PiecePanel9" type="Panel" parent="PopUp/TabContainer/Tab5" unique_id=86789477]
 visible = false
 layout_mode = 0
 offset_left = 340.0
 offset_top = 5.0
 offset_right = 972.0
 offset_bottom = 470.0
+theme_override_styles/panel = ExtResource("11_281x5")
 
-[node name="Label" type="Label" parent="PopUp/TabContainer/Tab5/PiecePanel9" unique_id=550890674]
+[node name="Label" type="Label" parent="PopUp/TabContainer/Tab5/PiecePanel9" unique_id=900613853]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -118.0
-offset_top = 14.0
+offset_top = 9.0
 offset_right = 118.0
-offset_bottom = 48.0
+offset_bottom = 51.0
 grow_horizontal = 2
-text = "9"
+theme_override_font_sizes/font_size = 24
+text = "Nova"
+horizontal_alignment = 1
 
-[node name="PiecePanel10" type="Panel" parent="PopUp/TabContainer/Tab5" unique_id=411341940]
+[node name="RichTextLabel2" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel9" unique_id=1772294108]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 19.0
+offset_top = 71.0
+offset_right = -31.0
+offset_bottom = 181.0
+grow_horizontal = 2
+size_flags_vertical = 0
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/normal_font_size = 20
+text = "Ammount: 2
+
+Can Move: Yes
+
+Rank: 9"
+fit_content = true
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel9" unique_id=2092703980]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 19.0
+offset_top = 219.0
+offset_right = -31.0
+offset_bottom = 351.0
+grow_horizontal = 2
+size_flags_vertical = 0
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/normal_font_size = 20
+text = "A high-ranking cyborg guard with nearly non-existent organic parts.
+
+No special properties."
+fit_content = true
+
+[node name="TextureRect" type="TextureRect" parent="PopUp/TabContainer/Tab5/PiecePanel9" unique_id=1157745864]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -170.5
+offset_right = 7.0
+offset_bottom = -138.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+texture = SubResource("AtlasTexture_aqci1")
+
+[node name="TextureRect2" type="TextureRect" parent="PopUp/TabContainer/Tab5/PiecePanel9" unique_id=1660491840]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 152.0
+offset_top = -170.5
+offset_right = 184.0
+offset_bottom = -138.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+texture = SubResource("AtlasTexture_xd5sq")
+
+[node name="PiecePanel10" type="Panel" parent="PopUp/TabContainer/Tab5" unique_id=1919280313]
 visible = false
 layout_mode = 0
 offset_left = 340.0
 offset_top = 5.0
 offset_right = 972.0
 offset_bottom = 470.0
+theme_override_styles/panel = ExtResource("11_281x5")
 
-[node name="Label" type="Label" parent="PopUp/TabContainer/Tab5/PiecePanel10" unique_id=1879381862]
+[node name="Label" type="Label" parent="PopUp/TabContainer/Tab5/PiecePanel10" unique_id=1886975176]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -118.0
-offset_top = 14.0
+offset_top = 9.0
 offset_right = 118.0
-offset_bottom = 48.0
+offset_bottom = 51.0
 grow_horizontal = 2
-text = "10"
+theme_override_font_sizes/font_size = 24
+text = "C.O.R.E."
+horizontal_alignment = 1
 
-[node name="PiecePanel11" type="Panel" parent="PopUp/TabContainer/Tab5" unique_id=37838040]
+[node name="RichTextLabel2" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel10" unique_id=519336033]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 19.0
+offset_top = 71.0
+offset_right = -31.0
+offset_bottom = 181.0
+grow_horizontal = 2
+size_flags_vertical = 0
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/normal_font_size = 20
+text = "Ammount: 1
+
+Can Move: Yes
+
+Rank: 10"
+fit_content = true
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel10" unique_id=2019903822]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 19.0
+offset_top = 219.0
+offset_right = -31.0
+offset_bottom = 351.0
+grow_horizontal = 2
+size_flags_vertical = 0
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/normal_font_size = 20
+text = "Also known as Centralized Offensive and Response Engine. A massive mecha piloted by the faction's supreme AI.
+
+The most powerful unit on the battlefield, vulnerable only when defending against a Phantom malware attack."
+fit_content = true
+
+[node name="TextureRect" type="TextureRect" parent="PopUp/TabContainer/Tab5/PiecePanel10" unique_id=343812281]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -170.5
+offset_right = 7.0
+offset_bottom = -138.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+texture = SubResource("AtlasTexture_84rud")
+
+[node name="TextureRect2" type="TextureRect" parent="PopUp/TabContainer/Tab5/PiecePanel10" unique_id=210112968]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 152.0
+offset_top = -170.5
+offset_right = 184.0
+offset_bottom = -138.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+texture = SubResource("AtlasTexture_oejmk")
+
+[node name="PiecePanel11" type="Panel" parent="PopUp/TabContainer/Tab5" unique_id=907867355]
 visible = false
 layout_mode = 0
 offset_left = 340.0
 offset_top = 5.0
 offset_right = 972.0
 offset_bottom = 470.0
+theme_override_styles/panel = ExtResource("11_281x5")
 
-[node name="Label" type="Label" parent="PopUp/TabContainer/Tab5/PiecePanel11" unique_id=489789429]
+[node name="Label" type="Label" parent="PopUp/TabContainer/Tab5/PiecePanel11" unique_id=90303674]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -118.0
-offset_top = 14.0
+offset_top = 9.0
 offset_right = 118.0
-offset_bottom = 48.0
+offset_bottom = 51.0
 grow_horizontal = 2
-text = "12"
+theme_override_font_sizes/font_size = 24
+text = "Turret"
+horizontal_alignment = 1
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel11" unique_id=794680992]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 19.0
+offset_top = 71.0
+offset_right = -31.0
+offset_bottom = 181.0
+grow_horizontal = 2
+size_flags_vertical = 0
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/normal_font_size = 20
+text = "Ammount: 6
+
+Can Move: No
+
+Rank: No"
+fit_content = true
+
+[node name="RichTextLabel3" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel11" unique_id=1327432194]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 19.0
+offset_top = 219.0
+offset_right = -31.0
+offset_bottom = 351.0
+grow_horizontal = 2
+size_flags_vertical = 0
+theme_override_constants/outline_size = 6
+theme_override_font_sizes/normal_font_size = 20
+text = "Static defensive systems.
+
+They automatically destroy any unit that attacks them regardless of rank, except for Saboteurs who can bypass and disable them."
+fit_content = true
+
+[node name="TextureRect" type="TextureRect" parent="PopUp/TabContainer/Tab5/PiecePanel11" unique_id=1420517956]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -170.5
+offset_right = 7.0
+offset_bottom = -138.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+texture = SubResource("AtlasTexture_6by83")
+
+[node name="TextureRect2" type="TextureRect" parent="PopUp/TabContainer/Tab5/PiecePanel11" unique_id=1129989780]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 152.0
+offset_top = -170.5
+offset_right = 184.0
+offset_bottom = -138.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+texture = SubResource("AtlasTexture_7aidw")
