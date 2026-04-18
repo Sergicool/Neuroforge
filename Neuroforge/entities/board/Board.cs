@@ -120,6 +120,10 @@ public partial class Board : Node2D
     public async Task MovePiece(Piece piece, Tile target, bool animated = true)
     {
         Tile origin = piece.CurrentTile;
+
+        int distance = Mathf.Abs(target.GridPosition.X - origin.GridPosition.X) +
+                       Mathf.Abs(target.GridPosition.Y - origin.GridPosition.Y);
+
         piece.RegisterTileExit(origin, _game.TurnNumber);
         origin.ClearOccupant();
         target.SetOccupant(piece);
@@ -128,6 +132,12 @@ public partial class Board : Node2D
             await piece.AnimateMoveTo(target.Position);
 
         piece.Position = target.Position;
+
+        // Revelar SCOUT si hace un movimiento que solo puede hacer el
+        if (piece.Type == PieceType.SCOUT && distance > 1)
+        {
+            await piece.AnimateBlinkReveal();
+        }
     }
 
     // Resuelve el combate entre atacante y defensor

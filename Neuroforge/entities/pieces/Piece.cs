@@ -1,11 +1,13 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using System.Reflection.Emit;
 using System.Threading.Tasks;
 
 public partial class Piece : Node2D
 {
     private Sprite2D _sprite;
+    private Sprite2D _spriteBorder;
 
     public PieceOwner PlayerOwner { get; private set; }
     public PieceType Type        { get; private set; }
@@ -28,6 +30,8 @@ public partial class Piece : Node2D
     public override void _Ready()
     {
         _sprite ??= GetNode<Sprite2D>("Sprite2D");
+        _spriteBorder = GetNode<Sprite2D>("SpriteBorder");
+        _spriteBorder.Visible = false;
     }
 
     // Inicializa una pieza dado su tipo y propietario
@@ -61,6 +65,22 @@ public partial class Piece : Node2D
         IsVisibleToPlayer = true;
         IsRevealedToBot   = true;
         UpdateVisual();
+    }
+
+    public async Task AnimateBlinkReveal()
+    {
+        float blinkHalf = 0.3f;
+
+        Tween tHide = CreateTween();
+        tHide.TweenProperty(_sprite, "modulate", Colors.Transparent, blinkHalf);
+        await ToSignal(tHide, Tween.SignalName.Finished);
+
+        Reveal();
+
+        Tween tShow = CreateTween();
+        tShow.TweenProperty(_sprite, "modulate", Colors.White, blinkHalf * 2f);
+        await ToSignal(tShow, Tween.SignalName.Finished);
+
     }
 
     // Registra la casilla de la que sale la pieza y limpia cooldowns expirados
@@ -108,12 +128,17 @@ public partial class Piece : Node2D
         int y = PlayerOwner == PieceOwner.PLAYER ? 0 : spriteHeight;
 
         _sprite.RegionRect = new Rect2(x, y, spriteWidth, spriteHeight);
+
+        if (_spriteBorder != null)
+        {
+            bool knowsMe = PlayerOwner == PieceOwner.PLAYER && IsRevealedToBot;
+            _spriteBorder.Visible = knowsMe;
+        }
     }
 
     // Mueve la pieza visualmente hasta una posición destino
     public async Task AnimateMoveTo(Vector2 targetPos, float duration = 0.25f)
     {
-        // TODO Hacer que duration sea el tiempo que tarda en recorrer una casilla (Calcular la distancia de movimiento)
         Tween tween = CreateTween();
         tween.TweenProperty(this, "position", targetPos, duration)
              .SetTrans(Tween.TransitionType.Sine)

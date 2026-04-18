@@ -77,7 +77,7 @@ public partial class DeploymentUI : Control
 
     public void SetRemainingPieces(int remaining)
     {
-        _remainingLabel.Text = $"Restantes: {remaining}";
+        _remainingLabel.Text = $"Remaining: {remaining}";
         _startButton.Disabled = remaining > 0;
     }
 
