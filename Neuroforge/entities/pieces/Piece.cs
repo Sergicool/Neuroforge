@@ -70,18 +70,36 @@ public partial class Piece : Node2D
 
     public async Task AnimateBlinkReveal()
     {
-        float blinkHalf = 0.3f;
+        // Animacion intercalando el sprite normal con el oculto
+        int blinkCount = 3;
+        float blinkInterval = 0.07f;
 
-        Tween tHide = CreateTween();
-        tHide.TweenProperty(_sprite, "modulate", Colors.Transparent, blinkHalf);
-        await ToSignal(tHide, Tween.SignalName.Finished);
+        for (int i = 0; i < blinkCount; i++)
+        {
+            // Mostrar sprite revelado temporalmente
+            UpdateVisual();
+            await ToSignal(GetTree().CreateTimer(blinkInterval), SceneTreeTimer.SignalName.Timeout);
 
+            // Volver a oculto, forzando el sprite a estado "oculto" sin cambiar las flags
+            ShowHiddenSprite();
+            await ToSignal(GetTree().CreateTimer(blinkInterval), SceneTreeTimer.SignalName.Timeout);
+        }
+        
+        // Revelar pieza
         Reveal();
+    }
 
-        Tween tShow = CreateTween();
-        tShow.TweenProperty(_sprite, "modulate", Colors.White, blinkHalf * 2f);
-        await ToSignal(tShow, Tween.SignalName.Finished);
+    private void ShowHiddenSprite()
+    {
+        int spriteWidth = PiecesData.ATLAS_COLUMN_WIDTH;
+        int spriteHeight = PiecesData.ATLAS_HEIGHT / 2;
 
+        _sprite.RegionRect = new Rect2(
+            PiecesData.HIDDEN_ATLAS_COLUMN * spriteWidth,
+            PlayerOwner == PieceOwner.PLAYER ? 0 : spriteHeight,
+            spriteWidth,
+            spriteHeight
+        );
     }
 
     // Registra el movimiento realizado en el historial
