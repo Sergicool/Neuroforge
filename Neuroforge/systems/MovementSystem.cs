@@ -18,10 +18,10 @@ public static class MovementSystem
         // No puede moverse a una casilla ocupada por una pieza aliada
         if (target.IsOccupied && target.Occupant.PlayerOwner == piece.PlayerOwner) return false;
 
-        // La pieza no puede volver a la misma casilla hasta dentro de 3 turnos,
-        // salvo que pueda atacar una pieza rival en ella
         bool isAttack = target.IsOccupied && target.Occupant.PlayerOwner != piece.PlayerOwner;
-        if (!isAttack && !piece.CanReturnToTile(target, turn)) return false;
+
+        // Bloquear oscilación A↔B más de 3 veces consecutivas (regla Stratego)
+        if (!isAttack && piece.IsOscillating(piece.CurrentTile, target)) return false;
 
         // Movimiento especial SCOUT: cualquier distancia en línea recta horizontal o vertical
         if (piece.Type == PieceType.SCOUT) return IsScoutPathValid(piece.CurrentTile, target, board);

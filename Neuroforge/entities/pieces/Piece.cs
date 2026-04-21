@@ -1,7 +1,6 @@
 using Godot;
 using System;
 using System.Collections.Generic;
-using System.Reflection.Emit;
 using System.Threading.Tasks;
 
 public partial class Piece : Node2D
@@ -10,9 +9,9 @@ public partial class Piece : Node2D
     private Sprite2D _spriteBorder;
 
     public PieceOwner PlayerOwner { get; private set; }
-    public PieceType Type        { get; private set; }
-    public int Rank              { get; private set; }
-    public bool CanMove          { get; private set; }
+    public PieceType Type { get; private set; }
+    public int Rank { get; private set; }
+    public bool CanMove { get; private set; }
 
     // Controla el render: las piezas del jugador siempre son visibles para él en pantalla.
     // Las piezas del bot se muestran ocultas hasta que combaten.
@@ -20,12 +19,14 @@ public partial class Piece : Node2D
 
     // Controla el conocimiento real del bot: solo true tras haber combatido con la pieza.
     // El bot NO conoce las piezas del jugador por el hecho de que estén visibles en pantalla.
-    public bool IsRevealedToBot   { get; private set; }
+    public bool IsRevealedToBot { get; private set; }
 
     public Tile CurrentTile { get; set; }
 
-    private static int _tileCooldownTurns = 3;
-    private readonly Dictionary<Tile, int> _tilesInCooldown = new();
+    // Historial de los últimos movimientos: (origen, destino).
+    // Se guardan hasta 3 entradas (los 3 movimientos previos que nos interesan).
+    private const int MOVE_HISTORY_SIZE = 3;
+    private readonly List<(Tile From, Tile To)> _moveHistory = new();
 
     public override void _Ready()
     {
@@ -40,16 +41,16 @@ public partial class Piece : Node2D
         _sprite ??= GetNode<Sprite2D>("Sprite2D");
 
         PlayerOwner = owner;
-        Type        = type;
+        Type = type;
 
         var def = PiecesData.Data[type];
-        Rank    = def.Rank;
+        Rank = def.Rank;
         CanMove = def.CanMove;
 
         // Las piezas del jugador siempre son visibles en pantalla para él.
         // El bot no conoce ninguna pieza del jugador hasta que combate con ella.
         IsVisibleToPlayer = owner == PieceOwner.PLAYER;
-        IsRevealedToBot   = owner == PieceOwner.BOT; // Las propias del bot siempre las conoce
+        IsRevealedToBot = owner == PieceOwner.BOT; // Las propias del bot siempre las conoce
 
         UpdateVisual();
     }
@@ -63,7 +64,7 @@ public partial class Piece : Node2D
     {
         if (IsVisibleToPlayer && IsRevealedToBot) return;
         IsVisibleToPlayer = true;
-        IsRevealedToBot   = true;
+        IsRevealedToBot = true;
         UpdateVisual();
     }
 
@@ -83,31 +84,42 @@ public partial class Piece : Node2D
 
     }
 
-    // Registra la casilla de la que sale la pieza y limpia cooldowns expirados
-    public void RegisterTileExit(Tile tile, int turn)
+    // Registra el movimiento realizado en el historial
+    public void RegisterMove(Tile from, Tile to)
     {
-        _tilesInCooldown[tile] = turn;
-        CleanupCooldowns(turn);
+        _moveHistory.Add((from, to));
+        if (_moveHistory.Count > MOVE_HISTORY_SIZE)
+            _moveHistory.RemoveAt(0);
     }
 
-    // Devuelve true si la pieza puede volver a esa casilla en el turno actual
-    public bool CanReturnToTile(Tile tile, int turn)
+    // Devuelve true si ejecutar 'from→to' sería el 4.º movimiento consecutivo
+    // entre las mismas 2 casillas (A→B, B→A, A→B → bloquea B→A).
+    public bool IsOscillating(Tile from, Tile to)
     {
-        if (!_tilesInCooldown.TryGetValue(tile, out int lastTurn)) return true;
-        return (turn - lastTurn) >= _tileCooldownTurns;
-    }
+        if (_moveHistory.Count < 3) return false;
 
-    // Elimina cooldowns que ya han expirado (llamado únicamente desde RegisterTileExit)
-    private void CleanupCooldowns(int turn)
-    {
-        var toRemove = new List<Tile>();
+        // Los 3 movimientos anteriores + el candidato deben ser todos entre las mismas 2 casillas
+        // y alternar dirección en cada paso.
+        Tile tileA = _moveHistory[_moveHistory.Count - 3].From;
+        Tile tileB = _moveHistory[_moveHistory.Count - 3].To;
 
-        foreach (var kvp in _tilesInCooldown)
-            if (turn - kvp.Value >= _tileCooldownTurns)
-                toRemove.Add(kvp.Key);
+        var seq = new (Tile From, Tile To)[4];
+        for (int i = 0; i < 3; i++)
+            seq[i] = _moveHistory[_moveHistory.Count - 3 + i];
+        seq[3] = (from, to);
 
-        foreach (var t in toRemove)
-            _tilesInCooldown.Remove(t);
+        for (int i = 0; i < 4; i++)
+        {
+            bool isAtoB = seq[i].From == tileA && seq[i].To == tileB;
+            bool isBtoA = seq[i].From == tileB && seq[i].To == tileA;
+            if (!isAtoB && !isBtoA) return false;
+        }
+
+        // Verificar que alternan dirección en cada paso
+        for (int i = 1; i < 4; i++)
+            if (seq[i].From != seq[i - 1].To || seq[i].To != seq[i - 1].From) return false;
+
+        return true;
     }
 
     // Actualiza el sprite según propietario y estado de revelación

@@ -21,7 +21,8 @@ region_enabled = true
 region_rect = Rect2(0, 0, 48, 48)
 
 [node name="Marker" type="AnimatedSprite2D" parent="." unique_id=1450125609]
-z_index = 2
+z_index = 10
+z_as_relative = false
 sprite_frames = ExtResource("3_2u6ca")
 autoplay = "default"
 frame_progress = 0.20017697

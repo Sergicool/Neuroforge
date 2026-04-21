@@ -6,7 +6,7 @@ public partial class Board : Node2D
 {
     [Export] private TileMapLayer _mapLayer;
 
-    private const string TILE_SCENE_PATH  = "res://entities/tile/Tile.tscn";
+    private const string TILE_SCENE_PATH = "res://entities/tile/Tile.tscn";
     private const string PIECE_SCENE_PATH = "res://entities/pieces/Piece.tscn";
 
     private PackedScene _tileScene;
@@ -28,10 +28,10 @@ public partial class Board : Node2D
 
     public override void _Ready()
     {
-        _tileScene  = GD.Load<PackedScene>(TILE_SCENE_PATH);
+        _tileScene = GD.Load<PackedScene>(TILE_SCENE_PATH);
         _pieceScene = GD.Load<PackedScene>(PIECE_SCENE_PATH);
 
-        _tilesManager  = new Node2D { Name = "Tiles" };
+        _tilesManager = new Node2D { Name = "Tiles" };
         _piecesManager = new Node2D { Name = "Pieces" };
 
         AddChild(_tilesManager);
@@ -43,7 +43,7 @@ public partial class Board : Node2D
     // Inicializa el tablero con referencia al game manager
     public void Initialize(GameScene gameManager)
     {
-        _game  = gameManager;
+        _game = gameManager;
         _input = new BoardInputController(this, gameManager);
     }
 
@@ -124,7 +124,7 @@ public partial class Board : Node2D
         int distance = Mathf.Abs(target.GridPosition.X - origin.GridPosition.X) +
                        Mathf.Abs(target.GridPosition.Y - origin.GridPosition.Y);
 
-        piece.RegisterTileExit(origin, _game.TurnNumber);
+        piece.RegisterMove(origin, target);
         origin.ClearOccupant();
         target.SetOccupant(piece);
 
@@ -246,7 +246,7 @@ public partial class Board : Node2D
     // Canal 8 — zona de despliegue del PLAYER        1f  (el Core oculto comenzó aquí; el bot infiere por descarte)
     public float[] GetState()
     {
-        const int   CHANNELS = 9;
+        const int CHANNELS = 9;
         const float MAX_RANK = 10f;
 
         int rows = 0, cols = 0;
