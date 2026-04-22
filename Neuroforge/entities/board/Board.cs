@@ -133,11 +133,9 @@ public partial class Board : Node2D
 
         piece.Position = target.Position;
 
-        // Revelar SCOUT si hace un movimiento que solo puede hacer el
-        if (piece.Type == PieceType.SCOUT && distance > 1)
-        {
+        // Revelar SCOUT si hace un movimiento que solo puede hacer el y si no esta ya revelada
+        if (piece.Type == PieceType.SCOUT && distance > 1 && piece.IsRevealedToBot == false)
             await piece.AnimateBlinkReveal();
-        }
     }
 
     // Resuelve el combate entre atacante y defensor

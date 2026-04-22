@@ -70,6 +70,7 @@ public partial class Piece : Node2D
 
     public async Task AnimateBlinkReveal()
     {
+        
         // Animacion intercalando el sprite normal con el oculto
         int blinkCount = 3;
         float blinkInterval = 0.07f;

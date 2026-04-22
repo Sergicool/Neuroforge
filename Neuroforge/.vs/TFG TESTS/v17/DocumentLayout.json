@@ -3,6 +3,10 @@
   "WorkspaceRootPath": "D:\\Personal\\Ingenieria Informatica\\TFG\\Neuroforge\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{26743075-B577-4D4A-8A93-407662048572}|TFG Tests.csproj|d:\\personal\\ingenieria informatica\\tfg\\neuroforge\\entities\\board\\board.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{26743075-B577-4D4A-8A93-407662048572}|TFG Tests.csproj|solutionrelative:entities\\board\\board.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{26743075-B577-4D4A-8A93-407662048572}|TFG Tests.csproj|d:\\personal\\ingenieria informatica\\tfg\\neuroforge\\entities\\pieces\\piece.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{26743075-B577-4D4A-8A93-407662048572}|TFG Tests.csproj|solutionrelative:entities\\pieces\\piece.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -13,10 +17,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{26743075-B577-4D4A-8A93-407662048572}|TFG Tests.csproj|d:\\personal\\ingenieria informatica\\tfg\\neuroforge\\ui\\combatui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{26743075-B577-4D4A-8A93-407662048572}|TFG Tests.csproj|solutionrelative:ui\\combatui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{26743075-B577-4D4A-8A93-407662048572}|TFG Tests.csproj|d:\\personal\\ingenieria informatica\\tfg\\neuroforge\\entities\\board\\board.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{26743075-B577-4D4A-8A93-407662048572}|TFG Tests.csproj|solutionrelative:entities\\board\\board.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{26743075-B577-4D4A-8A93-407662048572}|TFG Tests.csproj|d:\\personal\\ingenieria informatica\\tfg\\neuroforge\\systems\\movementsystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -34,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Document",
@@ -50,7 +50,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "CombatUI.cs",
               "DocumentMoniker": "D:\\Personal\\Ingenieria Informatica\\TFG\\Neuroforge\\ui\\CombatUI.cs",
               "RelativeDocumentMoniker": "ui\\CombatUI.cs",
@@ -58,12 +58,11 @@
               "RelativeToolTip": "ui\\CombatUI.cs",
               "ViewState": "AgIAAFwAAAAAAAAAAAAiwBkAAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-18T13:23:43.788Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-18T13:23:43.788Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "BoardInputController.cs",
               "DocumentMoniker": "D:\\Personal\\Ingenieria Informatica\\TFG\\Neuroforge\\entities\\board\\BoardInputController.cs",
               "RelativeDocumentMoniker": "entities\\board\\BoardInputController.cs",
@@ -71,8 +70,7 @@
               "RelativeToolTip": "entities\\board\\BoardInputController.cs",
               "ViewState": "AgIAADIAAAAAAAAAAAAowEkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-18T12:51:08.334Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-04-18T12:51:08.334Z"
             },
             {
               "$type": "Document",
@@ -88,26 +86,26 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "Piece.cs",
               "DocumentMoniker": "D:\\Personal\\Ingenieria Informatica\\TFG\\Neuroforge\\entities\\pieces\\Piece.cs",
               "RelativeDocumentMoniker": "entities\\pieces\\Piece.cs",
               "ToolTip": "D:\\Personal\\Ingenieria Informatica\\TFG\\Neuroforge\\entities\\pieces\\Piece.cs",
               "RelativeToolTip": "entities\\pieces\\Piece.cs",
-              "ViewState": "AgIAAEAAAAAAAAAAAAAYwEcAAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAADEAAAAAAAAAAAAYwEYAAAAoAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-18T12:21:01.966Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 0,
               "Title": "Board.cs",
               "DocumentMoniker": "D:\\Personal\\Ingenieria Informatica\\TFG\\Neuroforge\\entities\\board\\Board.cs",
               "RelativeDocumentMoniker": "entities\\board\\Board.cs",
               "ToolTip": "D:\\Personal\\Ingenieria Informatica\\TFG\\Neuroforge\\entities\\board\\Board.cs",
               "RelativeToolTip": "entities\\board\\Board.cs",
-              "ViewState": "AgIAAG8AAAAAAAAAAAAmwIoAAAAqAAAAAAAAAA==",
+              "ViewState": "AgIAAG8AAAAAAAAAAAAmwIcAAABfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-18T12:07:29.101Z",
               "EditorCaption": ""
