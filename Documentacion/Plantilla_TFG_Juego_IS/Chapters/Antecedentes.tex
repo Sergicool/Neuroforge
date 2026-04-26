@@ -1,6 +1,6 @@
 \chapter{Antecedentes y Estado del Arte}
 
-En este capítulo se analizan los antecedentes y el estado del arte relacionados con el proyecto \textit{\textbf{NeuroForge}}. Para ello, se realiza un recorrido por la evolución de los juegos de estrategia desde sus orígenes en los juegos de mesa clásicos hasta sus adaptaciones modernas, tanto físicas como digitales. Este análisis permite identificar las mecánicas fundamentales que han influido en el diseño del proyecto, así como contextualizar las decisiones adoptadas durante su desarrollo.
+En este capítulo se analizan los antecedentes y el estado del arte relacionados con el TFG. Para ello, se realiza un recorrido por la evolución de los juegos de estrategia desde sus orígenes en los juegos de mesa clásicos hasta sus adaptaciones modernas, tanto físicas como digitales. Este análisis permite identificar las mecánicas fundamentales que han influido en el diseño del proyecto, así como contextualizar las decisiones adoptadas durante su desarrollo.
 
 \section{Evolución de los juegos de estrategia}
 
@@ -26,9 +26,7 @@ El siguiente paso se produce a comienzos del siglo XX con la aparición de \text
 
 Estas mecánicas suponen una ruptura clara con los juegos de información completa predominantes hasta ese momento, al trasladar una parte sustancial de la toma de decisiones al ámbito de la inferencia, el engaño y la gestión del riesgo. Asimismo, \textit{L’Attaque} consolida una jerarquía militar explícita y permite la configuración libre de la disposición inicial de las unidades, lo que incrementa la profundidad estratégica desde el primer turno y refuerza la importancia de la planificación previa. En conjunto, estas innovaciones marcan un punto de inflexión en el diseño de juegos de estrategia, al introducir por primera vez de forma sistemática la incertidumbre como recurso estratégico.
 
-La progresión histórica desde los primeros juegos de mesa hasta títulos como \textit{L’Attaque} pone de manifiesto una evolución gradual desde mecánicas dominadas por el azar y el movimiento lineal hacia sistemas estratégicos cada vez más complejos, basados en la jerarquía de unidades, la confrontación directa y, finalmente, la ocultación de información. Esta acumulación progresiva de conceptos estratégicos, planificación, gestión del riesgo, engaño e inferencia, configura el marco teórico sobre el que se desarrollaría posteriormente \textit{Stratego} y, por extensión, fundamenta las decisiones de diseño del proyecto \textit{\textbf{NeuroForge}}.
-
-% Revisado hasta aqui
+La progresión histórica desde los primeros juegos de mesa hasta títulos como \textit{L’Attaque} pone de manifiesto una evolución gradual desde mecánicas dominadas por el azar y el movimiento lineal hacia sistemas estratégicos cada vez más complejos, basados en la jerarquía de unidades, la confrontación directa y, finalmente, la ocultación de información. Esta acumulación progresiva de conceptos estratégicos, planificación, gestión del riesgo, engaño e inferencia, configura el marco teórico sobre el que se desarrollaría posteriormente \textit{Stratego}.
 
 \section{El juego original: \textit{Stratego}}
 
@@ -42,7 +40,7 @@ Una de las decisiones de diseño más relevantes es la configuración inicial li
 
 Desde el punto de vista material, \textit{Stratego} ha experimentado diversas adaptaciones físicas a lo largo del tiempo. Las primeras ediciones utilizaban piezas de cartón impreso, que fueron sustituidas posteriormente por piezas de madera pintada. A partir de finales de la década de 1960, estas fueron reemplazadas por piezas de plástico, más económicas y estables. Este cambio no solo respondió a criterios de producción, sino que también redujo el riesgo de vuelco accidental de las piezas, un problema crítico en un juego donde la revelación involuntaria de la información compromete el desarrollo estratégico de la partida.
 
-Desde una perspectiva de diseño, \textit{Stratego} se caracteriza por la ausencia total de elementos aleatorios durante la partida. Todas las decisiones se basan en la planificación, la inferencia y la lectura del comportamiento del oponente, lo que lo convierte en un paradigma de la estrategia bajo información imperfecta. Estas características explican su influencia duradera y justifican su elección como principal referencia conceptual y base del diseño para el desarrollo del proyecto \textit{\textbf{NeuroForge}}.
+Desde una perspectiva de diseño, \textit{Stratego} se caracteriza por la ausencia total de elementos aleatorios durante la partida. Todas las decisiones se basan en la planificación, la inferencia y la lectura del comportamiento del oponente, lo que lo convierte en un paradigma de la estrategia bajo información imperfecta.
 
 \section{Variaciones, adaptaciones y videojuegos relacionados}
 
@@ -58,25 +56,27 @@ Dentro del ámbito de los videojuegos de estrategia por turnos que comparten pri
 
 De manera similar, el videojuego \textit{Into the Breach} (Subset Games, 2018) traslada el concepto de estrategia por turnos a un entorno de tablero discretizado donde cada unidad tiene capacidades específicas y limitadas. La mecánica principal consiste en anticipar el comportamiento del enemigo y planificar acciones para proteger objetivos clave, equilibrando riesgo y recompensa en cada turno. Esta combinación de toma de decisiones estrictamente calculada, jerarquía de unidades y confrontación directa recuerda la esencia de \textit{Stratego}, donde el control del espacio y la gestión de las piezas son determinantes para la victoria. La simplicidad aparente del tablero contrasta con la profundidad estratégica requerida, consolidando a \textit{Into the Breach} como un ejemplo contemporáneo de cómo los principios clásicos de los juegos de estrategia pueden adaptarse eficazmente al medio digital.
 
-Estas aproximaciones digitales ponen de manifiesto la diversidad de soluciones adoptadas en el diseño de videojuegos de estrategia y sirven como referencia para el desarrollo de \textit{\textbf{NeuroForge}}. El objetivo del proyecto es combinar la jerarquía de unidades y la confrontación directa propias de \textit{Stratego} con las ventajas del medio digital, manteniendo la tensión estratégica derivada de la información oculta y aprovechando las posibilidades de automatización, accesibilidad y escalabilidad que ofrece el formato de videojuego.
+Estas aproximaciones digitales ponen de manifiesto la diversidad de soluciones adoptadas en el diseño de videojuegos de estrategia y sirven como referencia para el desarrollo del TFG. El objetivo del proyecto es combinar la jerarquía de unidades y la confrontación directa propias de \textit{Stratego} con las ventajas del medio digital, manteniendo la tensión estratégica derivada de la información oculta y aprovechando las posibilidades de automatización, accesibilidad y escalabilidad que ofrece el formato de videojuego.
 
-\section{Motor de videojuegos utilizado}
+\section{Motores de desarrollo de videojuegos}
 
-Los motores de videojuegos funcionan como un \textit{framework} de desarrollo, proporcionando un conjunto integrado de herramientas, librerías y sistemas que sirven como base tecnológica para la creación de un videojuego. Estos motores abstraen gran parte de la complejidad técnica inherente al desarrollo, ofreciendo soluciones ya implementadas para tareas como el renderizado gráfico, la gestión de escenas, el control de entrada del usuario, la simulación de físicas o la exportación a distintas plataformas. Gracias a esta abstracción, el desarrollador puede centrarse principalmente en la lógica del juego, el diseño de mecánicas y la experiencia del usuario.
+Un motor de videojuegos es un \textit{framework} de desarrollo que proporciona un conjunto integrado de herramientas, librerías y sistemas sobre los que construir un videojuego. Estos motores abstraen gran parte de la complejidad técnica inherente al desarrollo, ofreciendo soluciones ya implementadas para tareas como el renderizado gráfico, la gestión de escenas, el control de entrada del usuario, la simulación de físicas o la exportación a distintas plataformas. Gracias a esta abstracción, el desarrollador puede centrarse principalmente en la lógica del juego, el diseño de mecánicas y la experiencia del usuario.
 
-La elección del motor de videojuegos influye de manera directa en el proceso de desarrollo y en las características finales del producto. Factores como el flujo de trabajo, el rendimiento, la escalabilidad, la facilidad de mantenimiento del código y los tiempos de implementación están fuertemente condicionados por las herramientas y la arquitectura que ofrece el motor seleccionado. En el contexto de un proyecto académico individual, esta decisión cobra especial relevancia, ya que deben considerarse además aspectos como la curva de aprendizaje, la disponibilidad de documentación y recursos, y la adecuación del motor al alcance real del proyecto.
+En la actualidad, el panorama del desarrollo de videojuegos independiente está dominado por diversos motores de videojuegos, entre los que actualmente destacan más tenemos \textbf{Unreal Engine}, \textbf{Unity} y \textbf{Godot}. Los tres cuentan con una amplia presencia tanto en el ámbito profesional como en el
+educativo, y representan enfoques distintos ante el desarrollo.
 
-Con el objetivo de seleccionar el motor más adecuado para el desarrollo del videojuego \textit{NeuroForge}, se realizó un análisis comparativo inicial de tres de los motores de desarrollo más utilizados en la actualidad: Unreal Engine, Unity y Godot. Estos motores cuentan con una amplia presencia tanto en el ámbito profesional como en el educativo y representan diferentes enfoques dentro del desarrollo de videojuegos \cite{rocketbrush_engines_2025}.
+Unreal Engine, desarrollado por Epic Games, es el motor de referencia en producciones de gran presupuesto y alta exigencia gráfica. Sus sistemas avanzados de renderizado, iluminación y simulación física permiten desarrollar entornos tridimensionales de alta fidelidad visual, lo que lo convierte en la herramienta estándar en la industria AAA. Esta potencia técnica tiene como contrapartida una curva de aprendizaje pronunciada, unos requisitos de hardware elevados y tiempos de compilación considerables, factores que pueden suponer una desventaja significativa en proyectos de pequeña escala o con recursos limitados~\cite{unrealengine_features}.
 
-Para realizar esta comparación se han considerado varios criterios relevantes para el contexto del proyecto. Entre ellos destacan el rendimiento del motor, la facilidad de aprendizaje, la adecuación al desarrollo de videojuegos en dos dimensiones, los requisitos de hardware, el ecosistema de herramientas disponibles y el modelo de licencias.
+Unity se ha consolidado como uno de los motores más populares tanto en el ámbito independiente como en el educativo, gracias a su versatilidad para desarrollar videojuegos en dos y tres dimensiones sobre una amplia variedad de plataformas. Cuenta con una comunidad muy extensa, una gran cantidad de documentación y un ecosistema amplio de herramientas y recursos. Sin embargo, su arquitectura interna está históricamente orientada al desarrollo tridimensional, lo que puede introducir una sobrecarga innecesaria en proyectos
+2D más sencillos. Además, la controversia generada en 2023~\cite{unity_runtimefee_apology, unity_runtimefee_cancelled} por una propuesta de tarificación por instalación del juego, que fue ampliamente rechazada por la comunidad de desarrolladores y finalmente revertida, puso en evidencia los riesgos asociados a depender de un motor de código cerrado con modelo de licencia comercial~\cite{unity_overview}.
 
-Unreal Engine es uno de los motores más utilizados dentro de la industria del videojuego, especialmente en producciones de gran presupuesto y alta exigencia gráfica. Sus avanzados sistemas de renderizado, iluminación y simulación física permiten desarrollar entornos tridimensionales altamente realistas, lo que lo convierte en una herramienta especialmente adecuada para proyectos de gran escala y alta fidelidad visual. Sin embargo, esta potencia técnica implica también una mayor complejidad en el flujo de trabajo y una curva de aprendizaje más pronunciada, especialmente para desarrolladores sin experiencia previa. Asimismo, los requerimientos de hardware suelen ser más elevados y los tiempos de compilación pueden resultar más largos en comparación con otros motores. Estas características pueden suponer una desventaja en proyectos académicos o desarrollos individuales donde el tiempo y los recursos disponibles son limitados.
+Godot es un motor de código abierto con licencia MIT que ha experimentado un crecimiento notable en los últimos años, especialmente dentro del desarrollo independiente. Su filosofía se basa en la simplicidad, la
+modularidad y la accesibilidad. A diferencia de Unity, su motor 2D no es una adaptación del motor 3D sino un sistema nativo e independiente, lo que lo convierte en una herramienta especialmente eficiente para el desarrollo de juegos bidimensionales. Su editor ocupa menos de 200~MB, arranca en segundos y permite ciclos de iteración muy rápidos, aspectos especialmente valiosos en proyectos individuales. A esto se suma la ausencia total de costes de licencia y la imposibilidad estructural de que las condiciones de uso cambien de forma
+unilateral, al tratarse de software de código abierto~\cite{godot_features}.
 
-Unity, por su parte, se ha consolidado como uno de los motores de videojuegos más populares tanto en el ámbito independiente como en el educativo. Su principal ventaja radica en su versatilidad, ya que permite desarrollar videojuegos en dos y tres dimensiones para una amplia variedad de plataformas. Además, cuenta con una comunidad muy extensa, una gran cantidad de documentación disponible y un ecosistema amplio de herramientas, extensiones y recursos que facilitan el aprendizaje y aceleran el desarrollo. No obstante, algunos análisis técnicos señalan que en proyectos con estructuras complejas o con altas exigencias gráficas pueden aparecer problemas de rendimiento si no se realiza una gestión cuidadosa de los recursos. Asimismo, aunque Unity ofrece soporte para el desarrollo bidimensional, su arquitectura interna está históricamente orientada al desarrollo tridimensional, lo que puede introducir cierta sobrecarga innecesaria en proyectos 2D más sencillos.
+La percepción de Godot como un motor de menor capacidad frente a sus competidores ha quedado desmentida de forma contundente con el lanzamiento de \textit{Slay the Spire~II} (MegaCrit, 2026). El estudio, que había iniciado el desarrollo del juego en Unity, migró el proyecto íntegramente a Godot tras la polémica de 2023, asumiendo reescribir más de dos años de trabajo~\cite{slayspire2_godot}. El resultado ha sido uno de los lanzamientos independientes más exitosos de los últimos años, en sus primeros 3 días en Early Access alcanzó un pico de más de 500.000 jugadores simultáneos en Steam, y en su primera semana superó los tres millones de unidades vendidas~\cite{slayspire2_launch}. Este caso demuestra que Godot es capaz de sustentar productos comerciales de alto nivel cuando el tipo de juego se alinea con sus fortalezas.
 
-Finalmente, Godot es un motor de desarrollo de código abierto que ha ganado una notable popularidad en los últimos años, especialmente dentro del desarrollo independiente y el ámbito educativo. Su filosofía se basa en la simplicidad, la modularidad y la accesibilidad, lo que facilita su uso en proyectos de pequeña y mediana escala. Una de sus principales características es su arquitectura basada en nodos, que favorece un diseño modular y fácilmente mantenible del sistema. Además, Godot ofrece herramientas especialmente sólidas para el desarrollo de videojuegos en dos dimensiones, permitiendo ciclos de desarrollo rápidos y un prototipado ágil. A esto se suma la ausencia de costes de licencia y el acceso completo a su código fuente, lo que permite una mayor libertad de experimentación. Como principal limitación, el motor presenta capacidades menos maduras en el desarrollo de entornos tridimensionales complejos en comparación con motores comerciales como Unreal Engine o Unity, así como un ecosistema de extensiones más reducido.
-
-La Tabla \ref{tab:comparativa_motores} resume de forma sintética las principales características de los motores analizados, considerando los criterios más relevantes para el desarrollo del proyecto.
+La Tabla~\ref{tab:comparativa_motores} resume las principales diferencias entre los tres motores considerando los criterios más relevantes para el contexto de este proyecto.
 
 \begin{table}[H]
 	\centering
@@ -84,28 +84,26 @@ La Tabla \ref{tab:comparativa_motores} resume de forma sintética las principale
 		\hline
 		\textbf{Criterio} & \textbf{Unreal Engine} & \textbf{Unity} & \textbf{Godot} \\
 		\hline
-		Rendimiento en 3D & Muy alto & Alto & Medio \\
+		Rendimiento en 3D        & Muy alto   & Alto      & Medio         \\
 		\hline
-		Rendimiento en 2D & Medio & Alto & Muy alto \\
+		Rendimiento en 2D        & Medio      & Alto      & Muy alto      \\
 		\hline
-		Curva de aprendizaje & Alta & Media & Baja \\
+		Curva de aprendizaje     & Alta       & Media     & Baja          \\
 		\hline
-		Requisitos de hardware & Altos & Medios & Bajos \\
+		Requisitos de hardware   & Altos      & Medios    & Bajos         \\
 		\hline
-		Modelo de licencia & Comercial & Comercial & Código abierto \\
+		Modelo de licencia       & Comercial  & Comercial & Código abierto\\
 		\hline
-		Adecuación a proyectos individuales & Media & Alta & Muy alta \\
+		Adecuación a proyectos individuales & Media & Alta & Muy alta     \\
 		\hline
-		Ecosistema y comunidad & Muy amplio & Muy amplio & En crecimiento \\
+		Ecosistema y comunidad   & Muy amplio & Muy amplio & En crecimiento\\
 		\hline
 	\end{tabular}
 	\caption{Comparativa entre motores de desarrollo de videojuegos}
 	\label{tab:comparativa_motores}
 \end{table}
 
-Tras el análisis realizado, se ha determinado que Godot es el motor más adecuado para el desarrollo del proyecto \textit{NeuroForge}. Dado que se trata de un videojuego de estrategia por turnos en dos dimensiones, con un alcance controlado y desarrollado en un contexto académico individual, las ventajas de Godot en términos de simplicidad, rendimiento en 2D y ausencia de costes de licencia superan claramente sus limitaciones técnicas.
-
-Además, su ligereza y rapidez en los ciclos de desarrollo favorecen un enfoque iterativo basado en pruebas frecuentes y refinamiento progresivo, lo que resulta especialmente adecuado para un proyecto desarrollado por una única persona y alineado con la metodología de trabajo adoptada en este TFG.
+Tras este análisis, Godot se presenta como el motor más adecuado para el desarrollo de este TFG. Al tratarse de un videojuego de estrategia por turnos en dos dimensiones, con un alcance controlado y desarrollado en un contexto académico individual, las ventajas de Godot en términos de rendimiento nativo en 2D, ligereza, rapidez de iteración y ausencia de costes de licencia superan con claridad sus limitaciones en otros ámbitos. Su menor ecosistema de extensiones no supone ninguna restricción para un proyecto de esta escala, y su modelo de código abierto ofrece una estabilidad y previsibilidad que los motores comerciales no pueden garantizar.
 
 \begin{figure}[h!]
 	\centering

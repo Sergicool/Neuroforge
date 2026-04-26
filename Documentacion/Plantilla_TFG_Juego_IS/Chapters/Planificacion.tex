@@ -203,6 +203,165 @@ del proyecto.
 	\caption{Fechas estimadas de finalización de las iteraciones del proyecto}
 	\label{tab:iteraciones}
 \end{table}
+
+\subsection{Iteración 1: Implementación del juego base}
+
+El objetivo de esta primera iteración es desarrollar una versión funcional mínima del videojuego, sin elementos visuales pulidos ni inteligencia artificial, que sirva como base estructural para el resto del proyecto.
+
+\begin{itemize}
+	
+	\item \textbf{Tablero y casillas:} Implementación de la cuadrícula de $10 \times 10$ casillas, incluyendo las zonas intransitables del centro del tablero.
+	
+	\item \textbf{Definición de piezas:} Desarrollo de los distintos tipos de piezas con sus propiedades individuales: rangos, piezas inmóviles, reglas especiales de combate y de movimiento.
+	
+	\item \textbf{Sistema de movimiento:} Implementación de la selección de piezas, la visualización de las casillas de destino válidas y el movimiento sobre una casilla válida.
+	
+	\item \textbf{Sistema de combate:} Resolución inmediata de los enfrentamientos entre piezas según las reglas de rango definidas, sin animaciones ni retroalimentación visual elaborada.
+	
+	\item \textbf{Sistema de ocultación de piezas:} Implementación de la mecánica de identidades ocultas, de forma que las piezas rivales no muestran su tipo hasta que entran en combate.
+	
+	\item \textbf{Despliegue inicial aleatorio del bot:} El sistema coloca automáticamente las piezas del oponente en su zona de despliegue de forma aleatoria al comienzo de la partida.
+	
+	\item \textbf{Bot de movimiento aleatorio:} Implementación de un oponente básico que ejecuta movimientos válidos de forma aleatoria durante su turno.
+	
+	\item \textbf{Sistema de despliegue del jugador:} Pantalla básica que permite al jugador colocar sus piezas en su zona antes de comenzar	la partida.
+	
+	\item \textbf{Condición de fin de partida:} Detección de las condiciones de victoria y derrota, con parada completa del juego al producirse alguna de ellas.
+	
+\end{itemize}
+
+% --------------------------------------------------------
+
+\subsection{Iteración 2: Interfaz de usuario y pulido visual}
+
+El objetivo de esta iteración es dotar al juego de una interfaz completa, visualmente cuidada e intuitiva, sustituyendo los elementos provisionales de la iteración anterior.
+
+\begin{itemize}
+	
+	\item \textbf{Bocetado de interfaces:} Elaboración de bocetos y propuestas visuales para todas las pantallas del juego antes de su implementación, con el fin de planificar la disposición de los elementos y la navegación entre escenas.
+	
+	\item \textbf{Búsqueda e integración de assets:} Selección de recursos gráficos para construir las interfaces de forma visualmente coherente con la ambientación del juego.
+	
+	\item \textbf{Animaciones de movimiento de piezas:} Incorporación de animaciones básicas al desplazamiento de las piezas sobre el tablero, mejorando la claridad de las acciones realizadas.
+	
+	\item \textbf{Rediseño visual del tablero:} Mejora de la representación gráfica del tablero y de los indicadores de selección y movimiento
+	disponible, incluyendo animaciones asociadas.
+	
+	\item \textbf{Sprites de las piezas:} Creación e integración de la
+	representación gráfica de cada tipo de pieza.
+	
+	\item \textbf{Interfaz de despliegue mejorada:} Rediseño de la pantalla
+	de colocación inicial de piezas, haciéndola más clara e intuitiva
+	para el jugador.
+	
+	\item \textbf{Interfaz de resolución de combate:} Pantalla que muestra
+	el resultado de cada enfrentamiento, indicando la pieza ganadora y
+	perdedora y los motivos del resultado según las reglas aplicadas.
+	
+	\item \textbf{Pantalla de fin de partida:} Escena que informa al jugador
+	del resultado final y le permite iniciar una nueva partida o volver
+	al menú principal.
+	
+	\item \textbf{Menú principal:} Escena inicial con opciones para comenzar
+	una partida, consultar las reglas y salir del juego.
+	
+	\item \textbf{Menú de pausa:} Escena accesible durante la partida que
+	permite al jugador continuar, consultar las reglas o salir al menú
+	principal.
+	
+	\item \textbf{Menú de reglas:} Escena con múltiples viñetas que explican
+	de forma visual y progresiva todas las mecánicas y reglas del juego.
+	
+	\item \textbf{Ajustes y correcciones:} Revisión general de los elementos
+	implementados en la iteración anterior y aplicación de los cambios
+	que no pudieron contemplarse durante su desarrollo.
+	
+\end{itemize}
+
+% --------------------------------------------------------
+
+\subsection{Iteración 3: Mejoras audiovisuales}
+
+El objetivo de esta iteración es completar la experiencia audiovisual del
+juego mediante la incorporación de sonido y los últimos elementos visuales
+de ambientación.
+
+\begin{itemize}
+	
+	\item \textbf{Fondos y elementos decorativos:} Incorporación de fondos
+	y elementos visuales de carácter estético que complementan la
+	ambientación del juego sin afectar a la jugabilidad.
+	
+	\item \textbf{Efectos de sonido:} Integración de efectos sonoros
+	asociados a las distintas acciones del juego, como movimientos,
+	combates y navegación por menús.
+	
+	\item \textbf{Música:} Incorporación de música de fondo para las
+	distintas escenas del juego, reforzando la ambientación.
+	
+	\item \textbf{Menú de opciones de audio:} Implementación de una
+	pantalla de configuración que permite al jugador ajustar de forma
+	independiente el volumen de los efectos de sonido y de la música.
+	
+\end{itemize}
+
+% --------------------------------------------------------
+
+\subsection{Iteración 4: Implementación del bot inteligente}
+
+El objetivo de esta iteración es sustituir el bot de movimiento aleatorio
+por un sistema de inteligencia artificial capaz de tomar decisiones
+estratégicas durante la partida.
+
+\begin{itemize}
+	
+	\item \textbf{Diseño del modelo de IA:} Definición del enfoque y la
+	arquitectura del sistema de toma de decisiones del bot, teniendo en
+	cuenta las particularidades del juego, como la información oculta de
+	las piezas rivales.
+	
+	\item \textbf{Entrenamiento del modelo:} Proceso de entrenamiento de
+	la IA mediante partidas simuladas, con el fin de ajustar su comportamiento
+	y mejorar progresivamente la calidad de sus decisiones.
+	
+	\item \textbf{Integración del bot inteligente:} Sustitución del bot
+	aleatorio existente por el modelo entrenado, asegurando su correcta
+	integración con el sistema de turnos y las reglas del juego.
+	
+	\item \textbf{Evaluación del comportamiento:} Pruebas del bot en distintas
+	situaciones de partida para verificar que sus decisiones son coherentes
+	con las reglas y que no produce errores en la ejecución.
+	
+\end{itemize}
+
+% --------------------------------------------------------
+
+\subsection{Iteración 5: Pulido final}
+
+El objetivo de esta última iteración es revisar el conjunto del sistema,
+corregir los errores detectados y garantizar la estabilidad y calidad de
+la versión final del videojuego.
+
+\begin{itemize}
+	
+	\item \textbf{Optimización del rendimiento:} Análisis y mejora del
+	rendimiento del sistema en caso de detectarse problemas de fluidez
+	o consumo de recursos.
+	
+	\item \textbf{Revisión del feedback al jugador:} Comprobación y ajuste
+	de todos los elementos de retroalimentación visual y sonora para
+	asegurar que las acciones del juego quedan siempre claras para
+	el jugador.
+	
+	\item \textbf{Corrección de errores:} Detección y resolución de fallos
+	o comportamientos inesperados identificados durante las pruebas
+	finales del sistema.
+	
+	\item \textbf{Pruebas de integración:} Verificación del funcionamiento
+	conjunto de todos los sistemas implementados a lo largo del proyecto,
+	asegurando la coherencia y estabilidad del producto final.
+	
+\end{itemize}
 	
 \section{Cronograma del proyecto}
 

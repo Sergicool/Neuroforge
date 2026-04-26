@@ -29,16 +29,42 @@ Ancient Chess.
 \newblock How to play the chinese land battle game luzhanqi.
 \newblock \url{https://ancientchess.com/page/play-luzhanqi.htm}.
 
-\bibitem{rocketbrush_engines_2025}
-RocketBrush Studio.
-\newblock Godot vs. unity vs. unreal comparison.
+\bibitem{newzoo2025}
+{Newzoo}.
+\newblock Global games market report 2025.
 \newblock
-  \url{https://rocketbrush.com/blog/godot-vs-unity-vs-unreal-comparison}.
+  \url{https://investgame.net/wp-content/uploads/2025/09/2025_Newzoo_Free_Global_Games_Market_Report.pdf},
+  2025.
+\newblock Consultado en abril de 2026.
 
-\bibitem{DesarrolloIterativo}
-Proyectos Agiles.
-\newblock Desarrollo iterativo e incremental.
-\newblock \url{https://proyectosagiles.org/desarrollo-iterativo-incremental/}.
+\bibitem{palaus2020}
+Marc Palaus, Raquel Viejo-Sobera, Diego Redolar-Ripoll, and Elena~M.
+  Marr{\'o}n.
+\newblock Cognitive enhancement via neuromodulation and video games:
+  Synergistic effects?
+\newblock Frontiers in Human Neuroscience,
+  \url{https://doi.org/10.3389/fnhum.2020.00235}, 2020.
+\newblock Consultado en abril de 2026.
+
+\bibitem{garcianaveira2018}
+Alejo Garc{\'i}a-Naveira, Mart{\'i}n Jim{\'e}nez~Toribio, Borja Teruel~Molero,
+  and Alejandro Su{\'a}rez.
+\newblock Beneficios cognitivos, psicol{\'o}gicos y personales del uso de los
+  videojuegos y esports: una revisi{\'o}n.
+\newblock Revista de Psicolog{\'i}a Aplicada al Deporte y al Ejercicio
+  F{\'i}sico,
+  \url{https://www.revistapsicologiaaplicadadeporteyejercicio.org/art/rpadef2018a15},
+  2018.
+\newblock Consultado en abril de 2026.
+
+\bibitem{solano2020}
+Erick Solano-Fern{\'a}ndez and Diego Porras-Alfaro.
+\newblock El modelo iterativo e incremental para el desarrollo de la
+  aplicación de realidad aumentada {Amón\_RA}.
+\newblock Tecnolog{\'i}a en Marcha, vol.~33, n.º~5,
+  \url{https://revistas.tec.ac.cr/index.php/tec_marcha/article/download/5518/5233/15939},
+  2020.
+\newblock Consultado en abril de 2026.
 
 \bibitem{BritishMuseumRoyalGameOfUr}
 British Museum.
@@ -66,5 +92,57 @@ British Antique~Dealers' Association.
 \bibitem{StrategoHistoryUltraBoardGames}
 History of stratego.
 \newblock \url{https://www.ultraboardgames.com/stratego/history.php}.
+
+\bibitem{unrealengine_features}
+{Epic Games}.
+\newblock Unreal engine 5 -- features.
+\newblock \url{https://www.unrealengine.com/unreal-engine-5}, 2025.
+\newblock Consultado en abril de 2026.
+
+\bibitem{unity_runtimefee_apology}
+{Game Developer staff}.
+\newblock Unity apologizes to devs, reveals updated {Runtime Fee} policy.
+\newblock Game Developer,
+  \url{https://www.gamedeveloper.com/business/unity-apologizes-to-devs-reveals-updated-runtime-fee-policy},
+  2023.
+\newblock Consultado en abril de 2026.
+
+\bibitem{unity_runtimefee_cancelled}
+{Unity Technologies}.
+\newblock A message to our community: {Unity} is canceling the {Runtime Fee}.
+\newblock Unity Discussions,
+  \url{https://discussions.unity.com/t/a-message-to-our-community-unity-is-canceling-the-runtime-fee/1517714},
+  2024.
+\newblock Consultado en abril de 2026.
+
+\bibitem{unity_overview}
+{Unity Technologies}.
+\newblock Unity -- real-time development platform.
+\newblock \url{https://unity.com/solutions/game}, 2025.
+\newblock Consultado en abril de 2026.
+
+\bibitem{godot_features}
+{Godot Engine}.
+\newblock Godot engine -- features.
+\newblock \url{https://godotengine.org/features/}, 2025.
+\newblock Consultado en abril de 2026.
+
+\bibitem{slayspire2_godot}
+Tyler Wilde.
+\newblock Slay the spire 2 ditched {Unity} for open-source engine {Godot} after
+  over 2 years of development.
+\newblock PC Gamer,
+  \url{https://www.pcgamer.com/games/card-games/slay-the-spire-2-ditched-unity-for-open-source-engine-godot-after-2-years-of-development/},
+  2024.
+\newblock Consultado en abril de 2026.
+
+\bibitem{slayspire2_launch}
+David Cailleteau.
+\newblock Slay the spire 2 had a massive launch with an estimated 4.6{M} copies
+  sold, over \$92{M} in revenue so far.
+\newblock Wccftech,
+  \url{https://wccftech.com/slay-the-spire-2-estimated-4-6-million-copies-sold-92-million-revenue-generated/},
+  2026.
+\newblock Consultado en abril de 2026.
 
 \end{thebibliography}

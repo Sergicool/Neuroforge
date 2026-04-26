@@ -1,50 +1,58 @@
 \chapter{Introducción}
 \label{sec:intro}
 
+\section{Contexto y motivaciones}
 
-\section{Contexto y Motivaciones}
+Los videojuegos constituyen hoy en día una de las industrias culturales y de entretenimiento más relevantes a nivel global. Los ingresos globales del sector alcanzaron los 188.800 millones de dólares en 2025, con una base de jugadores
+que supera los 3.600 millones de personas, lo que equivale al 61,5\,\% de la
+población mundial con acceso a internet~\cite{newzoo2025}. Estas cifras sitúan a los videojuegos por encima de los ingresos combinados del \textit{streaming} y la industria cinematográfica, consolidando su posición como el medio de entretenimiento dominante del siglo~XXI.
 
-\newpage
-%\section{Alcance}
+Más allá de su peso económico, los videojuegos han demostrado tener un impacto positivo documentado en sus jugadores. Diversas investigaciones señalan que su uso moderado mejora capacidades cognitivas como la atención, la memoria de trabajo, la toma de decisiones y las habilidades espaciales~\cite{palaus2020}. Los juegos de estrategia, en particular, fomentan la autorregulación y la planificación, obligando al jugador a evaluar riesgos y anticipar movimientos bajo presión. Además, el componente interactivo y social de muchos títulos contribuye al desarrollo de valores como la cooperación y el trabajo en equipo~\cite{garcianaveira2018}. El videojuego, por tanto, no es únicamente un producto de ocio, sino un medio expresivo con capacidad de influir de forma significativa en quienes lo experimentan.
+
+Esta capacidad de generar experiencias entretenidas o memorables es precisamente lo que ha motivado el desarrollo del presente trabajo. A lo largo de los años, numerosos videojuegos han dejado una huella duradera: títulos que, independientemente de su presupuesto o escala, han conseguido transmitir emociones, plantear desafíos estimulantes o simplemente brindar momentos de disfrute genuino.
+
+Poder contribuir, aunque sea a pequeña escala, a generar ese mismo tipo de experiencia en otras personas es la motivación principal de este proyecto. El desarrollo de un videojuego propio supone además una oportunidad única de adquirir de forma práctica las competencias técnicas y creativas que conforman esta industria: diseño de sistemas interactivos, implementación de lógica de juego, creación de interfaces y producción de contenido audiovisual.
 
 \section{Objetivos}
 
-El objetivo principal de este TFG es el diseño y desarrollo de
-un videojuego completamente funcional utilizando el motor de desarrollo Godot y el lenguaje de
-programación C\#. El proyecto tiene como finalidad implementar un sistema completo
-de juego que incluya las mecánicas básicas, un oponente controlado por inteligencia
-artificial y una interfaz de usuario que permita al jugador interactuar de forma
-clara e intuitiva con el sistema.
+El objetivo principal de este TFG es diseñar y desarrollar un videojuego por turnos completamente funcional utilizando el motor Godot y el lenguaje de programación C\#, capaz de ofrecer una experiencia de juego completa y satisfactoria de principio a fin.
 
-Para alcanzar este objetivo general, se han definido los siguientes objetivos
-específicos:
+Para alcanzar este objetivo principal, se han definido los siguientes objetivos específicos:
 
 \begin{itemize}
 	
-	\item Diseñar e implementar la lógica fundamental del videojuego, incluyendo la
-	estructura del tablero, la definición de las piezas y las reglas de movimiento
-	y combate entre ellas.
+	\item Diseñar e implementar la lógica fundamental del videojuego, en concreto, la estructura de un tablero, la definición de las piezas y las reglas de movimiento y combate entre ellas.
 	
-	\item Desarrollar un sistema de control de turnos y gestión del estado del juego
-	que permita ejecutar partidas completas respetando las reglas definidas.
+	\item Desarrollar un sistema de control de turnos y gestión del estado del juego que permita ejecutar partidas completas respetando las reglas definidas.
 	
-	\item Implementar un bot inteligente capaz de
-	analizar el estado del tablero y seleccionar movimientos válidos durante la
-	partida.
+	\item Diseñar e implementar una interfaz de usuario clara e intuitiva que proporcione al jugador información visual sobre el estado del juego y permita interactuar con el sistema de manera sencilla.
 	
-	\item Diseñar e implementar una interfaz de usuario clara e intuitiva que
-	proporcione al jugador información visual sobre el estado del juego y permita
-	interactuar con el sistema de manera sencilla.
+	\item Incorporar elementos audiovisuales (animaciones y efectos sonoros) que mejoren la experiencia de juego y aporten mayor claridad a las acciones realizadas durante la partida.
 	
-	\item Incorporar elementos audiovisuales, como animaciones y efectos sonoros,
-	que mejoren la experiencia de juego y aporten mayor claridad a las acciones
-	realizadas durante la partida.
-	
-	\item Adquirir experiencia práctica en el uso del motor de videojuegos Godot y
-	en el desarrollo de sistemas interactivos utilizando el lenguaje de programación
-	C\#.
+	\item Adquirir experiencia práctica en el uso del motor de videojuegos Godot y en el desarrollo de sistemas interactivos con C\#.
 	
 \end{itemize}
 
+Como objetivo secundario, se plantea además:
+
+\begin{itemize}
+	
+	\item Implementar un bot inteligente capaz de analizar el estado del tablero y seleccionar los movimientos válidos más adecuados para cada situación, ofreciendo al jugador la posibilidad de
+	disputar partidas contra un oponente desafiante.
+	
+\end{itemize}
+
+\section{Metodología}
+
+El desarrollo del TFG se ha llevado a cabo siguiendo el modelo de desarrollo \textbf{iterativo e incremental}, una metodología de construcción de software en la que el proyecto avanza a través de ciclos sucesivos denominados iteraciones, y en la que cada ciclo produce una versión del sistema ampliada y mejorada respecto a la anterior.
+
+La distinción entre los términos \textit{iterativo} e \textit{incremental} es relevante. El componente \textit{iterativo} hace referencia a la repetición sistemática de un conjunto de actividades (análisis, diseño, implementación y prueba) en cada ciclo de trabajo. El componente \textit{incremental} implica que el resultado de cada iteración no es un prototipo desechable, sino un incremento funcional que se integra con el trabajo anterior y contribuye directamente al producto final. Ambas dimensiones se complementan, las iteraciones permiten incorporar aprendizajes y correcciones de forma temprana, mientras que los incrementos garantizan un avance continuo y medible hacia el sistema completo.
+
+Frente al modelo en cascada, en el que cada fase debe completarse antes de iniciar la siguiente, el modelo iterativo e incremental entrelaza las actividades de especificación, diseño y desarrollo. Esto permite que los requisitos se vayan refinando a lo largo del proyecto a medida que se
+comprende mejor el problema y se evalúan los resultados de cada iteración~\cite{solano2020}. Esta flexibilidad resulta especialmente adecuada para un proyecto como este, de carácter individual y con un alcance que ha ido precisándose de forma progresiva.
+
+En la práctica, la adopción de esta metodología se ha concretado en una secuencia de entregas parciales en las que se han presentado versiones progresivas tanto del documento como del videojuego. Cada entrega ha sido revisada por los tutores del proyecto, cuyas observaciones han servido como retroalimentación para orientar la siguiente iteración. Este ciclo de trabajo, revisión y mejora ha permitido detectar de forma temprana errores conceptuales, problemas de diseño o decisiones técnicas poco adecuadas, evitando que dichos problemas se acumulen en fases posteriores. A su vez, cada iteración ha añadido nuevas funcionalidades o ha consolidado las ya existentes, de modo que el sistema ha crecido de forma coherente desde una versión inicial básica hasta el producto final completo y funcional.
+
 \section{Estructura del documento}
-Este documento se organiza en distintos capítulos, que dividen el proyecto en ... 
+
+Este documento se organiza en distintos capítulos, que dividen el proyecto en~\ldots
