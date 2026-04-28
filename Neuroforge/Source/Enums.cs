@@ -28,9 +28,9 @@ public enum PieceOwner
 // Tipo de pieza
 public enum PieceType
 {
-    NEXUS,
+    ENERGY_CORE,
     TURRET,
-    CORE,
+    WAR_MACHINE,
     NOVA,
     MECHA,
     SENTINEL,

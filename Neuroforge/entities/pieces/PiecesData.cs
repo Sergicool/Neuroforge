@@ -23,7 +23,7 @@ public partial class PiecesData
     public static readonly Dictionary<PieceType, PieceDefinition> Data = new()
     {
         { PieceType.TURRET,      new PieceDefinition { Type = PieceType.TURRET, Rank = 0, CanMove=false, MaxCount=6, AtlasColumn=11 } },
-        { PieceType.CORE,        new PieceDefinition { Type = PieceType.CORE, Rank=10, CanMove=true, MaxCount=1, AtlasColumn=10 } },
+        { PieceType.WAR_MACHINE,        new PieceDefinition { Type = PieceType.WAR_MACHINE, Rank=10, CanMove=true, MaxCount=1, AtlasColumn=10 } },
         { PieceType.NOVA,        new PieceDefinition { Type = PieceType.NOVA, Rank=9, CanMove=true, MaxCount=1, AtlasColumn=9 } },
         { PieceType.MECHA,       new PieceDefinition { Type = PieceType.MECHA, Rank=8, CanMove=true, MaxCount=2, AtlasColumn=8 } },
         { PieceType.SENTINEL,     new PieceDefinition { Type = PieceType.SENTINEL, Rank=7, CanMove=true, MaxCount=3, AtlasColumn=7 } },
@@ -33,6 +33,6 @@ public partial class PiecesData
         { PieceType.SABOTEUR,    new PieceDefinition { Type = PieceType.SABOTEUR, Rank=3, CanMove=true, MaxCount=5, AtlasColumn=3 } },
         { PieceType.SCOUT,       new PieceDefinition { Type = PieceType.SCOUT, Rank=2, CanMove=true, MaxCount=8, AtlasColumn=2 } },
         { PieceType.PHANTOM,     new PieceDefinition { Type = PieceType.PHANTOM, Rank=1, CanMove=true, MaxCount=1, AtlasColumn=1 } },
-        { PieceType.NEXUS,       new PieceDefinition { Type = PieceType.NEXUS, Rank = 0, CanMove=false, MaxCount=1, AtlasColumn=0 } }
+        { PieceType.ENERGY_CORE,       new PieceDefinition { Type = PieceType.ENERGY_CORE, Rank = 0, CanMove=false, MaxCount=1, AtlasColumn=0 } }
     };
 }

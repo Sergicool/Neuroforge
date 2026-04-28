@@ -237,9 +237,9 @@ public partial class CombatUI : Control
 
     private static string GetPieceLabel(Piece piece) => piece.Type switch
     {
-        PieceType.NEXUS => "Energy Core",
+        PieceType.ENERGY_CORE => "Energy Core",
         PieceType.TURRET => "Turret",
-        PieceType.CORE => "C.O.R.E",
+        PieceType.WAR_MACHINE => "War Machine",
         PieceType.NOVA => "Nova",
         PieceType.MECHA => "Mecha",
         PieceType.SENTINEL => "Sentinel",
@@ -258,8 +258,8 @@ public partial class CombatUI : Control
             return "Attacker wins - The saboteur disable the turret";
         if (defender.Type == PieceType.TURRET)
             return "Defender wins - The Turret stops the attack";
-        if (attacker.Type == PieceType.PHANTOM && defender.Type == PieceType.CORE)
-            return "Attacker wins - The Phantom counters the C.O.R.E.";
+        if (attacker.Type == PieceType.PHANTOM && defender.Type == PieceType.WAR_MACHINE)
+            return "Attacker wins - The Phantom counters the War Machine";
 
         return result switch
         {

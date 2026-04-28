@@ -12,7 +12,7 @@ public static class CombatSystem
         }
 
         // El PHANTOM gana siempre contra el CORE
-        if (attacker.Type == PieceType.PHANTOM && defender.Type == PieceType.CORE)
+        if (attacker.Type == PieceType.PHANTOM && defender.Type == PieceType.WAR_MACHINE)
             return CombatResult.DEFENDER_DIES;
 
         // Regla general: gana el de mayor rango

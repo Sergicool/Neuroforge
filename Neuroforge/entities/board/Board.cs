@@ -61,7 +61,7 @@ public partial class Board : Node2D
         {
             if (!tile.IsOccupied) continue;
             Piece piece = tile.Occupant;
-            if (piece.PlayerOwner == owner && piece.Type == PieceType.NEXUS)
+            if (piece.PlayerOwner == owner && piece.Type == PieceType.ENERGY_CORE)
                 return true;
         }
         return false;
@@ -285,14 +285,14 @@ public partial class Board : Node2D
                 // El bot siempre conoce sus propias piezas
                 if (p.Type == PieceType.TURRET)
                     state[GetIndex(4, r, c)] = 1f;
-                else if (p.Type == PieceType.NEXUS)
+                else if (p.Type == PieceType.ENERGY_CORE)
                     state[GetIndex(6, r, c)] = 1f;
                 else
                     state[GetIndex(0, r, c)] = p.Rank / MAX_RANK;
             }
             else // PLAYER
             {
-                if (p.Type == PieceType.NEXUS)
+                if (p.Type == PieceType.ENERGY_CORE)
                 {
                     if (p.IsRevealedToBot)
                         state[GetIndex(7, r, c)] = 1f;  // Core localizado tras combate
