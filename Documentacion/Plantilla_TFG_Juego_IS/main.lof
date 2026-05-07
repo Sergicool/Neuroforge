@@ -11,6 +11,14 @@
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {4.1}{\ignorespaces Diagrama de Gantt general del desarrollo del TFG, incluyendo todas las iteraciones y la documentación}}{34}{figure.caption.16}%
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Diagrama de casos de uso}}{44}{figure.caption.20}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Diagrama del modelo de dominio}}{51}{figure.caption.28}%
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Diagrama de actividad: Jugar partida (CU-01)}}{52}{figure.caption.29}%
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Diagrama de actividad: Jugar ronda completo (CU-02)}}{53}{figure.caption.30}%
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Diagrama de actividad: Resolver combate (CU-03)}}{54}{figure.caption.31}%
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Diagrama de actividad: Consultar reglas}}{55}{figure.caption.32}%
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Diagrama de actividad: Pausar el juego}}{55}{figure.caption.33}%
+\contentsline {figure}{\numberline {5.8}{\ignorespaces Diagrama de actividad: Salir del juego}}{55}{figure.caption.34}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
