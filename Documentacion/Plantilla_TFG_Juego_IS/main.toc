@@ -38,30 +38,28 @@
 \contentsline {section}{\numberline {5.1}Actores y roles}{41}{section.5.1}%
 \contentsline {section}{\numberline {5.2}Modelado de Requisitos}{41}{section.5.2}%
 \contentsline {section}{\numberline {5.3}Casos de uso}{44}{section.5.3}%
-\contentsline {subsection}{\numberline {5.3.1}Lista de casos de uso}{45}{subsection.5.3.1}%
-\contentsline {section}{\numberline {5.4}Modelo de dominio}{51}{section.5.4}%
-\contentsline {section}{\numberline {5.5}Modelo de proceso de negocio}{52}{section.5.5}%
-\contentsline {subsection}{\numberline {5.5.1}Flujo principal de la partida (CU-01)}{52}{subsection.5.5.1}%
-\contentsline {subsection}{\numberline {5.5.2}Gestión de rondas (CU-02)}{53}{subsection.5.5.2}%
-\contentsline {subsection}{\numberline {5.5.3}Resolución de combates (CU-03)}{54}{subsection.5.5.3}%
-\contentsline {subsection}{\numberline {5.5.4}CU-04: Consultar reglas}{55}{subsection.5.5.4}%
-\contentsline {subsection}{\numberline {5.5.5}CU-05: Pausar el juego}{55}{subsection.5.5.5}%
-\contentsline {subsection}{\numberline {5.5.6}CU-06: Salir del juego}{55}{subsection.5.5.6}%
-\contentsline {chapter}{\numberline {6}Diseño}{57}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Arquitectura del sistema}{57}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Módulos o Componentes del sistema}{57}{section.6.2}%
-\contentsline {section}{\numberline {6.3}Diseño de clases}{57}{section.6.3}%
-\contentsline {section}{\numberline {6.4}Diseño de interfaz de usuario}{57}{section.6.4}%
-\contentsline {section}{\numberline {6.5}Patrones de diseño aplicados}{57}{section.6.5}%
-\contentsline {section}{\numberline {6.6}Seguridad y rendimiento}{57}{section.6.6}%
-\contentsline {chapter}{\numberline {7}Implementación}{59}{chapter.7}%
-\contentsline {section}{\numberline {7.1}Organización del código}{59}{section.7.1}%
-\contentsline {section}{\numberline {7.2}Licencias requeridas}{59}{section.7.2}%
-\contentsline {section}{\numberline {7.3}Batería de pruebas}{59}{section.7.3}%
-\contentsline {chapter}{\numberline {8}Conclusiones y Líneas futuras}{61}{chapter.8}%
-\contentsline {chapter}{\numberline {A}Manual de instalación}{63}{appendix.Alph1}%
-\contentsline {chapter}{\numberline {B}Manual de usuario}{65}{appendix.Alph2}%
-\contentsline {chapter}{\numberline {C}}{67}{appendix.Alph3}%
-\contentsline {chapter}{\numberline {D}}{69}{appendix.Alph4}%
-\contentsline {chapter}{Bibliografía}{71}{appendix.Alph4}%
+\contentsline {subsection}{\numberline {5.3.1}Lista de casos de uso}{44}{subsection.5.3.1}%
+\contentsline {section}{\numberline {5.4}Modelo de dominio}{49}{section.5.4}%
+\contentsline {section}{\numberline {5.5}Modelo de proceso de negocio}{50}{section.5.5}%
+\contentsline {subsection}{\numberline {5.5.1}Actividad: Jugar partida (CU-01)}{50}{subsection.5.5.1}%
+\contentsline {subsection}{\numberline {5.5.2}Actividad: Jugar turnos (CU-02)}{50}{subsection.5.5.2}%
+\contentsline {subsection}{\numberline {5.5.3}Actividad: Resolver combate (CU-03)}{52}{subsection.5.5.3}%
+\contentsline {subsection}{\numberline {5.5.4}Actividad: Consultar reglas (CU-04)}{53}{subsection.5.5.4}%
+\contentsline {chapter}{\numberline {6}Diseño}{55}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Arquitectura del sistema}{55}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Módulos o Componentes del sistema}{55}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Diseño de clases}{55}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Diseño de interfaz de usuario}{55}{section.6.4}%
+\contentsline {section}{\numberline {6.5}Patrones de diseño aplicados}{55}{section.6.5}%
+\contentsline {section}{\numberline {6.6}Seguridad y rendimiento}{55}{section.6.6}%
+\contentsline {chapter}{\numberline {7}Implementación}{57}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Organización del código}{57}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Licencias requeridas}{57}{section.7.2}%
+\contentsline {section}{\numberline {7.3}Batería de pruebas}{57}{section.7.3}%
+\contentsline {chapter}{\numberline {8}Conclusiones y Líneas futuras}{59}{chapter.8}%
+\contentsline {chapter}{\numberline {A}Manual de instalación}{61}{appendix.Alph1}%
+\contentsline {chapter}{\numberline {B}Manual de usuario}{63}{appendix.Alph2}%
+\contentsline {chapter}{\numberline {C}}{65}{appendix.Alph3}%
+\contentsline {chapter}{\numberline {D}}{67}{appendix.Alph4}%
+\contentsline {chapter}{Bibliografía}{69}{appendix.Alph4}%
 \contentsfinish 

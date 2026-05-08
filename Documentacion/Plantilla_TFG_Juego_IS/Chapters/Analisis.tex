@@ -108,16 +108,14 @@ los servicios y comportamientos que debe ofrecer el sistema; los requisitos no f
 
 \section{Casos de uso}
 
-En este apartado se describen los casos de uso del sistema, que representan las interacciones posibles entre el actor y el sistema para alcanzar un objetivo concreto. Cada caso de uso recoge el flujo normal de acciones, las posibles excepciones y los requisitos funcionales asociados. La Figura~\ref{fig:diagrama_cu} muestra el diagrama general de casos de uso, donde se reflejan las relaciones entre el actor, los casos de uso principales y las dependencias de inclusión entre ellos.
+En este apartado se describen los casos de uso del sistema, que representan las interacciones posibles entre el actor y el sistema para alcanzar un objetivo concreto. Cada caso de uso recoge el flujo normal de acciones, las posibles excepciones y los requisitos funcionales asociados. La Figura~\ref{fig:diagrama_cu} muestra el diagrama general de casos de uso, donde se reflejan las relaciones entre el actor, los casos de uso principales y las dependencias entre ellos.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width={16cm}]{../Imagenes/DiagramaCasosDeUso}
+	\includegraphics[width={8cm}]{../Imagenes/DiagramaCasosDeUso}
 	\caption{Diagrama de casos de uso}
 	\label{fig:diagrama_cu}
 \end{figure}
-
-\clearpage
 
 \subsection{Lista de casos de uso}
 
@@ -126,12 +124,10 @@ En este apartado se describen los casos de uso del sistema, que representan las 
 	\begin{tabular}{|p{1.2cm}|p{4.2cm}|p{11cm}|}
 		\hline
 		\textbf{ID} & \textbf{Nombre} & \textbf{Descripción} \\
-		\hline CU-01 & Jugar partida & El sistema permite al jugador jugar una partida completa contra el bot, desde la fase de despliegue hasta la resolución final. \\
-		\hline CU-02 & Jugar ronda Completo & El sistema gestiona un ronda completo: la acción del jugador, la respuesta del bot y la comprobación de condiciones de victoria. \\
-		\hline CU-03 & Resolver combate & El sistema gestiona el combate entre 2 piezas de manera automática, mostrando el resultado y el motivo por el que se ha dado dicho resultado. \\
-		\hline CU-04 & Consultar reglas & El sistema permite al jugador consultar las reglas del juego desde el menú principal o el menú de pausa. \\
-		\hline CU-05 & Pausar el juego & El sistema permite al jugador pausar el juego durante el transcurso de la partida. \\
-		\hline CU-06 & Salir del juego & El sistema permite al jugador cerrar la aplicación desde el menú principal. \\
+		\hline CU-01 & Jugar partida & El sistema permite al jugador llevar a cabo una partida completa contra el bot, desde la fase de despliegue hasta la resolución final. \\
+		\hline CU-02 & Resolver combate & El Sistema gestiona un ronda completa, la acción del jugador, la respuesta del bot y la comprobación de condiciones de victoria hasta que la partida acabe. \\
+		\hline CU-03 & Resolver combate & El Sistema gestiona el combate entre piezas de manera automática con su respectiva interfaz. \\
+		\hline CU-04 & Consultar reglas & El sistema permite al jugador consultar las reglas dentro del juego. \\
 		\hline
 	\end{tabular}
 	\caption{Lista de casos de uso del sistema}
@@ -149,33 +145,29 @@ En este apartado se describen los casos de uso del sistema, que representan las 
 		\hline \textbf{ID} & CU-01 \\
 		\hline \textbf{Nombre} & Jugar partida \\
 		\hline \textbf{Actor} & Jugador \\
-		\hline \textbf{Descripción} & El sistema permite al jugador disputar una partida completa contra el bot, desde la fase de despliegue hasta la resolución final. \\
-		\hline \textbf{Precondición} & El sistema se encuentra en la escena del menu principal. \\
-		\hline \textbf{Postcondición} & La partida ha concluido y el sistema muestra la pantalla de fin de partida con el resultado. \\
-		\hline \textbf{Req. relacionados} & RF01, RF02, RF03, RF04, RF06, RF07, RF08, RF09, RF10, RF11 \\
+		\hline \textbf{Descripción} & El Sistema permite al jugador llevar a cabo una partida completa contra el bot, desde la fase de despliegue hasta la resolución final. \\
+		\hline \textbf{Req. relacionados} & RF01, RF02., RF09, RF10, RF11 .\\
+		\hline \textbf{Pre-condición} & El sistema se encuentra mostrando la escena del menú principal \\
 		\hline
-		\textbf{Flujo normal} &
+		\textbf{Secuencia normal} &
 		\begin{enumerate}[nosep, before=\vspace{-0.4\baselineskip}]
 			\item El Jugador selecciona la opción de jugar una partida.
-			\item El Sistema inicializa el tablero y muestra la interfaz de despliegue.
-			\item El Jugador selecciona un tipo de pieza y una casilla donde colocarla.
-			\item El Sistema coloca la pieza en la casilla. Se repiten los pasos 3 y 4 hasta que todas las piezas estén colocadas.
-			\item El Jugador pulsa el botón de iniciar partida.
-			\item El Sistema coloca todas las piezas del Bot e inicia la partida. Se repite CU-02 hasta que la partida concluya.
-			\item El Sistema muestra la pantalla de fin de partida con el resultado y su motivo. Permite volver al menú principal o jugar otra partida.
+			\item El Sistema cambia la escena a la de la partida, inicia el tablero y muestra la interfaz de despliegue.
+			\item El Jugador coloca todas sus piezas en el tablero.
+			\item El Jugador selecciona comenzar la partida.
+			\item El Sistema coloca todas las piezas del bot e inicia la partida.
+			\item Se inicia CU-02 (Jugar turnos).
+			\item El Sistema muestra la interfaz del final de partida.
 			\item El Jugador selecciona volver al menú principal.
-			\item El Sistema regresa al menú principal.
+			\item El Sistema cambia la escena a la del menú principal.
 		\end{enumerate} \\
 		\hline
-		\textbf{Excepciones} &
+		\textbf{Flujos alternativos} &
 		\begin{itemize}[nosep, before=\vspace{-0.4\baselineskip}]
-			\item [{3.a.}] El tipo de pieza no tiene unidades disponibles → el Sistema no actúa, continúa en paso 3.
-			\item [{3.b.}] La casilla no es válida → el Sistema no actúa, continúa en paso 3.
-			\item [{3.c.}] El Jugador hace clic en una pieza ya colocada → el Sistema la retira y selecciona su tipo automáticamente, continúa en paso 3.
-			\item [{3.e.}] El Jugador pausa el juego → se llama a CU-05. Cuando finalice, continúa en paso 3.
-			\item [{5.a.}] El Jugador hace clic en una pieza ya colocada → el Sistema la retira y selecciona su tipo automáticamente, continúa en paso 3.
-			\item [{5.c.}] El Jugador pausa el juego → se llama a CU-05. Cuando finalice, continúa en paso 5.
+			\item [{4.a.}] No estan todas las piezas colocadas → Regresa al paso 3.
+			\item [{8.a.}] El Jugador selecciona jugar otra partida → Regresa al paso 2.
 		\end{itemize} \\
+		\hline \textbf{Post-condición} & La partida termina y el jugador vuelve al menú principal. \\
 		\hline
 	\end{tabular}
 	\caption{CU-01: Jugar partida}
@@ -186,170 +178,119 @@ En este apartado se describen los casos de uso del sistema, que representan las 
 
 % ================================================================
 
-\subsection*{CU-02: Jugar Ronda Completo}
+\subsection*{CU-02: Jugar turnos}
 
 \begin{table}[H]
 	\centering
 	\begin{tabular}{|p{3cm}|p{14cm}|}
 		\hline \textbf{ID} & CU-02 \\
-		\hline \textbf{Nombre} & Jugar ronda Completo \\
+		\hline \textbf{Nombre} & Jugar turnos \\
 		\hline \textbf{Actor} & Jugador \\
-		\hline \textbf{Descripción} & El sistema gestiona un ronda completo: la acción del jugador, la respuesta del bot y la comprobación de condiciones de victoria. \\
-		\hline \textbf{Precondición} & El sistema se encuentra en la escena del juego esperando acción del jugador. \\
-		\hline \textbf{Postcondición} & El sistema ejecuta el ronda completo con la acción del jugador. \\
-		\hline \textbf{Req. relacionados} & RF03, RF04, RF05, RF06, RF07, RF08, RF09, RF10 \\
+		\hline \textbf{Descripción} & El Sistema gestiona un ronda completa, la acción del jugador, la respuesta del bot y la comprobación de condiciones de victoria hasta que la partida acabe. \\
+		\hline \textbf{Req. relacionados} & RF03, RF04, RF06, RF07, RF08, RF10. \\
+		\hline \textbf{Pre-condición} & El Sistema se encuentra en la escena de la partida y esta esperando input del Jugador. \\
 		\hline
-		\textbf{Flujo normal} &
+		\textbf{Secuencia normal} &
 		\begin{enumerate}[nosep, before=\vspace{-0.4\baselineskip}]
 			\item El Jugador selecciona una de sus piezas con posibilidad de movimiento.
 			\item El Sistema resalta las casillas válidas a las que se puede mover la pieza seleccionada.
-			\item El Jugador hace clic sobre una casilla vacía resaltada.
-			\item El Sistema mueve la pieza a la casilla destino con su animación correspondiente.
-			\item El Sistema comprueba que no se ha dado una condicion de victoria y continúa.
-			\item El Sistema ejecuta el turno del bot, mueve una pieza válida con animación.
-			\item El Sistema comprueba de nuevo las condiciones de victoria. Si no se cumple ninguna, el turno concluye.
+			\item El Jugador selecciona una casilla resaltada.
+			\item El Sistema mueve la pieza a la casilla seleccionada.
+			\item El Sistema comprueba que la partida no se ha terminado.
+			\item El Sistema ejecuta el turno del bot, moviendo una de sus piezas válidas.
+			\item El Sistema comprueba que la partida se ha terminado.
 		\end{enumerate} \\
 		\hline
-		\textbf{Excepciones} &
+		\textbf{Flujos alternativos} &
 		\begin{itemize}[nosep, before=\vspace{-0.4\baselineskip}]
-			\item [{1.a.}] El Jugador selecciona una casilla inválida (vacía, con pieza enemiga o con pieza propia sin movimientos disponibles) → el Sistema no realiza ninguna acción, retorna al paso 1.
-			\item [{2.a.}] El Jugador hace clic fuera de las casillas resaltadas → el Sistema cancela la selección, retorna al paso 1.
-			\item [{4.a.}] La casilla resaltada está ocupada por una pieza enemiga → se lleva a cabo el CU-03.
-			\item [{4.b.}] La pieza ha hecho un movimiento especial que da a entender que tipo de pieza es → el Sistema revela la identidad de la pieza y el flujo continua con normalidad.
-			\item [{5.a.}] Se cumple una condición de victoria tras la acción del jugador → fin del caso de uso, retorna al paso 7 de CU-01.
-			\item [{6.a.}] El movimiento del bot es un ataque → se lleva a cabo el CU-03.
-			\item [{7.a.}] Se cumple una condición de victoria tras la acción del bot → fin del caso de uso, retorna al paso 7 de CU-01.
+			\item [{1.a.}] El Jugador no puede mover ninguna pieza → el Sistema da la partida por terminada y el caso de uso finaliza.
+			\item [{1.b.}] El Jugador no selecciona una pieza válida → el Sistema ignora la accion y regresa al paso 1.
+			\item [{3.a.}] El Jugador no selecciona una casilla valida a la que puede moverse la pieza → El Sistema ignora la accion, quita el resaltado de las casillas que lo estén y regresa al paso 1.
+			\item [{4.a.}] La pieza ha hecho un movimiento característico de solo esa pieza → El Sistema revela la identidad de esa pieza y continua.
+			\item [{4.b.}] La casilla destino esta ocupada por una pieza del bot → Se inicia CU-03 (Resolver combate).
+			\item [{5.a.}] La partida ha terminado → El caso de uso finaliza.
+			\item [{6.a.}] La pieza ha hecho un movimiento característico de solo esa pieza → El Sistema revela la identidad de esa pieza y continua.
+			\item [{6.b.}] La casilla destino esta ocupada por una pieza del jugador → Se inicia CU-03 (Resolver combate).
+			\item [{7.a.}] La partida no ha terminado → Regresa al paso 1.
 		\end{itemize} \\
+		\hline \textbf{Post-condición} & La partida finaliza y ya no se realizan mas turnos. \\
 		\hline
 	\end{tabular}
-	\caption{CU-02: Jugar ronda Completo}
+	\caption{CU-01: Jugar partida}
+	\label{tab:cu02}
 \end{table}
 
 \clearpage
 
 % ================================================================
 
-\subsection*{CU-03: Resolver Combate}
+\subsection*{CU-03: Resolver combate}
 
 \begin{table}[H]
 	\centering
 	\begin{tabular}{|p{3cm}|p{14cm}|}
 		\hline \textbf{ID} & CU-03 \\
-		\hline \textbf{Nombre} & Resolver Combate \\
+		\hline \textbf{Nombre} & Resolver combate \\
 		\hline \textbf{Actor} & Jugador \\
-		\hline \textbf{Descripción} & El sistema gestiona el combate entre 2 piezas de manera automática, mostrando el resultado y el motivo por el que se ha dado dicho resultado. \\
-		\hline \textbf{Precondición} & El sistema se encuentra en la escena del juego y se ha movido una pieza a una casilla ocupada por una pieza del bando contrario. \\
-		\hline \textbf{Postcondición} & El sistema resuelve el combate y continúa con la partida. \\
+		\hline \textbf{Descripción} & El Sistema gestiona el combate entre piezas de manera automática con su respectiva interfaz. \\
+		\hline \textbf{Req. relacionados} & RF05, RF09. \\
+		\hline \textbf{Pre-condición} & Durante el transcurso de un turno se ha movido una pieza a una casilla en la que se situa otra del bando opuesto. \\
 		\hline
-		\textbf{Req. relacionados} & RF05, RF07, RF09 \\
-		\hline
-		\textbf{Flujo normal} &
+		\textbf{Secuencia normal} &
 		\begin{enumerate}[nosep, before=\vspace{-0.4\baselineskip}]
-			\item El Sistema inicia el combate y muestra su respectiva interfaz.
-			\item El Sistema revela a las piezas que no lo estén mediante una animación.
-			\item El Sistema resuelve el resultado según las reglas, muestra el resultado y motivo con sus respectivas animaciones.
-			\item El Jugador hace clic para cerrar la interfaz.
-			\item El Sistema elimina la pieza que pierde el combate, si una pieza gana, la vencedora se queda con la casilla en la que se disputa el combate. En caso de que ambas piezas pierdan, ambas son eliminadas y la casilla queda vacía.
+			\item El Sistema muestra la interfaz de combate.
+			\item El Sistema reproduce el combate y da el resultado.
+			\item El Sistema revela las piezas ocultas
+			\item El Jugador una vez visto el resultado, solicita continuar con la partida.
+			\item El Sistema cierra la interfaz de combate.
+			\item El Sistema elimina la pieza (o piezas) perdedora en el combate del tablero.
 		\end{enumerate} \\
 		\hline
-		\textbf{Excepciones} & N/A \\
+		\textbf{Flujos alternativos} &
+		\begin{itemize}[nosep, before=\vspace{-0.4\baselineskip}]
+			\item [{3.a.}] No hay piezas ocultas → El Sistema ignora este paso y continua al paso 4
+		\end{itemize} \\
+		\hline \textbf{Post-condición} & El Sistema continua con la partida en el lugar previo al combate. \\
 		\hline
 	\end{tabular}
-	\caption{CU-03: Resolver Combate}
+	\caption{CU-03: Resolver combate}
+	\label{tab:cu03}
 \end{table}
 
 \clearpage
 
 % ================================================================
 
-\subsection*{CU-04: Consultar Reglas}
+\subsection*{CU-04: Consultar reglas}
 
 \begin{table}[H]
 	\centering
 	\begin{tabular}{|p{3cm}|p{14cm}|}
 		\hline \textbf{ID} & CU-04 \\
-		\hline \textbf{Nombre} & Consultar Reglas \\
+		\hline \textbf{Nombre} & Consultar reglas \\
 		\hline \textbf{Actor} & Jugador \\
-		\hline \textbf{Descripción} & El sistema permite al jugador consultar las reglas del juego desde el menú principal o el menú de pausa. \\
-		\hline \textbf{Precondición} & El jugador se encuentra en el menú principal o en el menú de pausa. \\
-		\hline \textbf{Postcondición} & El Sistema cierra la interfaz de reglas y devuelve al jugador a la pantalla desde la que accedió. \\
-		\hline \textbf{Req. relacionados} & RF12 \\
+		\hline \textbf{Descripción} & El sistema permite al jugador consultar las reglas dentro del juego. \\
+		\hline \textbf{Req. relacionados} & RF12. \\
+		\hline \textbf{Pre-condición} & El Sistema esta en la escena del menu de pausa o en el menu principal. \\
 		\hline
-		\textbf{Flujo normal} &
+		\textbf{Secuencia normal} &
 		\begin{enumerate}[nosep, before=\vspace{-0.4\baselineskip}]
-			\item El Jugador selecciona la opción de consultar reglas.
-			\item El Sistema muestra la interfaz de reglas con sus distintas pestañas.
-			\item El Jugador navega por las pestañas y consulta las reglas.
-			\item El Jugador cierra la interfaz de reglas.
-			\item El Sistema devuelve al jugador a la pantalla desde la que accedió.
+			\item El Jugador solicita consultar las reglas
+			\item El Sistema muestra el menu con las reglas
+			\item El Jugador consulta las reglas
+			\item El Jugador solicita salir del menu de reglas
+			\item El Sistema cierra el menu de reglas.
 		\end{enumerate} \\
 		\hline
-		\textbf{Excepciones} & N/A \\
-		\hline
-	\end{tabular}
-	\caption{CU-04: Consultar Reglas}
-\end{table}
-
-\clearpage
-
-% ================================================================
-
-\subsection*{CU-05: Pausar Juego}
-
-\begin{table}[H]
-	\centering
-	\begin{tabular}{|p{3cm}|p{14cm}|}
-		\hline \textbf{ID} & CU-05 \\
-		\hline \textbf{Nombre} & Pausar Juego \\
-		\hline \textbf{Actor} & Jugador \\
-		\hline \textbf{Descripción} & El sistema permite al jugador pausar el juego durante el transcurso de la partida. \\
-		\hline \textbf{Precondición} & La partida está en curso y es el turno del jugador o la fase de despliegue. \\
-		\hline \textbf{Postcondición} & El Sistema reanuda la partida o transita al menú principal según la elección del jugador. \\
-		\hline \textbf{Req. relacionados} & RF11, RF12 \\
-		\hline
-		\textbf{Flujo normal} &
-		\begin{enumerate}[nosep, before=\vspace{-0.4\baselineskip}]
-			\item El Jugador pausa el juego.
-			\item El Sistema muestra el menú de pausa superpuesto al juego.
-			\item El Jugador selecciona continuar partida
-			\item El Sistema cierra el menú y vuelve al paso donde se quedó la partida.
-		\end{enumerate} \\
-		\hline
-		\textbf{Excepciones} &
+		\textbf{Flujos alternativos} &
 		\begin{itemize}[nosep, before=\vspace{-0.4\baselineskip}]
-			\item [{3.a.}] El jugador selecciona consultar reglas → Se llama al CU-04. Al finalizar, retorna al paso 2.
-			\item [{3.b.}] El jugador selecciona salir al menú principal → El Sistema transita a la escena del menú principal.
+			\item N/A
 		\end{itemize} \\
+		\hline \textbf{Post-condición} & El Sistema continua con con normalidad en la escena en la que se consulto las reglas. \\
 		\hline
 	\end{tabular}
-	\caption{CU-05: Pausar Juego}
-\end{table}
-
-% ================================================================
-
-\subsection*{CU-06: Salir del Juego}
-
-\begin{table}[H]
-	\centering
-	\begin{tabular}{|p{3cm}|p{14cm}|}
-		\hline \textbf{ID} & CU-06 \\
-		\hline \textbf{Nombre} & Salir del Juego \\
-		\hline \textbf{Actor} & Jugador \\
-		\hline \textbf{Descripción} & El sistema permite al jugador cerrar la aplicación desde el menú principal. \\
-		\hline \textbf{Precondición} & El sistema se encuentra en la escena del menú principal. \\
-		\hline \textbf{Postcondición} & El sistema cierra la aplicación. \\
-		\hline \textbf{Req. relacionados} & RF11 \\
-		\hline
-		\textbf{Flujo normal} &
-		\begin{enumerate}[nosep, before=\vspace{-0.4\baselineskip}]
-			\item El Jugador selecciona la opción de salir del juego en el menú principal.
-			\item El Sistema cierra la aplicación de forma directa e inmediata.
-		\end{enumerate} \\
-		\hline
-		\textbf{Excepciones} & N/A \\
-		\hline
-	\end{tabular}
-	\caption{CU-06: Salir del Juego}
+	\caption{CU-04: Consultar reglas}
+	\label{tab:cu04}
 \end{table}
 
 \clearpage
@@ -375,70 +316,51 @@ El modelo de proceso de negocio describe el flujo detallado de actividades y dec
 
 A continuación, se detallan los flujos de actividad correspondientes a los casos de uso principales del sistema, proporcionando una visión dinámica de la lógica del videojuego.
 
-\subsection{Flujo principal de la partida (CU-01)}
+\subsection{Actividad: Jugar partida (CU-01)}
 
-El diagrama de la Figura~\ref{fig:diagrama_actividad_1} representa el ciclo de vida completo de una partida, desde la fase inicial de configuración y despliegue hasta la resolución final. Este flujo coordina la transición entre las distintas fases del juego.
+Este flujo describe el ciclo de vida completo de una sesión de juego, desde la interacción inicial en el menú hasta la finalización de la experiencia. En la Figura~\ref{fig:diagrama_actividad_1} se detalla la secuencia que incluye la preparación del escenario, la fase crítica de despliegue de piezas y la transición hacia el núcleo jugable de turnos.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.85\linewidth]{../Imagenes/DiagramaDeActividad1}
+	\includegraphics[width=0.85\linewidth]{../Imagenes/DiagramaActividadJugarPartida}
 	\caption{Diagrama de actividad: Jugar partida (CU-01)}
 	\label{fig:diagrama_actividad_1}
 \end{figure}
 
-\subsection{Gestión de rondas (CU-02)}
+\subsection{Actividad: Jugar turnos (CU-02)}
 
-Este proceso detalla la lógica de los turnos alternos. Describe cómo el sistema valida la selección del jugador, gestiona el movimiento de las piezas y cede el control a la inteligencia artificial del bot para su respuesta inmediata.
+La lógica central del juego se basa en un ciclo de estados donde el control alterna entre el usuario y la inteligencia artificial. Como se observa en la Figura~\ref{fig:diagrama_actividad_2}, este proceso gestiona la selección de unidades, la validación de movimientos en el tablero y las comprobaciones automáticas de fin de partida tras cada acción.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.85\linewidth]{../Imagenes/DiagramaDeActividad2}
-	\caption{Diagrama de actividad: Jugar ronda completo (CU-02)}
+	\includegraphics[width=0.85\linewidth]{../Imagenes/DiagramaActividadJugarTurnos}
+	\caption{Diagrama de actividad: Jugar turnos (CU-02)}
 	\label{fig:diagrama_actividad_2}
 \end{figure}
 
 \clearpage
 
-\subsection{Resolución de combates (CU-03)}
+\subsection{Actividad: Resolver combate (CU-03)}
 
-El diagrama de la Figura~\ref{fig:diagrama_actividad_3} ilustra el proceso crítico de combate. En este flujo se incluye la lógica que discutimos anteriormente: el cambio de estado de las piezas de "Ocultas" a "Reveladas", la comparación de rangos y la actualización del tablero según el vencedor.
+El combate es una subrutina automática que se activa por la coincidencia de posiciones en el tablero. El diagrama representado en la Figura~\ref{fig:diagrama_actividad_3} muestra cómo el sistema procesa la comparación de rangos de las piezas, actualiza la visibilidad de las mismas para el jugador y modifica el estado del tablero eliminando las bajas resultantes.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.7\linewidth]{../Imagenes/DiagramaDeActividad3}
+	\includegraphics[width=0.7\linewidth]{../Imagenes/DiagramaActividadResolverCombate}
 	\caption{Diagrama de actividad: Resolver combate (CU-03)}
 	\label{fig:diagrama_actividad_3}
 \end{figure}
 
 \clearpage
 
-\subsection{CU-04: Consultar reglas}
-Muestra el proceso de acceso a la documentación del juego, permitiendo al usuario navegar por la información de ayuda sin interrumpir permanentemente el estado de la aplicación.
+\subsection{Actividad: Consultar reglas (CU-04)}
+
+Este flujo representa una interacción de apoyo que no afecta al estado de la partida pero garantiza la usabilidad. La Figura~\ref{fig:diagrama_actividad_4} ilustra la capacidad del sistema para pausar visualmente el contexto actual y presentar la documentación necesaria al jugador antes de retornar al estado previo.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.6\linewidth]{../Imagenes/DiagramaDeActividad4}
+	\includegraphics[width=0.6\linewidth]{../Imagenes/DiagramaActividadConsultarReglas}
 	\caption{Diagrama de actividad: Consultar reglas}
-	\label{fig:actividad_cu04}
-\end{figure}
-
-\subsection{CU-05: Pausar el juego}
-Representa el flujo de interrupción controlada de la partida, gestionando las opciones de reanudación o abandono del estado actual del juego.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.6\linewidth]{../Imagenes/DiagramaDeActividad5}
-	\caption{Diagrama de actividad: Pausar el juego}
-	\label{fig:actividad_cu05}
-\end{figure}
-
-\subsection{CU-06: Salir del juego}
-Describe la secuencia de cierre de la aplicación desde el menú principal, asegurando una finalización correcta del proceso del sistema.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.5\linewidth]{../Imagenes/DiagramaDeActividad6}
-	\caption{Diagrama de actividad: Salir del juego}
-	\label{fig:actividad_cu06}
+	\label{fig:diagrama_actividad_4}
 \end{figure}
 
