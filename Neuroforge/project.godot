@@ -31,7 +31,11 @@ project/assembly_name="TFG Tests"
 [file_customization]
 
 folder_colors={
-"res://ui/": "teal"
+"res://Bot enviroment/": "gray",
+"res://Data and Infrastructure/": "orange",
+"res://Interfaces/": "teal",
+"res://Logic/": "blue",
+"res://assets/": "red"
 }
 
 [gui]

@@ -1,0 +1,264 @@
+[gd_scene format=3 uid="uid://xgxlt5mk0kuq"]
+
+[ext_resource type="Texture2D" uid="uid://bv8bihvx22sjn" path="res://assets/icon.svg" id="1_mvwh1"]
+[ext_resource type="Script" uid="uid://cjx5rvqvucvku" path="res://Interfaces/CombatUI.cs" id="1_y57do"]
+[ext_resource type="Theme" uid="uid://5l3frbb482sx" path="res://assets/styles/DefaultTheme.tres" id="2_ppsyc"]
+[ext_resource type="StyleBox" uid="uid://tjcegfoo4wit" path="res://assets/styles/ScreenBackground.tres" id="3_ppsyc"]
+[ext_resource type="StyleBox" uid="uid://btp23gt0ooehf" path="res://assets/styles/ScreenText.tres" id="4_sklqs"]
+[ext_resource type="Texture2D" uid="uid://dk0smljkc6jgg" path="res://assets/icons/SightIcon.png" id="4_xn2uq"]
+[ext_resource type="StyleBox" uid="uid://bc8nbl5ituh8u" path="res://assets/styles/CombatIcon.tres" id="5_l61de"]
+[ext_resource type="StyleBox" uid="uid://dmqqqq40dv3p5" path="res://assets/styles/PieceButtonBackground.tres" id="6_x3i3a"]
+[ext_resource type="Texture2D" uid="uid://dhgv3p4imyuna" path="res://assets/icons/ShieldIcon.png" id="9_ajnc1"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ajnc1"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_rmg8b"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x3i3a"]
+
+[node name="CombatUI" type="Control" unique_id=1511178520]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_y57do")
+
+[node name="Background" type="Panel" parent="." unique_id=275868280]
+modulate = Color(0, 0, 0, 0.68235296)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_ajnc1")
+
+[node name="Popup" type="Panel" parent="." unique_id=1802276260]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -399.25
+offset_top = -234.0
+offset_right = 409.25
+offset_bottom = 256.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+mouse_behavior_recursive = 2
+theme = ExtResource("2_ppsyc")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_rmg8b")
+
+[node name="AttackerScreen" type="Panel" parent="Popup" unique_id=1319798244]
+layout_mode = 1
+offset_left = 116.25
+offset_top = 46.0
+offset_right = 294.25
+offset_bottom = 218.0
+scale = Vector2(1.4788531, 1.4788531)
+theme_override_styles/panel = ExtResource("3_ppsyc")
+
+[node name="AttackerInfoLabel" type="Panel" parent="Popup/AttackerScreen" unique_id=6130400]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -89.0
+offset_right = 89.0
+offset_bottom = 41.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = ExtResource("4_sklqs")
+
+[node name="AttackerIconBorder" type="Panel" parent="Popup/AttackerScreen" unique_id=1560694267]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -29.0
+offset_top = -48.0
+offset_right = 29.0
+offset_bottom = 2.0
+grow_horizontal = 2
+theme_override_styles/panel = ExtResource("5_l61de")
+
+[node name="AttackerIcon" type="TextureRect" parent="Popup/AttackerScreen/AttackerIconBorder" unique_id=1046524460]
+modulate = Color(1, 0.3254902, 0.23921569, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -7.0
+offset_right = 16.0
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_xn2uq")
+
+[node name="AttackerIconBackground" type="Panel" parent="Popup/AttackerScreen/AttackerIconBorder" unique_id=8292724]
+z_index = -1
+layout_mode = 0
+offset_left = 8.0
+offset_top = 13.0
+offset_right = 50.0
+offset_bottom = 53.0
+theme_override_styles/panel = ExtResource("6_x3i3a")
+
+[node name="AttackerPiece" type="TextureRect" parent="Popup/AttackerScreen" unique_id=2001698413]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -55.0
+offset_top = -55.0
+offset_right = 55.0
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_mvwh1")
+expand_mode = 1
+
+[node name="AttackerName" type="Label" parent="Popup/AttackerScreen" unique_id=1810647744]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -30.0
+offset_top = 15.0
+offset_right = 31.0
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_x3i3a")
+text = "? ? ?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DefenderScreen" type="Panel" parent="Popup" unique_id=1859179840]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 27.24997
+offset_top = 46.0
+offset_right = 205.25
+offset_bottom = 218.0
+grow_horizontal = 2
+scale = Vector2(1.4788531, 1.4788531)
+theme_override_styles/panel = ExtResource("3_ppsyc")
+
+[node name="DefenderInfoLabel" type="Panel" parent="Popup/DefenderScreen" unique_id=674715799]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -89.00001
+offset_right = 89.0
+offset_bottom = 41.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/panel = ExtResource("4_sklqs")
+
+[node name="DefenderIconBorder" type="Panel" parent="Popup/DefenderScreen" unique_id=1928537258]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -29.000008
+offset_top = -48.0
+offset_right = 28.999962
+offset_bottom = 2.0
+grow_horizontal = 2
+theme_override_styles/panel = ExtResource("5_l61de")
+
+[node name="DefenderIcon" type="TextureRect" parent="Popup/DefenderScreen/DefenderIconBorder" unique_id=483301869]
+modulate = Color(0.6, 1, 1, 1)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -15.999983
+offset_top = -7.0
+offset_right = 16.000046
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_ajnc1")
+
+[node name="DefenderIconBackground" type="Panel" parent="Popup/DefenderScreen/DefenderIconBorder" unique_id=892713021]
+z_index = -1
+layout_mode = 0
+offset_left = 8.0
+offset_top = 13.0
+offset_right = 49.999985
+offset_bottom = 53.0
+theme_override_styles/panel = ExtResource("6_x3i3a")
+
+[node name="DefenderPiece" type="TextureRect" parent="Popup/DefenderScreen" unique_id=226083942]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -55.000008
+offset_top = -55.0
+offset_right = 54.999977
+offset_bottom = 55.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_mvwh1")
+expand_mode = 1
+
+[node name="DefenderName" type="Label" parent="Popup/DefenderScreen" unique_id=127389220]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -30.000008
+offset_top = 15.0
+offset_right = 30.999962
+offset_bottom = 33.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_x3i3a")
+text = "? ? ?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ResultLabel" type="Label" parent="Popup" unique_id=88952154]
+custom_minimum_size = Vector2(600, 80)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -224.0
+offset_top = -73.0
+offset_right = 224.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("2_ppsyc")
+theme_override_styles/normal = ExtResource("3_ppsyc")
+text = "Surprise attack! The Phantom eliminates the C.O.R.E."
+horizontal_alignment = 1

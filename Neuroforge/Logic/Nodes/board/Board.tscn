@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://bwm3jngkr8b5v"]
+
+[ext_resource type="Script" uid="uid://biqlb57sp72f3" path="res://Logic/Nodes/board/Board.cs" id="1_oa5e1"]
+[ext_resource type="PackedScene" uid="uid://grgvuwuv1nlx" path="res://Logic/Nodes/tile/Tile.tscn" id="2_6pysx"]
+[ext_resource type="PackedScene" uid="uid://mgfishieaa7j" path="res://Logic/Nodes/board/layouts/BoardStandar.tscn" id="2_l6yca"]
+[ext_resource type="PackedScene" uid="uid://cnl18tgns0edh" path="res://Logic/Nodes/pieces/Piece.tscn" id="3_u8mh8"]
+
+[node name="Board" type="Node2D" unique_id=1349807744 node_paths=PackedStringArray("_mapLayer")]
+script = ExtResource("1_oa5e1")
+_mapLayer = NodePath("BoardStandar")
+TILE_SCENE = ExtResource("2_6pysx")
+PIECE_SCENE = ExtResource("3_u8mh8")
+
+[node name="BoardStandar" parent="." unique_id=515359995 instance=ExtResource("2_l6yca")]

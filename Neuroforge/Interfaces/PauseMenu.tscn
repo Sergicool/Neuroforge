@@ -1,0 +1,99 @@
+[gd_scene format=3 uid="uid://b7bck3kbdwff"]
+
+[ext_resource type="Script" uid="uid://dbj2f813ey3dx" path="res://Interfaces/PauseMenu.cs" id="1_c7v6e"]
+[ext_resource type="Theme" uid="uid://5l3frbb482sx" path="res://assets/styles/DefaultTheme.tres" id="2_8tehv"]
+[ext_resource type="StyleBox" uid="uid://btp23gt0ooehf" path="res://assets/styles/ScreenText.tres" id="3_4dg4t"]
+[ext_resource type="StyleBox" uid="uid://tjcegfoo4wit" path="res://assets/styles/ScreenBackground.tres" id="4_ptdjk"]
+[ext_resource type="PackedScene" uid="uid://258k7vtgqkj2" path="res://Interfaces/RulesOverlay.tscn" id="5_ptdjk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fenq7"]
+
+[node name="PauseMenu" type="Control" unique_id=1983888489]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_c7v6e")
+
+[node name="Background" type="Panel" parent="." unique_id=812803130]
+modulate = Color(0, 0, 0, 0.68235296)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fenq7")
+
+[node name="PopUp" type="Panel" parent="." unique_id=1907404257]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -189.0
+offset_top = -65.0
+offset_right = 189.0
+offset_bottom = 179.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_8tehv")
+theme_override_styles/panel = ExtResource("3_4dg4t")
+
+[node name="MarginContainer" type="MarginContainer" parent="PopUp" unique_id=1265793985]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PopUp/MarginContainer" unique_id=247001492]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="PlayButton" type="Button" parent="PopUp/MarginContainer/VBoxContainer" unique_id=545789163]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 32
+text = "Resume"
+
+[node name="RemainingLabel" type="Label" parent="PopUp/MarginContainer/VBoxContainer/PlayButton" unique_id=946662481]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -203.0
+offset_top = -133.0
+offset_right = 203.0
+offset_bottom = -20.0
+grow_horizontal = 2
+theme = ExtResource("2_8tehv")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = ExtResource("4_ptdjk")
+text = "Pause"
+horizontal_alignment = 1
+
+[node name="RulesButton" type="Button" parent="PopUp/MarginContainer/VBoxContainer" unique_id=168947438]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 32
+text = "Rules"
+
+[node name="ExitButton" type="Button" parent="PopUp/MarginContainer/VBoxContainer" unique_id=984851177]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 32
+text = "Return to menu"
+expand_icon = true
+
+[node name="RulesOverlay" parent="." unique_id=247626373 instance=ExtResource("5_ptdjk")]
+visible = false
+layout_mode = 1

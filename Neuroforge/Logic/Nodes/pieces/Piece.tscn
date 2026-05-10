@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://cnl18tgns0edh"]
+
+[ext_resource type="Script" uid="uid://l5hy8rx568au" path="res://Logic/Nodes/pieces/Piece.cs" id="1_4lrql"]
+[ext_resource type="Texture2D" uid="uid://cq5wc1txq2e7v" path="res://assets/board/PiecesAtlas.png" id="2_4lrql"]
+
+[sub_resource type="Shader" id="Shader_wevmb"]
+code = "shader_type canvas_item;
+
+uniform vec4 outline_color : source_color = vec4(1.0, 0.55, 0.0, 1.0); // naranja
+uniform float outline_size : hint_range(0.5, 4.0) = 1.5;
+uniform bool show_outline = false;
+
+void fragment() {
+    vec4 col = texture(TEXTURE, UV);
+
+    if (show_outline) {
+        float a = col.a;
+        a = max(a, texture(TEXTURE, UV + vec2( outline_size * TEXTURE_PIXEL_SIZE.x, 0.0)).a);
+        a = max(a, texture(TEXTURE, UV + vec2(-outline_size * TEXTURE_PIXEL_SIZE.x, 0.0)).a);
+        a = max(a, texture(TEXTURE, UV + vec2(0.0,  outline_size * TEXTURE_PIXEL_SIZE.y)).a);
+        a = max(a, texture(TEXTURE, UV + vec2(0.0, -outline_size * TEXTURE_PIXEL_SIZE.y)).a);
+
+        // Pinta el outline solo en los píxeles que son borde (transparentes rodeados de opaco)
+        if (col.a < 0.5 && a > 0.5)
+            col = outline_color;
+    }
+
+    COLOR = col;
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vlysn"]
+resource_local_to_scene = true
+shader = SubResource("Shader_wevmb")
+shader_parameter/outline_color = Color(1, 0.55, 0, 1)
+shader_parameter/outline_size = 4.0
+shader_parameter/show_outline = true
+
+[node name="Piece" type="Node2D" unique_id=754140522]
+script = ExtResource("1_4lrql")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=842163929]
+z_index = 3
+texture_filter = 1
+material = SubResource("ShaderMaterial_vlysn")
+texture = ExtResource("2_4lrql")
+region_enabled = true
+region_rect = Rect2(0, 0, 32, 32)
+
+[node name="SpriteBorder" type="Sprite2D" parent="." unique_id=919072062]
+z_index = 2
+position = Vector2(-5.364418e-07, -5.9604645e-07)
+scale = Vector2(1.1250001, 1.1249999)
+texture = ExtResource("2_4lrql")
+region_enabled = true
+region_rect = Rect2(384, 32, 32, 32)
