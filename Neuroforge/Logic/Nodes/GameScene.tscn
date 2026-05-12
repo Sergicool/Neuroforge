@@ -13,12 +13,21 @@
 [ext_resource type="Texture2D" uid="uid://biyfx0kdv7syj" path="res://assets/icons/PauseIcon.png" id="9_pynjx"]
 [ext_resource type="Theme" uid="uid://5l3frbb482sx" path="res://assets/styles/DefaultTheme.tres" id="9_yrli1"]
 [ext_resource type="PackedScene" uid="uid://chpxvag2fuk7p" path="res://Interfaces/EndGameUI.tscn" id="11_j40tv"]
+[ext_resource type="PackedScene" uid="uid://c0avy8jjny1os" path="res://assets/background/InfiniteParallax.tscn" id="14_kv1i7"]
+[ext_resource type="Texture2D" uid="uid://byphlfpfmeqms" path="res://assets/background/MainMenuBackground6.png" id="15_kv1i7"]
+[ext_resource type="Texture2D" uid="uid://cwanclfxujt5a" path="res://assets/background/MainMenuBackground7.png" id="16_ol8cn"]
+[ext_resource type="Texture2D" uid="uid://c305ky2lt2mqi" path="res://assets/background/MainMenuBackground8.png" id="17_va8ux"]
+[ext_resource type="Texture2D" uid="uid://c4a6kfmp724ie" path="res://assets/background/MainMenuBackground9.png" id="18_ao10d"]
+[ext_resource type="Texture2D" uid="uid://boaewfe5hpjjd" path="res://assets/background/MainMenuBackground10.png" id="19_qm22d"]
+[ext_resource type="Texture2D" uid="uid://c3eq5tl35ttec" path="res://assets/background/BackgroundMist.png" id="20_kv1i7"]
 
 [node name="GameScene" type="Node" unique_id=1935428772]
 script = ExtResource("1_x6js8")
 BOARD_SCENE = ExtResource("2_y2y2m")
 PLAYER_ICON = ExtResource("3_n77gc")
 BOT_ICON = ExtResource("4_xhjei")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=201207039]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=461224670]
 
@@ -99,5 +108,22 @@ visible = false
 [node name="EndGameUI" parent="CanvasLayer" unique_id=617267958 instance=ExtResource("11_j40tv")]
 visible = false
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1932810952]
-position = Vector2(0, -1)
+[node name="InfiniteParallax" parent="." unique_id=2123673909 instance=ExtResource("14_kv1i7")]
+position = Vector2(-576, -324)
+BaseSpeed = 30.0
+Layers = Array[Texture2D]([ExtResource("15_kv1i7"), ExtResource("16_ol8cn"), ExtResource("17_va8ux"), ExtResource("18_ao10d"), ExtResource("19_qm22d")])
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1772109455]
+modulate = Color(1, 1, 1, 0.13333334)
+z_index = -9
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -576.0
+offset_top = -324.0
+offset_right = -576.0
+offset_bottom = -324.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("20_kv1i7")
+expand_mode = 1

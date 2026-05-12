@@ -6,60 +6,60 @@
 \contentsline {section}{\numberline {1.4}Estructura del documento}{7}{section.1.4}%
 \contentsline {chapter}{\numberline {2}Antecedentes y Estado del Arte}{9}{chapter.2}%
 \contentsline {section}{\numberline {2.1}Evolución de los juegos de estrategia}{9}{section.2.1}%
-\contentsline {section}{\numberline {2.2}El juego original: \textit {Stratego}}{11}{section.2.2}%
-\contentsline {section}{\numberline {2.3}Variaciones, adaptaciones y videojuegos relacionados}{12}{section.2.3}%
-\contentsline {section}{\numberline {2.4}Motores de desarrollo de videojuegos}{13}{section.2.4}%
-\contentsline {chapter}{\numberline {3}Concepto del videojuego}{21}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Resumen del juego}{21}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Mecánicas}{22}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}Tablero}{22}{subsection.3.2.1}%
-\contentsline {subsection}{\numberline {3.2.2}Colocación inicial}{22}{subsection.3.2.2}%
-\contentsline {subsection}{\numberline {3.2.3}Piezas}{23}{subsection.3.2.3}%
-\contentsline {subsection}{\numberline {3.2.4}Turnos}{23}{subsection.3.2.4}%
-\contentsline {subsection}{\numberline {3.2.5}Resolución de combates}{24}{subsection.3.2.5}%
-\contentsline {subsection}{\numberline {3.2.6}Condiciones de victoria}{25}{subsection.3.2.6}%
-\contentsline {subsection}{\numberline {3.2.7}Interacción y control}{25}{subsection.3.2.7}%
-\contentsline {section}{\numberline {3.3}Ambientación}{25}{section.3.3}%
-\contentsline {section}{\numberline {3.4}Diseño de niveles}{27}{section.3.4}%
-\contentsline {section}{\numberline {3.5}Audiencia}{27}{section.3.5}%
-\contentsline {chapter}{\numberline {4}Planificación}{29}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Planificación inicial}{29}{section.4.1}%
-\contentsline {subsection}{\numberline {4.1.1}Iteración 1: Implementación del juego base}{29}{subsection.4.1.1}%
-\contentsline {subsection}{\numberline {4.1.2}Iteración 2: Interfaz de usuario y pulido visual}{30}{subsection.4.1.2}%
-\contentsline {subsection}{\numberline {4.1.3}Iteración 3: Mejoras audiovisuales}{31}{subsection.4.1.3}%
-\contentsline {subsection}{\numberline {4.1.4}Iteración 4: Implementación del bot inteligente}{31}{subsection.4.1.4}%
-\contentsline {subsection}{\numberline {4.1.5}Iteración 5: Pulido final}{32}{subsection.4.1.5}%
-\contentsline {section}{\numberline {4.2}Riesgos}{35}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Restricciones}{36}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Herramientas}{36}{section.4.4}%
-\contentsline {section}{\numberline {4.5}Variación de planificación}{37}{section.4.5}%
-\contentsline {section}{\numberline {4.6}Costes del proyecto}{38}{section.4.6}%
-\contentsline {chapter}{\numberline {5}Análisis}{41}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Actores y roles}{41}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Modelado de Requisitos}{41}{section.5.2}%
-\contentsline {section}{\numberline {5.3}Casos de uso}{44}{section.5.3}%
-\contentsline {subsection}{\numberline {5.3.1}Lista de casos de uso}{44}{subsection.5.3.1}%
-\contentsline {section}{\numberline {5.4}Modelo de dominio}{49}{section.5.4}%
-\contentsline {section}{\numberline {5.5}Modelo de proceso de negocio}{50}{section.5.5}%
-\contentsline {subsection}{\numberline {5.5.1}Actividad: Jugar partida (CU-01)}{50}{subsection.5.5.1}%
-\contentsline {subsection}{\numberline {5.5.2}Actividad: Jugar turnos (CU-02)}{50}{subsection.5.5.2}%
-\contentsline {subsection}{\numberline {5.5.3}Actividad: Resolver combate (CU-03)}{52}{subsection.5.5.3}%
-\contentsline {subsection}{\numberline {5.5.4}Actividad: Consultar reglas (CU-04)}{53}{subsection.5.5.4}%
-\contentsline {chapter}{\numberline {6}Diseño}{55}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Arquitectura del sistema}{55}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Módulos o componentes del sistema}{59}{section.6.2}%
-\contentsline {section}{\numberline {6.3}Diseño de clases}{59}{section.6.3}%
-\contentsline {section}{\numberline {6.4}Diseño de interfaz de usuario}{59}{section.6.4}%
-\contentsline {section}{\numberline {6.5}Patrones de diseño aplicados}{66}{section.6.5}%
-\contentsline {section}{\numberline {6.6}Seguridad y rendimiento}{69}{section.6.6}%
-\contentsline {chapter}{\numberline {7}Implementación}{71}{chapter.7}%
-\contentsline {section}{\numberline {7.1}Organización del código}{71}{section.7.1}%
-\contentsline {section}{\numberline {7.2}Licencias requeridas}{71}{section.7.2}%
-\contentsline {section}{\numberline {7.3}Batería de pruebas}{71}{section.7.3}%
-\contentsline {chapter}{\numberline {8}Conclusiones y Líneas futuras}{73}{chapter.8}%
-\contentsline {chapter}{\numberline {A}Manual de instalación}{75}{appendix.Alph1}%
-\contentsline {chapter}{\numberline {B}Manual de usuario}{77}{appendix.Alph2}%
-\contentsline {chapter}{\numberline {C}}{79}{appendix.Alph3}%
-\contentsline {chapter}{\numberline {D}}{81}{appendix.Alph4}%
-\contentsline {chapter}{Bibliografía}{83}{appendix.Alph4}%
+\contentsline {section}{\numberline {2.2}El juego original: \textit {Stratego}}{13}{section.2.2}%
+\contentsline {section}{\numberline {2.3}Variaciones, adaptaciones y videojuegos relacionados}{14}{section.2.3}%
+\contentsline {section}{\numberline {2.4}Motores de desarrollo de videojuegos}{16}{section.2.4}%
+\contentsline {chapter}{\numberline {3}Concepto del videojuego}{19}{chapter.3}%
+\contentsline {section}{\numberline {3.1}Resumen del juego}{19}{section.3.1}%
+\contentsline {section}{\numberline {3.2}Mecánicas}{20}{section.3.2}%
+\contentsline {subsection}{\numberline {3.2.1}Tablero}{20}{subsection.3.2.1}%
+\contentsline {subsection}{\numberline {3.2.2}Colocación inicial}{20}{subsection.3.2.2}%
+\contentsline {subsection}{\numberline {3.2.3}Piezas}{21}{subsection.3.2.3}%
+\contentsline {subsection}{\numberline {3.2.4}Turnos}{21}{subsection.3.2.4}%
+\contentsline {subsection}{\numberline {3.2.5}Resolución de combates}{22}{subsection.3.2.5}%
+\contentsline {subsection}{\numberline {3.2.6}Condiciones de victoria}{23}{subsection.3.2.6}%
+\contentsline {subsection}{\numberline {3.2.7}Interacción y control}{23}{subsection.3.2.7}%
+\contentsline {section}{\numberline {3.3}Ambientación}{23}{section.3.3}%
+\contentsline {section}{\numberline {3.4}Diseño de niveles}{25}{section.3.4}%
+\contentsline {section}{\numberline {3.5}Audiencia}{25}{section.3.5}%
+\contentsline {chapter}{\numberline {4}Planificación}{27}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Planificación inicial}{27}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Iteración 1: Implementación del juego base}{27}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Iteración 2: Interfaz de usuario y pulido visual}{28}{subsection.4.1.2}%
+\contentsline {subsection}{\numberline {4.1.3}Iteración 3: Mejoras audiovisuales}{29}{subsection.4.1.3}%
+\contentsline {subsection}{\numberline {4.1.4}Iteración 4: Implementación del bot inteligente}{29}{subsection.4.1.4}%
+\contentsline {subsection}{\numberline {4.1.5}Iteración 5: Pulido final}{30}{subsection.4.1.5}%
+\contentsline {section}{\numberline {4.2}Riesgos}{33}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Restricciones}{34}{section.4.3}%
+\contentsline {section}{\numberline {4.4}Herramientas}{34}{section.4.4}%
+\contentsline {section}{\numberline {4.5}Variación de planificación}{35}{section.4.5}%
+\contentsline {section}{\numberline {4.6}Costes del proyecto}{36}{section.4.6}%
+\contentsline {chapter}{\numberline {5}Análisis}{39}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Actores y roles}{39}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Modelado de Requisitos}{39}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Casos de uso}{42}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Lista de casos de uso}{42}{subsection.5.3.1}%
+\contentsline {section}{\numberline {5.4}Modelo de dominio}{47}{section.5.4}%
+\contentsline {section}{\numberline {5.5}Modelo de proceso de negocio}{48}{section.5.5}%
+\contentsline {subsection}{\numberline {5.5.1}Actividad: Jugar partida (CU-01)}{48}{subsection.5.5.1}%
+\contentsline {subsection}{\numberline {5.5.2}Actividad: Jugar turnos (CU-02)}{48}{subsection.5.5.2}%
+\contentsline {subsection}{\numberline {5.5.3}Actividad: Resolver combate (CU-03)}{50}{subsection.5.5.3}%
+\contentsline {subsection}{\numberline {5.5.4}Actividad: Consultar reglas (CU-04)}{51}{subsection.5.5.4}%
+\contentsline {chapter}{\numberline {6}Diseño}{53}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Arquitectura del sistema}{53}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Módulos o componentes del sistema}{57}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Diseño de clases}{58}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Diseño de interfaz de usuario}{58}{section.6.4}%
+\contentsline {section}{\numberline {6.5}Patrones de diseño aplicados}{65}{section.6.5}%
+\contentsline {section}{\numberline {6.6}Seguridad y rendimiento}{68}{section.6.6}%
+\contentsline {chapter}{\numberline {7}Implementación}{69}{chapter.7}%
+\contentsline {subsection}{\numberline {7.0.1}Organización del código}{69}{subsection.7.0.1}%
+\contentsline {section}{\numberline {7.1}Licencias requeridas}{70}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Batería de pruebas}{70}{section.7.2}%
+\contentsline {chapter}{\numberline {8}Conclusiones y Líneas futuras}{71}{chapter.8}%
+\contentsline {chapter}{\numberline {A}Manual de instalación}{73}{appendix.Alph1}%
+\contentsline {chapter}{\numberline {B}Manual de usuario}{75}{appendix.Alph2}%
+\contentsline {chapter}{\numberline {C}}{77}{appendix.Alph3}%
+\contentsline {chapter}{\numberline {D}}{79}{appendix.Alph4}%
+\contentsline {chapter}{Bibliografía}{81}{appendix.Alph4}%
 \contentsfinish 

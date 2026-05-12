@@ -9,6 +9,12 @@
 [ext_resource type="Texture2D" uid="uid://bv4pbh4ce6388" path="res://assets/icons/RulesIcon.png" id="6_ucygd"]
 [ext_resource type="Texture2D" uid="uid://bx2acahh5t52f" path="res://assets/icons/ExitIcon.png" id="7_mipys"]
 [ext_resource type="PackedScene" uid="uid://258k7vtgqkj2" path="res://Interfaces/RulesOverlay.tscn" id="8_mipys"]
+[ext_resource type="PackedScene" uid="uid://c0avy8jjny1os" path="res://assets/background/InfiniteParallax.tscn" id="10_ooogn"]
+[ext_resource type="Texture2D" uid="uid://dym203a8kudtf" path="res://assets/background/MainMenuBackground1.png" id="11_ooogn"]
+[ext_resource type="Texture2D" uid="uid://bcxergjtmd5e6" path="res://assets/background/MainMenuBackground2.png" id="12_jpkbc"]
+[ext_resource type="Texture2D" uid="uid://crrvqevbyp5kb" path="res://assets/background/MainMenuBackground3.png" id="13_pivnn"]
+[ext_resource type="Texture2D" uid="uid://bhl0mfmvoomfa" path="res://assets/background/MainMenuBackground4.png" id="14_fhme7"]
+[ext_resource type="Texture2D" uid="uid://5120p0peikqt" path="res://assets/background/MainMenuBackground5.png" id="15_b6l48"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ow34m"]
 
@@ -25,14 +31,19 @@ GAME_SCENE = ExtResource("3_3xha2")
 
 [node name="TitlePanel" type="Panel" parent="." unique_id=854666511]
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-offset_left = -507.0
-offset_top = 128.0
-offset_right = -73.0
-offset_bottom = 248.0
+anchor_bottom = 0.5
+offset_left = -217.0
+offset_top = -178.0
+offset_right = 217.0
+offset_bottom = -58.0
 grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_styles/panel = ExtResource("2_2wh52")
 
 [node name="Title" type="Label" parent="TitlePanel" unique_id=783250757]
@@ -63,12 +74,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -407.0
-offset_top = -76.0
-offset_right = -165.0
-offset_bottom = 166.0
+offset_left = -121.0
+offset_top = -58.0
+offset_right = 121.0
+offset_bottom = 184.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 theme_override_styles/panel = ExtResource("2_0ykhv")
 
 [node name="MarginContainer" type="MarginContainer" parent="ButtonsPanel" unique_id=286396221]
@@ -121,4 +134,9 @@ alignment = 0
 expand_icon = true
 
 [node name="RulesOverlay" parent="." unique_id=247626373 instance=ExtResource("8_mipys")]
+visible = false
 layout_mode = 1
+
+[node name="InfiniteParallax" parent="." unique_id=2123673909 instance=ExtResource("10_ooogn")]
+BaseSpeed = 100.0
+Layers = Array[Texture2D]([ExtResource("11_ooogn"), ExtResource("12_jpkbc"), ExtResource("13_pivnn"), ExtResource("14_fhme7"), ExtResource("15_b6l48")])

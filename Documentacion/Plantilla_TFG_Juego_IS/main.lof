@@ -1,39 +1,39 @@
 \babel@toc {spanish}{}\relax 
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Tablero del Juego Real de Ur \cite {TheRoyalGameOfUrHistory}}}{15}{figure.caption.9}%
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Tablero del juego Senet \cite {BrooklynMuseumSenet}}}{16}{figure.caption.10}%
-\contentsline {figure}{\numberline {2.3}{\ignorespaces Tablero del juego Dou Shou Qi \cite {ChessVariantsDouShouQi}}}{17}{figure.caption.11}%
-\contentsline {figure}{\numberline {2.4}{\ignorespaces Tablero del juego L'attaque \cite {LAttaqueBoard}}}{18}{figure.caption.12}%
-\contentsline {figure}{\numberline {2.5}{\ignorespaces Tablero del juego Luzhanqi \cite {LuzhanqiHistory}}}{19}{figure.caption.13}%
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Tablero del Juego Real de Ur \cite {TheRoyalGameOfUrHistory}}}{10}{figure.caption.8}%
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Tablero del juego Senet \cite {BrooklynMuseumSenet}}}{10}{figure.caption.9}%
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Tablero del juego Dou Shou Qi \cite {ChessVariantsDouShouQi}}}{12}{figure.caption.10}%
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Tablero del juego Luzhanqi \cite {LuzhanqiHistory}}}{15}{figure.caption.11}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Esquema del tablero}}{22}{figure.caption.14}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Esquema del tablero}}{20}{figure.caption.13}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Diagrama de Gantt general del desarrollo del TFG, incluyendo todas las iteraciones y la documentación}}{34}{figure.caption.16}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Diagrama de Gantt general del desarrollo del TFG, incluyendo todas las iteraciones y la documentación}}{32}{figure.caption.15}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Diagrama de casos de uso}}{44}{figure.caption.20}%
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Diagrama del modelo de dominio}}{49}{figure.caption.26}%
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Diagrama de actividad: Jugar partida (CU-01)}}{50}{figure.caption.27}%
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Diagrama de actividad: Jugar turnos (CU-02)}}{51}{figure.caption.28}%
-\contentsline {figure}{\numberline {5.5}{\ignorespaces Diagrama de actividad: Resolver combate (CU-03)}}{52}{figure.caption.29}%
-\contentsline {figure}{\numberline {5.6}{\ignorespaces Diagrama de actividad: Consultar reglas}}{53}{figure.caption.30}%
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Diagrama de casos de uso}}{42}{figure.caption.19}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Diagrama del modelo de dominio}}{47}{figure.caption.25}%
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Diagrama de actividad: Jugar partida (CU-01)}}{48}{figure.caption.26}%
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Diagrama de actividad: Jugar turnos (CU-02)}}{49}{figure.caption.27}%
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Diagrama de actividad: Resolver combate (CU-03)}}{50}{figure.caption.28}%
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Diagrama de actividad: Consultar reglas}}{51}{figure.caption.29}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {6.1}{\ignorespaces Estructura de la escena \texttt {Tile} en el editor de Godot}}{56}{figure.caption.31}%
-\contentsline {figure}{\numberline {6.2}{\ignorespaces Modelo de ejecución de Godot ilustrado con algunos nodos del proyecto.}}{57}{figure.caption.32}%
-\contentsline {figure}{\numberline {6.3}{\ignorespaces Vista simplificada de la arquitectura de NeuroForge en tres capas.}}{58}{figure.caption.33}%
-\contentsline {figure}{\numberline {6.4}{\ignorespaces Menú principal de NeuroForge.}}{60}{figure.caption.34}%
-\contentsline {figure}{\numberline {6.5}{\ignorespaces Menú de reglas con la pestaña de tipos de casillas activa.}}{61}{figure.caption.35}%
-\contentsline {figure}{\numberline {6.6}{\ignorespaces Menú de reglas con la pestaña de piezas activa.}}{61}{figure.caption.36}%
-\contentsline {figure}{\numberline {6.7}{\ignorespaces Fase de despliegue con el tablero vacío al inicio de la partida.}}{62}{figure.caption.37}%
-\contentsline {figure}{\numberline {6.8}{\ignorespaces Fase de despliegue con algunas piezas ya colocadas en la zona del jugador.}}{63}{figure.caption.38}%
-\contentsline {figure}{\numberline {6.9}{\ignorespaces Pantalla de partida con una pieza seleccionada y sus acciones posibles resaltadas.}}{64}{figure.caption.39}%
-\contentsline {figure}{\numberline {6.10}{\ignorespaces Interfaz de combate antes de la resolución: ambas piezas visibles y resultado aún sin mostrar.}}{65}{figure.caption.40}%
-\contentsline {figure}{\numberline {6.11}{\ignorespaces Interfaz de combate tras la resolución: pieza perdedora oscurecida y mensaje de resultado visible.}}{65}{figure.caption.41}%
-\contentsline {figure}{\numberline {6.12}{\ignorespaces Pantalla de fin de partida con mensaje de victoria.}}{66}{figure.caption.42}%
-\contentsline {figure}{\numberline {6.13}{\ignorespaces Patrón Singleton aplicado en \texttt {GameScene} y \texttt {SceneManager}.}}{67}{figure.caption.43}%
-\contentsline {figure}{\numberline {6.14}{\ignorespaces Patrón Strategy con \texttt {MovementSystem} y \texttt {CombatSystem} como estrategias delegadas desde \texttt {Board}.}}{67}{figure.caption.44}%
-\contentsline {figure}{\numberline {6.15}{\ignorespaces Patrón Fachada con \texttt {Board} como punto de acceso unificado al subsistema de tablero.}}{68}{figure.caption.45}%
-\contentsline {figure}{\numberline {6.16}{\ignorespaces Patrón Template Method en \texttt {\_Bridge}: esqueleto fijo de transición con el paso de animación extensible por tipo.}}{69}{figure.caption.46}%
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Estructura de la escena \texttt {Tile} en el editor de Godot}}{54}{figure.caption.30}%
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Modelo de ejecución de Godot ilustrado con algunos nodos del proyecto.}}{55}{figure.caption.31}%
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Vista simplificada de la arquitectura de NeuroForge en tres capas.}}{56}{figure.caption.32}%
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Diagrama de componentes de NeuroForge con sus dependencias.}}{58}{figure.caption.33}%
+\contentsline {figure}{\numberline {6.5}{\ignorespaces Menú principal de NeuroForge.}}{59}{figure.caption.34}%
+\contentsline {figure}{\numberline {6.6}{\ignorespaces Menú de reglas con la pestaña de tipos de casillas activa.}}{60}{figure.caption.35}%
+\contentsline {figure}{\numberline {6.7}{\ignorespaces Menú de reglas con la pestaña de piezas activa.}}{60}{figure.caption.36}%
+\contentsline {figure}{\numberline {6.8}{\ignorespaces Fase de despliegue con el tablero vacío al inicio de la partida.}}{61}{figure.caption.37}%
+\contentsline {figure}{\numberline {6.9}{\ignorespaces Fase de despliegue con algunas piezas ya colocadas en la zona del jugador.}}{62}{figure.caption.38}%
+\contentsline {figure}{\numberline {6.10}{\ignorespaces Pantalla de partida con una pieza seleccionada y sus acciones posibles resaltadas.}}{63}{figure.caption.39}%
+\contentsline {figure}{\numberline {6.11}{\ignorespaces Interfaz de combate antes de la resolución: ambas piezas visibles y resultado aún sin mostrar.}}{64}{figure.caption.40}%
+\contentsline {figure}{\numberline {6.12}{\ignorespaces Interfaz de combate tras la resolución: pieza perdedora oscurecida y mensaje de resultado visible.}}{64}{figure.caption.41}%
+\contentsline {figure}{\numberline {6.13}{\ignorespaces Pantalla de fin de partida con mensaje de victoria.}}{65}{figure.caption.42}%
+\contentsline {figure}{\numberline {6.14}{\ignorespaces Patrón Singleton aplicado en \texttt {GameScene} y \texttt {SceneManager}.}}{66}{figure.caption.43}%
+\contentsline {figure}{\numberline {6.15}{\ignorespaces Patrón Strategy con \texttt {MovementSystem} y \texttt {CombatSystem} como estrategias delegadas desde \texttt {Board}.}}{66}{figure.caption.44}%
+\contentsline {figure}{\numberline {6.16}{\ignorespaces Patrón Fachada con \texttt {Board} como punto de acceso unificado al subsistema de tablero.}}{67}{figure.caption.45}%
+\contentsline {figure}{\numberline {6.17}{\ignorespaces Patrón Template Method en \texttt {\_Bridge}: esqueleto fijo de transición con el paso de animación extensible por tipo.}}{68}{figure.caption.46}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

@@ -1,13 +1,29 @@
 \chapter{Implementación}
 
+\subsection{Organización del código}
+\label{sec:organizacion_codigo}
 
+Para garantizar la escalabilidad del proyecto y facilitar el mantenimiento del código, se ha seguido una estructura de directorios basada en la separación de responsabilidades. Dado que Godot utiliza un sistema de escenas y nodos, la organización se ha diseñado para diferenciar claramente entre los elementos visuales, la lógica de juego pura y la infraestructura de datos.
 
+A continuación, se detallan las carpetas principales que componen el proyecto y su propósito dentro de la arquitectura global:
 
-\section{Organización del código}
-% Estructura del proyecto
+\begin{itemize}
+	\item \textbf{Assets/}: Esta carpeta centraliza todos los recursos gráficos y visuales del juego. Contiene las texturas (sprites), fuentes tipográficas, temas de interfaz (Themes) y recursos específicos de Godot como los \texttt{TileMaps}. Al agrupar estos elementos, se consigue que cualquier cambio estético o de diseño visual sea fácil de localizar sin interferir con la lógica programática.
+	
+	\item \textbf{BotEnvironment/}: Contiene todo el entorno necesario para el entrenamiento y la ejecución del agente de Inteligencia Artificial. Aquí se incluyen los scripts y configuraciones que permiten al \textit{bot} interactuar con el juego, separando el comportamiento del agente del resto de sistemas para permitir pruebas aisladas de la IA.
+	
+	\item \textbf{Data \& Infrastructure/}: En este directorio se ubican los scripts encargados de la persistencia de datos y la comunicación entre diferentes capas del software. Incluye la definición de estructuras de datos y servicios de infraestructura que no pertenecen a la lógica de juego, pero que son fundamentales para el funcionamiento del sistema.
+	
+	\item \textbf{UI/}: Siguiendo el patrón de diseño orientado a escenas de Godot, esta carpeta contiene tanto los scripts de control de la interfaz de usuario como las escenas (.tscn) correspondientes a los menús, paneles y elementos interactivos (HUD). Esto permite que el diseño de la interfaz esté estrechamente ligado a su lógica de control inmediata, pero separado de la lógica de combate o movimiento.
+	
+	\item \textbf{GameLogic/}: Es el núcleo del videojuego y presenta una subdivisión estratégica para cumplir con el diseño arquitectónico:
+	\begin{itemize}
+		\item \textbf{Lógica Pura (C\# scripts):} Contiene clases puras de C\# que no heredan de la clase \texttt{Node} de Godot. Aquí residen las reglas del juego y algoritmos que podrían ser testeados de forma unitaria fuera del motor.
+		\item \textbf{Nodos de Godot:} Subdividida en carpetas como Pieces, Tiles y Board. En cada una de ellas se encuentran las escenas de Godot y los scripts que heredan de la API del motor para gestionar la representación espacial y el comportamiento de los objetos en pantalla.
+	\end{itemize}
+\end{itemize}
 
-% Explicación en detalle de algún algoritmo o bloque de código relevante si se considera necesario
-
+Esta estructura modular permite que el proyecto sea robusto, ya que cada componente tiene una responsabilidad bien definida, permitiendo que el motor de videojuegos funcione de manera fluida y organizada.
 
 \section{Licencias requeridas}
 

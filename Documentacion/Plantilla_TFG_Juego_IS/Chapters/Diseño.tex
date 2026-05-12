@@ -61,13 +61,24 @@ El flujo predominante de dependencias es descendente. Sin embargo, los nodos de 
 \section{Módulos o componentes del sistema}
 % ─────────────────────────────────────────────────────────────────────────────
 
-(Diagrama de componentes) ???
+La Figura~\ref{fig:DiagramaComponentes} muestra la organización del sistema en cinco componentes y las dependencias entre ellos. Cada componente agrupa las clases con una responsabilidad cohesionada, reflejando directamente la arquitectura en capas descrita en la sección anterior.
+
+El componente \textit{Interfaz de usuario} reúne todos los nodos que heredan de \texttt{Control}: los menús de inicio, pausa y fin de partida, los overlays de reglas y combate, y los elementos de despliegue y recuento de piezas. El componente \textit{Lógica de juego} contiene el gestor de partida, el tablero, las piezas y casillas y los controladores de input, despliegue y bot. El componente \textit{Motor de reglas} encapsula los algoritmos de movimiento y combate como módulo independiente sin estado propio. El componente \textit{Datos e infraestructura} agrupa enumeradores y los datos de las piezas y su estructura. Por último, el componente \textit{Infraestructura} comprende el gestor de navegación entre escenas.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{../Imagenes/DiagramaComponentes}
+	\caption{Diagrama de componentes de NeuroForge con sus dependencias.}
+	\label{fig:DiagramaComponentes}
+\end{figure}
+
+Todas las dependencias entre componentes son de tipo \textit{«use»}, en el que un componente invoca servicios de otro sin poseerlo ni instanciarlo directamente. El flujo es predominantemente descendente desde la interfaz hacia los datos, con la excepción de que la lógica de juego mantiene referencias directas a componentes de interfaz para coordinar animaciones, tal como se mencionó anteriormente.
 
 % ─────────────────────────────────────────────────────────────────────────────
 \section{Diseño de clases}
 % ─────────────────────────────────────────────────────────────────────────────
 
-(Diagrama de clases completo)
+(Diagrama de clases completo?)
 
 % ─────────────────────────────────────────────────────────────────────────────
 \section{Diseño de interfaz de usuario}
@@ -251,3 +262,9 @@ En la forma canónica del patrón los pasos variables se delegan a subclases med
 % ─────────────────────────────────────────────────────────────────────────────
 \section{Seguridad y rendimiento}
 % ─────────────────────────────────────────────────────────────────────────────
+
+NeuroForge es una aplicación de escritorio monojugador sin comunicación en red ni almacenamiento de datos del usuario, por lo que el espacio de consideraciones de seguridad es reducido. No existen credenciales, sesiones ni datos sensibles que proteger. La única superficie relevante es la integridad del estado de partida en memoria, que está garantizada por el control de acceso de C\#: los campos internos de \texttt{Board}, \texttt{Piece} y \texttt{Tile} se exponen únicamente mediante propiedades de solo lectura o métodos con visibilidad restringida, evitando modificaciones accidentales desde clases externas.
+
+En cuanto al rendimiento, las decisiones de diseño más relevantes se tomaron en torno a dos operaciones que se ejecutan repetidamente durante la partida. La primera es el cálculo de acciones posibles: tanto \texttt{BoardInputController} al resaltar casillas como \texttt{BotController} al evaluar su turno recorren todas las casillas del tablero para cada pieza móvil. Dado que el tablero de NeuroForge es de tamaño fijo y reducido, este coste cuadrático es asumible sin necesidad de estructuras de datos adicionales. La segunda es la gestión de animaciones: todas las animaciones de movimiento, combate y transición de escena se implementan mediante \texttt{Tween} de Godot con \texttt{async}/\texttt{await}, lo que permite suspender la ejecución de la lógica durante la animación sin bloquear el hilo principal del motor ni requerir un sistema de colas explícito.
+
+Respecto a la memoria, las escenas se cachean en \texttt{SceneManager} tras su primera carga para evitar lecturas repetidas de disco en transiciones sucesivas. Las piezas eliminadas en combate se liberan mediante \texttt{QueueFree()}, el mecanismo de Godot que difiere la destrucción al final del fotograma actual, previniendo así accesos a objetos ya liberados durante el mismo ciclo de actualización.

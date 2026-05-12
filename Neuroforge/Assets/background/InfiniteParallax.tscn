@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://c0avy8jjny1os"]
+
+[ext_resource type="Script" uid="uid://dhfk4x15cyuu6" path="res://assets/background/InfiniteParallax.cs" id="1_463mn"]
+
+[node name="InfiniteParallax" type="Node2D" unique_id=2123673909]
+z_index = -10
+script = ExtResource("1_463mn")
