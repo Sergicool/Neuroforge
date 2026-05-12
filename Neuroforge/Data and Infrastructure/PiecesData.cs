@@ -15,7 +15,7 @@ public partial class PiecesData
         { PieceType.WAR_MACHINE, new PieceDefinition { Type = PieceType.WAR_MACHINE, Rank=10, CanMove=true, MaxCount=1, AtlasColumn=10 } },
         { PieceType.NOVA,        new PieceDefinition { Type = PieceType.NOVA, Rank=9, CanMove=true, MaxCount=1, AtlasColumn=9 } },
         { PieceType.MECHA,       new PieceDefinition { Type = PieceType.MECHA, Rank=8, CanMove=true, MaxCount=2, AtlasColumn=8 } },
-        { PieceType.SENTINEL,     new PieceDefinition { Type = PieceType.SENTINEL, Rank=7, CanMove=true, MaxCount=3, AtlasColumn=7 } },
+        { PieceType.SENTINEL,    new PieceDefinition { Type = PieceType.SENTINEL, Rank=7, CanMove=true, MaxCount=3, AtlasColumn=7 } },
         { PieceType.CANINE,      new PieceDefinition { Type = PieceType.CANINE, Rank=6, CanMove=true, MaxCount=4, AtlasColumn=6 } },
         { PieceType.CYBORG,      new PieceDefinition { Type = PieceType.CYBORG, Rank=5, CanMove=true, MaxCount=4, AtlasColumn=5 } },
         { PieceType.SOLDIER,     new PieceDefinition { Type = PieceType.SOLDIER, Rank=4, CanMove=true, MaxCount=4, AtlasColumn=4 } },

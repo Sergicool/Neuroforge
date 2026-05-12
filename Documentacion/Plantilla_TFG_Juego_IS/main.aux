@@ -162,34 +162,56 @@
 \newlabel{fig:GodotModelo}{{6.2}{57}{Modelo de ejecución de Godot ilustrado con algunos nodos del proyecto}{figure.caption.32}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {6.3}{\ignorespaces Vista simplificada de la arquitectura de NeuroForge en tres capas.}}{58}{figure.caption.33}\protected@file@percent }
 \newlabel{fig:ArquitecturaDelSistema}{{6.3}{58}{Vista simplificada de la arquitectura de NeuroForge en tres capas}{figure.caption.33}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6.4}{\ignorespaces Ejemplo de comunicación entre capas durante la confirmación del despliegue.}}{59}{figure.caption.34}\protected@file@percent }
-\newlabel{fig:ComunicacionEntreCapas}{{6.4}{59}{Ejemplo de comunicación entre capas durante la confirmación del despliegue}{figure.caption.34}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {6.2}Módulos o componentes del sistema}{59}{section.6.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {6.5}{\ignorespaces Módulos del sistema y sus dependencias principales.}}{60}{figure.caption.35}\protected@file@percent }
-\newlabel{fig:ComponentesDelSistema}{{6.5}{60}{Módulos del sistema y sus dependencias principales}{figure.caption.35}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {6.3}Diseño de clases}{61}{section.6.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {6.4}Diseño de interfaz de usuario}{61}{section.6.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {6.5}Patrones de diseño aplicados}{61}{section.6.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {6.6}Seguridad y rendimiento}{61}{section.6.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {chapter}{\numberline {7}Implementación}{63}{chapter.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.3}Diseño de clases}{59}{section.6.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.4}Diseño de interfaz de usuario}{59}{section.6.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6.4}{\ignorespaces Menú principal de NeuroForge.}}{60}{figure.caption.34}\protected@file@percent }
+\newlabel{fig:MenuPrincipal}{{6.4}{60}{Menú principal de NeuroForge}{figure.caption.34}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.5}{\ignorespaces Menú de reglas con la pestaña de tipos de casillas activa.}}{61}{figure.caption.35}\protected@file@percent }
+\newlabel{fig:MenuReglasBoard}{{6.5}{61}{Menú de reglas con la pestaña de tipos de casillas activa}{figure.caption.35}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.6}{\ignorespaces Menú de reglas con la pestaña de piezas activa.}}{61}{figure.caption.36}\protected@file@percent }
+\newlabel{fig:MenuReglasPieces}{{6.6}{61}{Menú de reglas con la pestaña de piezas activa}{figure.caption.36}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.7}{\ignorespaces Fase de despliegue con el tablero vacío al inicio de la partida.}}{62}{figure.caption.37}\protected@file@percent }
+\newlabel{fig:MenuDespliegueVacio}{{6.7}{62}{Fase de despliegue con el tablero vacío al inicio de la partida}{figure.caption.37}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.8}{\ignorespaces Fase de despliegue con algunas piezas ya colocadas en la zona del jugador.}}{63}{figure.caption.38}\protected@file@percent }
+\newlabel{fig:MenuDespliegueParcialmenteVacio}{{6.8}{63}{Fase de despliegue con algunas piezas ya colocadas en la zona del jugador}{figure.caption.38}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.9}{\ignorespaces Pantalla de partida con una pieza seleccionada y sus acciones posibles resaltadas.}}{64}{figure.caption.39}\protected@file@percent }
+\newlabel{fig:MenuPartidaEnCurso}{{6.9}{64}{Pantalla de partida con una pieza seleccionada y sus acciones posibles resaltadas}{figure.caption.39}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.10}{\ignorespaces Interfaz de combate antes de la resolución: ambas piezas visibles y resultado aún sin mostrar.}}{65}{figure.caption.40}\protected@file@percent }
+\newlabel{fig:MenuInterfazCombatePrevia}{{6.10}{65}{Interfaz de combate antes de la resolución: ambas piezas visibles y resultado aún sin mostrar}{figure.caption.40}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.11}{\ignorespaces Interfaz de combate tras la resolución: pieza perdedora oscurecida y mensaje de resultado visible.}}{65}{figure.caption.41}\protected@file@percent }
+\newlabel{fig:MenuInterfazCombateResuelto}{{6.11}{65}{Interfaz de combate tras la resolución: pieza perdedora oscurecida y mensaje de resultado visible}{figure.caption.41}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.12}{\ignorespaces Pantalla de fin de partida con mensaje de victoria.}}{66}{figure.caption.42}\protected@file@percent }
+\newlabel{fig:MenuFinPartida}{{6.12}{66}{Pantalla de fin de partida con mensaje de victoria}{figure.caption.42}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.5}Patrones de diseño aplicados}{66}{section.6.5}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6.13}{\ignorespaces Patrón Singleton aplicado en \texttt  {GameScene} y \texttt  {SceneManager}.}}{67}{figure.caption.43}\protected@file@percent }
+\newlabel{fig:PatronSingleton}{{6.13}{67}{Patrón Singleton aplicado en \texttt {GameScene} y \texttt {SceneManager}}{figure.caption.43}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.14}{\ignorespaces Patrón Strategy con \texttt  {MovementSystem} y \texttt  {CombatSystem} como estrategias delegadas desde \texttt  {Board}.}}{67}{figure.caption.44}\protected@file@percent }
+\newlabel{fig:PatronStrategy}{{6.14}{67}{Patrón Strategy con \texttt {MovementSystem} y \texttt {CombatSystem} como estrategias delegadas desde \texttt {Board}}{figure.caption.44}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.15}{\ignorespaces Patrón Fachada con \texttt  {Board} como punto de acceso unificado al subsistema de tablero.}}{68}{figure.caption.45}\protected@file@percent }
+\newlabel{fig:PatronFachada}{{6.15}{68}{Patrón Fachada con \texttt {Board} como punto de acceso unificado al subsistema de tablero}{figure.caption.45}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.16}{\ignorespaces Patrón Template Method en \texttt  {\_Bridge}: esqueleto fijo de transición con el paso de animación extensible por tipo.}}{69}{figure.caption.46}\protected@file@percent }
+\newlabel{fig:PatronTemplateMethod}{{6.16}{69}{Patrón Template Method en \texttt {\_Bridge}: esqueleto fijo de transición con el paso de animación extensible por tipo}{figure.caption.46}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.6}Seguridad y rendimiento}{69}{section.6.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {7}Implementación}{71}{chapter.7}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {7.1}Organización del código}{63}{section.7.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {7.2}Licencias requeridas}{63}{section.7.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {7.3}Batería de pruebas}{63}{section.7.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {chapter}{\numberline {8}Conclusiones y Líneas futuras}{65}{chapter.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7.1}Organización del código}{71}{section.7.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7.2}Licencias requeridas}{71}{section.7.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7.3}Batería de pruebas}{71}{section.7.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {8}Conclusiones y Líneas futuras}{73}{chapter.8}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {chapter}{\numberline {A}Manual de instalación}{67}{appendix.Alph1}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {A}Manual de instalación}{75}{appendix.Alph1}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {chapter}{\numberline {B}Manual de usuario}{69}{appendix.Alph2}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {B}Manual de usuario}{77}{appendix.Alph2}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {chapter}{\numberline {C}}{71}{appendix.Alph3}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {C}}{79}{appendix.Alph3}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {chapter}{\numberline {D}}{73}{appendix.Alph4}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {D}}{81}{appendix.Alph4}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \bibstyle{unsrt}
@@ -204,7 +226,7 @@
 \bibcite{garcianaveira2018}{8}
 \bibcite{solano2020}{9}
 \bibcite{BritishMuseumRoyalGameOfUr}{10}
-\@writefile{toc}{\contentsline {chapter}{Bibliografía}{75}{appendix.Alph4}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{Bibliografía}{83}{appendix.Alph4}\protected@file@percent }
 \bibcite{SenetHistory}{11}
 \bibcite{ChessHistory}{12}
 \bibcite{BAdaLAttaque}{13}
@@ -218,4 +240,4 @@
 \bibcite{slayspire2_launch}{21}
 \bibcite{glassdoor_gamedeveloper}{22}
 \ttl@finishall
-\gdef \@abspage@last{90}
+\gdef \@abspage@last{98}

@@ -49,61 +49,204 @@ La Figura~\ref{fig:ArquitecturaDelSistema} muestra una vista simplificada de los
 	\label{fig:ArquitecturaDelSistema}
 \end{figure}
 
-La \textbf{capa de interfaz} agrupa todos los nodos que heredan de \texttt{Control}. Su responsabilidad se limita a capturar las intenciones del jugador y reflejar el estado del juego visualmente. Ninguno de estos nodos toma decisiones de lógica de juego: cuando el jugador pulsa un botón, la capa de presentación notifica a la capa inferior mediante eventos C\# estándar (\texttt{event Action}), y espera recibir los datos actualizados para refrescar la vista.
+La \textbf{capa de interfaz} agrupa todos los nodos que heredan de \texttt{Control}. Su responsabilidad se limita a capturar las intenciones del jugador y reflejar el estado del juego visualmente. Ninguno de estos nodos toma decisiones de lógica de juego: cuando el jugador pulsa un botón, la capa de presentación notifica a la capa de lógica mediante eventos C\# estándar (\texttt{event Action}), y espera recibir los datos actualizados para refrescar la vista. Algunos componentes de esta capa acceden además directamente a la capa de datos e infraestructura para consultar configuración estática o gestionar transiciones de escena.
 
-La \textbf{capa de lógica de juego} es el núcleo funcional del sistema. Aquí conviven dos tipos de clases con naturalezas distintas. \texttt{GameScene}, \texttt{Board}, \texttt{Tile} y \texttt{Piece} son nodos de Godot porque necesitan estar en el árbol de escenas para gestionar el input del ratón, coordinar animaciones y participar en el ciclo de vida del motor. Por otro lado, \texttt{BoardInputController}, \texttt{DeploymentController} y \texttt{BotController} son clases C\# puras creadas e instanciadas desde \texttt{GameScene} o \texttt{Board}, independientes del motor y por tanto más ligeras y fáciles de reutilizar. \texttt{MovementSystem} y \texttt{CombatSystem} son clases estáticas puras sin estado.
+La \textbf{capa de lógica de juego} es el núcleo funcional del sistema. Aquí conviven dos tipos de clases con naturalezas distintas. Nodos de Godot, que necesitan estar en el árbol de escenas para gestionar el input del ratón, coordinar animaciones y participar en el ciclo de vida del motor. Y por otro lado, las clases C\# puras creadas e instanciadas desde \texttt{GameScene} o \texttt{Board}, independientes del motor y por tanto más ligeras y fáciles de reutilizar.
 
-La \textbf{capa de datos e infraestructura} comprende los datos estáticos de configuración (\texttt{PiecesData}), el gestor de navegación entre escenas (\texttt{SceneManager}) y los enums que definen los valores del dominio (\texttt{GameState}, \texttt{PieceType}, \texttt{TileType}, etc.).
+La \textbf{capa de datos e infraestructura} comprende los datos estáticos de configuración, estructuras de datos, el gestor de navegación entre escenas y los enums que definen los valores del dominio.
 
-\subsection*{Comunicación entre capas}
-
-Las tres capas se comunican siguiendo un flujo definido que evita dependencias circulares. La Figura~\ref{fig:comunicacion} muestra el flujo concreto que ocurre cuando el jugador confirma el despliegue de sus piezas e inicia la partida, ilustrando los dos mecanismos principales de comunicación: eventos C\# de presentación hacia lógica, y llamadas directas en el sentido contrario.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{../Imagenes/ComunicacionEntreCapas}
-	\caption{Ejemplo de comunicación entre capas durante la confirmación del despliegue.}
-	\label{fig:ComunicacionEntreCapas}
-\end{figure}
-
-La presentación se comunica hacia la lógica mediante \textbf{eventos C\#}: \texttt{DeploymentUI} emite \texttt{OnStartPressed} sin conocer quién lo escucha. En sentido contrario, la lógica actualiza la presentación mediante \textbf{llamadas directas} a métodos de la UI como \texttt{HideUI()}. Dentro de la capa de lógica, \texttt{GameScene} previamente inyectó su propia referencia en \texttt{Board} mediante \texttt{Board.Initialize(this)} al momento de su creación, estableciendo un canal bidireccional controlado. La lógica accede a los datos mediante acceso directo a propiedades de \texttt{Tile} y \texttt{Piece}, o mediante consultas al diccionario estático de \texttt{PiecesData} por ejemplo.
+El flujo predominante de dependencias es descendente. Sin embargo, los nodos de Godot, en la capa de lógica, mantienen referencias directas a componentes de la capa de interfaz para coordinar la presentación de resultados y el flujo de partida. Estas dependencias inversas puntuales son una consecuencia del modelo de ciclo de vida de Godot, en el que la lógica debe suspender su ejecución hasta que las animaciones de interfaz terminan. No representan una violación del diseño en capas sino una adaptación pragmática al motor.
 
 % ─────────────────────────────────────────────────────────────────────────────
 \section{Módulos o componentes del sistema}
 % ─────────────────────────────────────────────────────────────────────────────
 
-El sistema se divide en cinco módulos con responsabilidades claramente delimitadas. La Figura~\ref{fig:ComponentesDelSistema} muestra las dependencias entre ellos. Se representan los componentes principales de cada módulo; los detalles de implementación se describen en el texto que sigue.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.85\textwidth]{../Imagenes/ComponentesDelSistema}
-	\caption{Módulos del sistema y sus dependencias principales.}
-	\label{fig:ComponentesDelSistema}
-\end{figure}
-
-
-
-\textbf{Módulo de orquestación.} Formado únicamente por \texttt{GameScene}, que actúa como gestor central del estado de la partida. Mantiene el turno activo y el estado mediante el enum \texttt{GameState} —con los valores \texttt{DEPLOYMENT}, \texttt{WAITING\_INPUT}, \texttt{EXECUTING\_ACTION}, \texttt{COMBAT} y \texttt{GAME\_OVER}— y coordina el resto de módulos. En su método \texttt{\_Ready()} instancia \texttt{Board}, \texttt{BotController} y \texttt{DeploymentController}, inyectando las referencias necesarias entre ellos. También gestiona la pausa mediante \texttt{GetTree().Paused}, mecanismo nativo de Godot que detiene el procesamiento de todos los nodos cuyo \texttt{ProcessMode} no esté configurado explícitamente como \texttt{Always}.
-
-\textbf{Módulo de tablero.} Formado por \texttt{Board}, \texttt{Tile} y \texttt{BoardInputController}. \texttt{Board} genera la cuadrícula a partir del \texttt{TileMapLayer} en su método \texttt{\_Ready()}, e instancia \texttt{BoardInputController} en \texttt{Initialize()}. Es el punto de entrada de todo el input del tablero: cuando el jugador hace clic sobre una casilla, \texttt{Tile.\_InputEvent()} delega en \texttt{Board.OnTileClicked()}, que según el estado de la partida redirige la acción bien a \texttt{DeploymentController.TryTogglePiece()} durante el despliegue, bien a \texttt{BoardInputController.HandleTileClick()} durante la partida. \texttt{Board} también expone \texttt{MovePiece()} y \texttt{ResolveCombat()}, los dos métodos que modifican el estado físico del tablero.
-
-\textbf{Módulo de piezas.} Compuesto por \texttt{Piece} y \texttt{PiecesData}. \texttt{Piece} encapsula tanto los datos de estado (tipo, rango, propietario, visibilidad) como la lógica visual: actualización del sprite mediante regiones del atlas y animaciones de movimiento y revelación. Gestiona además el historial de movimientos necesario para la restricción de oscilación entre 2 casillas. \texttt{PiecesData} centraliza todas las definiciones de piezas en un diccionario estático indexado por \texttt{PieceType}, evitando que valores de rango, cantidad máxima o columna de atlas queden dispersos por el código.
-
-\textbf{Módulo de sistemas de juego.} Formado por las clases estáticas \texttt{MovementSystem} y \texttt{CombatSystem}. \texttt{MovementSystem} encapsula toda la lógica de validación de movimiento, incluyendo el movimiento especial del explorador (\texttt{IsScoutPathValid()}) y la restricción de oscilación entre dos casillas. \texttt{CombatSystem} aplica las reglas de combate en un único método \texttt{Resolve()}, con los casos especiales —torreta y phantom— resueltos mediante guardas explícitas antes de la regla general de rango. Al ser clases estáticas sin estado, pueden invocarse desde cualquier parte del código sin efectos secundarios, lo que resulta especialmente valioso de cara a la simulación de partidas en la iteración~4.
-
-\textbf{Módulo de bot y despliegue.} Formado por \texttt{BotController} y \texttt{DeploymentController}, ambas clases C\# puras creadas por \texttt{GameScene}. \texttt{BotController} recibe una referencia a \texttt{Board} en su constructor y, cuando \texttt{GameScene} invoca \texttt{PlayTurn()}, obtiene la lista de acciones posibles mediante \texttt{Board.GetAllPossibleActions()}, selecciona una y la ejecuta mediante \texttt{Board.ExecuteBotAction()}. \texttt{DeploymentController} se suscribe a los eventos de \texttt{DeploymentUI} y gestiona tanto la colocación manual de piezas del jugador (a través de \texttt{TryTogglePiece()}, invocado por \texttt{Board}) como la generación aleatoria del ejército del bot y el inicio de la partida mediante \texttt{StartBattle()}.
+(Diagrama de componentes) ???
 
 % ─────────────────────────────────────────────────────────────────────────────
 \section{Diseño de clases}
 % ─────────────────────────────────────────────────────────────────────────────
 
+(Diagrama de clases completo)
+
 % ─────────────────────────────────────────────────────────────────────────────
 \section{Diseño de interfaz de usuario}
 % ─────────────────────────────────────────────────────────────────────────────
 
+La interfaz de NeuroForge se organiza en pantallas y menús emergentes que acompañan al jugador desde el menú principal hasta el fin de la partida. A continuación se describen las secciones principales.
+
+\subsection*{Menú principal}
+
+La pantalla de inicio presenta el título del juego y, bajo él, tres botones dispuestos en vertical: \textit{Play}, para iniciar una partida; \textit{Rules}, para consultar las reglas; y \textit{Exit}, para cerrar la aplicación. La disposición lineal evita confusiones y permite al jugador orientarse de inmediato, como se muestra en la Figura~\ref{fig:MenuPrincipal}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{../Imagenes/MenuPrincipal}
+	\caption{Menú principal de NeuroForge.}
+	\label{fig:MenuPrincipal}
+\end{figure}
+
+\subsection*{Menú de reglas}
+
+Accesible tanto desde el menú principal como durante la partida, el menú de reglas emerge como una ventana emergente sobre la pantalla activa. En la esquina superior izquierda se sitúa el botón \textit{Go Back} para cerrarlo.
+
+El contenido se organiza en cinco pestañas seleccionables en la parte superior de la ventana: \textit{Objective}, con el objetivo y las condiciones de victoria; \textit{Board}, con la descripción de los tipos de casillas, visible en la Figura~\ref{fig:MenuReglasBoard}; \textit{Movement}, con las reglas de desplazamiento; \textit{Combat}, con la mecánica de enfrentamiento; y \textit{Pieces}, que actúa como guía de referencia de todas las piezas del juego, ilustrada en la Figura~\ref{fig:MenuReglasPieces}. Esta última pestaña incluye un botón por cada tipo de pieza; al seleccionar uno, se muestra su rango, si puede moverse y cualquier habilidad especial que posea.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{../Imagenes/MenuReglasBoard}
+	\caption{Menú de reglas con la pestaña de tipos de casillas activa.}
+	\label{fig:MenuReglasBoard}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{../Imagenes/MenuReglasPieces}
+	\caption{Menú de reglas con la pestaña de piezas activa.}
+	\label{fig:MenuReglasPieces}
+\end{figure}
+
+\subsection*{Fase de despliegue}
+
+Al iniciar una partida, el jugador ve el tablero vacío junto a un panel lateral izquierdo de despliegue. Este panel muestra el número total de piezas pendientes de colocar, una cuadrícula de botones con una entrada por cada tipo de pieza (cada botón indica cuántas unidades de ese tipo quedan disponibles), un botón
+\textit{Random Placement} que distribuye todas las piezas automáticamente en posiciones aleatorias de la zona de despliegue del jugador, y el botón \textit{Start Battle}, que permanece desactivado hasta que todas las piezas hayan sido colocadas.
+
+El flujo de colocación manual es el siguiente: el jugador selecciona un tipo de pieza pulsando su botón, que queda resaltado como activo, y a continuación hace clic sobre cualquier casilla válida de su zona para colocarla. La Figura~\ref{fig:MenuDespliegueVacio} muestra el estado inicial con el tablero vacío, mientras que la Figura~\ref{fig:MenuDespliegueParcialmenteVacio} muestra un estado intermedio con algunas piezas ya posicionadas. Hacer clic sobre una pieza ya colocada la retira y reactiva ese tipo en el panel.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{../Imagenes/MenuDespliegueVacio}
+	\caption{Fase de despliegue con el tablero vacío al inicio de la partida.}
+	\label{fig:MenuDespliegueVacio}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{../Imagenes/MenuDespliegueParcialmenteVacio}
+	\caption{Fase de despliegue con algunas piezas ya colocadas en la zona del
+		jugador.}
+	\label{fig:MenuDespliegueParcialmenteVacio}
+\end{figure}
+
+\subsection*{Partida en curso}
+
+Una vez iniciada la partida, el panel lateral izquierdo se sustituye por un recuento de piezas restantes de cada bando. A la derecha se muestra el indicador de turno: un icono de persona para el turno del jugador y una calavera para el del bot, acompañado de un breve efecto de transición al cambiar de turno.
+
+El tablero presenta todas las piezas en juego; las del bot aparecen ocultas hasta que son reveladas en combate. Cuando el jugador hace clic sobre una de sus piezas con movimientos disponibles, el sistema resalta en verde las casillas a las que puede desplazarse y en rojo aquellas que puede atacar, tal como se aprecia en la Figura~\ref{fig:MenuPartidaEnCurso}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{../Imagenes/MenuPartidaEnCurso}
+	\caption{Pantalla de partida con una pieza seleccionada y sus acciones
+		posibles resaltadas.}
+	\label{fig:MenuPartidaEnCurso}
+\end{figure}
+
+\subsection*{Interfaz de combate}
+
+Cuando dos piezas se enfrentan, una ventana emergente cubre la pantalla. La ventana muestra dos paneles enfrentados: el atacante a la izquierda, indicado por un icono de mira roja, y el defensor a la derecha, identificado con un icono de escudo azul. Cada panel contiene el sprite de la pieza correspondiente y su nombre en la parte inferior.
+
+La secuencia acompaña al desarrollo del combate. Al emerger la ventana, si alguna de las piezas era desconocida para el rival, su sprite parpadea y se revela, tal como muestra la Figura~\ref{fig:MenuInterfazCombatePrevia}. A continuación, la pieza o piezas perdedoras parpadean y se oscurecen. Finalmente aparece en la parte inferior un mensaje con el resultado: quién ha ganado y el motivo, visible en la Figura~\ref{fig:MenuInterfazCombateResuelto}. El jugador cierra la ventana haciendo clic cuando lo considera oportuno.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{../Imagenes/MenuInterfazCombatePrevia}
+	\caption{Interfaz de combate antes de la resolución: ambas piezas visibles
+		y resultado aún sin mostrar.}
+	\label{fig:MenuInterfazCombatePrevia}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{../Imagenes/MenuInterfazCombateResuelto}
+	\caption{Interfaz de combate tras la resolución: pieza perdedora oscurecida
+		y mensaje de resultado visible.}
+	\label{fig:MenuInterfazCombateResuelto}
+\end{figure}
+
+\subsection*{Fin de partida}
+
+Al concluir la partida, una ventana emergente informa del resultado, como se muestra en la Figura~\ref{fig:MenuFinPartida}. El mensaje principal aparece en un color que codifica el desenlace: verde para la victoria, rojo para la derrota y morado para el empate. Bajo el mensaje se indica el motivo concreto,
+ya sea la destrucción del núcleo energético o el agotamiento de movimientos. Dos botones en la parte inferior permiten al jugador reiniciar la partida directamente o regresar al menú principal.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{../Imagenes/MenuFinPartida}
+	\caption{Pantalla de fin de partida con mensaje de victoria.}
+	\label{fig:MenuFinPartida}
+\end{figure}
+
 % ─────────────────────────────────────────────────────────────────────────────
 \section{Patrones de diseño aplicados}
 % ─────────────────────────────────────────────────────────────────────────────
+
+A lo largo del desarrollo de NeuroForge se han aplicado varios patrones de diseño clásicos. En cada caso el patrón responde a un problema concreto del dominio.
+
+% ── Singleton ────────────────────────────────────────────────────────────────
+\subsection*{Singleton}
+
+El patrón \textbf{Singleton} garantiza que una clase tenga una única instancia y proporciona un punto de acceso global a ella. En el proyecto aparece en dos formas distintas, ambas ilustradas en la Figura~\ref{fig:PatronSingleton}.
+
+\texttt{GameScene} mantiene una propiedad estática \texttt{Instance} que se asigna en \texttt{\_Ready()} cuando Godot instancia la escena. Cualquier clase del sistema puede consultar el estado de la partida o cambiar de fase a través de ese punto de acceso sin necesidad de mantener una referencia explícita.
+
+\texttt{SceneManager} adopta la variante de \textit{clase completamente estática}: todo su estado (historial de navegación, caché de escenas) vive en campos estáticos privados y se auto-inicializa la primera vez que se invoca cualquiera de sus métodos públicos. La unicidad no recae en una instancia sino en el propio espacio de nombres estático.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.80\textwidth]{../Imagenes/PatronSingleton}
+	\caption{Patrón Singleton aplicado en \texttt{GameScene} y \texttt{SceneManager}.}
+	\label{fig:PatronSingleton}
+\end{figure}
+
+Como muestra la figura, en ambos casos se evita pasar referencias a través de múltiples capas de objetos, centralizando el acceso a los dos gestores de mayor alcance del sistema.
+
+% ── Strategy ─────────────────────────────────────────────────────────────────
+\subsection*{Strategy}
+
+El patrón \textbf{Strategy} define una familia de algoritmos, encapsula cada uno de ellos y los hace intercambiables, permitiendo que el algoritmo varíe de forma independiente respecto a los clientes que lo utilizan.
+
+En el proyecto, \texttt{MovementSystem} y \texttt{CombatSystem} son clases estáticas que encapsulan respectivamente la lógica de movimiento y la lógica de resolución de combate, actuando cada una como una estrategia concreta. \texttt{Board} delega en ellas sin conocer su implementación interna: para mover una pieza consulta \texttt{MovementSystem.GetAction()} y \texttt{MovementSystem.CanMove()}, y para resolver un enfrentamiento invoca \texttt{CombatSystem.Resolve()}. La Figura~\ref{fig:PatronStrategy} muestra esta relación de delegación.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.80\textwidth]{../Imagenes/PatronStrategy}
+	\caption{Patrón Strategy con \texttt{MovementSystem} y \texttt{CombatSystem} como estrategias delegadas desde \texttt{Board}.}
+	\label{fig:PatronStrategy}
+\end{figure}
+
+Cabe señalar que en esta implementación las estrategias no comparten una interfaz común explícita ni se intercambian en tiempo de ejecución, ya que el lenguaje C\# permite referenciar clases estáticas directamente. No obstante, la intención estructural del patrón se cumple, el algoritmo queda completamente aislado del contexto que lo usa, de modo que modificar o sustituir las reglas de movimiento o de combate no requiere alterar \texttt{Board} ni ninguna otra clase relacionada.
+
+% ── Fachada ───────────────────────────────────────────────────────────────────
+\subsection*{Fachada}
+
+El patrón \textbf{Fachada} proporciona una interfaz unificada y simplificada a un conjunto de interfaces de un subsistema, reduciendo el acoplamiento entre los clientes y dicho subsistema.
+
+\texttt{Board} actúa como fachada del subsistema de tablero. Tal como se aprecia en la Figura~\ref{fig:PatronFachada}, detrás de su interfaz pública agrupa la generación de la cuadrícula, la gestión de \texttt{Tile} y \texttt{Piece}, la delegación a \texttt{MovementSystem} y \texttt{CombatSystem}, y el controlador de input \texttt{BoardInputController}. Los clientes externos, \texttt{GameScene} y \texttt{BotController}, solo interactúan con \texttt{Board} a través de métodos de alto nivel como \texttt{MovePiece()}, \texttt{ResolveCombat()}, \texttt{SpawnPiece()} o \texttt{GetAllPossibleActions()}, sin necesidad de conocer la composición interna del subsistema.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.80\textwidth]{../Imagenes/PatronFachada}
+	\caption{Patrón Fachada con \texttt{Board} como punto de acceso unificado al subsistema de tablero.}
+	\label{fig:PatronFachada}
+\end{figure}
+
+Esta decisión concentra en un único lugar todas las operaciones sobre el estado del tablero y reduce a dos el número de clases que los clientes externos necesitan conocer.
+
+% ── Template Method ───────────────────────────────────────────────────────────
+\subsection*{Template Method}
+
+El patrón \textbf{Template Method} define el esqueleto de un algoritmo en una operación, dejando que subclases o extensiones concreten algunos de sus pasos sin cambiar la estructura general.
+
+En \texttt{SceneManager}, la clase interna \texttt{\_Bridge} aplica este patrón en los métodos \texttt{TransitionIn()} y \texttt{TransitionOut()}. Ambos fijan la secuencia invariante de cualquier transición de pantalla: bloquear la entrada del usuario, ejecutar el paso de animación correspondiente y, tras \texttt{TransitionOut()}, devolver el control al juego. Como ilustra la Figura~\ref{fig:PatronTemplateMethod}, el paso concreto de animación se selecciona mediante un \texttt{switch} sobre el tipo de transición (\texttt{Transition.Fade}, \texttt{Transition.SlideLeft}, etc.).
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.80\textwidth]{../Imagenes/PatronTemplateMethod}
+	\caption{Patrón Template Method en \texttt{\_Bridge}: esqueleto fijo de transición con el paso de animación extensible por tipo.}
+	\label{fig:PatronTemplateMethod}
+\end{figure}
+
+En la forma canónica del patrón los pasos variables se delegan a subclases mediante herencia; aquí, al tratarse de una clase sellada (\texttt{sealed}), la variación se consigue mediante composición con el enumerado \texttt{Transition}. El efecto es equivalente, añadir un nuevo tipo de transición solo requiere incorporar un \texttt{case} adicional sin modificar el esqueleto del algoritmo ni las clases relacionadas.
 
 % ─────────────────────────────────────────────────────────────────────────────
 \section{Seguridad y rendimiento}

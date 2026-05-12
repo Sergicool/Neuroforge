@@ -38,7 +38,7 @@ public partial class SceneManager
     // ── Tipos de transición ───────────────────────────────────────────────────
     // La lógica de cada tipo vive en _Bridge.TransitionIn / TransitionOut.
     // Para añadir un tipo nuevo: añadir el valor aquí y el case en los metodos de _Bridge.
-    public enum Transition { None, Fade, SlideLeft, SlideRight }
+    public enum Transition { None, Fade }
 
     // ── Configuración pública ─────────────────────────────────────────────────
     /// <summary> Duración usada cuando no se especifica una en GoTo / GoBack.</summary>
@@ -278,7 +278,6 @@ public partial class SceneManager
         /// <summary>
         /// Animación de salida: el overlay se vuelve opaco tapando la escena actual.
         /// Se llama ANTES del swap de escena.
-        /// TODO: añadir cases para SlideLeft, SlideRight, etc.
         /// </summary>
         public async Task TransitionIn(Transition t, float duration)
         {
@@ -295,7 +294,6 @@ public partial class SceneManager
         /// <summary>
         /// Animación de entrada: el overlay desaparece revelando la nueva escena.
         /// Se llama DESPUÉS del swap de escena.
-        /// TODO: añadir cases para SlideLeft, SlideRight, etc.
         /// </summary>
         public async Task TransitionOut(Transition t, float duration)
         {
