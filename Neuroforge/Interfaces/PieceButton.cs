@@ -15,6 +15,17 @@ public partial class PieceButton : Button
 
         _icon       = GetNode<TextureRect>("MarginContainer/VBoxContainer/TextureRect");
         _countLabel = GetNode<Label>("MarginContainer/VBoxContainer/Label");
+
+        MouseEntered += () =>
+        {
+            if (!Disabled)
+                AudioManager.PlayUI("res://assets/sounds/HoverButton.wav");
+        };
+
+        Pressed += () =>
+        {
+            AudioManager.PlayUI("res://assets/sounds/PressButton.wav");
+        };
     }
 
     public void Setup(PieceDefinition def, PieceOwner owner)

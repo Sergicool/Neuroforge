@@ -1192,7 +1192,7 @@ offset_top = 309.0
 offset_right = 961.0
 offset_bottom = 369.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_yrnu3")
-text = "Phantom attacks the C.O.R.E
+text = "Phantom attacks the War Machine
 (Not defend)"
 horizontal_alignment = 1
 autowrap_mode = 3
@@ -1410,9 +1410,9 @@ texture = SubResource("AtlasTexture_tfno3")
 [node name="TextureRect26" type="TextureRect" parent="PopUp/TabContainer/Tab4" unique_id=1149952331]
 modulate = Color(1, 0.25069177, 0.17597568, 1)
 layout_mode = 0
-offset_left = 228.0
+offset_left = 223.99998
 offset_top = 426.0
-offset_right = 260.0
+offset_right = 255.99998
 offset_bottom = 458.0
 scale = Vector2(1.4, 1.4)
 texture = ExtResource("10_7ibit")

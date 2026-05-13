@@ -27,22 +27,44 @@ public partial class PauseMenu : Control
         _rulesOverlay = GetNode<RulesOverlay>("RulesOverlay");
 
         _rules.Pressed += OnRulesPressed;
+        _rules.MouseEntered += () =>
+        {
+            if (!_rules.Disabled)
+                AudioManager.PlayUI("res://assets/sounds/HoverButton.wav");
+        };
+
         _menu.Pressed += OnMenuPressed;
+        _menu.MouseEntered += () =>
+        {
+            if (!_menu.Disabled) 
+                AudioManager.PlayUI("res://assets/sounds/HoverButton.wav");
+        };
     }
 
     public void Init(GameScene parentScene)
     {
         _gameScene = parentScene;
-        _resume.Pressed += parentScene.ResumeGame;
+        _resume.MouseEntered += () =>
+        {
+            if (!_resume.Disabled)
+                AudioManager.PlayUI("res://assets/sounds/HoverButton.wav");
+        };
+        _resume.Pressed += () =>
+        {
+            AudioManager.PlayUI("res://assets/sounds/PressButton.wav");
+            parentScene.ResumeGame();
+        };
     }
 
     private async void OnRulesPressed()
     {
+        AudioManager.PlayUI("res://assets/sounds/PressButton.wav");
         await _rulesOverlay.ShowOverlay();
     }
 
     private async void OnMenuPressed()
     {
+        AudioManager.PlayUI("res://assets/sounds/PressButton.wav");
         GetTree().Paused = false;
         await SceneManager.GoBack(SceneManager.Transition.Fade, 0.25f);
     }

@@ -46,7 +46,15 @@ public partial class GameScene : Node
         _turnIcon = GetNode<TextureRect>("CanvasLayer/PanelContainer/TextureRect");
         _turnIndicarotUI = GetNode<Panel>("CanvasLayer/PanelContainer");
         _pauseButton = GetNode<Button>("CanvasLayer/PauseButton");
-        _pauseButton.Pressed += PauseGame;
+        _pauseButton.MouseEntered += () =>
+        {
+            AudioManager.PlayUI("res://assets/sounds/HoverButton.wav");
+        };
+        _pauseButton.Pressed += () =>
+        {
+            AudioManager.PlayUI("res://assets/sounds/PressButton.wav");
+            PauseGame();
+        };
         _pauseMenu = GetNode<PauseMenu>("CanvasLayer/PauseMenu");
         _pauseMenu.Visible = false;
         _pauseMenu.Init(this);
@@ -61,6 +69,8 @@ public partial class GameScene : Node
 
         _bot = new BotController(_board);
         State = GameState.DEPLOYMENT;
+
+        AudioManager.PlayMusic("res://assets/sounds/GameMusic.wav", 2);
     }
 
     // ==================== Getters ====================

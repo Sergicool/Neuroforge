@@ -9,6 +9,7 @@ public partial class RulesOverlay : Control
     private Panel _background, _popup;
     private Button _back;
 
+    private TabContainer _tabContainer;
     private GridContainer _piecesGrid;
     private Control[] _piecePanels;
     private Button[] _pieceButtons;
@@ -21,8 +22,16 @@ public partial class RulesOverlay : Control
         _background = GetNode<Panel>("Background");
         _popup = GetNode<Panel>("PopUp");
         _back = GetNode<Button>("PopUp/BackButton");
-        _back.Pressed += async () => await HideOverlay();
+        _back.MouseEntered += () => AudioManager.PlayUI("res://assets/sounds/HoverButton.wav");
+        _back.Pressed += async () =>
+        {
+            AudioManager.PlayUI("res://assets/sounds/PressButton.wav");
+            await HideOverlay();
+        };
 
+        _tabContainer = GetNode<TabContainer>("PopUp/TabContainer");
+        _tabContainer.TabHovered += (long tab) => AudioManager.PlayUI("res://assets/sounds/HoverButton.wav");
+        _tabContainer.TabChanged += (long tab) => AudioManager.PlayUI("res://assets/sounds/PressButton.wav");
         _piecesGrid = GetNode<GridContainer>("PopUp/TabContainer/Tab5/GridContainer");
 
         // Recoge todos los botones hijos del grid
@@ -41,7 +50,12 @@ public partial class RulesOverlay : Control
         {
             _pieceButtons[i].ToggleMode = true;
             int index = i;
-            _pieceButtons[i].Pressed += () => SelectPiece(index);
+            _pieceButtons[i].MouseEntered += () => AudioManager.PlayUI("res://assets/sounds/HoverButton.wav");
+            _pieceButtons[i].Pressed += () =>
+            {
+                AudioManager.PlayUI("res://assets/sounds/PressButton.wav");
+                SelectPiece(index);
+            };
         }
 
         SelectPiece(0);

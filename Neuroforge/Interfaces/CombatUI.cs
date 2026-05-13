@@ -147,6 +147,8 @@ public partial class CombatUI : Control
             await ToSignal(t2, Tween.SignalName.Finished);
         }
 
+        AudioManager.PlaySfx("res://assets/sounds/PieceEffect1.wav");
+
         Tween tHide = CreateTween();
         tHide.TweenProperty(spriteRect, "modulate", Colors.Transparent, BLINK_HALF);
         await ToSignal(tHide, Tween.SignalName.Finished);
@@ -186,6 +188,8 @@ public partial class CombatUI : Control
             t2.TweenProperty(sprite, "modulate", COLOR_PIECE_NORMAL, BLINK_HALF);
             await ToSignal(t2, Tween.SignalName.Finished);
         }
+
+        AudioManager.PlaySfx("res://assets/sounds/PieceEffect5.wav");
 
         Tween tSprite = CreateTween();
         tSprite.TweenProperty(sprite, "modulate", COLOR_PIECE_DEAD, 0.3f)

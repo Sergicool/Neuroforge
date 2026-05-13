@@ -37,8 +37,22 @@ public partial class DeploymentUI : Control
             _pieceButtons[type] = btn;
         }
 
-        _randomButton.Pressed += () => { OnRandomPressed?.Invoke(); ClearActiveButton(); };
-        _startButton.Pressed += () => OnStartPressed?.Invoke();
+        _randomButton.Pressed += () => {
+            AudioManager.PlayUI("res://assets/sounds/PressButton.wav");
+            OnRandomPressed?.Invoke(); 
+            ClearActiveButton(); 
+        };
+        _randomButton.MouseEntered += () => AudioManager.PlayUI("res://assets/sounds/HoverButton.wav");
+        _startButton.Pressed += () =>
+        {
+            AudioManager.PlayUI("res://assets/sounds/PressButton.wav");
+            OnStartPressed?.Invoke();
+        };
+        _startButton.MouseEntered += () =>
+        {
+            if (!_startButton.Disabled)
+                AudioManager.PlayUI("res://assets/sounds/HoverButton.wav");
+        };
         _startButton.Disabled = true;
     }
 

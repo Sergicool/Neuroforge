@@ -52,6 +52,7 @@ public class BoardInputController
         if (!_game.IsPlayersTurn(piece.PlayerOwner) || !piece.CanMove) return;
 
         _selectedPiece = piece;
+        AudioManager.PlaySfx("res://assets/sounds/SelectPiece.wav");
         ShowPossibleActions(piece);
     }
 
@@ -77,6 +78,8 @@ public class BoardInputController
     {
         _game.SetState(GameState.EXECUTING_ACTION);
         TileAction action = MovementSystem.GetAction(_selectedPiece, target, _game.TurnNumber, _board);
+
+        AudioManager.PlaySfx("res://assets/sounds/SelectTile.wav");
 
         if (action == TileAction.MOVE)
             await _board.MovePiece(_selectedPiece, target);

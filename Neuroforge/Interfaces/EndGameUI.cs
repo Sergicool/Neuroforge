@@ -19,7 +19,10 @@ public partial class EndGameUI : Control
         _menu = GetNode<Button>("PopUp/Panel2/MarginContainer/HBoxContainer/Button2");
 
         _play.Pressed += OnRetryPressed;
+        _play.MouseEntered += () => AudioManager.PlayUI("res://assets/sounds/HoverButton.wav");
+
         _menu.Pressed += OnMenuPressed;
+        _menu.MouseEntered += () => AudioManager.PlayUI("res://assets/sounds/HoverButton.wav");
 
         Visible = false;
         _background.Modulate = new Color(1, 1, 1, 0);
@@ -55,12 +58,14 @@ public partial class EndGameUI : Control
 
     private void OnRetryPressed()
     {
+        AudioManager.PlayUI("res://assets/sounds/PressButton.wav");
         GetTree().Paused = false;
         GetTree().ReloadCurrentScene();
     }
 
     private async void OnMenuPressed()
     {
+        AudioManager.PlayUI("res://assets/sounds/PressButton.wav");
         GetTree().Paused = false;
         await SceneManager.GoBack(SceneManager.Transition.Fade, 0.25f);
     }
