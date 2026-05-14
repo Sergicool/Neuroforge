@@ -58,7 +58,7 @@ public partial class GameScene : Node
         _pauseMenu = GetNode<PauseMenu>("CanvasLayer/PauseMenu");
         _pauseMenu.Visible = false;
         _pauseMenu.Init(this);
-        _endGameUI = GetNode<EndGameUI>("CanvasLayer/EndGameUI"); 
+        _endGameUI = GetNode<EndGameUI>("CanvasLayer/EndGameUI");
 
         _deployment = new DeploymentController();
         _deployment.Initialize(this, _board, _deploymentUI);
@@ -98,8 +98,10 @@ public partial class GameScene : Node
         CheckGameEnd();
         if (State == GameState.GAME_OVER) return;
 
-        TurnNumber++;
         CurrentTurn = CurrentTurn == PieceOwner.PLAYER ? PieceOwner.BOT : PieceOwner.PLAYER;
+
+        // El numero de turno sube cuando empieza el turno del jugador (tras el bot)
+        if (CurrentTurn == PieceOwner.PLAYER) TurnNumber++;
 
         await BlinkTurnIcon(CurrentTurn);
 

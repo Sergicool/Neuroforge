@@ -28,6 +28,11 @@ public partial class Piece : Node2D
     private const int MOVE_HISTORY_SIZE = 3;
     private readonly List<(Tile From, Tile To)> _moveHistory = new();
 
+    // Número de turno global en el que se realizó cada movimiento del historial.
+    // Si entre dos entradas del historial hubo un turno en el que esta pieza NO movió,
+    // la racha de oscilación se considera interrumpida y se resetea.
+    private readonly List<int> _moveTurnNumbers = new();
+
     public override void _Ready()
     {
         _sprite ??= GetNode<Sprite2D>("Sprite2D");
@@ -70,7 +75,7 @@ public partial class Piece : Node2D
 
     public async Task AnimateBlinkReveal()
     {
-        
+
         // Animacion intercalando el sprite normal con el oculto
         int blinkCount = 3;
         float blinkInterval = 0.07f;
@@ -106,41 +111,53 @@ public partial class Piece : Node2D
     }
 
     // Registra el movimiento realizado en el historial
-    public void RegisterMove(Tile from, Tile to)
+    public void RegisterMove(Tile from, Tile to, int turnNumber = -1)
     {
         _moveHistory.Add((from, to));
+        _moveTurnNumbers.Add(turnNumber);
         if (_moveHistory.Count > MOVE_HISTORY_SIZE)
+        {
             _moveHistory.RemoveAt(0);
+            _moveTurnNumbers.RemoveAt(0);
+        }
     }
 
     // Devuelve true si ejecutar 'from→to' sería el 4.º movimiento consecutivo
     // entre las mismas 2 casillas (A→B, B→A, A→B → bloquea B→A).
-    public bool IsOscillating(Tile from, Tile to)
+    // "Consecutivo" significa que esta pieza movió en cada uno de esos turnos sin saltarse ninguno.
+    public bool IsOscillating(Tile from, Tile to, int currentTurn)
     {
         if (_moveHistory.Count < 3) return false;
 
-        // Los 3 movimientos anteriores + el candidato deben ser todos entre las mismas 2 casillas
-        // y alternar dirección en cada paso.
-        Tile tileA = _moveHistory[_moveHistory.Count - 3].From;
-        Tile tileB = _moveHistory[_moveHistory.Count - 3].To;
+        // 1. Verificación de Reseteo: 
+        // Si el último movimiento de ESTA pieza no fue en el turno anterior del jugador,
+        // la racha se ha roto. 
+        // Como TurnNumber aumenta cada vez que el Jugador empieza, la diferencia debe ser 1.
+        int lastMoveTurn = _moveTurnNumbers[_moveTurnNumbers.Count - 1];
+        if (currentTurn - lastMoveTurn > 1) return false;
 
-        var seq = new (Tile From, Tile To)[4];
-        for (int i = 0; i < 3; i++)
-            seq[i] = _moveHistory[_moveHistory.Count - 3 + i];
-        seq[3] = (from, to);
-
-        for (int i = 0; i < 4; i++)
+        // 2. Verificar que los 3 movimientos en el historial fueron consecutivos para la pieza
+        for (int i = 1; i < _moveTurnNumbers.Count; i++)
         {
-            bool isAtoB = seq[i].From == tileA && seq[i].To == tileB;
-            bool isBtoA = seq[i].From == tileB && seq[i].To == tileA;
-            if (!isAtoB && !isBtoA) return false;
+            if (_moveTurnNumbers[i] - _moveTurnNumbers[i - 1] != 1) return false;
         }
 
-        // Verificar que alternan dirección en cada paso
-        for (int i = 1; i < 4; i++)
-            if (seq[i].From != seq[i - 1].To || seq[i].To != seq[i - 1].From) return false;
+        // 3. Verificar patrón A-B, B-A, A-B
+        Tile tileA = _moveHistory[0].From;
+        Tile tileB = _moveHistory[0].To;
 
-        return true;
+        // El patrón debe ser: 
+        // H0: A -> B
+        // H1: B -> A
+        // H2: A -> B
+        // Intento actual: B -> A (Este es el que queremos bloquear)
+
+        bool patternMatch = _moveHistory[0].From == tileA && _moveHistory[0].To == tileB &&
+                            _moveHistory[1].From == tileB && _moveHistory[1].To == tileA &&
+                            _moveHistory[2].From == tileA && _moveHistory[2].To == tileB &&
+                            from == tileB && to == tileA;
+
+        return patternMatch;
     }
 
     // Actualiza el sprite según propietario y estado de revelación

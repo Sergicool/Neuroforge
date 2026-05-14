@@ -39,27 +39,28 @@
 \contentsline {section}{\numberline {5.2}Modelado de Requisitos}{39}{section.5.2}%
 \contentsline {section}{\numberline {5.3}Casos de uso}{42}{section.5.3}%
 \contentsline {subsection}{\numberline {5.3.1}Lista de casos de uso}{42}{subsection.5.3.1}%
-\contentsline {section}{\numberline {5.4}Modelo de dominio}{47}{section.5.4}%
-\contentsline {section}{\numberline {5.5}Modelo de proceso de negocio}{48}{section.5.5}%
-\contentsline {subsection}{\numberline {5.5.1}Actividad: Jugar partida (CU-01)}{48}{subsection.5.5.1}%
-\contentsline {subsection}{\numberline {5.5.2}Actividad: Jugar turnos (CU-02)}{48}{subsection.5.5.2}%
-\contentsline {subsection}{\numberline {5.5.3}Actividad: Resolver combate (CU-03)}{50}{subsection.5.5.3}%
-\contentsline {subsection}{\numberline {5.5.4}Actividad: Consultar reglas (CU-04)}{51}{subsection.5.5.4}%
+\contentsline {section}{\numberline {5.4}Modelo de dominio}{48}{section.5.4}%
+\contentsline {section}{\numberline {5.5}Modelo de proceso de negocio}{49}{section.5.5}%
+\contentsline {subsection}{\numberline {5.5.1}Actividad: Jugar partida (CU-01)}{49}{subsection.5.5.1}%
+\contentsline {subsection}{\numberline {5.5.2}Actividad: Jugar turnos (CU-02)}{49}{subsection.5.5.2}%
+\contentsline {subsection}{\numberline {5.5.3}Actividad: Resolver combate (CU-03)}{51}{subsection.5.5.3}%
+\contentsline {subsection}{\numberline {5.5.4}Actividad: Consultar reglas (CU-04)}{52}{subsection.5.5.4}%
+\contentsline {subsection}{\numberline {5.5.5}Actividad: Consultar opciones (CU-05)}{52}{subsection.5.5.5}%
 \contentsline {chapter}{\numberline {6}Diseño}{53}{chapter.6}%
 \contentsline {section}{\numberline {6.1}Arquitectura del sistema}{53}{section.6.1}%
 \contentsline {section}{\numberline {6.2}Módulos o componentes del sistema}{57}{section.6.2}%
 \contentsline {section}{\numberline {6.3}Diseño de clases}{58}{section.6.3}%
 \contentsline {section}{\numberline {6.4}Diseño de interfaz de usuario}{58}{section.6.4}%
-\contentsline {section}{\numberline {6.5}Patrones de diseño aplicados}{65}{section.6.5}%
-\contentsline {section}{\numberline {6.6}Seguridad y rendimiento}{68}{section.6.6}%
-\contentsline {chapter}{\numberline {7}Implementación}{69}{chapter.7}%
-\contentsline {subsection}{\numberline {7.0.1}Organización del código}{69}{subsection.7.0.1}%
-\contentsline {section}{\numberline {7.1}Licencias requeridas}{70}{section.7.1}%
-\contentsline {section}{\numberline {7.2}Batería de pruebas}{70}{section.7.2}%
-\contentsline {chapter}{\numberline {8}Conclusiones y Líneas futuras}{71}{chapter.8}%
-\contentsline {chapter}{\numberline {A}Manual de instalación}{73}{appendix.Alph1}%
-\contentsline {chapter}{\numberline {B}Manual de usuario}{75}{appendix.Alph2}%
-\contentsline {chapter}{\numberline {C}}{77}{appendix.Alph3}%
-\contentsline {chapter}{\numberline {D}}{79}{appendix.Alph4}%
-\contentsline {chapter}{Bibliografía}{81}{appendix.Alph4}%
+\contentsline {section}{\numberline {6.5}Patrones de diseño aplicados}{67}{section.6.5}%
+\contentsline {section}{\numberline {6.6}Seguridad y rendimiento}{70}{section.6.6}%
+\contentsline {chapter}{\numberline {7}Implementación}{71}{chapter.7}%
+\contentsline {subsection}{\numberline {7.0.1}Organización del código}{71}{subsection.7.0.1}%
+\contentsline {section}{\numberline {7.1}Licencias requeridas}{72}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Batería de pruebas}{72}{section.7.2}%
+\contentsline {chapter}{\numberline {8}Conclusiones y Líneas futuras}{73}{chapter.8}%
+\contentsline {chapter}{\numberline {A}Manual de instalación}{75}{appendix.Alph1}%
+\contentsline {chapter}{\numberline {B}Manual de usuario}{77}{appendix.Alph2}%
+\contentsline {chapter}{\numberline {C}}{79}{appendix.Alph3}%
+\contentsline {chapter}{\numberline {D}}{81}{appendix.Alph4}%
+\contentsline {chapter}{Bibliografía}{83}{appendix.Alph4}%
 \contentsfinish 

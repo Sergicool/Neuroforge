@@ -21,7 +21,7 @@ public static class MovementSystem
         bool isAttack = target.IsOccupied && target.Occupant.PlayerOwner != piece.PlayerOwner;
 
         // Bloquear oscilación A↔B más de 3 veces consecutivas (regla Stratego)
-        if (!isAttack && piece.IsOscillating(piece.CurrentTile, target)) return false;
+        if (!isAttack && piece.IsOscillating(piece.CurrentTile, target, turn)) return false;
 
         // Movimiento especial SCOUT: cualquier distancia en línea recta horizontal o vertical
         if (piece.Type == PieceType.SCOUT) return IsScoutPathValid(piece.CurrentTile, target, board);

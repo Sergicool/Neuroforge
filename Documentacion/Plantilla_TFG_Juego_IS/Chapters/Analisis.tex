@@ -114,7 +114,7 @@ En este apartado se describen los casos de uso del sistema, que representan las 
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width={8cm}]{../Imagenes/DiagramaCasosDeUso}
+	\includegraphics[width=\linewidth]{../Imagenes/DiagramaCasosDeUso}
 	\caption{Diagrama de casos de uso}
 	\label{fig:diagrama_cu}
 \end{figure}
@@ -130,6 +130,7 @@ En este apartado se describen los casos de uso del sistema, que representan las 
 		\hline CU-02 & Resolver combate & El Sistema gestiona un ronda completa, la acción del jugador, la respuesta del bot y la comprobación de condiciones de victoria hasta que la partida acabe. \\
 		\hline CU-03 & Resolver combate & El Sistema gestiona el combate entre piezas de manera automática con su respectiva interfaz. \\
 		\hline CU-04 & Consultar reglas & El sistema permite al jugador consultar las reglas dentro del juego. \\
+		\hline CU-05 & Consultar opciones & El sistema permite al jugador consultar y configurar las opciones. \\
 		\hline
 	\end{tabular}
 	\caption{Lista de casos de uso del sistema}
@@ -277,10 +278,10 @@ En este apartado se describen los casos de uso del sistema, que representan las 
 		\hline
 		\textbf{Secuencia normal} &
 		\begin{enumerate}[nosep, before=\vspace{-0.4\baselineskip}]
-			\item El Jugador solicita consultar las reglas
-			\item El Sistema muestra el menu con las reglas
-			\item El Jugador consulta las reglas
-			\item El Jugador solicita salir del menu de reglas
+			\item El Jugador solicita consultar las reglas.
+			\item El Sistema muestra el menu con las reglas.
+			\item El Jugador consulta las reglas.
+			\item El Jugador solicita salir del menu de reglas.
 			\item El Sistema cierra el menu de reglas.
 		\end{enumerate} \\
 		\hline
@@ -295,6 +296,40 @@ En este apartado se describen los casos de uso del sistema, que representan las 
 	\label{tab:cu04}
 \end{table}
 
+% ================================================================
+
+\subsection*{CU-05: Consultar opciones}
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|p{3cm}|p{14cm}|}
+		\hline \textbf{ID} & CU-05 \\
+		\hline \textbf{Nombre} & Consultar opciones \\
+		\hline \textbf{Actor} & Jugador \\
+		\hline \textbf{Descripción} & El sistema permite al jugador consultar y configurar las distintas opciones del juego que se le ofrecen. \\
+		\hline \textbf{Req. relacionados} & RF13. \\
+		\hline \textbf{Pre-condición} & El Sistema esta en la escena del menu de pausa o en el menu principal. \\
+		\hline
+		\textbf{Secuencia normal} &
+		\begin{enumerate}[nosep, before=\vspace{-0.4\baselineskip}]
+			\item El Jugador solicita consultar las opciones del juego
+			\item El Sistema muestra el menu con las distintas opciones configurables
+			\item El Jugador consulta las opciones del juego y modifica las opciones del juego a conveniencia.
+			\item El Jugador solicita salir del menu de opciones.
+			\item El Sistema cierra el menu de opciones.
+		\end{enumerate} \\
+		\hline
+		\textbf{Flujos alternativos} &
+		\begin{itemize}[nosep, before=\vspace{-0.4\baselineskip}]
+			\item N/A
+		\end{itemize} \\
+		\hline \textbf{Post-condición} & El Sistema continua con con normalidad en la escena en la que se consulto las opciones. \\
+		\hline
+	\end{tabular}
+	\caption{CU-05: Consultar opciones}
+	\label{tab:cu05}
+\end{table}
+
 \clearpage
 
 \section{Modelo de dominio}
@@ -305,7 +340,7 @@ A continuación, en la Figura~\ref{fig:modelo_dominio}, se presenta el diagrama 
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width={16cm}]{../Imagenes/DiagramaModeloDominio}
+	\includegraphics[width=\linewidth]{../Imagenes/DiagramaModeloDominio}
 	\caption{Diagrama del modelo de dominio}
 	\label{fig:modelo_dominio}
 \end{figure}
@@ -324,7 +359,7 @@ Este flujo describe el ciclo de vida completo de una sesión de juego, desde la 
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.85\linewidth]{../Imagenes/DiagramaActividadJugarPartida}
+	\includegraphics[width=\linewidth]{../Imagenes/DiagramaActividadJugarPartida}
 	\caption{Diagrama de actividad: Jugar partida (CU-01)}
 	\label{fig:diagrama_actividad_1}
 \end{figure}
@@ -335,7 +370,7 @@ La lógica central del juego se basa en un ciclo de estados donde el control alt
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.85\linewidth]{../Imagenes/DiagramaActividadJugarTurnos}
+	\includegraphics[width=\linewidth]{../Imagenes/DiagramaActividadJugarTurnos}
 	\caption{Diagrama de actividad: Jugar turnos (CU-02)}
 	\label{fig:diagrama_actividad_2}
 \end{figure}
@@ -348,7 +383,7 @@ El combate es una subrutina automática que se activa por la coincidencia de pos
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.7\linewidth]{../Imagenes/DiagramaActividadResolverCombate}
+	\includegraphics[width=\linewidth]{../Imagenes/DiagramaActividadResolverCombate}
 	\caption{Diagrama de actividad: Resolver combate (CU-03)}
 	\label{fig:diagrama_actividad_3}
 \end{figure}
@@ -361,8 +396,18 @@ Este flujo representa una interacción de apoyo que no afecta al estado de la pa
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.6\linewidth]{../Imagenes/DiagramaActividadConsultarReglas}
+	\includegraphics[width=\linewidth]{../Imagenes/DiagramaActividadConsultarReglas}
 	\caption{Diagrama de actividad: Consultar reglas}
 	\label{fig:diagrama_actividad_4}
 \end{figure}
 
+\subsection{Actividad: Consultar opciones (CU-05)}
+
+Este flujo representa una interacción de calidad de juego que solo afecta a la experiencia del usuario, no al estado de la partida. La Figura~\ref{fig:diagrama_actividad_5} ilustra la capacidad del sistema para permitir al jugador consultar y configurar opciones como el sonido y la resolución del juego antes de retornar al estado previo.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{../Imagenes/DiagramaActividadConsultarOpciones}
+	\caption{Diagrama de actividad: Consultar reglas}
+	\label{fig:diagrama_actividad_5}
+\end{figure}

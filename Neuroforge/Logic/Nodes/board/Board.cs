@@ -117,7 +117,7 @@ public partial class Board : Node2D
         int distance = Mathf.Abs(target.GridPosition.X - origin.GridPosition.X) +
                        Mathf.Abs(target.GridPosition.Y - origin.GridPosition.Y);
 
-        piece.RegisterMove(origin, target);
+        piece.RegisterMove(origin, target, _game.TurnNumber);
         origin.ClearOccupant();
         target.SetOccupant(piece);
 
@@ -127,7 +127,7 @@ public partial class Board : Node2D
         piece.Position = target.Position;
 
         // Revelar SCOUT si hace un movimiento que solo puede hacer el y si no esta ya revelada
-        if (piece.Type == PieceType.SCOUT && distance > 1 && piece.IsRevealedToBot == false)
+        if (piece.Type == PieceType.SCOUT && distance > 1 && (piece.IsRevealedToBot == false || piece.IsVisibleToPlayer == false))
             await piece.AnimateBlinkReveal();
     }
 
