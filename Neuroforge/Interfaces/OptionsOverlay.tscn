@@ -1,0 +1,224 @@
+[gd_scene format=3 uid="uid://c54h20p4ybyiw"]
+
+[ext_resource type="StyleBox" uid="uid://tjcegfoo4wit" path="res://assets/styles/ScreenBackground.tres" id="1_gbi4v"]
+[ext_resource type="Theme" uid="uid://5l3frbb482sx" path="res://assets/styles/DefaultTheme.tres" id="1_jxcqw"]
+[ext_resource type="Script" uid="uid://cmrr4se4j4goo" path="res://Interfaces/OptionsOverlay.cs" id="1_ruayj"]
+[ext_resource type="Texture2D" uid="uid://dytj15tpopunc" path="res://assets/icons/LeftArrowIcon.png" id="2_ab5mb"]
+[ext_resource type="StyleBox" uid="uid://btp23gt0ooehf" path="res://assets/styles/ScreenText.tres" id="4_ruayj"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gbi4v"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ruayj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gbi4v"]
+
+[node name="OptionsOverlay" type="Control" unique_id=661048695]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ruayj")
+
+[node name="Background" type="Panel" parent="." unique_id=1901593612]
+modulate = Color(0, 0, 0, 0.68235296)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_gbi4v")
+
+[node name="PopUp" type="Panel" parent="." unique_id=1222881804]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_ruayj")
+
+[node name="Title" type="Label" parent="PopUp" unique_id=698097250]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -267.0
+offset_top = 111.0
+offset_right = 267.0
+offset_bottom = 228.0
+grow_horizontal = 2
+theme = ExtResource("1_jxcqw")
+theme_override_font_sizes/font_size = 48
+theme_override_styles/normal = ExtResource("1_gbi4v")
+text = "Options"
+horizontal_alignment = 1
+
+[node name="BackButton" type="Button" parent="PopUp" unique_id=732458161]
+layout_mode = 0
+offset_left = 309.0
+offset_top = 72.0
+offset_right = 417.0
+offset_bottom = 103.0
+theme = ExtResource("1_jxcqw")
+text = "Go Back"
+icon = ExtResource("2_ab5mb")
+
+[node name="PanelContainer" type="Panel" parent="PopUp" unique_id=1785029740]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 363.0
+offset_top = 228.0
+offset_right = -363.0
+offset_bottom = -153.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_jxcqw")
+theme_override_styles/panel = ExtResource("4_ruayj")
+
+[node name="MarginContainer" type="MarginContainer" parent="PopUp/PanelContainer" unique_id=1122893303]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PopUp/PanelContainer/MarginContainer" unique_id=930019905]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="ResolutionRow" type="HBoxContainer" parent="PopUp/PanelContainer/MarginContainer/VBoxContainer" unique_id=1863639966]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="PopUp/PanelContainer/MarginContainer/VBoxContainer/ResolutionRow" unique_id=1022912543]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Resolution"
+horizontal_alignment = 1
+
+[node name="ResolutionDropdown" type="OptionButton" parent="PopUp/PanelContainer/MarginContainer/VBoxContainer/ResolutionRow" unique_id=1204675383]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MasterRow" type="HBoxContainer" parent="PopUp/PanelContainer/MarginContainer/VBoxContainer" unique_id=675951189]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="PopUp/PanelContainer/MarginContainer/VBoxContainer/MasterRow" unique_id=474936687]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Master"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PopUp/PanelContainer/MarginContainer/VBoxContainer/MasterRow" unique_id=84514680]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="MasterSlider" type="HSlider" parent="PopUp/PanelContainer/MarginContainer/VBoxContainer/MasterRow/HBoxContainer" unique_id=1347550158]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
+[node name="MasterNumber" type="Label" parent="PopUp/PanelContainer/MarginContainer/VBoxContainer/MasterRow/HBoxContainer" unique_id=1141985894]
+z_index = 2
+custom_minimum_size = Vector2(36, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_styles/normal = SubResource("StyleBoxEmpty_gbi4v")
+text = "100"
+horizontal_alignment = 1
+
+[node name="MusicRow" type="HBoxContainer" parent="PopUp/PanelContainer/MarginContainer/VBoxContainer" unique_id=1509446727]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="PopUp/PanelContainer/MarginContainer/VBoxContainer/MusicRow" unique_id=1301038882]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Music"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PopUp/PanelContainer/MarginContainer/VBoxContainer/MusicRow" unique_id=1343087812]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="MusicSlider" type="HSlider" parent="PopUp/PanelContainer/MarginContainer/VBoxContainer/MusicRow/HBoxContainer" unique_id=263475090]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
+[node name="MusicNumber" type="Label" parent="PopUp/PanelContainer/MarginContainer/VBoxContainer/MusicRow/HBoxContainer" unique_id=331472102]
+custom_minimum_size = Vector2(36, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_styles/normal = SubResource("StyleBoxEmpty_gbi4v")
+text = "100"
+horizontal_alignment = 1
+
+[node name="SfxRow" type="HBoxContainer" parent="PopUp/PanelContainer/MarginContainer/VBoxContainer" unique_id=750575974]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="PopUp/PanelContainer/MarginContainer/VBoxContainer/SfxRow" unique_id=1559986225]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Effects"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PopUp/PanelContainer/MarginContainer/VBoxContainer/SfxRow" unique_id=2052953532]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="SfxSlider" type="HSlider" parent="PopUp/PanelContainer/MarginContainer/VBoxContainer/SfxRow/HBoxContainer" unique_id=239874295]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
+[node name="SfxNumber" type="Label" parent="PopUp/PanelContainer/MarginContainer/VBoxContainer/SfxRow/HBoxContainer" unique_id=803229798]
+custom_minimum_size = Vector2(36, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_styles/normal = SubResource("StyleBoxEmpty_gbi4v")
+text = "100"
+horizontal_alignment = 1
+
+[node name="UIRow" type="HBoxContainer" parent="PopUp/PanelContainer/MarginContainer/VBoxContainer" unique_id=1349284601]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="PopUp/PanelContainer/MarginContainer/VBoxContainer/UIRow" unique_id=860350761]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Interface"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PopUp/PanelContainer/MarginContainer/VBoxContainer/UIRow" unique_id=678880562]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+
+[node name="UISlider" type="HSlider" parent="PopUp/PanelContainer/MarginContainer/VBoxContainer/UIRow/HBoxContainer" unique_id=1166747310]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+
+[node name="UINumber" type="Label" parent="PopUp/PanelContainer/MarginContainer/VBoxContainer/UIRow/HBoxContainer" unique_id=1870838849]
+custom_minimum_size = Vector2(36, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+theme_override_styles/normal = SubResource("StyleBoxEmpty_gbi4v")
+text = "100"
+horizontal_alignment = 1

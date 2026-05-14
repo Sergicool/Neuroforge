@@ -5,9 +5,21 @@
 [ext_resource type="StyleBox" uid="uid://drcau3buqj5q5" path="res://assets/styles/GreyButtonToggle.tres" id="2_woj82"]
 [ext_resource type="StyleBox" uid="uid://d0gxtxm2kxhw1" path="res://assets/styles/GreyButton.tres" id="3_uqdmw"]
 [ext_resource type="StyleBox" uid="uid://c3pfdh2svd0ya" path="res://assets/styles/GreyButtonPressed.tres" id="4_ru5vq"]
+[ext_resource type="Texture2D" uid="uid://b2f3o26o1wi1o" path="res://assets/buttons/ButtonMap10.png" id="6_0hp5w"]
 [ext_resource type="StyleBox" uid="uid://d18i0sxg56l1v" path="res://assets/styles/PanelBackground.tres" id="6_dyudt"]
 [ext_resource type="StyleBox" uid="uid://dhxqq4vty0ayj" path="res://assets/styles/LabelBackground.tres" id="6_woj82"]
+[ext_resource type="Texture2D" uid="uid://bqeldy5uugy0j" path="res://assets/icons/ArrowDownIcon.png" id="7_5v5cl"]
+[ext_resource type="Texture2D" uid="uid://bxkidipnacevn" path="res://assets/buttons/ButtonMap9.png" id="7_tomtl"]
+[ext_resource type="StyleBox" uid="uid://bdxgr8713bpqu" path="res://assets/styles/PanelBorder.tres" id="8_0hp5w"]
 [ext_resource type="StyleBox" uid="uid://tjcegfoo4wit" path="res://assets/styles/ScreenBackground.tres" id="8_mu5uu"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8u5fo"]
+atlas = ExtResource("6_0hp5w")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r2grc"]
+atlas = ExtResource("7_tomtl")
+region = Rect2(96, 0, 32, 32)
 
 [resource]
 Button/colors/font_color = Color(1, 1, 1, 1)
@@ -20,9 +32,15 @@ Button/styles/disabled = ExtResource("1_jkmfx")
 Button/styles/hover = ExtResource("2_woj82")
 Button/styles/normal = ExtResource("3_uqdmw")
 Button/styles/pressed = ExtResource("4_ru5vq")
+HSlider/icons/grabber = SubResource("AtlasTexture_8u5fo")
+HSlider/icons/grabber_highlight = SubResource("AtlasTexture_r2grc")
+HSlider/styles/grabber_area = ExtResource("8_0hp5w")
+HSlider/styles/grabber_area_highlight = ExtResource("8_0hp5w")
+HSlider/styles/slider = ExtResource("8_0hp5w")
 Label/constants/outline_size = 4
 Label/fonts/font = ExtResource("1_no7qj")
 Label/styles/normal = ExtResource("6_woj82")
+OptionButton/icons/arrow = ExtResource("7_5v5cl")
 Panel/styles/panel = ExtResource("6_dyudt")
 PanelContainer/styles/panel = ExtResource("6_dyudt")
 TabContainer/colors/font_unselected_color = Color(1, 1, 1, 1)

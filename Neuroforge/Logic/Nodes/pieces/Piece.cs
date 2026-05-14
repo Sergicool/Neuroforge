@@ -85,7 +85,9 @@ public partial class Piece : Node2D
             ShowHiddenSprite();
             await ToSignal(GetTree().CreateTimer(blinkInterval), SceneTreeTimer.SignalName.Timeout);
         }
-        
+
+        AudioManager.PlaySfx("res://assets/sounds/PieceEffect1.wav");
+
         // Revelar pieza
         Reveal();
     }

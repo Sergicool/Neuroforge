@@ -5,6 +5,7 @@
 [ext_resource type="StyleBox" uid="uid://btp23gt0ooehf" path="res://assets/styles/ScreenText.tres" id="3_4dg4t"]
 [ext_resource type="StyleBox" uid="uid://tjcegfoo4wit" path="res://assets/styles/ScreenBackground.tres" id="4_ptdjk"]
 [ext_resource type="PackedScene" uid="uid://258k7vtgqkj2" path="res://Interfaces/RulesOverlay.tscn" id="5_ptdjk"]
+[ext_resource type="PackedScene" uid="uid://c54h20p4ybyiw" path="res://Interfaces/OptionsOverlay.tscn" id="6_uto6i"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fenq7"]
 
@@ -35,9 +36,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -189.0
-offset_top = -65.0
+offset_top = -97.0
 offset_right = 189.0
-offset_bottom = 179.0
+offset_bottom = 180.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_8tehv")
@@ -65,7 +66,7 @@ size_flags_vertical = 3
 theme_override_font_sizes/font_size = 32
 text = "Resume"
 
-[node name="RemainingLabel" type="Label" parent="PopUp/MarginContainer/VBoxContainer/PlayButton" unique_id=946662481]
+[node name="Title" type="Label" parent="PopUp/MarginContainer/VBoxContainer/PlayButton" unique_id=946662481]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -87,6 +88,12 @@ size_flags_vertical = 3
 theme_override_font_sizes/font_size = 32
 text = "Rules"
 
+[node name="OptionsButton" type="Button" parent="PopUp/MarginContainer/VBoxContainer" unique_id=1618382970]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 32
+text = "Options"
+
 [node name="ExitButton" type="Button" parent="PopUp/MarginContainer/VBoxContainer" unique_id=984851177]
 layout_mode = 2
 size_flags_vertical = 3
@@ -95,5 +102,9 @@ text = "Return to menu"
 expand_icon = true
 
 [node name="RulesOverlay" parent="." unique_id=247626373 instance=ExtResource("5_ptdjk")]
+visible = false
+layout_mode = 1
+
+[node name="OptionsOverlay" parent="." unique_id=661048695 instance=ExtResource("6_uto6i")]
 visible = false
 layout_mode = 1

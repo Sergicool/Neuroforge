@@ -86,7 +86,7 @@ public partial class AudioManager
 
         if (!ResourceLoader.Exists(path))
         {
-            GD.PushError($"[AudioManager] El archivo no existe: {path}");
+            GD.PushError($"[AudioManager] The file doesn't exists: {path}");
             return null;
         }
 

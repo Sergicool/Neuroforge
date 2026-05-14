@@ -8,10 +8,11 @@ public partial class PauseMenu : Control
     private static readonly Color COLOR_BG_VISIBLE = new(0, 0, 0, 0.65f);
 
     private Panel _background, _popup;
-    private Button _resume, _rules, _menu;
+    private Button _resume, _rules, _options, _menu;
     private GameScene _gameScene;
 
     private RulesOverlay _rulesOverlay;
+    private OptionsOverlay _optionsOverlay;
 
     public override void _Ready()
     {
@@ -22,9 +23,11 @@ public partial class PauseMenu : Control
 
         _resume = GetNode<Button>("PopUp/MarginContainer/VBoxContainer/PlayButton");
         _rules = GetNode<Button>("PopUp/MarginContainer/VBoxContainer/RulesButton");
+        _options = GetNode<Button>("PopUp/MarginContainer/VBoxContainer/OptionsButton");
         _menu = GetNode<Button>("PopUp/MarginContainer/VBoxContainer/ExitButton");
 
         _rulesOverlay = GetNode<RulesOverlay>("RulesOverlay");
+        _optionsOverlay = GetNode<OptionsOverlay>("OptionsOverlay");
 
         _rules.Pressed += OnRulesPressed;
         _rules.MouseEntered += () =>
@@ -32,6 +35,13 @@ public partial class PauseMenu : Control
             if (!_rules.Disabled)
                 AudioManager.PlayUI("res://assets/sounds/HoverButton.wav");
         };
+
+        _options.MouseEntered += () =>
+        {
+            if (!_options.Disabled)
+                AudioManager.PlayUI("res://assets/sounds/HoverButton.wav");
+        };
+        _options.Pressed += OnOptionsPressed;
 
         _menu.Pressed += OnMenuPressed;
         _menu.MouseEntered += () =>
@@ -60,6 +70,12 @@ public partial class PauseMenu : Control
     {
         AudioManager.PlayUI("res://assets/sounds/PressButton.wav");
         await _rulesOverlay.ShowOverlay();
+    }
+
+    private async void OnOptionsPressed()
+    {
+        AudioManager.PlayUI("res://assets/sounds/PressButton.wav");
+        await _optionsOverlay.ShowOverlay();
     }
 
     private async void OnMenuPressed()
