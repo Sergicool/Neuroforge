@@ -224,22 +224,14 @@ public partial class Board : Node2D
     }
 
     // Devuelve el estado del tablero como array de floats para la IA del bot.
-    // 9 canales — estructura idéntica a _get_obs() del entorno Python de entrenamiento.
-    //
-    // Canal 0 — piezas del BOT móviles             rank / maxRank
-    // Canal 1 — piezas del PLAYER reveladas         rank / maxRank
-    // Canal 2 — piezas del PLAYER ocultas           1f  (el bot sabe que hay algo, no qué tipo)
-    // Canal 3 — casillas intransitables             1f
-    // Canal 4 — TURRET del BOT                      1f
-    // Canal 5 — TURRET del PLAYER revelada          1f
-    // Canal 6 — ENERGY_CORE del BOT                 1f
-    // Canal 7 — ENERGY_CORE del PLAYER localizado   1f  (solo si fue revelado en combate)
-    // Canal 8 — zona de despliegue del PLAYER        1f  (el Core oculto comenzó aquí; el bot infiere por descarte)
+    // Estructura de 3 canales perfectamente alineada con la nueva CNN en Python.
+    // Formato plano equivalente a tensores: [Canal, Fila, Columna]
     public float[] GetState()
     {
-        const int CHANNELS = 9;
+        const int CHANNELS = 3;
         const float MAX_RANK = 10f;
 
+        // 1. Detectar dimensiones reales del tablero dinámicamente (10x10 por defecto)
         int rows = 0, cols = 0;
         foreach (var pos in _grid.Keys)
         {
@@ -249,61 +241,75 @@ public partial class Board : Node2D
 
         float[] state = new float[CHANNELS * rows * cols];
 
-        int GetIndex(int ch, int r, int c) => ch * rows * cols + r * cols + c;
+        // 2. Función matemática de mapeo indexado (Orden: Canales -> Filas -> Columnas)
+        // Esto replica exactamente cómo PyTorch aplana internamente un tensor (C, H, W)
+        int GetIndex(int channel, int row, int col)
+        {
+            return (channel * rows * cols) + (row * cols) + col;
+        }
 
+        // 3. Rellenar la información procesando cada casilla
         foreach (Tile tile in AllTiles)
         {
             int r = tile.GridPosition.Y;
             int c = tile.GridPosition.X;
 
-            // Canal 3: casillas intransitables
+            // --- CANAL 1: Transitabilidad (Geografía del mapa) ---
             if (tile.TileType == TileType.NO_PASSABLE)
             {
-                state[GetIndex(3, r, c)] = 1f;
+                state[GetIndex(1, r, c)] = -1.0f; // Obstáculo / Lago
+                // Si la casilla es intransitable, terminamos aquí para esta celda
                 continue;
             }
+            else
+            {
+                state[GetIndex(1, r, c)] = 1.0f;  // Terreno transitable libre
+            }
 
-            // Canal 8: zona de despliegue del jugador (estático, igual que en Python)
-            // El bot sabe que el Core rival empezó aquí; a medida que ataca piezas ocultas
-            // en esta zona y no aparece el Core, puede inferir su posición por descarte.
-            if (tile.TileType == TileType.PLAYER_DEPLOYMENT)
-                state[GetIndex(8, r, c)] = 1f;
-
+            // Si no hay ninguna pieza en esta casilla, pasamos a la siguiente
             if (!tile.IsOccupied) continue;
 
             Piece p = tile.Occupant;
 
+            // --- CANAL 0: Identidad y Rango de las Piezas ---
             if (p.PlayerOwner == PieceOwner.BOT)
             {
-                // El bot siempre conoce sus propias piezas
-                if (p.Type == PieceType.TURRET)
-                    state[GetIndex(4, r, c)] = 1f;
-                else if (p.Type == PieceType.ENERGY_CORE)
-                    state[GetIndex(6, r, c)] = 1f;
-                else
-                    state[GetIndex(0, r, c)] = p.Rank / MAX_RANK;
-            }
-            else // PLAYER
-            {
+                // Piezas propias (Valores positivos)
                 if (p.Type == PieceType.ENERGY_CORE)
-                {
-                    if (p.IsRevealedToBot)
-                        state[GetIndex(7, r, c)] = 1f;  // Core localizado tras combate
-                    else
-                        state[GetIndex(2, r, c)] = 1f;  // Oculto: el bot no sabe que es el Core
-                }
-                else if (!p.IsRevealedToBot)
-                {
-                    state[GetIndex(2, r, c)] = 1f;      // Pieza oculta desconocida
-                }
+                    state[GetIndex(0, r, c)] = 0.05f; // Un valor fijo único para tu Core
                 else if (p.Type == PieceType.TURRET)
+                    state[GetIndex(0, r, c)] = 0.1f;  // Un valor fijo único para tu Torreta
+                else
+                    state[GetIndex(0, r, c)] = p.Rank / MAX_RANK; // Rango normalizado (0.1 a 1.0)
+            }
+            else // PLAYER (El rival desde la perspectiva del Bot)
+            {
+                // Piezas enemigas (Valores negativos / Ocultación)
+                if (!p.IsRevealedToBot)
                 {
-                    state[GetIndex(5, r, c)] = 1f;      // Turret revelada en combate
+                    state[GetIndex(0, r, c)] = -0.05f; // "Sé que hay algo aquí, pero está oculto"
                 }
                 else
                 {
-                    state[GetIndex(1, r, c)] = p.Rank / MAX_RANK;  // Pieza revelada con rango conocido
+                    // Si ya se reveló en combate, el Bot conoce su rango real en negativo
+                    if (p.Type == PieceType.ENERGY_CORE)
+                        state[GetIndex(0, r, c)] = -0.05f;
+                    else if (p.Type == PieceType.TURRET)
+                        state[GetIndex(0, r, c)] = -0.1f;
+                    else
+                        state[GetIndex(0, r, c)] = -(p.Rank / MAX_RANK);
                 }
+            }
+
+            // --- CANAL 2: Movilidad de la pieza ---
+            // Guardamos 1.0 si la pieza puede desplazarse en su turno, 0.0 si es estática
+            if (p.Type != PieceType.ENERGY_CORE && p.Type != PieceType.TURRET && p.CanMove)
+            {
+                state[GetIndex(2, r, c)] = 1.0f;
+            }
+            else
+            {
+                state[GetIndex(2, r, c)] = 0.0f;
             }
         }
 

@@ -1,5 +1,6 @@
 \chapter{Introducción}
-\label{sec:intro}
+
+Este documento contiene la memoria del TFG, adscrito a la mención en Ingeniería de Software, que trata el diseño y la implementación de un videojuego táctico por turnos caracterizado por mecánicas de información oculta, desarrollado sobre el motor Godot y el lenguaje C\#. Como punto de partida de la memoria, este primer capítulo introduce el proyecto a través del contexto de la industria y las motivaciones que justifican el desarrollo del software, y también se delimitan los objetivos técnicos fijados y se detalla la estructura organizativa que conforma el resto del documento.
 
 \section{Contexto y motivaciones}
 
@@ -11,7 +12,7 @@ Más allá de su peso económico, los videojuegos han demostrado tener un impact
 
 Esta capacidad de generar experiencias entretenidas o memorables es precisamente lo que ha motivado el desarrollo del presente trabajo. A lo largo de los años, numerosos videojuegos han dejado una huella duradera: títulos que, independientemente de su presupuesto o escala, han conseguido transmitir emociones, plantear desafíos estimulantes o simplemente brindar momentos de disfrute genuino.
 
-Poder contribuir, aunque sea a pequeña escala, a generar ese mismo tipo de experiencia en otras personas es la motivación principal de este proyecto. El desarrollo de un videojuego propio supone además una oportunidad única de adquirir de forma práctica las competencias técnicas y creativas que conforman esta industria: diseño de sistemas interactivos, implementación de lógica de juego, creación de interfaces y producción de contenido audiovisual.
+Poder contribuir, aunque sea a pequeña escala, a generar ese mismo tipo de experiencia en otras personas es la motivación principal de este proyecto. El desarrollo de un videojuego propio supone además una oportunidad única de adquirir de forma práctica las competencias técnicas y creativas que conforman esta industria, como el diseño de sistemas interactivos, implementación de lógica del videojuego, creación de interfaces y producción de contenido audiovisual.
 
 \section{Objetivos}
 
@@ -23,45 +24,27 @@ Para alcanzar este objetivo principal, se han definido los siguientes objetivos 
 	
 	\item Diseñar e implementar la lógica fundamental del videojuego, en concreto, la estructura de un tablero, la definición de las piezas y las reglas de movimiento y combate entre ellas.
 	
-	\item Desarrollar un sistema de control de turnos y gestión del estado del juego que permita ejecutar partidas completas respetando las reglas definidas.
+	\item Desarrollar un sistema de control de turnos y gestión del estado del videojuego que permita ejecutar partidas completas respetando las reglas definidas.
 	
 	\item Adquirir experiencia práctica en el uso del motor de videojuegos Godot y en el desarrollo de sistemas interactivos con C\#.
 	
-\end{itemize}
-
-Como objetivo secundario, se plantea además:
-
-\begin{itemize}
-	
-	\item Implementar un bot inteligente capaz de analizar el estado del tablero y seleccionar los movimientos válidos más adecuados para cada situación, ofreciendo al jugador la posibilidad de
-	disputar partidas contra un oponente desafiante.
+	\item Implementar un bot inteligente capaz de analizar el estado del tablero y seleccionar los movimientos válidos más adecuados para cada situación, ofreciendo al jugador la posibilidad de disputar partidas contra un oponente desafiante.
 	
 \end{itemize}
-
-\section{Metodología}
-
-El desarrollo del TFG se ha llevado a cabo siguiendo el modelo de desarrollo \textbf{iterativo e incremental}, una metodología de construcción de software en la que el proyecto avanza a través de ciclos sucesivos denominados iteraciones, y en la que cada ciclo produce una versión del sistema ampliada y mejorada respecto a la anterior.
-
-La distinción entre los términos \textit{iterativo} e \textit{incremental} es relevante. El componente \textit{iterativo} hace referencia a la repetición sistemática de un conjunto de actividades (análisis, diseño, implementación y prueba) en cada ciclo de trabajo. El componente \textit{incremental} implica que el resultado de cada iteración no es un prototipo desechable, sino un incremento funcional que se integra con el trabajo anterior y contribuye directamente al producto final. Ambas dimensiones se complementan, las iteraciones permiten incorporar aprendizajes y correcciones de forma temprana, mientras que los incrementos garantizan un avance continuo y medible hacia el sistema completo.
-
-Frente al modelo en cascada, en el que cada fase debe completarse antes de iniciar la siguiente, el modelo iterativo e incremental entrelaza las actividades de especificación, diseño y desarrollo. Esto permite que los requisitos se vayan refinando a lo largo del proyecto a medida que se
-comprende mejor el problema y se evalúan los resultados de cada iteración~\cite{solano2020}. Esta flexibilidad resulta especialmente adecuada para un proyecto como este, de carácter individual y con un alcance que ha ido precisándose de forma progresiva.
-
-En la práctica, la adopción de esta metodología se ha concretado en una secuencia de entregas parciales en las que se han presentado versiones progresivas tanto del documento como del videojuego. Cada entrega ha sido revisada por los tutores del proyecto, cuyas observaciones han servido como retroalimentación para orientar la siguiente iteración. Este ciclo de trabajo, revisión y mejora ha permitido detectar de forma temprana errores conceptuales, problemas de diseño o decisiones técnicas poco adecuadas, evitando que dichos problemas se acumulen en fases posteriores. A su vez, cada iteración ha añadido nuevas funcionalidades o ha consolidado las ya existentes, de modo que el sistema ha crecido de forma coherente desde una versión inicial básica hasta el producto final completo y funcional.
 
 \section{Estructura del documento}
 
-Este documento se encuentra estructurado en ocho capítulos, los cuales guían al lector a través de todas las fases de concepción, diseño y desarrollo del proyecto. A continuación se presenta un breve resumen de cada uno de ellos:
+Este documento se encuentra estructurado en ocho capítulos principales y una serie de anexos que guían al lector a través de todas las fases de concepción, análisis, diseño, planificación, implementación y validación del proyecto. A continuación se presenta una descripción de cada uno de ellos:
 
 \begin{itemize}
-	\item \textbf{Capítulo 1: Introducción.} En este capítulo se define el contexto y las motivaciones del proyecto, se establecen los objetivos a alcanzar y se describe la metodología de trabajo seguida.
-	\item \textbf{Capítulo 2: Antecedentes y Estado del Arte.} Se realiza un estudio sobre la evolución de los juegos de estrategia, analizando el juego original \textit{Stratego} y sus adaptaciones. Además, se justifica la elección de las herramientas tecnológicas y el motor de videojuegos utilizado.
-	\item \textbf{Capítulo 3: Concepto del videojuego.} Se detalla la propuesta del juego, definiendo sus mecánicas principales, reglas, ambientación y la experiencia de usuario que se pretende ofrecer.
-	\item \textbf{Capítulo 4: Planificación.} Describe la gestión del proyecto, incluyendo la metodología iterativa, el desglose de tareas, el cronograma de trabajo, el análisis de riesgos y el presupuesto económico.
-	\item \textbf{Capítulo 5: Análisis.} Contiene la especificación de requisitos funcionales y no funcionales, así como el modelado de la lógica del sistema mediante diagramas de casos de uso y de actividad.
-	\item \textbf{Capítulo 6: Diseño.} Se explica la arquitectura técnica del sistema, el diseño de la interfaz de usuario (UI/UX) y la aplicación de patrones de diseño de software para garantizar una estructura robusta y escalable.
-	\item \textbf{Capítulo 7: Implementación.} Describe los aspectos técnicos de la programación en Godot y C\#, la gestión de escenas y las pruebas realizadas para asegurar la calidad del producto final.
-	\item \textbf{Capítulo 8: Conclusiones y líneas futuras.} Presenta una valoración crítica sobre el cumplimiento de los objetivos, las lecciones aprendidas durante el desarrollo y las posibles expansiones o mejoras del proyecto en el futuro.
+	\item \textbf{Capítulo 1: Introducción.} En este capítulo se define el contexto y las motivaciones del proyecto, se establecen los objetivos generales y específicos a alcanzar y se describe la presente estructura organizativa.
+	\item \textbf{Capítulo 2: Antecedentes.} Se realiza un estudio sobre la evolución histórica de los juegos de estrategia, analizando en detalle el juego clásico de mesa \textit{Stratego} junto con sus variaciones y adaptaciones modernas, sentando las bases de las mecánicas de información oculta.
+	\item \textbf{Capítulo 3: Descripción del juego.} Se detalla exhaustivamente la propuesta lúdica del videojuego (\textit{NeuroForge}), definiendo sus mecánicas fundamentales, las reglas del tablero y las piezas, su ambientación de simulación virtual y el perfil de la audiencia objetivo.
+	\item \textbf{Capítulo 4: Planificación.} Describe la gestión temporal y organizativa bajo el ciclo de vida Unificado (RUP), el análisis de riesgos, costes y restricciones, la justificación de la elección de \textit{Godot Engine} y \textit{C\#}, así como el progreso real detallado a lo largo de cinco iteraciones de desarrollo.
+	\item \textbf{Capítulo 5: Análisis.} Contiene la especificación formal de los requisitos funcionales, no funcionales y de información, complementada dinámicamente con el modelo de dominio, los diagramas de actividad y el modelado de la lógica mediante casos de uso.
+	\item \textbf{Capítulo 6: Diseño.} Explica la arquitectura multicapa y el modelo de ejecución de \textit{Godot}, el diseño detallado de la interfaz de usuario (UI/UX) mediante pantallas finales y la aplicación de patrones de diseño orientados a objetos para garantizar una estructura robusta y escalable.
+	\item \textbf{Capítulo 7: Implementación.} Describe los aspectos técnicos de la programación en el motor de juego, la estructura de escenas, la gestión de licencias y el desarrollo de una batería de pruebas de caja negra estructurada en ocho bloques funcionales para la validación del sistema.
+	\item \textbf{Capítulo 8: Conclusiones y líneas futuras.} Presenta una valoración crítica sobre el cumplimiento de los objetivos fijados, las lecciones de ingeniería de software aprendidas durante el proceso y las posibles expansiones o mejoras del proyecto en el futuro.
 \end{itemize}
 
 Finalmente, tras las conclusiones, se incluye la bibliografía consultada y una serie de anexos que contienen información técnica complementaria y los manuales del software.

@@ -2,3 +2,4 @@
 .godot/
 /android/
 __pycache__/
+.venv

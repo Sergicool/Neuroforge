@@ -1,185 +1,207 @@
 \chapter{Planificación}
 
-En este capítulo se presenta la planificación del desarrollo del proyecto \textit{NeuroForge},
-definiendo la organización temporal del trabajo, los recursos empleados, las restricciones
-existentes y los posibles riesgos identificados.
+En este capítulo se presenta la planificación del desarrollo del proyecto \textit{NeuroForge}, definiendo la organización temporal del trabajo, los recursos empleados, las restricciones existentes y los posibles riesgos identificados.
 
-La planificación se ha concebido como una guía flexible, susceptible de ser ajustada a lo largo
-del desarrollo conforme se adquiría una visión más precisa del alcance real del proyecto y de
-las dificultades técnicas asociadas a su implementación.
+La planificación se ha concebido como una guía flexible, susceptible de ser ajustada a lo largo del desarrollo conforme se adquiría una visión más precisa del alcance real del proyecto y de las dificultades técnicas asociadas a su implementación.
 
-\section{Planificación inicial}
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Metodología empleada}
+% ─────────────────────────────────────────────────────────────────────────────
 
-La planificación inicial del proyecto se realizó con el objetivo de establecer una estimación razonable del trabajo a desarrollar, sirviendo como referencia para organizar las tareas y distribuir el esfuerzo a lo largo del periodo de realización del TFG. Esta planificación no se concibe como un plan rígido, sino como una guía orientativa, susceptible de ajustes conforme avanzaba el desarrollo del proyecto.
+El desarrollo del TFG se ha llevado a cabo siguiendo una adaptación del \textbf{Proceso Unificado}~\cite{cabalar_metodologias} (\textit{Unified Process}, UP), un marco de desarrollo de software caracterizado por estar dirigido por casos de uso, centrado en la arquitectura y, sobre todo, por ser \textbf{iterativo e incremental}~\cite{solano2020}.
 
-El desarrollo del videojuego se planteó siguiendo una metodología iterativa e incremental, de modo que cada iteración se centra en un conjunto concreto de objetivos y funcionalidades, permitiendo validar progresivamente el estado del sistema y añadir nuevas capacidades sobre una base previamente funcional.
+La distinción entre los términos \textit{iterativo} e \textit{incremental} es relevante. El componente \textit{iterativo} hace referencia a la repetición sistemática de un conjunto de disciplinas en cada ciclo de trabajo. El componente \textit{incremental} implica que el resultado de cada iteración es un incremento funcional que se integra con el trabajo anterior y contribuye directamente al producto final. 
 
-% --------------------------------------------------------
-
-\subsection{Iteración 1: Implementación del juego base}
-
-El objetivo de esta primera iteración es desarrollar una versión funcional mínima del videojuego, sin elementos visuales pulidos ni inteligencia artificial, que sirva como base estructural para el resto del proyecto. Se estima una dedicación de \textbf{20 horas} para el conjunto de tareas
-de esta fase.
+Para este proyecto, el Proceso Unificado organiza el ciclo de vida en cuatro grandes fases:
 
 \begin{itemize}
-	
-	\item \textbf{Tablero y casillas} (2~h): Implementación de la cuadrícula de $10 \times 10$ casillas, incluyendo las zonas intransitables del centro del tablero.
-	
-	\item \textbf{Definición de piezas} (3~h): Desarrollo de los distintos tipos de piezas con sus propiedades individuales: rangos, piezas inmóviles, y reglas especiales de combate y movimiento.
-	
-	\item \textbf{Sistema de movimiento} (3~h): Implementación de la selección de piezas, la visualización de las casillas de destino válidas y el desplazamiento sobre una casilla válida.
-	
-	\item \textbf{Sistema de combate} (3~h): Resolución inmediata de los enfrentamientos entre piezas según las reglas de rango definidas, sin animaciones ni retroalimentación visual elaborada.
-	
-	\item \textbf{Sistema de ocultación de piezas} (2~h): Implementación de la mecánica de identidades ocultas, de forma que las piezas rivales no muestran su tipo hasta que entran en combate.
-	
-	\item \textbf{Despliegue inicial aleatorio del bot} (1~h): Colocación automática de las piezas del oponente en su zona de despliegue de forma aleatoria al comienzo de la partida.
-	
-	\item \textbf{Bot de movimiento aleatorio} (1~h): Implementación de un oponente básico que ejecuta movimientos válidos de forma aleatoria durante su turno.
-	
-	\item \textbf{Sistema de despliegue del jugador} (4~h): Pantalla básica que permite al jugador colocar sus piezas en su zona antes de comenzar la partida.
-	
-	\item \textbf{Condición de fin de partida} (1~h): Detección de las condiciones de victoria y derrota, con parada completa del juego al producirse alguna de ellas.
-	
+	\item \textbf{Inicio:} Se establece el alcance del sistema, se identifican los casos de uso principales y se evalúa la viabilidad.
+	\item \textbf{Elaboración:} Se refina la arquitectura del sistema, se detallan los requisitos más relevantes y se mitigan los riesgos técnicos críticos.
+	\item \textbf{Construcción:} Constituye el núcleo del desarrollo, donde el sistema se construye de forma iterativa e incremental.
+	\item \textbf{Transición:} El sistema se despliega, se realizan pruebas de integración definitivas y se produce la versión de entrega.
 \end{itemize}
 
-% --------------------------------------------------------
+\subsection{Etapas de desarrollo y ordenación en la planificación}
+
+Para cumplir con el rigor metodológico en un ámbito de desarrollo individual, el proyecto se ha estructurado en etapas secuenciales y disciplinas transversales que dictan el orden estricto de la planificación temporal. Estas etapas se ejecutan de la siguiente manera:
+
+\begin{enumerate}
+	\item \textbf{Etapa de Análisis Global y Requisitos:} Configura el punto de partida del proyecto (Fase de Inicio). Su objetivo es la definición formal de los requisitos funcionales y no funcionales del sistema, modelando los actores y el alcance técnico indispensable antes de escribir código.
+	\item \textbf{Etapa de Diseño de Arquitectura Base:} Establece las bases estructurales del software (Fase de Elaboración). En ella se define la jerarquía de escenas en Godot, el modelo de datos del tablero y la abstracción de las piezas.
+	\item \textbf{Etapas de Construcción Iterativa e Incremental:} Una vez fijados el análisis y el diseño globales, el trabajo se ordena en bloques funcionales que ejecutan internamente las disciplinas de desarrollo de manera cíclica:
+	\begin{itemize}
+		\item \textit{Implementación:} Codificación concreta en el motor Godot utilizando C\#.
+		\item \textit{Pruebas unitarias y de caja negra:} Verificación inmediata de que cada nuevo incremento funcional responde a lo esperado sin romper los sistemas previos.
+	\end{itemize}
+	\item \textbf{Etapa de Transición y Pulido:} Bloque final orientado a la consolidación del sistema, optimización de rendimiento y pruebas de integración globales.
+\end{enumerate}
+
+Esta estructura metodológica se traslada directamente a la línea temporal del proyecto, ordenando las tareas cronológicamente desde la concepción teórica (Análisis y Diseño) hasta la materialización técnica y su posterior pulido en cinco iteraciones sucesivas. La correspondencia exacta se detalla en la Tabla~\ref{tab:fases_up}.
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|l|l|}
+		\hline
+		\textbf{Etapa} & \textbf{Iteración} & \textbf{Objetivo principal} \\
+		\hline
+		Inicio & Análisis & Visión, requisitos y alcance formal del sistema \\
+		\hline
+		Elaboración & Diseño & Arquitectura base, esquema de datos y escenas \\
+		\hline
+		\multirow{4}{*}{Construcción} & Iteración 1: Juego base & Núcleo jugable mínimo y lógicas de tablero \\
+		& Iteración 2: Interfaz de usuario & Interfaz, menús y flujo de navegación visual \\
+		& Iteración 3: Mejoras audiovisuales & Sonido, música y ambientación del entorno \\
+		& Iteración 4: Bot inteligente & Implementación y entrenamiento de la IA \\
+		\hline
+		Transición & Iteración 5: Pulido final & Optimización, corrección de errores y entrega \\
+		\hline
+	\end{tabular}
+	\caption{Correspondencia entre las fases de la metodología y la ordenación de las tareas en la planificación}
+	\label{tab:fases_up}
+\end{table}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Planificación inicial}
+% ─────────────────────────────────────────────────────────────────────────────
+
+La planificación inicial del proyecto se realizó con el objetivo de establecer una estimación razonable del trabajo a desarrollar, sirviendo como referencia para organizar las tareas y distribuir el esfuerzo a lo largo del periodo de realización del TFG. 
+
+A petición metodológica, el análisis y el diseño conceptual se han extraído y unificado como tareas de entidad propia al inicio del cronograma para garantizar una base teórica sólida. El resto del desarrollo se distribuye en cinco iteraciones incrementales bien acotadas, manteniendo intacto el presupuesto temporal total de 300 horas.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection{Tareas Globales Iniciales: Análisis y Diseño}
+% ─────────────────────────────────────────────────────────────────────────────
+
+Estas dos tareas constituyen el cimiento del proyecto antes de proceder a cualquier tipo de implementación en el motor de juego.
+
+\begin{itemize}
+	\item \textbf{Análisis de requisitos y casos de uso (6 h):} Identificación detallada de los requisitos funcionales del videojuego, definición de los actores (jugador, bot) y especificación formal de los casos de uso principales (despliegue de piezas, movimiento, combate y condiciones de victoria).
+	\item \textbf{Diseño de la arquitectura y el modelo de datos (8 h):} Definición de la estructura de escenas madre en Godot, el esquema de clases principal en C\#, la representación interna del tablero matricial, las piezas y el modelado conceptual del sistema de toma de decisiones del bot.
+\end{itemize}
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection{Iteración 1: Núcleo jugable (Juego base)}
+% ─────────────────────────────────────────────────────────────────────────────
+
+El objetivo de esta iteración es desarrollar un \textit{Producto Mínimo Viable} funcional ---sin elementos visuales pulidos ni inteligencia artificial compleja--- que sirva como base estructural para el resto del proyecto y permita validar las decisiones técnicas adoptadas. Se estima una dedicación de \textbf{17~horas}.
+
+\begin{itemize}
+	\item \textbf{Tablero y casillas} (2~h): Implementación de la cuadrícula de $10\times10$ casillas, incluyendo las zonas intransitables del centro del tablero.
+	\item \textbf{Definición de piezas} (3~h): Desarrollo de los distintos tipos de piezas con sus propiedades individuales: rangos, piezas inmóviles, y reglas especiales de combate y movimiento.
+	\item \textbf{Sistema de movimiento} (3~h): Implementación de la selección de piezas, la visualización de las casillas de destino válidas y el desplazamiento sobre una casilla válida.
+	\item \textbf{Sistema de combate} (3~h): Resolución inmediata de los enfrentamientos entre piezas según las reglas de rango definidas, sin animaciones ni retroalimentación visual elaborada.
+	\item \textbf{Sistema de ocultación de piezas} (2~h): Implementación de la mecánica de identidades ocultas, de forma que las piezas rivales no muestran su tipo hasta que entran en combate.
+	\item \textbf{Despliegue inicial aleatorio del bot} (1~h): Colocación automática de las piezas del oponente en su zona de despliegue de forma aleatoria al comienzo de la partida.
+	\item \textbf{Bot de movimiento aleatorio} (1~h): Implementación de un oponente básico que ejecuta movimientos válidos de forma aleatoria durante su turno, actuando como versión mínima funcional del oponente.
+	\item \textbf{Sistema de despliegue del jugador} (1~h): Pantalla básica que permite al jugador colocar sus piezas en su zona antes de comenzar la partida.
+	\item \textbf{Condición de fin de partida} (1~h): Detección de las condiciones de victoria y derrota, con parada completa del juego al producirse alguna de ellas.
+\end{itemize}
 
 \subsection{Iteración 2: Interfaz de usuario y pulido visual}
+% ─────────────────────────────────────────────────────────────────────────────
 
-El objetivo de esta iteración es dotar al juego de una interfaz completa, visualmente cuidada e intuitiva, sustituyendo los elementos provisionales de la iteración anterior. Por su volumen y variedad de elementos, esta iteración se planificó como la más extensa de las dedicadas a desarrollo
-visual, con una estimación de \textbf{56 horas}.
+El objetivo de esta iteración es dotar al juego de una interfaz completa, visualmente cuidada e intuitiva. Para dar cabida al bloque de Diseño global inicial, esta iteración reajusta su peso a **50 horas** sin perder alcance, optimizando las tareas de bocetado e integración.
 
 \begin{itemize}
-	
-	\item \textbf{Bocetado de interfaces} (8~h): Elaboración de bocetos y propuestas visuales para todas las pantallas del juego antes de su implementación, con el fin de planificar la disposición de los elementos y la navegación entre escenas.
-	
-	\item \textbf{Búsqueda e integración de assets} (8~h): Selección de recursos gráficos para construir las interfaces de forma visualmente coherente con la ambientación del juego.
-	
-	\item \textbf{Animaciones de movimiento de piezas} (1~h): Incorporación de animaciones básicas al desplazamiento de las piezas sobre el tablero, mejorando la claridad de las acciones realizadas.
-	
-	\item \textbf{Rediseño visual del tablero} (4~h): Mejora de la representación gráfica del tablero y de los indicadores de selección y movimiento disponible, incluyendo animaciones asociadas.
-	
+	\item \textbf{Bocetado de interfaces} (6~h): Elaboración de bocetos y propuestas visuales para todas las pantallas del juego antes de su implementación.
+	\item \textbf{Búsqueda e integración de assets} (6~h): Selección de recursos gráficos para construir las interfaces de forma visualmente coherente.
+	\item \textbf{Animaciones de movimiento de piezas} (1~h): Incorporación de animaciones básicas al desplazamiento de las piezas sobre el tablero.
+	\item \textbf{Rediseño visual del tablero} (4~h): Mejora de la representación gráfica del tablero y de los indicadores de selección.
 	\item \textbf{Sprites de las piezas} (10~h): Creación e integración de la representación gráfica de cada tipo de pieza.
-	
-	\item \textbf{Interfaz de despliegue mejorada} (4~h): Rediseño de la pantalla de colocación inicial de piezas, haciéndola más clara e intuitiva para el jugador.
-	
-	\item \textbf{Interfaz de resolución de combate} (6~h): Pantalla que muestra el resultado de cada enfrentamiento, indicando la pieza ganadora y perdedora y los motivos del resultado según las reglas aplicadas.
-	
-	\item \textbf{Pantalla de fin de partida} (1~h): Escena que informa al jugador del resultado final y le permite iniciar una nueva partida o volver al menú principal.
-	
-	\item \textbf{Menú principal} (1~h): Escena inicial con opciones para comenzar una partida, consultar las reglas y salir del juego.
-	
-	\item \textbf{Menú de pausa} (2~h): Escena accesible durante la partida que permite al jugador continuar, consultar las reglas o salir al menú principal.
-	
-	\item \textbf{Menú de reglas} (8~h): Escena con múltiples viñetas que explican de forma visual y progresiva todas las mecánicas y reglas del juego.
-	
-	\item \textbf{Ajustes y correcciones} (3~h): Revisión general de los elementos implementados en la iteración anterior y aplicación de los cambios que no pudieron contemplarse durante su desarrollo.
-	
+	\item \textbf{Interfaz de despliegue mejorada} (4~h): Rediseño de la pantalla de colocación inicial de piezas.
+	\item \textbf{Interfaz de resolución de combate} (6~h): Pantalla que muestra el resultado de cada enfrentamiento de forma explícita.
+	\item \textbf{Pantalla de fin de partida} (1~h): Escena que informa al jugador del resultado final de la partida.
+	\item \textbf{Menú principal} (1~h): Escena inicial con opciones para comenzar, consultar reglas y salir.
+	\item \textbf{Menú de pausa} (2~h): Escena accesible durante la partida.
+	\item \textbf{Menú de reglas} (6~h): Escena explicativa de las mecánicas y reglas del juego.
+	\item \textbf{Ajustes y correcciones} (3~h): Revisión general de los elementos implementados.
 \end{itemize}
-
-% --------------------------------------------------------
 
 \subsection{Iteración 3: Mejoras audiovisuales}
+% ─────────────────────────────────────────────────────────────────────────────
 
-El objetivo de esta iteración es completar la experiencia audiovisual del juego mediante la incorporación de sonido y los últimos elementos visuales de ambientación. Se estima una dedicación de \textbf{15 horas} para el conjunto de tareas de esta fase.
+El objetivo de esta iteración es completar la experiencia audiovisual del juego mediante la incorporación de sonido y los últimos elementos visuales de ambientación. Se estima una dedicación de \textbf{15 horas}.
 
 \begin{itemize}
-	
-	\item \textbf{Fondos y elementos decorativos} (2~h): Incorporación de fondos y elementos visuales de carácter estético que complementan la ambientación del juego sin afectar a la jugabilidad.
-	
-	\item \textbf{Efectos de sonido} (6~h): Integración de efectos sonoros asociados a las distintas acciones del juego, como movimientos, combates y navegación por menús.
-	
-	\item \textbf{Música} (3~h): Incorporación de música de fondo para las distintas escenas del juego, reforzando la ambientación.
-	
-	\item \textbf{Menú de opciones de audio} (4~h): Implementación de una pantalla de configuración que permite al jugador ajustar de forma independiente el volumen de los efectos de sonido y de la música.
-	
+	\item \textbf{Fondos y elementos decorativos} (2~h): Incorporación de fondos y elementos visuales de carácter estético.
+	\item \textbf{Efectos de sonido} (6~h): Integración de efectos sonoros asociados a las distintas acciones del juego.
+	\item \textbf{Música} (3~h): Incorporación de música de fondo para las distintas escenas del juego.
+	\item \textbf{Menú de opciones de audio} (4~h): Implementación de una pantalla de configuración para ajustar volúmenes.
 \end{itemize}
-
-% --------------------------------------------------------
 
 \subsection{Iteración 4: Implementación del bot inteligente}
+% ─────────────────────────────────────────────────────────────────────────────
 
-El objetivo de esta iteración es sustituir el bot de movimiento aleatorio por un sistema de inteligencia artificial capaz de tomar decisiones estratégicas durante la partida. Por la complejidad técnica que implica, esta iteración se planificó como la más extensa del proyecto, con una estimación de \textbf{55 horas}.
+El objetivo de esta iteración es desarrollar el sistema de inteligencia artificial estratégico. Puesto que el diseño conceptual de la IA se ha absorbido en la tarea de Diseño global inicial, esta iteración pasa a centrarse puramente en su desarrollo técnico, entrenamiento y validación, reduciendo su cómputo a \textbf{40 horas}.
 
 \begin{itemize}
-	
-	\item \textbf{Diseño del modelo de IA} (16~h): Definición del enfoque y la arquitectura del sistema de toma de decisiones del bot, teniendo en cuenta las particularidades del juego, como la información oculta de las piezas rivales.
-	
-	\item \textbf{Entrenamiento del modelo} (25~h): Proceso de entrenamiento
-	de la IA mediante partidas simuladas, con el fin de ajustar su comportamiento y mejorar progresivamente la calidad de sus decisiones.
-	
-	\item \textbf{Integración del bot inteligente} (6~h): Sustitución del bot aleatorio existente por el modelo entrenado, asegurando su correcta integración con el sistema de turnos y las reglas del juego.
-	
-	\item \textbf{Evaluación del comportamiento} (8~h): Pruebas del bot en distintas situaciones de partida para verificar que sus decisiones son coherentes con las reglas y que no produce errores en la ejecución.
-	
+	\item \textbf{Desarrollo de la lógica algorítmica del modelo} (18~h): Programación del motor de toma de decisiones e integración de las matrices de pesos para gestionar la información oculta del rival.
+	\item \textbf{Entrenamiento del modelo} (10~h): Proceso de optimización de la IA mediante partidas simuladas contra versiones previas de sí misma.
+	\item \textbf{Integración del bot inteligente} (5~h): Sustitución del bot aleatorio y acoplamiento directo con el sistema de turnos de la arquitectura.
+	\item \textbf{Evaluación y balanceo del comportamiento} (7~h): Pruebas intensivas del bot frente a jugadores humanos y escenarios límite para garantizar decisiones coherentes y sin bloqueos.
 \end{itemize}
-
-% --------------------------------------------------------
 
 \subsection{Iteración 5: Pulido final}
+% ─────────────────────────────────────────────────────────────────────────────
 
-El objetivo de esta última iteración es revisar el conjunto del sistema, corregir los errores detectados y garantizar la estabilidad y calidad de la versión final del videojuego. Se estima una dedicación de \textbf{14 horas} para el conjunto de tareas de esta fase.
+El objetivo de esta última iteración es revisar el conjunto del sistema, corregir los errores detectados y garantizar la estabilidad y calidad del producto. Se estima una dedicación de \textbf{14 horas}.
 
 \begin{itemize}
-	
-	\item \textbf{Optimización del rendimiento} (4~h): Análisis y mejora del rendimiento del sistema en caso de detectarse problemas de fluidez o consumo de recursos.
-	
-	\item \textbf{Revisión del feedback al jugador} (4~h): Comprobación y ajuste de todos los elementos de retroalimentación visual y sonora para asegurar que las acciones del juego quedan siempre claras para el jugador.
-	
-	\item \textbf{Corrección de errores} (4~h): Detección y resolución de fallos o comportamientos inesperados identificados durante las pruebas finales del sistema.
-	
-	\item \textbf{Pruebas de integración} (2~h): Verificación del funcionamiento conjunto de todos los sistemas implementados a lo largo del proyecto, asegurando la coherencia y estabilidad del producto final.
-	
+	\item \textbf{Optimización del rendimiento} (4~h): Análisis y mejora del rendimiento del sistema, hilos de ejecución y consumos de recursos.
+	\item \textbf{Revisión del feedback al jugador} (4~h): Comprobación de que toda la información visual y sonora se transmite de forma limpia.
+	\item \textbf{Corrección de errores} (4~h): Detección y resolución de bugs o "edge cases" remanentes.
+	\item \textbf{Pruebas de integración} (2~h): Verificación final del build completo del videojuego.
 \end{itemize}
 
-Paralelamente al desarrollo técnico, se estimaron aproximadamente \textbf{140 horas} para la elaboración progresiva de la memoria del TFG, incluyendo la descripción del diseño del videojuego, la justificación de las decisiones técnicas adoptadas y el análisis de los resultados obtenidos.
+Paralelamente al desarrollo técnico, se estiman exactamente \textbf{140 horas} para la elaboración progresiva de la memoria del TFG, incluyendo la descripción del diseño del videojuego, la justificación de las decisiones técnicas adoptadas y el análisis de los resultados obtenidos.
 
-En conjunto, la estimación total de dedicación para el proyecto asciende a unas \textbf{300 horas}, de las cuales 160 corresponden al desarrollo del videojuego distribuido entre las cinco iteraciones, y las 140 restantes a la documentación, realizada de forma paralela al desarrollo.
+En conjunto, la estimación total de dedicación para el proyecto asciende a unas \textbf{300 horas}, distribuidas de forma exacta en: 14 horas de tareas globales (Análisis y Diseño), 136 horas de desarrollo técnico y pulido en las cinco iteraciones, y las 140 restantes a la documentación de la memoria.
 
-La Tabla~\ref{tab:iteraciones} recoge de forma resumida las iteraciones planificadas, la estimación de horas de cada una y la fecha estimada de finalización dentro del cronograma del proyecto.
+La Tabla~\ref{tab:iteraciones} recoge el resumen definitivo de los tiempos de desarrollo adaptados.
 
 \begin{table}[H]
 	\centering
 	\begin{tabular}{|c|l|c|c|}
 		\hline
-		\textbf{It.} & \textbf{Descripción} & \textbf{Horas est.} &
-		\textbf{Fecha est. finalización} \\
+		\textbf{Etapa / It.} & \textbf{Descripción de la Tarea} & \textbf{Horas est.} & \textbf{Fecha est. finalización} \\
 		\hline
-		1 & Implementación del juego base          & 20 h & 2026-02-22 \\
+		Tarea Global & Análisis de requisitos y casos de uso & 6 h & 2026-02-05 \\
 		\hline
-		2 & Interfaz de usuario y pulido visual    & 56 h & 2026-04-05 \\
+		Tarea Global & Diseño de arquitectura y datos & 8 h & 2026-02-12 \\
 		\hline
-		3 & Mejoras audiovisuales                  & 15 h & 2026-04-19 \\
+		1 & Implementación del juego base & 17 h & 2026-02-26 \\
 		\hline
-		4 & Implementación del bot inteligente     & 55 h & 2026-05-24 \\
+		2 & Interfaz de usuario y pulido visual & 50 h & 2026-04-05 \\
 		\hline
-		5 & Pulido final                           & 14 h & 2026-06-07 \\
+		3 & Mejoras audiovisuales & 15 h & 2026-04-19 \\
 		\hline
-		\multicolumn{2}{|l|}{Documentación}        & 140 h & 2026-06-14 \\
+		4 & Implementación del bot inteligente (IA) & 40 h & 2026-05-31 \\
 		\hline
-		\multicolumn{2}{|l|}{\textbf{Total}}
-		& \textbf{300 h} & \\
+		5 & Pulido final e integración & 14 h & 2026-06-07 \\
+		\hline
+		- & Documentación de la Memoria (Paralela) & 140 h & 2026-06-14 \\
+		\hline
+		\multicolumn{2}{|l|}{\textbf{Total}} & \textbf{300 h} & \\
 		\hline
 	\end{tabular}
-	\caption{Iteraciones planificadas, estimación de horas y fechas de finalización}
+	\caption{Distribución ajustada de horas por tareas globales e iteraciones del proyecto}
 	\label{tab:iteraciones}
 \end{table}
 
-La Figura \ref{fig:gantt} muestra de manera integral todas las iteraciones del proyecto junto con la tarea de documentación.
+La Figura \ref{fig:gantt} muestra de manera de manera actualizada el cronograma con la inserción de las tareas macro de análisis y diseño al inicio del desarrollo.
 
 \begin{landscape}
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=\linewidth]{../Imagenes/Gantt.jpg} % Aquí reemplazas por tu diagrama unificado
-		\caption{Diagrama de Gantt general del desarrollo del TFG, incluyendo todas las iteraciones y la documentación}
+		\includegraphics[width=\linewidth]{../Imagenes/Gantt} 
+		\caption{Diagrama de Gantt general del desarrollo del TFG, reflejando las fases de análisis y diseño globales, las iteraciones y la documentación}
 		\label{fig:gantt}
 	\end{figure}
 \end{landscape}
-
-% --------------------------------------------------------
-
+ 
+% ─────────────────────────────────────────────────────────────────────────────
 \section{Riesgos}
+% ─────────────────────────────────────────────────────────────────────────────
 
 Durante la fase de planificación se identificaron distintos riesgos que podrían afectar al correcto desarrollo del proyecto, recogidos en la Tabla~\ref{tab:riesgos}. Para cada uno se ha analizado su naturaleza e impacto potencial, definiendo medidas de contingencia orientadas a minimizar sus efectos en caso de materializarse.
 
@@ -237,9 +259,9 @@ La identificación temprana de estos riesgos permite anticipar posibles problema
 	\label{tab:riesgos}
 \end{table}
 
-% --------------------------------------------------------
-
+% ─────────────────────────────────────────────────────────────────────────────
 \section{Restricciones}
+% ─────────────────────────────────────────────────────────────────────────────
 
 El desarrollo de \textit{NeuroForge} ha estado condicionado por una serie
 de restricciones que han influido directamente en la planificación, la
@@ -259,25 +281,76 @@ selección de herramientas y el alcance final del proyecto.
 	
 \end{itemize}
 
-% --------------------------------------------------------
-
+% ─────────────────────────────────────────────────────────────────────────────
 \section{Herramientas}
+% ─────────────────────────────────────────────────────────────────────────────
 
-Para el desarrollo del TFG se han empleado distintas herramientas de software tanto para la implementación del videojuego como para la gestión del proyecto y la redacción de la memoria. La selección de estas herramientas se ha realizado atendiendo a criterios de adecuación técnica, disponibilidad gratuita y facilidad de uso, buscando en todo momento optimizar el proceso de desarrollo. En la Tabla \ref{tab:Herramientas} se recoge un resumen de las principales herramientas utilizadas y su función dentro del proyecto.
+Para llevar a cabo este Trabajo de Fin de Grado, ha sido necesario seleccionar un conjunto integrado de herramientas de software que abarquen todas las necesidades del ciclo de vida del proyecto: desde la propia implementación del videojuego hasta la gestión de tareas, el diseño de recursos y la redacción de esta memoria. 
 
-El desarrollo del videojuego se ha realizado utilizando el motor \textit{Godot}, descrito en detalle en el capítulo de antecedentes. En este proyecto se ha empleado como base para la implementación de la lógica del juego, la gestión del tablero, las interacciones del jugador y la representación visual del estado de la partida.
+A continuación, se detalla en primer lugar el análisis y la elección de la pieza central del entorno de desarrollo, el motor de videojuegos, para posteriormente describir el resto de herramientas complementarias que conforman el flujo de trabajo.
 
-Para la programación de la lógica del juego se ha utilizado el lenguaje C\#, que cuenta con soporte oficial dentro del motor Godot. La elección de este lenguaje se debe a su robustez, su tipado estático y su amplia adopción en el desarrollo de software, lo que facilita la organización del código y el mantenimiento del proyecto a medida que aumenta su complejidad.
+\subsection{Selección del Motor de Videojuegos}
 
-Durante el desarrollo también se ha empleado un sistema de control de versiones basado en Git, utilizando la plataforma GitHub como repositorio remoto. Esta herramienta ha permitido llevar un seguimiento de los cambios realizados en el código, mantener un historial de versiones del proyecto y disponer de una copia de seguridad del mismo en la nube.
+Un motor de videojuegos es un \textit{framework} de desarrollo que proporciona un conjunto integrado de herramientas, librerías y sistemas sobre los que construir un videojuego. Estos motores abstraen gran parte de la complejidad técnica inherente al desarrollo, ofreciendo soluciones ya implementadas para tareas como el renderizado gráfico, la gestión de escenas, el control de entrada del usuario, la simulación de físicas o la exportación a distintas plataformas. Gracias a esta abstracción, el desarrollador puede centrarse principalmente en la lógica del videojuego, el diseño de mecánicas y la experiencia del usuario.
 
-En cuanto a la creación y edición de recursos visuales, se han utilizado herramientas de diseño gráfico como Aseprite y Paint. Estas aplicaciones han servido para generar o modificar sprites y otros elementos visuales necesarios para representar el tablero, las piezas y los distintos componentes de la interfaz del juego.
+En la actualidad, el panorama del desarrollo de videojuegos independiente está dominado por diversos motores de videojuegos, entre los que actualmente destacan más tenemos \textbf{Unreal Engine}, \textbf{Unity} y \textbf{Godot}. Los tres cuentan con una amplia presencia tanto en el ámbito profesional como en el educativo, y representan enfoques distintos ante el desarrollo.
 
-Para la gestión de recursos sonoros se han empleado herramientas como Audacity, junto con recursos procedentes de la plataforma Freesound y Pixabay. Audacity ha permitido realizar pequeñas ediciones o ajustes sobre efectos de sonido, mientras que Freesound y Pixabay se han utilizado como fuentes de recursos de audio de libre uso que pueden incorporarse al proyecto respetando sus licencias.
+Unreal Engine, desarrollado por Epic Games, es el motor de referencia en producciones de gran presupuesto y alta exigencia gráfica. Sus sistemas avanzados de renderizado, iluminación y simulación física permiten desarrollar entornos tridimensionales de alta fidelidad visual, lo que lo convierte en la herramienta estándar en la industria AAA. Esta potencia técnica tiene como contrapartida una curva de aprendizaje pronunciada, unos requisitos de hardware elevados y tiempos de compilación considerables, factores que pueden suponer una desventaja significativa en proyectos de pequeña escala o con recursos limitados~\cite{unrealengine_features}.
 
-La redacción y maquetación de la memoria del TFG se ha realizado mediante \LaTeX, un sistema de preparación de documentos ampliamente utilizado en entornos académicos y científicos que facilita la estructuración del contenido, la generación automática de referencias y la gestión de figuras y tablas.
+Unity se ha consolidado como uno de los motores más populares tanto en el ámbito independiente como en el educativo, gracias a su versatilidad para desarrollar videojuegos en dos y tres dimensiones sobre una amplia variedad de plataformas. Cuenta con una comunidad muy extensa, una gran cantidad de documentación y un ecosistema amplio de herramientas y recursos. Sin embargo, su arquitectura interna está históricamente orientada al desarrollo tridimensional, lo que puede introducir una sobrecarga innecesaria en proyectos 2D más sencillos. Además, la controversia generada en 2023~\cite{unity_runtimefee_apology, unity_runtimefee_cancelled} por una propuesta de tarificación por instalación del videojuego, que fue ampliamente rechazada por la comunidad de desarrolladores y finalmente revertida, puso en evidencia los riesgos asociados a depender de un motor de código cerrado con modelo de licencia comercial~\cite{unity_overview}.
 
-Finalmente, para la planificación y organización de las tareas del proyecto se ha utilizado Notion, una herramienta de gestión que ha permitido estructurar las distintas fases del desarrollo, definir hitos y realizar un seguimiento del progreso del trabajo a lo largo del tiempo. También se ha utilizado como borrador, tomar notas temporales sobre correcciones, llevar la cuenta de horas invertidas en el proyecto y como herramienta para cosas como el diagrama de Gantt.
+Godot es un motor de código abierto con licencia MIT que ha experimentado un crecimiento notable en los últimos años, especialmente dentro del desarrollo independiente. Su filosofía se basa en la simplicidad, la modularidad y la accesibilidad. A diferencia de Unity, su motor 2D no es una adaptación del motor 3D sino un sistema nativo e independiente, lo que lo convierte en una herramienta especialmente eficiente para el desarrollo de videojuegos bidimensionales. Su editor ocupa menos de 200~MB, arranca en segundos y permite ciclos de iteración muy rápidos, aspectos especialmente valiosos en proyectos individuales. A esto se suma la ausencia total de costes de licencia y la imposibilidad estructural de que las condiciones de uso cambien de forma unilateral, al tratarse de software de código abierto~\cite{godot_features}.
+
+La percepción de Godot como un motor de menor capacidad frente a sus competidores ha quedado desmentida de forma contundente con el lanzamiento de \textit{Slay the Spire~II} (MegaCrit, 2026). El estudio, que había iniciado el desarrollo del videojuego en Unity, migró el proyecto íntegramente a Godot tras la polémica de 2023, asumiendo reescribir más de dos años de trabajo~\cite{slayspire2_godot}. El resultado ha sido uno de los lanzamientos independientes más exitosos de los últimos años, en sus primeros 3 días en Early Access alcanzó un pico de más de 500.000 jugadores simultáneos en Steam, y en su primera semana superó los tres millones de unidades vendidas~\cite{slayspire2_launch}. Este caso demuestra que Godot es capaz de sustentar productos comerciales de alto nivel cuando el tipo de videojuego se alinea con sus fortalezas.
+
+La Tabla~\ref{tab:comparativa_motores} resume las principales diferencias entre los tres motores considerando los criterios más relevantes para el contexto de este proyecto.
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|l|c|c|c|}
+		\hline
+		\textbf{Criterio} & \textbf{Unreal Engine} & \textbf{Unity} & \textbf{Godot} \\
+		\hline
+		Rendimiento en 3D        & Muy alto   & Alto      & Medio         \\
+		\hline
+		Rendimiento en 2D        & Medio      & Alto      & Muy alto      \\
+		\hline
+		Curva de aprendizaje     & Alta       & Media     & Baja          \\
+		\hline
+		Requisitos de hardware   & Altos      & Medios    & Bajos         \\
+		\hline
+		Modelo de licencia       & Comercial  & Comercial & Código abierto\\
+		\hline
+		Adecuación a proyectos individuales & Media & Alta & Muy alta     \\
+		\hline
+		Ecosistema y comunidad   & Muy amplio & Muy amplio & En crecimiento\\
+		\hline
+	\end{tabular}
+	\caption{Comparativa entre motores de desarrollo de videojuegos}
+	\label{tab:comparativa_motores}
+\end{table}
+
+Tras este análisis, Godot se presenta como el motor más adecuado para el desarrollo de este TFG. Al tratarse de un videojuego de estrategia por turnos en dos dimensiones, con un alcance controlado y desarrollado en un contexto académico individual, las ventajas de Godot en términos de rendimiento nativo en 2D, ligereza, rapidez de iteración y ausencia de costes de licencia superar con claridad sus limitaciones en otros ámbitos. Su menor ecosistema de extensiones no supone ninguna restricción para un proyecto de esta escala, y su modelo de código abierto ofrece una estabilidad y previsibilidad que los motores comerciales no pueden garantizar.
+
+\subsection{Otras herramientas utilizadas}
+
+Una vez determinada la elección de Godot como núcleo tecnológico, se seleccionó un conjunto de herramientas de soporte atendiendo a criterios de adecuación técnica, disponibilidad gratuita o bajo coste, compatibilidad con el motor y facilidad de integración en el flujo de trabajo del proyecto. 
+
+El desarrollo del videojuego se ha realizado concretamente sobre el motor \textbf{Godot} en su versión 4.6.1. Godot ha servido como entorno integral de desarrollo: su editor visual se ha utilizado para la composición y gestión de escenas, la definición de nodos y señales, la configuración de la interfaz de usuario mediante el sistema de nodos \textit{Control}, y la gestión de recursos gráficos y sonoros. Además, su sistema de exportación ha permitido generar ejecutables de escritorio sin dependencias externas, facilitando la distribución del producto final.
+
+Como lenguaje de programación se ha empleado \textit{C\#} sobre el entorno de ejecución .NET~9.0, que cuenta con soporte oficial dentro de la versión de Godot utilizada. La elección de C\# frente a GDScript, el lenguaje nativo del motor, se debe a varias razones: su sistema de tipado estático y fuerte reduce los errores en tiempo de compilación, su orientación a objetos facilita la organización de un proyecto con múltiples sistemas interrelacionados (tablero, piezas, combate, IA), y su amplia adopción en la industria del desarrollo de software proporciona una base de conocimiento y herramientas de depuración más maduras.
+
+El control de versiones del proyecto se ha gestionado mediante \textbf{Git}, utilizando \textbf{GitHub} como plataforma de alojamiento del repositorio remoto. Git ha permitido mantener un historial completo de todos los cambios realizados en el código fuente, revertir modificaciones problemáticas y trabajar en ramas experimentales sin riesgo para la línea principal de desarrollo. GitHub, por su parte, ha proporcionado una copia de seguridad permanente en la nube y ha facilitado la revisión del código mediante su interfaz web. Se ha utilizado un flujo de trabajo basado en \textit{commits} frecuentes, organizados por funcionalidad o tarea completada.
+
+Para la creación y edición de los recursos gráficos del juego se han empleado \textbf{Aseprite}. Aseprite es un editor especializado en \textit{pixel art}, utilizado para diseñar los sprites de las piezas, los elementos de la interfaz y modificar los assets de terceros. Su soporte nativo para capas, paletas de color y hojas de sprites (\textit{sprite sheets}) lo convierte en una herramienta especialmente adecuada para el estilo visual del proyecto. Paint se ha utilizado de forma complementaria para ediciones rápidas y ajustes menores sobre recursos ya existentes.
+
+La gestión del apartado sonoro se ha apoyado en \textbf{Audacity}, un editor de audio de código abierto que ha permitido recortar, normalizar y ajustar el volumen de los efectos de sonido antes de integrarlos en el motor. Los recursos de audio se han obtenido de las plataformas \textbf{Freesound} y \textbf{Pixabay}, ambas repositorios de efectos sonoros y pistas musicales de libre uso bajo licencias compatibles con proyectos de esta naturaleza. La combinación de estas herramientas ha permitido dotar al juego de un apartado sonoro coherente sin necesidad de recurrir a recursos de pago.
+
+La redacción y maquetación de la presente memoria se ha realizado íntegramente mediante \textbf{\LaTeX}, un sistema de composición tipográfica ampliamente utilizado en el ámbito académico y científico. \LaTeX{} ha facilitado la gestión de la estructura del documento, la numeración automática de secciones, figuras y tablas, la generación de referencias cruzadas y la compilación de la bibliografía mediante Bib\LaTeX. Su capacidad para separar contenido y formato ha resultado especialmente útil durante las revisiones sucesivas del documento.
+
+Finalmente, la planificación y el seguimiento del proyecto se han gestionado a través de \textbf{Notion}, una herramienta de productividad y gestión de contenido. Notion ha servido como eje organizativo del proyecto: se ha utilizado para llevar a cabo las fases de desarrollo y sus hitos asociados, mantener un registro de las horas invertidas en cada tarea, anotar correcciones y decisiones de diseño pendientes, y elaborar borradores previos a su incorporación a la memoria. También se ha empleado \textbf{Mermaid} como soporte para la construcción del diagrama de Gantt y para el seguimiento del progreso global del trabajo.
+
+A modo de síntesis, la Tabla~\ref{tab:Herramientas} ofrece un resumen de conjunto de todas las herramientas mencionadas y su rol dentro de la ejecución de este trabajo.
 
 \begin{table}[h!]
 	\centering
@@ -288,28 +361,28 @@ Finalmente, para la planificación y organización de las tareas del proyecto se
 		\hline
 		\textbf{Tipo} & \textbf{Herramienta} & \textbf{Uso principal} \\
 		\hline
-		Motor de juego & Godot & Desarrollo del videojuego, lógica, interfaz... \\
+		Motor de juego & Godot 4.6.1 & Desarrollo integral del videojuego: escenas, lógica, interfaz y exportación. \\
 		\hline
-		Lenguaje de programación & C\# & Programación de la lógica de juego y scripts. \\
+		Lenguaje de programación & C\# (.NET 9.0) & Implementación de la lógica del juego, sistemas de IA y scripts de control. \\
 		\hline
-		Control de versiones & Git / GitHub & Gestión de versiones, control de cambios y copia de seguridad del código. \\
+		Control de versiones & Git / GitHub & Historial de cambios, gestión de ramas y copia de seguridad en la nube. \\
 		\hline
-		Diseño gráfico & Aseprite / Paint & Creación y edición de sprites, texturas y elementos visuales de la interfaz y el tablero. \\
+		Diseño gráfico & Aseprite & Creación de sprites en \textit{pixel art}, animaciones y edición de recursos visuales. \\
 		\hline
-		Audio & Audacity / Freesound / Pixabay & Edición de efectos sonoros y obtención de música de fondo de libre uso. \\
+		Audio & Audacity / Freesound / Pixabay & Edición de efectos sonoros y obtención de música y SFX de libre uso. \\
 		\hline
-		Documentación & \LaTeX & Redacción y maquetación del presente documento del TFG. \\
+		Documentación & \LaTeX{} / Bib\LaTeX & Redacción, maquetación y gestión bibliográfica de la memoria del TFG. \\
 		\hline
-		Gestión de tareas & Notion & Planificación de fases, control de hitos y organización del flujo de trabajo. \\
+		Gestión y planificación & Notion / Mermaid & Organización de fases, registro de horas, seguimiento de hitos y borradores. \\
 		\hline
 	\end{tabularx}
-	\caption{Herramientas}
+	\caption{Herramientas empleadas en el desarrollo del proyecto}
 	\label{tab:Herramientas}
 \end{table}
 
-% --------------------------------------------------------
-
+% ─────────────────────────────────────────────────────────────────────────────
 \section{Variación de planificación}
+% ─────────────────────────────────────────────────────────────────────────────
 
 A lo largo del desarrollo del proyecto se han producido algunas variaciones respecto a la planificación inicial, aunque sin llegar a afectar de forma significativa al calendario ni al alcance del trabajo.
 
@@ -326,75 +399,245 @@ En cuanto a las desviaciones temporales, las iteraciones completadas hasta la fe
 
 ...
 
-% --------------------------------------------------------
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Iteraciones y progreso del desarrollo}
+% ─────────────────────────────────────────────────────────────────────────────
 
+Tras la planificación inicial y el análisis de las variaciones, en este apartado se describe el transcurso real de cada una de las iteraciones, detallando los avances técnicos y la evolución visual del proyecto.
+
+\subsection{Iteración 1: Núcleo jugable y lógica básica}
+
+Esta primera fase se centró en la implementación de la base jugable, tenía como objetivo principal crear un \textit{Producto Mínimo Viable} funcional. En esta etapa, el juego carecía por completo de elementos estéticos, menús o \textit{feedback} visual y sonoro, centrándose exclusivamente en la validez de los movimientos y la resolución de combates.
+
+Durante esta iteración se utilizaron \textit{placeholders} (elementos provisionales) para representar todas las entidades del juego. La interfaz de despliegue consistía únicamente en botones con texto plano como se puede ver en la Figura \ref{fig:it1_interfaz}, y las piezas se diferenciaban solo por colores e iconos esquemáticos sobre formas cuadradas. Como detalle de la imagen, también se pueden apreciar que los nombres de las piezas no reflejaban las definitivas del producto final, ya que se fueron haciendo cambios según se volvía a dar una vuelta a sus conceptos durante el desarrollo, o se implementaban su apariencia.
+
+\begin{itemize}
+	\item \textbf{Piezas con rango:} Identificadas por un número según su valor de combate.
+	\item \textbf{Núcleo de energía:} Representado por un signo de exclamación (!).
+	\item \textbf{Torretas:} Identificadas mediante una letra "T".
+\end{itemize}
+
+La elección del color de las piezas responde a criterios de usabilidad y psicología del color básicos que se aplicaron casi de manera inconsciente, utilizando el azul para el jugador por su asociación con la calma y la seguridad, mientras que el naranja para el rival facilita un contraste visual inmediato y resalta la naturaleza competitiva y de alerta frente a las unidades enemigas.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{../Imagenes/it1_despliegue_cerca}
+	\caption{Detalle de la interfaz de despliegue inicial basada en botones de texto.}
+	\label{fig:it1_interfaz}
+\end{figure}
+
+El tablero utilizaba una codificación de colores básica para la retroalimentación visual del usuario:
+\begin{itemize}
+	\item \textbf{Gris:} Casillas intransitables que actúan como obstáculos permanentes.
+	\item \textbf{Azul:} Casillas de agua o vacío. En esta fase no existía distinción visual entre las zonas de despliegue del jugador y de la inteligencia artificial, lo que dificultaba el posicionamiento inicial para alguien que no conociera el diseño del juego.
+	\item \textbf{Verde:} Resaltado de casillas disponibles para movimiento tras seleccionar una pieza propia.
+	\item \textbf{Rojo:} Indicador de casilla de combate inminente al seleccionar un objetivo enemigo.
+\end{itemize}
+
+La interacción era puramente lógica y carecía de retroalimentación visual. Los movimientos y combates eran instantáneos, sin animaciones de transición. Esta inmediatez provocaba problemas de seguimiento de la partida, ya que en ocasiones resultaba difícil saber que jugada realizado por el bot después del movimiento del jugador. 
+
+Asimismo, no existía un flujo de partida completo, al finalizar el encuentro por la captura del núcleo, el sistema no mostraba pantallas de victoria o derrota, limitándose a imprimir un mensaje en la terminal de depuración de Godot y a detener la ejecución del juego como se puede observar en la Figura \ref{fig:it1_juego2}. Tampoco se implementaron menús de pausa, opciones ni efectos de sonido. En la Figura \ref{fig:it1_juego1} se pueden observar distintas partidas y situaciones del productor de la primera iteración. La iteración acabo dentro del plazo establecido.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{../Imagenes/it1_juego2}
+	\caption{Mensaje de final de partida en la Iteración 1}
+	\label{fig:it1_juego2}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{../Imagenes/it1_juego1}
+	\caption{Capturas del juego durante la Iteración 1.}
+	\label{fig:it1_juego1}
+\end{figure}
+
+\subsection{Iteración 2: Interfaz de usuario y pulido visual}
+
+En esta segunda fase, el desarrollo se centró en transformar los elementos provisionales de la iteración anterior en una interfaz de usuario (UI) coherente, intuitiva y visualmente atractiva. Para la planificación y el diseño de estas interfaces se utilizó la herramienta \textit{draw.io}, permitiendo bocetar la disposición de los elementos antes de su implementación definitiva en el motor.
+
+\subsubsection{Interfaz de partida}
+
+La interfaz principal de juego se diseñó con el objetivo de centralizar toda la información necesaria para el jugador sin sobrecargar la vista. En su primera concepción, el boceto mostraba un tablero central rodeado por los indicadores de piezas restantes a ambos lados y un historial de movimientos situado en la esquina inferior izquierda. El estado del turno se indicaba mediante un texto descriptivo en la parte superior como se puede observar en la Figura \ref{fig:boceto_partida_v1}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\textwidth]{../Imagenes/boceto_partida_v1}
+	\caption{Primer boceto de la interfaz de partida con indicadores laterales y texto de turno.}
+	\label{fig:boceto_partida_v1}
+\end{figure}
+
+En una segunda revisión del diseño, se buscó una mayor limpieza visual. Se sustituyó el display de texto superior por un marcador de turno más iconográfico y llamativo, situando el icono del jugador actual (o el bot) en un lateral. Asimismo, los contadores de piezas se agruparon a la izquierda para liberar espacio, desplazando el historial a la derecha como aparece en la Figura \ref{fig:boceto_partida_v2}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\textwidth]{../Imagenes/boceto_partida_v2}
+	\caption{Evolución del diseño de partida con indicadores visuales de turno.}
+	\label{fig:boceto_partida_v2}
+\end{figure}
+
+Finalmente, la estructura definitiva eliminó el historial de movimientos. Se consideró que esta información resultaba redundante y generaba un exceso de ruido visual que no aportaba un valor crítico a la experiencia de juego, dejando como resultado final el boceto de la Figura \ref{fig:boceto_partida_v3}. En la implementación final, el marcador de turnos se simplificó de dos iconos que se iluminaban alternativamente a un único icono dinámico que cambia según el turno activo.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.7\textwidth]{../Imagenes/boceto_partida_v3}
+	\caption{Layout definitivo del boceto de la interfaz de partida.}
+	\label{fig:boceto_partida_v3}
+\end{figure}
+
+\subsubsection{Interfaz de combate y reglas}
+
+El diseño de la interfaz de combate siguió una lógica similar de simplificación. Inicialmente, se planteó como una estructura de contenedores anidados que separaban visualmente al atacante del defensor. Sin embargo, para la versión final se optó por eliminar los marcos contenedores externos, dejando los elementos de las piezas más libres y situando el mensaje del resultado del combate en la parte inferior de las mismas para no entorpecer la visión de la acción. Dicha diferencia puede apreciarse en los bocetos que aparecen en la Figura \ref{fig:boceto_comparacion_combate}.
+
+A continuación, se presentan los bocetos que detallan el funcionamiento de los distintos estados de resolución de un combate: en la Figura \ref{fig:combate_estado1} el inicio del combate, en la Figura \ref{fig:combate_estado2} la comparación entre piezas, y en la Figura \ref{fig:combate_estado3} el resultado final antes de cerrar la interfaz.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{../Imagenes/combate_estado1}
+	\caption{Boceto de inicio de combate: presentación de piezas.}
+	\label{fig:combate_estado1}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{../Imagenes/combate_estado2}
+	\caption{Boceto de resolución: comparación de rangos.}
+	\label{fig:combate_estado2}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{../Imagenes/combate_estado3}
+	\caption{Boceto de fin de combate: pieza eliminada.}
+	\label{fig:combate_estado3}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{../Imagenes/boceto_comparacion_combate}
+	\caption{Comparativa entre el diseño inicial de combate y el diseño final simplificado.}
+	\label{fig:boceto_comparacion_combate}
+\end{figure}
+
+Por último, se diseñó el menú de pausa de la Figura \ref{fig:boceto_pausa} y la guía de reglas. Para este último, se descartó la idea inicial de un \textit{popup} único con texto denso, como el de la Figura \ref{fig:boceto_reglas}, por el de un sistema de cinco viñetas navegables. Cada viñeta aborda un aspecto específico: el objetivo principal, tipos de casillas, reglas de movimiento, reglas de combate y datos de las piezas. Este enfoque permite al jugador asimilar las mecánicas de forma progresiva.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{../Imagenes/boceto_pausa}
+	\caption{Boceto del menú de pausa del juego.}
+	\label{fig:boceto_pausa}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.8\textwidth]{../Imagenes/boceto_reglas}
+	\caption{Boceto de la interfaz de reglas con sistema de navegación por viñetas.}
+	\label{fig:boceto_reglas}
+\end{figure}
+
+No se realizaron bocetos adicionales para los menús principal, de opciones o de fin de partida, dada su sencillez estructural. Cabe destacar que el diseño estético definitivo y la implementación final de todas estas interfaces que se desarrollaron a lo largo de esta iteración se detallan en el capítulo de Diseño. La iteración acabo antes del plazo establecido.
+
+\subsection{Iteración 3: Mejoras audiovisuales}
+
+Una vez consolidada la base visual y lógica, la tercera iteración se dedicó íntegramamente al apartado sonoro y al refuerzo del \textit{game feeling}. El objetivo principal fue eliminar la sensación de monotonía y vacío que presentaba el prototipo hasta el momento.
+
+Para ello, se incorporaron pistas de música ambiental diferenciadas tanto para los menús como para el transcurso de la partida, dotando al juego de una atmósfera más inmersiva. En cuanto a los efectos de sonido (SFX), se implementaron tres niveles de interacción:
+
+\begin{itemize}
+	\item \textbf{Interfaz:} Sonidos sutiles de \textit{hover} y \textit{click} para que el jugador perciba qué elementos son interactuables.
+	\item \textbf{Tablero:} Feedback auditivo al seleccionar y desplazar piezas, reforzando la sensación de manipulación física.
+	\item \textbf{Eventos de juego:} Sonidos específicos para la revelación de piezas, derrotas en combate o cambios de estado, proporcionando una respuesta inmediata a las acciones del jugador.
+\end{itemize}
+
+Finalmente, se incluyeron fondos coherentes entre el menú principal y la escena de juego para unificar la estética y evitar que el transcurso de la partida se sintiera visualmente vacío. A estos fondos se les aplicó un ligero efecto de \textit{parallax}, lo que aporta profundidad y una mayor sensación de pulido a la experiencia. La iteración acabo dentro antes del plazo establecido.
+
+(Escribir iteracciones 4 y 5 cuando se acaben)
+
+...
+
+% ─────────────────────────────────────────────────────────────────────────────
 \section{Costes del proyecto}
+% ─────────────────────────────────────────────────────────────────────────────
 
-El desarrollo de este TFG se ha realizado en un contexto académico, por lo que no se han producido costes económicos directos asociados al proyecto. Todas las herramientas empleadas han sido gratuitas, de código abierto o disponibles mediante licencias académicas proporcionadas por la
-universidad, y el espacio de trabajo utilizado ha sido el domicilio particular propio.
+El desarrollo de este Trabajo de Fin de Grado se ha llevado a cabo estrictamente dentro de un marco académico y sin fines comerciales. Por este motivo, el proyecto no ha generado costes económicos directos: el espacio de trabajo ha sido el propio domicilio particular y el software empleado consta de herramientas de código abierto, versiones gratuitas o licencias educativas proporcionadas por la universidad.
 
-No obstante, desde un punto de vista hipotético, si este proyecto se hubiera desarrollado en un entorno profesional, se habrían incurrido en los siguientes costes, distribuidos en tres categorías: costes de personal, software e infraestructura.
+Sin embargo, con el fin de evaluar la viabilidad económica del videojuego en el mercado actual, resulta indispensable realizar un análisis presupuestario hipotético. A continuación, se desglosan los costes estimados en los que se habría incurrido si el proyecto se hubiese ejecutado en un entorno profesional e industrial, divididos en tres grandes categorías: costes de personal, software e infraestructura.
 
-\subsection*{Costes de personal}
+\subsection{Costes de personal}
 
-El principal coste del proyecto corresponde al tiempo de trabajo invertido en su desarrollo. Según datos de Glassdoor (2025), el salario medio de un desarrollador junior de videojuegos en España es de
-aproximadamente \textbf{30.815~€} anuales, lo que equivale a un coste horario de unos \textbf{15~€/h} considerando una jornada laboral estándar de 160~horas mensuales~\cite{glassdoor_gamedeveloper}.
+El activo más importante y el que representa la mayor carga económica en el desarrollo de software es el factor humano. Para realizar una estimación realista en el contexto español, se toma como referencia el salario medio de un desarrollador junior de videojuegos, situado en \textbf{30.815~€} anuales~\cite{glassdoor_gamedeveloper}. 
 
-La dedicación total estimada para el proyecto ha sido de \textbf{300~horas}, distribuidas entre las fases de diseño, implementación, pruebas y documentación. El coste de personal se calcula como:
+En un entorno profesional, el coste por hora para la organización no se calcula dividiendo el salario directamente de forma lineal, sino que debe contemplar dos factores clave:
+\begin{itemize}
+	\item \textbf{Seguridad Social a cargo de la empresa:} Supone un coste adicional aproximado del 32\,\% sobre el salario bruto en concepto de contingencias comunes, desempleo, formación profesional y coberturas obligatorias estatales~\cite{seguridad_social_costes}.
+	\item \textbf{Horas laborables efectivas:} Descontando vacaciones, días festivos y fines de semana, un trabajador a jornada completa realiza un promedio de 1.760~horas anuales.
+\end{itemize}
 
-\[
-C_{\text{personal}} = 300 \text{ h} \times 15{,}00 \text{ €/h} = 4.500{,}00 \text{ €}
-\]
-
-\subsection*{Costes de \textit{software}}
-
-Las herramientas de \textit{software} utilizadas en el proyecto han sido en su mayoría gratuitas o disponibles mediante licencias académicas. La única herramienta de pago considerada es \textit{Aseprite}, empleada para la creación y edición de sprites en \textit{pixel art}, cuyo precio de adquisición es de \textbf{16,79~€}. No obstante, en el contexto real del proyecto se ha utilizado una licencia previamente adquirida, por lo que no ha supuesto un coste adicional.
-
-El resto de herramientas (\textit{Godot}, \textit{Git}/\textit{GitHub}, \textit{Audacity}, \LaTeX, \textit{Notion} y la licencia de \textit{Astah Professional}) son de uso gratuito o han sido cedidas mediante licencia de estudiante por la universidad, por lo que su coste añadido al proyecto es nulo.
+Calculando el coste anual total para la empresa ($30.815 \times 1,32 = 40.675,80 \text{~€}$), se obtiene una tasa horaria real de \textbf{23,11~€/h}. Considerando que la dedicación total acumulada para la planificación, diseño, implementación y documentación de este proyecto ha sido de \textbf{300~horas}, el coste de personal se computa mediante la ecuación:
 
 \[
-C_{\text{software}} = 16{,}79 \text{ €}
+C_{\text{personal}} = 300 \text{ h} \times 23,11 \text{ €/h} = 6.933,00 \text{ €}
 \]
 
-\subsection*{Costes de infraestructura}
+\subsection{Costes de \textit{software}}
 
-Los costes de infraestructura comprenden la amortización del equipo informático y los gastos derivados del uso del espacio de trabajo doméstico durante el periodo de desarrollo, estimado en \textbf{4 meses}.
+A diferencia del entorno académico, la explotación comercial de un producto prohíbe el uso de licencias estudiantiles o planes gratuitos restringidos a fines no lucrativos. Por tanto, se han presupuestado las tarifas comerciales aplicables a empresas o profesionales independientes durante los \textbf{4 meses} que ha durado el desarrollo:
 
-\textbf{Amortización del hardware:} El equipo utilizado incluye el ordenador y sus periféricos (monitores y demás componentes), con un valor de reposición actual estimado en \textbf{2.000~€} y una antigüedad de \textbf{8 años}. Considerando una mínima vida útil total estimada de \textbf{10 años}, la cuota de amortización anual es:
+\begin{itemize}
+	\item \textbf{Aseprite:} Licencia comercial de pago único para el diseño de \textit{pixel art} por valor de \textbf{16,79~€}.
+	\item \textbf{Astah Professional:} Licencia comercial individual necesaria para el modelado estructurado de diagramas del sistema, con un coste mensual de \textbf{8,99~€/mes}~\cite{astah_pricing}.
+	\item \textbf{Notion Plus y GitHub Free:} Para la gestión y seguimiento del proyecto se emplea el plan de suscripción Notion Plus, con un coste de \textbf{12,00~USD/mes} (aproximadamente 11,05~€/mes al cambio vigente)~\cite{notion_pricing}. El alojamiento del repositorio de código se realiza mediante \textbf{GitHub Free}, cuya licencia incluye repositorios privados ilimitados sin coste para usuarios individuales~\cite{github_pricing}.
+	\item \textbf{Godot Engine, Git y Audacity:} Se mantienen con un coste de 0,00~€ debido a sus licencias de código abierto (MIT/GPL), perfectamente válidas tanto para el ámbito educativo como para su explotación comercial.
+\end{itemize}
+
+El coste total de las herramientas de \textit{software} se calcula como:
+
+\[
+C_{\text{software}} = 16{,}79 \text{ €} + (8{,}99 \text{ €/mes} + 11{,}05 \text{ €/mes}) \times 4 \text{ meses} = 96{,}95 \text{ €}
+\]
+
+\subsection{Costes de infraestructura}
+
+Esta categoría engloba los gastos materiales y logísticos necesarios para mantener la actividad productiva y dar soporte técnico al puesto de trabajo durante los 4 meses de ejecución.
+
+\textbf{Amortización del hardware:} El equipo utilizado incluye el ordenador y sus periféricos asociados, con un valor de reposición actual estimado en \textbf{2.000~€} y una antigüedad de \textbf{8 años}. Ajustándose estrictamente a los criterios de vida útil física y contable del equipo informático fijados en \textbf{10 años}, la cuota de amortización anual es:
 
 \[
 A_{\text{anual}} = \frac{2.000 \text{ €}}{10 \text{ años}} = 200{,}00 \text{ €/año}
 \]
 
-El coste añadido al proyecto, correspondiente a 4 meses de uso, es:
+El coste imputable al proyecto por los 4 meses de uso requeridos es:
 
 \[
 C_{\text{hardware}} = 200{,}00 \text{ €/año} \times \frac{4}{12} = 66{,}67 \text{ €}
 \]
 
-\textbf{Electricidad:} El coste es de aproximadamente unos 70~€/mes y estimando que el uso del equipo informático representa aproximadamente un 20\,\% del consumo total del hogar, el coste eléctrico añadido al proyecto es:
+\textbf{Suministro eléctrico y conectividad:} Atendiendo a los datos disponibles sobre el mercado energético y de telecomunicaciones en España, se calcula el impacto del puesto de trabajo prorrateado al periodo de desarrollo:
+
+\begin{itemize}
+	\item \textbf{Electricidad:} Según el seguimiento de la factura media publicado por la OCU, el precio medio mensual de la tarifa regulada (PVPC) en 2025 fue de 69,34~€/mes~\cite{ocu_factura_luz}. Asumiendo que el uso
+	diario del equipo de desarrollo representa el 20\,\% del consumo total del hogar, resulta en:
+	\[
+	C_{\text{luz}} = 69{,}34 \text{ €/mes} \times 0{,}20
+	\times 4 \text{ meses} = 55{,}47 \text{ €}
+	\]
+	\item \textbf{Internet (Banda ancha):} Según los datos del Panel de Hogares de la CNMC, el precio medio del paquete cuádruple de telecomunicaciones (banda ancha fija y móvil, telefonía fija y móvil) se situó en
+	40,3~€/mes a finales de 2024~\cite{cnmc_panel_hogares}. Para este presupuesto se toma una estimación conservadora de \textbf{20,00~€/mes} correspondiente a una línea de banda ancha básica sin servicios adicionales:
+	\[
+	C_{\text{internet}} = 20{,}00 \text{ €/mes} \times 4 \text{ meses}
+	= 80{,}00 \text{ €}
+	\]
+\end{itemize}
+
+Sumando estos tres conceptos, el coste total de infraestructura asciende a:
 
 \[
-C_{\text{luz}} = 70{,}00 \text{ €/mes} \times 20\% \times 4 \text{ meses} = 56{,}00 \text{ €}
+C_{\text{infraestructura}} = 66{,}67 \text{ €} + 55{,}47 \text{ €}+ 80{,}00 \text{ €} = 202{,}14 \text{ €}
 \]
 
-\textbf{Conexión a internet:} El coste ronda en torno a los 20~€ al mes. El coste añadido al periodo de desarrollo es:
+\subsection{Resumen de presupuestos y costes totales}
 
-\[
-C_{\text{internet}} = 20{,}00 \text{ €/mes} \times 4 \text{ meses} = 80{,}00 \text{ €}
-\]
-
-El coste total de infraestructura es:
-
-\[
-C_{\text{infraestructura}} = 66{,}67 + 56{,}00 + 80{,}00 = 202{,}67 \text{ €}
-\]
-
-% --------------------------------------------------------
-
-\subsection*{Resumen de costes}
-
-La Tabla~\ref{tab:costes} recoge el desglose completo de los costes estimados del proyecto en un contexto profesional.
+Para ofrecer una visión unificada, la Tabla~\ref{tab:costes} recopila el desglose completo del presupuesto profesionalizado. Con el fin de dotar al análisis de la máxima rigurosidad industrial, se añade un \textbf{10\,\% en concepto de imprevistos o margen de contingencia}, habitual ante posibles desviaciones en la planificación temporal.
 
 \begin{table}[H]
 	\centering
@@ -402,21 +645,33 @@ La Tabla~\ref{tab:costes} recoge el desglose completo de los costes estimados de
 		\hline
 		\textbf{Categoría} & \textbf{Concepto} & \textbf{Coste estimado} \\
 		\hline
-		Personal      & Desarrollo (300 h $\times$ 15,00 €/h)    & 4.500,00 € \\
+		Personal
+		& Desarrollo de software (300~h $\times$ 23,11~€/h)
+		& 6.933,00~€ \\
 		\hline
-		Software      & Licencia Aseprite                         &    16,79 € \\
+		Software
+		& Licencias comerciales (Aseprite, Astah, Notion)
+		& 96,95~€ \\
 		\hline
 		\multirow{3}{*}{Infraestructura}
-		& Amortización hardware (4 meses)           &    66,67 € \\
-		& Electricidad (4 meses)                    &    56,00 € \\
-		& Conexión a internet (4 meses)             &    80,00 € \\
+		& Amortización de hardware informático (10 años) &  66,67~€ \\
+		& Consumo eléctrico prorrateado                  &  55,47~€ \\
+		& Conectividad a internet y red                  &  80,00~€ \\
 		\hline
-		\multicolumn{2}{|l|}{\textbf{Total estimado}}             & \textbf{4.719,46 €} \\
+		\multicolumn{2}{|l|}{Subtotal}
+		& 7.232,09~€ \\
+		\hline
+		\multicolumn{2}{|l|}{Margen de contingencia e imprevistos (10\,\%)}
+		& 723,21~€ \\
+		\hline
+		\multicolumn{2}{|l|}{\textbf{Total estimado comercial}}
+		& \textbf{7.955,30~€} \\
 		\hline
 	\end{tabular}
-	\caption{Desglose de costes estimados del proyecto en contexto profesional}
+	\caption{Desglose de costes estimados del proyecto en un contexto profesional}
 	\label{tab:costes}
 \end{table}
 
 \noindent
-El coste real del proyecto en el contexto académico en el que se ha desarrollado ha sido \textbf{0~€}, al haberse utilizado exclusivamente herramientas gratuitas, licencias de estudiante y recursos propios ya disponibles.
+Es necesario recalcar que, pese a que la simulación comercial sitúa el valor de la producción en \textbf{7.955,30~€}, el coste real de ejecución de este TFG ha sido de \textbf{0~€} gracias a la naturaleza del entorno académico e
+individual donde se ha concebido.

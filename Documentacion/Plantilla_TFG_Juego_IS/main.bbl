@@ -1,34 +1,5 @@
 \begin{thebibliography}{10}
 
-\bibitem{TheRoyalGameOfUrHistory}
-J.~M. Sadurní.
-\newblock El juego real de ur, un entretenimiento en la antigua mesopotamia.
-\newblock
-  \url{https://historia.nationalgeographic.com.es/a/el-juego-real-de-ur-un-entretenimiento-en-la-antigua-mesopotamia_19167}.
-
-\bibitem{BrooklynMuseumSenet}
-Brooklyn Museum.
-\newblock Gaming board inscribed for amenhotep iii with separate sliding
-  drawer.
-\newblock
-  \url{https://web.archive.org/web/20160307212542/https://www.brooklynmuseum.org/opencollection/objects/3536/Gaming_Board_Inscribed_for_Amenhotep_III_with_Separate_Sliding_Drawer}.
-
-\bibitem{ChessVariantsDouShouQi}
-Chess Variants.
-\newblock Dou shou qi (animal chess).
-\newblock \url{https://www.chessvariants.org/other.dir/animal.html}.
-
-\bibitem{LAttaqueBoard}
-British Antique~Dealers' Association.
-\newblock L’attaque board.
-\newblock
-  \url{https://collections.vam.ac.uk/item/O26365/lattaque-the-famous-game-of-board-game/}.
-
-\bibitem{LuzhanqiHistory}
-Ancient Chess.
-\newblock How to play the chinese land battle game luzhanqi.
-\newblock \url{https://ancientchess.com/page/play-luzhanqi.htm}.
-
 \bibitem{newzoo2025}
 {Newzoo}.
 \newblock Global games market report 2025.
@@ -57,20 +28,24 @@ Alejo Garc{\'i}a-Naveira, Mart{\'i}n Jim{\'e}nez~Toribio, Borja Teruel~Molero,
   2018.
 \newblock Consultado en abril de 2026.
 
-\bibitem{solano2020}
-Erick Solano-Fern{\'a}ndez and Diego Porras-Alfaro.
-\newblock El modelo iterativo e incremental para el desarrollo de la
-  aplicación de realidad aumentada {Amón\_RA}.
-\newblock Tecnolog{\'i}a en Marcha, vol.~33, n.º~5,
-  \url{https://revistas.tec.ac.cr/index.php/tec_marcha/article/download/5518/5233/15939},
-  2020.
-\newblock Consultado en abril de 2026.
-
 \bibitem{BritishMuseumRoyalGameOfUr}
 British Museum.
 \newblock The royal game of ur.
 \newblock
   \url{https://www.britishmuseum.org/collection/object/W_1928-1009-378}.
+
+\bibitem{TheRoyalGameOfUrHistory}
+J.~M. Sadurní.
+\newblock El juego real de ur, un entretenimiento en la antigua mesopotamia.
+\newblock
+  \url{https://historia.nationalgeographic.com.es/a/el-juego-real-de-ur-un-entretenimiento-en-la-antigua-mesopotamia_19167}.
+
+\bibitem{BrooklynMuseumSenet}
+Brooklyn Museum.
+\newblock Gaming board inscribed for amenhotep iii with separate sliding
+  drawer.
+\newblock
+  \url{https://web.archive.org/web/20160307212542/https://www.brooklynmuseum.org/opencollection/objects/3536/Gaming_Board_Inscribed_for_Amenhotep_III_with_Separate_Sliding_Drawer}.
 
 \bibitem{SenetHistory}
 Danielle Zwang.
@@ -84,6 +59,11 @@ Colin Stapczynski.
 \newblock History of chess | from early stages to magnus.
 \newblock \url{https://www.chess.com/article/view/history-of-chess}.
 
+\bibitem{ChessVariantsDouShouQi}
+Chess Variants.
+\newblock Dou shou qi (animal chess).
+\newblock \url{https://www.chessvariants.org/other.dir/animal.html}.
+
 \bibitem{BAdaLAttaque}
 British Antique~Dealers' Association.
 \newblock L’attaque game.
@@ -92,6 +72,26 @@ British Antique~Dealers' Association.
 \bibitem{StrategoHistoryUltraBoardGames}
 History of stratego.
 \newblock \url{https://www.ultraboardgames.com/stratego/history.php}.
+
+\bibitem{LuzhanqiHistory}
+Ancient Chess.
+\newblock How to play the chinese land battle game luzhanqi.
+\newblock \url{https://ancientchess.com/page/play-luzhanqi.htm}.
+
+\bibitem{cabalar_metodologias}
+Pedro Cabalar.
+\newblock Tema 6: El proceso unificado ({UP} / {RUP}).
+\newblock \url{https://www.dc.fi.udc.es/~cabalar/md/t6.pdf}, 2021.
+\newblock Consultado en mayo de 2026.
+
+\bibitem{solano2020}
+Erick Solano-Fern{\'a}ndez and Diego Porras-Alfaro.
+\newblock El modelo iterativo e incremental para el desarrollo de la
+  aplicación de realidad aumentada {Amón\_RA}.
+\newblock Tecnolog{\'i}a en Marcha, vol.~33, n.º~5,
+  \url{https://revistas.tec.ac.cr/index.php/tec_marcha/article/download/5518/5233/15939},
+  2020.
+\newblock Consultado en abril de 2026.
 
 \bibitem{unrealengine_features}
 {Epic Games}.
@@ -152,5 +152,49 @@ David Cailleteau.
   \url{https://www.glassdoor.es/Sueldos/junior-game-developer-sueldo-SRCH_KO0,21.htm},
   2025.
 \newblock Consultado en abril de 2026.
+
+\bibitem{seguridad_social_costes}
+{Ministerio de Inclusión, Seguridad Social y Migraciones}.
+\newblock Orden {PJC}/297/2026, de 30 de marzo, por la que se desarrollan las
+  normas legales de cotización a la {Seguridad Social}, desempleo, protección
+  por cese de actividad, {Fondo de Garantía Salarial} y formación profesional
+  para el ejercicio 2026.
+\newblock Boletín Oficial del Estado, núm.~77,
+  \url{https://www.boe.es/diario_boe/txt.php?id=BOE-A-2026-7296}, 2026.
+\newblock Tipos a cargo de la empresa en Régimen General (contrato
+  indefinido): contingencias comunes 23{,}60\,\%, desempleo 5{,}50\,\%, FOGASA
+  0{,}20\,\%, formación profesional 0{,}60\,\%, MEI 0{,}75\,\%; total
+  aproximado $\approx$32\,\% incluyendo accidentes de trabajo y enfermedades
+  profesionales.
+
+\bibitem{astah_pricing}
+{Change Vision, Inc.}
+\newblock Astah professional --- {Individual Licensing Options}.
+\newblock \url{https://astah.net/pricing/individual/}, 2026.
+\newblock Licencia individual mensual: 8{,}99~€/mes; anual: 97{,}99~€/año;
+  perpetua: 214~€.
+
+\bibitem{notion_pricing}
+{Notion Labs, Inc.}
+\newblock Notion plans and pricing.
+\newblock \url{https://www.notion.so/pricing}, 2026.
+\newblock Plan Plus: 12{,}00~{USD}/mes en facturación mensual (aprox.\
+  11{,}05~€/mes).
+
+\bibitem{github_pricing}
+{GitHub, Inc.}
+\newblock Github pricing plans.
+\newblock \url{https://github.com/pricing}, 2026.
+\newblock El plan {Free} incluye repositorios privados ilimitados sin coste
+  para usuarios individuales.
+
+\bibitem{ocu_factura_luz}
+{OCU}.
+\newblock Precio de la luz: seguimiento mensual de la factura eléctrica.
+\newblock
+  \url{https://www.ocu.org/vivienda-y-energia/gas-luz/informe/precio-luz},
+  2026.
+\newblock Factura media mensual en tarifa regulada {PVPC} durante 2025:
+  69{,}34~€/mes.
 
 \end{thebibliography}

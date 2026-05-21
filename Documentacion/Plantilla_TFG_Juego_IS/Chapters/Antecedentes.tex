@@ -1,4 +1,4 @@
-\chapter{Antecedentes y Estado del Arte}
+\chapter{Antecedentes}
 
 En este capítulo se analizan los antecedentes y el estado del arte relacionados con el TFG. Para ello, se realiza un recorrido por la evolución de los juegos de estrategia desde sus orígenes en los juegos de mesa clásicos hasta sus adaptaciones modernas, tanto físicas como digitales. Este análisis permite identificar las mecánicas fundamentales que han influido en el diseño del proyecto, así como contextualizar las decisiones adoptadas durante su desarrollo.
 
@@ -11,7 +11,7 @@ Entre los ejemplos más antiguos se encuentra el \textit{Juego Real de Ur}, orig
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.6\linewidth]{../Imagenes/JuegoRealDeUr.png}
-	\caption{Tablero del Juego Real de Ur \cite{TheRoyalGameOfUrHistory}}
+	\caption{Tablero del Juego Real de Ur}
 	\label{fig:JuegoRealDeUr}
 \end{figure}
 
@@ -22,7 +22,7 @@ De forma similar, el juego egipcio \textit{Senet}, documentado arqueológicament
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.6\linewidth]{../Imagenes/Senet.png}
-	\caption{Tablero del juego Senet \cite{BrooklynMuseumSenet}}
+	\caption{Tablero del juego Senet}
 	\label{fig:Senet}
 \end{figure}
 
@@ -37,7 +37,7 @@ El juego se estructura en torno a una jerarquía asimétrica de unidades represe
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.6\linewidth]{../Imagenes/DouShouQi.png}
-	\caption{Tablero del juego Dou Shou Qi \cite{ChessVariantsDouShouQi}}
+	\caption{Tablero del juego Dou Shou Qi}
 	\label{fig:DouShouQi}
 \end{figure}
 
@@ -76,7 +76,7 @@ Junto a \textit{Stratego}, existen otros juegos de mesa y digitales basados en p
 \begin{figure}[h!]
 	\centering
 	\includegraphics[width=0.6\linewidth]{../Imagenes/Luzhanqi.png}
-	\caption{Tablero del juego Luzhanqi \cite{LuzhanqiHistory}}
+	\caption{Tablero del juego Luzhanqi}
 	\label{fig:Luzhanqi}
 \end{figure}
 
@@ -84,56 +84,6 @@ En el ámbito de los videojuegos, destacan títulos de estrategia por turnos que
 
 Dentro del ámbito de los videojuegos de estrategia por turnos que comparten principios mecánicos con \textit{Stratego}, destacan títulos como la saga \textit{Advance Wars}. Esta serie, desarrollada por Intelligent Systems para plataformas de Nintendo entre 2001 y 2019, se basa en combates tácticos sobre un tablero cuadriculado donde los jugadores despliegan y gestionan unidades con jerarquías y características diferenciadas. Cada unidad posee fortalezas y debilidades específicas frente a otros tipos de unidades, lo que obliga a planificar los movimientos cuidadosamente y anticipar las acciones del adversario. Aunque la información sobre la ubicación de las unidades enemigas es visible, la profundidad estratégica recae en la gestión eficiente de recursos, el posicionamiento táctico y la secuencia de ataques, elementos que recuerdan la planificación y la jerarquía presentes en \textit{Stratego}.
 
-De manera similar, el videojuego \textit{Into the Breach} (Subset Games, 2018) traslada el concepto de estrategia por turnos a un entorno de tablero discretizado donde cada unidad tiene capacidades específicas y limitadas. La mecánica principal consiste en anticipar el comportamiento del enemigo y planificar acciones para proteger objetivos clave, equilibrando riesgo y recompensa en cada turno. Esta combinación de toma de decisiones estrictamente calculada, jerarquía de unidades y confrontación directa recuerda la esencia de \textit{Stratego}, donde el control del espacio y la gestión de las piezas son determinantes para la victoria. La simplicidad aparente del tablero contrasta con la profundidad estratégica requerida, consolidando a \textit{Into the Breach} como un ejemplo contemporáneo de cómo los principios clásicos de los juegos de estrategia pueden adaptarse eficazmente al medio digital.
+De manera similar, el videojuego \textit{Into the Breach} (Subset Games, 2018) traslada el concepto de estrategia por turnos a un entorno de tablero discretizado donde cada unidad tiene capacidades específicas y limitadas. La mecánica principal consiste en anticipar el comportamiento del enemigo y planificar acciones para proteger objetivos clave, equilibrando riesgo y recompensa en cada turno. Esta combinación de toma de decisiones estrictamente calculada, jerarquía de unidades y confrontación directa recuerda la esencia de \textit{Stratego}, donde el control del espacio y la gestión de las piezas son determinantes para la victoria. La simplicidad aparente del tablero contrasta con la profundidad estratégica requerida, consolidando a \textit{Into the Breach} como un ejemplo contemporáneo de cómo los principios clásicos de los videojuegos de estrategia pueden adaptarse eficazmente al medio digital.
 
 Estas aproximaciones digitales ponen de manifiesto la diversidad de soluciones adoptadas en el diseño de videojuegos de estrategia y sirven como referencia para el desarrollo del TFG. El objetivo del proyecto es combinar la jerarquía de unidades y la confrontación directa propias de \textit{Stratego} con las ventajas del medio digital, manteniendo la tensión estratégica derivada de la información oculta y aprovechando las posibilidades de automatización, accesibilidad y escalabilidad que ofrece el formato de videojuego.
-
-\clearpage
-\section{Motores de desarrollo de videojuegos}
-
-Un motor de videojuegos es un \textit{framework} de desarrollo que proporciona un conjunto integrado de herramientas, librerías y sistemas sobre los que construir un videojuego. Estos motores abstraen gran parte de la complejidad técnica inherente al desarrollo, ofreciendo soluciones ya implementadas para tareas como el renderizado gráfico, la gestión de escenas, el control de entrada del usuario, la simulación de físicas o la exportación a distintas plataformas. Gracias a esta abstracción, el desarrollador puede centrarse principalmente en la lógica del juego, el diseño de mecánicas y la experiencia del usuario.
-
-En la actualidad, el panorama del desarrollo de videojuegos independiente está dominado por diversos motores de videojuegos, entre los que actualmente destacan más tenemos \textbf{Unreal Engine}, \textbf{Unity} y \textbf{Godot}. Los tres cuentan con una amplia presencia tanto en el ámbito profesional como en el
-educativo, y representan enfoques distintos ante el desarrollo.
-
-Unreal Engine, desarrollado por Epic Games, es el motor de referencia en producciones de gran presupuesto y alta exigencia gráfica. Sus sistemas avanzados de renderizado, iluminación y simulación física permiten desarrollar entornos tridimensionales de alta fidelidad visual, lo que lo convierte en la herramienta estándar en la industria AAA. Esta potencia técnica tiene como contrapartida una curva de aprendizaje pronunciada, unos requisitos de hardware elevados y tiempos de compilación considerables, factores que pueden suponer una desventaja significativa en proyectos de pequeña escala o con recursos limitados~\cite{unrealengine_features}.
-
-Unity se ha consolidado como uno de los motores más populares tanto en el ámbito independiente como en el educativo, gracias a su versatilidad para desarrollar videojuegos en dos y tres dimensiones sobre una amplia variedad de plataformas. Cuenta con una comunidad muy extensa, una gran cantidad de documentación y un ecosistema amplio de herramientas y recursos. Sin embargo, su arquitectura interna está históricamente orientada al desarrollo tridimensional, lo que puede introducir una sobrecarga innecesaria en proyectos
-2D más sencillos. Además, la controversia generada en 2023~\cite{unity_runtimefee_apology, unity_runtimefee_cancelled} por una propuesta de tarificación por instalación del juego, que fue ampliamente rechazada por la comunidad de desarrolladores y finalmente revertida, puso en evidencia los riesgos asociados a depender de un motor de código cerrado con modelo de licencia comercial~\cite{unity_overview}.
-
-Godot es un motor de código abierto con licencia MIT que ha experimentado un crecimiento notable en los últimos años, especialmente dentro del desarrollo independiente. Su filosofía se basa en la simplicidad, la
-modularidad y la accesibilidad. A diferencia de Unity, su motor 2D no es una adaptación del motor 3D sino un sistema nativo e independiente, lo que lo convierte en una herramienta especialmente eficiente para el desarrollo de juegos bidimensionales. Su editor ocupa menos de 200~MB, arranca en segundos y permite ciclos de iteración muy rápidos, aspectos especialmente valiosos en proyectos individuales. A esto se suma la ausencia total de costes de licencia y la imposibilidad estructural de que las condiciones de uso cambien de forma
-unilateral, al tratarse de software de código abierto~\cite{godot_features}.
-
-La percepción de Godot como un motor de menor capacidad frente a sus competidores ha quedado desmentida de forma contundente con el lanzamiento de \textit{Slay the Spire~II} (MegaCrit, 2026). El estudio, que había iniciado el desarrollo del juego en Unity, migró el proyecto íntegramente a Godot tras la polémica de 2023, asumiendo reescribir más de dos años de trabajo~\cite{slayspire2_godot}. El resultado ha sido uno de los lanzamientos independientes más exitosos de los últimos años, en sus primeros 3 días en Early Access alcanzó un pico de más de 500.000 jugadores simultáneos en Steam, y en su primera semana superó los tres millones de unidades vendidas~\cite{slayspire2_launch}. Este caso demuestra que Godot es capaz de sustentar productos comerciales de alto nivel cuando el tipo de juego se alinea con sus fortalezas.
-
-La Tabla~\ref{tab:comparativa_motores} resume las principales diferencias entre los tres motores considerando los criterios más relevantes para el contexto de este proyecto.
-
-\begin{table}[H]
-	\centering
-	\begin{tabular}{|l|c|c|c|}
-		\hline
-		\textbf{Criterio} & \textbf{Unreal Engine} & \textbf{Unity} & \textbf{Godot} \\
-		\hline
-		Rendimiento en 3D        & Muy alto   & Alto      & Medio         \\
-		\hline
-		Rendimiento en 2D        & Medio      & Alto      & Muy alto      \\
-		\hline
-		Curva de aprendizaje     & Alta       & Media     & Baja          \\
-		\hline
-		Requisitos de hardware   & Altos      & Medios    & Bajos         \\
-		\hline
-		Modelo de licencia       & Comercial  & Comercial & Código abierto\\
-		\hline
-		Adecuación a proyectos individuales & Media & Alta & Muy alta     \\
-		\hline
-		Ecosistema y comunidad   & Muy amplio & Muy amplio & En crecimiento\\
-		\hline
-	\end{tabular}
-	\caption{Comparativa entre motores de desarrollo de videojuegos}
-	\label{tab:comparativa_motores}
-\end{table}
-
-Tras este análisis, Godot se presenta como el motor más adecuado para el desarrollo de este TFG. Al tratarse de un videojuego de estrategia por turnos en dos dimensiones, con un alcance controlado y desarrollado en un contexto académico individual, las ventajas de Godot en términos de rendimiento nativo en 2D, ligereza, rapidez de iteración y ausencia de costes de licencia superan con claridad sus limitaciones en otros ámbitos. Su menor ecosistema de extensiones no supone ninguna restricción para un proyecto de esta escala, y su modelo de código abierto ofrece una estabilidad y previsibilidad que los motores comerciales no pueden garantizar.
-
-

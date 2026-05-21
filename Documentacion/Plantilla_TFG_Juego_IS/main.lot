@@ -1,22 +1,31 @@
 \babel@toc {spanish}{}\relax 
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {2.1}{\ignorespaces Comparativa entre motores de desarrollo de videojuegos}}{17}{table.caption.12}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {4.1}{\ignorespaces Iteraciones planificadas, estimación de horas y fechas de finalización}}{31}{table.caption.14}%
-\contentsline {table}{\numberline {4.2}{\ignorespaces Riesgos identificados y planes de contingencia}}{33}{table.caption.16}%
-\contentsline {table}{\numberline {4.3}{\ignorespaces Herramientas}}{35}{table.caption.17}%
-\contentsline {table}{\numberline {4.4}{\ignorespaces Desglose de costes estimados del proyecto en contexto profesional}}{38}{table.caption.18}%
+\contentsline {table}{\numberline {4.1}{\ignorespaces Correspondencia entre las fases de la metodología y la ordenación de las tareas en la planificación}}{26}{table.caption.13}%
+\contentsline {table}{\numberline {4.2}{\ignorespaces Distribución ajustada de horas por tareas globales e iteraciones del proyecto}}{30}{table.caption.14}%
+\contentsline {table}{\numberline {4.3}{\ignorespaces Riesgos identificados y planes de contingencia}}{32}{table.caption.16}%
+\contentsline {table}{\numberline {4.4}{\ignorespaces Comparativa entre motores de desarrollo de videojuegos}}{35}{table.caption.17}%
+\contentsline {table}{\numberline {4.5}{\ignorespaces Herramientas empleadas en el desarrollo del proyecto}}{37}{table.caption.18}%
+\contentsline {table}{\numberline {4.6}{\ignorespaces Desglose de costes estimados del proyecto en un contexto profesional}}{49}{table.caption.33}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {5.1}{\ignorespaces Lista de casos de uso del sistema}}{42}{table.caption.20}%
-\contentsline {table}{\numberline {5.2}{\ignorespaces CU-01: Jugar partida}}{43}{table.caption.21}%
-\contentsline {table}{\numberline {5.3}{\ignorespaces CU-01: Jugar partida}}{44}{table.caption.22}%
-\contentsline {table}{\numberline {5.4}{\ignorespaces CU-03: Resolver combate}}{45}{table.caption.23}%
-\contentsline {table}{\numberline {5.5}{\ignorespaces CU-04: Consultar reglas}}{46}{table.caption.24}%
-\contentsline {table}{\numberline {5.6}{\ignorespaces CU-05: Consultar opciones}}{47}{table.caption.25}%
+\contentsline {table}{\numberline {5.1}{\ignorespaces Lista de casos de uso del sistema}}{54}{table.caption.35}%
+\contentsline {table}{\numberline {5.2}{\ignorespaces CU-01: Jugar partida}}{55}{table.caption.36}%
+\contentsline {table}{\numberline {5.3}{\ignorespaces CU-01: Jugar partida}}{56}{table.caption.37}%
+\contentsline {table}{\numberline {5.4}{\ignorespaces CU-03: Resolver combate}}{57}{table.caption.38}%
+\contentsline {table}{\numberline {5.5}{\ignorespaces CU-04: Consultar reglas}}{58}{table.caption.39}%
+\contentsline {table}{\numberline {5.6}{\ignorespaces CU-05: Consultar opciones}}{59}{table.caption.40}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
+\contentsline {table}{\numberline {7.1}{\ignorespaces Pruebas del bloque 1: Despliegue inicial (RF01, RF02, CU-01)}}{86}{table.caption.66}%
+\contentsline {table}{\numberline {7.2}{\ignorespaces Pruebas del bloque 2: Movimiento (RF03, RF04, RF07, CU-02)}}{87}{table.caption.67}%
+\contentsline {table}{\numberline {7.3}{\ignorespaces Pruebas del bloque 3: Combate (RF04, RF05, RF09, CU-03)}}{88}{table.caption.68}%
+\contentsline {table}{\numberline {7.4}{\ignorespaces Pruebas del bloque 4: Condiciones de victoria (RF08, CU-02)}}{89}{table.caption.69}%
+\contentsline {table}{\numberline {7.5}{\ignorespaces Pruebas del bloque 5: Interfaz y feedback (RF09, RF10, RNF04)}}{90}{table.caption.70}%
+\contentsline {table}{\numberline {7.6}{\ignorespaces Pruebas del bloque 6: Menús y navegación (RF11, RF12, RF13, CU-04, CU-05)}}{91}{table.caption.71}%
+\contentsline {table}{\numberline {7.7}{\ignorespaces Pruebas del bloque 7: Comportamiento del bot (RF06)}}{92}{table.caption.72}%
+\contentsline {table}{\numberline {7.8}{\ignorespaces Pruebas del bloque 8: Requisitos no funcionales (RNF01--RNF04)}}{93}{table.caption.73}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

@@ -64,6 +64,7 @@
 \usepackage{makecell}
 \usepackage{longtable}
 \usepackage{acronym}
+\usepackage{array}
 \usepackage{xurl}
 \usepackage[colorlinks]{hyperref}
 \usepackage{breakurl}
@@ -205,7 +206,8 @@
 
 
 \setlength{\parskip}{10pt plus 1pt minus 1pt}
-
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
 \newcolumntype{L}{>{\raggedright\arraybackslash}X} % for ragged-right material
 \newcolumntype{Z}{>{\hsize=\dimexpr2\hsize-29\tabcolsep+\arrayrulewidth\relax}X}
 \newcolumntype{P}{p{0.22\textwidth}L p{0.78\textwidth}L}

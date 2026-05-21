@@ -1,10 +1,10 @@
-\chapter{Concepto del videojuego}
+\chapter{Descripción del juego}
 
 En este capítulo se describe el diseño general de \textit{NeuroForge}, abordando sus mecánicas principales, reglas de juego y los elementos que definen su experiencia estratégica. Se detallan el funcionamiento del sistema de juego, la interacción con el jugador, la ambientación y el público al que va dirigido.
 
-% ----------------------------------------------------------------
-
+% ─────────────────────────────────────────────────────────────────────────────
 \section{Resumen del juego}
+% ─────────────────────────────────────────────────────────────────────────────
 
 \textit{NeuroForge} es un videojuego de estrategia por turnos para un jugador inspirado en el clásico \textit{Stratego}. Dos bandos se enfrentan en un tablero de $10 \times 10$ casillas: el jugador humano y un oponente controlado por la máquina. El objetivo es destruir el \textbf{núcleo de energía} rival o dejarlo sin movimientos posibles.
 
@@ -18,9 +18,9 @@ En cada turno, el jugador puede realizar una única acción:, mover una pieza a 
 	\item Ciertas piezas tienen reglas especiales que se detallan más adelante.
 \end{itemize}
 
-% ----------------------------------------------------------------
-
+% ─────────────────────────────────────────────────────────────────────────────
 \section{Mecánicas}
+% ─────────────────────────────────────────────────────────────────────────────
 
 Gran parte del atractivo de \textit{NeuroForge} reside en el desconocimiento mutuo de la identidad de las piezas rivales. Esto convierte la deducción y el engaño en elementos estratégicos centrales: el jugador debe inferir la disposición del enemigo a partir de su comportamiento, al tiempo que protege la información sobre sus propias piezas.
 
@@ -116,13 +116,13 @@ Al desplazarse a una casilla vacía, el turno finaliza y pasa al oponente. Al de
 
 Una vez concluida la acción del jugador, el bot ejecuta su turno de forma automática. El jugador observa el movimiento del oponente y recupera el control al inicio de su siguiente turno.
 
-% ----------------------------------------------------------------
-
+% ─────────────────────────────────────────────────────────────────────────────
 \section{Ambientación}
+% ─────────────────────────────────────────────────────────────────────────────
 
 \textit{NeuroForge} sitúa al jugador en un universo de ciencia ficción futurista en el que las guerras se libran mediante ejércitos de inteligencias artificiales, drones y armamento avanzado. El título hace referencia al proceso de forjar una red neuronal, cada partida representa un ciclo de entrenamiento intensivo en el que una IA militar es sometida a prueba, refinada y preparada para el combate real. Los enfrentamientos no tienen lugar en un campo de batalla físico, sino dentro de un programa de simulación de combate de alta fidelidad, desarrollado para evaluar y optimizar las capacidades estratégicas de estas inteligencias antes de su despliegue. Cada simulación es un escenario controlado en el que las unidades son instancias virtuales, los combates son pruebas de rendimiento y cada resultado, victoria o derrota, alimenta el proceso de entrenamiento de la IA, ajustando sus parámetros para el siguiente ciclo.
 
-\subsection*{Unidades y estructuras}
+\subsection{Unidades y estructuras}
 
 \begin{itemize}
 	\item \textbf{Núcleo de energía:} Centro vital de cada bando. Su destrucción interrumpe el suministro energético de todas las unidades y supone la derrota inmediata.
@@ -151,7 +151,7 @@ Una vez concluida la acción del jugador, el bot ejecuta su turno de forma autom
 	\item \textbf{Phantom:} Dron de infiltración diseñado con un único propósito: destruir a la \textbf{Máquina de guerra} enemiga mediante malware especializado. Es la unidad más débil en un combate convencional, pero puede destruir instantáneamente a la \textbf{Máquina de guerra} si ataca primero.
 \end{itemize}
 
-\subsection*{Escenario}
+\subsection{Escenario}
 
 Los escenarios de entrenamiento se generan a partir de registros digitalizados de antiguos campos de batalla. Las zonas intransitables del tablero representan sectores de interferencia energética crítica: áreas contaminadas por los residuos de armamento avanzado de conflictos anteriores, cuyos datos han sido incorporados al entorno simulado como obstáculos permanentes. Dentro de estos sectores, las descargas residuales y las interferencias electromagnéticas imposibilitan el funcionamiento de cualquier unidad, impidiendo su entrada o tránsito. En la simulación, como en la realidad, estas zonas solo se vuelven transitables con el tiempo, una vez que la contaminación energética se disipa de forma natural.
 
@@ -167,8 +167,18 @@ El diseño actual se centra en este tablero como escenario principal. No obstant
 
 \section{Audiencia}
 
-\textit{NeuroForge} está orientado a jugadores con interés en la estrategia por turnos, tanto quienes tienen experiencia previa en el género como quienes quieran adentrarse en él por primera vez. El perfil del público objetivo incluye a personas con afinidad por juegos de lógica, planificación y táctica, como el ajedrez o títulos clásicos de estrategia, con independencia de su edad.
+El perfil del jugador objetivo se divide principalmente en dos grandes segmentos con necesidades de interacción diferenciadas. Por un lado, se encuentran los jugadores experimentados, usuarios habituados a títulos clásicos de tablero como el ajedrez o \textit{Stratego}, o bien a videojuegos de estrategia táctica contemporáneos. Este perfil busca una alta profundidad estratégica, desafíos intelectuales complejos y mecánicas basadas en la gestión avanzada de la información oculta y la anticipación de los movimientos del rival. Por otro lado, el juego acoge a los jugadores casuales, personas que, sin tener una amplia experiencia previa en el género, se sienten atraídas por la temática de simulación cibernética o por la resolución de problemas lógicos. 
 
-El diseño prioriza la claridad en las mecánicas y la profundidad en la toma de decisiones, buscando que el juego sea accesible sin sacrificar la complejidad estratégica. Aunque el estilo visual y la ambientación pueden resultar especialmente atractivos para un público joven y adulto, las reglas no presentan ninguna barrera de entrada significativa para jugadores de cualquier franja de edad.
+Para satisfacer las necesidades de ambos perfiles simultáneamente, el diseño del software adopta el principio metodológico de \textit{fácil de aprender, difícil de dominar}. Esto se traduce en la implementación de una interfaz de usuario limpia e intuitiva que reduce drásticamente la carga cognitiva inicial, combinada con una lógica de juego subyacente que ofrece una alta complejidad en la toma de decisiones conforme avanza la partida. De este modo, la claridad en las mecánicas no sacrifica en ningún momento la profundidad táctica del sistema.
 
-En cuanto a la clasificación por edades, el contenido del juego no incluye violencia explícita, lenguaje ofensivo ni temáticas sensibles. Atendiendo a los criterios del sistema europeo \textit{Pan European Game Information} (PEGI), el videojuego podría encuadrarse en una clasificación de \textbf{PEGI~3} o \textbf{PEGI~7}, al tratarse de una experiencia estratégica abstracta sin representaciones realistas de violencia.
+Con el fin de asegurar que el producto sea apto para su distribución comercial y académica en el mercado europeo, el contenido de \textit{NeuroForge} se ha evaluado bajo los criterios estandarizados del sistema \textit{Pan European Game Information} (PEGI). Este mecanismo de autorregulación garantiza un entorno seguro e indexa el software según la idoneidad de sus contenidos por edades. Tras analizar los descriptores de contenido oficiales de este organismo regulador, se determina que el videojuego se encuadra de forma óptima en una clasificación de \textbf{PEGI~3}, contemplando \textbf{PEGI~7} como el límite superior debido a la naturaleza abstracta del conflicto.
+
+Los argumentos de ingeniería y diseño que justifican esta catalogación técnica se fundamentan en tres pilares esenciales:
+
+En primer lugar, se constata la total ausencia de violencia explícita, realista o gráfica. Aunque el núcleo del videojuego implica el enfrentamiento entre unidades en un tablero discretizado y la consiguiente eliminación de las piezas del oponente, este proceso se representa de forma puramente abstracta y digital mediante metáforas informáticas. No existen representaciones de sangre, daño físico ni elementos que puedan inducir al miedo o al terror en menores de edad.
+
+En segundo lugar, se garantiza la inexistencia de lenguaje inapropiado o soez. El sistema se ha diseñado de manera aislada y local, por lo que no integra canales de comunicación abierta como chats de voz o texto sin moderar, ni tampoco incorpora líneas de diálogo o textos pregrabados que contengan expresiones vulgares, blasfemias o insultos.
+
+En tercer lugar, el software carece por completo de elementos de monetización o juego de azar. La arquitectura de la aplicación no implementa pasarelas de pago, mecánicas de compras integradas ni sistemas de recompensa aleatoria, cumpliendo de este modo de manera estricta con las recientes actualizaciones normativas del estándar PEGI respecto a la protección financiera de los usuarios.
+
+La convergencia entre un diseño mecánico accesible y una estricto seguimiento de los estándares de contenido seguro posiciona a \textit{NeuroForge} como un producto de software versátil. El sistema logra consolidarse como una experiencia de entretenimiento intelectualmente estimulante y competitiva para los entusiastas de la estrategia, manteniendo al mismo tiempo un entorno tecnológico seguro, transparente y libre de barreras para cualquier franja de edad.
