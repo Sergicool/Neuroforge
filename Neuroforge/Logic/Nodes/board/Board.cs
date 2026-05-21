@@ -223,99 +223,6 @@ public partial class Board : Node2D
             await ResolveCombat(piece, to.Occupant);
     }
 
-    // Devuelve el estado del tablero como array de floats para la IA del bot.
-    // Estructura de 3 canales perfectamente alineada con la nueva CNN en Python.
-    // Formato plano equivalente a tensores: [Canal, Fila, Columna]
-    public float[] GetState()
-    {
-        const int CHANNELS = 3;
-        const float MAX_RANK = 10f;
-
-        // 1. Detectar dimensiones reales del tablero dinámicamente (10x10 por defecto)
-        int rows = 0, cols = 0;
-        foreach (var pos in _grid.Keys)
-        {
-            rows = Mathf.Max(rows, pos.Y + 1);
-            cols = Mathf.Max(cols, pos.X + 1);
-        }
-
-        float[] state = new float[CHANNELS * rows * cols];
-
-        // 2. Función matemática de mapeo indexado (Orden: Canales -> Filas -> Columnas)
-        // Esto replica exactamente cómo PyTorch aplana internamente un tensor (C, H, W)
-        int GetIndex(int channel, int row, int col)
-        {
-            return (channel * rows * cols) + (row * cols) + col;
-        }
-
-        // 3. Rellenar la información procesando cada casilla
-        foreach (Tile tile in AllTiles)
-        {
-            int r = tile.GridPosition.Y;
-            int c = tile.GridPosition.X;
-
-            // --- CANAL 1: Transitabilidad (Geografía del mapa) ---
-            if (tile.TileType == TileType.NO_PASSABLE)
-            {
-                state[GetIndex(1, r, c)] = -1.0f; // Obstáculo / Lago
-                // Si la casilla es intransitable, terminamos aquí para esta celda
-                continue;
-            }
-            else
-            {
-                state[GetIndex(1, r, c)] = 1.0f;  // Terreno transitable libre
-            }
-
-            // Si no hay ninguna pieza en esta casilla, pasamos a la siguiente
-            if (!tile.IsOccupied) continue;
-
-            Piece p = tile.Occupant;
-
-            // --- CANAL 0: Identidad y Rango de las Piezas ---
-            if (p.PlayerOwner == PieceOwner.BOT)
-            {
-                // Piezas propias (Valores positivos)
-                if (p.Type == PieceType.ENERGY_CORE)
-                    state[GetIndex(0, r, c)] = 0.05f; // Un valor fijo único para tu Core
-                else if (p.Type == PieceType.TURRET)
-                    state[GetIndex(0, r, c)] = 0.1f;  // Un valor fijo único para tu Torreta
-                else
-                    state[GetIndex(0, r, c)] = p.Rank / MAX_RANK; // Rango normalizado (0.1 a 1.0)
-            }
-            else // PLAYER (El rival desde la perspectiva del Bot)
-            {
-                // Piezas enemigas (Valores negativos / Ocultación)
-                if (!p.IsRevealedToBot)
-                {
-                    state[GetIndex(0, r, c)] = -0.05f; // "Sé que hay algo aquí, pero está oculto"
-                }
-                else
-                {
-                    // Si ya se reveló en combate, el Bot conoce su rango real en negativo
-                    if (p.Type == PieceType.ENERGY_CORE)
-                        state[GetIndex(0, r, c)] = -0.05f;
-                    else if (p.Type == PieceType.TURRET)
-                        state[GetIndex(0, r, c)] = -0.1f;
-                    else
-                        state[GetIndex(0, r, c)] = -(p.Rank / MAX_RANK);
-                }
-            }
-
-            // --- CANAL 2: Movilidad de la pieza ---
-            // Guardamos 1.0 si la pieza puede desplazarse en su turno, 0.0 si es estática
-            if (p.Type != PieceType.ENERGY_CORE && p.Type != PieceType.TURRET && p.CanMove)
-            {
-                state[GetIndex(2, r, c)] = 1.0f;
-            }
-            else
-            {
-                state[GetIndex(2, r, c)] = 0.0f;
-            }
-        }
-
-        return state;
-    }
-
     // ==================== Generación del tablero ====================
 
     public Vector2 GetBoardCenter()
@@ -364,5 +271,100 @@ public partial class Board : Node2D
             { X: 3, Y: 0 } => TileType.BOT_DEPLOYMENT,
             _ => TileType.NO_PASSABLE // Por defecto
         };
+    }
+
+
+    // GetState para el entorno de GYM
+
+    private const float NORM = 12f;
+    private const float OBS_TURRET = 11f;
+    private const float OBS_ENERGY = 12f;
+
+    private const int ROWS = 6;
+    private const int COLS = 6;
+
+    public float[][,] GetCurrentStateFlattened()
+    {
+        float[,] channel0 = new float[ROWS, COLS];
+        float[,] channel1 = new float[ROWS, COLS];
+        float[,] channel2 = new float[ROWS, COLS];
+
+        foreach (var (coords, tile) in _grid)
+        {
+            if (coords.Y >= ROWS || coords.X >= COLS) continue;
+
+            if (tile.TileType == TileType.NO_PASSABLE)
+            {
+                channel1[coords.Y, coords.X] = -1.0f;
+            }
+            else
+            {
+                channel1[coords.Y, coords.X] = 0.0f;
+            }
+        }
+
+        int currentTurn = _game.TurnNumber;
+
+        foreach (var (coords, tile) in _grid)
+        {
+            if (coords.Y >= ROWS || coords.X >= COLS) continue;
+
+            if (tile.IsOccupied)
+            {
+                Piece piece = tile.Occupant;
+                bool isBotPiece = (piece.PlayerOwner == PieceOwner.BOT);
+
+                if (isBotPiece)
+                {
+                    if (piece.Type == PieceType.TURRET) channel0[coords.Y, coords.X] = OBS_TURRET / NORM;
+                    else if (piece.Type == PieceType.ENERGY_CORE) channel0[coords.Y, coords.X] = OBS_ENERGY / NORM;
+                    else channel0[coords.Y, coords.X] = (float)piece.Rank / NORM;
+                }
+                else
+                {
+                    if (piece.IsRevealedToBot)
+                    {
+                        if (piece.Type == PieceType.TURRET) channel0[coords.Y, coords.X] = -OBS_TURRET / NORM;
+                        else if (piece.Type == PieceType.ENERGY_CORE) channel0[coords.Y, coords.X] = -OBS_ENERGY / NORM;
+                        else channel0[coords.Y, coords.X] = -(float)piece.Rank / NORM;
+                    }
+                    else
+                    {
+                        channel0[coords.Y, coords.X] = 0.0f;
+                    }
+                }
+
+                if (!isBotPiece && !piece.IsRevealedToBot)
+                {
+                    channel1[coords.Y, coords.X] = 0.5f;
+                }
+                else
+                {
+                    channel1[coords.Y, coords.X] = 1.0f;
+                }
+
+                if (isBotPiece && piece.CanMove)
+                {
+                    if (HasAnyLegalMove(piece, currentTurn))
+                    {
+                        channel2[coords.Y, coords.X] = 1.0f;
+                    }
+                }
+            }
+        }
+
+        return new float[][,] { channel0, channel1, channel2 };
+    }
+
+    private bool HasAnyLegalMove(Piece piece, int turn)
+    {
+        foreach (Tile tile in AllTiles)
+        {
+            if (MovementSystem.CanMove(piece, tile, turn, this))
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }

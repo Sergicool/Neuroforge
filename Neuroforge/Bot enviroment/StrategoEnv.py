@@ -14,122 +14,135 @@ import torch as th
 import torch.nn as nn
 from stable_baselines3.common.torch_layers import BaseFeaturesExtractor
 
+# =============================================================================
+# TABLERO
+# =============================================================================
+
 P  = 0   # PASSABLE
 NP = 1   # NO_PASSABLE
 PD = 2   # PLAYER_DEPLOYMENT
 BD = 3   # BOT_DEPLOYMENT
 
+# BOARD = np.array([
+#     [BD, BD, BD, BD, BD, BD, BD, BD, BD, BD],
+#     [BD, BD, BD, BD, BD, BD, BD, BD, BD, BD],
+#     [BD, BD, BD, BD, BD, BD, BD, BD, BD, BD],
+#     [BD, BD, BD, BD, BD, BD, BD, BD, BD, BD],
+#     [ P,  P, NP, NP,  P,  P, NP, NP,  P,  P],
+#     [ P,  P, NP, NP,  P,  P, NP, NP,  P,  P],
+#     [PD, PD, PD, PD, PD, PD, PD, PD, PD, PD],
+#     [PD, PD, PD, PD, PD, PD, PD, PD, PD, PD],
+#     [PD, PD, PD, PD, PD, PD, PD, PD, PD, PD],
+#     [PD, PD, PD, PD, PD, PD, PD, PD, PD, PD],
+# ], dtype=np.int8)
+
 BOARD = np.array([
-    [BD, BD, BD, BD, BD, BD, BD, BD, BD, BD],
-    [BD, BD, BD, BD, BD, BD, BD, BD, BD, BD],
-    [BD, BD, BD, BD, BD, BD, BD, BD, BD, BD],
-    [BD, BD, BD, BD, BD, BD, BD, BD, BD, BD],
-    [ P,  P, NP, NP,  P,  P, NP, NP,  P,  P],
-    [ P,  P, NP, NP,  P,  P, NP, NP,  P,  P],
-    [PD, PD, PD, PD, PD, PD, PD, PD, PD, PD],
-    [PD, PD, PD, PD, PD, PD, PD, PD, PD, PD],
-    [PD, PD, PD, PD, PD, PD, PD, PD, PD, PD],
-    [PD, PD, PD, PD, PD, PD, PD, PD, PD, PD],
+    [BD, BD, BD, BD, BD, BD],
+    [BD, BD, BD, BD, BD, BD],
+    [ P,  P, NP, NP,  P,  P],
+    [ P,  P, NP, NP,  P,  P],
+    [PD, PD, PD, PD, PD, PD],
+    [PD, PD, PD, PD, PD, PD],
 ], dtype=np.int8)
 
+# Dimensiones del tablero
 ROWS, COLS = BOARD.shape
 
-PASSABLE          = 0
-NO_PASSABLE       = 1
-PLAYER_DEPLOYMENT = 2
-BOT_DEPLOYMENT    = 3
-
 # =============================================================================
-# PIEZAS — rangos y cantidades
+# PIEZAS  (fiel a PiecesData.cs)
 # =============================================================================
 
 PLAYER = 0
 BOT    = 1
 
-RANK_ENERGY_CORE = 0
-RANK_TURRET      = 0
-RANK_PHANTOM     = 1
-RANK_SCOUT       = 2
-RANK_SABOTEUR    = 3
-RANK_SOLDIER     = 4
-RANK_CYBORG      = 5
-RANK_CANINE      = 6
-RANK_SENTINEL    = 7
-RANK_MECHA       = 8
-RANK_NOVA        = 9
-RANK_WAR_MACHINE = 10
+# Strings de tipos de piezas
+ENERGY_CORE = "ENERGY_CORE"
+TURRET      = "TURRET"
+WAR_MACHINE = "WAR_MACHINE"
+NOVA        = "NOVA"
+MECHA       = "MECHA"
+SENTINEL    = "SENTINEL"
+CANINE      = "CANINE"
+CYBORG      = "CYBORG"
+SOLDIER     = "SOLDIER"
+SABOTEUR    = "SABOTEUR"
+SCOUT       = "SCOUT"
+PHANTOM     = "PHANTOM"
 
-MAX_RANK = float(RANK_WAR_MACHINE)
+# PieceData (tipo, rango, puede_moverse, cantidad)
+# ARMY = [
+#     (ENERGY_CORE,  0, False,  1),
+#     (TURRET,       0, False,  6),
+#     (WAR_MACHINE, 10, True,   1),
+#     (NOVA,         9, True,   1),
+#     (MECHA,        8, True,   2),
+#     (SENTINEL,     7, True,   3),
+#     (CANINE,       6, True,   4),
+#     (CYBORG,       5, True,   4),
+#     (SOLDIER,      4, True,   4),
+#     (SABOTEUR,     3, True,   5),
+#     (SCOUT,        2, True,   8),
+#     (PHANTOM,      1, True,   1),
+# ]
 
-PIECE_TYPE_ENERGY_CORE = "ENERGY_CORE"
-PIECE_TYPE_TURRET      = "TURRET"
-PIECE_TYPE_PHANTOM     = "PHANTOM"
-PIECE_TYPE_SCOUT       = "SCOUT"
-PIECE_TYPE_SABOTEUR    = "SABOTEUR"
-PIECE_TYPE_SOLDIER     = "SOLDIER"
-PIECE_TYPE_CYBORG      = "CYBORG"
-PIECE_TYPE_CANINE      = "CANINE"
-PIECE_TYPE_SENTINEL    = "SENTINEL"
-PIECE_TYPE_MECHA       = "MECHA"
-PIECE_TYPE_NOVA        = "NOVA"
-PIECE_TYPE_WAR_MACHINE = "WAR_MACHINE"
-
-# Composicion del ejercito: (tipo, rango, puede_moverse, cantidad)
-ARMY_COMPOSITION = [
-    (PIECE_TYPE_ENERGY_CORE, RANK_ENERGY_CORE, False, 1),
-    (PIECE_TYPE_TURRET,      RANK_TURRET,      False, 6),
-    (PIECE_TYPE_WAR_MACHINE, RANK_WAR_MACHINE, True,  1),
-    (PIECE_TYPE_NOVA,        RANK_NOVA,        True,  1),
-    (PIECE_TYPE_MECHA,       RANK_MECHA,       True,  2),
-    (PIECE_TYPE_SENTINEL,    RANK_SENTINEL,    True,  3),
-    (PIECE_TYPE_CANINE,      RANK_CANINE,      True,  4),
-    (PIECE_TYPE_CYBORG,      RANK_CYBORG,      True,  4),
-    (PIECE_TYPE_SOLDIER,     RANK_SOLDIER,     True,  4),
-    (PIECE_TYPE_SABOTEUR,    RANK_SABOTEUR,    True,  5),
-    (PIECE_TYPE_SCOUT,       RANK_SCOUT,       True,  8),
-    (PIECE_TYPE_PHANTOM,     RANK_PHANTOM,     True,  1),
+ARMY = [
+    (ENERGY_CORE,  0, False,  1),
+    (TURRET,       0, False,  1),
+    (WAR_MACHINE, 10, True,   1),
+    (NOVA,         9, True,   1),
+    (MECHA,        8, True,   1),
+    (SENTINEL,     7, True,   1),
+    (CANINE,       6, True,   1),
+    (CYBORG,       5, True,   1),
+    (SOLDIER,      4, True,   1),
+    (SABOTEUR,     3, True,   1),
+    (SCOUT,        2, True,   1),
+    (PHANTOM,      1, True,   1),
 ]
-# Total = 40 piezas
-ARMY_SIZE = sum(count for _, _, _, count in ARMY_COMPOSITION)
+
+# Total de piezas
+ARMY_SIZE = sum(c for _, _, _, c in ARMY)
 
 # =============================================================================
-# PIEZA
+# CLASE PIEZA
 # =============================================================================
 
 class Piece:
-    def __init__(self, piece_type: str, rank: int, owner: int,
-                 can_move: bool, revealed: bool = False):
-        self.piece_type     = piece_type
+    """Replica los campos relevantes de Piece.cs para el entrenamiento."""
+
+    __slots__ = ("piece_type", "rank", "owner", "can_move", "revealed_to_bot", "_history", "_turn_history")
+
+    def __init__(self, piece_type: str, rank: int, owner: int, can_move: bool):
+        self.piece_type      = piece_type
         self.rank           = rank
         self.owner          = owner
         self.can_move       = can_move
-        self.revealed       = revealed
-        self.scout_revealed = False
+        self.revealed_to_bot = (owner == BOT) 
+        self._history: list = [] 
+        self._turn_history: list = []
 
-        # Historial: lista de (from_pos, to_pos), maximo 3 entradas
-        self._move_history: list = []
+    def register_move(self, from_pos: tuple, to_pos: tuple, current_turn: int):
+        self._history.append((from_pos, to_pos))
+        self._turn_history.append(current_turn)
+        if len(self._history) > 3:
+            self._history.pop(0)
+            self._turn_history.pop(0)
 
-    def register_move(self, from_pos: tuple, to_pos: tuple):
-        self._move_history.append((from_pos, to_pos))
-        if len(self._move_history) > 3:
-            self._move_history.pop(0)
-
-    def is_oscillating(self, from_pos: tuple, to_pos: tuple) -> bool:
-        """
-        True si este movimiento seria la 4a repeticion de la oscilacion A<->B.
-        Patron en historial: A->B, B->A, A->B  +  intento actual B->A.
-        """
-        if len(self._move_history) < 3:
+    def is_oscillating(self, from_pos: tuple, to_pos: tuple, current_turn: int) -> bool:
+        if len(self._history) < 3:
             return False
-        h = self._move_history
-        tile_a = h[0][0]
-        tile_b = h[0][1]
+        
+        # Verificar si los movimientos fueron en turnos consecutivos
+        if self._turn_history[-1] != current_turn - 1 or self._turn_history[-2] != current_turn - 2:
+            return False
+
+        h = self._history
+        a0, b0 = h[0][0], h[0][1]
         return (
-            h[0] == (tile_a, tile_b) and
-            h[1] == (tile_b, tile_a) and
-            h[2] == (tile_a, tile_b) and
-            from_pos == tile_b and
-            to_pos   == tile_a
+            h[0] == (a0, b0) and
+            h[1] == (b0, a0) and
+            h[2] == (a0, b0) and
+            from_pos == b0 and to_pos == a0
         )
 
 # =============================================================================
@@ -141,468 +154,525 @@ DEFENDER_DIES = 1
 BOTH_DIE      = 2
 
 def resolve_combat(attacker: Piece, defender: Piece) -> int:
-    """
-      1. TURRET defensora destruye todo, SALVO al SABOTEUR.
-      2. PHANTOM atacando a WAR_MACHINE siempre gana.
-      3. Regla general: mayor rango gana.
-      4. Mismo rango: empate, ambas eliminadas.
-    """
-    attacker.revealed = True
-    defender.revealed = True
+    # TURRET pierde solo contra SABOTEUR
+    if defender.piece_type == TURRET:
+        return DEFENDER_DIES if attacker.piece_type == SABOTEUR else ATTACKER_DIES
 
-    if defender.piece_type == PIECE_TYPE_TURRET:
-        return (DEFENDER_DIES if attacker.piece_type == PIECE_TYPE_SABOTEUR
-                else ATTACKER_DIES)
-
-    if (attacker.piece_type == PIECE_TYPE_PHANTOM and
-            defender.piece_type == PIECE_TYPE_WAR_MACHINE):
+    # PHANTOM gana si ataca a WAR_MACHINE
+    if attacker.piece_type == PHANTOM and defender.piece_type == WAR_MACHINE:
         return DEFENDER_DIES
 
-    if attacker.rank > defender.rank:
-        return DEFENDER_DIES
-    if attacker.rank < defender.rank:
-        return ATTACKER_DIES
+    # Resolucion por rango
+    if attacker.rank > defender.rank: return DEFENDER_DIES
+    if attacker.rank < defender.rank: return ATTACKER_DIES
+
+    # Empate
     return BOTH_DIE
-
-def combat_reward(piece: Piece, is_turret: bool = False) -> float:
-    """Recompensa por capturar una pieza, normalizada a (0, 1]."""
-    if is_turret:
-        return 0.25
-    if piece.rank == 0:
-        return 0.01
-    return round(math.log2(piece.rank + 1) / math.log2(MAX_RANK + 1), 3)
 
 # =============================================================================
 # MOVIMIENTO
 # =============================================================================
 
-DIRECTIONS = [(-1, 0), (1, 0), (0, -1), (0, 1)]
+DIRS = [(-1, 0), (1, 0), (0, -1), (0, 1)]
 
-def is_passable(r: int, c: int) -> bool:
-    if r < 0 or r >= ROWS or c < 0 or c >= COLS:
-        return False
-    return BOARD[r, c] != NO_PASSABLE
+def is_passable(row: int, col: int) -> bool:
+    return 0 <= row < ROWS and 0 <= col < COLS and BOARD[row, col] != NP
 
-
-def can_move(piece: Piece, from_pos: tuple, to_pos: tuple, pieces: dict) -> bool:
-    """Comprueba si el movimiento es legal."""
-    if not piece.can_move:
+def can_move(piece: Piece, from_pos: tuple, to_pos: tuple, pieces: dict, current_turn: int) -> bool:
+    # Mismo origen-destino
+    if not piece.can_move or from_pos == to_pos:
         return False
-    if from_pos == to_pos:
-        return False
+    
     r2, c2 = to_pos
+    # No es transitable
     if not is_passable(r2, c2):
         return False
-    target    = pieces.get(to_pos)
-    is_attack = target is not None
+    
+    target = pieces.get(to_pos)
+    # No hay una pieza aliada
     if target is not None and target.owner == piece.owner:
         return False
-    if not is_attack and piece.is_oscillating(from_pos, to_pos):
+    
+    # Anti-oscilación (Incluyendo ataques)
+    if piece.is_oscillating(from_pos, to_pos, current_turn):
         return False
-    if piece.piece_type == PIECE_TYPE_SCOUT:
-        return _scout_path_valid(from_pos, to_pos, pieces, piece.owner)
+    
+    # Movimiento de scout
+    if piece.piece_type == SCOUT:
+        return _scout_valid(from_pos, to_pos, pieces, piece.owner)
+    
     r1, c1 = from_pos
+    # Movimiento ortogonal
     return abs(r1 - r2) + abs(c1 - c2) == 1
 
-
-def _scout_path_valid(from_pos, to_pos, pieces, owner) -> bool:
-    """Comprueba si el movimiento del scout es valido."""
+def _scout_valid(from_pos, to_pos, pieces, owner) -> bool:
     r1, c1 = from_pos
     r2, c2 = to_pos
+    
+    # Movimiento en linea recta obligatorio
     if r1 != r2 and c1 != c2:
         return False
-    dr    = int(np.sign(r2 - r1))
-    dc    = int(np.sign(c2 - c1))
-    steps = max(abs(r2 - r1), abs(c2 - c1))
-    for step in range(1, steps + 1):
-        r = r1 + step * dr
-        c = c1 + step * dc
+    
+    dr = int(np.sign(r2 - r1))
+    dc = int(np.sign(c2 - c1))
+    
+    dist = abs(r2 - r1) + abs(c2 - c1)
+    r, c = r1 + dr, c1 + dc
+    
+    for _ in range(dist):
         if not is_passable(r, c):
             return False
-        occupant = pieces.get((r, c))
-        if occupant is not None:
-            if occupant.owner == owner:
-                return False
-            if (r, c) != to_pos:
-                return False
-            return True
+            
+        occ = pieces.get((r, c))
+        if occ is not None:
+            if occ.owner == owner:   
+                return False   # Aliado bloquea el camino o el destino
+            if (r, c) != to_pos:     
+                return False   # Enemigo en medio
+            return True        # Enemigo en destino
+            
         if (r, c) == to_pos:
-            return True
+            return True        # Destino libre
+            
+        r += dr
+        c += dc
+
     return False
 
-
-def get_all_valid_moves(piece: Piece, from_pos: tuple, pieces: dict) -> list:
-    valid = []
-    if piece.piece_type == PIECE_TYPE_SCOUT:
+def valid_moves(piece: Piece, pos: tuple, pieces: dict, current_turn: int) -> list:
+    moves = []
+    if piece.piece_type == SCOUT:
         for r in range(ROWS):
             for c in range(COLS):
                 to = (r, c)
-                if to != from_pos and can_move(piece, from_pos, to, pieces):
-                    valid.append(to)
+                if to != pos and can_move(piece, pos, to, pieces, current_turn):
+                    moves.append(to)
     else:
-        for dr, dc in DIRECTIONS:
-            to = (from_pos[0] + dr, from_pos[1] + dc)
-            if can_move(piece, from_pos, to, pieces):
-                valid.append(to)
-    return valid
-
-# ============================================================================= #
-#                                  ENVIROMENT                                   #
-# ============================================================================= #
+        for dr, dc in DIRS:
+            to = (pos[0] + dr, pos[1] + dc)
+            if can_move(piece, pos, to, pieces, current_turn):
+                moves.append(to)
+    return moves
 
 # =============================================================================
-# CANALES DE OBSERVACION — 3
+# ESPACIOS DE OBSERVACIÓN — 3 canales:
+# 
+# Canal 0: Identidad y Rango de piezas
+#    0.0    -> casilla vacía o pieza desconocida. (El canal 1 deberia solventar la confusión)
+#   [1-10]  -> rango de la pieza del BOT
+#    11     -> TURRET del BOT
+#    12     -> ENERGY_CORE del BOT
+#  [-1,-10] -> rango de la pieza del PLAYER revelada
+#   -11     -> TURRET del PLAYER revelada
+#   -12     -> ENERGY_CORE del PLAYER revelada
+# 
+# Canal 1: Transitabilidad
+#   -1.0     -> NO_PASSABLE
+#    0.0     -> casilla transitable vacía
+#    0.5     -> casilla ocupada por pieza ENEMIGA OCULTA
+#    1.0     -> casilla ocupada por pieza CONOCIDA
+# 
+# Canal 2: Movilidad del BOT
+#    1.0     -> Pieza del BOT con al menos un movimiento legal en el turno
+#    0.0     -> Resto
 # =============================================================================
-# Canal 0 – PIEZAS (float en [-1, 1])
-#       +rank/MAX  → pieza del BOT              (rango > 0)
-#       -rank/MAX  → pieza del PLAYER revelada  (rango > 0)
-#       +0.01      → BOT con rango 0            (TURRET o ENERGY_CORE propio)
-#       -0.01      → PLAYER revelado rango 0
-#       -0.05      → pieza del PLAYER oculta
-#        0.0       → casilla vacia o intransitable
 
-# Canal 1 – OCUPACION / TRANSITABILIDAD (float en {-1, 0, 1})
-#       -1.0 → NO_PASSABLE
-#        0.0 → vacia y transitable
-#       +1.0 → ocupada
+# Numero de canales
+N_CH = 3
 
-# Canal 2 – MOVILIDAD BOT (float en {0, 1})
-#        1.0 → pieza BOT con al menos un movimiento legal disponible
-#        0.0 → resto
-# =============================================================================
+# Valores para piezas especiales
+_OBS_TURRET = 11.0
+_OBS_ENERGY = 12.0
 
-N_CHANNELS       = 3
-HIDDEN_ENEMY_VAL = -0.05    # TODO Revisar valor
-RANK0_BOT_VAL    = +0.01    # TODO Revisar valor
-RANK0_PLAYER_VAL = -0.01    # TODO Revisar valor
+# Factor de normalización para acotar el Canal 0 en [-1.0, 1.0]
+_NORM = 12.0
 
-def build_obs(pieces: dict) -> np.ndarray:
-    """Observacion desde perspectiva del BOT (tablero invertido verticalmente)."""
-    obs = np.zeros((N_CHANNELS, ROWS, COLS), dtype=np.float32)
+def _piece_obs_value(piece: Piece, known: bool) -> float:
+    # Pieza del BOT
+    if piece.owner == BOT:
+        if piece.piece_type == TURRET:      return  _OBS_TURRET / _NORM
+        if piece.piece_type == ENERGY_CORE: return  _OBS_ENERGY / _NORM
+        return piece.rank / _NORM
+    
+    # Pieza desconodida del PLAYER
+    if not known:
+        return 0.0 
+    
+    # Pieza conodida del PLAYER
+    if piece.piece_type == TURRET:      return -_OBS_TURRET / _NORM
+    if piece.piece_type == ENERGY_CORE: return -_OBS_ENERGY / _NORM
+    return -(piece.rank / _NORM)
+
+# Genera el campo de observación para el BOT
+def build_obs(pieces: dict, current_turn: int) -> np.ndarray:
+    obs = np.zeros((N_CH, ROWS, COLS), dtype=np.float32)
+
+    # Casillas: Canal 1
     for r in range(ROWS):
         for c in range(COLS):
-            if BOARD[r, c] == NO_PASSABLE:
+            if BOARD[r, c] == NP:
                 obs[1, r, c] = -1.0
+
+    # Piezas
     for (r, c), piece in pieces.items():
-        obs[1, r, c] = 1.0
-        if piece.owner == BOT:
-            obs[0, r, c] = RANK0_BOT_VAL if piece.rank == 0 else piece.rank / MAX_RANK
+        # Canal 0
+        obs[0, r, c] = _piece_obs_value(piece, piece.revealed_to_bot)
+        
+        # Canal 1
+        if piece.owner == PLAYER and not piece.revealed_to_bot:
+            obs[1, r, c] = 0.5  # "Sé que hay un enemigo, pero no sé qué es"
         else:
-            is_known = piece.revealed or piece.scout_revealed
-            if is_known:
-                obs[0, r, c] = RANK0_PLAYER_VAL if piece.rank == 0 else -(piece.rank / MAX_RANK)
-            else:
-                obs[0, r, c] = HIDDEN_ENEMY_VAL
-    for (r, c), piece in pieces.items():
-        if piece.owner == BOT and piece.can_move:
-            if get_all_valid_moves(piece, (r, c), pieces):
-                obs[2, r, c] = 1.0
+            obs[1, r, c] = 1.0  # Pieza conocida (propia o rival descubierta)
+            
+        # Canal 2
+        if piece.owner == BOT and piece.can_move and valid_moves(piece, (r, c), pieces, current_turn):
+            obs[2, r, c] = 1.0
+
     return obs
 
-def build_obs_as_player(pieces: dict) -> np.ndarray:
-    """Observacion desde perspectiva del PLAYER (tablero invertido verticalmente)."""
-    obs = np.zeros((N_CHANNELS, ROWS, COLS), dtype=np.float32)
+# Genera el campo de observación inverso al del BOT para simular el jugador con el ultimo modelo generado
+def build_obs_as_player(pieces: dict, current_turn: int) -> np.ndarray:
+    obs = np.zeros((N_CH, ROWS, COLS), dtype=np.float32)
+
+    # Casillas: Canal 1
     for r in range(ROWS):
-        r_flip = (ROWS - 1) - r
+        rf = (ROWS - 1) - r
         for c in range(COLS):
-            if BOARD[r, c] == NO_PASSABLE:
-                obs[1, r_flip, c] = -1.0
+            if BOARD[r, c] == NP:
+                obs[1, rf, c] = -1.0
+
+    # Piezas (Valores invertidos a los que ve el BOT)
     for (r, c), piece in pieces.items():
-        r_flip = (ROWS - 1) - r
-        obs[1, r_flip, c] = 1.0
+        rf = (ROWS - 1) - r
+
         if piece.owner == PLAYER:
-            obs[0, r_flip, c] = RANK0_BOT_VAL if piece.rank == 0 else piece.rank / MAX_RANK
+            # Canal 0
+            if piece.piece_type == TURRET:        obs[0, rf, c] =  _OBS_TURRET / _NORM
+            elif piece.piece_type == ENERGY_CORE: obs[0, rf, c] =  _OBS_ENERGY / _NORM
+            else:                                 obs[0, rf, c] =  piece.rank / _NORM
+            
+            # Canal 1
+            obs[1, rf, c] = 1.0
+            
+            # Canal 2
+            if piece.can_move and valid_moves(piece, (r, c), pieces, current_turn):
+                obs[2, rf, c] = 1.0
+
         else:
-            is_known = piece.revealed or piece.scout_revealed
-            if is_known:
-                obs[0, r_flip, c] = RANK0_PLAYER_VAL if piece.rank == 0 else -(piece.rank / MAX_RANK)
+            if piece.revealed_to_bot:
+                if piece.piece_type == TURRET:        obs[0, rf, c] = -_OBS_TURRET / _NORM
+                elif piece.piece_type == ENERGY_CORE: obs[0, rf, c] = -_OBS_ENERGY / _NORM
+                else:                                 obs[0, rf, c] = -(piece.rank / _NORM)
+
+                obs[1, rf, c] = 1.0
             else:
-                obs[0, r_flip, c] = HIDDEN_ENEMY_VAL
-    for (r, c), piece in pieces.items():
-        r_flip = (ROWS - 1) - r
-        if piece.owner == PLAYER and piece.can_move:
-            if get_all_valid_moves(piece, (r, c), pieces):
-                obs[2, r_flip, c] = 1.0
+                obs[0, rf, c] = 0.0
+                obs[1, rf, c] = 0.5
+
     return obs
 
 # =============================================================================
 # RECOMPENSAS
 # =============================================================================
 
-R_WIN           =  1.0      # TODO Revisar valor
-R_LOSE          = -1.0      # TODO Revisar valor
-R_NO_MOVES_WIN  =  1.0      # TODO Revisar valor
-R_NO_MOVES_LOSE = -1.0      # TODO Revisar valor
-R_MOVE          = -0.002    # TODO Revisar valor
-R_TIE           =  0.0      # TODO Revisar valor
-ILLEGAL_PENALTY = -1.0      # TODO Revisar valor
+R_WIN            =  10.0    # TODO Revisar recompensa
+R_LOSE           = -10.0    # TODO Revisar recompensa
+R_TIE            =   0.0    # TODO Revisar recompensa
+R_NO_MOVES_WIN   =  10.0    # TODO Revisar recompensa
+R_NO_MOVES_LOSE  = -10.0    # TODO Revisar recompensa
+ 
+def _combat_reward(piece: Piece) -> float:
+    # Recompensa proporcional al rango o tipo de la pieza capturada.
+    if piece.piece_type == ENERGY_CORE: return 0.0 # Gestionado por R_WIN/R_LOSE
+    if piece.piece_type == TURRET:      return 0.3
+    return round(math.log2(piece.rank + 1) / math.log2(11), 3)
 
 # =============================================================================
 # ENTORNO GYM
 # =============================================================================
 
-class StrategoEnv(gym.Env):
+# ---------------------------- TODO Revisar ----------------------------
+class NeuroForgeEnv(gym.Env):
     metadata = {"render_modes": []}
 
     def __init__(self):
         super().__init__()
-        n_tiles = ROWS * COLS  # 100
-
-        self.action_space = spaces.Discrete(n_tiles * n_tiles)  # 10000 acciones
+        n = ROWS * COLS
+        self.action_space      = spaces.Discrete(n * n)
         self.observation_space = spaces.Box(
             low=-1.0, high=1.0,
-            shape=(N_CHANNELS, ROWS, COLS),
+            shape=(N_CH, ROWS, COLS),
             dtype=np.float32,
         )
-
-        self.pieces: dict = {}
-        self.turn           = 0
-        self.opponent_model = None
+        self.pieces: dict       = {}
+        self.turn: int          = 0
+        self.opponent_model     = None
         self.reset()
-
-    # ---- RESET ---------------------------------------------------------------
-
+ 
+    # ------------------------------------------------------------------
+    # RESET
+    # ------------------------------------------------------------------
+ 
     def reset(self, seed=None, options=None):
         super().reset(seed=seed)
         self.pieces = {}
         self.turn   = 0
-        self._deploy_random()
-        return build_obs(self.pieces), {}
-
-    def _build_army(self) -> list:
+        self._deploy()
+        return build_obs(self.pieces, self.turn), {}
+ 
+    def _army_list(self):
         army = []
-        for ptype, rank, movable, count in ARMY_COMPOSITION:
+        for ptype, rank, movable, count in ARMY:
             for _ in range(count):
                 army.append((ptype, rank, movable))
         return army
-
-    def _deploy_random(self):
-        bot_tiles    = [(r, c) for r in range(ROWS) for c in range(COLS) if BOARD[r, c] == BOT_DEPLOYMENT]
-        player_tiles = [(r, c) for r in range(ROWS) for c in range(COLS) if BOARD[r, c] == PLAYER_DEPLOYMENT]
+ 
+    def _deploy(self):
+        bot_tiles    = [(r, c) for r in range(ROWS) for c in range(COLS) if BOARD[r, c] == BD]
+        player_tiles = [(r, c) for r in range(ROWS) for c in range(COLS) if BOARD[r, c] == PD]
         np.random.shuffle(bot_tiles)
         np.random.shuffle(player_tiles)
-        for i, (ptype, rank, movable) in enumerate(self._build_army()):
-            self.pieces[bot_tiles[i]]    = Piece(ptype, rank, BOT,    movable, revealed=True)
-            self.pieces[player_tiles[i]] = Piece(ptype, rank, PLAYER, movable, revealed=False)
-
-    # ---- MASCARAS ------------------------------------------------------------
-
+        for i, (ptype, rank, movable) in enumerate(self._army_list()):
+            self.pieces[bot_tiles[i]]    = Piece(ptype, rank, BOT,    movable)
+            self.pieces[player_tiles[i]] = Piece(ptype, rank, PLAYER, movable)
+ 
+    # ------------------------------------------------------------------
+    # MÁSCARAS DE ACCIÓN
+    # ------------------------------------------------------------------
+ 
     def action_masks(self) -> np.ndarray:
-        n_tiles = ROWS * COLS
-        mask    = np.zeros(self.action_space.n, dtype=bool)
-        for from_idx in range(n_tiles):
-            from_pos = (from_idx // COLS, from_idx % COLS)
-            piece    = self.pieces.get(from_pos)
-            if piece is None or piece.owner != BOT:
+        n = ROWS * COLS
+        mask = np.zeros(self.action_space.n, dtype=bool)
+        for fi in range(n):
+            fp = (fi // COLS, fi % COLS)
+            piece = self.pieces.get(fp)
+            if piece is None or piece.owner != BOT or not piece.can_move:
                 continue
-            for to_pos in get_all_valid_moves(piece, from_pos, self.pieces):
-                mask[from_idx * n_tiles + to_pos[0] * COLS + to_pos[1]] = True
-        if not mask.any():
-            for from_idx in range(n_tiles):
-                from_pos = (from_idx // COLS, from_idx % COLS)
-                piece    = self.pieces.get(from_pos)
-                if piece is None or piece.owner != BOT or not piece.can_move:
-                    continue
-                for dr, dc in DIRECTIONS:
-                    r2, c2 = from_pos[0] + dr, from_pos[1] + dc
-                    if is_passable(r2, c2):
-                        mask[from_idx * n_tiles + r2 * COLS + c2] = True
-                        return mask
-            mask[0] = True
+            for tp in valid_moves(piece, fp, self.pieces, self.turn):
+                mask[fi * n + tp[0] * COLS + tp[1]] = True
+
         return mask
-
-    # ---- STEP ----------------------------------------------------------------
-
+ 
+    # ------------------------------------------------------------------
+    # STEP
+    # ------------------------------------------------------------------
+ 
     def step(self, action: int):
-        reward     = 0.0
-        terminated = False
+        n = ROWS * COLS
+        fi = int(action) // n
+        ti = int(action) % n
+        fp = (fi // COLS, fi % COLS)
+        tp = (ti // COLS, ti % COLS)
+ 
+        # Control para check_env (evita KeyErrors si se ejecutan acciones no enmascaradas)
+        piece = self.pieces.get(fp)
+        if piece is None or piece.owner != BOT or not can_move(piece, fp, tp, self.pieces, self.turn):
+            # Penalizar severamente un movimiento ilegal inyectado externamente
+            return build_obs(self.pieces, self.turn), -5.0, True, False, {}
 
-        terminated, end_r = self._check_game_over()
-        if terminated:
-            return build_obs(self.pieces), end_r, True, False, {}
-
-        n_tiles  = ROWS * COLS
-        from_idx = int(action) // n_tiles
-        to_idx   = int(action) % n_tiles
-        from_pos = (from_idx // COLS, from_idx % COLS)
-        to_pos   = (to_idx   // COLS, to_idx   % COLS)
-
-        piece = self.pieces.get(from_pos)
-        if piece is None or piece.owner != BOT:
-            return build_obs(self.pieces), ILLEGAL_PENALTY, True, False, {}
-        if not can_move(piece, from_pos, to_pos, self.pieces):
-            return build_obs(self.pieces), ILLEGAL_PENALTY, True, False, {}
-
-        bot_r, terminated = self._execute_move(BOT, from_pos, to_pos)
-        reward += bot_r
+        # 1. Ejecutar turno del BOT
+        reward, done = self._execute(BOT, fp, tp)
         self.turn += 1
-        if terminated:
-            return build_obs(self.pieces), reward, True, False, {}
-
-        player_moves = self._get_all_moves(PLAYER)
+        if done:
+            return build_obs(self.pieces, self.turn), reward, True, False, {}
+ 
+        # 2. Comprobar estado del juego tras movimiento del BOT
+        ended, end_r = self._check_end()
+        if ended:
+            return build_obs(self.pieces, self.turn), reward + end_r, True, False, {}
+ 
+        # 3. Turno del PLAYER (Oponente)
+        player_moves = self._all_moves(PLAYER)
         if not player_moves:
-            terminated, end_r = self._check_game_over()
-            return build_obs(self.pieces), reward + end_r, True, False, {}
-
-        pf, pt = self._choose_opponent_move(player_moves)
-        p_r, p_terminated = self._execute_move(PLAYER, pf, pt)
-        reward += -p_r
+            # Si el jugador no se puede mover, pierde automáticamente
+            return build_obs(self.pieces, self.turn), reward + R_NO_MOVES_WIN, True, False, {}
+ 
+        # El oponente elige su jugada de forma limpia
+        pf, pt = self._choose_opponent(player_moves)
+        p_reward, p_done = self._execute(PLAYER, pf, pt)
+        
+        # El reward se invierte para el BOT
+        reward += -p_reward
         self.turn += 1
-        if p_terminated:
-            return build_obs(self.pieces), reward, True, False, {}
-
-        terminated, end_r = self._check_game_over()
-        reward += end_r
-        return build_obs(self.pieces), reward, terminated, False, {}
-
-    # ---- EXECUTE MOVE --------------------------------------------------------
-
-    def _execute_move(self, actor: int, from_pos: tuple, to_pos: tuple):
-        piece      = self.pieces[from_pos]
-        target     = self.pieces.get(to_pos)
-        reward     = R_MOVE
-        terminated = False
-
+        if p_done:
+            return build_obs(self.pieces, self.turn), reward, True, False, {}
+ 
+        # 4. Comprobación final y validación de movimientos para el próximo turno del BOT
+        ended, end_r = self._check_end()
+        return build_obs(self.pieces, self.turn), reward + end_r, ended, False, {}
+ 
+    # ------------------------------------------------------------------
+    # EJECUCIÓN DE MOVIMIENTO
+    # ------------------------------------------------------------------
+ 
+    def _execute(self, actor: int, fp: tuple, tp: tuple):
+        piece  = self.pieces[fp]
+        target = self.pieces.get(tp)
+ 
         if target is None:
-            r1, c1 = from_pos
-            r2, c2 = to_pos
-            if piece.piece_type == PIECE_TYPE_SCOUT and abs(r1-r2) + abs(c1-c2) > 1:
-                piece.scout_revealed = True  # Scout largo: identidad publica
-            piece.register_move(from_pos, to_pos)
-            self.pieces[to_pos] = piece
-            del self.pieces[from_pos]
-
-        else:
-            result          = resolve_combat(piece, target)
-            attacker_is_bot = (actor == BOT)
-
-            if result == DEFENDER_DIES:
-                if target.piece_type == PIECE_TYPE_ENERGY_CORE:
-                    reward, terminated = (R_WIN if attacker_is_bot else R_LOSE), True
-                else:
-                    r = combat_reward(target, is_turret=(target.piece_type == PIECE_TYPE_TURRET))
-                    reward = r if attacker_is_bot else -r
-                piece.register_move(from_pos, to_pos)
-                del self.pieces[from_pos]
-                self.pieces.pop(to_pos, None)
-                self.pieces[to_pos] = piece
-
-            elif result == ATTACKER_DIES:
-                if piece.piece_type == PIECE_TYPE_ENERGY_CORE:
-                    reward, terminated = (R_LOSE if attacker_is_bot else R_WIN), True
-                else:
-                    r = combat_reward(piece, is_turret=(piece.piece_type == PIECE_TYPE_TURRET))
-                    reward = -r if attacker_is_bot else r
-                self.pieces.pop(from_pos, None)
-
-            else:  # BOTH_DIE
-                reward = R_TIE
-                self.pieces.pop(from_pos, None)
-                self.pieces.pop(to_pos, None)
-
-        return reward, terminated
-
-    # ---- GAME OVER -----------------------------------------------------------
-
-    def _check_game_over(self):
-        bot_has_core    = any(p.piece_type == PIECE_TYPE_ENERGY_CORE and p.owner == BOT    for p in self.pieces.values())
-        player_has_core = any(p.piece_type == PIECE_TYPE_ENERGY_CORE and p.owner == PLAYER for p in self.pieces.values())
-        if not bot_has_core:    return True, R_LOSE
-        if not player_has_core: return True, R_WIN
-        bot_moves    = bool(self._get_all_moves(BOT))
-        player_moves = bool(self._get_all_moves(PLAYER))
-        if not bot_moves and not player_moves: return True, R_TIE
-        if not bot_moves:    return True, R_NO_MOVES_LOSE
-        if not player_moves: return True, R_NO_MOVES_WIN
+            # Movimiento simple
+            r1, c1 = fp; r2, c2 = tp
+            if piece.piece_type == SCOUT and abs(r1-r2)+abs(c1-c2) > 1:
+                piece.revealed_to_bot = True   # El Scout revela su identidad al moverse largas distancias
+            piece.register_move(fp, tp, self.turn)
+            self.pieces[tp] = piece
+            del self.pieces[fp]
+            return 0.0, False
+ 
+        # Combate estructural
+        result = resolve_combat(piece, target)
+        piece.revealed_to_bot  = True
+        target.revealed_to_bot = True
+ 
+        if result == DEFENDER_DIES:
+            if target.piece_type == ENERGY_CORE:
+                del self.pieces[fp]; del self.pieces[tp]
+                return (R_WIN if target.owner == PLAYER else R_LOSE), True
+            
+            r = _combat_reward(target)
+            reward = r if target.owner == PLAYER else -r
+            del self.pieces[tp]
+            piece.register_move(fp, tp, self.turn)
+            self.pieces[tp] = piece
+            del self.pieces[fp]
+            return reward, False
+ 
+        if result == ATTACKER_DIES:
+            if piece.piece_type == ENERGY_CORE:
+                del self.pieces[fp]
+                return (R_LOSE if piece.owner == BOT else R_WIN), True
+            
+            r = _combat_reward(piece)
+            reward = -r if piece.owner == BOT else r
+            del self.pieces[fp]
+            return reward, False
+ 
+        # BOTH_DIE
+        r_att = _combat_reward(piece)
+        r_def = _combat_reward(target)
+        reward = (r_def - r_att) if piece.owner == BOT else (r_att - r_def)
+        del self.pieces[fp]; del self.pieces[tp]
+        return reward, False
+ 
+    # ------------------------------------------------------------------
+    # FIN DE PARTIDA
+    # ------------------------------------------------------------------
+ 
+    def _check_end(self):
+        bot_core    = any(p.piece_type == ENERGY_CORE and p.owner == BOT    for p in self.pieces.values())
+        player_core = any(p.piece_type == ENERGY_CORE and p.owner == PLAYER for p in self.pieces.values())
+        
+        if not bot_core:    return True, R_LOSE
+        if not player_core: return True, R_WIN
+        
+        bm = bool(self._all_moves(BOT))
+        pm = bool(self._all_moves(PLAYER))
+        
+        if not bm and not pm: return True, R_TIE
+        if not bm:  return True, R_NO_MOVES_LOSE
+        if not pm:  return True, R_NO_MOVES_WIN
         return False, 0.0
-
-    def _get_all_moves(self, owner: int) -> list:
+ 
+    def _all_moves(self, owner: int) -> list:
         moves = []
         for pos, piece in list(self.pieces.items()):
             if piece.owner != owner: continue
-            for to in get_all_valid_moves(piece, pos, self.pieces):
+            for to in valid_moves(piece, pos, self.pieces, self.turn):
                 moves.append((pos, to))
         return moves
-
-    # ---- OPONENTE ------------------------------------------------------------
-
-    def _choose_opponent_move(self, player_moves: list) -> tuple:
+ 
+    # ------------------------------------------------------------------
+    # OPONENTE (Alineación estricta al Modelo de Red)
+    # ------------------------------------------------------------------
+ 
+    def _choose_opponent(self, player_moves: list) -> tuple:
+        # Si no hay modelo previo, el oponente es 100% aleatorio dentro de las opciones válidas
         if self.opponent_model is None:
             return player_moves[np.random.randint(len(player_moves))]
-        obs_player = build_obs_as_player(self.pieces)
-        mask       = self._get_opponent_masks()
-        action, _  = self.opponent_model.predict(obs_player, deterministic=False, action_masks=mask)
-        n_tiles  = ROWS * COLS
-        from_idx = int(action) // n_tiles
-        to_idx   = int(action) % n_tiles
-        from_r = (ROWS - 1) - (from_idx // COLS)
-        from_c = from_idx % COLS
-        to_r   = (ROWS - 1) - (to_idx   // COLS)
-        to_c   = to_idx % COLS
-        fp, tp = (from_r, from_c), (to_r, to_c)
+ 
+        obs  = build_obs_as_player(self.pieces, self.turn)
+        mask = self._opponent_masks()
+        
+        # Obtenemos la predicción filtrada por la máscara de movimientos válidos
+        action, _ = self.opponent_model.predict(obs, deterministic=False, action_masks=mask)
+ 
+        n = ROWS * COLS
+        fi = int(action) // n
+        ti = int(action) % n
+        
+        # Corregimos el flip de perspectiva
+        fp = ((ROWS - 1) - (fi // COLS), fi % COLS)
+        tp = ((ROWS - 1) - (ti // COLS), ti % COLS)
+        
+        # Verificación estricta: si por problemas de carga del modelo la acción no es válida, 
+        # caemos en una elección aleatoria de la lista de movimientos legales reales.
         p = self.pieces.get(fp)
-        if p is not None and p.owner == PLAYER and can_move(p, fp, tp, self.pieces):
+        if p is not None and p.owner == PLAYER and can_move(p, fp, tp, self.pieces, self.turn):
             return fp, tp
+            
         return player_moves[np.random.randint(len(player_moves))]
-
-    def _get_opponent_masks(self) -> np.ndarray:
-        n_tiles = ROWS * COLS
-        mask    = np.zeros(self.action_space.n, dtype=bool)
-        for from_idx in range(n_tiles):
-            from_r_real = (ROWS - 1) - (from_idx // COLS)
-            from_c      = from_idx % COLS
-            from_pos    = (from_r_real, from_c)
-            piece       = self.pieces.get(from_pos)
-            if piece is None or piece.owner != PLAYER: continue
-            for to_pos in get_all_valid_moves(piece, from_pos, self.pieces):
-                to_r_flip = (ROWS - 1) - to_pos[0]
-                to_idx    = to_r_flip * COLS + to_pos[1]
-                mask[from_idx * n_tiles + to_idx] = True
-        if not mask.any():
-            mask[0] = True
+ 
+    def _opponent_masks(self) -> np.ndarray:
+        n = ROWS * COLS
+        mask = np.zeros(self.action_space.n, dtype=bool)
+        
+        for fi in range(n):
+            # Desde la perspectiva del jugador (0 es su esquina superior izquierda de renderizado)
+            r_player = fi // COLS
+            c_player = fi % COLS
+            
+            # Mapeo a las coordenadas reales del diccionario del tablero global
+            r_real = (ROWS - 1) - r_player
+            c_real = c_player
+            
+            piece = self.pieces.get((r_real, c_real))
+            if piece is None or piece.owner != PLAYER: 
+                continue
+                
+            for tp_real in valid_moves(piece, (r_real, c_real), self.pieces, self.turn):
+                # Convertir el destino real a la perspectiva local del jugador
+                tp_r_player = (ROWS - 1) - tp_real[0]
+                tp_c_player = tp_real[1]
+                
+                ti = tp_r_player * COLS + tp_c_player
+                mask[fi * n + ti] = True
+                
         return mask
 
 # =============================================================================
-# Politica Cnn personalizada
+# CNN PERSONALIZADA
 # =============================================================================
-class StrategoCNNExtractor(BaseFeaturesExtractor):
+
+class CustomCNN(BaseFeaturesExtractor):
     def __init__(self, observation_space: spaces.Box, features_dim: int = 128):
-        # Asignamos la dimensión de salida que irá a las capas densas de la política
         super().__init__(observation_space, features_dim)
-        
-        n_input_channels = observation_space.shape[0]
-        
-        # Diseñamos una red pequeña y sin saltos (strides=1) para mantener el tamaño 10x10
+        in_ch = observation_space.shape[0]
+
         self.cnn = nn.Sequential(
-            nn.Conv2d(n_input_channels, 32, kernel_size=3, stride=1, padding=1),
-            nn.ReLU(),
-            nn.Conv2d(32, 64, kernel_size=3, stride=1, padding=1),
-            nn.ReLU(),
+            nn.Conv2d(in_ch, 32, kernel_size=3, stride=1, padding=1), nn.ReLU(),
+            nn.Conv2d(32,    64, kernel_size=3, stride=1, padding=1), nn.ReLU(),
             nn.Flatten(),
         )
-        
-        # Calculamos dinámicamente el tamaño de salida del aplanado (Flatten)
         with th.no_grad():
-            sample_tensor = th.as_tensor(observation_space.sample()[None]).float()
-            n_flatten = self.cnn(sample_tensor).shape[1]
-            
-        # Una capa lineal final para proyectar al espacio de características solicitado
+            sample = th.as_tensor(observation_space.sample()[None]).float()
+            n_flat = self.cnn(sample).shape[1]
+
         self.linear = nn.Sequential(
-            nn.Linear(n_flatten, features_dim),
-            nn.ReLU()
+            nn.Linear(n_flat, features_dim),
+            nn.ReLU(),
         )
 
     def forward(self, observations: th.Tensor) -> th.Tensor:
         return self.linear(self.cnn(observations))
 
 # =============================================================================
-# SELF-PLAY Y ENTRENAMIENTO
+# ENTRENAMIENTO
 # =============================================================================
 
-MODEL_BASE      = "ppo_neuroforge"
+MODEL_BASE      = "neuroforge_bot"
 TOTAL_TIMESTEPS = 100_000
 
-def find_latest_model():
+def find_latest():
     candidates = sorted(glob.glob(f"{MODEL_BASE}_v*.zip"), reverse=True)
     if candidates:
         return candidates[0].replace(".zip", "")
@@ -610,68 +680,50 @@ def find_latest_model():
         return MODEL_BASE
     return None
 
-
 if __name__ == "__main__":
-    env = StrategoEnv()
+    env = NeuroForgeEnv()
 
     print("Verificando entorno...")
     check_env(env, warn=False)
-    print("Entorno OK.\n")
+    print("OK\n")
 
-    latest = find_latest_model()
+    latest = find_latest()
     if latest:
-        print(f"Modelo encontrado: {latest}.zip")
-        print("Modo: SELF-PLAY (oponente = modelo anterior)\n")
+        print(f"Cargando oponente: {latest}.zip  →  modo SELF-PLAY")
         env.opponent_model = MaskablePPO.load(latest)
     else:
-        print("Sin modelo previo → primera iteracion con oponente ALEATORIO\n")
+        print("Sin modelo previo → primera iteración con oponente ALEATORIO")
 
     policy_kwargs = dict(
-        features_extractor_class=StrategoCNNExtractor,
+        features_extractor_class=CustomCNN,
         features_extractor_kwargs=dict(features_dim=128),
-        normalize_images=False # Evita intentar forzar el escalado
+        normalize_images=False,
     )
 
     model = MaskablePPO(
-        policy        = "CnnPolicy",
-        env           = env,
-        policy_kwargs = policy_kwargs,
-        learning_rate = 3e-4,   # TODO Revisar valor
-        n_steps       = 2048,   # TODO Revisar valor    
-        batch_size    = 256,    # TODO Revisar valor
-        n_epochs      = 10,     # TODO Revisar valor
-        gamma         = 0.99,   # TODO Revisar valor
-        gae_lambda    = 0.95,   # TODO Revisar valor
-        clip_range    = 0.2,    # TODO Revisar valor
-        ent_coef      = 0.01,   # TODO Revisar valor
-        verbose       = 1,
+        policy           = "CnnPolicy",
+        env              = env,
+        policy_kwargs    = policy_kwargs,
+        learning_rate    = 1e-4,    # TODO Revisar valor
+        n_steps          = 2048,    # TODO Revisar valor
+        batch_size       = 256,     # TODO Revisar valor
+        n_epochs         = 5,       # TODO Revisar valor
+        gamma            = 0.99,    # TODO Revisar valor
+        gae_lambda       = 0.95,    # TODO Revisar valor
+        clip_range       = 0.2,     # TODO Revisar valor
+        ent_coef         = 0.05,    # TODO Revisar valor
+        vf_coef          = 0.5,     # TODO Revisar valor
+        verbose          = 1,
+        tensorboard_log  = "./logs/",
     )
 
-    print(f"Iniciando entrenamiento ({TOTAL_TIMESTEPS:,} pasos)...")
+    print(f"\nEntrenando {TOTAL_TIMESTEPS:,} pasos...")
     model.learn(total_timesteps=TOTAL_TIMESTEPS)
 
-    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    save_name = f"{MODEL_BASE}_v{timestamp}"
-    model.save(save_name)
-    print(f"\nModelo guardado: {save_name}.zip")
+    ts   = datetime.now().strftime("%Y%m%d_%H%M%S")
+    name = f"{MODEL_BASE}_v{ts}"
+    model.save(name)
+    print(f"Guardado: {name}.zip")
 
-# =============================================================================
-# DIAGNOSTICO
-# =============================================================================
-
-def print_board(pieces: dict):
-    print("     " + "    ".join(f"C{c}" for c in range(COLS)))
-    for r in range(ROWS):
-        row = f"R{r:02d}  "
-        for c in range(COLS):
-            if BOARD[r, c] == NO_PASSABLE:
-                row += "[####]  "
-            elif (r, c) in pieces:
-                p   = pieces[(r, c)]
-                own = "B" if p.owner == BOT else "P"
-                vis = "" if (p.revealed or p.scout_revealed) else "?"
-                row += f"[{own}:{p.piece_type[:4]}{vis}]  "
-            else:
-                row += "[    ]  "
-        print(row)
-    print()
+# Ejecutar para ver las graficas:
+#   tensorboard --logdir=./tensorboard_logs/

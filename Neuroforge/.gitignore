@@ -3,3 +3,5 @@
 /android/
 __pycache__/
 .venv
+logs/
+*.zip
