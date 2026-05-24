@@ -16,7 +16,7 @@ A partir de esta base, el proyecto utiliza especializaciones más complejas que 
 
 Dicha jerarquía de nodos se organiza de forma práctica mediante \textbf{escenas}, que funciona como un plano reutilizable compuesto por una rama de nodos. Una escena permite agrupar estos nodos especializados para que trabajen como una única entidad lógica dentro del árbol principal del juego.
 
-Un ejemplo representativo en NeuroForge es la escena \texttt{Tile} (ver Figura~\ref{fig:EjemploEscena}), encargada de las casillas del tablero. Como se observa en la imagen, el nodo raíz es un \texttt{Area2D}; este nodo no solo hereda las capacidades espaciales de \texttt{Node2D}, sino que aporta funcionalidades propias, como por ejemplo, permitir detectar eventos de ratón y colisiones. Bajo él, la escena se compone de hijos específicos: un \texttt{CollisionShape2D} para delimitar el área de interacción de dicho área (Especificamente los Areas2D necesitan un CollisionShape2D hijo para funcionar) y nodos \texttt{Sprite2D} para la representación visual. Esta composición ilustra cómo la suma de nodos permite construir objetos más complejos y funcionales.
+Un ejemplo representativo en NeuroForge es la escena \texttt{Tile}, la cual dentro del editor se ve como en la Figura~\ref{fig:EjemploEscena}, encargada de las casillas del tablero. Como se observa en la imagen, el nodo raíz es un \texttt{Area2D}; este nodo no solo hereda las capacidades espaciales de \texttt{Node2D}, sino que aporta funcionalidades propias, como por ejemplo, permitir detectar eventos de ratón y colisiones. Bajo él, la escena se compone de hijos específicos: un \texttt{CollisionShape2D} para delimitar el área de interacción de dicho área (Especificamente los Areas2D necesitan un CollisionShape2D hijo para funcionar) y nodos \texttt{Sprite2D} para la representación visual. Esta composición ilustra cómo la suma de nodos permite construir objetos más complejos y funcionales.
 
 \begin{figure}[H]
 	\centering
@@ -56,29 +56,6 @@ La \textbf{capa de lógica de juego} es el núcleo funcional del sistema. Aquí 
 La \textbf{capa de datos e infraestructura} comprende los datos estáticos de configuración, estructuras de datos, el gestor de navegación entre escenas, el gestor de audio y los enums que definen los valores del dominio.
 
 El flujo predominante de dependencias es descendente. Sin embargo, los nodos de Godot, en la capa de lógica, mantienen referencias directas a componentes de la capa de interfaz para coordinar la presentación de resultados y el flujo de partida. Estas dependencias inversas puntuales son una consecuencia del modelo de ciclo de vida de Godot, en el que la lógica debe suspender su ejecución hasta que las animaciones de interfaz terminan. No representan una violación del diseño en capas sino una adaptación pragmática al motor.
-
-% ─────────────────────────────────────────────────────────────────────────────
-\section{Módulos o componentes del sistema}
-% ─────────────────────────────────────────────────────────────────────────────
-
-La Figura~\ref{fig:DiagramaComponentes} muestra la organización del sistema en cinco componentes y las dependencias entre ellos. Cada componente agrupa las clases con una responsabilidad cohesionada, reflejando directamente la arquitectura en capas descrita en la sección anterior.
-
-El componente \textit{Interfaz de usuario} reúne todos los nodos que heredan de \texttt{Control}: los menús de inicio, pausa y fin de partida, los overlays de reglas y combate, y los elementos de despliegue y recuento de piezas. El componente \textit{Lógica de juego} contiene el gestor de partida, el tablero, las piezas y casillas y los controladores de input, despliegue y bot. El componente \textit{Motor de reglas} encapsula los algoritmos de movimiento y combate como módulo independiente sin estado propio. El componente \textit{Datos e infraestructura} agrupa enumeradores y los datos de las piezas y su estructura. Por último, el componente \textit{Infraestructura} comprende el gestor de navegación entre escenas y el gestor de audio.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{../Imagenes/DiagramaComponentes}
-	\caption{Diagrama de componentes de NeuroForge con sus dependencias.}
-	\label{fig:DiagramaComponentes}
-\end{figure}
-
-Todas las dependencias entre componentes son de tipo \textit{«use»}, en el que un componente invoca servicios de otro sin poseerlo ni instanciarlo directamente. El flujo es predominantemente descendente desde la interfaz hacia los datos, con la excepción de que la lógica de juego mantiene referencias directas a componentes de interfaz para coordinar animaciones, tal como se mencionó anteriormente.
-
-% ─────────────────────────────────────────────────────────────────────────────
-\section{Diseño de clases}
-% ─────────────────────────────────────────────────────────────────────────────
-
-(Diagrama de clases completo?)
 
 % ─────────────────────────────────────────────────────────────────────────────
 \section{Diseño de interfaz de usuario}

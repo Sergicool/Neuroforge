@@ -23,6 +23,8 @@ public partial class CombatUI : Control
     private Label _resultLabel;
 
     private TaskCompletionSource<bool> _clickTcs;
+    private TaskCompletionSource<bool> _skipTcs;
+    private bool _resultShown = false;
 
     private static readonly Color COLOR_PIECE_NORMAL = Colors.White;
     private static readonly Color COLOR_PIECE_DEAD = new(0.25f, 0.25f, 0.25f, 1f);
@@ -55,40 +57,69 @@ public partial class CombatUI : Control
 
         _resultLabel = GetNode<Label>("Popup/ResultLabel");
 
-        _background.GuiInput += OnBackgroundInput;
+        GuiInput += OnRootInput;
+        _background.MouseFilter = MouseFilterEnum.Ignore;
         Visible = false;
     }
 
-    private void OnBackgroundInput(InputEvent @event)
+    private void OnRootInput(InputEvent @event)
     {
-        if (_resultLabel.Text == "") return; // Para evitar salir rapidamente sin ver el resultado
-        if (_clickTcs == null || _clickTcs.Task.IsCompleted) return;
-        if (@event is InputEventMouseButton mb && mb.Pressed && mb.ButtonIndex == MouseButton.Left)
-            _clickTcs.TrySetResult(true);
+        if (@event is not InputEventMouseButton mb || !mb.Pressed
+            || mb.ButtonIndex != MouseButton.Left) return;
+
+        if (_resultShown)
+        {
+            // Resultado ya visible → cerrar
+            _clickTcs?.TrySetResult(true);
+        }
+        else if (_resultLabel.Text == "")
+        {
+            // Animaciones en curso → skip
+            _skipTcs?.TrySetResult(true);
+        }
     }
 
     public async Task ShowCombat(Piece attacker, Piece defender, CombatResult result,
-                                  bool attackerHidden, bool defenderHidden)
+                              bool attackerHidden, bool defenderHidden)
     {
         _clickTcs = new TaskCompletionSource<bool>();
+        _skipTcs = new TaskCompletionSource<bool>();
+        _resultShown = false;
 
         PrepareUI(attacker, defender, attackerHidden, defenderHidden);
         await AnimateIn();
 
         if (attackerHidden || defenderHidden)
         {
-            await Task.Delay(REVEAL_DELAY_MS);
+            // Espera: delay O skip
+            await Task.WhenAny(Task.Delay(REVEAL_DELAY_MS), _skipTcs.Task);
+
             Task t1 = attackerHidden ? BlinkReveal(_attackerSprite, _attackerLabel, attacker) : Task.CompletedTask;
             Task t2 = defenderHidden ? BlinkReveal(_defenderSprite, _defenderLabel, defender) : Task.CompletedTask;
-            await Task.WhenAll(t1, t2);
+            await Task.WhenAny(Task.WhenAll(t1, t2), _skipTcs.Task);
+
+            // Si se hizo skip, forzar reveal visual inmediato
+            if (_skipTcs.Task.IsCompleted)
+            {
+                if (attackerHidden) ForceReveal(_attackerSprite, _attackerLabel, attacker);
+                if (defenderHidden) ForceReveal(_defenderSprite, _defenderLabel, defender);
+            }
         }
 
-        await Task.Delay(REVEAL_DELAY_MS);
+        await Task.WhenAny(Task.Delay(REVEAL_DELAY_MS), _skipTcs.Task);
 
         await ShowResult(attacker, defender, result);
+        _resultShown = true;
 
         await _clickTcs.Task;
         await HideAndClose();
+    }
+
+    private void ForceReveal(TextureRect spriteRect, Label label, Piece piece)
+    {
+        SetSpriteRegion(spriteRect, piece, forceHidden: false);
+        spriteRect.Modulate = COLOR_PIECE_NORMAL;
+        label.Text = GetPieceLabel(piece);
     }
 
     // ── Preparar UI ───────────────────────────────────────────────────────────

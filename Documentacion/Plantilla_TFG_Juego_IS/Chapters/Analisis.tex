@@ -73,30 +73,25 @@ los servicios y comportamientos que debe ofrecer el sistema; los requisitos no f
 \subsection{Requisitos de información}
 
 \begin{itemize}
-	
 	\item \textbf{RI01 --- Partida:} El sistema gestionará una sesión de juego almacenando la siguiente información:
 	\begin{itemize}
 		\item Referencia al tablero de juego.
 		\item Turno actual (Jugador o Bot).
-		\item Estado de la partida (Fase de despliegue, turno del jugador, fin de la partida...).
+		\item Estado de la partida (Fase de despliegue, turno del jugador, pieza seleccionada y fin de la partida).
 		\item Número de turno.
-	\end{itemize}
-	
-	\item \textbf{RI02 --- Tablero:} El sistema almacenará la información relativa al tablero de juego:
-	\begin{itemize}
 		\item Conjunto de casillas que conforman el tablero.
 	\end{itemize}
 	
 	\item \textbf{RI03 --- Casilla:} Cada casilla del tablero almacenará la siguiente información:
 	\begin{itemize}
 		\item Posición en la cuadrícula $(x, y)$.
-		\item Tipo (Pasable, no pasable...).
+		\item Tipo (Pasable, no pasable, despliegue del jugador y del bot).
 		\item Pieza que la ocupa, si la	hubiera.
 	\end{itemize}
 	
 	\item \textbf{RI04 --- Pieza:} El sistema almacenará la siguiente información para cada pieza presente en la partida:
 	\begin{itemize}
-		\item Tipo de pieza (Energy core, turret, scout...).
+		\item Tipo de pieza (Los 12 tipos de piezas que vienen recogidos en el capítulo de Diseño del juego).
 		\item Rango numérico que determina el resultado de los combates.
 		\item Propietario (Jugador o Bot).
 		\item Si la pieza puede moverse o no.
@@ -105,7 +100,6 @@ los servicios y comportamientos que debe ofrecer el sistema; los requisitos no f
 		\item Casilla del tablero en la que se situa.
 		\item Historial de los últimos tres movimientos realizados como origen-destino.
 	\end{itemize}
-	
 \end{itemize}
 
 \section{Casos de uso}
@@ -336,7 +330,7 @@ En este apartado se describen los casos de uso del sistema, que representan las 
 
 El modelo de dominio es una representación visual de las entidades conceptuales (objetos del mundo real o del sistema) y las relaciones que existen entre ellas dentro del contexto del videojuego. Su objetivo es identificar los conceptos clave, sus atributos y cómo interactúan, sirviendo como puente entre los requisitos funcionales y el diseño técnico final.
 
-A continuación, en la Figura~\ref{fig:modelo_dominio}, se presenta el diagrama de clases de dominio que estructura la lógica del juego.
+A continuación, en la Figura~\ref{fig:modelo_dominio}, se presenta el modelo de dominio que estructura la lógica del juego.
 
 \begin{figure}[H]
 	\centering

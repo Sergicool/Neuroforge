@@ -78,6 +78,69 @@ Ancient Chess.
 \newblock How to play the chinese land battle game luzhanqi.
 \newblock \url{https://ancientchess.com/page/play-luzhanqi.htm}.
 
+\bibitem{Kushner2003}
+David Kushner.
+\newblock {\em Masters of Doom}.
+\newblock Random House, 2003.
+
+\bibitem{GodotDocs}
+{Godot Engine Contributors}.
+\newblock Godot engine documentation.
+\newblock \url{https://docs.godotengine.org}, 2024.
+\newblock Consultado en 2024.
+
+\bibitem{vonNeumann1944}
+John von Neumann and Oskar Morgenstern.
+\newblock {\em Theory of Games and Economic Behavior}.
+\newblock Princeton University Press, 1944.
+
+\bibitem{Knuth1975}
+Donald~E. Knuth and Ronald~W. Moore.
+\newblock An analysis of alpha-beta pruning.
+\newblock {\em Artificial Intelligence}, 6(4):293--326, 1975.
+
+\bibitem{Campbell2002}
+Murray Campbell, A.~Joseph Hoane, and Feng-hsiung Hsu.
+\newblock Deep blue.
+\newblock {\em Artificial Intelligence}, 134(1--2):57--83, 2002.
+
+\bibitem{Coulom2006}
+R{\'e}mi Coulom.
+\newblock Efficient selectivity and backup operators in monte-carlo tree
+  search.
+\newblock In {\em Computers and Games}, pages 72--83. Springer, 2006.
+
+\bibitem{Silver2016}
+David Silver, Aja Huang, Chris~J. Maddison, et~al.
+\newblock Mastering the game of go with deep neural networks and tree search.
+\newblock {\em Nature}, 529:484--489, 2016.
+
+\bibitem{Mnih2015}
+Volodymyr Mnih, Koray Kavukcuoglu, David Silver, et~al.
+\newblock Human-level control through deep reinforcement learning.
+\newblock {\em Nature}, 518:529--533, 2015.
+
+\bibitem{Schulman2017}
+John Schulman, Filip Wolski, Prafulla Dhariwal, Alec Radford, and Oleg Klimov.
+\newblock Proximal policy optimization algorithms.
+\newblock arXiv:1707.06347, 2017.
+
+\bibitem{Brockman2016}
+Greg Brockman, Vicki Cheung, Ludwig Pettersson, et~al.
+\newblock Openai gym.
+\newblock arXiv:1606.01540, 2016.
+
+\bibitem{Towers2023}
+Mark Towers, Jordan~K. Terry, Ariel Kwiatkowski, et~al.
+\newblock Gymnasium.
+\newblock Zenodo, 2023.
+
+\bibitem{Raffin2021}
+Antonin Raffin, Ashley Hill, Adam Gleave, Anssi Kanervisto, Maximilian
+  Ernestus, and Noah Dormann.
+\newblock Stable-baselines3: Reliable reinforcement learning implementations.
+\newblock {\em Journal of Machine Learning Research}, 22(268):1--8, 2021.
+
 \bibitem{cabalar_metodologias}
 Pedro Cabalar.
 \newblock Tema 6: El proceso unificado ({UP} / {RUP}).
@@ -169,24 +232,21 @@ David Cailleteau.
 
 \bibitem{astah_pricing}
 {Change Vision, Inc.}
-\newblock Astah professional --- {Individual Licensing Options}.
-\newblock \url{https://astah.net/pricing/individual/}, 2026.
-\newblock Licencia individual mensual: 8{,}99~€/mes; anual: 97{,}99~€/año;
-  perpetua: 214~€.
+\newblock Pricing for astah software.
+\newblock \url{https://astah.net/pricing/}, 2025.
+\newblock Consultado en 2025.
+
+\bibitem{astah_pricing_team}
+{Change Vision, Inc.}
+\newblock Astah professional --- {Team Licensing Options}.
+\newblock \url{https://astah.net/pricing/team/}, 2026.
+\newblock Licencia flotante anual para 1 usuario: 180~€/año.
 
 \bibitem{notion_pricing}
 {Notion Labs, Inc.}
-\newblock Notion plans and pricing.
-\newblock \url{https://www.notion.so/pricing}, 2026.
-\newblock Plan Plus: 12{,}00~{USD}/mes en facturación mensual (aprox.\
-  11{,}05~€/mes).
-
-\bibitem{github_pricing}
-{GitHub, Inc.}
-\newblock Github pricing plans.
-\newblock \url{https://github.com/pricing}, 2026.
-\newblock El plan {Free} incluye repositorios privados ilimitados sin coste
-  para usuarios individuales.
+\newblock Notion pricing plans.
+\newblock \url{https://www.notion.so/pricing}, 2025.
+\newblock Consultado en 2025.
 
 \bibitem{ocu_factura_luz}
 {OCU}.
@@ -196,5 +256,26 @@ David Cailleteau.
   2026.
 \newblock Factura media mensual en tarifa regulada {PVPC} durante 2025:
   69{,}34~€/mes.
+
+\bibitem{digi_fibra}
+{Digi Spain Telecom, S.L.U.}
+\newblock Tarifas de fibra óptica --- {Digi} españa.
+\newblock \url{https://www.digimobil.es/fibra}, 2026.
+\newblock Tarifa de fibra óptica básica (1\,Gb simétrico) sin servicios
+  adicionales: 20{,}00~€/mes.
+
+\bibitem{steam_pricing}
+{Valve Corporation}.
+\newblock Steam direct --- distributing on steam.
+\newblock
+  \url{https://partner.steamgames.com/doc/finance/payments_salesreporting},
+  2024.
+\newblock Consultado en 2024.
+
+\bibitem{pmi_contingency}
+{Project Management Institute}.
+\newblock Contingency reserve --- pmi lexicon of project management terms.
+\newblock \url{https://www.pmi.org/pmbok-guide-standards/lexicon}, 2024.
+\newblock Consultado en 2024.
 
 \end{thebibliography}

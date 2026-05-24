@@ -1,0 +1,241 @@
+\chapter{Pruebas}
+
+En este capítulo se describe la estrategia de verificación adoptada para validar que el sistema desarrollado cumple con los requisitos especificados y con los flujos de interacción definidos en el análisis. El objetivo es demostrar que el videojuego se comporta de forma correcta y estable ante las distintas situaciones que pueden producirse durante su uso.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Enfoque de pruebas}
+% ─────────────────────────────────────────────────────────────────────────────
+
+En un entorno de desarrollo profesional, la verificación de un sistema software de esta naturaleza se abordaría mediante una estrategia de pruebas automatizadas estructurada en varios niveles. Las \textbf{pruebas unitarias} verificarían de forma aislada cada componente lógico del sistema, como el motor de reglas de movimiento o el sistema de resolución de combates, comprobando que producen el resultado esperado ante un conjunto exhaustivo de entradas. Las \textbf{pruebas de integración} validarían la interacción correcta entre componentes, asegurando por ejemplo que el controlador de input delega adecuadamente en el tablero y que este actualiza el estado de la partida de forma consistente. Finalmente, las \textbf{pruebas de sistema} o de extremo a extremo ejercitarían flujos completos de usuario, desde el despliegue inicial hasta la condición de victoria, simulando el comportamiento real del jugador. Herramientas como \textit{NUnit} o \textit{xUnit} en el ecosistema .NET, combinadas con un pipeline de integración continua, permitirían ejecutar esta batería de forma automática ante cada cambio en el código, detectando regresiones de manera inmediata.
+
+Dado el carácter académico e individual del proyecto y las restricciones temporales inherentes a un TFG, la automatización completa de las pruebas queda fuera del alcance definido. No obstante, la arquitectura adoptada, con la lógica de juego separada en clases C\# puras e independientes del motor, facilita que dichas pruebas automatizadas puedan incorporarse en el futuro sin necesidad de modificar el código de producción. En su lugar, se ha llevado a cabo una batería de \textbf{pruebas funcionales manuales} organizadas por bloques temáticos, cubriendo todos los requisitos funcionales y no funcionales identificados en el análisis. Cada prueba define de forma explícita su precondición, la acción ejecutada y el resultado esperado, lo que permite reproducirlas de manera sistemática y trazarlas directamente con los requisitos del sistema.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Batería de pruebas}
+% ─────────────────────────────────────────────────────────────────────────────
+
+En este apartado se recoge el conjunto de pruebas funcionales realizadas sobre el sistema para verificar que el comportamiento del videojuego se ajusta a los requisitos especificados y a los flujos descritos en los casos de uso. Las pruebas se organizan por bloques temáticos y se presentan en formato tabular, indicando para cada caso la precondición, los pasos ejecutados, el resultado esperado y si la prueba ha sido superada.
+
+\subsection{Bloque 1 — Despliegue inicial}
+
+\begin{table}[H]
+	\centering
+	\small
+	\begin{tabular}{|>{\centering\arraybackslash}p{1cm}|>{\centering\arraybackslash}p{4cm}|>{\centering\arraybackslash}p{4cm}|>{\centering\arraybackslash}p{4cm}|>{\centering\arraybackslash}p{1.5cm}|}
+		\hline
+		\textbf{ID} & \textbf{Descripción} & \textbf{Precondición} & \textbf{Resultado esperado} & \textbf{¿Pasa?} \\
+		\hline
+		PR-01 & Iniciar una nueva partida desde el menú principal & El sistema muestra el menú principal & El tablero se inicializa y se muestra la interfaz de despliegue & \cellcolor{green!40}Sí \\
+		\hline
+		PR-02 & Intentar comenzar la partida sin colocar todas las piezas & Pantalla de despliegue activa & El sistema impide el inicio y permanece en la fase de despliegue & \cellcolor{green!40}Sí \\
+		\hline
+		PR-03 & Colocar una pieza fuera de la zona de despliegue permitida & Pantalla de despliegue activa & El sistema rechaza la acción y no coloca la pieza & \cellcolor{green!40}Sí \\
+		\hline
+		PR-04 & Intentar colocar dos piezas en la misma casilla & Al menos una pieza ya colocada & El sistema quita la pieza original & \cellcolor{green!40}Sí \\
+		\hline
+		PR-05 & Colocar todas las piezas y confirmar inicio & Todas las piezas del jugador colocadas & El bot despliega sus piezas y comienza el turno del jugador & \cellcolor{green!40}Sí \\
+		\hline
+	\end{tabular}
+	\caption{Pruebas del bloque 1: Despliegue inicial (RF01, RF02, CU-01)}
+\end{table}
+
+\clearpage
+
+\subsection{Bloque 2 — Movimiento}
+
+\begin{table}[H]
+	\centering
+	\small
+	\begin{tabular}{|>{\centering\arraybackslash}p{1cm}|>{\centering\arraybackslash}p{4cm}|>{\centering\arraybackslash}p{4cm}|>{\centering\arraybackslash}p{4cm}|>{\centering\arraybackslash}p{1.5cm}|}
+		\hline
+		\textbf{ID} & \textbf{Descripción} & \textbf{Precondición} & \textbf{Resultado esperado} & \textbf{¿Pasa?} \\
+		\hline
+		PR-06 & Seleccionar una pieza propia con movimientos disponibles & Turno del jugador activo & Las casillas de destino válidas quedan resaltadas & \cellcolor{green!40}Sí \\
+		\hline
+		PR-07 & Seleccionar una pieza propia sin movimientos disponibles & Turno del jugador activo & No se resalta ninguna casilla ni se registra selección & \cellcolor{green!40}Sí \\
+		\hline
+		PR-08 & Hacer clic fuera de una casilla válida tras seleccionar una pieza & Pieza seleccionada con casillas resaltadas & Se cancela la selección y se eliminan los resaltados & \cellcolor{green!40}Sí \\
+		\hline
+		PR-09 & Mover una pieza a una casilla vacía válida & Pieza seleccionada y casilla resaltada & La pieza se desplaza a la casilla y el turno pasa al bot & \cellcolor{green!40}Sí \\
+		\hline
+		PR-10 & Intentar mover una pieza a una casilla intransitable & Turno del jugador activo & El sistema impide el movimiento; la casilla no aparece resaltada & \cellcolor{green!40}Sí \\
+		\hline
+		PR-11 & Intentar mover una pieza a una casilla ocupada por otra pieza propia & Turno del jugador activo & El sistema no permite el movimiento; la casilla no está resaltada & \cellcolor{green!40}Sí \\
+		\hline
+		PR-12 & Mover el Explorador más de una casilla en línea recta & Turno del jugador, Explorador disponible & La pieza se desplaza y su identidad queda revelada permanentemente & \cellcolor{green!40}Sí \\
+		\hline
+		PR-13 & Mover el Explorador exactamente una casilla & Turno del jugador, Explorador disponible & La pieza se desplaza sin revelar su identidad & \cellcolor{green!40}Sí \\
+		\hline
+		PR-14 & Intentar realizar una acción durante el turno del bot & Turno del bot en ejecución & El sistema ignora el input del jugador & \cellcolor{green!40}Sí \\
+		\hline
+	\end{tabular}
+	\caption{Pruebas del bloque 2: Movimiento (RF03, RF04, RF07, CU-02)}
+\end{table}
+
+\clearpage
+
+\subsection{Bloque 3 — Combate}
+
+\begin{table}[H]
+	\centering
+	\small
+	\begin{tabular}{|>{\centering\arraybackslash}p{1cm}|>{\centering\arraybackslash}p{4cm}|>{\centering\arraybackslash}p{4cm}|>{\centering\arraybackslash}p{4cm}|>{\centering\arraybackslash}p{1.5cm}|}
+		\hline
+		\textbf{ID} & \textbf{Descripción} & \textbf{Precondición} & \textbf{Resultado esperado} & \textbf{¿Pasa?} \\
+		\hline
+		PR-15 & Pieza de mayor rango ataca a pieza de menor rango & Ambas piezas en posiciones adyacentes válidas & La pieza atacante ocupa la casilla; la defensora es eliminada & \cellcolor{green!40}Sí \\
+		\hline
+		PR-16 & Pieza de menor rango ataca a pieza de mayor rango & Ambas piezas en posiciones adyacentes válidas & La pieza atacante es eliminada; la defensora permanece & \cellcolor{green!40}Sí \\
+		\hline
+		PR-17 & Dos piezas del mismo rango se enfrentan & Ambas piezas en posiciones adyacentes válidas & Empate: ambas piezas son eliminadas del tablero & \cellcolor{green!40}Sí \\
+		\hline
+		PR-18 & Saboteador ataca a una Torreta & Saboteador y Torreta en posiciones adyacentes & El Saboteador vence y ocupa la casilla de la Torreta & \cellcolor{green!40}Sí \\
+		\hline
+		PR-19 & Pieza distinta al Saboteador ataca a una Torreta & Pieza no-Saboteador y Torreta adyacentes & La pieza atacante es destruida; la Torreta permanece & \cellcolor{green!40}Sí \\
+		\hline
+		PR-20 & Phantom ataca a la Máquina de guerra & Phantom y Máquina de guerra en posiciones adyacentes & El Phantom vence independientemente del rango & \cellcolor{green!40}Sí \\
+		\hline
+		PR-21 & Pieza distinta al Phantom ataca a la Máquina de guerra & Pieza no-Phantom y Máquina de guerra adyacentes & El combate se resuelve por rango numérico según las reglas normales & \cellcolor{green!40}Sí \\
+		\hline
+		PR-22 & Combate entre dos piezas, al menos una oculta & Una o ambas piezas con identidad no revelada & Ambas identidades quedan reveladas y permanecen visibles & \cellcolor{green!40}Sí \\
+		\hline
+		PR-23 & Pieza ya revelada entra en un nuevo combate & Pieza previamente revelada en juego & La pieza sigue mostrando su identidad correctamente & \cellcolor{green!40}Sí \\
+		\hline
+		PR-24 & La interfaz de combate se muestra y cierra correctamente & Se produce un combate durante un turno & Se muestra la pantalla de resolución; al confirmar, se cierra y el juego continúa & \cellcolor{green!40}Sí \\
+		\hline
+	\end{tabular}
+	\caption{Pruebas del bloque 3: Combate (RF04, RF05, RF09, CU-03)}
+\end{table}
+
+\clearpage
+
+\subsection{Bloque 4 — Condiciones de victoria}
+
+\begin{table}[H]
+	\centering
+	\small
+	\begin{tabular}{|>{\centering\arraybackslash}p{1cm}|>{\centering\arraybackslash}p{4cm}|>{\centering\arraybackslash}p{4cm}|>{\centering\arraybackslash}p{4cm}|>{\centering\arraybackslash}p{1.5cm}|}
+		\hline
+		\textbf{ID} & \textbf{Descripción} & \textbf{Precondición} & \textbf{Resultado esperado} & \textbf{¿Pasa?} \\
+		\hline
+		PR-25 & El jugador destruye el Núcleo de energía del bot & Partida en curso, Núcleo rival accesible & La partida termina inmediatamente y el jugador gana & \cellcolor{green!40}Sí \\
+		\hline
+		PR-26 & El bot destruye el Núcleo de energía del jugador & Partida en curso, Núcleo del jugador accesible & La partida termina inmediatamente y el jugador pierde & \cellcolor{green!40}Sí \\
+		\hline
+		PR-27 & Todas las piezas móviles del jugador son eliminadas & Partida en curso & El sistema detecta que el jugador no puede mover y declara su derrota & \cellcolor{green!40}Sí \\
+		\hline
+		PR-28 & Todas las piezas móviles del bot son eliminadas & Partida en curso & El sistema detecta que el bot no puede mover y declara la victoria del jugador & \cellcolor{green!40}Sí \\
+		\hline
+		PR-29 & El jugador y el bot se quedan sin piezas moviles en el mismo turno & Partida en curso & La pantalla de fin de partida aparece indicando un empate & \cellcolor{green!40}Sí \\
+		\hline
+		PR-30 & El jugador selecciona jugar otra partida desde la pantalla de fin & Pantalla de fin de partida visible & El sistema reinicia completamente el estado y vuelve a la fase de despliegue & \cellcolor{green!40}Sí \\
+		\hline
+		PR-31 & El jugador selecciona volver al menú principal desde la pantalla de fin & Pantalla de fin de partida visible & El sistema navega al menú principal & \cellcolor{green!40}Sí \\
+		\hline
+	\end{tabular}
+	\caption{Pruebas del bloque 4: Condiciones de victoria (RF08, CU-02)}
+\end{table}
+
+\clearpage
+
+\subsection{Bloque 5 — Interfaz y feedback visual/sonoro}
+
+\begin{table}[H]
+	\centering
+	\small
+	\begin{tabular}{|>{\centering\arraybackslash}p{1cm}|>{\centering\arraybackslash}p{4cm}|>{\centering\arraybackslash}p{4cm}|>{\centering\arraybackslash}p{4cm}|>{\centering\arraybackslash}p{1.5cm}|}
+		\hline
+		\textbf{ID} & \textbf{Descripción} & \textbf{Precondición} & \textbf{Resultado esperado} & \textbf{¿Pasa?} \\
+		\hline
+		PR-32 & Sonido de movimiento al desplazar una pieza & Turno del jugador, pieza movida a casilla vacía & Se reproduce el efecto de sonido asociado al movimiento & \cellcolor{green!40}Sí \\
+		\hline
+		PR-33 & Sonido de combate al producirse un enfrentamiento & Combate iniciado durante cualquier turno & Se reproduce el efecto de sonido asociado al combate & \cellcolor{green!40}Sí \\
+		\hline
+		PR-34 & Sonido de navegación por menús & Usuario navega entre menús & Se reproducen los efectos sonoros asociados a los botones & \cellcolor{green!40}Sí \\
+		\hline
+		PR-35 & Toda la interacción es posible exclusivamente con el ratón & El juego está en cualquier estado & Ninguna acción requiere el uso del teclado & \cellcolor{green!40}Sí \\
+		\hline
+	\end{tabular}
+	\caption{Pruebas del bloque 5: Interfaz y feedback (RF09, RF10, RNF04)}
+\end{table}
+
+\clearpage
+
+\subsection{Bloque 6 — Menús y navegación}
+
+\begin{table}[H]
+	\centering
+	\small
+	\begin{tabular}{|>{\centering\arraybackslash}p{1cm}|>{\centering\arraybackslash}p{4cm}|>{\centering\arraybackslash}p{4cm}|>{\centering\arraybackslash}p{4cm}|>{\centering\arraybackslash}p{1.5cm}|}
+		\hline
+		\textbf{ID} & \textbf{Descripción} & \textbf{Precondición} & \textbf{Resultado esperado} & \textbf{¿Pasa?} \\
+		\hline
+		PR-36 & Pausar la partida en mitad de un turno del jugador & Turno del jugador activo & El menú de pausa se abre y el juego queda pausado & \cellcolor{green!40}Sí \\
+		\hline
+		PR-37 & Reanudar la partida desde el menú de pausa & Menú de pausa abierto & La partida continúa desde el mismo estado en que fue pausada & \cellcolor{green!40}Sí \\
+		\hline
+		PR-38 & Abandonar la partida desde el menú de pausa & Menú de pausa abierto & El sistema navega al menú principal sin errores & \cellcolor{green!40}Sí \\
+		\hline
+		PR-39 & Consultar las reglas desde el menú principal & Sistema en el menú principal & Se muestra el menú de reglas completo con toda la información & \cellcolor{green!40}Sí \\
+		\hline
+		PR-40 & Consultar las reglas desde el menú de pausa & Menú de pausa abierto & Se muestra el menú de reglas; al cerrarlo, el sistema regresa al menú de pausa & \cellcolor{green!40}Sí \\
+		\hline
+		PR-41 & Ajustar el volumen de las pistas de sonido desde el menú de opciones & Menú de opciones accesible & El cambio se aplica inmediatamente y se mantiene durante la sesión & \cellcolor{green!40}Sí \\
+		\hline
+		PR-42 & Acceder al menú de opciones desde el menú principal & Sistema en el menú principal & El menú de opciones se abre correctamente & \cellcolor{green!40}Sí \\
+		\hline
+		PR-43 & Acceder al menú de opciones desde el menú de pausa & Menú de pausa abierto & El menú de opciones se abre; al cerrarlo regresa al menú de pausa & \cellcolor{green!40}Sí \\
+		\hline
+	\end{tabular}
+	\caption{Pruebas del bloque 6: Menús y navegación (RF11, RF12, RF13, CU-04, CU-05)}
+\end{table}
+
+\clearpage
+
+\subsection{Bloque 7 — Comportamiento del bot}
+
+\begin{table}[H]
+	\centering
+	\small
+	\begin{tabular}{|>{\centering\arraybackslash}p{1cm}|>{\centering\arraybackslash}p{4cm}|>{\centering\arraybackslash}p{4cm}|>{\centering\arraybackslash}p{4cm}|>{\centering\arraybackslash}p{1.5cm}|}
+		\hline
+		\textbf{ID} & \textbf{Descripción} & \textbf{Precondición} & \textbf{Resultado esperado} & \textbf{¿Pasa?} \\
+		\hline
+		PR-44 & El bot ejecuta su turno automáticamente tras el turno del jugador & El jugador ha completado su acción & El bot realiza un movimiento válido sin intervención del jugador & \cellcolor{green!40}Sí \\
+		\hline
+		PR-45 & El bot nunca se mueve a una casilla intransitable & Turno del bot activo & Ningún movimiento del bot aterriza en una casilla de tipo no-pasable & \cellcolor{green!40}Sí \\
+		\hline
+		PR-46 & El bot nunca ataca a sus propias piezas & Turno del bot activo & Todos los ataques del bot se dirigen a piezas del jugador & \cellcolor{green!40}Sí \\
+		\hline
+		PR-47 & El bot no actúa durante el turno del jugador & Turno del jugador activo & El bot permanece inactivo hasta que el jugador completa su acción & \cellcolor{green!40}Sí \\
+		\hline
+		PR-48 & El bot respeta las reglas especiales de combate & Turno del bot, situación con Torreta o Phantom & Los resultados de combate del bot siguen las mismas reglas especiales que las del jugador & \cellcolor{green!40}Sí \\
+		\hline
+	\end{tabular}
+	\caption{Pruebas del bloque 7: Comportamiento del bot (RF06)}
+\end{table}
+
+\clearpage
+
+\subsection{Bloque 8 — Requisitos no funcionales}
+
+\begin{table}[H]
+	\centering
+	\small
+	\begin{tabular}{|>{\centering\arraybackslash}p{1cm}|>{\centering\arraybackslash}p{4cm}|>{\centering\arraybackslash}p{4cm}|>{\centering\arraybackslash}p{4cm}|>{\centering\arraybackslash}p{1.5cm}|}
+		\hline
+		\textbf{ID} & \textbf{Descripción} & \textbf{Precondición} & \textbf{Resultado esperado} & \textbf{¿Pasa?} \\
+		\hline
+		PR-49 & El juego arranca correctamente en Windows 10 & Ejecutable instalado en Windows 10 & El juego se inicia sin errores y llega al menú principal & \cellcolor{green!40}Sí \\
+		\hline
+		PR-50 & El juego arranca correctamente en Windows 11 & Ejecutable instalado en Windows 11 & El juego se inicia sin errores y llega al menú principal & \cellcolor{green!40}Sí \\
+		\hline
+		PR-51 & El juego funciona en un equipo con las especificaciones mínimas & Hardware mínimo: CPU doble núcleo 2,0~GHz, 8~GB RAM, GPU OpenGL~3.3 & El juego se ejecuta sin cuelgues, artefactos visuales ni caídas de rendimiento significativas & \cellcolor{green!40}Sí \\
+		\hline
+		PR-52 & Las acciones del jugador reciben respuesta en menos de 2 segundos & Juego en ejecución en condiciones normales & Ninguna acción provoca una espera superior a 2 segundos antes de que el sistema reaccione & \cellcolor{green!40}Sí \\
+		\hline
+		PR-53 & Un jugador sin experiencia identifica qué piezas puede mover sin consultar las reglas & Primera partida del jugador, sin leer el menú de reglas & El jugador es capaz de seleccionar y mover una pieza correctamente gracias al resaltado de casillas & \cellcolor{green!40}Sí \\
+		\hline
+	\end{tabular}
+	\caption{Pruebas del bloque 8: Requisitos no funcionales (RNF01--RNF04)}
+\end{table}

@@ -60,6 +60,7 @@ offset_top = 46.0
 offset_right = 294.25
 offset_bottom = 218.0
 scale = Vector2(1.4788531, 1.4788531)
+mouse_filter = 2
 theme_override_styles/panel = ExtResource("3_ppsyc")
 
 [node name="AttackerInfoLabel" type="Panel" parent="Popup/AttackerScreen" unique_id=6130400]
@@ -74,6 +75,7 @@ offset_right = 89.0
 offset_bottom = 41.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 2
 theme_override_styles/panel = ExtResource("4_sklqs")
 
 [node name="AttackerIconBorder" type="Panel" parent="Popup/AttackerScreen" unique_id=1560694267]
@@ -86,6 +88,7 @@ offset_top = -48.0
 offset_right = 29.0
 offset_bottom = 2.0
 grow_horizontal = 2
+mouse_filter = 2
 theme_override_styles/panel = ExtResource("5_l61de")
 
 [node name="AttackerIcon" type="TextureRect" parent="Popup/AttackerScreen/AttackerIconBorder" unique_id=1046524460]
@@ -102,6 +105,7 @@ offset_right = 16.0
 offset_bottom = 25.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("4_xn2uq")
 
 [node name="AttackerIconBackground" type="Panel" parent="Popup/AttackerScreen/AttackerIconBorder" unique_id=8292724]
@@ -111,6 +115,7 @@ offset_left = 8.0
 offset_top = 13.0
 offset_right = 50.0
 offset_bottom = 53.0
+mouse_filter = 2
 theme_override_styles/panel = ExtResource("6_x3i3a")
 
 [node name="AttackerPiece" type="TextureRect" parent="Popup/AttackerScreen" unique_id=2001698413]
@@ -126,6 +131,7 @@ offset_right = 55.0
 offset_bottom = 55.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("1_mvwh1")
 expand_mode = 1
 
@@ -158,6 +164,7 @@ offset_right = 205.25
 offset_bottom = 218.0
 grow_horizontal = 2
 scale = Vector2(1.4788531, 1.4788531)
+mouse_filter = 2
 theme_override_styles/panel = ExtResource("3_ppsyc")
 
 [node name="DefenderInfoLabel" type="Panel" parent="Popup/DefenderScreen" unique_id=674715799]
@@ -172,6 +179,7 @@ offset_right = 89.0
 offset_bottom = 41.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 2
 theme_override_styles/panel = ExtResource("4_sklqs")
 
 [node name="DefenderIconBorder" type="Panel" parent="Popup/DefenderScreen" unique_id=1928537258]
@@ -184,6 +192,7 @@ offset_top = -48.0
 offset_right = 28.999962
 offset_bottom = 2.0
 grow_horizontal = 2
+mouse_filter = 2
 theme_override_styles/panel = ExtResource("5_l61de")
 
 [node name="DefenderIcon" type="TextureRect" parent="Popup/DefenderScreen/DefenderIconBorder" unique_id=483301869]
@@ -200,6 +209,7 @@ offset_right = 16.000046
 offset_bottom = 25.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("9_ajnc1")
 
 [node name="DefenderIconBackground" type="Panel" parent="Popup/DefenderScreen/DefenderIconBorder" unique_id=892713021]
@@ -209,6 +219,7 @@ offset_left = 8.0
 offset_top = 13.0
 offset_right = 49.999985
 offset_bottom = 53.0
+mouse_filter = 2
 theme_override_styles/panel = ExtResource("6_x3i3a")
 
 [node name="DefenderPiece" type="TextureRect" parent="Popup/DefenderScreen" unique_id=226083942]
@@ -224,6 +235,7 @@ offset_right = 54.999977
 offset_bottom = 55.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("1_mvwh1")
 expand_mode = 1
 

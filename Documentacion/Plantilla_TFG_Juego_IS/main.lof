@@ -4,52 +4,53 @@
 \contentsline {figure}{\numberline {2.1}{\ignorespaces Tablero del Juego Real de Ur}}{10}{figure.caption.8}%
 \contentsline {figure}{\numberline {2.2}{\ignorespaces Tablero del juego Senet}}{10}{figure.caption.9}%
 \contentsline {figure}{\numberline {2.3}{\ignorespaces Tablero del juego Dou Shou Qi}}{12}{figure.caption.10}%
-\contentsline {figure}{\numberline {2.4}{\ignorespaces Tablero del juego Luzhanqi}}{15}{figure.caption.11}%
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Tablero del juego Luzhanqi}}{14}{figure.caption.11}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Esquema del tablero}}{18}{figure.caption.12}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Esquema del tablero}}{20}{figure.caption.12}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Diagrama de Gantt general del desarrollo del TFG, reflejando las fases de análisis y diseño globales, las iteraciones y la documentación}}{31}{figure.caption.15}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Detalle de la interfaz de despliegue inicial basada en botones de texto.}}{39}{figure.caption.19}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Mensaje de final de partida en la Iteración 1}}{40}{figure.caption.20}%
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Capturas del juego durante la Iteración 1.}}{40}{figure.caption.21}%
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Primer boceto de la interfaz de partida con indicadores laterales y texto de turno.}}{41}{figure.caption.23}%
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Evolución del diseño de partida con indicadores visuales de turno.}}{41}{figure.caption.24}%
-\contentsline {figure}{\numberline {4.7}{\ignorespaces Layout definitivo del boceto de la interfaz de partida.}}{42}{figure.caption.25}%
-\contentsline {figure}{\numberline {4.8}{\ignorespaces Boceto de inicio de combate: presentación de piezas.}}{43}{figure.caption.27}%
-\contentsline {figure}{\numberline {4.9}{\ignorespaces Boceto de resolución: comparación de rangos.}}{43}{figure.caption.28}%
-\contentsline {figure}{\numberline {4.10}{\ignorespaces Boceto de fin de combate: pieza eliminada.}}{44}{figure.caption.29}%
-\contentsline {figure}{\numberline {4.11}{\ignorespaces Comparativa entre el diseño inicial de combate y el diseño final simplificado.}}{44}{figure.caption.30}%
-\contentsline {figure}{\numberline {4.12}{\ignorespaces Boceto del menú de pausa del juego.}}{45}{figure.caption.31}%
-\contentsline {figure}{\numberline {4.13}{\ignorespaces Boceto de la interfaz de reglas con sistema de navegación por viñetas.}}{45}{figure.caption.32}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Metáfora gráfica del desarrollo iterativo e incremental}}{28}{figure.caption.13}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Parte 1 del diagrama de Gantt general del desarrollo del TFG}}{34}{figure.caption.16}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Parte 2 del diagrama de Gantt general del desarrollo del TFG}}{35}{figure.caption.17}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Diagrama de casos de uso}}{54}{figure.caption.34}%
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Diagrama del modelo de dominio}}{60}{figure.caption.41}%
-\contentsline {figure}{\numberline {5.3}{\ignorespaces Diagrama de actividad: Jugar partida (CU-01)}}{61}{figure.caption.42}%
-\contentsline {figure}{\numberline {5.4}{\ignorespaces Diagrama de actividad: Jugar turnos (CU-02)}}{62}{figure.caption.43}%
-\contentsline {figure}{\numberline {5.5}{\ignorespaces Diagrama de actividad: Resolver combate (CU-03)}}{63}{figure.caption.44}%
-\contentsline {figure}{\numberline {5.6}{\ignorespaces Diagrama de actividad: Consultar reglas}}{64}{figure.caption.45}%
-\contentsline {figure}{\numberline {5.7}{\ignorespaces Diagrama de actividad: Consultar reglas}}{64}{figure.caption.46}%
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Diagrama de casos de uso}}{48}{figure.caption.23}%
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Diagrama del modelo de dominio}}{54}{figure.caption.30}%
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Diagrama de actividad: Jugar partida (CU-01)}}{55}{figure.caption.31}%
+\contentsline {figure}{\numberline {5.4}{\ignorespaces Diagrama de actividad: Jugar turnos (CU-02)}}{56}{figure.caption.32}%
+\contentsline {figure}{\numberline {5.5}{\ignorespaces Diagrama de actividad: Resolver combate (CU-03)}}{57}{figure.caption.33}%
+\contentsline {figure}{\numberline {5.6}{\ignorespaces Diagrama de actividad: Consultar reglas}}{58}{figure.caption.34}%
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Diagrama de actividad: Consultar reglas}}{58}{figure.caption.35}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {6.1}{\ignorespaces Estructura de la escena \texttt {Tile} en el editor de Godot}}{66}{figure.caption.47}%
-\contentsline {figure}{\numberline {6.2}{\ignorespaces Modelo de ejecución de Godot ilustrado con algunos nodos del proyecto.}}{67}{figure.caption.48}%
-\contentsline {figure}{\numberline {6.3}{\ignorespaces Vista simplificada de la arquitectura de NeuroForge en tres capas.}}{68}{figure.caption.49}%
-\contentsline {figure}{\numberline {6.4}{\ignorespaces Diagrama de componentes de NeuroForge con sus dependencias.}}{70}{figure.caption.50}%
-\contentsline {figure}{\numberline {6.5}{\ignorespaces Menú principal de NeuroForge.}}{71}{figure.caption.51}%
-\contentsline {figure}{\numberline {6.6}{\ignorespaces Menú de reglas con la pestaña de tipos de casillas activa.}}{72}{figure.caption.52}%
-\contentsline {figure}{\numberline {6.7}{\ignorespaces Menú de reglas con la pestaña de piezas activa.}}{72}{figure.caption.53}%
-\contentsline {figure}{\numberline {6.8}{\ignorespaces Fase de despliegue con el tablero vacío al inicio de la partida.}}{73}{figure.caption.54}%
-\contentsline {figure}{\numberline {6.9}{\ignorespaces Fase de despliegue con algunas piezas ya colocadas en la zona del jugador.}}{74}{figure.caption.55}%
-\contentsline {figure}{\numberline {6.10}{\ignorespaces Pantalla de partida con una pieza seleccionada y sus acciones posibles resaltadas.}}{75}{figure.caption.56}%
-\contentsline {figure}{\numberline {6.11}{\ignorespaces Interfaz de combate antes de la resolución: ambas piezas visibles y resultado aún sin mostrar.}}{76}{figure.caption.57}%
-\contentsline {figure}{\numberline {6.12}{\ignorespaces Interfaz de combate tras la resolución: pieza perdedora oscurecida y mensaje de resultado visible.}}{76}{figure.caption.58}%
-\contentsline {figure}{\numberline {6.13}{\ignorespaces Pantalla de fin de partida con mensaje de victoria.}}{77}{figure.caption.59}%
-\contentsline {figure}{\numberline {6.14}{\ignorespaces Menú que emerge al pausar durante una partida.}}{78}{figure.caption.60}%
-\contentsline {figure}{\numberline {6.15}{\ignorespaces Menú de opciones donde configurar audio y resolución.}}{79}{figure.caption.61}%
-\contentsline {figure}{\numberline {6.16}{\ignorespaces Patrón Singleton aplicado en \texttt {GameScene} y \texttt {SceneManager}.}}{80}{figure.caption.62}%
-\contentsline {figure}{\numberline {6.17}{\ignorespaces Patrón Strategy con \texttt {MovementSystem} y \texttt {CombatSystem} como estrategias delegadas desde \texttt {Board}.}}{80}{figure.caption.63}%
-\contentsline {figure}{\numberline {6.18}{\ignorespaces Patrón Fachada con \texttt {Board} como punto de acceso unificado al subsistema de tablero.}}{81}{figure.caption.64}%
-\contentsline {figure}{\numberline {6.19}{\ignorespaces Patrón Template Method en \texttt {\_Bridge}: esqueleto fijo de transición con el paso de animación extensible por tipo.}}{82}{figure.caption.65}%
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Estructura de la escena \texttt {Tile} en el editor de Godot}}{60}{figure.caption.36}%
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Modelo de ejecución de Godot ilustrado con algunos nodos del proyecto.}}{61}{figure.caption.37}%
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Vista simplificada de la arquitectura de NeuroForge en tres capas.}}{62}{figure.caption.38}%
+\contentsline {figure}{\numberline {6.4}{\ignorespaces Menú principal de NeuroForge.}}{64}{figure.caption.39}%
+\contentsline {figure}{\numberline {6.5}{\ignorespaces Menú de reglas con la pestaña de tipos de casillas activa.}}{65}{figure.caption.40}%
+\contentsline {figure}{\numberline {6.6}{\ignorespaces Menú de reglas con la pestaña de piezas activa.}}{65}{figure.caption.41}%
+\contentsline {figure}{\numberline {6.7}{\ignorespaces Fase de despliegue con el tablero vacío al inicio de la partida.}}{66}{figure.caption.42}%
+\contentsline {figure}{\numberline {6.8}{\ignorespaces Fase de despliegue con algunas piezas ya colocadas en la zona del jugador.}}{67}{figure.caption.43}%
+\contentsline {figure}{\numberline {6.9}{\ignorespaces Pantalla de partida con una pieza seleccionada y sus acciones posibles resaltadas.}}{68}{figure.caption.44}%
+\contentsline {figure}{\numberline {6.10}{\ignorespaces Interfaz de combate antes de la resolución: ambas piezas visibles y resultado aún sin mostrar.}}{69}{figure.caption.45}%
+\contentsline {figure}{\numberline {6.11}{\ignorespaces Interfaz de combate tras la resolución: pieza perdedora oscurecida y mensaje de resultado visible.}}{69}{figure.caption.46}%
+\contentsline {figure}{\numberline {6.12}{\ignorespaces Pantalla de fin de partida con mensaje de victoria.}}{70}{figure.caption.47}%
+\contentsline {figure}{\numberline {6.13}{\ignorespaces Menú que emerge al pausar durante una partida.}}{71}{figure.caption.48}%
+\contentsline {figure}{\numberline {6.14}{\ignorespaces Menú de opciones donde configurar audio y resolución.}}{72}{figure.caption.49}%
+\contentsline {figure}{\numberline {6.15}{\ignorespaces Patrón Singleton aplicado en \texttt {GameScene} y \texttt {SceneManager}.}}{73}{figure.caption.50}%
+\contentsline {figure}{\numberline {6.16}{\ignorespaces Patrón Strategy con \texttt {MovementSystem} y \texttt {CombatSystem} como estrategias delegadas desde \texttt {Board}.}}{73}{figure.caption.51}%
+\contentsline {figure}{\numberline {6.17}{\ignorespaces Patrón Fachada con \texttt {Board} como punto de acceso unificado al subsistema de tablero.}}{74}{figure.caption.52}%
+\contentsline {figure}{\numberline {6.18}{\ignorespaces Patrón Template Method en \texttt {\_Bridge}: esqueleto fijo de transición con el paso de animación extensible por tipo.}}{75}{figure.caption.53}%
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {7.1}{\ignorespaces Detalle de la interfaz de despliegue inicial basada en botones de texto.}}{81}{figure.caption.54}%
+\contentsline {figure}{\numberline {7.2}{\ignorespaces Mensaje de final de partida en la Iteración 1}}{82}{figure.caption.55}%
+\contentsline {figure}{\numberline {7.3}{\ignorespaces Capturas del juego durante la Iteración 1.}}{82}{figure.caption.56}%
+\contentsline {figure}{\numberline {7.4}{\ignorespaces Primer boceto de la interfaz de partida con indicadores laterales y texto de turno.}}{83}{figure.caption.58}%
+\contentsline {figure}{\numberline {7.5}{\ignorespaces Evolución del diseño de partida con indicadores visuales de turno.}}{83}{figure.caption.59}%
+\contentsline {figure}{\numberline {7.6}{\ignorespaces Layout definitivo del boceto de la interfaz de partida.}}{84}{figure.caption.60}%
+\contentsline {figure}{\numberline {7.7}{\ignorespaces Boceto de inicio de combate: presentación de piezas.}}{85}{figure.caption.62}%
+\contentsline {figure}{\numberline {7.8}{\ignorespaces Boceto de resolución: comparación de rangos.}}{85}{figure.caption.63}%
+\contentsline {figure}{\numberline {7.9}{\ignorespaces Boceto de fin de combate: pieza eliminada.}}{86}{figure.caption.64}%
+\contentsline {figure}{\numberline {7.10}{\ignorespaces Comparativa entre el diseño inicial de combate y el diseño final simplificado.}}{86}{figure.caption.65}%
+\contentsline {figure}{\numberline {7.11}{\ignorespaces Boceto del menú de pausa del juego.}}{87}{figure.caption.66}%
+\contentsline {figure}{\numberline {7.12}{\ignorespaces Boceto de la interfaz de reglas con sistema de navegación por viñetas.}}{87}{figure.caption.67}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

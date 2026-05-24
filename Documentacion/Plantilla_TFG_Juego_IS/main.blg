@@ -5,46 +5,49 @@ Reallocating 'name_of_file' (item size: 1) to 6 items.
 The style file: unsrt.bst
 Reallocating 'name_of_file' (item size: 1) to 13 items.
 Database file #1: bibliografia.bib
-Warning--I didn't find a database entry for "cnmc_panel_hogares"
-You've used 27 entries,
+Repeated entry---line 647 of file bibliografia.bib
+ : @misc{notion_pricing
+ :                     ,
+I'm skipping whatever remains of this entry
+You've used 42 entries,
             1791 wiz_defined-function locations,
-            575 strings with 9359 characters,
-and the built_in function-call counts, 3694 in all, are:
-= -- 316
-> -- 129
-< -- 0
-+ -- 60
-- -- 33
-* -- 36
-:= -- 580
-add.period$ -- 98
-call.type$ -- 27
-change.case$ -- 27
+            667 strings with 11307 characters,
+and the built_in function-call counts, 6653 in all, are:
+= -- 578
+> -- 273
+< -- 1
++ -- 115
+- -- 73
+* -- 189
+:= -- 1053
+add.period$ -- 148
+call.type$ -- 42
+change.case$ -- 40
 chr.to.int$ -- 0
-cite$ -- 27
-duplicate$ -- 135
-empty$ -- 487
-format.name$ -- 33
-if$ -- 873
+cite$ -- 42
+duplicate$ -- 254
+empty$ -- 798
+format.name$ -- 73
+if$ -- 1543
 int.to.chr$ -- 0
-int.to.str$ -- 27
-missing$ -- 0
-newline$ -- 155
-num.names$ -- 26
-pop$ -- 181
+int.to.str$ -- 42
+missing$ -- 10
+newline$ -- 234
+num.names$ -- 41
+pop$ -- 247
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 64
+skip$ -- 114
 stack$ -- 0
-substring$ -- 0
-swap$ -- 27
-text.length$ -- 0
+substring$ -- 131
+swap$ -- 50
+text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 0
-while$ -- 26
-width$ -- 29
-write$ -- 297
-(There was 1 warning)
+while$ -- 54
+width$ -- 44
+write$ -- 462
+(There was 1 error message)

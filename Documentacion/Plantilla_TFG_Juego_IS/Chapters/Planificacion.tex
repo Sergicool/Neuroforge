@@ -10,7 +10,7 @@ La planificación se ha concebido como una guía flexible, susceptible de ser aj
 
 El desarrollo del TFG se ha llevado a cabo siguiendo una adaptación del \textbf{Proceso Unificado}~\cite{cabalar_metodologias} (\textit{Unified Process}, UP), un marco de desarrollo de software caracterizado por estar dirigido por casos de uso, centrado en la arquitectura y, sobre todo, por ser \textbf{iterativo e incremental}~\cite{solano2020}.
 
-La distinción entre los términos \textit{iterativo} e \textit{incremental} es relevante. El componente \textit{iterativo} hace referencia a la repetición sistemática de un conjunto de disciplinas en cada ciclo de trabajo. El componente \textit{incremental} implica que el resultado de cada iteración es un incremento funcional que se integra con el trabajo anterior y contribuye directamente al producto final. 
+La distinción entre los términos \textit{iterativo} e \textit{incremental} es relevante. El componente \textit{iterativo} hace referencia a la repetición sistemática de un conjunto de disciplinas en cada ciclo de trabajo. El componente \textit{incremental} implica que el resultado de cada iteración es un incremento funcional que se integra con el trabajo anterior y contribuye directamente al producto final. En la Figura~\ref{fig:Metodologia} se presenta una metáfora visual que ilustra el carácter iterativo e incremental del proceso, en la que cada ciclo produce un incremento funcional que se integra con el trabajo anterior.
 
 Para este proyecto, el Proceso Unificado organiza el ciclo de vida en cuatro grandes fases:
 
@@ -20,6 +20,13 @@ Para este proyecto, el Proceso Unificado organiza el ciclo de vida en cuatro gra
 	\item \textbf{Construcción:} Constituye el núcleo del desarrollo, donde el sistema se construye de forma iterativa e incremental.
 	\item \textbf{Transición:} El sistema se despliega, se realizan pruebas de integración definitivas y se produce la versión de entrega.
 \end{itemize}
+
+\begin{figure}[h!]
+	\centering
+	\includegraphics[width=0.45\linewidth]{../Imagenes/Metodologia}
+	\caption{Metáfora gráfica del desarrollo iterativo e incremental}
+	\label{fig:Metodologia}
+\end{figure}
 
 \subsection{Etapas de desarrollo y ordenación en la planificación}
 
@@ -188,16 +195,22 @@ La Tabla~\ref{tab:iteraciones} recoge el resumen definitivo de los tiempos de de
 	\label{tab:iteraciones}
 \end{table}
 
-La Figura \ref{fig:gantt} muestra de manera de manera actualizada el cronograma con la inserción de las tareas macro de análisis y diseño al inicio del desarrollo.
+La Figura \ref{fig:gantt1} y \ref{fig:gantt2} muestra de manera de manera actualizada el cronograma con la inserción de las tareas macro de análisis y diseño al inicio del desarrollo.
 
 \begin{landscape}
 	\begin{figure}[H]
 		\centering
-		\includegraphics[width=\linewidth]{../Imagenes/Gantt} 
-		\caption{Diagrama de Gantt general del desarrollo del TFG, reflejando las fases de análisis y diseño globales, las iteraciones y la documentación}
-		\label{fig:gantt}
+		\includegraphics[width=\linewidth]{../Imagenes/Gantt1.png} 
+		\caption{Parte 1 del diagrama de Gantt general del desarrollo del TFG}
+		\label{fig:gantt1}
 	\end{figure}
-\end{landscape}
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\linewidth]{../Imagenes/Gantt2} 
+		\caption{Parte 2 del diagrama de Gantt general del desarrollo del TFG}
+		\label{fig:gantt2}
+	\end{figure}
+ \end{landscape}
  
 % ─────────────────────────────────────────────────────────────────────────────
 \section{Riesgos}
@@ -392,286 +405,93 @@ Esta decisión responde a una priorización deliberada del producto final, dado 
 
 Como consecuencia de esta reorganización, la planificación pasó de cuatro a cinco iteraciones, separando las mejoras audiovisuales en una iteración propia. Este ajuste no supuso un incremento en el tiempo total estimado, sino una redistribución del trabajo en fases más cohesionadas.
 
-En cuanto a las desviaciones temporales, las iteraciones completadas hasta la fecha se han desarrollado dentro de los márgenes previstos, sin retrasos significativos respecto al cronograma establecido. La duración real de cada fase ha sido comparable a la estimación inicial, con variaciones menores atribuibles a la diferente dificultad de tareas concretas dentro de cada iteración.
+En cuanto a las desviaciones concretas registradas, las dos primeras iteraciones experimentaron retrasos respecto a sus fechas estimadas. La primera iteración, cuyo núcleo jugable estaba previsto para el 26 de febrero, no se completó hasta el 19 de marzo. El motivo principal fue la necesidad de revisar y rediseñar aspectos del modelo de datos que no habían sido contemplados con suficiente detalle durante la fase de diseño inicial: al comenzar la implementación se detectaron inconsistencias en la representación interna de las piezas y su relación con el tablero que obligaron a replantear parte de la arquitectura antes de poder continuar con el desarrollo. Esta revisión, aunque necesaria para garantizar la solidez del sistema, consumió tiempo no presupuestado y desplazó la fecha de entrega de la iteración.
 
+Como consecuencia directa de ese retraso, la segunda iteración, dedicada a la interfaz de usuario y el pulido visual, también se vio afectada. Al comenzar más tarde de lo previsto, su finalización se postergó del 5 de abril al 18 del mismo mes. En este caso no surgieron dificultades técnicas adicionales significativas, por lo que la desviación fue puramente arrastrada desde la iteración anterior. La tercera iteración, que arrancó justo tras la conclusión de la segunda, pudo completarse en la fecha inicialmente estimada al no presentar dependencias críticas con los cambios de diseño anteriores.
 
 (Escribir mas variaciones cuando se den)
 
 ...
 
-% ─────────────────────────────────────────────────────────────────────────────
-\section{Iteraciones y progreso del desarrollo}
-% ─────────────────────────────────────────────────────────────────────────────
+La Tabla~\ref{tab:variacion} recoge el resumen de las desviaciones producidas respecto a la planificación inicial en las iteraciones ya finalizadas.
 
-Tras la planificación inicial y el análisis de las variaciones, en este apartado se describe el transcurso real de cada una de las iteraciones, detallando los avances técnicos y la evolución visual del proyecto.
-
-\subsection{Iteración 1: Núcleo jugable y lógica básica}
-
-Esta primera fase se centró en la implementación de la base jugable, tenía como objetivo principal crear un \textit{Producto Mínimo Viable} funcional. En esta etapa, el juego carecía por completo de elementos estéticos, menús o \textit{feedback} visual y sonoro, centrándose exclusivamente en la validez de los movimientos y la resolución de combates.
-
-Durante esta iteración se utilizaron \textit{placeholders} (elementos provisionales) para representar todas las entidades del juego. La interfaz de despliegue consistía únicamente en botones con texto plano como se puede ver en la Figura \ref{fig:it1_interfaz}, y las piezas se diferenciaban solo por colores e iconos esquemáticos sobre formas cuadradas. Como detalle de la imagen, también se pueden apreciar que los nombres de las piezas no reflejaban las definitivas del producto final, ya que se fueron haciendo cambios según se volvía a dar una vuelta a sus conceptos durante el desarrollo, o se implementaban su apariencia.
-
-\begin{itemize}
-	\item \textbf{Piezas con rango:} Identificadas por un número según su valor de combate.
-	\item \textbf{Núcleo de energía:} Representado por un signo de exclamación (!).
-	\item \textbf{Torretas:} Identificadas mediante una letra "T".
-\end{itemize}
-
-La elección del color de las piezas responde a criterios de usabilidad y psicología del color básicos que se aplicaron casi de manera inconsciente, utilizando el azul para el jugador por su asociación con la calma y la seguridad, mientras que el naranja para el rival facilita un contraste visual inmediato y resalta la naturaleza competitiva y de alerta frente a las unidades enemigas.
-
-\begin{figure}[H]
+\begin{table}[H]
 	\centering
-	\includegraphics[width=\textwidth]{../Imagenes/it1_despliegue_cerca}
-	\caption{Detalle de la interfaz de despliegue inicial basada en botones de texto.}
-	\label{fig:it1_interfaz}
-\end{figure}
-
-El tablero utilizaba una codificación de colores básica para la retroalimentación visual del usuario:
-\begin{itemize}
-	\item \textbf{Gris:} Casillas intransitables que actúan como obstáculos permanentes.
-	\item \textbf{Azul:} Casillas de agua o vacío. En esta fase no existía distinción visual entre las zonas de despliegue del jugador y de la inteligencia artificial, lo que dificultaba el posicionamiento inicial para alguien que no conociera el diseño del juego.
-	\item \textbf{Verde:} Resaltado de casillas disponibles para movimiento tras seleccionar una pieza propia.
-	\item \textbf{Rojo:} Indicador de casilla de combate inminente al seleccionar un objetivo enemigo.
-\end{itemize}
-
-La interacción era puramente lógica y carecía de retroalimentación visual. Los movimientos y combates eran instantáneos, sin animaciones de transición. Esta inmediatez provocaba problemas de seguimiento de la partida, ya que en ocasiones resultaba difícil saber que jugada realizado por el bot después del movimiento del jugador. 
-
-Asimismo, no existía un flujo de partida completo, al finalizar el encuentro por la captura del núcleo, el sistema no mostraba pantallas de victoria o derrota, limitándose a imprimir un mensaje en la terminal de depuración de Godot y a detener la ejecución del juego como se puede observar en la Figura \ref{fig:it1_juego2}. Tampoco se implementaron menús de pausa, opciones ni efectos de sonido. En la Figura \ref{fig:it1_juego1} se pueden observar distintas partidas y situaciones del productor de la primera iteración. La iteración acabo dentro del plazo establecido.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{../Imagenes/it1_juego2}
-	\caption{Mensaje de final de partida en la Iteración 1}
-	\label{fig:it1_juego2}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{../Imagenes/it1_juego1}
-	\caption{Capturas del juego durante la Iteración 1.}
-	\label{fig:it1_juego1}
-\end{figure}
-
-\subsection{Iteración 2: Interfaz de usuario y pulido visual}
-
-En esta segunda fase, el desarrollo se centró en transformar los elementos provisionales de la iteración anterior en una interfaz de usuario (UI) coherente, intuitiva y visualmente atractiva. Para la planificación y el diseño de estas interfaces se utilizó la herramienta \textit{draw.io}, permitiendo bocetar la disposición de los elementos antes de su implementación definitiva en el motor.
-
-\subsubsection{Interfaz de partida}
-
-La interfaz principal de juego se diseñó con el objetivo de centralizar toda la información necesaria para el jugador sin sobrecargar la vista. En su primera concepción, el boceto mostraba un tablero central rodeado por los indicadores de piezas restantes a ambos lados y un historial de movimientos situado en la esquina inferior izquierda. El estado del turno se indicaba mediante un texto descriptivo en la parte superior como se puede observar en la Figura \ref{fig:boceto_partida_v1}.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.7\textwidth]{../Imagenes/boceto_partida_v1}
-	\caption{Primer boceto de la interfaz de partida con indicadores laterales y texto de turno.}
-	\label{fig:boceto_partida_v1}
-\end{figure}
-
-En una segunda revisión del diseño, se buscó una mayor limpieza visual. Se sustituyó el display de texto superior por un marcador de turno más iconográfico y llamativo, situando el icono del jugador actual (o el bot) en un lateral. Asimismo, los contadores de piezas se agruparon a la izquierda para liberar espacio, desplazando el historial a la derecha como aparece en la Figura \ref{fig:boceto_partida_v2}.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.7\textwidth]{../Imagenes/boceto_partida_v2}
-	\caption{Evolución del diseño de partida con indicadores visuales de turno.}
-	\label{fig:boceto_partida_v2}
-\end{figure}
-
-Finalmente, la estructura definitiva eliminó el historial de movimientos. Se consideró que esta información resultaba redundante y generaba un exceso de ruido visual que no aportaba un valor crítico a la experiencia de juego, dejando como resultado final el boceto de la Figura \ref{fig:boceto_partida_v3}. En la implementación final, el marcador de turnos se simplificó de dos iconos que se iluminaban alternativamente a un único icono dinámico que cambia según el turno activo.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.7\textwidth]{../Imagenes/boceto_partida_v3}
-	\caption{Layout definitivo del boceto de la interfaz de partida.}
-	\label{fig:boceto_partida_v3}
-\end{figure}
-
-\subsubsection{Interfaz de combate y reglas}
-
-El diseño de la interfaz de combate siguió una lógica similar de simplificación. Inicialmente, se planteó como una estructura de contenedores anidados que separaban visualmente al atacante del defensor. Sin embargo, para la versión final se optó por eliminar los marcos contenedores externos, dejando los elementos de las piezas más libres y situando el mensaje del resultado del combate en la parte inferior de las mismas para no entorpecer la visión de la acción. Dicha diferencia puede apreciarse en los bocetos que aparecen en la Figura \ref{fig:boceto_comparacion_combate}.
-
-A continuación, se presentan los bocetos que detallan el funcionamiento de los distintos estados de resolución de un combate: en la Figura \ref{fig:combate_estado1} el inicio del combate, en la Figura \ref{fig:combate_estado2} la comparación entre piezas, y en la Figura \ref{fig:combate_estado3} el resultado final antes de cerrar la interfaz.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.8\textwidth]{../Imagenes/combate_estado1}
-	\caption{Boceto de inicio de combate: presentación de piezas.}
-	\label{fig:combate_estado1}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.8\textwidth]{../Imagenes/combate_estado2}
-	\caption{Boceto de resolución: comparación de rangos.}
-	\label{fig:combate_estado2}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.8\textwidth]{../Imagenes/combate_estado3}
-	\caption{Boceto de fin de combate: pieza eliminada.}
-	\label{fig:combate_estado3}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.8\textwidth]{../Imagenes/boceto_comparacion_combate}
-	\caption{Comparativa entre el diseño inicial de combate y el diseño final simplificado.}
-	\label{fig:boceto_comparacion_combate}
-\end{figure}
-
-Por último, se diseñó el menú de pausa de la Figura \ref{fig:boceto_pausa} y la guía de reglas. Para este último, se descartó la idea inicial de un \textit{popup} único con texto denso, como el de la Figura \ref{fig:boceto_reglas}, por el de un sistema de cinco viñetas navegables. Cada viñeta aborda un aspecto específico: el objetivo principal, tipos de casillas, reglas de movimiento, reglas de combate y datos de las piezas. Este enfoque permite al jugador asimilar las mecánicas de forma progresiva.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.8\textwidth]{../Imagenes/boceto_pausa}
-	\caption{Boceto del menú de pausa del juego.}
-	\label{fig:boceto_pausa}
-\end{figure}
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.8\textwidth]{../Imagenes/boceto_reglas}
-	\caption{Boceto de la interfaz de reglas con sistema de navegación por viñetas.}
-	\label{fig:boceto_reglas}
-\end{figure}
-
-No se realizaron bocetos adicionales para los menús principal, de opciones o de fin de partida, dada su sencillez estructural. Cabe destacar que el diseño estético definitivo y la implementación final de todas estas interfaces que se desarrollaron a lo largo de esta iteración se detallan en el capítulo de Diseño. La iteración acabo antes del plazo establecido.
-
-\subsection{Iteración 3: Mejoras audiovisuales}
-
-Una vez consolidada la base visual y lógica, la tercera iteración se dedicó íntegramamente al apartado sonoro y al refuerzo del \textit{game feeling}. El objetivo principal fue eliminar la sensación de monotonía y vacío que presentaba el prototipo hasta el momento.
-
-Para ello, se incorporaron pistas de música ambiental diferenciadas tanto para los menús como para el transcurso de la partida, dotando al juego de una atmósfera más inmersiva. En cuanto a los efectos de sonido (SFX), se implementaron tres niveles de interacción:
-
-\begin{itemize}
-	\item \textbf{Interfaz:} Sonidos sutiles de \textit{hover} y \textit{click} para que el jugador perciba qué elementos son interactuables.
-	\item \textbf{Tablero:} Feedback auditivo al seleccionar y desplazar piezas, reforzando la sensación de manipulación física.
-	\item \textbf{Eventos de juego:} Sonidos específicos para la revelación de piezas, derrotas en combate o cambios de estado, proporcionando una respuesta inmediata a las acciones del jugador.
-\end{itemize}
-
-Finalmente, se incluyeron fondos coherentes entre el menú principal y la escena de juego para unificar la estética y evitar que el transcurso de la partida se sintiera visualmente vacío. A estos fondos se les aplicó un ligero efecto de \textit{parallax}, lo que aporta profundidad y una mayor sensación de pulido a la experiencia. La iteración acabo dentro antes del plazo establecido.
-
-(Escribir iteracciones 4 y 5 cuando se acaben)
-
-...
+	\begin{tabular}{|c|l|c|c|}
+		\hline
+		\textbf{It.} & \textbf{Descripción} & \textbf{Fecha est.} & \textbf{Fecha real} \\
+		\hline
+		T. Global & Análisis y requisitos & 2026-02-05 & 2026-02-05 \\
+		\hline
+		T. Global & Diseño de arquitectura & 2026-02-12 & 2026-02-12 \\
+		\hline
+		1 & Juego base & 2026-02-26 & 2026-03-19 \\
+		\hline
+		2 & Interfaz y pulido visual & 2026-04-05 & 2026-04-18 \\
+		\hline
+		3 & Mejoras audiovisuales & 2026-04-19 & 2026-04-19 \\
+		\hline
+		4 & Bot inteligente (IA) & 2026-05-31 & - \\
+		\hline
+		5 & Pulido final & 2026-06-07 & - \\
+		\hline
+	\end{tabular}
+	\caption{Variaciones respecto a la planificación inicial}
+	\label{tab:variacion}
+\end{table}
 
 % ─────────────────────────────────────────────────────────────────────────────
 \section{Costes del proyecto}
 % ─────────────────────────────────────────────────────────────────────────────
 
-El desarrollo de este Trabajo de Fin de Grado se ha llevado a cabo estrictamente dentro de un marco académico y sin fines comerciales. Por este motivo, el proyecto no ha generado costes económicos directos: el espacio de trabajo ha sido el propio domicilio particular y el software empleado consta de herramientas de código abierto, versiones gratuitas o licencias educativas proporcionadas por la universidad.
-
-Sin embargo, con el fin de evaluar la viabilidad económica del videojuego en el mercado actual, resulta indispensable realizar un análisis presupuestario hipotético. A continuación, se desglosan los costes estimados en los que se habría incurrido si el proyecto se hubiese ejecutado en un entorno profesional e industrial, divididos en tres grandes categorías: costes de personal, software e infraestructura.
+A lo largo del desarrollo de este Trabajo de Fin de Grado el estudiante no ha incurrido en ningún gasto económico directo, todas las herramientas empleadas son de código abierto o gratuitas, y el espacio de trabajo ha sido el domicilio particular. No obstante, con el fin de evaluar la viabilidad del videojuego en un entorno profesional, se presenta a continuación una estimación de los costes en los que se habría incurrido de haberse desarrollado en ese contexto. Se distinguen dos escenarios, el \textbf{escenario individual}, que refleja el coste directo para un profesional autónomo, y el \textbf{escenario empresarial}, que incorpora las cargas adicionales que asumiría una empresa al contratarlo.
 
 \subsection{Costes de personal}
 
-El activo más importante y el que representa la mayor carga económica en el desarrollo de software es el factor humano. Para realizar una estimación realista en el contexto español, se toma como referencia el salario medio de un desarrollador junior de videojuegos, situado en \textbf{30.815~€} anuales~\cite{glassdoor_gamedeveloper}. 
+El coste de personal es el factor dominante en cualquier proyecto de desarrollo de software. Para estimarlo se toma como referencia el salario mensual bruto de un desarrollador junior de videojuegos en España, situado en 
+aproximadamente \textbf{2.333~€ brutos/mes} (28.000~€ anuales según datos de Glassdoor~\cite{glassdoor_gamedeveloper}). Dado que la dedicación total del proyecto ha sido de \textbf{300~horas} y que una jornada laboral estándar supone unas 160~horas mensuales, la duración equivalente es de \textbf{1,875~meses}, lo que da un coste salarial bruto de \textbf{4.125,00~€}. Este es el coste en el escenario individual, lo que percibiría el profesional por su trabajo.
 
-En un entorno profesional, el coste por hora para la organización no se calcula dividiendo el salario directamente de forma lineal, sino que debe contemplar dos factores clave:
-\begin{itemize}
-	\item \textbf{Seguridad Social a cargo de la empresa:} Supone un coste adicional aproximado del 32\,\% sobre el salario bruto en concepto de contingencias comunes, desempleo, formación profesional y coberturas obligatorias estatales~\cite{seguridad_social_costes}.
-	\item \textbf{Horas laborables efectivas:} Descontando vacaciones, días festivos y fines de semana, un trabajador a jornada completa realiza un promedio de 1.760~horas anuales.
-\end{itemize}
+En el escenario empresarial, la organización asume además las cotizaciones a la Seguridad Social a su cargo, que en España suponen aproximadamente un 32\,\% adicional sobre el salario bruto~\cite{seguridad_social_costes}, elevando el coste real de personal para la empresa a \textbf{5.445,00~€}.
 
-Calculando el coste anual total para la empresa ($30.815 \times 1,32 = 40.675,80 \text{~€}$), se obtiene una tasa horaria real de \textbf{23,11~€/h}. Considerando que la dedicación total acumulada para la planificación, diseño, implementación y documentación de este proyecto ha sido de \textbf{300~horas}, el coste de personal se computa mediante la ecuación:
+\subsection{Costes de software e infraestructura}
 
-\[
-C_{\text{personal}} = 300 \text{ h} \times 23,11 \text{ €/h} = 6.933,00 \text{ €}
-\]
+Los costes de software varían según el escenario. En el escenario individual, un profesional autónomo debería adquirir por su cuenta las herramientas necesarias, Aseprite por 16,79~€ (pago único), Astah Professional en su licencia individual por 17,98~€ y Notion Plus por 22,10~€ durante los dos meses de desarrollo técnico efectivo, sumando  \textbf{56,87~€}~\cite{astah_pricing, astah_pricing_team, notion_pricing}. En el escenario  empresarial, las licencias escalan a tarifas orientadas a organizaciones, Astah Professional pasa a su modalidad de licencia flotante anual a 180~€/año (15~€/mes) y Notion al plan Business a 20~USD/mes por usuario (aproximadamente 18,40~€/mes), lo que eleva el total de software 
+empresarial a \textbf{87,59~€} durante ese mismo periodo. Godot, Git y Audacity no generan coste en ninguno de los dos escenarios al distribuirse bajo licencias de código abierto.
 
-\subsection{Costes de \textit{software}}
+Los costes de infraestructura son igualmente compartidos entre ambos escenarios. El equipo, valorado en 2.000~€ con una vida útil de diez años, genera una amortización de \textbf{33~€} correspondiente a los dos meses de desarrollo técnico. A ello se suman los suministros del espacio de trabajo, estimando que el equipo representa un 20\,\% del consumo eléctrico del hogar (69,34~€/mes según la OCU~\cite{ocu_factura_luz}) y una línea de internet de 20~€/mes~\cite{digi_fibra}, el coste de suministros durante ese periodo asciende a \textbf{68~€}. El total de infraestructura es de \textbf{101~€}.
 
-A diferencia del entorno académico, la explotación comercial de un producto prohíbe el uso de licencias estudiantiles o planes gratuitos restringidos a fines no lucrativos. Por tanto, se han presupuestado las tarifas comerciales aplicables a empresas o profesionales independientes durante los \textbf{4 meses} que ha durado el desarrollo:
+\subsection{Distribución en Steam y punto de amortización}
 
-\begin{itemize}
-	\item \textbf{Aseprite:} Licencia comercial de pago único para el diseño de \textit{pixel art} por valor de \textbf{16,79~€}.
-	\item \textbf{Astah Professional:} Licencia comercial individual necesaria para el modelado estructurado de diagramas del sistema, con un coste mensual de \textbf{8,99~€/mes}~\cite{astah_pricing}.
-	\item \textbf{Notion Plus y GitHub Free:} Para la gestión y seguimiento del proyecto se emplea el plan de suscripción Notion Plus, con un coste de \textbf{12,00~USD/mes} (aproximadamente 11,05~€/mes al cambio vigente)~\cite{notion_pricing}. El alojamiento del repositorio de código se realiza mediante \textbf{GitHub Free}, cuya licencia incluye repositorios privados ilimitados sin coste para usuarios individuales~\cite{github_pricing}.
-	\item \textbf{Godot Engine, Git y Audacity:} Se mantienen con un coste de 0,00~€ debido a sus licencias de código abierto (MIT/GPL), perfectamente válidas tanto para el ámbito educativo como para su explotación comercial.
-\end{itemize}
+El canal de distribución natural para un videojuego independiente en PC es \textbf{Steam}. A fecha de redacción de este documento, publicar en la plataforma conlleva una tasa de registro de \textbf{84,99~€} por título~\cite{steam_pricing}, reembolsable una vez el juego acumula 1.000~USD en ventas (aproximadamente \textbf{849,99~€} al cambio actual). Además, Steam retiene una comisión del \textbf{30\,\%} sobre cada venta.
 
-El coste total de las herramientas de \textit{software} se calcula como:
+Fijar el precio requiere equilibrar la percepción de calidad y el volumen de ventas esperado. Un precio inferior a 1~€ tiende a generar en el consumidor la percepción de que el producto carece de valor, mientras que superar los 2--3~€ resulta difícil de justificar para un título de estas características. Se establece por tanto un \textbf{precio de venta de 1,99~€}, coherente con la escala del proyecto y habitual en el catálogo de juegos independientes de calidad modesta en Steam. Descontada la comisión de la plataforma, el ingreso neto por copia vendida es de \textbf{1,39~€}.
 
-\[
-C_{\text{software}} = 16{,}79 \text{ €} + (8{,}99 \text{ €/mes} + 11{,}05 \text{ €/mes}) \times 4 \text{ meses} = 96{,}95 \text{ €}
-\]
+\subsection{Resumen y punto de amortización}
 
-\subsection{Costes de infraestructura}
-
-Esta categoría engloba los gastos materiales y logísticos necesarios para mantener la actividad productiva y dar soporte técnico al puesto de trabajo durante los 4 meses de ejecución.
-
-\textbf{Amortización del hardware:} El equipo utilizado incluye el ordenador y sus periféricos asociados, con un valor de reposición actual estimado en \textbf{2.000~€} y una antigüedad de \textbf{8 años}. Ajustándose estrictamente a los criterios de vida útil física y contable del equipo informático fijados en \textbf{10 años}, la cuota de amortización anual es:
-
-\[
-A_{\text{anual}} = \frac{2.000 \text{ €}}{10 \text{ años}} = 200{,}00 \text{ €/año}
-\]
-
-El coste imputable al proyecto por los 4 meses de uso requeridos es:
-
-\[
-C_{\text{hardware}} = 200{,}00 \text{ €/año} \times \frac{4}{12} = 66{,}67 \text{ €}
-\]
-
-\textbf{Suministro eléctrico y conectividad:} Atendiendo a los datos disponibles sobre el mercado energético y de telecomunicaciones en España, se calcula el impacto del puesto de trabajo prorrateado al periodo de desarrollo:
-
-\begin{itemize}
-	\item \textbf{Electricidad:} Según el seguimiento de la factura media publicado por la OCU, el precio medio mensual de la tarifa regulada (PVPC) en 2025 fue de 69,34~€/mes~\cite{ocu_factura_luz}. Asumiendo que el uso
-	diario del equipo de desarrollo representa el 20\,\% del consumo total del hogar, resulta en:
-	\[
-	C_{\text{luz}} = 69{,}34 \text{ €/mes} \times 0{,}20
-	\times 4 \text{ meses} = 55{,}47 \text{ €}
-	\]
-	\item \textbf{Internet (Banda ancha):} Según los datos del Panel de Hogares de la CNMC, el precio medio del paquete cuádruple de telecomunicaciones (banda ancha fija y móvil, telefonía fija y móvil) se situó en
-	40,3~€/mes a finales de 2024~\cite{cnmc_panel_hogares}. Para este presupuesto se toma una estimación conservadora de \textbf{20,00~€/mes} correspondiente a una línea de banda ancha básica sin servicios adicionales:
-	\[
-	C_{\text{internet}} = 20{,}00 \text{ €/mes} \times 4 \text{ meses}
-	= 80{,}00 \text{ €}
-	\]
-\end{itemize}
-
-Sumando estos tres conceptos, el coste total de infraestructura asciende a:
-
-\[
-C_{\text{infraestructura}} = 66{,}67 \text{ €} + 55{,}47 \text{ €}+ 80{,}00 \text{ €} = 202{,}14 \text{ €}
-\]
-
-\subsection{Resumen de presupuestos y costes totales}
-
-Para ofrecer una visión unificada, la Tabla~\ref{tab:costes} recopila el desglose completo del presupuesto profesionalizado. Con el fin de dotar al análisis de la máxima rigurosidad industrial, se añade un \textbf{10\,\% en concepto de imprevistos o margen de contingencia}, habitual ante posibles desviaciones en la planificación temporal.
+La Tabla~\ref{tab:costes} recoge el desglose completo de los costes estimados en ambos escenarios. Al coste directo se añade un \textbf{10\,\%} de margen de contingencia, porcentaje habitual en la estimación de proyectos de desarrollo de software según las directrices del \textit{Project Management Body of Knowledge} (PMBOK)~\cite{pmi_contingency}, destinado a absorber desviaciones e imprevistos no contemplados en la planificación inicial.
 
 \begin{table}[H]
 	\centering
-	\begin{tabular}{|l|l|r|}
+	\begin{tabular}{|l|r|r|}
 		\hline
-		\textbf{Categoría} & \textbf{Concepto} & \textbf{Coste estimado} \\
+		\textbf{Concepto} &
+		\textbf{Escenario individual} &
+		\textbf{Escenario empresarial} \\
 		\hline
-		Personal
-		& Desarrollo de software (300~h $\times$ 23,11~€/h)
-		& 6.933,00~€ \\
+		Personal            & 4.125,00~€ & 5.445,00~€ \\
+		Software            & 56,87~€    & 87,59~€    \\
+		\cline{2-3}
+		Infraestructura     & \multicolumn{2}{c|}{101,07~€} \\
+		Registro Steam      & \multicolumn{2}{c|}{84,99~€} \\
 		\hline
-		Software
-		& Licencias comerciales (Aseprite, Astah, Notion)
-		& 96,95~€ \\
+		Subtotal            & 4.367,93~€ & 5.718,65~€ \\
+		Contingencia (10\,\%) & 436,79~€ & 571,87~€   \\
 		\hline
-		\multirow{3}{*}{Infraestructura}
-		& Amortización de hardware informático (10 años) &  66,67~€ \\
-		& Consumo eléctrico prorrateado                  &  55,47~€ \\
-		& Conectividad a internet y red                  &  80,00~€ \\
-		\hline
-		\multicolumn{2}{|l|}{Subtotal}
-		& 7.232,09~€ \\
-		\hline
-		\multicolumn{2}{|l|}{Margen de contingencia e imprevistos (10\,\%)}
-		& 723,21~€ \\
-		\hline
-		\multicolumn{2}{|l|}{\textbf{Total estimado comercial}}
-		& \textbf{7.955,30~€} \\
+		\textbf{Total}      & \textbf{4.804,72~€} & \textbf{6.290,52~€} \\
 		\hline
 	\end{tabular}
-	\caption{Desglose de costes estimados del proyecto en un contexto profesional}
+	\caption{Desglose de costes estimados en escenario individual y empresarial}
 	\label{tab:costes}
 \end{table}
 
-\noindent
-Es necesario recalcar que, pese a que la simulación comercial sitúa el valor de la producción en \textbf{7.955,30~€}, el coste real de ejecución de este TFG ha sido de \textbf{0~€} gracias a la naturaleza del entorno académico e
-individual donde se ha concebido.
+Con un ingreso neto de 1,39~€ por copia, el número de unidades necesarias para recuperar la inversión es de \textbf{3.457~copias} en el escenario individual y de \textbf{4.526~copias} en el empresarial. Estas cifras son teóricamente alcanzables para un título independiente con buenas valoraciones en Steam, plataforma que cuenta con más de 130 millones de usuarios activos, aunque dado el carácter académico del proyecto y la ausencia de campaña de marketing, deben entenderse como una estimación de viabilidad comercial y no como una proyección de ventas real.
