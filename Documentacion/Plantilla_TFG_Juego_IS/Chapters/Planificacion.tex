@@ -23,7 +23,7 @@ Para este proyecto, el Proceso Unificado organiza el ciclo de vida en cuatro gra
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[width=0.45\linewidth]{../Imagenes/Metodologia}
+	\includegraphics[width=0.8\linewidth]{../Imagenes/Metodologia}
 	\caption{Metáfora gráfica del desarrollo iterativo e incremental}
 	\label{fig:Metodologia}
 \end{figure}
@@ -55,7 +55,7 @@ Esta estructura metodológica se traslada directamente a la línea temporal del 
 		\hline
 		Elaboración & Diseño & Arquitectura base, esquema de datos y escenas \\
 		\hline
-		\multirow{4}{*}{Construcción} & Iteración 1: Juego base & Núcleo jugable mínimo y lógicas de tablero \\
+		\multirow{4}{*}{Construcción} & Iteración 1: Videojuego base & Núcleo jugable mínimo y lógicas de tablero \\
 		& Iteración 2: Interfaz de usuario & Interfaz, menús y flujo de navegación visual \\
 		& Iteración 3: Mejoras audiovisuales & Sonido, música y ambientación del entorno \\
 		& Iteración 4: Bot inteligente & Implementación y entrenamiento de la IA \\
@@ -79,7 +79,7 @@ A petición metodológica, el análisis y el diseño conceptual se han extraído
 \subsection{Tareas Globales Iniciales: Análisis y Diseño}
 % ─────────────────────────────────────────────────────────────────────────────
 
-Estas dos tareas constituyen el cimiento del proyecto antes de proceder a cualquier tipo de implementación en el motor de juego.
+Estas dos tareas constituyen el cimiento del proyecto antes de proceder a cualquier tipo de implementación en el motor de videojuegos.
 
 \begin{itemize}
 	\item \textbf{Análisis de requisitos y casos de uso (6 h):} Identificación detallada de los requisitos funcionales del videojuego, definición de los actores (jugador, bot) y especificación formal de los casos de uso principales (despliegue de piezas, movimiento, combate y condiciones de victoria).
@@ -87,7 +87,7 @@ Estas dos tareas constituyen el cimiento del proyecto antes de proceder a cualqu
 \end{itemize}
 
 % ─────────────────────────────────────────────────────────────────────────────
-\subsection{Iteración 1: Núcleo jugable (Juego base)}
+\subsection{Iteración 1: Núcleo jugable (Videojuego base)}
 % ─────────────────────────────────────────────────────────────────────────────
 
 El objetivo de esta iteración es desarrollar un \textit{Producto Mínimo Viable} funcional ---sin elementos visuales pulidos ni inteligencia artificial compleja--- que sirva como base estructural para el resto del proyecto y permita validar las decisiones técnicas adoptadas. Se estima una dedicación de \textbf{17~horas}.
@@ -101,16 +101,16 @@ El objetivo de esta iteración es desarrollar un \textit{Producto Mínimo Viable
 	\item \textbf{Despliegue inicial aleatorio del bot} (1~h): Colocación automática de las piezas del oponente en su zona de despliegue de forma aleatoria al comienzo de la partida.
 	\item \textbf{Bot de movimiento aleatorio} (1~h): Implementación de un oponente básico que ejecuta movimientos válidos de forma aleatoria durante su turno, actuando como versión mínima funcional del oponente.
 	\item \textbf{Sistema de despliegue del jugador} (1~h): Pantalla básica que permite al jugador colocar sus piezas en su zona antes de comenzar la partida.
-	\item \textbf{Condición de fin de partida} (1~h): Detección de las condiciones de victoria y derrota, con parada completa del juego al producirse alguna de ellas.
+	\item \textbf{Condición de fin de partida} (1~h): Detección de las condiciones de victoria y derrota, con parada completa de la partida al producirse alguna de ellas.
 \end{itemize}
 
 \subsection{Iteración 2: Interfaz de usuario y pulido visual}
 % ─────────────────────────────────────────────────────────────────────────────
 
-El objetivo de esta iteración es dotar al juego de una interfaz completa, visualmente cuidada e intuitiva. Para dar cabida al bloque de Diseño global inicial, esta iteración reajusta su peso a **50 horas** sin perder alcance, optimizando las tareas de bocetado e integración.
+El objetivo de esta iteración es dotar al videojuego de una interfaz completa, visualmente cuidada e intuitiva. Para dar cabida al bloque de Diseño global inicial, esta iteración reajusta su peso a **50 horas** sin perder alcance, optimizando las tareas de bocetado e integración.
 
 \begin{itemize}
-	\item \textbf{Bocetado de interfaces} (6~h): Elaboración de bocetos y propuestas visuales para todas las pantallas del juego antes de su implementación.
+	\item \textbf{Bocetado de interfaces} (6~h): Elaboración de bocetos y propuestas visuales para todas las pantallas del videojuego antes de su implementación.
 	\item \textbf{Búsqueda e integración de assets} (6~h): Selección de recursos gráficos para construir las interfaces de forma visualmente coherente.
 	\item \textbf{Animaciones de movimiento de piezas} (1~h): Incorporación de animaciones básicas al desplazamiento de las piezas sobre el tablero.
 	\item \textbf{Rediseño visual del tablero} (4~h): Mejora de la representación gráfica del tablero y de los indicadores de selección.
@@ -127,12 +127,12 @@ El objetivo de esta iteración es dotar al juego de una interfaz completa, visua
 \subsection{Iteración 3: Mejoras audiovisuales}
 % ─────────────────────────────────────────────────────────────────────────────
 
-El objetivo de esta iteración es completar la experiencia audiovisual del juego mediante la incorporación de sonido y los últimos elementos visuales de ambientación. Se estima una dedicación de \textbf{15 horas}.
+El objetivo de esta iteración es completar la experiencia audiovisual del videojuego mediante la incorporación de sonido y los últimos elementos visuales de ambientación. Se estima una dedicación de \textbf{15 horas}.
 
 \begin{itemize}
 	\item \textbf{Fondos y elementos decorativos} (2~h): Incorporación de fondos y elementos visuales de carácter estético.
-	\item \textbf{Efectos de sonido} (6~h): Integración de efectos sonoros asociados a las distintas acciones del juego.
-	\item \textbf{Música} (3~h): Incorporación de música de fondo para las distintas escenas del juego.
+	\item \textbf{Efectos de sonido} (6~h): Integración de efectos sonoros asociados a las distintas acciones del videojuego.
+	\item \textbf{Música} (3~h): Incorporación de música de fondo para las distintas escenas del videojuego.
 	\item \textbf{Menú de opciones de audio} (4~h): Implementación de una pantalla de configuración para ajustar volúmenes.
 \end{itemize}
 
@@ -176,7 +176,7 @@ La Tabla~\ref{tab:iteraciones} recoge el resumen definitivo de los tiempos de de
 		\hline
 		Tarea Global & Diseño de arquitectura y datos & 8 h & 2026-02-12 \\
 		\hline
-		1 & Implementación del juego base & 17 h & 2026-02-26 \\
+		1 & Implementación del videojuego base & 17 h & 2026-02-26 \\
 		\hline
 		2 & Interfaz de usuario y pulido visual & 50 h & 2026-04-05 \\
 		\hline
@@ -239,7 +239,7 @@ La identificación temprana de estos riesgos permite anticipar posibles problema
 		& Temporal & Medio
 		& Reajustar tareas no prioritarias y reducir funcionalidades accesorias. \\
 		\hline
-		\textbf{R3:} Errores en el bot o en las reglas del juego
+		\textbf{R3:} Errores en el bot o en las reglas del videojuego
 		& Técnico & Medio
 		& Simplificar el comportamiento de la IA y priorizar la estabilidad de las mecánicas fundamentales. \\
 		\hline
@@ -247,7 +247,7 @@ La identificación temprana de estos riesgos permite anticipar posibles problema
 		& Técnico & Alto
 		& Uso de control de versiones y copias de seguridad en la nube. \\
 		\hline
-		\textbf{R5:} Falta de tiempo para pruebas y ajuste del juego
+		\textbf{R5:} Falta de tiempo para pruebas y ajuste del videojuego
 		& Temporal & Alto
 		& Priorizar pruebas de jugabilidad y corregir únicamente los errores críticos. \\
 		\hline
@@ -355,9 +355,9 @@ Como lenguaje de programación se ha empleado \textit{C\#} sobre el entorno de e
 
 El control de versiones del proyecto se ha gestionado mediante \textbf{Git}, utilizando \textbf{GitHub} como plataforma de alojamiento del repositorio remoto. Git ha permitido mantener un historial completo de todos los cambios realizados en el código fuente, revertir modificaciones problemáticas y trabajar en ramas experimentales sin riesgo para la línea principal de desarrollo. GitHub, por su parte, ha proporcionado una copia de seguridad permanente en la nube y ha facilitado la revisión del código mediante su interfaz web. Se ha utilizado un flujo de trabajo basado en \textit{commits} frecuentes, organizados por funcionalidad o tarea completada.
 
-Para la creación y edición de los recursos gráficos del juego se han empleado \textbf{Aseprite}. Aseprite es un editor especializado en \textit{pixel art}, utilizado para diseñar los sprites de las piezas, los elementos de la interfaz y modificar los assets de terceros. Su soporte nativo para capas, paletas de color y hojas de sprites (\textit{sprite sheets}) lo convierte en una herramienta especialmente adecuada para el estilo visual del proyecto. Paint se ha utilizado de forma complementaria para ediciones rápidas y ajustes menores sobre recursos ya existentes.
+Para la creación y edición de los recursos gráficos del videojuego se han empleado \textbf{Aseprite}. Aseprite es un editor especializado en \textit{pixel art}, utilizado para diseñar los sprites de las piezas, los elementos de la interfaz y modificar los assets de terceros. Su soporte nativo para capas, paletas de color y hojas de sprites (\textit{sprite sheets}) lo convierte en una herramienta especialmente adecuada para el estilo visual del proyecto. Paint se ha utilizado de forma complementaria para ediciones rápidas y ajustes menores sobre recursos ya existentes.
 
-La gestión del apartado sonoro se ha apoyado en \textbf{Audacity}, un editor de audio de código abierto que ha permitido recortar, normalizar y ajustar el volumen de los efectos de sonido antes de integrarlos en el motor. Los recursos de audio se han obtenido de las plataformas \textbf{Freesound} y \textbf{Pixabay}, ambas repositorios de efectos sonoros y pistas musicales de libre uso bajo licencias compatibles con proyectos de esta naturaleza. La combinación de estas herramientas ha permitido dotar al juego de un apartado sonoro coherente sin necesidad de recurrir a recursos de pago.
+La gestión del apartado sonoro se ha apoyado en \textbf{Audacity}, un editor de audio de código abierto que ha permitido recortar, normalizar y ajustar el volumen de los efectos de sonido antes de integrarlos en el motor. Los recursos de audio se han obtenido de las plataformas \textbf{Freesound} y \textbf{Pixabay}, ambas repositorios de efectos sonoros y pistas musicales de libre uso bajo licencias compatibles con proyectos de esta naturaleza. La combinación de estas herramientas ha permitido dotar al videojuego de un apartado sonoro coherente sin necesidad de recurrir a recursos de pago.
 
 La redacción y maquetación de la presente memoria se ha realizado íntegramente mediante \textbf{\LaTeX}, un sistema de composición tipográfica ampliamente utilizado en el ámbito académico y científico. \LaTeX{} ha facilitado la gestión de la estructura del documento, la numeración automática de secciones, figuras y tablas, la generación de referencias cruzadas y la compilación de la bibliografía mediante Bib\LaTeX. Su capacidad para separar contenido y formato ha resultado especialmente útil durante las revisiones sucesivas del documento.
 
@@ -374,9 +374,9 @@ A modo de síntesis, la Tabla~\ref{tab:Herramientas} ofrece un resumen de conjun
 		\hline
 		\textbf{Tipo} & \textbf{Herramienta} & \textbf{Uso principal} \\
 		\hline
-		Motor de juego & Godot 4.6.1 & Desarrollo integral del videojuego: escenas, lógica, interfaz y exportación. \\
+		Motor de videojuegos & Godot 4.6.1 & Desarrollo integral del videojuego: escenas, lógica, interfaz y exportación. \\
 		\hline
-		Lenguaje de programación & C\# (.NET 9.0) & Implementación de la lógica del juego, sistemas de IA y scripts de control. \\
+		Lenguaje de programación & C\# (.NET 9.0) & Implementación de la lógica del videojuego, sistemas de IA y scripts de control. \\
 		\hline
 		Control de versiones & Git / GitHub & Historial de cambios, gestión de ramas y copia de seguridad en la nube. \\
 		\hline
@@ -425,7 +425,7 @@ La Tabla~\ref{tab:variacion} recoge el resumen de las desviaciones producidas re
 		\hline
 		T. Global & Diseño de arquitectura & 2026-02-12 & 2026-02-12 \\
 		\hline
-		1 & Juego base & 2026-02-26 & 2026-03-19 \\
+		1 & Videojuego base & 2026-02-26 & 2026-03-19 \\
 		\hline
 		2 & Interfaz y pulido visual & 2026-04-05 & 2026-04-18 \\
 		\hline
@@ -448,8 +448,7 @@ A lo largo del desarrollo de este Trabajo de Fin de Grado el estudiante no ha in
 
 \subsection{Costes de personal}
 
-El coste de personal es el factor dominante en cualquier proyecto de desarrollo de software. Para estimarlo se toma como referencia el salario mensual bruto de un desarrollador junior de videojuegos en España, situado en 
-aproximadamente \textbf{2.333~€ brutos/mes} (28.000~€ anuales según datos de Glassdoor~\cite{glassdoor_gamedeveloper}). Dado que la dedicación total del proyecto ha sido de \textbf{300~horas} y que una jornada laboral estándar supone unas 160~horas mensuales, la duración equivalente es de \textbf{1,875~meses}, lo que da un coste salarial bruto de \textbf{4.125,00~€}. Este es el coste en el escenario individual, lo que percibiría el profesional por su trabajo.
+El coste de personal es el factor dominante en cualquier proyecto de desarrollo de software. Para estimarlo se toma como referencia el salario mensual bruto de un desarrollador junior de videojuegos en España, situado en  aproximadamente \textbf{2.333~€ brutos/mes} (28.000~€ anuales según datos de Glassdoor~\cite{glassdoor_gamedeveloper}). Dado que la dedicación total del proyecto ha sido de \textbf{300~horas} y que una jornada laboral estándar supone unas 160~horas mensuales, la duración equivalente es de \textbf{1,875~meses}, lo que da un coste salarial bruto de \textbf{4.125,00~€}. Este es el coste en el escenario individual, lo que percibiría el profesional por su trabajo.
 
 En el escenario empresarial, la organización asume además las cotizaciones a la Seguridad Social a su cargo, que en España suponen aproximadamente un 32\,\% adicional sobre el salario bruto~\cite{seguridad_social_costes}, elevando el coste real de personal para la empresa a \textbf{5.445,00~€}.
 
@@ -462,9 +461,9 @@ Los costes de infraestructura son igualmente compartidos entre ambos escenarios.
 
 \subsection{Distribución en Steam y punto de amortización}
 
-El canal de distribución natural para un videojuego independiente en PC es \textbf{Steam}. A fecha de redacción de este documento, publicar en la plataforma conlleva una tasa de registro de \textbf{84,99~€} por título~\cite{steam_pricing}, reembolsable una vez el juego acumula 1.000~USD en ventas (aproximadamente \textbf{849,99~€} al cambio actual). Además, Steam retiene una comisión del \textbf{30\,\%} sobre cada venta.
+El canal de distribución natural para un videojuego independiente en PC es \textbf{Steam}. A fecha de redacción de este documento, publicar en la plataforma conlleva una tasa de registro de \textbf{84,99~€} por título~\cite{steam_pricing}, reembolsable una vez el videojuego acumula 1.000~USD en ventas (aproximadamente \textbf{849,99~€} al cambio actual). Además, Steam retiene una comisión del \textbf{30\,\%} sobre cada venta.
 
-Fijar el precio requiere equilibrar la percepción de calidad y el volumen de ventas esperado. Un precio inferior a 1~€ tiende a generar en el consumidor la percepción de que el producto carece de valor, mientras que superar los 2--3~€ resulta difícil de justificar para un título de estas características. Se establece por tanto un \textbf{precio de venta de 1,99~€}, coherente con la escala del proyecto y habitual en el catálogo de juegos independientes de calidad modesta en Steam. Descontada la comisión de la plataforma, el ingreso neto por copia vendida es de \textbf{1,39~€}.
+Fijar el precio requiere equilibrar la percepción de calidad y el volumen de ventas esperado. Un precio inferior a 1~€ tiende a generar en el consumidor la percepción de que el producto carece de valor, mientras que superar los 2--3~€ resulta difícil de justificar para un título de estas características. Se establece por tanto un \textbf{precio de venta de 1,99~€}, coherente con la escala del proyecto y habitual en el catálogo de videojuegos independientes de calidad modesta en Steam. Descontada la comisión de la plataforma, el ingreso neto por copia vendida es de \textbf{1,39~€}.
 
 \subsection{Resumen y punto de amortización}
 

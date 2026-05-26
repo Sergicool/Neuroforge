@@ -1,34 +1,37 @@
 \chapter{Análisis}
 
+% ─────────────────────────────────────────────────────────────────────────────
 \section{Actores y roles}
+% ─────────────────────────────────────────────────────────────────────────────
 
 En este apartado se identifican los actores que interactúan con el sistema, entendiendo como actor toda entidad externa que inicia o participa en la ejecución de casos de uso.
 
-El único actor del sistema es el \textbf{Jugador}, que corresponde a la persona que interactúa con el videojuego a través de la interfaz gráfica mediante el ratón. Es el actor principal y exclusivo, responsable de iniciar y configurar la partida, desplegar sus piezas en la fase inicial, realizar movimientos y ataques durante su turno, y pausar o abandonar la partida en cualquier momento. El resto de la lógica del juego, incluyendo las acciones del oponente, es gestionada internamente por el propio sistema sin intervención externa.
+El único actor del sistema es el \textbf{Jugador}, que corresponde a la persona que interactúa con el videojuego a través de la interfaz gráfica mediante el ratón. Es el actor principal y exclusivo, responsable de iniciar y configurar la partida, desplegar sus piezas en la fase inicial, realizar movimientos y ataques durante su turno, y pausar o abandonar la partida en cualquier momento. El resto de la lógica del videojuego, incluyendo las acciones del oponente, es gestionada internamente por el propio sistema sin intervención externa.
 
+% ─────────────────────────────────────────────────────────────────────────────
 \section{Modelado de Requisitos}
+% ─────────────────────────────────────────────────────────────────────────────
 
 Los requisitos describen las condiciones, capacidades y restricciones que debe cumplir un sistema software para satisfacer las necesidades de sus usuarios y los objetivos de la organización. Se distinguen principalmente tres tipos de requisitos: los requisitos funcionales (RF), que especifican
 los servicios y comportamientos que debe ofrecer el sistema; los requisitos no funcionales (RNF), que establecen restricciones y propiedades de calidad como rendimiento, fiabilidad o usabilidad; y los requisitos de información (RI), que definen los datos que el sistema debe almacenar y gestionar para proporcionar dichos servicios.
 
-% --------------------------------------------------------
 \clearpage
 
 \subsection{Requisitos funcionales}
 
 \begin{itemize}
 	
-	\item \textbf{RF01:} El sistema permitirá iniciar una nueva partida desde un estado inicial controlado, inicializando el tablero, las piezas y el turno inicial conforme a las reglas del juego.
+	\item \textbf{RF01:} El sistema permitirá iniciar una nueva partida desde un estado inicial controlado, inicializando el tablero, las piezas y el turno inicial conforme a las reglas del videojuego.
 	
 	\item \textbf{RF02:} El sistema permitirá al jugador colocar sus piezas al inicio de la partida dentro de la zona de despliegue definida.
 	
 	\item \textbf{RF03:} El sistema gestionará los turnos alternos entre el jugador y el bot, impidiendo la realización de acciones fuera de turno.
 	
-	\item \textbf{RF04:} El sistema validará las acciones realizadas por el jugador, evitando movimientos o ataques no permitidos por las	reglas del juego.
+	\item \textbf{RF04:} El sistema validará las acciones realizadas por el jugador, evitando movimientos o ataques no permitidos por las	reglas del videojuego.
 	
 	\item \textbf{RF05:} El sistema revelará la identidad de las piezas implicadas cuando se produzca un combate, manteniendo visible la información revelada durante el resto de la partida.
 	
-	\item \textbf{RF06:} El bot tomará decisiones de movimiento y ataque de forma autónoma durante su turno, respetando las reglas y restricciones del juego.
+	\item \textbf{RF06:} El bot tomará decisiones de movimiento y ataque de forma autónoma durante su turno, respetando las reglas y restricciones del videojuego.
 	
 	\item \textbf{RF07:} El sistema mantendrá y actualizará el estado de la partida durante su desarrollo, gestionando turnos, acciones válidas y transiciones entre estados.
 	
@@ -36,17 +39,15 @@ los servicios y comportamientos que debe ofrecer el sistema; los requisitos no f
 	
 	\item \textbf{RF09:} La interfaz mostrará información visual y sonora relacionada con las acciones realizadas, los combates y los cambios de estado de la partida.
 	
-	\item \textbf{RF10:} La interfaz del juego será completamente manejable mediante ratón.
+	\item \textbf{RF10:} La interfaz del videojuego será completamente manejable mediante ratón.
 	
 	\item \textbf{RF11:} El sistema permitirá al jugador pausar o abandonar la partida en curso de forma controlada.
 	
-	\item \textbf{RF12:} El sistema brindará al jugador con la información necesaria para entender las reglas del juego en caso de no conocerlas.
+	\item \textbf{RF12:} El sistema brindará al jugador con la información necesaria para entender las reglas del videojuego en caso de no conocerlas.
 	
-	\item \textbf{RF13:} El sistema permitirá al jugador configurar los parámetros de audio del juego (volumen de música, efectos de sonido, etc.) desde el menú de opciones antes y durante una partida.
+	\item \textbf{RF13:} El sistema permitirá al jugador configurar los parámetros de audio del videojuego (volumen de música, efectos de sonido, etc.) desde el menú de opciones antes y durante una partida.
 	
 \end{itemize}
-
-% --------------------------------------------------------
 
 \subsection{Requisitos no funcionales}
 
@@ -64,16 +65,14 @@ los servicios y comportamientos que debe ofrecer el sistema; los requisitos no f
 	
 	\item \textbf{RNF03:} El sistema deberá responder a las acciones del jugador en un tiempo máximo de 2 segundos en condiciones normales de ejecución, garantizando una experiencia de juego fluida.
 	
-	\item \textbf{RNF04:} La interfaz deberá ser suficientemente clara e intuitiva para que un jugador sin experiencia previa en el juego pueda comprender las acciones disponibles en cada momento sin necesidad de consultar las reglas.
+	\item \textbf{RNF04:} La interfaz deberá ser suficientemente clara e intuitiva para que un jugador sin experiencia previa en el videojuego pueda comprender las acciones disponibles en cada momento sin necesidad de consultar las reglas.
 	
 \end{itemize}
-
-% ================================================================
 
 \subsection{Requisitos de información}
 
 \begin{itemize}
-	\item \textbf{RI01 --- Partida:} El sistema gestionará una sesión de juego almacenando la siguiente información:
+	\item \textbf{RI01 --- Partida:} El sistema gestionará una sesión de juego con la siguiente información:
 	\begin{itemize}
 		\item Referencia al tablero de juego.
 		\item Turno actual (Jugador o Bot).
@@ -91,7 +90,7 @@ los servicios y comportamientos que debe ofrecer el sistema; los requisitos no f
 	
 	\item \textbf{RI04 --- Pieza:} El sistema almacenará la siguiente información para cada pieza presente en la partida:
 	\begin{itemize}
-		\item Tipo de pieza (Los 12 tipos de piezas que vienen recogidos en el capítulo de Diseño del juego).
+		\item Tipo de pieza (Los 12 tipos de piezas que vienen recogidos en el capítulo de Diseño del videojuego).
 		\item Rango numérico que determina el resultado de los combates.
 		\item Propietario (Jugador o Bot).
 		\item Si la pieza puede moverse o no.
@@ -102,7 +101,9 @@ los servicios y comportamientos que debe ofrecer el sistema; los requisitos no f
 	\end{itemize}
 \end{itemize}
 
+% ─────────────────────────────────────────────────────────────────────────────
 \section{Casos de uso}
+% ─────────────────────────────────────────────────────────────────────────────
 
 En este apartado se describen los casos de uso del sistema, que representan las interacciones posibles entre el actor y el sistema para alcanzar un objetivo concreto. Cada caso de uso recoge el flujo normal de acciones, las posibles excepciones y los requisitos funcionales asociados. La Figura~\ref{fig:diagrama_cu} muestra el diagrama general de casos de uso, donde se reflejan las relaciones entre el actor, los casos de uso principales y las dependencias entre ellos.
 
@@ -123,7 +124,7 @@ En este apartado se describen los casos de uso del sistema, que representan las 
 		\hline CU-01 & Jugar partida & El sistema permite al jugador llevar a cabo una partida completa contra el bot, desde la fase de despliegue hasta la resolución final. \\
 		\hline CU-02 & Resolver combate & El Sistema gestiona un ronda completa, la acción del jugador, la respuesta del bot y la comprobación de condiciones de victoria hasta que la partida acabe. \\
 		\hline CU-03 & Resolver combate & El Sistema gestiona el combate entre piezas de manera automática con su respectiva interfaz. \\
-		\hline CU-04 & Consultar reglas & El sistema permite al jugador consultar las reglas dentro del juego. \\
+		\hline CU-04 & Consultar reglas & El sistema permite al jugador consultar las reglas dentro del videojuego. \\
 		\hline CU-05 & Consultar opciones & El sistema permite al jugador consultar y configurar las opciones. \\
 		\hline
 	\end{tabular}
@@ -132,7 +133,7 @@ En este apartado se describen los casos de uso del sistema, que representan las 
 \end{table}
 
 \clearpage
-% ================================================================
+% ─────────────────────────────────────────────────────────────────────────────
 
 \subsection{CU-01: Jugar partida}
 
@@ -173,7 +174,7 @@ En este apartado se describen los casos de uso del sistema, que representan las 
 
 \clearpage
 
-% ================================================================
+% ─────────────────────────────────────────────────────────────────────────────
 
 \subsection{CU-02: Jugar turnos}
 
@@ -219,7 +220,7 @@ En este apartado se describen los casos de uso del sistema, que representan las 
 
 \clearpage
 
-% ================================================================
+% ─────────────────────────────────────────────────────────────────────────────
 
 \subsection{CU-03: Resolver combate}
 
@@ -256,7 +257,7 @@ En este apartado se describen los casos de uso del sistema, que representan las 
 
 \clearpage
 
-% ================================================================
+% ─────────────────────────────────────────────────────────────────────────────
 
 \subsection{CU-04: Consultar reglas}
 
@@ -266,7 +267,7 @@ En este apartado se describen los casos de uso del sistema, que representan las 
 		\hline \textbf{ID} & CU-04 \\
 		\hline \textbf{Nombre} & Consultar reglas \\
 		\hline \textbf{Actor} & Jugador \\
-		\hline \textbf{Descripción} & El sistema permite al jugador consultar las reglas dentro del juego. \\
+		\hline \textbf{Descripción} & El sistema permite al jugador consultar las reglas dentro del videojuego. \\
 		\hline \textbf{Req. relacionados} & RF12. \\
 		\hline \textbf{Pre-condición} & El Sistema esta en la escena del menu de pausa o en el menu principal. \\
 		\hline
@@ -290,7 +291,7 @@ En este apartado se describen los casos de uso del sistema, que representan las 
 	\label{tab:cu04}
 \end{table}
 
-% ================================================================
+% ─────────────────────────────────────────────────────────────────────────────
 
 \subsection{CU-05: Consultar opciones}
 
@@ -300,15 +301,15 @@ En este apartado se describen los casos de uso del sistema, que representan las 
 		\hline \textbf{ID} & CU-05 \\
 		\hline \textbf{Nombre} & Consultar opciones \\
 		\hline \textbf{Actor} & Jugador \\
-		\hline \textbf{Descripción} & El sistema permite al jugador consultar y configurar las distintas opciones del juego que se le ofrecen. \\
+		\hline \textbf{Descripción} & El sistema permite al jugador consultar y configurar las distintas opciones del videojuego que se le ofrecen. \\
 		\hline \textbf{Req. relacionados} & RF13. \\
 		\hline \textbf{Pre-condición} & El Sistema esta en la escena del menu de pausa o en el menu principal. \\
 		\hline
 		\textbf{Secuencia normal} &
 		\begin{enumerate}[nosep, before=\vspace{-0.4\baselineskip}]
-			\item El Jugador solicita consultar las opciones del juego
+			\item El Jugador solicita consultar las opciones del videojuego
 			\item El Sistema muestra el menu con las distintas opciones configurables
-			\item El Jugador consulta las opciones del juego y modifica las opciones del juego a conveniencia.
+			\item El Jugador consulta las opciones del videojuego y las modifica a conveniencia.
 			\item El Jugador solicita salir del menu de opciones.
 			\item El Sistema cierra el menu de opciones.
 		\end{enumerate} \\
@@ -326,11 +327,13 @@ En este apartado se describen los casos de uso del sistema, que representan las 
 
 \clearpage
 
+% ─────────────────────────────────────────────────────────────────────────────
 \section{Modelo de dominio}
+% ─────────────────────────────────────────────────────────────────────────────
 
 El modelo de dominio es una representación visual de las entidades conceptuales (objetos del mundo real o del sistema) y las relaciones que existen entre ellas dentro del contexto del videojuego. Su objetivo es identificar los conceptos clave, sus atributos y cómo interactúan, sirviendo como puente entre los requisitos funcionales y el diseño técnico final.
 
-A continuación, en la Figura~\ref{fig:modelo_dominio}, se presenta el modelo de dominio que estructura la lógica del juego.
+A continuación, en la Figura~\ref{fig:modelo_dominio}, se presenta el modelo de dominio que estructura la lógica del videojuego.
 
 \begin{figure}[H]
 	\centering
@@ -341,67 +344,69 @@ A continuación, en la Figura~\ref{fig:modelo_dominio}, se presenta el modelo de
 
 \clearpage
 
+% ─────────────────────────────────────────────────────────────────────────────
 \section{Modelo de proceso de negocio}
+% ─────────────────────────────────────────────────────────────────────────────
 
 El modelo de proceso de negocio describe el flujo detallado de actividades y decisiones que tienen lugar durante la ejecución del sistema. Mientras que los casos de uso definen \textit{qué} hace el sistema, los diagramas de actividad reflejan \textit{cómo} se ejecutan dichas interacciones, mostrando la secuencia lógica, las bifurcaciones y el procesamiento de datos.
 
 A continuación, se detallan los flujos de actividad correspondientes a los casos de uso principales del sistema, proporcionando una visión dinámica de la lógica del videojuego.
 
-\subsection{Actividad: Jugar partida (CU-01)}
+\subsection{Actividad: Jugar partida}
 
 Este flujo describe el ciclo de vida completo de una sesión de juego, desde la interacción inicial en el menú hasta la finalización de la experiencia. En la Figura~\ref{fig:diagrama_actividad_1} se detalla la secuencia que incluye la preparación del escenario, la fase crítica de despliegue de piezas y la transición hacia el núcleo jugable de turnos.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{../Imagenes/DiagramaActividadJugarPartida}
-	\caption{Diagrama de actividad: Jugar partida (CU-01)}
+	\caption{Diagrama de actividad: Jugar partida}
 	\label{fig:diagrama_actividad_1}
 \end{figure}
 
-\subsection{Actividad: Jugar turnos (CU-02)}
+\subsection{Actividad: Jugar turnos}
 
-La lógica central del juego se basa en un ciclo de estados donde el control alterna entre el usuario y la inteligencia artificial. Como se observa en la Figura~\ref{fig:diagrama_actividad_2}, este proceso gestiona la selección de unidades, la validación de movimientos en el tablero y las comprobaciones automáticas de fin de partida tras cada acción.
+La lógica central del videojuego se basa en un ciclo de estados donde el control alterna entre el usuario y la inteligencia artificial. Como se observa en la Figura~\ref{fig:diagrama_actividad_2}, este proceso gestiona la selección de unidades, la validación de movimientos en el tablero y las comprobaciones automáticas de fin de partida tras cada acción.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{../Imagenes/DiagramaActividadJugarTurnos}
-	\caption{Diagrama de actividad: Jugar turnos (CU-02)}
+	\caption{Diagrama de actividad: Jugar turnos}
 	\label{fig:diagrama_actividad_2}
 \end{figure}
 
 \clearpage
 
-\subsection{Actividad: Resolver combate (CU-03)}
+\subsection{Actividad: Resolver combate}
 
 El combate es una subrutina automática que se activa por la coincidencia de posiciones en el tablero. El diagrama representado en la Figura~\ref{fig:diagrama_actividad_3} muestra cómo el sistema procesa la comparación de rangos de las piezas, actualiza la visibilidad de las mismas para el jugador y modifica el estado del tablero eliminando las bajas resultantes.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{../Imagenes/DiagramaActividadResolverCombate}
-	\caption{Diagrama de actividad: Resolver combate (CU-03)}
+	\caption{Diagrama de actividad: Resolver combate}
 	\label{fig:diagrama_actividad_3}
 \end{figure}
 
 \clearpage
 
-\subsection{Actividad: Consultar reglas (CU-04)}
+%\subsection{Actividad: Consultar reglas}
 
-Este flujo representa una interacción de apoyo que no afecta al estado de la partida pero garantiza la usabilidad. La Figura~\ref{fig:diagrama_actividad_4} ilustra la capacidad del sistema para pausar visualmente el contexto actual y presentar la documentación necesaria al jugador antes de retornar al estado previo.
+%Este flujo representa una interacción de apoyo que no afecta al estado de la partida pero garantiza %la usabilidad. La Figura~\ref{fig:diagrama_actividad_4} ilustra la capacidad del sistema para pausar %visualmente el contexto actual y presentar la documentación necesaria al jugador antes de retornar %al estado previo.
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\linewidth]{../Imagenes/DiagramaActividadConsultarReglas}
-	\caption{Diagrama de actividad: Consultar reglas}
-	\label{fig:diagrama_actividad_4}
-\end{figure}
+%\begin{figure}[H]
+%	\centering
+%	\includegraphics[width=\linewidth]{../Imagenes/DiagramaActividadConsultarReglas}
+%	\caption{Diagrama de actividad: Consultar reglas}
+%	\label{fig:diagrama_actividad_4}
+%\end{figure}
 
-\subsection{Actividad: Consultar opciones (CU-05)}
+\subsection{Actividad: Consultar opciones}
 
-Este flujo representa una interacción de calidad de juego que solo afecta a la experiencia del usuario, no al estado de la partida. La Figura~\ref{fig:diagrama_actividad_5} ilustra la capacidad del sistema para permitir al jugador consultar y configurar opciones como el sonido y la resolución del juego antes de retornar al estado previo.
+Este flujo representa una interacción de calidad de videojuego que solo afecta a la experiencia del usuario, no al estado de la partida. La Figura~\ref{fig:diagrama_actividad_5} ilustra la capacidad del sistema para permitir al jugador consultar y configurar opciones como el sonido y la resolución del juego antes de retornar al estado previo.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{../Imagenes/DiagramaActividadConsultarOpciones}
-	\caption{Diagrama de actividad: Consultar reglas}
+	\caption{Diagrama de actividad: Consultar opciones}
 	\label{fig:diagrama_actividad_5}
 \end{figure}

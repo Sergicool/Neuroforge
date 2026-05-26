@@ -4,22 +4,22 @@
 \section{Organización del código}
 % ─────────────────────────────────────────────────────────────────────────────
 
-Para garantizar la escalabilidad del proyecto y facilitar el mantenimiento del código, se ha seguido una estructura de directorios basada en la separación de responsabilidades. Dado que Godot utiliza un sistema de escenas y nodos, la organización se ha diseñado para diferenciar claramente entre los elementos visuales, la lógica de juego pura y la infraestructura de datos.
+Para garantizar la escalabilidad del proyecto y facilitar el mantenimiento del código, se ha seguido una estructura de directorios basada en la separación de responsabilidades. Dado que Godot utiliza un sistema de escenas y nodos, la organización se ha diseñado para diferenciar claramente entre los elementos visuales, la lógica del videojuego pura y la infraestructura de datos.
 
 A continuación, se detallan las carpetas principales que componen el proyecto y su propósito dentro de la arquitectura global:
 
 \begin{itemize}
-	\item \textbf{Assets/}: Esta carpeta centraliza todos los recursos gráficos y visuales del juego. Contiene las texturas (sprites), fuentes tipográficas, temas de interfaz (Themes) y recursos específicos de Godot como los \texttt{TileMaps}. Al agrupar estos elementos, se consigue que cualquier cambio estético o de diseño visual sea fácil de localizar sin interferir con la lógica programática.
+	\item \textbf{Assets/}: Esta carpeta centraliza todos los recursos gráficos y visuales del videojuego. Contiene las texturas (sprites), fuentes tipográficas, temas de interfaz (Themes) y recursos específicos de Godot como los \texttt{TileMaps}. Al agrupar estos elementos, se consigue que cualquier cambio estético o de diseño visual sea fácil de localizar sin interferir con la lógica programática.
 	
-	\item \textbf{BotEnvironment/}: Contiene todo el entorno necesario para el entrenamiento y la ejecución del agente de Inteligencia Artificial. Aquí se incluyen los scripts y configuraciones que permiten al \textit{bot} interactuar con el juego, separando el comportamiento del agente del resto de sistemas para permitir pruebas aisladas de la IA.
+	\item \textbf{BotEnvironment/}: Contiene todo el entorno necesario para el entrenamiento y la ejecución del agente de Inteligencia Artificial. Aquí se incluyen los scripts y configuraciones que permiten al \textit{bot} interactuar con el videojuego, separando el comportamiento del agente del resto de sistemas para permitir pruebas aisladas de la IA.
 	
-	\item \textbf{Data \& Infrastructure/}: En este directorio se ubican la definición de estructuras de datos y servicios de infraestructura que no pertenecen a la lógica de juego, pero que son fundamentales para el funcionamiento del sistema, como el manejo del audio y la navegación entre escenas.
+	\item \textbf{Data \& Infrastructure/}: En este directorio se ubican la definición de estructuras de datos y servicios de infraestructura que no pertenecen a la lógica del videojuego, pero que son fundamentales para el funcionamiento del sistema, como el manejo del audio y la navegación entre escenas.
 	
 	\item \textbf{UI/}: Siguiendo el patrón de diseño orientado a escenas de Godot, esta carpeta contiene tanto los scripts de control de la interfaz de usuario como las escenas (.tscn) correspondientes a los menús, paneles y elementos interactivos (HUD). Esto permite que el diseño de la interfaz esté estrechamente ligado a su lógica de control inmediata, pero separado de la lógica de combate o movimiento.
 	
 	\item \textbf{GameLogic/}: Es el núcleo del videojuego y presenta una subdivisión estratégica para cumplir con el diseño arquitectónico:
 	\begin{itemize}
-		\item \textbf{Lógica Pura (C\# scripts):} Contiene clases puras de C\# que no heredan de la clase \texttt{Node} de Godot. Aquí residen las reglas del juego y algoritmos que podrían ser testeados de forma unitaria fuera del motor.
+		\item \textbf{Lógica Pura (C\# scripts):} Contiene clases puras de C\# que no heredan de la clase \texttt{Node} de Godot. Aquí residen las reglas del videojuego y algoritmos que podrían ser testeados de forma unitaria fuera del motor.
 		\item \textbf{Nodos de Godot:} Subdividida en carpetas como Pieces, Tiles y Board. En cada una de ellas se encuentran las escenas de Godot y los scripts que heredan de la API del motor para gestionar la representación espacial y el comportamiento de los objetos en pantalla.
 	\end{itemize}
 \end{itemize}
@@ -46,7 +46,7 @@ El proyecto ha sido desarrollado utilizando \textit{Godot Engine}. Este motor se
 Los efectos de sonido y la música han sido obtenidos respetando las licencias especificadas por los autores en plataformas de contenido libre:
 
 \begin{itemize}
-	\item \textbf{Música durante el juego:} \textit{Granular 5.wav} por PodcastAC. Disponible en Freesound\footnote{\url{https://freesound.org/s/663786/}}. Licencia: \textit{Attribution 4.0 (CC BY 4.0)}.
+	\item \textbf{Música durante la partida:} \textit{Granular 5.wav} por PodcastAC. Disponible en Freesound\footnote{\url{https://freesound.org/s/663786/}}. Licencia: \textit{Attribution 4.0 (CC BY 4.0)}.
 	\item \textbf{Música del menú:} \textit{Ambient, Piano, Atmosphere - Reborn} por Andrewkn. Disponible en Freesound\footnote{\url{https://freesound.org/s/720772/}}. Licencia: \textit{Attribution 4.0 (CC BY 4.0)}.
 	\item \textbf{Efectos de sonido de las piezas:} \textit{SCIMisc\_Energy UI Low 01} por KVV\_Audio. Disponible en Freesound\footnote{\url{https://freesound.org/s/811930/}}. Licencia: \textit{Attribution 4.0 (CC BY 4.0)}.
 	\item \textbf{Interfaz de usuario:} \textit{UIClick\_Button press} por newlocknew. Disponible en Freesound\footnote{\url{https://freesound.org/s/665222/}}. Licencia: \textit{Creative Commons 0 (CC0)}.
@@ -58,7 +58,7 @@ Los efectos de sonido y la música han sido obtenidos respetando las licencias e
 El apartado visual integra \textit{assets} adaptados y modificados bajo los siguientes términos:
 
 \begin{itemize}
-	\item \textbf{CraftPix Assets:} Los recursos provenientes de \textit{Craftpix.net}\footnote{\url{https://craftpix.net/sets/cyberpunk-platformer-asset-pixel-art/}} se utilizan bajo su licencia comercial, que permite su uso ilimitado en juegos siempre que no se revendan los archivos fuente originales. Se han utilizado para la mayoria de los recursos graficos dentro del juego.
+	\item \textbf{CraftPix Assets:} Los recursos provenientes de \textit{Craftpix.net}\footnote{\url{https://craftpix.net/sets/cyberpunk-platformer-asset-pixel-art/}} se utilizan bajo su licencia comercial, que permite su uso ilimitado en videojuego siempre que no se revendan los archivos fuente originales. Se han utilizado para la mayoria de los recursos gráficos dentro del videojuego.
 	\item \textbf{Sprites de piezas (Mechs):} \textit{Mech Assets} por \textit{Marinesosa}. Disponible en itch.io\footnote{\url{https://marinesosa.itch.io/mech-assets}}. Su licencia permite la modificación y el uso comercial/no comercial, prohibiendo la reventa del paquete original. Se han utilizado para el diseño de algunas piezas
 \end{itemize}
 
@@ -76,9 +76,9 @@ Tras la planificación inicial y el análisis de las variaciones, en este aparta
 
 \subsection{Iteración 1: Núcleo jugable y lógica básica}
 
-Esta primera fase se centró en la implementación de la base jugable, tenía como objetivo principal crear un \textit{Producto Mínimo Viable} funcional. En esta etapa, el juego carecía por completo de elementos estéticos, menús o \textit{feedback} visual y sonoro, centrándose exclusivamente en la validez de los movimientos y la resolución de combates.
+Esta primera fase se centró en la implementación de la base jugable, tenía como objetivo principal crear un \textit{Producto Mínimo Viable} funcional. En esta etapa, el videojuego carecía por completo de elementos estéticos, menús o \textit{feedback} visual y sonoro, centrándose exclusivamente en la validez de los movimientos y la resolución de combates.
 
-Durante esta iteración se utilizaron \textit{placeholders} (elementos provisionales) para representar todas las entidades del juego. La interfaz de despliegue consistía únicamente en botones con texto plano como se puede ver en la Figura \ref{fig:it1_interfaz}, y las piezas se diferenciaban solo por colores e iconos esquemáticos sobre formas cuadradas. Como detalle de la imagen, también se pueden apreciar que los nombres de las piezas no reflejaban las definitivas del producto final, ya que se fueron haciendo cambios según se volvía a dar una vuelta a sus conceptos durante el desarrollo, o se implementaban su apariencia.
+Durante esta iteración se utilizaron \textit{placeholders} (elementos provisionales) para representar todas las entidades del videojuegos. La interfaz de despliegue consistía únicamente en botones con texto plano como se puede ver en la Figura \ref{fig:it1_interfaz}, y las piezas se diferenciaban solo por colores e iconos esquemáticos sobre formas cuadradas. Como detalle de la imagen, también se pueden apreciar que los nombres de las piezas no reflejaban las definitivas del producto final, ya que se fueron haciendo cambios según se volvía a dar una vuelta a sus conceptos durante el desarrollo, o se implementaban su apariencia.
 
 \begin{itemize}
 	\item \textbf{Piezas con rango:} Identificadas por un número según su valor de combate.
@@ -98,14 +98,14 @@ La elección del color de las piezas responde a criterios de usabilidad y psicol
 El tablero utilizaba una codificación de colores básica para la retroalimentación visual del usuario:
 \begin{itemize}
 	\item \textbf{Gris:} Casillas intransitables que actúan como obstáculos permanentes.
-	\item \textbf{Azul:} Casillas de agua o vacío. En esta fase no existía distinción visual entre las zonas de despliegue del jugador y de la inteligencia artificial, lo que dificultaba el posicionamiento inicial para alguien que no conociera el diseño del juego.
+	\item \textbf{Azul:} Casillas de agua o vacío. En esta fase no existía distinción visual entre las zonas de despliegue del jugador y de la inteligencia artificial, lo que dificultaba el posicionamiento inicial para alguien que no conociera el diseño del videojuego.
 	\item \textbf{Verde:} Resaltado de casillas disponibles para movimiento tras seleccionar una pieza propia.
 	\item \textbf{Rojo:} Indicador de casilla de combate inminente al seleccionar un objetivo enemigo.
 \end{itemize}
 
 La interacción era puramente lógica y carecía de retroalimentación visual. Los movimientos y combates eran instantáneos, sin animaciones de transición. Esta inmediatez provocaba problemas de seguimiento de la partida, ya que en ocasiones resultaba difícil saber que jugada realizado por el bot después del movimiento del jugador. 
 
-Asimismo, no existía un flujo de partida completo, al finalizar el encuentro por la captura del núcleo, el sistema no mostraba pantallas de victoria o derrota, limitándose a imprimir un mensaje en la terminal de depuración de Godot y a detener la ejecución del juego como se puede observar en la Figura \ref{fig:it1_juego2}. Tampoco se implementaron menús de pausa, opciones ni efectos de sonido. En la Figura \ref{fig:it1_juego1} se pueden observar distintas partidas y situaciones del productor de la primera iteración. La iteración acabo dentro del plazo establecido.
+Asimismo, no existía un flujo de partida completo, al finalizar el encuentro por la captura del núcleo, el sistema no mostraba pantallas de victoria o derrota, limitándose a imprimir un mensaje en la terminal de depuración de Godot y a detener la ejecución del videojuego como se puede observar en la Figura \ref{fig:it1_juego2}. Tampoco se implementaron menús de pausa, opciones ni efectos de sonido. En la Figura \ref{fig:it1_juego1} se pueden observar distintas partidas y situaciones del productor de la primera iteración. La iteración acabo dentro del plazo establecido.
 
 \begin{figure}[H]
 	\centering
@@ -127,11 +127,11 @@ En esta segunda fase, el desarrollo se centró en transformar los elementos prov
 
 \subsubsection{Interfaz de partida}
 
-La interfaz principal de juego se diseñó con el objetivo de centralizar toda la información necesaria para el jugador sin sobrecargar la vista. En su primera concepción, el boceto mostraba un tablero central rodeado por los indicadores de piezas restantes a ambos lados y un historial de movimientos situado en la esquina inferior izquierda. El estado del turno se indicaba mediante un texto descriptivo en la parte superior como se puede observar en la Figura \ref{fig:boceto_partida_v1}.
+La interfaz principal de videojuego se diseñó con el objetivo de centralizar toda la información necesaria para el jugador sin sobrecargar la vista. En su primera concepción, el boceto mostraba un tablero central rodeado por los indicadores de piezas restantes a ambos lados y un historial de movimientos situado en la esquina inferior izquierda. El estado del turno se indicaba mediante un texto descriptivo en la parte superior como se puede observar en la Figura \ref{fig:boceto_partida_v1}.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.7\textwidth]{../Imagenes/boceto_partida_v1}
+	\includegraphics[width=\textwidth]{../Imagenes/boceto_partida_v1}
 	\caption{Primer boceto de la interfaz de partida con indicadores laterales y texto de turno.}
 	\label{fig:boceto_partida_v1}
 \end{figure}
@@ -140,7 +140,7 @@ En una segunda revisión del diseño, se buscó una mayor limpieza visual. Se su
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.7\textwidth]{../Imagenes/boceto_partida_v2}
+	\includegraphics[width=\textwidth]{../Imagenes/boceto_partida_v2}
 	\caption{Evolución del diseño de partida con indicadores visuales de turno.}
 	\label{fig:boceto_partida_v2}
 \end{figure}
@@ -149,7 +149,7 @@ Finalmente, la estructura definitiva eliminó el historial de movimientos. Se co
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.7\textwidth]{../Imagenes/boceto_partida_v3}
+	\includegraphics[width=\textwidth]{../Imagenes/boceto_partida_v3}
 	\caption{Layout definitivo del boceto de la interfaz de partida.}
 	\label{fig:boceto_partida_v3}
 \end{figure}
@@ -162,28 +162,28 @@ A continuación, se presentan los bocetos que detallan el funcionamiento de los 
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.8\textwidth]{../Imagenes/combate_estado1}
+	\includegraphics[width=\textwidth]{../Imagenes/combate_estado1}
 	\caption{Boceto de inicio de combate: presentación de piezas.}
 	\label{fig:combate_estado1}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.8\textwidth]{../Imagenes/combate_estado2}
+	\includegraphics[width=\textwidth]{../Imagenes/combate_estado2}
 	\caption{Boceto de resolución: comparación de rangos.}
 	\label{fig:combate_estado2}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.8\textwidth]{../Imagenes/combate_estado3}
+	\includegraphics[width=\textwidth]{../Imagenes/combate_estado3}
 	\caption{Boceto de fin de combate: pieza eliminada.}
 	\label{fig:combate_estado3}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.8\textwidth]{../Imagenes/boceto_comparacion_combate}
+	\includegraphics[width=\textwidth]{../Imagenes/boceto_comparacion_combate}
 	\caption{Comparativa entre el diseño inicial de combate y el diseño final simplificado.}
 	\label{fig:boceto_comparacion_combate}
 \end{figure}
@@ -192,14 +192,14 @@ Por último, se diseñó el menú de pausa de la Figura \ref{fig:boceto_pausa} y
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.8\textwidth]{../Imagenes/boceto_pausa}
-	\caption{Boceto del menú de pausa del juego.}
+	\includegraphics[width=\textwidth]{../Imagenes/boceto_pausa}
+	\caption{Boceto del menú de pausa de la partida.}
 	\label{fig:boceto_pausa}
 \end{figure}
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.8\textwidth]{../Imagenes/boceto_reglas}
+	\includegraphics[width=\textwidth]{../Imagenes/boceto_reglas}
 	\caption{Boceto de la interfaz de reglas con sistema de navegación por viñetas.}
 	\label{fig:boceto_reglas}
 \end{figure}
@@ -210,15 +210,15 @@ No se realizaron bocetos adicionales para los menús principal, de opciones o de
 
 Una vez consolidada la base visual y lógica, la tercera iteración se dedicó íntegramamente al apartado sonoro y al refuerzo del \textit{game feeling}. El objetivo principal fue eliminar la sensación de monotonía y vacío que presentaba el prototipo hasta el momento.
 
-Para ello, se incorporaron pistas de música ambiental diferenciadas tanto para los menús como para el transcurso de la partida, dotando al juego de una atmósfera más inmersiva. En cuanto a los efectos de sonido (SFX), se implementaron tres niveles de interacción:
+Para ello, se incorporaron pistas de música ambiental diferenciadas tanto para los menús como para el transcurso de la partida, dotando al videojuego de una atmósfera más inmersiva. En cuanto a los efectos de sonido (SFX), se implementaron tres niveles de interacción:
 
 \begin{itemize}
 	\item \textbf{Interfaz:} Sonidos sutiles de \textit{hover} y \textit{click} para que el jugador perciba qué elementos son interactuables.
 	\item \textbf{Tablero:} Feedback auditivo al seleccionar y desplazar piezas, reforzando la sensación de manipulación física.
-	\item \textbf{Eventos de juego:} Sonidos específicos para la revelación de piezas, derrotas en combate o cambios de estado, proporcionando una respuesta inmediata a las acciones del jugador.
+	\item \textbf{Eventos de partida:} Sonidos específicos para la revelación de piezas, derrotas en combate o cambios de estado, proporcionando una respuesta inmediata a las acciones del jugador.
 \end{itemize}
 
-Finalmente, se incluyeron fondos coherentes entre el menú principal y la escena de juego para unificar la estética y evitar que el transcurso de la partida se sintiera visualmente vacío. A estos fondos se les aplicó un ligero efecto de \textit{parallax}, lo que aporta profundidad y una mayor sensación de pulido a la experiencia. La iteración acabo dentro antes del plazo establecido.
+Finalmente, se incluyeron fondos coherentes entre el menú principal y la escena de la partida para unificar la estética y evitar que el transcurso de la partida se sintiera visualmente vacío. A estos fondos se les aplicó un ligero efecto de \textit{parallax}, lo que aporta profundidad y una mayor sensación de pulido a la experiencia. La iteración acabo dentro antes del plazo establecido.
 
 (Escribir iteracciones 4 y 5 cuando se acaben)
 

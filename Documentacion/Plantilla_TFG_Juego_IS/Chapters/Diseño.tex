@@ -8,13 +8,13 @@ En este capítulo se describe el diseño técnico de NeuroForge a partir del có
 
 \subsection{El modelo de ejecución de Godot}
 
-Para comprender las decisiones de diseño adoptadas en este proyecto es necesario entender primero cómo organiza Godot el contenido de un juego. Godot estructura toda la lógica y los elementos visuales en un \textbf{árbol de escenas} (\textit{SceneTree}): una jerarquía de objetos llamados \textbf{nodos}, donde cada nodo representa una unidad funcional del juego, ya sea un personaje, una casilla del tablero, un menú o el gestor de partida.
+Para comprender las decisiones de diseño adoptadas en este proyecto es necesario entender primero cómo organiza Godot el contenido de un videojuego. Godot estructura toda la lógica y los elementos visuales en un \textbf{árbol de escenas} (\textit{SceneTree}): una jerarquía de objetos llamados \textbf{nodos}, donde cada nodo representa una unidad funcional del videojuego, ya sea un personaje, una casilla del tablero, un menú o el gestor de partida.
 
 Cada nodo hereda, en última instancia, de la clase base \texttt{Node}. Esta es la unidad mínima funcional del motor; no posee posición ni representación visual, pero define el ciclo de vida compartido por todos los objetos del árbol: el método \texttt{Ready()} se ejecuta cuando el nodo entra al árbol y es el punto habitual de inicialización, mientras que \texttt{Process()} se invoca en cada fotograma para la lógica continua.
 
 A partir de esta base, el proyecto utiliza especializaciones más complejas que expanden las capacidades del nodo raíz. Este mecanismo de \textbf{herencia} permite que, por ejemplo, \texttt{Node2D} añada propiedades de posición, rotación y escala para elementos en el mundo 2D (como las piezas y el tablero), mientras que \texttt{Control} se especializa en interfaces de usuario con gestión de anclajes y márgenes. Gracias a esta estructura, incluso los componentes de lógica pura pueden integrarse en el ciclo de vida del motor heredando simplemente de \texttt{Node}, evitando así la sobrecarga de datos espaciales que no requieren.
 
-Dicha jerarquía de nodos se organiza de forma práctica mediante \textbf{escenas}, que funciona como un plano reutilizable compuesto por una rama de nodos. Una escena permite agrupar estos nodos especializados para que trabajen como una única entidad lógica dentro del árbol principal del juego.
+Dicha jerarquía de nodos se organiza de forma práctica mediante \textbf{escenas}, que funciona como un plano reutilizable compuesto por una rama de nodos. Una escena permite agrupar estos nodos especializados para que trabajen como una única entidad lógica dentro del árbol principal del videojuego.
 
 Un ejemplo representativo en NeuroForge es la escena \texttt{Tile}, la cual dentro del editor se ve como en la Figura~\ref{fig:EjemploEscena}, encargada de las casillas del tablero. Como se observa en la imagen, el nodo raíz es un \texttt{Area2D}; este nodo no solo hereda las capacidades espaciales de \texttt{Node2D}, sino que aporta funcionalidades propias, como por ejemplo, permitir detectar eventos de ratón y colisiones. Bajo él, la escena se compone de hijos específicos: un \texttt{CollisionShape2D} para delimitar el área de interacción de dicho área (Especificamente los Areas2D necesitan un CollisionShape2D hijo para funcionar) y nodos \texttt{Sprite2D} para la representación visual. Esta composición ilustra cómo la suma de nodos permite construir objetos más complejos y funcionales.
 
@@ -38,7 +38,7 @@ La Figura~\ref{fig:GodotModelo} ilustra este modelo con un subconjunto represent
 
 \subsection{Arquitectura de NeuroForge}
 
-Con este modelo en mente, el sistema se organiza en una \textbf{arquitectura en tres capas} que separa la representación visual de la lógica pura de juego y de los datos. Esta separación es una decisión de diseño para evitar que las reglas del juego queden entrelazadas con el código de renderizado o de interfaz.
+Con este modelo en mente, el sistema se organiza en una \textbf{arquitectura en tres capas} que separa la representación visual de la lógica pura del videojuego y de los datos. Esta separación es una decisión de diseño para evitar que las reglas del videojuego queden entrelazadas con el código de renderizado o de interfaz.
 
 La Figura~\ref{fig:ArquitecturaDelSistema} muestra una vista simplificada de los principales componentes de cada capa. Se incluyen los elementos más representativos de cada nivel.
 
@@ -49,9 +49,9 @@ La Figura~\ref{fig:ArquitecturaDelSistema} muestra una vista simplificada de los
 	\label{fig:ArquitecturaDelSistema}
 \end{figure}
 
-La \textbf{capa de interfaz} agrupa todos los nodos que heredan de \texttt{Control}. Su responsabilidad se limita a capturar las intenciones del jugador y reflejar el estado del juego visualmente. Ninguno de estos nodos toma decisiones de lógica de juego: cuando el jugador pulsa un botón, la capa de presentación notifica a la capa de lógica mediante eventos C\# estándar (\texttt{event Action}), y espera recibir los datos actualizados para refrescar la vista. Algunos componentes de esta capa acceden además directamente a la capa de datos e infraestructura para consultar configuración estática o gestionar transiciones de escena.
+La \textbf{capa de interfaz} agrupa todos los nodos que heredan de \texttt{Control}. Su responsabilidad se limita a capturar las intenciones del jugador y reflejar el estado del videojuego visualmente. Ninguno de estos nodos toma decisiones de la lógica del videojuego, cuando el jugador pulsa un botón, la capa de presentación notifica a la capa de lógica mediante eventos C\# estándar (\texttt{event Action}), y espera recibir los datos actualizados para refrescar la vista. Algunos componentes de esta capa acceden además directamente a la capa de datos e infraestructura para consultar configuración estática o gestionar transiciones de escena.
 
-La \textbf{capa de lógica de juego} es el núcleo funcional del sistema. Aquí conviven dos tipos de clases con naturalezas distintas. Nodos de Godot, que necesitan estar en el árbol de escenas para gestionar el input del ratón, coordinar animaciones y participar en el ciclo de vida del motor. Y por otro lado, las clases C\# puras creadas e instanciadas desde \texttt{GameScene} o \texttt{Board}, independientes del motor y por tanto más ligeras y fáciles de reutilizar.
+La \textbf{capa de lógica de videojuego} es el núcleo funcional del sistema. Aquí conviven dos tipos de clases con naturalezas distintas. Nodos de Godot, que necesitan estar en el árbol de escenas para gestionar el input del ratón, coordinar animaciones y participar en el ciclo de vida del motor. Y por otro lado, las clases C\# puras creadas e instanciadas desde \texttt{GameScene} o \texttt{Board}, independientes del motor y por tanto más ligeras y fáciles de reutilizar.
 
 La \textbf{capa de datos e infraestructura} comprende los datos estáticos de configuración, estructuras de datos, el gestor de navegación entre escenas, el gestor de audio y los enums que definen los valores del dominio.
 
@@ -61,11 +61,20 @@ El flujo predominante de dependencias es descendente. Sin embargo, los nodos de 
 \section{Diseño de interfaz de usuario}
 % ─────────────────────────────────────────────────────────────────────────────
 
-La interfaz de NeuroForge se organiza en pantallas y menús emergentes que acompañan al jugador desde el menú principal hasta el fin de la partida. A continuación se describen las secciones principales.
+Para garantizar una experiencia de usuario fluida, la interfaz de NeuroForge se ha estructurado como un sistema de pantallas y ventanas emergentes interconectadas. El flujo de navegación global y las transiciones permitidas entre los diferentes estados de la interfaz se detallan en el diagrama de la Figura~\ref{fig:DiagramaNavegacion}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{../Imagenes/DiagramaNavegacion}
+	\caption{Diagrama de navegación de las interfaces de NeuroForge.}
+	\label{fig:DiagramaNavegacion}
+\end{figure}
+
+A continuación, se describen en detalle cada una de las secciones principales que componen este flujo.
 
 \subsection*{Menú principal}
 
-La pantalla de inicio presenta el título del juego y, bajo él, tres botones dispuestos en vertical: \textit{Play}, para iniciar una partida; \textit{Rules}, para consultar las reglas; y \textit{Exit}, para cerrar la aplicación. La disposición lineal evita confusiones y permite al jugador orientarse de inmediato, como se muestra en la Figura~\ref{fig:MenuPrincipal}.
+La pantalla de inicio presenta el título del videojuego y, bajo él, tres botones dispuestos en vertical: \textit{Play}, para iniciar una partida; \textit{Rules}, para consultar las reglas; y \textit{Exit}, para cerrar la aplicación. La disposición lineal evita confusiones y permite al jugador orientarse de inmediato, como se muestra en la Figura~\ref{fig:MenuPrincipal}.
 
 \begin{figure}[H]
 	\centering
@@ -78,14 +87,7 @@ La pantalla de inicio presenta el título del juego y, bajo él, tres botones di
 
 Accesible tanto desde el menú principal como durante la partida, el menú de reglas emerge como una ventana emergente sobre la pantalla activa. En la esquina superior izquierda se sitúa el botón \textit{Go Back} para cerrarlo.
 
-El contenido se organiza en cinco pestañas seleccionables en la parte superior de la ventana: \textit{Objective}, con el objetivo y las condiciones de victoria; \textit{Board}, con la descripción de los tipos de casillas, visible en la Figura~\ref{fig:MenuReglasBoard}; \textit{Movement}, con las reglas de desplazamiento; \textit{Combat}, con la mecánica de enfrentamiento; y \textit{Pieces}, que actúa como guía de referencia de todas las piezas del juego, ilustrada en la Figura~\ref{fig:MenuReglasPieces}. Esta última pestaña incluye un botón por cada tipo de pieza; al seleccionar uno, se muestra su rango, si puede moverse y cualquier habilidad especial que posea.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{../Imagenes/MenuReglasBoard}
-	\caption{Menú de reglas con la pestaña de tipos de casillas activa.}
-	\label{fig:MenuReglasBoard}
-\end{figure}
+El contenido se organiza en cinco pestañas seleccionables en la parte superior de la ventana: \textit{Objective}, con el objetivo y las condiciones de victoria; \textit{Board}, con la descripción de los tipos de casillas; \textit{Movement}, con las reglas de desplazamiento; \textit{Combat}, con la mecánica de enfrentamiento; y \textit{Pieces}, que actúa como guía de referencia de todas las piezas del videojuego, ilustrada en la Figura~\ref{fig:MenuReglasPieces}. Mientras que todas las vistas consisten en textos e imágenes, esta última pestaña es interactuable, incluyendo un botón por cada tipo de pieza; al seleccionar uno, se muestra su rango, si puede moverse y cualquier habilidad especial que posea.
 
 \begin{figure}[H]
 	\centering
@@ -96,31 +98,31 @@ El contenido se organiza en cinco pestañas seleccionables en la parte superior 
 
 \subsection*{Fase de despliegue}
 
-Al iniciar una partida, el jugador ve el tablero vacío junto a un panel lateral izquierdo de despliegue. Este panel muestra el número total de piezas pendientes de colocar, una cuadrícula de botones con una entrada por cada tipo de pieza (cada botón indica cuántas unidades de ese tipo quedan disponibles), un botón
-\textit{Random Placement} que distribuye todas las piezas automáticamente en posiciones aleatorias de la zona de despliegue del jugador, y el botón \textit{Start Battle}, que permanece desactivado hasta que todas las piezas hayan sido colocadas.
-
-El flujo de colocación manual es el siguiente: el jugador selecciona un tipo de pieza pulsando su botón, que queda resaltado como activo, y a continuación hace clic sobre cualquier casilla válida de su zona para colocarla. La Figura~\ref{fig:MenuDespliegueVacio} muestra el estado inicial con el tablero vacío, mientras que la Figura~\ref{fig:MenuDespliegueParcialmenteVacio} muestra un estado intermedio con algunas piezas ya posicionadas. Hacer clic sobre una pieza ya colocada la retira y reactiva ese tipo en el panel.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{../Imagenes/MenuDespliegueVacio}
-	\caption{Fase de despliegue con el tablero vacío al inicio de la partida.}
-	\label{fig:MenuDespliegueVacio}
-\end{figure}
+Antes de poder iniciar una partida, el jugador ve el tablero vacío junto a un panel lateral izquierdo de despliegue. En la Figura~\ref{fig:MenuDespliegueParcialmenteVacio} se muestra un caso de la interfaz de despliegue con los componentes de la interfaz mas importantes marcados y explicados brevemente.
 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{../Imagenes/MenuDespliegueParcialmenteVacio}
-	\caption{Fase de despliegue con algunas piezas ya colocadas en la zona del
-		jugador.}
+	\caption{Fase de despliegue con algunas piezas ya colocadas en la zona del jugador.}
 	\label{fig:MenuDespliegueParcialmenteVacio}
 \end{figure}
 
+\begin{enumerate}
+	\item \textbf{Panel de despliegue:} En la parte superior se indican las piezas totales que quedan por colocar.
+	\item \textbf{Tablero:} Tablero donde desplegar las piezas que se seleccionan.
+	\item \textbf{Pieza pendiente por colocar:} Botón con un tipo de pieza con contador individual que indica la cantidad de piezas restantes por colocar de ese tipo.
+	\item \textbf{Pieza seleccionada:} Pieza seleccionada que se colocará en la casilla de despliegue del jugador a la que se haga click.
+	\item \textbf{Pieza agotada:} Pieza de la cual se han colocado todas las unidades de ese tipo.
+	\item \textbf{Botón de despliegue aleatorio:} Botón que coloca una distribución aleatoria de entre todas las casillas de despliegue.
+	\item \textbf{Botón de inicio de partida:} Botón que inicia una partida cuando ya están todas las piezas colocadas. Mientras queden piezas por colocar el botón estará desactivado.
+	\item \textbf{Casilla de despliegue del bot:} Casilla en la que el bot colocará sus piezas al empezar la partida.
+	\item \textbf{Pieza desplegada:} Pieza que se ha desplegado en el tablero. Se podrá seleccionar para eliminarla del tablero, seleccionando inmediatamente su tipo en el panel de despliegue para volver a colocarla inmediatamente.
+	\item \textbf{Casilla de despliegue del jugador:} Casilla en el que el jugador puede colocar sus piezas.
+\end{enumerate}
+
 \subsection{Partida en curso}
 
-Una vez iniciada la partida, el panel lateral izquierdo se sustituye por un recuento de piezas restantes de cada bando. A la derecha se muestra el indicador de turno: un icono de persona para el turno del jugador y una calavera para el del bot, acompañado de un breve efecto de transición al cambiar de turno.
-
-El tablero presenta todas las piezas en juego; las del bot aparecen ocultas hasta que son reveladas en combate. Cuando el jugador hace clic sobre una de sus piezas con movimientos disponibles, el sistema resalta en verde las casillas a las que puede desplazarse y en rojo aquellas que puede atacar, tal como se aprecia en la Figura~\ref{fig:MenuPartidaEnCurso}.
+Al comenzar la partida una vez desplegadas las piezas, la vista se actualiza a la que se ve en la Figura~\ref{fig:MenuPartidaEnCurso} donde se muestra una partida al cabo de unos pocos turnos donde también se comentan los componentes importantes de manera breve.
 
 \begin{figure}[H]
 	\centering
@@ -130,19 +132,21 @@ El tablero presenta todas las piezas en juego; las del bot aparecen ocultas hast
 	\label{fig:MenuPartidaEnCurso}
 \end{figure}
 
+\begin{enumerate}
+	\item \textbf{Panel de piezas:} En este panel se recogen todas las piezas restantes que quedan el tablero, ayudando al jugador a llevar la cuenta de que piezas le faltan al oponente y un resumen de las suyas.
+	\item \textbf{Casilla marcada para combate:} Cuando se selecciona una pieza que se puede mover a una casilla ocupada por una pieza rival, esta se marca de color rojo indicando que al moverse a esa posición se iniciara un combate.
+	\item \textbf{Casilla marcada para movimiento:} Cuando se selecciona una pieza que se puede mover a una casilla libre, esta se marca de color verde.
+	\item \textbf{Pieza seleccionada:} Pieza que el jugador seleccionada, marcando las casillas a las que esta puede moverse. Al hacer click a una casilla marcada la pieza se moverá a dicha casilla. En concreto la pieza seleccionada de la imagen puede moverse las casillas que se quiera en linea horizontal y vertical hasta que encuentra un obstáculo.
+	\item \textbf{Casilla transitable:} Casilla del tablero por la que se pueden mover las piezas, incluyendo las de despliegue de ambos bandos. 
+	\item \textbf{Casilla intransitable:} Casilla del tablero por la que no se puede mover ninguna pieza.
+	\item \textbf{Marcador de turno:} Panel que indica de quien es el turno actual, para el jugador es un símbolo de una persona, y una calavera para el jugador, Similar a las que hay en las casillas de sus despliegues.
+\end{enumerate}
+
 \subsection{Interfaz de combate}
 
-Cuando dos piezas se enfrentan, una ventana emergente cubre la pantalla. La ventana muestra dos paneles enfrentados: el atacante a la izquierda, indicado por un icono de mira roja, y el defensor a la derecha, identificado con un icono de escudo azul. Cada panel contiene el sprite de la pieza correspondiente y su nombre en la parte inferior.
+Cuando dos piezas se enfrentan, una ventana emergente cubre la pantalla como la de la Figura~\ref{fig:MenuInterfazCombateResuelto}. La ventana muestra dos paneles enfrentados, el atacante a la izquierda, indicado por un icono de mira roja, y el defensor a la derecha, identificado con un icono de escudo azul. Cada panel contiene el sprite de la pieza correspondiente y su nombre en la parte inferior.
 
-La secuencia acompaña al desarrollo del combate. Al emerger la ventana, si alguna de las piezas era desconocida para el rival, su sprite parpadea y se revela, tal como muestra la Figura~\ref{fig:MenuInterfazCombatePrevia}. A continuación, la pieza o piezas perdedoras parpadean y se oscurecen. Finalmente aparece en la parte inferior un mensaje con el resultado: quién ha ganado y el motivo, visible en la Figura~\ref{fig:MenuInterfazCombateResuelto}. El jugador cierra la ventana haciendo clic cuando lo considera oportuno.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\textwidth]{../Imagenes/MenuInterfazCombatePrevia}
-	\caption{Interfaz de combate antes de la resolución: ambas piezas visibles
-		y resultado aún sin mostrar.}
-	\label{fig:MenuInterfazCombatePrevia}
-\end{figure}
+La secuencia acompaña al desarrollo del combate. Al emerger la ventana, si alguna de las piezas era desconocida para el rival, su sprite parpadea y se revela. A continuación, la pieza o piezas perdedoras parpadean y se oscurecen. Finalmente aparece en la parte inferior un mensaje con el resultado, en el que se indica quién ha ganado y el motivo. El jugador cierra la ventana haciendo clic cuando lo considera oportuno.
 
 \begin{figure}[H]
 	\centering
@@ -245,14 +249,14 @@ Esta decisión concentra en un único lugar todas las operaciones sobre el estad
 
 El patrón \textbf{Template Method} define el esqueleto de un algoritmo en una operación, dejando que subclases o extensiones concreten algunos de sus pasos sin cambiar la estructura general.
 
-En \texttt{SceneManager}, la clase interna \texttt{\_Bridge} aplica este patrón en los métodos \texttt{TransitionIn()} y \texttt{TransitionOut()}. Ambos fijan la secuencia invariante de cualquier transición de pantalla: bloquear la entrada del usuario, ejecutar el paso de animación correspondiente y, tras \texttt{TransitionOut()}, devolver el control al juego. Como ilustra la Figura~\ref{fig:PatronTemplateMethod}, el paso concreto de animación se selecciona mediante un \texttt{switch} sobre el tipo de transición (\texttt{Transition.Fade}, \texttt{Transition.SlideLeft}, etc.).
+En \texttt{SceneManager}, la clase interna \texttt{\_Bridge} aplica este patrón en los métodos \texttt{TransitionIn()} y \texttt{TransitionOut()}. Ambos fijan la secuencia invariante de cualquier transición de pantalla: bloquear la entrada del usuario, ejecutar el paso de animación correspondiente y, tras \texttt{TransitionOut()}, devolver el control al videojuego. Como ilustra la Figura~\ref{fig:PatronTemplateMethod}, el paso concreto de animación se selecciona mediante un \texttt{switch} sobre el tipo de transición (\texttt{Transition.Fade}, \texttt{Transition.SlideLeft}, etc.).
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.80\textwidth]{../Imagenes/PatronTemplateMethod}
-	\caption{Patrón Template Method en \texttt{\_Bridge}: esqueleto fijo de transición con el paso de animación extensible por tipo.}
-	\label{fig:PatronTemplateMethod}
-\end{figure}
+%\begin{figure}[H]
+%	\centering
+%	\includegraphics[width=0.80\textwidth]{../Imagenes/PatronTemplateMethod}
+%	\caption{Patrón Template Method en \texttt{\_Bridge}: esqueleto fijo de transición con el paso de animación extensible por tipo.}
+%	\label{fig:PatronTemplateMethod}
+%\end{figure}
 
 En la forma canónica del patrón los pasos variables se delegan a subclases mediante herencia; aquí, al tratarse de una clase sellada (\texttt{sealed}), la variación se consigue mediante composición con el enumerado \texttt{Transition}. El efecto es equivalente, añadir un nuevo tipo de transición solo requiere incorporar un \texttt{case} adicional sin modificar el esqueleto del algoritmo ni las clases relacionadas.
 

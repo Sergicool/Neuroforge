@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.11.6)  24 MAY 2026 20:48
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.11.6)  26 MAY 2026 22:18
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1362,7 +1362,7 @@ Package hyperref Info: Link coloring ON on input line 16.
 \openout5 = `main.out'.
 
  (Chapters/Portada.tex
-<./Images/Principal_Negro.pdf, id=433, 227.85126pt x 135.50626pt>
+<./Images/Principal_Negro.pdf, id=465, 227.85126pt x 135.50626pt>
 File: ./Images/Principal_Negro.pdf Graphic file (type pdf)
 <use ./Images/Principal_Negro.pdf>
 Package pdftex.def Info: ./Images/Principal_Negro.pdf  used on input line 9.
@@ -1481,7 +1481,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.iii}) ha
 s been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.81 ...line {6.3.3}Fachada}{74}{subsection.6.3.3}
+l.81 ...3.4}Template Method}{73}{subsection.6.3.4}
                                                   % [3]
 
 
@@ -1496,7 +1496,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.iv}) has
  been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.108 ...er}{\numberline {C}}{103}{appendix.Alph3}
+l.110 ...carga de partidas}{100}{subsection.9.3.1}
                                                   % [4])
 \tf@toc=\write6
 \openout6 = `main.toc'.
@@ -1539,7 +1539,7 @@ l.40 	\listoffigures
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
 LaTeX Font Info:    Trying to load font information for T1+lmtt on input line 2
-3.
+2.
 
 (C:\Users\Sergi\AppData\Local\Programs\MiKTeX\tex/latex/lm\t1lmtt.fd
 File: t1lmtt.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
@@ -1654,7 +1654,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 ]
 Cap\'{\i }tulo 2.
-<../Imagenes/JuegoRealDeUr.png, id=794, 1284.8pt x 1022.82124pt>
+<../Imagenes/JuegoRealDeUr.png, id=824, 1284.8pt x 1022.82124pt>
 File: ../Imagenes/JuegoRealDeUr.png Graphic file (type png)
 <use ../Imagenes/JuegoRealDeUr.png>
 Package pdftex.def Info: ../Imagenes/JuegoRealDeUr.png  used on input line 13.
@@ -1665,7 +1665,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 
 
 [9]
-<../Imagenes/Senet.png, id=807, 1284.8pt x 987.69pt>
+<../Imagenes/Senet.png, id=837, 1284.8pt x 987.69pt>
 File: ../Imagenes/Senet.png Graphic file (type png)
 <use ../Imagenes/Senet.png>
 Package pdftex.def Info: ../Imagenes/Senet.png  used on input line 24.
@@ -1680,7 +1680,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [10 <../Imagenes/JuegoRealDeUr.png> <../Imagenes/Senet.png>]
-<../Imagenes/DouShouQi.png, id=816, 360.59718pt x 442.65375pt>
+<../Imagenes/DouShouQi.png, id=846, 360.59718pt x 442.65375pt>
 File: ../Imagenes/DouShouQi.png Graphic file (type png)
 <use ../Imagenes/DouShouQi.png>
 Package pdftex.def Info: ../Imagenes/DouShouQi.png  used on input line 39.
@@ -1735,7 +1735,7 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <7> on input line 72.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <5> on input line 72.
-<../Imagenes/Luzhanqi.png, id=841, 96.36pt x 133.6995pt>
+<../Imagenes/Luzhanqi.png, id=871, 96.36pt x 133.6995pt>
 File: ../Imagenes/Luzhanqi.png Graphic file (type png)
 <use ../Imagenes/Luzhanqi.png>
 Package pdftex.def Info: ../Imagenes/Luzhanqi.png  used on input line 78.
@@ -1799,7 +1799,7 @@ Cap\'{\i }tulo 3.
 
 [19{C:/Users/Sergi/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{
 C:/Users/Sergi/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}]
-<../Imagenes/EsquemaTablero.png, id=899, 321.2pt x 321.2pt>
+<../Imagenes/EsquemaTablero.png, id=929, 321.2pt x 321.2pt>
 File: ../Imagenes/EsquemaTablero.png Graphic file (type png)
 <use ../Imagenes/EsquemaTablero.png>
 Package pdftex.def Info: ../Imagenes/EsquemaTablero.png  used on input line 35.
@@ -1899,16 +1899,11 @@ na adap-ta-ción del \T1/lmr/bx/n/12 Pro-ce-so
 [27
 
 ]
-<../Imagenes/Metodologia.png, id=941, 620.3175pt x 387.4475pt>
+<../Imagenes/Metodologia.png, id=971, 620.3175pt x 387.4475pt>
 File: ../Imagenes/Metodologia.png Graphic file (type png)
 <use ../Imagenes/Metodologia.png>
 Package pdftex.def Info: ../Imagenes/Metodologia.png  used on input line 26.
-(pdftex.def)             Requested size: 224.06393pt x 139.94803pt.
-
-Overfull \hbox (22.32674pt too wide) in paragraph at lines 50--66
- [][] 
- []
-
+(pdftex.def)             Requested size: 398.3401pt x 248.79913pt.
 
 
 
@@ -1919,9 +1914,14 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [28 <../Imagenes/Metodologia.png>]
+Overfull \hbox (22.32674pt too wide) in paragraph at lines 50--66
+ [][] 
+ []
 
-LaTeX Info: Redefining \. on input line 94.
-LaTeX Info: Redefining \% on input line 94.
+
+
+LaTeX Info: Redefining \. on input line 87.
+LaTeX Info: Redefining \% on input line 87.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 15.35403pt, for example:
@@ -1940,8 +1940,8 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [30]
 
-LaTeX Info: Redefining \. on input line 146.
-LaTeX Info: Redefining \% on input line 146.
+LaTeX Info: Redefining \. on input line 143.
+LaTeX Info: Redefining \% on input line 143.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 15.35403pt, for example:
@@ -1953,9 +1953,6 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 Overfull \hbox (19.25446pt too wide) in paragraph at lines 171--194
  [][] 
  []
-
-
-Underfull \vbox (badness 1281) has occurred while \output is active []
 
 
 
@@ -1978,12 +1975,12 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-3.35403pt}.
 
 [33]
-<../Imagenes/Gantt1.png, id=976, 2409.0pt x 1453.43pt>
+<../Imagenes/Gantt1.png, id=1006, 2409.0pt x 1453.43pt>
 File: ../Imagenes/Gantt1.png Graphic file (type png)
 <use ../Imagenes/Gantt1.png>
 Package pdftex.def Info: ../Imagenes/Gantt1.png  used on input line 203.
 (pdftex.def)             Requested size: 766.0pt x 462.15749pt.
-<../Imagenes/Gantt2.png, id=977, 2409.0pt x 971.63pt>
+<../Imagenes/Gantt2.png, id=1007, 2409.0pt x 971.63pt>
 File: ../Imagenes/Gantt2.png Graphic file (type png)
 <use ../Imagenes/Gantt2.png>
 Package pdftex.def Info: ../Imagenes/Gantt2.png  used on input line 209.
@@ -2081,7 +2078,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [41]
 LaTeX Font Info:    Trying to load font information for TS1+lmr on input line 4
-52.
+51.
  (C:\Users\Sergi\AppData\Local\Programs\MiKTeX\tex/latex/lm\ts1lmr.fd
 File: ts1lmr.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
@@ -2096,8 +2093,8 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 [42{C:/Users/Sergi/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-ts1.enc}
 ]
 
-LaTeX Info: Redefining \. on input line 495.
-LaTeX Info: Redefining \% on input line 495.
+LaTeX Info: Redefining \. on input line 471.
+LaTeX Info: Redefining \% on input line 471.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 15.35403pt, for example:
@@ -2133,8 +2130,8 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 ]
 
-LaTeX Info: Redefining \. on input line 108.
-LaTeX Info: Redefining \% on input line 108.
+LaTeX Info: Redefining \. on input line 109.
+LaTeX Info: Redefining \% on input line 109.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 15.35403pt, for example:
@@ -2144,14 +2141,14 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [47{C:/Users/Sergi/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.e
 nc}]
-<../Imagenes/DiagramaCasosDeUso.png, id=1080, 898.10532pt x 346.29375pt>
+<../Imagenes/DiagramaCasosDeUso.png, id=1110, 898.10532pt x 346.29375pt>
 File: ../Imagenes/DiagramaCasosDeUso.png Graphic file (type png)
 <use ../Imagenes/DiagramaCasosDeUso.png>
 Package pdftex.def Info: ../Imagenes/DiagramaCasosDeUso.png  used on input line
- 111.
+ 112.
 (pdftex.def)             Requested size: 497.92325pt x 191.98921pt.
 
-Overfull \hbox (6.30173pt too wide) in paragraph at lines 120--130
+Overfull \hbox (6.30173pt too wide) in paragraph at lines 121--131
  [][] 
  []
 
@@ -2165,34 +2162,34 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [48 <../Imagenes/DiagramaCasosDeUso.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 146--146
+Underfull \hbox (badness 10000) in paragraph at lines 147--147
 []|\T1/lmr/bx/n/12 Req.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 149--149
+Underfull \hbox (badness 10000) in paragraph at lines 150--150
 []|\T1/lmr/bx/n/12 Secuencia
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 162--162
+Underfull \hbox (badness 10000) in paragraph at lines 163--163
 []|\T1/lmr/bx/n/12 Flujos
  []
 
 
-Overfull \hbox (0.84705pt too wide) in paragraph at lines 167--167
+Overfull \hbox (0.84705pt too wide) in paragraph at lines 168--168
 []|\T1/lmr/bx/n/12 Post-condición| 
  []
 
 
-Overfull \hbox (10.97357pt too wide) in paragraph at lines 141--170
+Overfull \hbox (10.97357pt too wide) in paragraph at lines 142--171
  [][] 
  []
 
 
 
-LaTeX Info: Redefining \. on input line 174.
-LaTeX Info: Redefining \% on input line 174.
+LaTeX Info: Redefining \. on input line 175.
+LaTeX Info: Redefining \% on input line 175.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 15.35403pt, for example:
@@ -2203,27 +2200,27 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 [49
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 187--187
+Underfull \hbox (badness 10000) in paragraph at lines 188--188
 []|\T1/lmr/bx/n/12 Req.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 190--190
+Underfull \hbox (badness 10000) in paragraph at lines 191--191
 []|\T1/lmr/bx/n/12 Secuencia
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 201--201
+Underfull \hbox (badness 10000) in paragraph at lines 202--202
 []|\T1/lmr/bx/n/12 Flujos
  []
 
 
-Overfull \hbox (0.84705pt too wide) in paragraph at lines 213--213
+Overfull \hbox (0.84705pt too wide) in paragraph at lines 214--214
 []|\T1/lmr/bx/n/12 Post-condición| 
  []
 
 
-Overfull \hbox (10.97357pt too wide) in paragraph at lines 182--216
+Overfull \hbox (10.97357pt too wide) in paragraph at lines 183--217
  [][] 
  []
 
@@ -2239,34 +2236,34 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 [50
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 233--233
+Underfull \hbox (badness 10000) in paragraph at lines 234--234
 []|\T1/lmr/bx/n/12 Req.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 236--236
+Underfull \hbox (badness 10000) in paragraph at lines 237--237
 []|\T1/lmr/bx/n/12 Secuencia
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 246--246
+Underfull \hbox (badness 10000) in paragraph at lines 247--247
 []|\T1/lmr/bx/n/12 Flujos
  []
 
 
-Overfull \hbox (0.84705pt too wide) in paragraph at lines 250--250
+Overfull \hbox (0.84705pt too wide) in paragraph at lines 251--251
 []|\T1/lmr/bx/n/12 Post-condición| 
  []
 
 
-Overfull \hbox (10.97357pt too wide) in paragraph at lines 228--253
+Overfull \hbox (10.97357pt too wide) in paragraph at lines 229--254
  [][] 
  []
 
 
 
-LaTeX Info: Redefining \. on input line 257.
-LaTeX Info: Redefining \% on input line 257.
+LaTeX Info: Redefining \. on input line 258.
+LaTeX Info: Redefining \% on input line 258.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 15.35403pt, for example:
@@ -2277,52 +2274,52 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 [51
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 270--270
+Underfull \hbox (badness 10000) in paragraph at lines 271--271
 []|\T1/lmr/bx/n/12 Req.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 273--273
+Underfull \hbox (badness 10000) in paragraph at lines 274--274
 []|\T1/lmr/bx/n/12 Secuencia
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 282--282
+Underfull \hbox (badness 10000) in paragraph at lines 283--283
 []|\T1/lmr/bx/n/12 Flujos
  []
 
 
-Overfull \hbox (0.84705pt too wide) in paragraph at lines 286--286
+Overfull \hbox (0.84705pt too wide) in paragraph at lines 287--287
 []|\T1/lmr/bx/n/12 Post-condición| 
  []
 
 
-Overfull \hbox (10.97357pt too wide) in paragraph at lines 265--289
+Overfull \hbox (10.97357pt too wide) in paragraph at lines 266--290
  [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 304--304
+Underfull \hbox (badness 10000) in paragraph at lines 305--305
 []|\T1/lmr/bx/n/12 Req.
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 307--307
+Underfull \hbox (badness 10000) in paragraph at lines 308--308
 []|\T1/lmr/bx/n/12 Secuencia
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 316--316
+Underfull \hbox (badness 10000) in paragraph at lines 317--317
 []|\T1/lmr/bx/n/12 Flujos
  []
 
 
-Overfull \hbox (0.84705pt too wide) in paragraph at lines 320--320
+Overfull \hbox (0.84705pt too wide) in paragraph at lines 321--321
 []|\T1/lmr/bx/n/12 Post-condición| 
  []
 
 
-Overfull \hbox (10.97357pt too wide) in paragraph at lines 299--323
+Overfull \hbox (10.97357pt too wide) in paragraph at lines 300--324
  [][] 
  []
 
@@ -2342,8 +2339,8 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 ]
 
-LaTeX Info: Redefining \. on input line 327.
-LaTeX Info: Redefining \% on input line 327.
+LaTeX Info: Redefining \. on input line 328.
+LaTeX Info: Redefining \% on input line 328.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 15.35403pt, for example:
@@ -2352,11 +2349,11 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-3.35403pt}.
 
 [53]
-<../Imagenes/DiagramaModeloDominio.png, id=1140, 773.13844pt x 585.68813pt>
+<../Imagenes/DiagramaModeloDominio.png, id=1170, 773.13844pt x 585.68813pt>
 File: ../Imagenes/DiagramaModeloDominio.png Graphic file (type png)
 <use ../Imagenes/DiagramaModeloDominio.png>
 Package pdftex.def Info: ../Imagenes/DiagramaModeloDominio.png  used on input l
-ine 337.
+ine 340.
 (pdftex.def)             Requested size: 497.92325pt x 377.19846pt.
 
 
@@ -2370,24 +2367,20 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 [54
 
  <../Imagenes/DiagramaModeloDominio.png>]
-<../Imagenes/DiagramaActividadJugarPartida.jpg, id=1147, 871.00406pt x 542.7778
-2pt>
+<../Imagenes/DiagramaActividadJugarPartida.jpg, id=1177, 817.55438pt x 593.9690
+6pt>
 File: ../Imagenes/DiagramaActividadJugarPartida.jpg Graphic file (type jpg)
 <use ../Imagenes/DiagramaActividadJugarPartida.jpg>
 Package pdftex.def Info: ../Imagenes/DiagramaActividadJugarPartida.jpg  used on
- input line 356.
-(pdftex.def)             Requested size: 497.92325pt x 310.28104pt.
-<../Imagenes/DiagramaActividadJugarTurnos.jpg, id=1149, 657.95813pt x 611.28375
-pt>
-File: ../Imagenes/DiagramaActividadJugarTurnos.jpg Graphic file (type jpg)
-<use ../Imagenes/DiagramaActividadJugarTurnos.jpg>
-Package pdftex.def Info: ../Imagenes/DiagramaActividadJugarTurnos.jpg  used on 
-input line 367.
-(pdftex.def)             Requested size: 497.92325pt x 462.6124pt.
+ input line 361.
+(pdftex.def)             Requested size: 497.92325pt x 361.75867pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-LaTeX Info: Redefining \. on input line 370.
-LaTeX Info: Redefining \% on input line 370.
+
+LaTeX Info: Redefining \. on input line 369.
+LaTeX Info: Redefining \% on input line 369.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 15.35403pt, for example:
@@ -2398,6 +2391,14 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 [55
 
  <../Imagenes/DiagramaActividadJugarPartida.jpg>]
+<../Imagenes/DiagramaActividadJugarTurnos.jpg, id=1183, 737.00343pt x 571.38469
+pt>
+File: ../Imagenes/DiagramaActividadJugarTurnos.jpg Graphic file (type jpg)
+<use ../Imagenes/DiagramaActividadJugarTurnos.jpg>
+Package pdftex.def Info: ../Imagenes/DiagramaActividadJugarTurnos.jpg  used on 
+input line 372.
+(pdftex.def)             Requested size: 497.92325pt x 386.02548pt.
+
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -2407,17 +2408,17 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [56 <../Imagenes/DiagramaActividadJugarTurnos.jpg>]
-<../Imagenes/DiagramaActividadResolverCombate.jpg, id=1159, 749.04843pt x 548.0
-475pt>
+<../Imagenes/DiagramaActividadResolverCombate.jpg, id=1189, 913.16156pt x 619.5
+6468pt>
 File: ../Imagenes/DiagramaActividadResolverCombate.jpg Graphic file (type jpg)
 <use ../Imagenes/DiagramaActividadResolverCombate.jpg>
 Package pdftex.def Info: ../Imagenes/DiagramaActividadResolverCombate.jpg  used
- on input line 380.
-(pdftex.def)             Requested size: 497.92325pt x 364.3132pt.
+ on input line 385.
+(pdftex.def)             Requested size: 497.92325pt x 337.83095pt.
 
 
-LaTeX Info: Redefining \. on input line 385.
-LaTeX Info: Redefining \% on input line 385.
+LaTeX Info: Redefining \. on input line 390.
+LaTeX Info: Redefining \% on input line 390.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 15.35403pt, for example:
@@ -2428,21 +2429,14 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 [57
 
  <../Imagenes/DiagramaActividadResolverCombate.jpg>]
-<../Imagenes/DiagramaActividadConsultarReglas.jpg, id=1166, 1007.26312pt x 418.
-56375pt>
-File: ../Imagenes/DiagramaActividadConsultarReglas.jpg Graphic file (type jpg)
-<use ../Imagenes/DiagramaActividadConsultarReglas.jpg>
-Package pdftex.def Info: ../Imagenes/DiagramaActividadConsultarReglas.jpg  used
- on input line 393.
-(pdftex.def)             Requested size: 497.92325pt x 206.91187pt.
-<../Imagenes/DiagramaActividadConsultarOpciones.jpg, id=1168, 840.13875pt x 353
-.06906pt>
+<../Imagenes/DiagramaActividadConsultarOpciones.jpg, id=1196, 932.73468pt x 429
+.10312pt>
 File: ../Imagenes/DiagramaActividadConsultarOpciones.jpg Graphic file (type jpg
 )
 <use ../Imagenes/DiagramaActividadConsultarOpciones.jpg>
 Package pdftex.def Info: ../Imagenes/DiagramaActividadConsultarOpciones.jpg  us
-ed on input line 404.
-(pdftex.def)             Requested size: 497.92325pt x 209.25172pt.
+ed on input line 409.
+(pdftex.def)             Requested size: 497.92325pt x 229.067pt.
 ) (Chapters/DiseÃ±o.tex
 
 
@@ -2454,15 +2448,14 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [58
 
- <../Imagenes/DiagramaActividadConsultarReglas.jpg> <../Imagenes/DiagramaActivi
-dadConsultarOpciones.jpg>]
+ <../Imagenes/DiagramaActividadConsultarOpciones.jpg>]
 Cap\'{\i }tulo 6.
 
 
 [59
 
 ]
-<../Imagenes/EjemploEscena.jpg, id=1178, 495.35063pt x 271.0125pt>
+<../Imagenes/EjemploEscena.jpg, id=1206, 495.35063pt x 271.0125pt>
 File: ../Imagenes/EjemploEscena.jpg Graphic file (type jpg)
 <use ../Imagenes/EjemploEscena.jpg>
 Package pdftex.def Info: ../Imagenes/EjemploEscena.jpg  used on input line 23.
@@ -2477,12 +2470,12 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [60 <../Imagenes/EjemploEscena.jpg>]
-<../Imagenes/GodotModelo.jpg, id=1184, 730.98094pt x 615.80063pt>
+<../Imagenes/GodotModelo.jpg, id=1212, 730.98094pt x 615.80063pt>
 File: ../Imagenes/GodotModelo.jpg Graphic file (type jpg)
 <use ../Imagenes/GodotModelo.jpg>
 Package pdftex.def Info: ../Imagenes/GodotModelo.jpg  used on input line 34.
 (pdftex.def)             Requested size: 497.92325pt x 419.4624pt.
-<../Imagenes/ArquitecturaDelSistema.jpg, id=1186, 581.92406pt x 649.67719pt>
+<../Imagenes/ArquitecturaDelSistema.jpg, id=1214, 581.92406pt x 649.67719pt>
 File: ../Imagenes/ArquitecturaDelSistema.jpg Graphic file (type jpg)
 <use ../Imagenes/ArquitecturaDelSistema.jpg>
 Package pdftex.def Info: ../Imagenes/ArquitecturaDelSistema.jpg  used on input 
@@ -2512,18 +2505,21 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [62 <../Imagenes/ArquitecturaDelSistema.jpg>]
-<../Imagenes/MenuPrincipal.jpg, id=1196, 1445.4pt x 813.0375pt>
+<../Imagenes/DiagramaNavegacion.jpg, id=1224, 859.71187pt x 293.59688pt>
+File: ../Imagenes/DiagramaNavegacion.jpg Graphic file (type jpg)
+<use ../Imagenes/DiagramaNavegacion.jpg>
+Package pdftex.def Info: ../Imagenes/DiagramaNavegacion.jpg  used on input line
+ 68.
+(pdftex.def)             Requested size: 497.92325pt x 170.04437pt.
+<../Imagenes/MenuPrincipal.jpg, id=1226, 1445.4pt x 813.0375pt>
 File: ../Imagenes/MenuPrincipal.jpg Graphic file (type jpg)
 <use ../Imagenes/MenuPrincipal.jpg>
-Package pdftex.def Info: ../Imagenes/MenuPrincipal.jpg  used on input line 72.
+Package pdftex.def Info: ../Imagenes/MenuPrincipal.jpg  used on input line 81.
 (pdftex.def)             Requested size: 497.92325pt x 280.07643pt.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
 
-
-
-LaTeX Info: Redefining \. on input line 76.
-LaTeX Info: Redefining \% on input line 76.
+LaTeX Info: Redefining \. on input line 85.
+LaTeX Info: Redefining \% on input line 85.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 15.35403pt, for example:
@@ -2531,12 +2527,12 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-3.35403pt}.
 
-[63]
-<../Imagenes/MenuReglasBoard.jpg, id=1204, 1445.4pt x 813.0375pt>
-File: ../Imagenes/MenuReglasBoard.jpg Graphic file (type jpg)
-<use ../Imagenes/MenuReglasBoard.jpg>
-Package pdftex.def Info: ../Imagenes/MenuReglasBoard.jpg  used on input line 85
-.
+[63 <../Imagenes/DiagramaNavegacion.jpg>]
+<../Imagenes/MenuReglasPieces.jpg, id=1233, 1445.4pt x 813.0375pt>
+File: ../Imagenes/MenuReglasPieces.jpg Graphic file (type jpg)
+<use ../Imagenes/MenuReglasPieces.jpg>
+Package pdftex.def Info: ../Imagenes/MenuReglasPieces.jpg  used on input line 9
+4.
 (pdftex.def)             Requested size: 497.92325pt x 280.07643pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -2551,77 +2547,32 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [64 <../Imagenes/MenuPrincipal.jpg>]
-<../Imagenes/MenuReglasPieces.jpg, id=1209, 1445.4pt x 813.0375pt>
-File: ../Imagenes/MenuReglasPieces.jpg Graphic file (type jpg)
-<use ../Imagenes/MenuReglasPieces.jpg>
-Package pdftex.def Info: ../Imagenes/MenuReglasPieces.jpg  used on input line 9
-2.
-(pdftex.def)             Requested size: 497.92325pt x 280.07643pt.
-
-
-LaTeX Info: Redefining \. on input line 101.
-LaTeX Info: Redefining \% on input line 101.
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 15.35403pt, for example:
-(fancyhdr)                \setlength{\headheight}{15.35403pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-3.35403pt}.
-
-[65 <../Imagenes/MenuReglasBoard.jpg> <../Imagenes/MenuReglasPieces.jpg>]
-<../Imagenes/MenuDespliegueVacio.jpg, id=1216, 1445.4pt x 813.0375pt>
-File: ../Imagenes/MenuDespliegueVacio.jpg Graphic file (type jpg)
-<use ../Imagenes/MenuDespliegueVacio.jpg>
-Package pdftex.def Info: ../Imagenes/MenuDespliegueVacio.jpg  used on input lin
-e 106.
-(pdftex.def)             Requested size: 497.92325pt x 280.07643pt.
-<../Imagenes/MenuDespliegueParcialmenteVacio.jpg, id=1217, 1445.4pt x 813.0375p
-t>
+<../Imagenes/MenuDespliegueParcialmenteVacio.jpg, id=1239, 1041.1397pt x 585.68
+813pt>
 File: ../Imagenes/MenuDespliegueParcialmenteVacio.jpg Graphic file (type jpg)
 <use ../Imagenes/MenuDespliegueParcialmenteVacio.jpg>
 Package pdftex.def Info: ../Imagenes/MenuDespliegueParcialmenteVacio.jpg  used 
-on input line 113.
-(pdftex.def)             Requested size: 497.92325pt x 280.07643pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
+on input line 105.
+(pdftex.def)             Requested size: 497.92325pt x 280.09937pt.
 
 
-
+LaTeX Info: Redefining \. on input line 112.
+LaTeX Info: Redefining \% on input line 112.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                Make it at least 15.35403pt, for example:
+(fancyhdr)                \setlength{\headheight}{15.35403pt}.
 (fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+(fancyhdr)                \addtolength{\topmargin}{-3.35403pt}.
 
-[66 <../Imagenes/MenuDespliegueVacio.jpg>]
-<../Imagenes/MenuPartidaEnCurso.jpg, id=1223, 1445.4pt x 813.0375pt>
+[65 <../Imagenes/MenuReglasPieces.jpg> <../Imagenes/MenuDespliegueParcialmenteV
+acio.jpg>]
+<../Imagenes/MenuPartidaEnCurso.jpg, id=1245, 1040.38687pt x 584.93532pt>
 File: ../Imagenes/MenuPartidaEnCurso.jpg Graphic file (type jpg)
 <use ../Imagenes/MenuPartidaEnCurso.jpg>
 Package pdftex.def Info: ../Imagenes/MenuPartidaEnCurso.jpg  used on input line
- 127.
-(pdftex.def)             Requested size: 497.92325pt x 280.07643pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
-
-
-LaTeX Info: Redefining \. on input line 132.
-LaTeX Info: Redefining \% on input line 132.
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 15.35403pt, for example:
-(fancyhdr)                \setlength{\headheight}{15.35403pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-3.35403pt}.
-
-[67 <../Imagenes/MenuDespliegueParcialmenteVacio.jpg>]
-<../Imagenes/MenuInterfazCombatePrevia.jpg, id=1230, 1445.4pt x 813.0375pt>
-File: ../Imagenes/MenuInterfazCombatePrevia.jpg Graphic file (type jpg)
-<use ../Imagenes/MenuInterfazCombatePrevia.jpg>
-Package pdftex.def Info: ../Imagenes/MenuInterfazCombatePrevia.jpg  used on inp
-ut line 141.
-(pdftex.def)             Requested size: 497.92325pt x 280.07643pt.
+ 129.
+(pdftex.def)             Requested size: 497.92325pt x 279.94463pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -2634,36 +2585,29 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[68 <../Imagenes/MenuPartidaEnCurso.jpg>]
-<../Imagenes/MenuInterfazCombateResuelto.jpg, id=1235, 1445.4pt x 813.0375pt>
+[66]
+
+LaTeX Info: Redefining \. on input line 148.
+LaTeX Info: Redefining \% on input line 148.
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 15.35403pt, for example:
+(fancyhdr)                \setlength{\headheight}{15.35403pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-3.35403pt}.
+
+[67 <../Imagenes/MenuPartidaEnCurso.jpg>]
+<../Imagenes/MenuInterfazCombateResuelto.jpg, id=1272, 1445.4pt x 813.0375pt>
 File: ../Imagenes/MenuInterfazCombateResuelto.jpg Graphic file (type jpg)
 <use ../Imagenes/MenuInterfazCombateResuelto.jpg>
 Package pdftex.def Info: ../Imagenes/MenuInterfazCombateResuelto.jpg  used on i
-nput line 149.
+nput line 153.
 (pdftex.def)             Requested size: 497.92325pt x 280.07643pt.
-
-
-LaTeX Info: Redefining \. on input line 159.
-LaTeX Info: Redefining \% on input line 159.
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 15.35403pt, for example:
-(fancyhdr)                \setlength{\headheight}{15.35403pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-3.35403pt}.
-
-[69 <../Imagenes/MenuInterfazCombatePrevia.jpg> <../Imagenes/MenuInterfazCombat
-eResuelto.jpg>]
-<../Imagenes/MenuFinPartida.jpg, id=1242, 1445.4pt x 813.0375pt>
+<../Imagenes/MenuFinPartida.jpg, id=1274, 1445.4pt x 813.0375pt>
 File: ../Imagenes/MenuFinPartida.jpg Graphic file (type jpg)
 <use ../Imagenes/MenuFinPartida.jpg>
-Package pdftex.def Info: ../Imagenes/MenuFinPartida.jpg  used on input line 162
+Package pdftex.def Info: ../Imagenes/MenuFinPartida.jpg  used on input line 166
 .
-(pdftex.def)             Requested size: 497.92325pt x 280.07643pt.
-<../Imagenes/MenuPausa.jpg, id=1243, 1445.4pt x 813.0375pt>
-File: ../Imagenes/MenuPausa.jpg Graphic file (type jpg)
-<use ../Imagenes/MenuPausa.jpg>
-Package pdftex.def Info: ../Imagenes/MenuPausa.jpg  used on input line 173.
 (pdftex.def)             Requested size: 497.92325pt x 280.07643pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -2677,19 +2621,19 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[70 <../Imagenes/MenuFinPartida.jpg>]
-<../Imagenes/MenuOpciones.jpg, id=1248, 1445.4pt x 813.0375pt>
-File: ../Imagenes/MenuOpciones.jpg Graphic file (type jpg)
-<use ../Imagenes/MenuOpciones.jpg>
-Package pdftex.def Info: ../Imagenes/MenuOpciones.jpg  used on input line 186.
+[68 <../Imagenes/MenuInterfazCombateResuelto.jpg>]
+<../Imagenes/MenuPausa.jpg, id=1279, 1445.4pt x 813.0375pt>
+File: ../Imagenes/MenuPausa.jpg Graphic file (type jpg)
+<use ../Imagenes/MenuPausa.jpg>
+Package pdftex.def Info: ../Imagenes/MenuPausa.jpg  used on input line 177.
 (pdftex.def)             Requested size: 497.92325pt x 280.07643pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-LaTeX Info: Redefining \. on input line 190.
-LaTeX Info: Redefining \% on input line 190.
+LaTeX Info: Redefining \. on input line 181.
+LaTeX Info: Redefining \% on input line 181.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 15.35403pt, for example:
@@ -2697,36 +2641,56 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-3.35403pt}.
 
-[71 <../Imagenes/MenuPausa.jpg>]
-<../Imagenes/PatronSingleton.jpg, id=1254, 785.18344pt x 255.20343pt>
+[69 <../Imagenes/MenuFinPartida.jpg>]
+<../Imagenes/MenuOpciones.jpg, id=1285, 1445.4pt x 813.0375pt>
+File: ../Imagenes/MenuOpciones.jpg Graphic file (type jpg)
+<use ../Imagenes/MenuOpciones.jpg>
+Package pdftex.def Info: ../Imagenes/MenuOpciones.jpg  used on input line 190.
+(pdftex.def)             Requested size: 497.92325pt x 280.07643pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[70 <../Imagenes/MenuPausa.jpg>]
+<../Imagenes/PatronSingleton.jpg, id=1291, 785.18344pt x 255.20343pt>
 File: ../Imagenes/PatronSingleton.jpg Graphic file (type jpg)
 <use ../Imagenes/PatronSingleton.jpg>
-Package pdftex.def Info: ../Imagenes/PatronSingleton.jpg  used on input line 20
-7.
+Package pdftex.def Info: ../Imagenes/PatronSingleton.jpg  used on input line 21
+1.
 (pdftex.def)             Requested size: 398.3401pt x 129.47055pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
+LaTeX Info: Redefining \. on input line 215.
+LaTeX Info: Redefining \% on input line 215.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                Make it at least 15.35403pt, for example:
+(fancyhdr)                \setlength{\headheight}{15.35403pt}.
 (fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+(fancyhdr)                \addtolength{\topmargin}{-3.35403pt}.
 
-[72 <../Imagenes/MenuOpciones.jpg>]
-Underfull \hbox (badness 1137) in paragraph at lines 218--219
+[71 <../Imagenes/MenuOpciones.jpg>]
+Underfull \hbox (badness 1137) in paragraph at lines 222--223
 []\T1/lmr/m/n/12 En el pro-yec-to, \T1/lmtt/m/n/12 MovementSystem \T1/lmr/m/n/1
 2 y \T1/lmtt/m/n/12 CombatSystem \T1/lmr/m/n/12 son cla-ses es-tá-ti-cas que en
 -cap-su-lan
  []
 
-<../Imagenes/PatronStrategy.jpg, id=1260, 1037.37563pt x 237.13594pt>
+<../Imagenes/PatronStrategy.jpg, id=1297, 1037.37563pt x 237.13594pt>
 File: ../Imagenes/PatronStrategy.jpg Graphic file (type jpg)
 <use ../Imagenes/PatronStrategy.jpg>
-Package pdftex.def Info: ../Imagenes/PatronStrategy.jpg  used on input line 222
+Package pdftex.def Info: ../Imagenes/PatronStrategy.jpg  used on input line 226
 .
 (pdftex.def)             Requested size: 398.3401pt x 91.05698pt.
 
@@ -2734,45 +2698,6 @@ Underfull \vbox (badness 1910) has occurred while \output is active []
 
 
 
-LaTeX Info: Redefining \. on input line 233.
-LaTeX Info: Redefining \% on input line 233.
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 15.35403pt, for example:
-(fancyhdr)                \setlength{\headheight}{15.35403pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-3.35403pt}.
-
-[73 <../Imagenes/PatronSingleton.jpg> <../Imagenes/PatronStrategy.jpg>]
-Underfull \hbox (badness 1661) in paragraph at lines 233--234
-\T1/lmr/m/n/12 y \T1/lmtt/m/n/12 Piece\T1/lmr/m/n/12 , la de-le-ga-ción a \T1/l
-mtt/m/n/12 MovementSystem \T1/lmr/m/n/12 y \T1/lmtt/m/n/12 CombatSystem\T1/lmr/
-m/n/12 , y el con-tro-la-dor de in-put
- []
-
-<../Imagenes/PatronFachada.jpg, id=1266, 863.47594pt x 429.10312pt>
-File: ../Imagenes/PatronFachada.jpg Graphic file (type jpg)
-<use ../Imagenes/PatronFachada.jpg>
-Package pdftex.def Info: ../Imagenes/PatronFachada.jpg  used on input line 237.
-
-(pdftex.def)             Requested size: 398.3401pt x 197.95291pt.
-
-Underfull \hbox (badness 1527) in paragraph at lines 248--249
-\T1/lmr/m/n/12 blo-quear la en-tra-da del usua-rio, eje-cu-tar el pa-so de ani-
-ma-ción co-rres-pon-dien-te y, tras
- []
-
-<../Imagenes/PatronTemplateMethod.jpg, id=1268, 650.43pt x 280.79906pt>
-File: ../Imagenes/PatronTemplateMethod.jpg Graphic file (type jpg)
-<use ../Imagenes/PatronTemplateMethod.jpg>
-Package pdftex.def Info: ../Imagenes/PatronTemplateMethod.jpg  used on input li
-ne 252.
-(pdftex.def)             Requested size: 398.3401pt x 171.97272pt.
-
-Underfull \vbox (badness 3579) has occurred while \output is active []
-
-
-
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 14.49998pt, for example:
@@ -2780,7 +2705,30 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[74 <../Imagenes/PatronFachada.jpg>]) (Chapters/Desarrollo.tex
+[72 <../Imagenes/PatronSingleton.jpg> <../Imagenes/PatronStrategy.jpg>]
+Underfull \hbox (badness 1661) in paragraph at lines 237--238
+\T1/lmr/m/n/12 y \T1/lmtt/m/n/12 Piece\T1/lmr/m/n/12 , la de-le-ga-ción a \T1/l
+mtt/m/n/12 MovementSystem \T1/lmr/m/n/12 y \T1/lmtt/m/n/12 CombatSystem\T1/lmr/
+m/n/12 , y el con-tro-la-dor de in-put
+ []
+
+<../Imagenes/PatronFachada.jpg, id=1303, 863.47594pt x 429.10312pt>
+File: ../Imagenes/PatronFachada.jpg Graphic file (type jpg)
+<use ../Imagenes/PatronFachada.jpg>
+Package pdftex.def Info: ../Imagenes/PatronFachada.jpg  used on input line 241.
+
+(pdftex.def)             Requested size: 398.3401pt x 197.95291pt.
+
+LaTeX Warning: Reference `fig:PatronTemplateMethod' on page 73 undefined on inp
+ut line 252.
+
+
+Underfull \hbox (badness 1527) in paragraph at lines 252--253
+\T1/lmr/m/n/12 blo-quear la en-tra-da del usua-rio, eje-cu-tar el pa-so de ani-
+ma-ción co-rres-pon-dien-te y, tras
+ []
+
+) (Chapters/Desarrollo.tex
 
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
@@ -2791,7 +2739,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-3.35403pt}.
 
-[75 <../Imagenes/PatronTemplateMethod.jpg>]
+[73 <../Imagenes/PatronFachada.jpg>]
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -2800,13 +2748,13 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[76
+[74
 
 ]
 Cap\'{\i }tulo 7.
 
 
-[77]
+[75]
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -2815,7 +2763,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[78]
+[76]
 
 LaTeX Info: Redefining \. on input line 69.
 LaTeX Info: Redefining \% on input line 69.
@@ -2826,8 +2774,8 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-3.35403pt}.
 
-[79]
-<../Imagenes/it1_despliegue_cerca.png, id=1313, 1169.36874pt x 742.775pt>
+[77]
+<../Imagenes/it1_despliegue_cerca.png, id=1344, 1169.36874pt x 742.775pt>
 File: ../Imagenes/it1_despliegue_cerca.png Graphic file (type png)
 <use ../Imagenes/it1_despliegue_cerca.png>
 Package pdftex.def Info: ../Imagenes/it1_despliegue_cerca.png  used on input li
@@ -2845,10 +2793,10 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[80
+[78
 
 ]
-<../Imagenes/it1_juego2.jpg, id=1320, 871.75688pt x 609.02531pt>
+<../Imagenes/it1_juego2.jpg, id=1351, 871.75688pt x 609.02531pt>
 File: ../Imagenes/it1_juego2.jpg Graphic file (type jpg)
 <use ../Imagenes/it1_juego2.jpg>
 Package pdftex.def Info: ../Imagenes/it1_juego2.jpg  used on input line 112.
@@ -2864,8 +2812,8 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-3.35403pt}.
 
-[81 <../Imagenes/it1_despliegue_cerca.png>]
-<../Imagenes/it1_juego1.jpg, id=1327, 1277.52281pt x 534.49687pt>
+[79 <../Imagenes/it1_despliegue_cerca.png>]
+<../Imagenes/it1_juego1.jpg, id=1357, 1277.52281pt x 534.49687pt>
 File: ../Imagenes/it1_juego1.jpg Graphic file (type jpg)
 <use ../Imagenes/it1_juego1.jpg>
 Package pdftex.def Info: ../Imagenes/it1_juego1.jpg  used on input line 119.
@@ -2879,23 +2827,26 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[82 <../Imagenes/it1_juego2.jpg> <../Imagenes/it1_juego1.jpg>]
-<../Imagenes/boceto_partida_v1.jpg, id=1333, 633.11531pt x 359.84438pt>
+[80 <../Imagenes/it1_juego2.jpg> <../Imagenes/it1_juego1.jpg>]
+<../Imagenes/boceto_partida_v1.jpg, id=1363, 633.11531pt x 359.84438pt>
 File: ../Imagenes/boceto_partida_v1.jpg Graphic file (type jpg)
 <use ../Imagenes/boceto_partida_v1.jpg>
 Package pdftex.def Info: ../Imagenes/boceto_partida_v1.jpg  used on input line 
 134.
-(pdftex.def)             Requested size: 348.54475pt x 198.1072pt.
-<../Imagenes/boceto_partida_v2.jpg, id=1335, 633.86812pt x 407.27156pt>
+(pdftex.def)             Requested size: 497.92325pt x 283.01106pt.
+<../Imagenes/boceto_partida_v2.jpg, id=1365, 633.86812pt x 407.27156pt>
 File: ../Imagenes/boceto_partida_v2.jpg Graphic file (type jpg)
 <use ../Imagenes/boceto_partida_v2.jpg>
 Package pdftex.def Info: ../Imagenes/boceto_partida_v2.jpg  used on input line 
 143.
-(pdftex.def)             Requested size: 348.54475pt x 223.95032pt.
+(pdftex.def)             Requested size: 497.92325pt x 319.93259pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-LaTeX Info: Redefining \. on input line 149.
-LaTeX Info: Redefining \% on input line 149.
+
+LaTeX Info: Redefining \. on input line 147.
+LaTeX Info: Redefining \% on input line 147.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 15.35403pt, for example:
@@ -2903,19 +2854,13 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-3.35403pt}.
 
-[83 <../Imagenes/boceto_partida_v1.jpg> <../Imagenes/boceto_partida_v2.jpg>]
-<../Imagenes/boceto_partida_v3.jpg, id=1342, 632.3625pt x 426.84468pt>
+[81 <../Imagenes/boceto_partida_v1.jpg>]
+<../Imagenes/boceto_partida_v3.jpg, id=1373, 632.3625pt x 426.84468pt>
 File: ../Imagenes/boceto_partida_v3.jpg Graphic file (type jpg)
 <use ../Imagenes/boceto_partida_v3.jpg>
 Package pdftex.def Info: ../Imagenes/boceto_partida_v3.jpg  used on input line 
 152.
-(pdftex.def)             Requested size: 348.54475pt x 235.27332pt.
-<../Imagenes/combate_estado1.jpg, id=1347, 635.37375pt x 395.22656pt>
-File: ../Imagenes/combate_estado1.jpg Graphic file (type jpg)
-<use ../Imagenes/combate_estado1.jpg>
-Package pdftex.def Info: ../Imagenes/combate_estado1.jpg  used on input line 16
-5.
-(pdftex.def)             Requested size: 398.3401pt x 247.7879pt.
+(pdftex.def)             Requested size: 497.92325pt x 336.10289pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -2928,26 +2873,20 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[84 <../Imagenes/boceto_partida_v3.jpg>]
-<../Imagenes/combate_estado2.jpg, id=1353, 633.11531pt x 414.79968pt>
-File: ../Imagenes/combate_estado2.jpg Graphic file (type jpg)
-<use ../Imagenes/combate_estado2.jpg>
-Package pdftex.def Info: ../Imagenes/combate_estado2.jpg  used on input line 17
-2.
-(pdftex.def)             Requested size: 398.3401pt x 260.9834pt.
-<../Imagenes/combate_estado3.jpg, id=1354, 633.11531pt x 411.03563pt>
-File: ../Imagenes/combate_estado3.jpg Graphic file (type jpg)
-<use ../Imagenes/combate_estado3.jpg>
-Package pdftex.def Info: ../Imagenes/combate_estado3.jpg  used on input line 17
-9.
-(pdftex.def)             Requested size: 398.3401pt x 258.61513pt.
+[82 <../Imagenes/boceto_partida_v2.jpg>]
+<../Imagenes/combate_estado1.jpg, id=1382, 635.37375pt x 395.22656pt>
+File: ../Imagenes/combate_estado1.jpg Graphic file (type jpg)
+<use ../Imagenes/combate_estado1.jpg>
+Package pdftex.def Info: ../Imagenes/combate_estado1.jpg  used on input line 16
+5.
+(pdftex.def)             Requested size: 497.92325pt x 309.74092pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-LaTeX Info: Redefining \. on input line 183.
-LaTeX Info: Redefining \% on input line 183.
+LaTeX Info: Redefining \. on input line 169.
+LaTeX Info: Redefining \% on input line 169.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 15.35403pt, for example:
@@ -2955,43 +2894,80 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-3.35403pt}.
 
-[85 <../Imagenes/combate_estado1.jpg> <../Imagenes/combate_estado2.jpg>]
-<../Imagenes/boceto_comparacion_combate.jpg, id=1359, 924.45375pt x 340.27126pt
+[83 <../Imagenes/boceto_partida_v3.jpg>]
+<../Imagenes/combate_estado2.jpg, id=1388, 633.11531pt x 414.79968pt>
+File: ../Imagenes/combate_estado2.jpg Graphic file (type jpg)
+<use ../Imagenes/combate_estado2.jpg>
+Package pdftex.def Info: ../Imagenes/combate_estado2.jpg  used on input line 17
+2.
+(pdftex.def)             Requested size: 497.92325pt x 326.23242pt.
+<../Imagenes/combate_estado3.jpg, id=1389, 633.11531pt x 411.03563pt>
+File: ../Imagenes/combate_estado3.jpg Graphic file (type jpg)
+<use ../Imagenes/combate_estado3.jpg>
+Package pdftex.def Info: ../Imagenes/combate_estado3.jpg  used on input line 17
+9.
+(pdftex.def)             Requested size: 497.92325pt x 323.27205pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[84 <../Imagenes/combate_estado1.jpg> <../Imagenes/combate_estado2.jpg>]
+<../Imagenes/boceto_comparacion_combate.jpg, id=1394, 924.45375pt x 340.27126pt
 >
 File: ../Imagenes/boceto_comparacion_combate.jpg Graphic file (type jpg)
 <use ../Imagenes/boceto_comparacion_combate.jpg>
 Package pdftex.def Info: ../Imagenes/boceto_comparacion_combate.jpg  used on in
 put line 186.
-(pdftex.def)             Requested size: 398.3401pt x 146.62012pt.
-<../Imagenes/boceto_pausa.jpg, id=1362, 633.11531pt x 377.91188pt>
+(pdftex.def)             Requested size: 497.92325pt x 183.27644pt.
+<../Imagenes/boceto_pausa.jpg, id=1397, 633.11531pt x 377.91188pt>
 File: ../Imagenes/boceto_pausa.jpg Graphic file (type jpg)
 <use ../Imagenes/boceto_pausa.jpg>
 Package pdftex.def Info: ../Imagenes/boceto_pausa.jpg  used on input line 195.
-(pdftex.def)             Requested size: 398.3401pt x 237.77435pt.
+(pdftex.def)             Requested size: 497.92325pt x 297.22083pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
+LaTeX Info: Redefining \. on input line 199.
+LaTeX Info: Redefining \% on input line 199.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                Make it at least 15.35403pt, for example:
+(fancyhdr)                \setlength{\headheight}{15.35403pt}.
 (fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+(fancyhdr)                \addtolength{\topmargin}{-3.35403pt}.
 
-[86 <../Imagenes/combate_estado3.jpg> <../Imagenes/boceto_comparacion_combate.j
+[85 <../Imagenes/combate_estado3.jpg> <../Imagenes/boceto_comparacion_combate.j
 pg>]
-<../Imagenes/boceto_reglas.jpg, id=1367, 633.11531pt x 389.20406pt>
+<../Imagenes/boceto_reglas.jpg, id=1402, 633.11531pt x 389.20406pt>
 File: ../Imagenes/boceto_reglas.jpg Graphic file (type jpg)
 <use ../Imagenes/boceto_reglas.jpg>
 Package pdftex.def Info: ../Imagenes/boceto_reglas.jpg  used on input line 202.
 
-(pdftex.def)             Requested size: 398.3401pt x 244.87917pt.
+(pdftex.def)             Requested size: 497.92325pt x 306.10191pt.
 
 
-LaTeX Info: Redefining \. on input line 214.
-LaTeX Info: Redefining \% on input line 214.
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[86 <../Imagenes/boceto_pausa.jpg> <../Imagenes/boceto_reglas.jpg>])
+(Chapters/Pruebas.tex
+
+LaTeX Info: Redefining \. on input line 1.
+LaTeX Info: Redefining \% on input line 1.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 15.35403pt, for example:
@@ -2999,36 +2975,48 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-3.35403pt}.
 
-[87 <../Imagenes/boceto_pausa.jpg> <../Imagenes/boceto_reglas.jpg>]
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <10.95> on input line 238.
+[87]
 
-Overfull \hbox (1.65952pt too wide) in paragraph at lines 242--242
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[88
+
+]
+Cap\'{\i }tulo 8.
+
+
+[89]
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10.95> on input line 24.
+
+Overfull \hbox (1.65952pt too wide) in paragraph at lines 28--28
  []|\T1/lmr/m/n/10.95 PR-01| 
  []
 
 
-Overfull \hbox (1.65952pt too wide) in paragraph at lines 244--244
+Overfull \hbox (1.65952pt too wide) in paragraph at lines 30--30
  []|\T1/lmr/m/n/10.95 PR-02| 
  []
 
 
-Overfull \hbox (1.65952pt too wide) in paragraph at lines 246--246
+Overfull \hbox (1.65952pt too wide) in paragraph at lines 32--32
  []|\T1/lmr/m/n/10.95 PR-03| 
  []
 
 
-Overfull \hbox (1.65952pt too wide) in paragraph at lines 248--248
+Overfull \hbox (1.65952pt too wide) in paragraph at lines 34--34
  []|\T1/lmr/m/n/10.95 PR-04| 
  []
 
 
-Overfull \hbox (1.65952pt too wide) in paragraph at lines 250--250
+Overfull \hbox (1.65952pt too wide) in paragraph at lines 36--36
  []|\T1/lmr/m/n/10.95 PR-05| 
  []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
@@ -3039,127 +3027,55 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[88]
-
-LaTeX Info: Redefining \. on input line 256.
-LaTeX Info: Redefining \% on input line 256.
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 15.35403pt, for example:
-(fancyhdr)                \setlength{\headheight}{15.35403pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-3.35403pt}.
-
-[89]
-Overfull \hbox (1.65952pt too wide) in paragraph at lines 267--267
+[90]
+Overfull \hbox (1.65952pt too wide) in paragraph at lines 53--53
  []|\T1/lmr/m/n/10.95 PR-06| 
  []
 
 
-Overfull \hbox (1.65952pt too wide) in paragraph at lines 269--269
+Overfull \hbox (1.65952pt too wide) in paragraph at lines 55--55
  []|\T1/lmr/m/n/10.95 PR-07| 
  []
 
 
-Overfull \hbox (1.65952pt too wide) in paragraph at lines 271--271
+Overfull \hbox (1.65952pt too wide) in paragraph at lines 57--57
  []|\T1/lmr/m/n/10.95 PR-08| 
  []
 
 
-Overfull \hbox (1.65952pt too wide) in paragraph at lines 273--273
+Overfull \hbox (1.65952pt too wide) in paragraph at lines 59--59
  []|\T1/lmr/m/n/10.95 PR-09| 
  []
 
 
-Overfull \hbox (1.65952pt too wide) in paragraph at lines 275--275
+Overfull \hbox (1.65952pt too wide) in paragraph at lines 61--61
  []|\T1/lmr/m/n/10.95 PR-10| 
  []
 
 
-Overfull \hbox (1.65952pt too wide) in paragraph at lines 277--277
+Overfull \hbox (1.65952pt too wide) in paragraph at lines 63--63
  []|\T1/lmr/m/n/10.95 PR-11| 
  []
 
 
-Overfull \hbox (1.65952pt too wide) in paragraph at lines 279--279
+Overfull \hbox (1.65952pt too wide) in paragraph at lines 65--65
  []|\T1/lmr/m/n/10.95 PR-12| 
  []
 
 
-Overfull \hbox (1.65952pt too wide) in paragraph at lines 281--281
+Overfull \hbox (1.65952pt too wide) in paragraph at lines 67--67
  []|\T1/lmr/m/n/10.95 PR-13| 
  []
 
 
-Overfull \hbox (1.65952pt too wide) in paragraph at lines 283--283
+Overfull \hbox (1.65952pt too wide) in paragraph at lines 69--69
  []|\T1/lmr/m/n/10.95 PR-14| 
  []
 
 
 
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[90
-
-]
-Overfull \hbox (1.65952pt too wide) in paragraph at lines 300--300
- []|\T1/lmr/m/n/10.95 PR-15| 
- []
-
-
-Overfull \hbox (1.65952pt too wide) in paragraph at lines 302--302
- []|\T1/lmr/m/n/10.95 PR-16| 
- []
-
-
-Overfull \hbox (1.65952pt too wide) in paragraph at lines 304--304
- []|\T1/lmr/m/n/10.95 PR-17| 
- []
-
-
-Overfull \hbox (1.65952pt too wide) in paragraph at lines 306--306
- []|\T1/lmr/m/n/10.95 PR-18| 
- []
-
-
-Overfull \hbox (1.65952pt too wide) in paragraph at lines 308--308
- []|\T1/lmr/m/n/10.95 PR-19| 
- []
-
-
-Overfull \hbox (1.65952pt too wide) in paragraph at lines 310--310
- []|\T1/lmr/m/n/10.95 PR-20| 
- []
-
-
-Overfull \hbox (1.65952pt too wide) in paragraph at lines 312--312
- []|\T1/lmr/m/n/10.95 PR-21| 
- []
-
-
-Overfull \hbox (1.65952pt too wide) in paragraph at lines 314--314
- []|\T1/lmr/m/n/10.95 PR-22| 
- []
-
-
-Overfull \hbox (1.65952pt too wide) in paragraph at lines 316--316
- []|\T1/lmr/m/n/10.95 PR-23| 
- []
-
-
-Overfull \hbox (1.65952pt too wide) in paragraph at lines 318--318
- []|\T1/lmr/m/n/10.95 PR-24| 
- []
-
-
-
-LaTeX Info: Redefining \. on input line 324.
-LaTeX Info: Redefining \% on input line 324.
+LaTeX Info: Redefining \. on input line 75.
+LaTeX Info: Redefining \% on input line 75.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 15.35403pt, for example:
@@ -3170,38 +3086,53 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 [91
 
 ]
-Overfull \hbox (1.65952pt too wide) in paragraph at lines 335--335
- []|\T1/lmr/m/n/10.95 PR-25| 
+Overfull \hbox (1.65952pt too wide) in paragraph at lines 86--86
+ []|\T1/lmr/m/n/10.95 PR-15| 
  []
 
 
-Overfull \hbox (1.65952pt too wide) in paragraph at lines 337--337
- []|\T1/lmr/m/n/10.95 PR-26| 
+Overfull \hbox (1.65952pt too wide) in paragraph at lines 88--88
+ []|\T1/lmr/m/n/10.95 PR-16| 
  []
 
 
-Overfull \hbox (1.65952pt too wide) in paragraph at lines 339--339
- []|\T1/lmr/m/n/10.95 PR-27| 
+Overfull \hbox (1.65952pt too wide) in paragraph at lines 90--90
+ []|\T1/lmr/m/n/10.95 PR-17| 
  []
 
 
-Overfull \hbox (1.65952pt too wide) in paragraph at lines 341--341
- []|\T1/lmr/m/n/10.95 PR-28| 
+Overfull \hbox (1.65952pt too wide) in paragraph at lines 92--92
+ []|\T1/lmr/m/n/10.95 PR-18| 
  []
 
 
-Overfull \hbox (1.65952pt too wide) in paragraph at lines 343--343
- []|\T1/lmr/m/n/10.95 PR-29| 
+Overfull \hbox (1.65952pt too wide) in paragraph at lines 94--94
+ []|\T1/lmr/m/n/10.95 PR-19| 
  []
 
 
-Overfull \hbox (1.65952pt too wide) in paragraph at lines 345--345
- []|\T1/lmr/m/n/10.95 PR-30| 
+Overfull \hbox (1.65952pt too wide) in paragraph at lines 96--96
+ []|\T1/lmr/m/n/10.95 PR-20| 
  []
 
 
-Overfull \hbox (1.65952pt too wide) in paragraph at lines 347--347
- []|\T1/lmr/m/n/10.95 PR-31| 
+Overfull \hbox (1.65952pt too wide) in paragraph at lines 98--98
+ []|\T1/lmr/m/n/10.95 PR-21| 
+ []
+
+
+Overfull \hbox (1.65952pt too wide) in paragraph at lines 100--100
+ []|\T1/lmr/m/n/10.95 PR-22| 
+ []
+
+
+Overfull \hbox (1.65952pt too wide) in paragraph at lines 102--102
+ []|\T1/lmr/m/n/10.95 PR-23| 
+ []
+
+
+Overfull \hbox (1.65952pt too wide) in paragraph at lines 104--104
+ []|\T1/lmr/m/n/10.95 PR-24| 
  []
 
 
@@ -3216,29 +3147,44 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 [92
 
 ]
-Overfull \hbox (1.65952pt too wide) in paragraph at lines 364--364
- []|\T1/lmr/m/n/10.95 PR-32| 
+Overfull \hbox (1.65952pt too wide) in paragraph at lines 121--121
+ []|\T1/lmr/m/n/10.95 PR-25| 
  []
 
 
-Overfull \hbox (1.65952pt too wide) in paragraph at lines 366--366
- []|\T1/lmr/m/n/10.95 PR-33| 
+Overfull \hbox (1.65952pt too wide) in paragraph at lines 123--123
+ []|\T1/lmr/m/n/10.95 PR-26| 
  []
 
 
-Overfull \hbox (1.65952pt too wide) in paragraph at lines 368--368
- []|\T1/lmr/m/n/10.95 PR-34| 
+Overfull \hbox (1.65952pt too wide) in paragraph at lines 125--125
+ []|\T1/lmr/m/n/10.95 PR-27| 
  []
 
 
-Overfull \hbox (1.65952pt too wide) in paragraph at lines 370--370
- []|\T1/lmr/m/n/10.95 PR-35| 
+Overfull \hbox (1.65952pt too wide) in paragraph at lines 127--127
+ []|\T1/lmr/m/n/10.95 PR-28| 
+ []
+
+
+Overfull \hbox (1.65952pt too wide) in paragraph at lines 129--129
+ []|\T1/lmr/m/n/10.95 PR-29| 
+ []
+
+
+Overfull \hbox (1.65952pt too wide) in paragraph at lines 131--131
+ []|\T1/lmr/m/n/10.95 PR-30| 
+ []
+
+
+Overfull \hbox (1.65952pt too wide) in paragraph at lines 133--133
+ []|\T1/lmr/m/n/10.95 PR-31| 
  []
 
 
 
-LaTeX Info: Redefining \. on input line 376.
-LaTeX Info: Redefining \% on input line 376.
+LaTeX Info: Redefining \. on input line 139.
+LaTeX Info: Redefining \% on input line 139.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 15.35403pt, for example:
@@ -3249,43 +3195,23 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 [93
 
 ]
-Overfull \hbox (1.65952pt too wide) in paragraph at lines 387--387
- []|\T1/lmr/m/n/10.95 PR-36| 
+Overfull \hbox (1.65952pt too wide) in paragraph at lines 150--150
+ []|\T1/lmr/m/n/10.95 PR-32| 
  []
 
 
-Overfull \hbox (1.65952pt too wide) in paragraph at lines 389--389
- []|\T1/lmr/m/n/10.95 PR-37| 
+Overfull \hbox (1.65952pt too wide) in paragraph at lines 152--152
+ []|\T1/lmr/m/n/10.95 PR-33| 
  []
 
 
-Overfull \hbox (1.65952pt too wide) in paragraph at lines 391--391
- []|\T1/lmr/m/n/10.95 PR-38| 
+Overfull \hbox (1.65952pt too wide) in paragraph at lines 154--154
+ []|\T1/lmr/m/n/10.95 PR-34| 
  []
 
 
-Overfull \hbox (1.65952pt too wide) in paragraph at lines 393--393
- []|\T1/lmr/m/n/10.95 PR-39| 
- []
-
-
-Overfull \hbox (1.65952pt too wide) in paragraph at lines 395--395
- []|\T1/lmr/m/n/10.95 PR-40| 
- []
-
-
-Overfull \hbox (1.65952pt too wide) in paragraph at lines 397--397
- []|\T1/lmr/m/n/10.95 PR-41| 
- []
-
-
-Overfull \hbox (1.65952pt too wide) in paragraph at lines 399--399
- []|\T1/lmr/m/n/10.95 PR-42| 
- []
-
-
-Overfull \hbox (1.65952pt too wide) in paragraph at lines 401--401
- []|\T1/lmr/m/n/10.95 PR-43| 
+Overfull \hbox (1.65952pt too wide) in paragraph at lines 156--156
+ []|\T1/lmr/m/n/10.95 PR-35| 
  []
 
 
@@ -3300,34 +3226,49 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 [94
 
 ]
-Overfull \hbox (1.65952pt too wide) in paragraph at lines 418--418
- []|\T1/lmr/m/n/10.95 PR-44| 
+Overfull \hbox (1.65952pt too wide) in paragraph at lines 173--173
+ []|\T1/lmr/m/n/10.95 PR-36| 
  []
 
 
-Overfull \hbox (1.65952pt too wide) in paragraph at lines 420--420
- []|\T1/lmr/m/n/10.95 PR-45| 
+Overfull \hbox (1.65952pt too wide) in paragraph at lines 175--175
+ []|\T1/lmr/m/n/10.95 PR-37| 
  []
 
 
-Overfull \hbox (1.65952pt too wide) in paragraph at lines 422--422
- []|\T1/lmr/m/n/10.95 PR-46| 
+Overfull \hbox (1.65952pt too wide) in paragraph at lines 177--177
+ []|\T1/lmr/m/n/10.95 PR-38| 
  []
 
 
-Overfull \hbox (1.65952pt too wide) in paragraph at lines 424--424
- []|\T1/lmr/m/n/10.95 PR-47| 
+Overfull \hbox (1.65952pt too wide) in paragraph at lines 179--179
+ []|\T1/lmr/m/n/10.95 PR-39| 
  []
 
 
-Overfull \hbox (1.65952pt too wide) in paragraph at lines 426--426
- []|\T1/lmr/m/n/10.95 PR-48| 
+Overfull \hbox (1.65952pt too wide) in paragraph at lines 181--181
+ []|\T1/lmr/m/n/10.95 PR-40| 
+ []
+
+
+Overfull \hbox (1.65952pt too wide) in paragraph at lines 183--183
+ []|\T1/lmr/m/n/10.95 PR-41| 
+ []
+
+
+Overfull \hbox (1.65952pt too wide) in paragraph at lines 185--185
+ []|\T1/lmr/m/n/10.95 PR-42| 
+ []
+
+
+Overfull \hbox (1.65952pt too wide) in paragraph at lines 187--187
+ []|\T1/lmr/m/n/10.95 PR-43| 
  []
 
 
 
-LaTeX Info: Redefining \. on input line 432.
-LaTeX Info: Redefining \% on input line 432.
+LaTeX Info: Redefining \. on input line 193.
+LaTeX Info: Redefining \% on input line 193.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 15.35403pt, for example:
@@ -3338,28 +3279,28 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 [95
 
 ]
-Overfull \hbox (1.65952pt too wide) in paragraph at lines 443--443
- []|\T1/lmr/m/n/10.95 PR-49| 
+Overfull \hbox (1.65952pt too wide) in paragraph at lines 204--204
+ []|\T1/lmr/m/n/10.95 PR-44| 
  []
 
 
-Overfull \hbox (1.65952pt too wide) in paragraph at lines 445--445
- []|\T1/lmr/m/n/10.95 PR-50| 
+Overfull \hbox (1.65952pt too wide) in paragraph at lines 206--206
+ []|\T1/lmr/m/n/10.95 PR-45| 
  []
 
 
-Overfull \hbox (1.65952pt too wide) in paragraph at lines 447--447
- []|\T1/lmr/m/n/10.95 PR-51| 
+Overfull \hbox (1.65952pt too wide) in paragraph at lines 208--208
+ []|\T1/lmr/m/n/10.95 PR-46| 
  []
 
 
-Overfull \hbox (1.65952pt too wide) in paragraph at lines 449--449
- []|\T1/lmr/m/n/10.95 PR-52| 
+Overfull \hbox (1.65952pt too wide) in paragraph at lines 210--210
+ []|\T1/lmr/m/n/10.95 PR-47| 
  []
 
 
-Overfull \hbox (1.65952pt too wide) in paragraph at lines 451--451
- []|\T1/lmr/m/n/10.95 PR-53| 
+Overfull \hbox (1.65952pt too wide) in paragraph at lines 212--212
+ []|\T1/lmr/m/n/10.95 PR-48| 
  []
 
 
@@ -3373,12 +3314,43 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [96
 
-]) (Chapters/Conclusiones.tex
-Cap\'{\i }tulo 8.
-) (Chapters/AnexoI.tex
+]
+Overfull \hbox (1.65952pt too wide) in paragraph at lines 229--229
+ []|\T1/lmr/m/n/10.95 PR-49| 
+ []
+
+
+Overfull \hbox (1.65952pt too wide) in paragraph at lines 231--231
+ []|\T1/lmr/m/n/10.95 PR-50| 
+ []
+
+
+Overfull \hbox (1.65952pt too wide) in paragraph at lines 233--233
+ []|\T1/lmr/m/n/10.95 PR-51| 
+ []
+
+
+Overfull \hbox (1.65952pt too wide) in paragraph at lines 235--235
+ []|\T1/lmr/m/n/10.95 PR-52| 
+ []
+
+
+Overfull \hbox (1.65952pt too wide) in paragraph at lines 237--237
+ []|\T1/lmr/m/n/10.95 PR-53| 
+ []
+
+) (Chapters/Conclusiones.tex
+
+LaTeX Info: Redefining \. on input line 1.
+LaTeX Info: Redefining \% on input line 1.
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 15.35403pt, for example:
+(fancyhdr)                \setlength{\headheight}{15.35403pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-3.35403pt}.
 
 [97
-
 
 ]
 
@@ -3392,8 +3364,14 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 [98
 
 ]
-Ap\'{e}ndice A.
-) (Chapters/AnexoII.tex
+Cap\'{\i }tulo 9.
+
+Underfull \hbox (badness 2653) in paragraph at lines 9--10
+\T1/lmr/m/n/12 im-ple-men-ta-das, el flu-jo de na-ve-ga-ción es in-tui-ti-vo y 
+el apar-ta-do au-dio-vi-sual re-fuer-za
+ []
+
+
 
 [99]
 
@@ -3404,11 +3382,16 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[100
+[100]) (Chapters/AnexoI.tex
 
-]
-Ap\'{e}ndice B.
-) (Chapters/AnexoIII.tex
+LaTeX Info: Redefining \. on input line 1.
+LaTeX Info: Redefining \% on input line 1.
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 15.35403pt, for example:
+(fancyhdr)                \setlength{\headheight}{15.35403pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-3.35403pt}.
 
 [101]
 
@@ -3422,8 +3405,8 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 [102
 
 ]
-Ap\'{e}ndice C.
-) (Chapters/AnexoIV.tex
+Ap\'{e}ndice A.
+) (Chapters/AnexoII.tex
 
 [103]
 
@@ -3437,8 +3420,8 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 [104
 
 ]
-Ap\'{e}ndice D.
-)
+Ap\'{e}ndice B.
+) (Chapters/AnexoIII.tex
 
 [105]
 
@@ -3451,9 +3434,39 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [106
 
+]
+Ap\'{e}ndice C.
+) (Chapters/AnexoIV.tex
+
+[107]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[108
+
+]
+Ap\'{e}ndice D.
+)
+
+[109]
+
+
+Package fancyhdr Warning: \headheight is too small (12.0pt): 
+(fancyhdr)                Make it at least 14.49998pt, for example:
+(fancyhdr)                \setlength{\headheight}{14.49998pt}.
+(fancyhdr)                You might also make \topmargin smaller:
+(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
+
+[110
+
 ] (main.bbl
 
-[107
+[111
 
 ]
 
@@ -3464,7 +3477,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[108]
+[112]
 
 LaTeX Info: Redefining \. on input line 266.
 LaTeX Info: Redefining \% on input line 266.
@@ -3475,7 +3488,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-3.35403pt}.
 
-[109])
+[113])
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -3484,7 +3497,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[110] (main.aux
+[114] (main.aux
 LaTeX Info: Redefining \. on input line 13.
 LaTeX Info: Redefining \% on input line 13.
 )
@@ -3497,16 +3510,16 @@ L3 programming layer <2020/03/25>
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 90E4F2AD95E2574775D90F9056DEBC49;19645.
+(rerunfilecheck)             Checksum: AC139784913F6DEC02C6098E0BD0845E;20813.
  ) 
 Here is how much of TeX's memory you used:
- 35327 strings out of 468079
- 691220 string characters out of 5425751
+ 35313 strings out of 468079
+ 689362 string characters out of 5425751
  1263998 words of memory out of 5000000
- 62915 multiletter control sequences out of 15000+600000
+ 62873 multiletter control sequences out of 15000+600000
  720338 words of font info for 88 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 107i,14n,109p,1240b,888s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 107i,14n,109p,1249b,865s stack positions out of 10000i,1000n,20000p,200000b,200000s
 <C:/Users/Sergi/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx10.pf
 b><C:/Users/Sergi/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx12.pf
 b><C:/Users/Sergi/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmbx8.pfb
@@ -3520,9 +3533,9 @@ Users/Sergi/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri12.pfb><C:/
 Users/Sergi/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/
 Users/Sergi/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/
 Users/Sergi/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt12.pfb>
-Output written on main.pdf (126 pages, 7686004 bytes).
+Output written on main.pdf (130 pages, 6445013 bytes).
 PDF statistics:
- 1678 PDF objects out of 1728 (max. 8388607)
- 389 named destinations out of 1000 (max. 500000)
- 1099 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1739 PDF objects out of 2073 (max. 8388607)
+ 414 named destinations out of 1000 (max. 500000)
+ 1143 words of extra memory for PDF output out of 10000 (max. 10000000)
 

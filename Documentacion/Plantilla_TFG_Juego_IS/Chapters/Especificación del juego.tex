@@ -1,9 +1,9 @@
-\chapter{Diseño del juego}
+\chapter{Diseño del videojuego}
 
 En este capítulo se describe el diseño general de \textit{NeuroForge}, abordando sus mecánicas principales, reglas de juego y los elementos que definen su experiencia estratégica. Se detallan el funcionamiento del sistema de juego, la interacción con el jugador, la ambientación y el público al que va dirigido.
 
 % ─────────────────────────────────────────────────────────────────────────────
-\section{Resumen del juego}
+\section{Resumen del videojuego}
 % ─────────────────────────────────────────────────────────────────────────────
 
 \textit{NeuroForge} es un videojuego de estrategia por turnos para un jugador inspirado en el clásico \textit{Stratego}. Dos bandos se enfrentan en un tablero de $10 \times 10$ casillas: el jugador humano y un oponente controlado por la máquina. El objetivo es destruir el \textbf{núcleo de energía} rival o dejarlo sin movimientos posibles.
@@ -107,7 +107,7 @@ La segunda es que uno de los bandos quede sin movimientos posibles, es decir, si
 
 \subsection{Interacción y control}
 
-El jugador realiza todas sus acciones mediante el ratón. El sistema de interacción está diseñado para que las posibilidades disponibles en cada momento sean siempre visualmente evidentes, minimizando la necesidad de memorizar reglas durante el juego.
+El jugador realiza todas sus acciones mediante el ratón. El sistema de interacción está diseñado para que las posibilidades disponibles en cada momento sean siempre visualmente evidentes, minimizando la necesidad de memorizar reglas durante la partida.
 
 Al inicio del turno del jugador, las piezas que pueden actuar aparecen resaltadas en el tablero; las que no tienen movimientos disponibles no se destacan. Para mover una pieza, cuando el jugador pulsa
 sobre ella, lo que hace que se muestren las casillas de destino válidas. Haciendo click en una de esas casillas, el movimiento queda confirmado. Si se hace click en cualquier otro lado que no sea una de esas casillas (incluyendo la propia pieza), la acción se cancela y el jugador puede volver a intentarlo.
@@ -161,7 +161,7 @@ Los escenarios de entrenamiento se generan a partir de registros digitalizados d
 
 \textit{NeuroForge} se desarrolla sobre un único tablero estándar de $10 \times 10$ casillas. Pese a su aparente simplicidad, las zonas intransitables del centro generan cuellos de botella que condicionan las rutas de movimiento y obligan a planificar cuidadosamente las aperturas y las líneas de avance.
 
-El diseño actual se centra en este tablero como escenario principal. No obstante, la arquitectura modular del juego abre la puerta a posibles expansiones futuras, entre las que podrían contemplarse tableros de dimensiones distintas, eventos ambientales que alteren temporalmente la movilidad de ciertas piezas, o casillas especiales con efectos estratégicos concretos. Estas posibilidades no forman parte del alcance del proyecto, pero ilustran la escalabilidad del diseño sin necesidad de modificar las mecánicas fundamentales.
+El diseño actual se centra en este tablero como escenario principal. No obstante, la arquitectura modular del videojuego abre la puerta a posibles expansiones futuras, entre las que podrían contemplarse tableros de dimensiones distintas, eventos ambientales que alteren temporalmente la movilidad de ciertas piezas, o casillas especiales con efectos estratégicos concretos. Estas posibilidades no forman parte del alcance del proyecto, pero ilustran la escalabilidad del diseño sin necesidad de modificar las mecánicas fundamentales.
 
 % ----------------------------------------------------------------
 
@@ -173,7 +173,7 @@ Para satisfacer a ambos perfiles, el diseño sigue el principio de \textit{fáci
 
 Con el fin de garantizar que el producto sea apto para su distribución en el mercado europeo, los contenidos de NeuroForge han sido evaluados bajo los criterios del sistema \textbf{Pan European Game Information (PEGI)}, determinándose una clasificación de PEGI 3, con PEGI 7 como límite superior dado el carácter abstracto del conflicto. Esta catalogación se apoya en tres argumentos principales.
 
-En primer lugar, la ausencia total de violencia explícita o gráfica. Aunque el juego implica el enfrentamiento entre unidades y la eliminación de piezas, todo ello se representa de forma abstracta mediante metáforas informáticas, sin ninguna representación de daño físico, sangre o elementos que pudieran resultar perturbadores para menores.
+En primer lugar, la ausencia total de violencia explícita o gráfica. Aunque el videojuego implica el enfrentamiento entre unidades y la eliminación de piezas, todo ello se representa de forma abstracta mediante metáforas informáticas, sin ninguna representación de daño físico, sangre o elementos que pudieran resultar perturbadores para menores.
 
 En segundo lugar, la inexistencia de lenguaje inapropiado. Al tratarse de un sistema local sin canales de comunicación abierta, no incorpora chats de voz ni texto sin moderar, ni contiene diálogos o textos pregrabados con expresiones vulgares o inapropiadas.
 

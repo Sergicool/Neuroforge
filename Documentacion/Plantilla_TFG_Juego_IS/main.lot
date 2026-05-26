@@ -19,14 +19,15 @@
 \contentsline {table}{\numberline {5.6}{\ignorespaces CU-05: Consultar opciones}}{53}{table.caption.29}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {7.1}{\ignorespaces Pruebas del bloque 1: Despliegue inicial (RF01, RF02, CU-01)}}{89}{table.caption.68}%
-\contentsline {table}{\numberline {7.2}{\ignorespaces Pruebas del bloque 2: Movimiento (RF03, RF04, RF07, CU-02)}}{90}{table.caption.69}%
-\contentsline {table}{\numberline {7.3}{\ignorespaces Pruebas del bloque 3: Combate (RF04, RF05, RF09, CU-03)}}{91}{table.caption.70}%
-\contentsline {table}{\numberline {7.4}{\ignorespaces Pruebas del bloque 4: Condiciones de victoria (RF08, CU-02)}}{92}{table.caption.71}%
-\contentsline {table}{\numberline {7.5}{\ignorespaces Pruebas del bloque 5: Interfaz y feedback (RF09, RF10, RNF04)}}{93}{table.caption.72}%
-\contentsline {table}{\numberline {7.6}{\ignorespaces Pruebas del bloque 6: Menús y navegación (RF11, RF12, RF13, CU-04, CU-05)}}{94}{table.caption.73}%
-\contentsline {table}{\numberline {7.7}{\ignorespaces Pruebas del bloque 7: Comportamiento del bot (RF06)}}{95}{table.caption.74}%
-\contentsline {table}{\numberline {7.8}{\ignorespaces Pruebas del bloque 8: Requisitos no funcionales (RNF01--RNF04)}}{96}{table.caption.75}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {8.1}{\ignorespaces Pruebas del bloque 1: Despliegue inicial (RF01, RF02, CU-01)}}{90}{table.caption.64}%
+\contentsline {table}{\numberline {8.2}{\ignorespaces Pruebas del bloque 2: Movimiento (RF03, RF04, RF07, CU-02)}}{91}{table.caption.65}%
+\contentsline {table}{\numberline {8.3}{\ignorespaces Pruebas del bloque 3: Combate (RF04, RF05, RF09, CU-03)}}{92}{table.caption.66}%
+\contentsline {table}{\numberline {8.4}{\ignorespaces Pruebas del bloque 4: Condiciones de victoria (RF08, CU-02)}}{93}{table.caption.67}%
+\contentsline {table}{\numberline {8.5}{\ignorespaces Pruebas del bloque 5: Interfaz y feedback (RF09, RF10, RNF04)}}{94}{table.caption.68}%
+\contentsline {table}{\numberline {8.6}{\ignorespaces Pruebas del bloque 6: Menús y navegación (RF11, RF12, RF13, CU-04, CU-05)}}{95}{table.caption.69}%
+\contentsline {table}{\numberline {8.7}{\ignorespaces Pruebas del bloque 7: Comportamiento del bot (RF06)}}{96}{table.caption.70}%
+\contentsline {table}{\numberline {8.8}{\ignorespaces Pruebas del bloque 8: Requisitos no funcionales (RNF01--RNF04)}}{97}{table.caption.71}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

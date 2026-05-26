@@ -1,16 +1,57 @@
-\chapter{Conclusiones y Líneas futuras}
+\chapter{Conclusiones}
 
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Valoración de objetivos}
+% ─────────────────────────────────────────────────────────────────────────────
 
-% En una página o página y media:
+El desarrollo de \textit{NeuroForge} ha permitido alcanzar de forma satisfactoria los objetivos principales planteados al inicio del proyecto. En primer lugar, se ha diseñado e implementado con éxito la lógica fundamental del videojuego, consolidando una estructura de tablero funcional, la definición precisa de las piezas y las reglas que rigen su movimiento y combate. Sobre esta base, se ha desarrollado un robusto sistema de control de turnos y gestión del estado de la partida, lo que garantiza la ejecución de enfrentamientos completos bajo el estricto cumplimiento de las mecánicas diseñadas. Todo este proceso ha propiciado una valiosa adquisición de experiencia práctica en el uso del motor de videojuegos Godot y en el desarrollo de sistemas interactivos empleando C\# como lenguaje principal. Como resultado, la experiencia de juego es coherente, estable y accesible.
 
-% Un bloque de conclusiones del proyecto
+La interfaz de usuario alcanza el nivel de pulido propuesto: todas las pantallas están implementadas, el flujo de navegación es intuitivo y el apartado audiovisual refuerza adecuadamente la ambientación de ciencia ficción del proyecto. La arquitectura en tres capas adoptada ha demostrado ser una decisión acertada, manteniendo la lógica del videojuego completamente desacoplada del motor y facilitando tanto las pruebas como el mantenimiento del código a lo largo de las iteraciones.
 
-% Un bloque de aspercto pendientes o líneas futuras
+(Objetivo de la IA si se implementa o no)
 
-% Un bloque de consideraciones personales del alumno.
+...
 
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Uso de inteligencia artificial}
+% ─────────────────────────────────────────────────────────────────────────────
 
+Durante el desarrollo de este proyecto se ha hecho uso de herramientas de inteligencia artificial generativa como apoyo en determinadas tareas, sin que en ningún caso hayan sustituido la toma de decisiones técnicas ni el trabajo de diseño e implementación propios.
 
+En el ámbito de la documentación, la IA se empleó principalmente como asistente para la redacción en \LaTeX{} para resolver dudas sobre sintaxis específica, formatear correctamente tablas o figuras, y transformar texto redactado a mano en código \LaTeX{} bien estructurado. Esto permitió agilizar la fase de escritura de la memoria sin delegar en ningún momento el contenido ni el criterio técnico de lo escrito.
 
+En el ámbito del código, su uso se limitó a tareas de soporte: refactorización de fragmentos para mejorar su legibilidad, consultas puntuales sobre la API de C\# o sobre patrones de uso específicos de Godot, y en algún caso la sugerencia de estructuras alternativas para organizar mejor un bloque de lógica ya diseñado. La arquitectura del sistema, las decisiones de diseño y la implementación de las mecánicas del videojuego fueron elaboradas de forma íntegramente propia.
 
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Líneas futuras}
+% ─────────────────────────────────────────────────────────────────────────────
+
+El estado actual del proyecto constituye una base sólida sobre la que es posible crecer en múltiples direcciones. A continuación se detallan las líneas de trabajo futuro más relevantes, ordenadas aproximadamente de menor a mayor coste de implementación.
+
+\subsection*{Variantes de tablero y distribución de piezas}
+
+Una de las fortalezas de la arquitectura implementada es que el tablero no está codificado de forma rígida en la lógica del videojuego, sino que se define como una matriz que Godot interpreta directamente desde el editor. Esto significa que crear una variante con un tablero de dimensiones distintas e incluso irregulares, una distribución diferente de zonas intransitables o un conjunto de piezas modificado requiere únicamente editar esa configuración sin tocar el código del videojuego. Esta escalabilidad abre la puerta a modos de juego alternativos con un coste de desarrollo muy reducido.
+
+\subsection{Guardado y carga de partidas}
+
+La estructura de datos del estado de la partida, basada en clases C\# puras con información bien delimitada por pieza y por casilla, se presta de forma natural a la serialización. Implementar un sistema de guardado y carga consistiría esencialmente en serializar ese estado a un archivo JSON y deserializarlo al reanudar, una tarea que la arquitectura actual no requeriría modificar absolutamente nada.
+
+\subsection{Niveles de dificultad del bot}
+
+Una vez el agente inteligente esté completamente entrenado e integrado, resultaría relativamente sencillo exponer distintos niveles de dificultad al jugador. Esto podría lograrse mediante modelos entrenados durante diferente número de iteraciones, ajustando los hiperparámetros en la política del agente para controlar su grado de aleatoriedad, o combinando el bot inteligente con el bot aleatorio ya implementado en proporciones variables. El resultado sería una curva de dificultad progresiva que haría el videojuego más accesible para jugadores casuales sin sacrificar el reto para los más experimentados.
+
+(Desarollar o cambiar cuando se implemente o no el bot)
+
+...
+
+\subsection{Nuevas mecánicas y contenido}
+
+Con las bases del sistema implementadas, añadir nuevo contenido que no diverja de los fundamentos del juego (revelar piezas, moverse, combatir o destruir) tiene un coste de desarrollo significativamente bajo. Entre las posibilidades más interesantes se encuentran modificadores opcionales activables antes de cada partida, como alterar la regla de empate para que gane el atacante en lugar de destruirse ambas piezas, o introducir un temporizador por turno al estilo del ajedrez para añadir presión. Nuevos tipos de piezas también enriquecerían la experiencia, como una torre de radar inmóvil que, tras cierto número de turnos, permita al jugador revelar una pieza enemiga a elección, ampliaría la dimensión deductiva del videojuego de forma coherente con sus mecánicas actuales. Del mismo modo, nuevos tipos de casillas como teletransportadores vinculados por pares, o zonas que se vuelven peligrosas periódicamente destruyendo las piezas que las ocupan, añadirían profundidad táctica sin necesidad de rediseñar el sistema de base.
+
+\subsection{Publicación y distribución}
+
+Antes de plantear una distribución comercial, resultaría conveniente publicar el videojuego en \textbf{itch.io}, una plataforma de distribución independiente que permite que los jugadores descarguen y prueben el título de forma gratuita o al precio que consideren oportuno. Esto permitiría obtener retroalimentación real de jugadores sin ningún coste de entrada, identificar posibles problemas de usabilidad y generar una pequeña base de usuarios antes de dar el paso a plataformas de pago.
+
+Una vez incorporadas las mejoras descritas en las líneas anteriores, especialmente el bot con niveles de dificultad, el sistema de guardado y al menos una amplia variedad de tableros adicionales, el producto estaría en condiciones de justificar su presencia en \textbf{Steam} con el precio simbólico de 1,99~€ analizado en el capítulo de planificación. Si se quisiera apoyar el lanzamiento con mayor solidez, la sustitución de los recursos visuales actuales por arte original diseñado específicamente para el videojuego marcaría la diferencia entre un prototipo académico y un 
+producto independiente con identidad propia. En cualquier caso, se recomienda esperar al menos un mes tras las mejoras antes de publicar en Steam, tiempo suficiente para estabilizar el producto y preparar una página de tienda con capturas y descripción cuidadas, factores que influyen directamente en la conversión de visitas a ventas en esa plataforma.
 

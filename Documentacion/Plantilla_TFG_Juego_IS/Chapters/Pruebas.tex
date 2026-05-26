@@ -8,7 +8,7 @@ En este capítulo se describe la estrategia de verificación adoptada para valid
 
 En un entorno de desarrollo profesional, la verificación de un sistema software de esta naturaleza se abordaría mediante una estrategia de pruebas automatizadas estructurada en varios niveles. Las \textbf{pruebas unitarias} verificarían de forma aislada cada componente lógico del sistema, como el motor de reglas de movimiento o el sistema de resolución de combates, comprobando que producen el resultado esperado ante un conjunto exhaustivo de entradas. Las \textbf{pruebas de integración} validarían la interacción correcta entre componentes, asegurando por ejemplo que el controlador de input delega adecuadamente en el tablero y que este actualiza el estado de la partida de forma consistente. Finalmente, las \textbf{pruebas de sistema} o de extremo a extremo ejercitarían flujos completos de usuario, desde el despliegue inicial hasta la condición de victoria, simulando el comportamiento real del jugador. Herramientas como \textit{NUnit} o \textit{xUnit} en el ecosistema .NET, combinadas con un pipeline de integración continua, permitirían ejecutar esta batería de forma automática ante cada cambio en el código, detectando regresiones de manera inmediata.
 
-Dado el carácter académico e individual del proyecto y las restricciones temporales inherentes a un TFG, la automatización completa de las pruebas queda fuera del alcance definido. No obstante, la arquitectura adoptada, con la lógica de juego separada en clases C\# puras e independientes del motor, facilita que dichas pruebas automatizadas puedan incorporarse en el futuro sin necesidad de modificar el código de producción. En su lugar, se ha llevado a cabo una batería de \textbf{pruebas funcionales manuales} organizadas por bloques temáticos, cubriendo todos los requisitos funcionales y no funcionales identificados en el análisis. Cada prueba define de forma explícita su precondición, la acción ejecutada y el resultado esperado, lo que permite reproducirlas de manera sistemática y trazarlas directamente con los requisitos del sistema.
+Dado el carácter académico e individual del proyecto y las restricciones temporales inherentes a un TFG, la automatización completa de las pruebas queda fuera del alcance definido. No obstante, la arquitectura adoptada, con la lógica del videojuego separada en clases C\# puras e independientes del motor, facilita que dichas pruebas automatizadas puedan incorporarse en el futuro sin necesidad de modificar el código de producción. En su lugar, se ha llevado a cabo una batería de \textbf{pruebas funcionales manuales} organizadas por bloques temáticos, cubriendo todos los requisitos funcionales y no funcionales identificados en el análisis. Cada prueba define de forma explícita su precondición, la acción ejecutada y el resultado esperado, lo que permite reproducirlas de manera sistemática y trazarlas directamente con los requisitos del sistema.
 
 % ─────────────────────────────────────────────────────────────────────────────
 \section{Batería de pruebas}
@@ -99,7 +99,7 @@ En este apartado se recoge el conjunto de pruebas funcionales realizadas sobre e
 		\hline
 		PR-22 & Combate entre dos piezas, al menos una oculta & Una o ambas piezas con identidad no revelada & Ambas identidades quedan reveladas y permanecen visibles & \cellcolor{green!40}Sí \\
 		\hline
-		PR-23 & Pieza ya revelada entra en un nuevo combate & Pieza previamente revelada en juego & La pieza sigue mostrando su identidad correctamente & \cellcolor{green!40}Sí \\
+		PR-23 & Pieza ya revelada entra en un nuevo combate & Pieza previamente revelada en partida & La pieza sigue mostrando su identidad correctamente & \cellcolor{green!40}Sí \\
 		\hline
 		PR-24 & La interfaz de combate se muestra y cierra correctamente & Se produce un combate durante un turno & Se muestra la pantalla de resolución; al confirmar, se cierra y el juego continúa & \cellcolor{green!40}Sí \\
 		\hline
@@ -153,7 +153,7 @@ En este apartado se recoge el conjunto de pruebas funcionales realizadas sobre e
 		\hline
 		PR-34 & Sonido de navegación por menús & Usuario navega entre menús & Se reproducen los efectos sonoros asociados a los botones & \cellcolor{green!40}Sí \\
 		\hline
-		PR-35 & Toda la interacción es posible exclusivamente con el ratón & El juego está en cualquier estado & Ninguna acción requiere el uso del teclado & \cellcolor{green!40}Sí \\
+		PR-35 & Toda la interacción es posible exclusivamente con el ratón & El videojuego está en cualquier estado & Ninguna acción requiere el uso del teclado & \cellcolor{green!40}Sí \\
 		\hline
 	\end{tabular}
 	\caption{Pruebas del bloque 5: Interfaz y feedback (RF09, RF10, RNF04)}
@@ -170,7 +170,7 @@ En este apartado se recoge el conjunto de pruebas funcionales realizadas sobre e
 		\hline
 		\textbf{ID} & \textbf{Descripción} & \textbf{Precondición} & \textbf{Resultado esperado} & \textbf{¿Pasa?} \\
 		\hline
-		PR-36 & Pausar la partida en mitad de un turno del jugador & Turno del jugador activo & El menú de pausa se abre y el juego queda pausado & \cellcolor{green!40}Sí \\
+		PR-36 & Pausar la partida en mitad de un turno del jugador & Turno del jugador activo & El menú de pausa se abre y la partida queda pausado & \cellcolor{green!40}Sí \\
 		\hline
 		PR-37 & Reanudar la partida desde el menú de pausa & Menú de pausa abierto & La partida continúa desde el mismo estado en que fue pausada & \cellcolor{green!40}Sí \\
 		\hline
@@ -226,13 +226,13 @@ En este apartado se recoge el conjunto de pruebas funcionales realizadas sobre e
 		\hline
 		\textbf{ID} & \textbf{Descripción} & \textbf{Precondición} & \textbf{Resultado esperado} & \textbf{¿Pasa?} \\
 		\hline
-		PR-49 & El juego arranca correctamente en Windows 10 & Ejecutable instalado en Windows 10 & El juego se inicia sin errores y llega al menú principal & \cellcolor{green!40}Sí \\
+		PR-49 & El videojuego arranca correctamente en Windows 10 & Ejecutable instalado en Windows 10 & El videojuego se inicia sin errores y llega al menú principal & \cellcolor{green!40}Sí \\
 		\hline
-		PR-50 & El juego arranca correctamente en Windows 11 & Ejecutable instalado en Windows 11 & El juego se inicia sin errores y llega al menú principal & \cellcolor{green!40}Sí \\
+		PR-50 & El videojuego arranca correctamente en Windows 11 & Ejecutable instalado en Windows 11 & El videojuego se inicia sin errores y llega al menú principal & \cellcolor{green!40}Sí \\
 		\hline
-		PR-51 & El juego funciona en un equipo con las especificaciones mínimas & Hardware mínimo: CPU doble núcleo 2,0~GHz, 8~GB RAM, GPU OpenGL~3.3 & El juego se ejecuta sin cuelgues, artefactos visuales ni caídas de rendimiento significativas & \cellcolor{green!40}Sí \\
+		PR-51 & El videojuego funciona en un equipo con las especificaciones mínimas & Hardware mínimo: CPU doble núcleo 2,0~GHz, 8~GB RAM, GPU OpenGL~3.3 & El videojuego se ejecuta sin cuelgues, artefactos visuales ni caídas de rendimiento significativas & \cellcolor{green!40}Sí \\
 		\hline
-		PR-52 & Las acciones del jugador reciben respuesta en menos de 2 segundos & Juego en ejecución en condiciones normales & Ninguna acción provoca una espera superior a 2 segundos antes de que el sistema reaccione & \cellcolor{green!40}Sí \\
+		PR-52 & Las acciones del jugador reciben respuesta en menos de 2 segundos & Videojuego en ejecución en condiciones normales & Ninguna acción provoca una espera superior a 2 segundos antes de que el sistema reaccione & \cellcolor{green!40}Sí \\
 		\hline
 		PR-53 & Un jugador sin experiencia identifica qué piezas puede mover sin consultar las reglas & Primera partida del jugador, sin leer el menú de reglas & El jugador es capaz de seleccionar y mover una pieza correctamente gracias al resaltado de casillas & \cellcolor{green!40}Sí \\
 		\hline
