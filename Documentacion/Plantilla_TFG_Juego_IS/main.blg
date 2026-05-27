@@ -5,49 +5,49 @@ Reallocating 'name_of_file' (item size: 1) to 6 items.
 The style file: unsrt.bst
 Reallocating 'name_of_file' (item size: 1) to 13 items.
 Database file #1: bibliografia.bib
-Repeated entry---line 647 of file bibliografia.bib
+Repeated entry---line 667 of file bibliografia.bib
  : @misc{notion_pricing
  :                     ,
 I'm skipping whatever remains of this entry
 You've used 42 entries,
             1791 wiz_defined-function locations,
-            667 strings with 11307 characters,
-and the built_in function-call counts, 6653 in all, are:
-= -- 578
-> -- 273
-< -- 1
-+ -- 115
-- -- 73
-* -- 189
-:= -- 1053
-add.period$ -- 148
+            664 strings with 12338 characters,
+and the built_in function-call counts, 6094 in all, are:
+= -- 518
+> -- 265
+< -- 0
++ -- 113
+- -- 71
+* -- 100
+:= -- 979
+add.period$ -- 158
 call.type$ -- 42
-change.case$ -- 40
+change.case$ -- 42
 chr.to.int$ -- 0
 cite$ -- 42
-duplicate$ -- 254
-empty$ -- 798
-format.name$ -- 73
-if$ -- 1543
+duplicate$ -- 210
+empty$ -- 757
+format.name$ -- 71
+if$ -- 1428
 int.to.chr$ -- 0
 int.to.str$ -- 42
-missing$ -- 10
-newline$ -- 234
+missing$ -- 0
+newline$ -- 245
 num.names$ -- 41
-pop$ -- 247
+pop$ -- 271
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 114
+skip$ -- 94
 stack$ -- 0
-substring$ -- 131
-swap$ -- 50
-text.length$ -- 1
+substring$ -- 0
+swap$ -- 42
+text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 0
-while$ -- 54
+while$ -- 41
 width$ -- 44
-write$ -- 462
+write$ -- 477
 (There was 1 error message)

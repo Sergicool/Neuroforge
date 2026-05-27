@@ -80,8 +80,11 @@ Ancient Chess.
 
 \bibitem{Kushner2003}
 David Kushner.
-\newblock {\em Masters of Doom}.
+\newblock Masters of doom: How two guys created an empire and transformed pop
+  culture.
 \newblock Random House, 2003.
+\newblock Reseña y ficha accesible en
+  \url{https://www.goodreads.com/book/show/222146.Masters_of_Doom}.
 
 \bibitem{GodotDocs}
 {Godot Engine Contributors}.
@@ -90,56 +93,74 @@ David Kushner.
 \newblock Consultado en 2024.
 
 \bibitem{vonNeumann1944}
-John von Neumann and Oskar Morgenstern.
-\newblock {\em Theory of Games and Economic Behavior}.
-\newblock Princeton University Press, 1944.
+{Stanford Encyclopedia of Philosophy}.
+\newblock Game theory.
+\newblock \url{https://plato.stanford.edu/entries/game-theory/}, 2023.
+\newblock Consultado en mayo de 2026. Recoge los fundamentos de la teoría de
+  juegos y el principio Minimax formulados por von Neumann y Morgenstern
+  (1944).
 
 \bibitem{Knuth1975}
-Donald~E. Knuth and Ronald~W. Moore.
-\newblock An analysis of alpha-beta pruning.
-\newblock {\em Artificial Intelligence}, 6(4):293--326, 1975.
+Eric Roberts.
+\newblock Alpha-beta pruning --- intelligent search.
+\newblock Stanford University, Computer Science, 2004.
+\newblock
+  \url{https://cs.stanford.edu/people/eroberts/courses/soco/projects/2003-04/intelligent-search/alphabeta.html}.
+  Consultado en mayo de 2026. Describe el algoritmo Alpha-Beta Pruning
+  desarrollado por Knuth y Moore (1975).
 
 \bibitem{Campbell2002}
 Murray Campbell, A.~Joseph Hoane, and Feng-hsiung Hsu.
 \newblock Deep blue.
-\newblock {\em Artificial Intelligence}, 134(1--2):57--83, 2002.
+\newblock ScienceDirect, Artificial Intelligence, vol.~134, 2002.
+\newblock
+  \url{https://www.sciencedirect.com/science/article/pii/S0004370201001291}.
 
 \bibitem{Coulom2006}
 R{\'e}mi Coulom.
 \newblock Efficient selectivity and backup operators in monte-carlo tree
   search.
-\newblock In {\em Computers and Games}, pages 72--83. Springer, 2006.
+\newblock Semantic Scholar, 2006.
+\newblock
+  \url{https://www.semanticscholar.org/paper/Efficient-Selectivity-and-Backup-Operators-in-Tree-Coulom/02cc6a5944d57d2353a55639c7b77336b94f29b6}.
+  Consultado en mayo de 2026.
 
 \bibitem{Silver2016}
 David Silver, Aja Huang, Chris~J. Maddison, et~al.
 \newblock Mastering the game of go with deep neural networks and tree search.
-\newblock {\em Nature}, 529:484--489, 2016.
+\newblock Nature, vol.~529, 2016.
+\newblock \url{https://www.nature.com/articles/nature16961}.
 
 \bibitem{Mnih2015}
 Volodymyr Mnih, Koray Kavukcuoglu, David Silver, et~al.
 \newblock Human-level control through deep reinforcement learning.
-\newblock {\em Nature}, 518:529--533, 2015.
+\newblock Nature, vol.~518, 2015.
+\newblock \url{https://www.nature.com/articles/nature14236}.
 
 \bibitem{Schulman2017}
 John Schulman, Filip Wolski, Prafulla Dhariwal, Alec Radford, and Oleg Klimov.
 \newblock Proximal policy optimization algorithms.
 \newblock arXiv:1707.06347, 2017.
+\newblock \url{https://arxiv.org/abs/1707.06347}.
 
 \bibitem{Brockman2016}
 Greg Brockman, Vicki Cheung, Ludwig Pettersson, et~al.
 \newblock Openai gym.
 \newblock arXiv:1606.01540, 2016.
+\newblock \url{https://arxiv.org/abs/1606.01540}.
 
 \bibitem{Towers2023}
 Mark Towers, Jordan~K. Terry, Ariel Kwiatkowski, et~al.
 \newblock Gymnasium.
 \newblock Zenodo, 2023.
+\newblock \url{https://zenodo.org/record/8127025}.
 
 \bibitem{Raffin2021}
 Antonin Raffin, Ashley Hill, Adam Gleave, Anssi Kanervisto, Maximilian
   Ernestus, and Noah Dormann.
 \newblock Stable-baselines3: Reliable reinforcement learning implementations.
-\newblock {\em Journal of Machine Learning Research}, 22(268):1--8, 2021.
+\newblock Journal of Machine Learning Research, vol.~22, n.º~268, 2021.
+\newblock \url{https://jmlr.org/papers/v22/20-1364.html}.
 
 \bibitem{cabalar_metodologias}
 Pedro Cabalar.

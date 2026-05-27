@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.11.6)  26 MAY 2026 22:18
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.11.6)  27 MAY 2026 12:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -3479,8 +3479,8 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [112]
 
-LaTeX Info: Redefining \. on input line 266.
-LaTeX Info: Redefining \% on input line 266.
+LaTeX Info: Redefining \. on input line 254.
+LaTeX Info: Redefining \% on input line 254.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 15.35403pt, for example:
@@ -3515,7 +3515,7 @@ Package rerunfilecheck Info: File `main.out' has not changed.
 Here is how much of TeX's memory you used:
  35313 strings out of 468079
  689362 string characters out of 5425751
- 1263998 words of memory out of 5000000
+ 1267998 words of memory out of 5000000
  62873 multiletter control sequences out of 15000+600000
  720338 words of font info for 88 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -3533,9 +3533,9 @@ Users/Sergi/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri12.pfb><C:/
 Users/Sergi/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/
 Users/Sergi/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/
 Users/Sergi/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt12.pfb>
-Output written on main.pdf (130 pages, 6445013 bytes).
+Output written on main.pdf (130 pages, 6451138 bytes).
 PDF statistics:
- 1739 PDF objects out of 2073 (max. 8388607)
+ 1760 PDF objects out of 2073 (max. 8388607)
  414 named destinations out of 1000 (max. 500000)
  1143 words of extra memory for PDF output out of 10000 (max. 10000000)
 
