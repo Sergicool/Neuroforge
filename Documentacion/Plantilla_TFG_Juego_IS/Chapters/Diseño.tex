@@ -6,6 +6,9 @@ En este capítulo se describe el diseño técnico de NeuroForge a partir del có
 \section{Arquitectura del sistema}
 % ─────────────────────────────────────────────────────────────────────────────
 
+En este apartado se describe cómo se organiza internamente el sistema de \textit{NeuroForge}, desde el modelo de ejecución propio del motor hasta la estructura en capas adoptada para separar la lógica del videojuego de su representación visual. Comprender primero el funcionamiento de Godot es necesario para contextualizar las decisiones 
+de diseño tomadas durante el desarrollo, ya que la arquitectura del sistema está directamente condicionada por las capacidades y restricciones que el motor impone.
+
 \subsection{El modelo de ejecución de Godot}
 
 Para comprender las decisiones de diseño adoptadas en este proyecto es necesario entender primero cómo organiza Godot el contenido de un videojuego. Godot estructura toda la lógica y los elementos visuales en un \textbf{árbol de escenas} (\textit{SceneTree}): una jerarquía de objetos llamados \textbf{nodos}, donde cada nodo representa una unidad funcional del videojuego, ya sea un personaje, una casilla del tablero, un menú o el gestor de partida.

@@ -1,6 +1,14 @@
 \chapter{Introducción}
 
-Este documento contiene la memoria del TFG, adscrito a la mención en Ingeniería de Software, que trata el diseño y la implementación de un videojuego táctico por turnos caracterizado por mecánicas de información oculta, desarrollado sobre el motor Godot y el lenguaje C\#. Como punto de partida de la memoria, este primer capítulo introduce el proyecto a través del contexto de la industria y las motivaciones que justifican el desarrollo del software, y también se delimitan los objetivos técnicos fijados y se detalla la estructura organizativa que conforma el resto del documento.
+Este documento contiene la memoria del TFG, adscrito a la mención en 
+Ingeniería de Software, que trata el diseño y la implementación de 
+\textit{NeuroForge}, un videojuego táctico por turnos caracterizado por 
+mecánicas de información oculta, desarrollado sobre el motor Godot y el 
+lenguaje C\#. Como punto de partida de la memoria, este primer capítulo 
+introduce el proyecto a través del contexto de la industria y las 
+motivaciones que justifican el desarrollo del software, y también se 
+delimitan los objetivos técnicos fijados y se detalla la estructura 
+organizativa que conforma el resto del documento.
 
 \section{Contexto y motivaciones}
 
@@ -32,17 +40,27 @@ Para alcanzar este objetivo principal, se han definido los siguientes objetivos 
 
 \section{Estructura del documento}
 
-Este documento se encuentra estructurado en ocho capítulos principales y una serie de anexos que guían al lector a través de todas las fases de concepción, análisis, diseño, planificación, implementación y validación del proyecto. A continuación se presenta una descripción de cada uno de ellos:
+Este documento se encuentra estructurado en nueve capítulos principales que guían al lector a través de todas las fases de concepción, análisis, diseño, planificación, implementación y validación del proyecto. A continuación se presenta una descripción de cada uno de ellos:
 
 \begin{itemize}
-	\item \textbf{Capítulo 1: Introducción.} En este capítulo se define el contexto y las motivaciones del proyecto, se establecen los objetivos generales y específicos a alcanzar y se describe la presente estructura organizativa.
-	\item \textbf{Capítulo 2: Antecedentes.} Se realiza un estudio sobre la evolución histórica de los juegos de estrategia, analizando en detalle el juego clásico de mesa \textit{Stratego} junto con sus variaciones y adaptaciones modernas, sentando las bases de las mecánicas de información oculta.
-	\item \textbf{Capítulo 3: Descripción del juego.} Se detalla exhaustivamente la propuesta lúdica del videojuego (\textit{NeuroForge}), definiendo sus mecánicas fundamentales, las reglas del tablero y las piezas, su ambientación de simulación virtual y el perfil de la audiencia objetivo.
-	\item \textbf{Capítulo 4: Planificación.} Describe la gestión temporal y organizativa bajo el ciclo de vida Unificado (RUP), el análisis de riesgos, costes y restricciones, la justificación de la elección de \textit{Godot Engine} y \textit{C\#}, así como el progreso real detallado a lo largo de cinco iteraciones de desarrollo.
-	\item \textbf{Capítulo 5: Análisis.} Contiene la especificación formal de los requisitos funcionales, no funcionales y de información, complementada dinámicamente con el modelo de dominio, los diagramas de actividad y el modelado de la lógica mediante casos de uso.
-	\item \textbf{Capítulo 6: Diseño.} Explica la arquitectura multicapa y el modelo de ejecución de \textit{Godot}, el diseño detallado de la interfaz de usuario (UI/UX) mediante pantallas finales y la aplicación de patrones de diseño orientados a objetos para garantizar una estructura robusta y escalable.
-	\item \textbf{Capítulo 7: Implementación.} Describe los aspectos técnicos de la programación en el motor de juego, la estructura de escenas, la gestión de licencias y el desarrollo de una batería de pruebas de caja negra estructurada en ocho bloques funcionales para la validación del sistema.
-	\item \textbf{Capítulo 8: Conclusiones y líneas futuras.} Presenta una valoración crítica sobre el cumplimiento de los objetivos fijados, las lecciones de ingeniería de software aprendidas durante el proceso y las posibles expansiones o mejoras del proyecto en el futuro.
+	\item \textbf{Capítulo 1: Introducción.} Define el contexto y las motivaciones del proyecto, establece los objetivos generales y específicos a alcanzar y describe la estructura organizativa del documento.
+	
+	\item \textbf{Capítulo 2: Antecedentes.} Realiza un recorrido por la evolución histórica de los juegos de estrategia, desde los primeros juegos de mesa de la antigüedad hasta \textit{Stratego} y sus adaptaciones digitales, contextualizando además los motores de videojuegos y los algoritmos de inteligencia artificial empleados en el proyecto.
+	
+	\item \textbf{Capítulo 3: Descripción del juego.} Detalla la propuesta de \textit{NeuroForge}, definiendo sus mecánicas fundamentales, las reglas del tablero y las piezas, la ambientación y el perfil de la audiencia objetivo.
+	
+	\item \textbf{Capítulo 4: Planificación.} Describe la metodología 
+	de desarrollo, la planificación, el análisis de riesgos y restricciones, la justificación de las herramientas seleccionadas, las variaciones respecto al plan inicial y el análisis de costes del proyecto.
+	
+	\item \textbf{Capítulo 5: Análisis.} Contiene la especificación formal de los requisitos funcionales, no funcionales y de información, complementada con el modelo de dominio, los casos de uso y los diagramas de actividad correspondientes.
+	
+	\item \textbf{Capítulo 6: Diseño.} Explica la arquitectura del sistema y el modelo de ejecución de Godot, el diseño detallado de clases y componentes, el diseño de la interfaz de usuario y los patrones de diseño orientados a objetos aplicados.
+	
+	\item \textbf{Capítulo 7: Implementación.} Describe la organización del código fuente, la gestión de licencias de los recursos empleados y el progreso real del desarrollo a lo largo de las iteraciones completadas.
+	
+	\item \textbf{Capítulo 8: Pruebas.} Presenta la estrategia de verificación adoptada y una batería de pruebas funcionales manuales estructurada en ocho bloques temáticos que cubren todos los requisitos funcionales y no funcionales del sistema.
+	
+	\item \textbf{Capítulo 9: Conclusiones.} Recoge una valoración del cumplimiento de los objetivos fijados, el uso de herramientas de inteligencia artificial durante el desarrollo y las líneas de trabajo futuro propuestas para la evolución del proyecto.
 \end{itemize}
 
-Finalmente, tras las conclusiones, se incluye la bibliografía consultada y una serie de anexos que contienen información técnica complementaria y los manuales del software.
+Finalmente, tras las conclusiones, se incluye la bibliografía consultada con todas las fuentes referenciadas a lo largo del documento.

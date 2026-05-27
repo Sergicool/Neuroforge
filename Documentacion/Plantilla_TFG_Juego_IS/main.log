@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.11.6)  27 MAY 2026 12:15
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.11.6)  27 MAY 2026 12:47
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -2458,7 +2458,7 @@ Cap\'{\i }tulo 6.
 <../Imagenes/EjemploEscena.jpg, id=1206, 495.35063pt x 271.0125pt>
 File: ../Imagenes/EjemploEscena.jpg Graphic file (type jpg)
 <use ../Imagenes/EjemploEscena.jpg>
-Package pdftex.def Info: ../Imagenes/EjemploEscena.jpg  used on input line 23.
+Package pdftex.def Info: ../Imagenes/EjemploEscena.jpg  used on input line 26.
 (pdftex.def)             Requested size: 497.92325pt x 272.42197pt.
 
 
@@ -2473,21 +2473,12 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 <../Imagenes/GodotModelo.jpg, id=1212, 730.98094pt x 615.80063pt>
 File: ../Imagenes/GodotModelo.jpg Graphic file (type jpg)
 <use ../Imagenes/GodotModelo.jpg>
-Package pdftex.def Info: ../Imagenes/GodotModelo.jpg  used on input line 34.
+Package pdftex.def Info: ../Imagenes/GodotModelo.jpg  used on input line 37.
 (pdftex.def)             Requested size: 497.92325pt x 419.4624pt.
-<../Imagenes/ArquitecturaDelSistema.jpg, id=1214, 581.92406pt x 649.67719pt>
-File: ../Imagenes/ArquitecturaDelSistema.jpg Graphic file (type jpg)
-<use ../Imagenes/ArquitecturaDelSistema.jpg>
-Package pdftex.def Info: ../Imagenes/ArquitecturaDelSistema.jpg  used on input 
-line 47.
-(pdftex.def)             Requested size: 497.92325pt x 555.90604pt.
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-
-LaTeX Info: Redefining \. on input line 51.
-LaTeX Info: Redefining \% on input line 51.
+LaTeX Info: Redefining \. on input line 46.
+LaTeX Info: Redefining \% on input line 46.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 15.35403pt, for example:
@@ -2496,6 +2487,13 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-3.35403pt}.
 
 [61 <../Imagenes/GodotModelo.jpg>]
+<../Imagenes/ArquitecturaDelSistema.jpg, id=1218, 581.92406pt x 649.67719pt>
+File: ../Imagenes/ArquitecturaDelSistema.jpg Graphic file (type jpg)
+<use ../Imagenes/ArquitecturaDelSistema.jpg>
+Package pdftex.def Info: ../Imagenes/ArquitecturaDelSistema.jpg  used on input 
+line 50.
+(pdftex.def)             Requested size: 497.92325pt x 555.90604pt.
+
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -2509,17 +2507,15 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 File: ../Imagenes/DiagramaNavegacion.jpg Graphic file (type jpg)
 <use ../Imagenes/DiagramaNavegacion.jpg>
 Package pdftex.def Info: ../Imagenes/DiagramaNavegacion.jpg  used on input line
- 68.
+ 71.
 (pdftex.def)             Requested size: 497.92325pt x 170.04437pt.
-<../Imagenes/MenuPrincipal.jpg, id=1226, 1445.4pt x 813.0375pt>
-File: ../Imagenes/MenuPrincipal.jpg Graphic file (type jpg)
-<use ../Imagenes/MenuPrincipal.jpg>
-Package pdftex.def Info: ../Imagenes/MenuPrincipal.jpg  used on input line 81.
-(pdftex.def)             Requested size: 497.92325pt x 280.07643pt.
+
+Underfull \vbox (badness 1205) has occurred while \output is active []
 
 
-LaTeX Info: Redefining \. on input line 85.
-LaTeX Info: Redefining \% on input line 85.
+
+LaTeX Info: Redefining \. on input line 81.
+LaTeX Info: Redefining \% on input line 81.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 15.35403pt, for example:
@@ -2528,11 +2524,16 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-3.35403pt}.
 
 [63 <../Imagenes/DiagramaNavegacion.jpg>]
+<../Imagenes/MenuPrincipal.jpg, id=1231, 1445.4pt x 813.0375pt>
+File: ../Imagenes/MenuPrincipal.jpg Graphic file (type jpg)
+<use ../Imagenes/MenuPrincipal.jpg>
+Package pdftex.def Info: ../Imagenes/MenuPrincipal.jpg  used on input line 84.
+(pdftex.def)             Requested size: 497.92325pt x 280.07643pt.
 <../Imagenes/MenuReglasPieces.jpg, id=1233, 1445.4pt x 813.0375pt>
 File: ../Imagenes/MenuReglasPieces.jpg Graphic file (type jpg)
 <use ../Imagenes/MenuReglasPieces.jpg>
 Package pdftex.def Info: ../Imagenes/MenuReglasPieces.jpg  used on input line 9
-4.
+7.
 (pdftex.def)             Requested size: 497.92325pt x 280.07643pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -2552,12 +2553,12 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 File: ../Imagenes/MenuDespliegueParcialmenteVacio.jpg Graphic file (type jpg)
 <use ../Imagenes/MenuDespliegueParcialmenteVacio.jpg>
 Package pdftex.def Info: ../Imagenes/MenuDespliegueParcialmenteVacio.jpg  used 
-on input line 105.
+on input line 108.
 (pdftex.def)             Requested size: 497.92325pt x 280.09937pt.
 
 
-LaTeX Info: Redefining \. on input line 112.
-LaTeX Info: Redefining \% on input line 112.
+LaTeX Info: Redefining \. on input line 115.
+LaTeX Info: Redefining \% on input line 115.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 15.35403pt, for example:
@@ -2571,7 +2572,7 @@ acio.jpg>]
 File: ../Imagenes/MenuPartidaEnCurso.jpg Graphic file (type jpg)
 <use ../Imagenes/MenuPartidaEnCurso.jpg>
 Package pdftex.def Info: ../Imagenes/MenuPartidaEnCurso.jpg  used on input line
- 129.
+ 132.
 (pdftex.def)             Requested size: 497.92325pt x 279.94463pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -2587,8 +2588,8 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [66]
 
-LaTeX Info: Redefining \. on input line 148.
-LaTeX Info: Redefining \% on input line 148.
+LaTeX Info: Redefining \. on input line 151.
+LaTeX Info: Redefining \% on input line 151.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 15.35403pt, for example:
@@ -2601,12 +2602,12 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 File: ../Imagenes/MenuInterfazCombateResuelto.jpg Graphic file (type jpg)
 <use ../Imagenes/MenuInterfazCombateResuelto.jpg>
 Package pdftex.def Info: ../Imagenes/MenuInterfazCombateResuelto.jpg  used on i
-nput line 153.
+nput line 156.
 (pdftex.def)             Requested size: 497.92325pt x 280.07643pt.
 <../Imagenes/MenuFinPartida.jpg, id=1274, 1445.4pt x 813.0375pt>
 File: ../Imagenes/MenuFinPartida.jpg Graphic file (type jpg)
 <use ../Imagenes/MenuFinPartida.jpg>
-Package pdftex.def Info: ../Imagenes/MenuFinPartida.jpg  used on input line 166
+Package pdftex.def Info: ../Imagenes/MenuFinPartida.jpg  used on input line 169
 .
 (pdftex.def)             Requested size: 497.92325pt x 280.07643pt.
 
@@ -2625,15 +2626,15 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 <../Imagenes/MenuPausa.jpg, id=1279, 1445.4pt x 813.0375pt>
 File: ../Imagenes/MenuPausa.jpg Graphic file (type jpg)
 <use ../Imagenes/MenuPausa.jpg>
-Package pdftex.def Info: ../Imagenes/MenuPausa.jpg  used on input line 177.
+Package pdftex.def Info: ../Imagenes/MenuPausa.jpg  used on input line 180.
 (pdftex.def)             Requested size: 497.92325pt x 280.07643pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-LaTeX Info: Redefining \. on input line 181.
-LaTeX Info: Redefining \% on input line 181.
+LaTeX Info: Redefining \. on input line 184.
+LaTeX Info: Redefining \% on input line 184.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 15.35403pt, for example:
@@ -2645,7 +2646,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 <../Imagenes/MenuOpciones.jpg, id=1285, 1445.4pt x 813.0375pt>
 File: ../Imagenes/MenuOpciones.jpg Graphic file (type jpg)
 <use ../Imagenes/MenuOpciones.jpg>
-Package pdftex.def Info: ../Imagenes/MenuOpciones.jpg  used on input line 190.
+Package pdftex.def Info: ../Imagenes/MenuOpciones.jpg  used on input line 193.
 (pdftex.def)             Requested size: 497.92325pt x 280.07643pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
@@ -2664,15 +2665,15 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 File: ../Imagenes/PatronSingleton.jpg Graphic file (type jpg)
 <use ../Imagenes/PatronSingleton.jpg>
 Package pdftex.def Info: ../Imagenes/PatronSingleton.jpg  used on input line 21
-1.
+4.
 (pdftex.def)             Requested size: 398.3401pt x 129.47055pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-LaTeX Info: Redefining \. on input line 215.
-LaTeX Info: Redefining \% on input line 215.
+LaTeX Info: Redefining \. on input line 218.
+LaTeX Info: Redefining \% on input line 218.
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
 (fancyhdr)                Make it at least 15.35403pt, for example:
@@ -2681,7 +2682,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-3.35403pt}.
 
 [71 <../Imagenes/MenuOpciones.jpg>]
-Underfull \hbox (badness 1137) in paragraph at lines 222--223
+Underfull \hbox (badness 1137) in paragraph at lines 225--226
 []\T1/lmr/m/n/12 En el pro-yec-to, \T1/lmtt/m/n/12 MovementSystem \T1/lmr/m/n/1
 2 y \T1/lmtt/m/n/12 CombatSystem \T1/lmr/m/n/12 son cla-ses es-tá-ti-cas que en
 -cap-su-lan
@@ -2690,7 +2691,7 @@ Underfull \hbox (badness 1137) in paragraph at lines 222--223
 <../Imagenes/PatronStrategy.jpg, id=1297, 1037.37563pt x 237.13594pt>
 File: ../Imagenes/PatronStrategy.jpg Graphic file (type jpg)
 <use ../Imagenes/PatronStrategy.jpg>
-Package pdftex.def Info: ../Imagenes/PatronStrategy.jpg  used on input line 226
+Package pdftex.def Info: ../Imagenes/PatronStrategy.jpg  used on input line 229
 .
 (pdftex.def)             Requested size: 398.3401pt x 91.05698pt.
 
@@ -2706,7 +2707,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [72 <../Imagenes/PatronSingleton.jpg> <../Imagenes/PatronStrategy.jpg>]
-Underfull \hbox (badness 1661) in paragraph at lines 237--238
+Underfull \hbox (badness 1661) in paragraph at lines 240--241
 \T1/lmr/m/n/12 y \T1/lmtt/m/n/12 Piece\T1/lmr/m/n/12 , la de-le-ga-ción a \T1/l
 mtt/m/n/12 MovementSystem \T1/lmr/m/n/12 y \T1/lmtt/m/n/12 CombatSystem\T1/lmr/
 m/n/12 , y el con-tro-la-dor de in-put
@@ -2715,15 +2716,15 @@ m/n/12 , y el con-tro-la-dor de in-put
 <../Imagenes/PatronFachada.jpg, id=1303, 863.47594pt x 429.10312pt>
 File: ../Imagenes/PatronFachada.jpg Graphic file (type jpg)
 <use ../Imagenes/PatronFachada.jpg>
-Package pdftex.def Info: ../Imagenes/PatronFachada.jpg  used on input line 241.
+Package pdftex.def Info: ../Imagenes/PatronFachada.jpg  used on input line 244.
 
 (pdftex.def)             Requested size: 398.3401pt x 197.95291pt.
 
 LaTeX Warning: Reference `fig:PatronTemplateMethod' on page 73 undefined on inp
-ut line 252.
+ut line 255.
 
 
-Underfull \hbox (badness 1527) in paragraph at lines 252--253
+Underfull \hbox (badness 1527) in paragraph at lines 255--256
 \T1/lmr/m/n/12 blo-quear la en-tra-da del usua-rio, eje-cu-tar el pa-so de ani-
 ma-ción co-rres-pon-dien-te y, tras
  []
@@ -3533,7 +3534,7 @@ Users/Sergi/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmri12.pfb><C:/
 Users/Sergi/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/
 Users/Sergi/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/
 Users/Sergi/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt12.pfb>
-Output written on main.pdf (130 pages, 6451138 bytes).
+Output written on main.pdf (130 pages, 6451371 bytes).
 PDF statistics:
  1760 PDF objects out of 2073 (max. 8388607)
  414 named destinations out of 1000 (max. 500000)
