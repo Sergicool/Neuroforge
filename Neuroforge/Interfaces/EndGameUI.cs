@@ -29,9 +29,9 @@ public partial class EndGameUI : Control
         _popup.Scale = Vector2.Zero;
     }
 
-    public async void Show(string finalMessage, int result)
+    public void Show(string finalMessage, int result)
     {
-        _message.Text = finalMessage;
+        _message.Text = Tr(finalMessage);
 
         Color colorTarget = result switch
         {

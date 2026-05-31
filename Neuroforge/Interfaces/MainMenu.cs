@@ -29,6 +29,7 @@ public partial class MainMenu : Control
         _exit.Pressed += OnExitPressed;
         _exit.MouseEntered += () => AudioManager.PlayUI("res://assets/sounds/HoverButton.wav");
 
+        TranslationSystem.Initialize();
         AudioManager.PlayMusic("res://assets/sounds/MainMenuMusic.wav");
     }
 

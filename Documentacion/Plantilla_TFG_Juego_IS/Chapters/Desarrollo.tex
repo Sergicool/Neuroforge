@@ -220,9 +220,26 @@ Para ello, se incorporaron pistas de música ambiental diferenciadas tanto para 
 
 Finalmente, se incluyeron fondos coherentes entre el menú principal y la escena de la partida para unificar la estética y evitar que el transcurso de la partida se sintiera visualmente vacío. A estos fondos se les aplicó un ligero efecto de \textit{parallax}, lo que aporta profundidad y una mayor sensación de pulido a la experiencia. La iteración acabo dentro antes del plazo establecido.
 
-(Escribir iteracciones 4 y 5 cuando se acaben)
+\subsection{Iteración 4: Implementación del bot inteligente}
 
-...
+La cuarta iteración se dedicó al desarrollo del sistema de inteligencia artificial, constituyendo la parte técnicamente más exigente del proyecto. El trabajo se articuló en torno a un entorno de aprendizaje por refuerzo 
+implementado en Python mediante \textbf{Gymnasium} y entrenado con \textbf{MaskablePPO} de la biblioteca \textit{SB3-Contrib}.
+
+El primer bloque de trabajo consistió en desarrollar el entorno de entrenamiento, que replica las reglas completas del videojuego de forma independiente al motor Godot. Este entorno define el espacio de observación mediante tres canales matriciales que codifican la identidad y rango de las piezas, la transitabilidad del tablero y la movilidad del agente en cada turno; así como el espacio de acciones, que cubre todos los movimientos posibles sobre el tablero. La máscara de acciones garantiza que el agente nunca seleccione un movimiento inválido durante el entrenamiento, lo que estabiliza considerablemente el proceso de aprendizaje.
+
+El segundo bloque se centró en el entrenamiento del modelo mediante una estrategia de \textit{self-play}: el agente entrena progresivamente contra versiones anteriores de sí mismo, lo que le permite desarrollar estrategias de engaño, inferencia y gestión del riesgo de forma autónoma sin necesidad de diseñar manualmente una función de evaluación del tablero. Cada versión del modelo se guarda con una marca temporal y el entrenamiento puede reanudarse desde el último punto de control.
+
+El tercer bloque consistió en la integración del modelo entrenado con el motor Godot. Se implementó un \texttt{BotController} en C\# que lanza un subproceso Python en segundo plano al iniciar la partida, carga el archivo \texttt{.zip} del modelo y se comunica con él mediante un canal de entrada y salida estándar para solicitar la acción del bot en cada turno. Esta arquitectura mantiene el entorno de inferencia completamente desacoplado del motor, de modo que actualizar el modelo no requiere modificar el código del videojuego. La iteración finalizó un día antes del plazo previsto.
+
+\subsection{Iteración 5: Pulido final}
+
+La quinta y última iteración se dedicó a la consolidación del sistema completo, abordando los aspectos de calidad y estabilidad que habían quedado pendientes en fases anteriores.
+
+En el apartado de rendimiento, se revisaron los ciclos de actualización de los nodos más activos durante la partida y se optimizó la gestión de señales y eventos para reducir el número de llamadas innecesarias en cada fotograma. El resultado fue una ejecución fluida y estable en el hardware mínimo especificado en los requisitos no funcionales.
+
+La revisión del feedback al jugador permitió detectar y corregir varios casos en los que la respuesta visual o sonora a una acción no era suficientemente clara, especialmente en situaciones de combate entre piezas reveladas previamente y en la transición entre el turno del jugador y el del bot. Se ajustaron los tiempos de animación y se reforzaron los efectos sonoros asociados a estos momentos para mejorar la legibilidad de la partida.
+
+En cuanto a la corrección de errores, se resolvieron varios casos límite relacionados con la regla antioscilación en situaciones de tablero muy congestionado, y se corrigió un comportamiento incorrecto del explorador al intentar moverse a través de casillas ocupadas en determinadas configuraciones. Las pruebas de integración finales verificaron el comportamiento completo del sistema de principio a fin, desde el despliegue inicial hasta todas las condiciones de victoria posibles, sin detectar errores adicionales. La iteración se completó en la fecha prevista, cerrando el desarrollo del proyecto dentro del plazo establecido.
 
 
 

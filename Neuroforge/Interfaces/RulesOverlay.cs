@@ -32,6 +32,11 @@ public partial class RulesOverlay : Control
         _tabContainer = GetNode<TabContainer>("PopUp/TabContainer");
         _tabContainer.TabHovered += (long tab) => AudioManager.PlayUI("res://assets/sounds/HoverButton.wav");
         _tabContainer.TabChanged += (long tab) => AudioManager.PlayUI("res://assets/sounds/PressButton.wav");
+
+        RefreshTabTitles();
+
+        TranslationSystem.OnLocaleChanged += RefreshTabTitles;
+
         _piecesGrid = GetNode<GridContainer>("PopUp/TabContainer/Tab5/GridContainer");
 
         // Recoge todos los botones hijos del grid
@@ -109,5 +114,18 @@ public partial class RulesOverlay : Control
         Visible = false;
     }
 
+    private void RefreshTabTitles()
+    {
+        _tabContainer.SetTabTitle(0, TranslationSystem.Tr("ui.rules.tab.0"));
+        _tabContainer.SetTabTitle(1, TranslationSystem.Tr("ui.rules.tab.1"));
+        _tabContainer.SetTabTitle(2, TranslationSystem.Tr("ui.rules.tab.2"));
+        _tabContainer.SetTabTitle(3, TranslationSystem.Tr("ui.rules.tab.3"));
+        _tabContainer.SetTabTitle(4, TranslationSystem.Tr("ui.rules.tab.4"));
+    }
+
+    public override void _ExitTree()
+    {
+        TranslationSystem.OnLocaleChanged -= RefreshTabTitles;
+    }
 
 }

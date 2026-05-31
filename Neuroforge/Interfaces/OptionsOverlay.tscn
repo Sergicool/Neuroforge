@@ -40,14 +40,14 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_ruayj")
 
-[node name="Title" type="Label" parent="PopUp" unique_id=698097250]
+[node name="Title" type="Label" parent="PopUp" unique_id=698097250 groups=["translatable"]]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -267.0
+offset_left = -353.0
 offset_top = 111.0
-offset_right = 267.0
+offset_right = 353.0
 offset_bottom = 228.0
 grow_horizontal = 2
 theme = ExtResource("1_jxcqw")
@@ -55,26 +55,28 @@ theme_override_font_sizes/font_size = 48
 theme_override_styles/normal = ExtResource("1_gbi4v")
 text = "Options"
 horizontal_alignment = 1
+metadata/tr = "ui.options.title"
 
-[node name="BackButton" type="Button" parent="PopUp" unique_id=732458161]
+[node name="BackButton" type="Button" parent="PopUp" unique_id=732458161 groups=["translatable"]]
 layout_mode = 0
-offset_left = 309.0
+offset_left = 223.0
 offset_top = 72.0
-offset_right = 417.0
+offset_right = 331.0
 offset_bottom = 103.0
 theme = ExtResource("1_jxcqw")
 text = "Go Back"
 icon = ExtResource("2_ab5mb")
+metadata/tr = "ui.options.back"
 
 [node name="PanelContainer" type="Panel" parent="PopUp" unique_id=1785029740]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 363.0
+offset_left = 294.0
 offset_top = 228.0
-offset_right = -363.0
-offset_bottom = -153.0
+offset_right = -294.0
+offset_bottom = -107.0
 grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_jxcqw")
@@ -96,15 +98,31 @@ theme_override_constants/margin_bottom = 24
 layout_mode = 2
 theme_override_constants/separation = 12
 
+[node name="LanguageRow" type="HBoxContainer" parent="PopUp/PanelContainer/MarginContainer/VBoxContainer" unique_id=1243483076]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="PopUp/PanelContainer/MarginContainer/VBoxContainer/LanguageRow" unique_id=441432158 groups=["translatable"]]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Language"
+horizontal_alignment = 1
+metadata/tr = "ui.options.language"
+
+[node name="LanguageDropdown" type="OptionButton" parent="PopUp/PanelContainer/MarginContainer/VBoxContainer/LanguageRow" unique_id=435582289]
+layout_mode = 2
+size_flags_horizontal = 3
+
 [node name="ResolutionRow" type="HBoxContainer" parent="PopUp/PanelContainer/MarginContainer/VBoxContainer" unique_id=1863639966]
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="Label" type="Label" parent="PopUp/PanelContainer/MarginContainer/VBoxContainer/ResolutionRow" unique_id=1022912543]
+[node name="Label" type="Label" parent="PopUp/PanelContainer/MarginContainer/VBoxContainer/ResolutionRow" unique_id=1022912543 groups=["translatable"]]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Resolution"
 horizontal_alignment = 1
+metadata/tr = "ui.options.resolution"
 
 [node name="ResolutionDropdown" type="OptionButton" parent="PopUp/PanelContainer/MarginContainer/VBoxContainer/ResolutionRow" unique_id=1204675383]
 layout_mode = 2
@@ -114,11 +132,12 @@ size_flags_horizontal = 3
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="Label" type="Label" parent="PopUp/PanelContainer/MarginContainer/VBoxContainer/MasterRow" unique_id=474936687]
+[node name="Label" type="Label" parent="PopUp/PanelContainer/MarginContainer/VBoxContainer/MasterRow" unique_id=474936687 groups=["translatable"]]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Master"
 horizontal_alignment = 1
+metadata/tr = "ui.options.master"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PopUp/PanelContainer/MarginContainer/VBoxContainer/MasterRow" unique_id=84514680]
 layout_mode = 2
@@ -143,11 +162,12 @@ horizontal_alignment = 1
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="Label" type="Label" parent="PopUp/PanelContainer/MarginContainer/VBoxContainer/MusicRow" unique_id=1301038882]
+[node name="Label" type="Label" parent="PopUp/PanelContainer/MarginContainer/VBoxContainer/MusicRow" unique_id=1301038882 groups=["translatable"]]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Music"
 horizontal_alignment = 1
+metadata/tr = "ui.options.music"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PopUp/PanelContainer/MarginContainer/VBoxContainer/MusicRow" unique_id=1343087812]
 layout_mode = 2
@@ -171,11 +191,12 @@ horizontal_alignment = 1
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="Label" type="Label" parent="PopUp/PanelContainer/MarginContainer/VBoxContainer/SfxRow" unique_id=1559986225]
+[node name="Label" type="Label" parent="PopUp/PanelContainer/MarginContainer/VBoxContainer/SfxRow" unique_id=1559986225 groups=["translatable"]]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Effects"
 horizontal_alignment = 1
+metadata/tr = "ui.options.effects"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PopUp/PanelContainer/MarginContainer/VBoxContainer/SfxRow" unique_id=2052953532]
 layout_mode = 2
@@ -199,11 +220,12 @@ horizontal_alignment = 1
 layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="Label" type="Label" parent="PopUp/PanelContainer/MarginContainer/VBoxContainer/UIRow" unique_id=860350761]
+[node name="Label" type="Label" parent="PopUp/PanelContainer/MarginContainer/VBoxContainer/UIRow" unique_id=860350761 groups=["translatable"]]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Interface"
 horizontal_alignment = 1
+metadata/tr = "ui.options.interface"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="PopUp/PanelContainer/MarginContainer/VBoxContainer/UIRow" unique_id=678880562]
 layout_mode = 2

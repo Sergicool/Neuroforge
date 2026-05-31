@@ -52,7 +52,7 @@ theme_override_constants/separation = 10
 [node name="RemainingLabel" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1822873670]
 layout_mode = 2
 theme = ExtResource("4_6n2p2")
-text = "Label"
+text = "Remaining: 00"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -64,12 +64,14 @@ theme_override_constants/h_separation = 8
 theme_override_constants/v_separation = 8
 columns = 4
 
-[node name="RandomButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=160660926]
+[node name="RandomButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=160660926 groups=["translatable"]]
 layout_mode = 2
 theme = ExtResource("4_6n2p2")
-text = "Random Placement"
+text = "Random placement"
+metadata/tr = "ui.deployment.random.button"
 
-[node name="StartButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1423941356]
+[node name="StartButton" type="Button" parent="MarginContainer/VBoxContainer" unique_id=1423941356 groups=["translatable"]]
 layout_mode = 2
 theme = ExtResource("4_6n2p2")
-text = "Start Battle"
+text = "Start battle"
+metadata/tr = "ui.deployment.start.button"

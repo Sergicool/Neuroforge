@@ -8,9 +8,7 @@ El desarrollo de \textit{NeuroForge} ha permitido alcanzar de forma satisfactori
 
 La interfaz de usuario alcanza el nivel de pulido propuesto: todas las pantallas están implementadas, el flujo de navegación es intuitivo y el apartado audiovisual refuerza adecuadamente la ambientación de ciencia ficción del proyecto. La arquitectura en tres capas adoptada ha demostrado ser una decisión acertada, manteniendo la lógica del videojuego completamente desacoplada del motor y facilitando tanto las pruebas como el mantenimiento del código a lo largo de las iteraciones.
 
-(Objetivo de la IA si se implementa o no)
-
-...
+El desarrollo del bot inteligente mediante aprendizaje por refuerzo constituyó el objetivo técnicamente más ambicioso del proyecto y ha sido completado satisfactoriamente. El entorno de entrenamiento basado en Gymnasium replica con fidelidad las reglas del videojuego, incluyendo la gestión de información oculta y las reglas especiales de combate, y el agente entrenado mediante MaskablePPO y estrategia de \textit{self-play} ha demostrado un comportamiento estratégico coherente, siendo capaz de gestionar la incertidumbre inherente al juego sin necesidad de una función de evaluación diseñada manualmente. Su integración con Godot a través de un subproceso Python desacoplado del motor ha resultado en una solución técnicamente sólida y fácilmente actualizable.
 
 % ─────────────────────────────────────────────────────────────────────────────
 \section{Uso de inteligencia artificial}
@@ -38,11 +36,7 @@ La estructura de datos del estado de la partida, basada en clases C\# puras con 
 
 \subsection{Niveles de dificultad del bot}
 
-Una vez el agente inteligente esté completamente entrenado e integrado, resultaría relativamente sencillo exponer distintos niveles de dificultad al jugador. Esto podría lograrse mediante modelos entrenados durante diferente número de iteraciones, ajustando los hiperparámetros en la política del agente para controlar su grado de aleatoriedad, o combinando el bot inteligente con el bot aleatorio ya implementado en proporciones variables. El resultado sería una curva de dificultad progresiva que haría el videojuego más accesible para jugadores casuales sin sacrificar el reto para los más experimentados.
-
-(Desarollar o cambiar cuando se implemente o no el bot)
-
-...
+Con el agente inteligente entrenado e integrado, resultaría relativamente sencillo exponer distintos niveles de dificultad al jugador. Esto podría lograrse mediante modelos entrenados durante diferente número de iteraciones, ajustando los hiperparámetros en la política del agente para controlar su grado de aleatoriedad, o combinando el bot inteligente con el bot aleatorio ya implementado en proporciones variables. El resultado sería una curva de dificultad progresiva que haría el videojuego más accesible para jugadores casuales sin sacrificar el reto para los más experimentados.
 
 \subsection{Nuevas mecánicas y contenido}
 

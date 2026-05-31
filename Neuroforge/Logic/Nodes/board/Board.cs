@@ -262,98 +262,117 @@ public partial class Board : Node2D
 
     private TileType AtlasToTileType(Vector2I atlasCoords)
     {
-        // Aquí defines tus "4 posiciones específicas" de la primera fila
         return atlasCoords switch
         {
             { X: 0, Y: 0 } => TileType.PASSABLE,
             { X: 1, Y: 0 } => TileType.NO_PASSABLE,
             { X: 2, Y: 0 } => TileType.PLAYER_DEPLOYMENT,
             { X: 3, Y: 0 } => TileType.BOT_DEPLOYMENT,
-            _ => TileType.NO_PASSABLE // Por defecto
+            _ => TileType.NO_PASSABLE
         };
     }
 
+    // ==================== Estado para el modelo de IA ====================
 
-    // GetState para el entorno de GYM
-
+    // Constantes que deben coincidir exactamente con las del entorno Python.
     private const float NORM = 12f;
     private const float OBS_TURRET = 11f;
     private const float OBS_ENERGY = 12f;
-
     private const int ROWS = 6;
     private const int COLS = 6;
 
+    // Construye los 3 canales de observación tal como los espera el modelo Python.
+    //
+    // IMPORTANTE — sistema de coordenadas:
+    //   En Python, [row=0, col=0] es la esquina superior izquierda,
+    //   que corresponde a la zona de despliegue del BOT (BOT_DEPLOYMENT).
+    //   En Godot, coords.Y=0 debe corresponder también a esa zona del BOT.
+    //   Si tu TileMap tiene el BOT en Y=0 y el PLAYER en Y=5, la correspondencia
+    //   es directa: channel[coords.Y, coords.X].
+    //   Si fuese al revés (PLAYER en Y=0), habría que hacer el flip:
+    //   channel[(ROWS-1) - coords.Y, coords.X].
+    //   Verifica imprimiendo el canal 0 al inicio de una partida:
+    //   las filas 0-1 deben tener valores positivos (piezas del BOT).
     public float[][,] GetCurrentStateFlattened()
     {
         float[,] channel0 = new float[ROWS, COLS];
         float[,] channel1 = new float[ROWS, COLS];
         float[,] channel2 = new float[ROWS, COLS];
 
+        // Paso 1: rellenar canal 1 con las casillas no transitables.
         foreach (var (coords, tile) in _grid)
         {
             if (coords.Y >= ROWS || coords.X >= COLS) continue;
-
             if (tile.TileType == TileType.NO_PASSABLE)
-            {
                 channel1[coords.Y, coords.X] = -1.0f;
-            }
-            else
-            {
-                channel1[coords.Y, coords.X] = 0.0f;
-            }
+            // Las casillas transitables vacías quedan en 0.0 (valor por defecto del array).
         }
 
         int currentTurn = _game.TurnNumber;
 
+        // Paso 2: rellenar canales con la información de las piezas.
         foreach (var (coords, tile) in _grid)
         {
             if (coords.Y >= ROWS || coords.X >= COLS) continue;
+            if (!tile.IsOccupied) continue;
 
-            if (tile.IsOccupied)
+            Piece piece = tile.Occupant;
+            bool isBotPiece = (piece.PlayerOwner == PieceOwner.BOT);
+
+            // Canal 0: identidad y rango
+            if (isBotPiece)
             {
-                Piece piece = tile.Occupant;
-                bool isBotPiece = (piece.PlayerOwner == PieceOwner.BOT);
-
-                if (isBotPiece)
+                // Las piezas del BOT siempre son conocidas por él → valores positivos
+                channel0[coords.Y, coords.X] = piece.Type switch
                 {
-                    if (piece.Type == PieceType.TURRET) channel0[coords.Y, coords.X] = OBS_TURRET / NORM;
-                    else if (piece.Type == PieceType.ENERGY_CORE) channel0[coords.Y, coords.X] = OBS_ENERGY / NORM;
-                    else channel0[coords.Y, coords.X] = (float)piece.Rank / NORM;
-                }
-                else
-                {
-                    if (piece.IsRevealedToBot)
-                    {
-                        if (piece.Type == PieceType.TURRET) channel0[coords.Y, coords.X] = -OBS_TURRET / NORM;
-                        else if (piece.Type == PieceType.ENERGY_CORE) channel0[coords.Y, coords.X] = -OBS_ENERGY / NORM;
-                        else channel0[coords.Y, coords.X] = -(float)piece.Rank / NORM;
-                    }
-                    else
-                    {
-                        channel0[coords.Y, coords.X] = 0.0f;
-                    }
-                }
-
-                if (!isBotPiece && !piece.IsRevealedToBot)
-                {
-                    channel1[coords.Y, coords.X] = 0.5f;
-                }
-                else
-                {
-                    channel1[coords.Y, coords.X] = 1.0f;
-                }
-
-                if (isBotPiece && piece.CanMove)
-                {
-                    if (HasAnyLegalMove(piece, currentTurn))
-                    {
-                        channel2[coords.Y, coords.X] = 1.0f;
-                    }
-                }
+                    PieceType.TURRET => OBS_TURRET / NORM,
+                    PieceType.ENERGY_CORE => OBS_ENERGY / NORM,
+                    _ => (float)piece.Rank / NORM,
+                };
             }
+            else
+            {
+                // Las piezas del PLAYER son visibles solo si han sido reveladas al BOT
+                if (piece.IsRevealedToBot)
+                {
+                    channel0[coords.Y, coords.X] = piece.Type switch
+                    {
+                        PieceType.TURRET => -OBS_TURRET / NORM,
+                        PieceType.ENERGY_CORE => -OBS_ENERGY / NORM,
+                        _ => -(float)piece.Rank / NORM,
+                    };
+                }
+                // Si no está revelada, canal 0 queda en 0.0 (ya inicializado)
+            }
+
+            // Canal 1: transitabilidad / visibilidad
+            if (!isBotPiece && !piece.IsRevealedToBot)
+                channel1[coords.Y, coords.X] = 0.5f;  // Enemigo oculto presente
+            else
+                channel1[coords.Y, coords.X] = 1.0f;  // Pieza conocida
+
+            // Canal 2: movilidad del BOT
+            if (isBotPiece && piece.CanMove && HasAnyLegalMove(piece, currentTurn))
+                channel2[coords.Y, coords.X] = 1.0f;
         }
 
         return new float[][,] { channel0, channel1, channel2 };
+    }
+
+    // Devuelve el estado aplanado en un array 1D con orden [canal, fila, columna],
+    // listo para serializar como JSON y enviarlo al servidor Python de inferencia.
+    // Orden: todos los valores del canal 0 primero (fila por fila), luego canal 1, luego canal 2.
+    public float[] GetFlatState()
+    {
+        float[][,] channels = GetCurrentStateFlattened();
+        float[] flat = new float[3 * ROWS * COLS];
+
+        for (int ch = 0; ch < 3; ch++)
+            for (int r = 0; r < ROWS; r++)
+                for (int c = 0; c < COLS; c++)
+                    flat[ch * ROWS * COLS + r * COLS + c] = channels[ch][r, c];
+
+        return flat;
     }
 
     private bool HasAnyLegalMove(Piece piece, int turn)
@@ -361,9 +380,7 @@ public partial class Board : Node2D
         foreach (Tile tile in AllTiles)
         {
             if (MovementSystem.CanMove(piece, tile, turn, this))
-            {
                 return true;
-            }
         }
         return false;
     }

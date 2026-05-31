@@ -3,24 +3,20 @@
   "WorkspaceRootPath": "D:\\Personal\\Ingenieria Informatica\\TFG\\Neuroforge\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{26743075-B577-4D4A-8A93-407662048572}|TFG Tests.csproj|d:\\personal\\ingenieria informatica\\tfg\\neuroforge\\logic\\nodes\\board\\board.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{26743075-B577-4D4A-8A93-407662048572}|TFG Tests.csproj|solutionrelative:logic\\nodes\\board\\board.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{26743075-B577-4D4A-8A93-407662048572}|TFG Tests.csproj|d:\\personal\\ingenieria informatica\\tfg\\neuroforge\\data and infrastructure\\audiomanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{26743075-B577-4D4A-8A93-407662048572}|TFG Tests.csproj|solutionrelative:data and infrastructure\\audiomanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{26743075-B577-4D4A-8A93-407662048572}|TFG Tests.csproj|d:\\personal\\ingenieria informatica\\tfg\\neuroforge\\logic\\pure\\movementsystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{26743075-B577-4D4A-8A93-407662048572}|TFG Tests.csproj|solutionrelative:logic\\pure\\movementsystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{26743075-B577-4D4A-8A93-407662048572}|TFG Tests.csproj|d:\\personal\\ingenieria informatica\\tfg\\neuroforge\\logic\\nodes\\pieces\\piece.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{26743075-B577-4D4A-8A93-407662048572}|TFG Tests.csproj|solutionrelative:logic\\nodes\\pieces\\piece.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{26743075-B577-4D4A-8A93-407662048572}|TFG Tests.csproj|d:\\personal\\ingenieria informatica\\tfg\\neuroforge\\logic\\nodes\\gamescene.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{26743075-B577-4D4A-8A93-407662048572}|TFG Tests.csproj|solutionrelative:logic\\nodes\\gamescene.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{26743075-B577-4D4A-8A93-407662048572}|TFG Tests.csproj|d:\\personal\\ingenieria informatica\\tfg\\neuroforge\\interfaces\\deploymentui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{26743075-B577-4D4A-8A93-407662048572}|TFG Tests.csproj|solutionrelative:interfaces\\deploymentui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{26743075-B577-4D4A-8A93-407662048572}|TFG Tests.csproj|d:\\personal\\ingenieria informatica\\tfg\\neuroforge\\dataandinfrastructure\\translationsystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{26743075-B577-4D4A-8A93-407662048572}|TFG Tests.csproj|solutionrelative:dataandinfrastructure\\translationsystem.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{26743075-B577-4D4A-8A93-407662048572}|TFG Tests.csproj|d:\\personal\\ingenieria informatica\\tfg\\neuroforge\\interfaces\\combatui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{26743075-B577-4D4A-8A93-407662048572}|TFG Tests.csproj|solutionrelative:interfaces\\combatui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,67 +26,58 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "AudioManager.cs",
-              "DocumentMoniker": "D:\\Personal\\Ingenieria Informatica\\TFG\\Neuroforge\\Data and Infrastructure\\AudioManager.cs",
-              "RelativeDocumentMoniker": "Data and Infrastructure\\AudioManager.cs",
-              "ToolTip": "D:\\Personal\\Ingenieria Informatica\\TFG\\Neuroforge\\Data and Infrastructure\\AudioManager.cs",
-              "RelativeToolTip": "Data and Infrastructure\\AudioManager.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-16T09:44:18.754Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "MovementSystem.cs",
-              "DocumentMoniker": "D:\\Personal\\Ingenieria Informatica\\TFG\\Neuroforge\\Logic\\Pure\\MovementSystem.cs",
-              "RelativeDocumentMoniker": "Logic\\Pure\\MovementSystem.cs",
-              "ToolTip": "D:\\Personal\\Ingenieria Informatica\\TFG\\Neuroforge\\Logic\\Pure\\MovementSystem.cs",
-              "RelativeToolTip": "Logic\\Pure\\MovementSystem.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-14T19:19:52.408Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "GameScene.cs",
               "DocumentMoniker": "D:\\Personal\\Ingenieria Informatica\\TFG\\Neuroforge\\Logic\\Nodes\\GameScene.cs",
               "RelativeDocumentMoniker": "Logic\\Nodes\\GameScene.cs",
               "ToolTip": "D:\\Personal\\Ingenieria Informatica\\TFG\\Neuroforge\\Logic\\Nodes\\GameScene.cs",
               "RelativeToolTip": "Logic\\Nodes\\GameScene.cs",
-              "ViewState": "AgIAALUAAAAAAAAAAAAhwGYAAAAQAAAAAAAAAA==",
+              "ViewState": "AgIAAIQAAAAAAAAAAAAiwJAAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-14T18:36:41.001Z"
+              "WhenOpened": "2026-05-31T13:22:14.94Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DeploymentUI.cs",
+              "DocumentMoniker": "D:\\Personal\\Ingenieria Informatica\\TFG\\Neuroforge\\Interfaces\\DeploymentUI.cs",
+              "RelativeDocumentMoniker": "Interfaces\\DeploymentUI.cs",
+              "ToolTip": "D:\\Personal\\Ingenieria Informatica\\TFG\\Neuroforge\\Interfaces\\DeploymentUI.cs",
+              "RelativeToolTip": "Interfaces\\DeploymentUI.cs",
+              "ViewState": "AgIAAEcAAAAAAAAAAAAIwFcAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-31T13:12:26.164Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "TranslationSystem.cs",
+              "DocumentMoniker": "D:\\Personal\\Ingenieria Informatica\\TFG\\Neuroforge\\DataAndInfrastructure\\TranslationSystem.cs",
+              "RelativeDocumentMoniker": "DataAndInfrastructure\\TranslationSystem.cs",
+              "ToolTip": "D:\\Personal\\Ingenieria Informatica\\TFG\\Neuroforge\\DataAndInfrastructure\\TranslationSystem.cs",
+              "RelativeToolTip": "DataAndInfrastructure\\TranslationSystem.cs",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAWwDUAAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-31T12:45:50.437Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "Piece.cs",
-              "DocumentMoniker": "D:\\Personal\\Ingenieria Informatica\\TFG\\Neuroforge\\Logic\\Nodes\\pieces\\Piece.cs",
-              "RelativeDocumentMoniker": "Logic\\Nodes\\pieces\\Piece.cs",
-              "ToolTip": "D:\\Personal\\Ingenieria Informatica\\TFG\\Neuroforge\\Logic\\Nodes\\pieces\\Piece.cs",
-              "RelativeToolTip": "Logic\\Nodes\\pieces\\Piece.cs",
-              "ViewState": "AgIAAEUAAAAAAAAAAAAjwGAAAAARAAAAAAAAAA==",
+              "Title": "CombatUI.cs",
+              "DocumentMoniker": "D:\\Personal\\Ingenieria Informatica\\TFG\\Neuroforge\\Interfaces\\CombatUI.cs",
+              "RelativeDocumentMoniker": "Interfaces\\CombatUI.cs",
+              "ToolTip": "D:\\Personal\\Ingenieria Informatica\\TFG\\Neuroforge\\Interfaces\\CombatUI.cs",
+              "RelativeToolTip": "Interfaces\\CombatUI.cs",
+              "ViewState": "AgIAABMBAAAAAAAAAAAjwCkBAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-14T13:28:27.649Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Board.cs",
-              "DocumentMoniker": "D:\\Personal\\Ingenieria Informatica\\TFG\\Neuroforge\\Logic\\Nodes\\board\\Board.cs",
-              "RelativeDocumentMoniker": "Logic\\Nodes\\board\\Board.cs",
-              "ToolTip": "D:\\Personal\\Ingenieria Informatica\\TFG\\Neuroforge\\Logic\\Nodes\\board\\Board.cs",
-              "RelativeToolTip": "Logic\\Nodes\\board\\Board.cs",
-              "ViewState": "AgIAAFABAAAAAAAAAAAkwGcBAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-05-14T13:26:40.48Z",
+              "WhenOpened": "2026-05-31T12:45:43.039Z",
               "EditorCaption": ""
             }
           ]

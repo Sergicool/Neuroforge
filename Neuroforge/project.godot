@@ -39,11 +39,15 @@ project/assembly_name="TFG Tests"
 
 folder_colors={
 "res://Bot enviroment/": "gray",
-"res://Data and Infrastructure/": "orange",
+"res://DataAndInfrastructure/": "orange",
 "res://Interfaces/": "teal",
 "res://Logic/": "blue",
 "res://assets/": "red"
 }
+
+[global_group]
+
+translatable=""
 
 [gui]
 

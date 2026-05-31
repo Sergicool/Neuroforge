@@ -1,11 +1,33 @@
 \chapter*{Abstract}
 
+This Bachelor's Thesis presents the design and implementation of 
+\textit{NeuroForge}, a turn-based strategy video game with hidden 
+information mechanics developed using the Godot engine. The game is inspired by the classic board game 
+\textit{Stratego}, adapting its core mechanics to a digital environment 
+with a futuristic science fiction setting.
 
+The project covers the complete software development lifecycle, from 
+requirements analysis and architectural design to implementation, testing, 
+and documentation. The adopted architecture separates game logic, user 
+interface, and infrastructure into three layers, which has facilitated 
+system maintainability and scalability throughout the five development 
+iterations. Object-oriented design patterns such as \textit{Singleton}, \textit{Strategy}, 
+\textit{Facade}, and \textit{Template Method} have been applied to ensure a robust and 
+decoupled structure.
 
-\textbf{Keywords:} ...
+As an advanced component, an artificial intelligence agent has been 
+developed and trained using reinforcement learning, employing the Gymnasium 
+library as the environment interface and the AMaskablePPO algorithm as the 
+training method. The agent learns to play through a self-play strategy, 
+progressively competing against earlier versions of itself, which allows 
+it to develop strategic behaviors without the need for a manually designed 
+evaluation function.
 
+The result is a complete and playable video game, featuring a polished 
+visual interface, sound effects, multiple menus, and an AI-controlled 
+opponent, distributable as a self-contained executable for Windows.
 
-
-
-
-
+\vspace{0.5cm}
+\noindent \textbf{Keywords:} video game, turn-based strategy, hidden information, 
+Godot, reinforcement learning, Gymnasium, MaskablePPO, self-play, 
+layered architecture, design patterns.

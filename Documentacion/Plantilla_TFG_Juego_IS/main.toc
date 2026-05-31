@@ -68,17 +68,18 @@
 \contentsline {section}{\numberline {6.1}Arquitectura del sistema}{59}{section.6.1}%
 \contentsline {subsection}{\numberline {6.1.1}El modelo de ejecución de Godot}{59}{subsection.6.1.1}%
 \contentsline {subsection}{\numberline {6.1.2}Arquitectura de NeuroForge}{61}{subsection.6.1.2}%
-\contentsline {section}{\numberline {6.2}Diseño de interfaz de usuario}{63}{section.6.2}%
-\contentsline {subsection}{\numberline {6.2.1}Partida en curso}{66}{subsection.6.2.1}%
-\contentsline {subsection}{\numberline {6.2.2}Interfaz de combate}{68}{subsection.6.2.2}%
-\contentsline {subsection}{\numberline {6.2.3}Fin de partida}{68}{subsection.6.2.3}%
-\contentsline {subsection}{\numberline {6.2.4}Menú de pausa}{69}{subsection.6.2.4}%
-\contentsline {subsection}{\numberline {6.2.5}Menú de opciones}{70}{subsection.6.2.5}%
-\contentsline {section}{\numberline {6.3}Patrones de diseño aplicados}{71}{section.6.3}%
-\contentsline {subsection}{\numberline {6.3.1}Singleton}{71}{subsection.6.3.1}%
-\contentsline {subsection}{\numberline {6.3.2}Strategy}{72}{subsection.6.3.2}%
-\contentsline {subsection}{\numberline {6.3.3}Fachada}{73}{subsection.6.3.3}%
-\contentsline {subsection}{\numberline {6.3.4}Template Method}{73}{subsection.6.3.4}%
+\contentsline {section}{\numberline {6.2}Diagrama de despliegue}{63}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Diseño de interfaz de usuario}{64}{section.6.3}%
+\contentsline {subsection}{\numberline {6.3.1}Partida en curso}{67}{subsection.6.3.1}%
+\contentsline {subsection}{\numberline {6.3.2}Interfaz de combate}{69}{subsection.6.3.2}%
+\contentsline {subsection}{\numberline {6.3.3}Fin de partida}{69}{subsection.6.3.3}%
+\contentsline {subsection}{\numberline {6.3.4}Menú de pausa}{70}{subsection.6.3.4}%
+\contentsline {subsection}{\numberline {6.3.5}Menú de opciones}{71}{subsection.6.3.5}%
+\contentsline {section}{\numberline {6.4}Patrones de diseño aplicados}{72}{section.6.4}%
+\contentsline {subsection}{\numberline {6.4.1}Singleton}{72}{subsection.6.4.1}%
+\contentsline {subsection}{\numberline {6.4.2}Strategy}{73}{subsection.6.4.2}%
+\contentsline {subsection}{\numberline {6.4.3}Fachada}{74}{subsection.6.4.3}%
+\contentsline {subsection}{\numberline {6.4.4}Template Method}{74}{subsection.6.4.4}%
 \contentsline {chapter}{\numberline {7}Implementación}{75}{chapter.7}%
 \contentsline {section}{\numberline {7.1}Organización del código}{75}{section.7.1}%
 \contentsline {section}{\numberline {7.2}Licencias requeridas}{76}{section.7.2}%
@@ -89,9 +90,11 @@
 \contentsline {section}{\numberline {7.3}Iteraciones y progreso del desarrollo}{78}{section.7.3}%
 \contentsline {subsection}{\numberline {7.3.1}Iteración 1: Núcleo jugable y lógica básica}{78}{subsection.7.3.1}%
 \contentsline {subsection}{\numberline {7.3.2}Iteración 2: Interfaz de usuario y pulido visual}{80}{subsection.7.3.2}%
-\contentsline {subsubsection}{Interfaz de partida}{81}{subsubsection*.53}%
-\contentsline {subsubsection}{Interfaz de combate y reglas}{83}{subsubsection*.57}%
+\contentsline {subsubsection}{Interfaz de partida}{81}{subsubsection*.54}%
+\contentsline {subsubsection}{Interfaz de combate y reglas}{83}{subsubsection*.58}%
 \contentsline {subsection}{\numberline {7.3.3}Iteración 3: Mejoras audiovisuales}{87}{subsection.7.3.3}%
+\contentsline {subsection}{\numberline {7.3.4}Iteración 4: Implementación del bot inteligente}{87}{subsection.7.3.4}%
+\contentsline {subsection}{\numberline {7.3.5}Iteración 5: Pulido final}{88}{subsection.7.3.5}%
 \contentsline {chapter}{\numberline {8}Pruebas}{89}{chapter.8}%
 \contentsline {section}{\numberline {8.1}Enfoque de pruebas}{89}{section.8.1}%
 \contentsline {section}{\numberline {8.2}Batería de pruebas}{90}{section.8.2}%
@@ -105,15 +108,24 @@
 \contentsline {subsection}{\numberline {8.2.8}Bloque 8 — Requisitos no funcionales}{97}{subsection.8.2.8}%
 \contentsline {chapter}{\numberline {9}Conclusiones}{99}{chapter.9}%
 \contentsline {section}{\numberline {9.1}Valoración de objetivos}{99}{section.9.1}%
-\contentsline {section}{\numberline {9.2}Uso de inteligencia artificial}{99}{section.9.2}%
+\contentsline {section}{\numberline {9.2}Uso de inteligencia artificial}{100}{section.9.2}%
 \contentsline {section}{\numberline {9.3}Líneas futuras}{100}{section.9.3}%
 \contentsline {subsection}{\numberline {9.3.1}Guardado y carga de partidas}{100}{subsection.9.3.1}%
-\contentsline {subsection}{\numberline {9.3.2}Niveles de dificultad del bot}{100}{subsection.9.3.2}%
+\contentsline {subsection}{\numberline {9.3.2}Niveles de dificultad del bot}{101}{subsection.9.3.2}%
 \contentsline {subsection}{\numberline {9.3.3}Nuevas mecánicas y contenido}{101}{subsection.9.3.3}%
 \contentsline {subsection}{\numberline {9.3.4}Publicación y distribución}{101}{subsection.9.3.4}%
 \contentsline {chapter}{\numberline {A}Manual de instalación}{103}{appendix.Alph1}%
+\contentsline {section}{\numberline {A.1}Requisitos del sistema}{103}{section.Alph1.1}%
+\contentsline {section}{\numberline {A.2}Pasos de instalación}{103}{section.Alph1.2}%
+\contentsline {section}{\numberline {A.3}Solución de problemas comunes}{104}{section.Alph1.3}%
 \contentsline {chapter}{\numberline {B}Manual de usuario}{105}{appendix.Alph2}%
-\contentsline {chapter}{\numberline {C}}{107}{appendix.Alph3}%
-\contentsline {chapter}{\numberline {D}}{109}{appendix.Alph4}%
-\contentsline {chapter}{Bibliografía}{111}{appendix.Alph4}%
+\contentsline {section}{\numberline {B.1}Menú principal}{105}{section.Alph2.1}%
+\contentsline {section}{\numberline {B.2}Menú de reglas}{105}{section.Alph2.2}%
+\contentsline {section}{\numberline {B.3}Fase de despliegue}{105}{section.Alph2.3}%
+\contentsline {section}{\numberline {B.4}Partida en curso}{106}{section.Alph2.4}%
+\contentsline {section}{\numberline {B.5}Interfaz de combate}{106}{section.Alph2.5}%
+\contentsline {section}{\numberline {B.6}Menú de pausa}{106}{section.Alph2.6}%
+\contentsline {section}{\numberline {B.7}Menú de opciones}{106}{section.Alph2.7}%
+\contentsline {section}{\numberline {B.8}Fin de partida}{107}{section.Alph2.8}%
+\contentsline {chapter}{Bibliografía}{109}{section.Alph2.8}%
 \contentsfinish 

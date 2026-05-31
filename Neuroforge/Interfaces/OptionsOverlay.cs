@@ -10,12 +10,15 @@ public partial class OptionsOverlay : Control
     // ── Nodos ────────────────────────────────────────────────────────────────
     private Panel _background, _popup;
     private Button _closeButton;
-    private OptionButton _resolutionDropdown;
+    private OptionButton _languageDropdown, _resolutionDropdown;
     private HSlider _masterSlider, _musicSlider, _sfxSlider, _uiSlider;
     private Label _masterNumber, _musicNumber, _sfxNumber, _uiNumber;
 
-    // ── Resoluciones disponibles ─────────────────────────────────────────────
-    private static readonly string[] WindowModes = { "  Window", "  Full Screen" };
+    private static readonly (string Name, string Code)[] Languages = new[]
+    {
+        (" English", "en"),
+        (" Espanol", "es")
+    };
 
     private static readonly Color BG_HIDDEN = new(0, 0, 0, 0);
     private static readonly Color BG_VISIBLE = new(0, 0, 0, 0.65f);
@@ -29,6 +32,7 @@ public partial class OptionsOverlay : Control
         _popup = GetNode<Panel>("PopUp");
         _closeButton = GetNode<Button>("PopUp/BackButton");
 
+        _languageDropdown = GetNode<OptionButton>("PopUp/PanelContainer/MarginContainer/VBoxContainer/LanguageRow/LanguageDropdown");
         _resolutionDropdown = GetNode<OptionButton>("PopUp/PanelContainer/MarginContainer/VBoxContainer/ResolutionRow/ResolutionDropdown");
         _masterSlider = GetNode<HSlider>("PopUp/PanelContainer/MarginContainer/VBoxContainer/MasterRow/HBoxContainer/MasterSlider");
         _masterNumber = GetNode<Label>("PopUp/PanelContainer/MarginContainer/VBoxContainer/MasterRow/HBoxContainer/MasterNumber");
@@ -41,9 +45,12 @@ public partial class OptionsOverlay : Control
 
         Visible = false;
 
-        // Resoluciones
-        foreach (var label in WindowModes)
-            _resolutionDropdown.AddItem(label);
+        foreach (var lang in Languages)
+            _languageDropdown.AddItem(lang.Name);
+        SyncLanguageDropdown();
+
+        _resolutionDropdown.AddItem(TranslationSystem.Tr("ui.options.resolution.window"));
+        _resolutionDropdown.AddItem(TranslationSystem.Tr("ui.options.resolution.fullscreen"));
         SyncResolutionDropdown();
 
         // Sliders — reemplaza los 4 InitSlider anteriores:
@@ -54,7 +61,14 @@ public partial class OptionsOverlay : Control
 
         // Señales
         _closeButton.MouseEntered += () => AudioManager.PlayUI("res://assets/sounds/HoverButton.wav");
-        _closeButton.Pressed += async () => await HideOverlay();
+        _closeButton.Pressed += async () =>
+        {
+            AudioManager.PlayUI("res://assets/sounds/PressButton.wav");
+            await HideOverlay();
+        };
+        _languageDropdown.ItemSelected += OnLanguageSelected;
+        _languageDropdown.MouseEntered += () => AudioManager.PlayUI("res://assets/sounds/HoverButton.wav");
+        _languageDropdown.Pressed += () => AudioManager.PlayUI("res://assets/sounds/PressButton.wav");
         _resolutionDropdown.ItemSelected += OnResolutionSelected;
         _resolutionDropdown.MouseEntered += () => AudioManager.PlayUI("res://assets/sounds/HoverButton.wav");
         _resolutionDropdown.Pressed += () => AudioManager.PlayUI("res://assets/sounds/PressButton.wav");
@@ -96,7 +110,6 @@ public partial class OptionsOverlay : Control
 
     public async Task HideOverlay()
     {
-        AudioManager.PlayUI("res://assets/sounds/PressButton.wav");
         _closeButton.Disabled = true;
         _popup.PivotOffset = _popup.Size / 2f;
 
@@ -127,6 +140,32 @@ public partial class OptionsOverlay : Control
         slider.Value = percent;
         numberLabel.Text = percent.ToString();
     }
+
+    private void SyncLanguageDropdown()
+    {
+        string currentLocale = !string.IsNullOrEmpty(TranslationSystem.CurrentLocale)
+            ? TranslationSystem.CurrentLocale
+            : OS.GetLocaleLanguage();
+
+        for (int i = 0; i < Languages.Length; i++)
+        {
+            if (Languages[i].Code == currentLocale)
+            {
+                _languageDropdown.Select(i);
+                return;
+            }
+        }
+        _languageDropdown.Select(0);
+    }
+
+    private void OnLanguageSelected(long index)
+    {
+        TranslationSystem.SetLocale(Languages[index].Code);
+
+        _resolutionDropdown.SetItemText(0, TranslationSystem.Tr("ui.options.resolution.window"));
+        _resolutionDropdown.SetItemText(1, TranslationSystem.Tr("ui.options.resolution.fullscreen"));
+    }
+
 
     private void SyncResolutionDropdown()
     {

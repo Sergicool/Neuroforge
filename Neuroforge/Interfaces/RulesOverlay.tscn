@@ -30,6 +30,10 @@ region = Rect2(384, 0, 32, 32)
 atlas = SubResource("CompressedTexture2D_4yjt8")
 region = Rect2(384, 32, 32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_4yjt8"]
+atlas = SubResource("CompressedTexture2D_4yjt8")
+region = Rect2(384, 32, 32, 32)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_6h1ot"]
 atlas = SubResource("CompressedTexture2D_4yjt8")
 region = Rect2(96, 0, 32, 32)
@@ -81,14 +85,6 @@ region = Rect2(64, 0, 32, 32)
 [sub_resource type="AtlasTexture" id="AtlasTexture_k04bo"]
 atlas = ExtResource("5_dcdb4")
 region = Rect2(48, 0, 48, 48)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_s2mht"]
-atlas = SubResource("CompressedTexture2D_4yjt8")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_a0vpd"]
-atlas = SubResource("CompressedTexture2D_4yjt8")
-region = Rect2(384, 32, 32, 32)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_yrnu3"]
 
@@ -292,7 +288,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_600gv")
 
-[node name="BackButton" type="Button" parent="PopUp" unique_id=1406849834]
+[node name="BackButton" type="Button" parent="PopUp" unique_id=1406849834 groups=["translatable"]]
 layout_mode = 0
 offset_left = 65.0
 offset_top = 10.0
@@ -301,6 +297,7 @@ offset_bottom = 41.0
 theme = ExtResource("2_281x5")
 text = "Go Back"
 icon = ExtResource("3_2gm7s")
+metadata/tr = "ui.rules.back"
 
 [node name="TabContainer" type="TabContainer" parent="PopUp" unique_id=1846786732]
 layout_mode = 1
@@ -315,7 +312,6 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("2_281x5")
 theme_override_constants/tab_separation = 0
-theme_override_constants/outline_size = 6
 theme_override_font_sizes/font_size = 20
 tab_alignment = 1
 current_tab = 0
@@ -331,7 +327,7 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_smjmi")
 metadata/_tab_index = 0
 metadata/_tab_name = " Objective "
 
-[node name="RichTextLabel" type="RichTextLabel" parent="PopUp/TabContainer/Tab1" unique_id=1671890938]
+[node name="RichTextLabel" type="RichTextLabel" parent="PopUp/TabContainer/Tab1" unique_id=1671890938 groups=["translatable"]]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -341,100 +337,125 @@ offset_right = -14.0
 offset_bottom = 49.0
 grow_horizontal = 2
 size_flags_vertical = 0
-theme_override_constants/outline_size = 6
+theme_override_constants/line_separation = 0
 theme_override_font_sizes/normal_font_size = 20
 text = "Commander, you have an army of 40 units. Your main objective is to destroy the enemy Energy Core or leave him without any possible movements."
 fit_content = true
+metadata/tr = "ui.rules.tab.0.text.1"
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="PopUp/TabContainer/Tab1" unique_id=1220908717]
+[node name="RichTextLabel2" type="RichTextLabel" parent="PopUp/TabContainer/Tab1" unique_id=1220908717 groups=["translatable"]]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_left = 19.0
 offset_top = 114.0
 offset_right = -4.0
-offset_bottom = 290.0
+offset_bottom = 136.0
 grow_horizontal = 2
 size_flags_vertical = 0
-theme_override_constants/outline_size = 6
 theme_override_font_sizes/normal_font_size = 20
 text = "Important to know:
 
-- The game is turn-based. You can only perform one action per turn, attack or move.
+1. The game is turn-based. You can only perform one action per turn, attack or move.
 
-- The identities of your pieces will be unknown to the enemy, just as you will not know theirs. Their identities will be revealed once they enter in combat."
+2. The identities of your pieces will be unknown to the enemy, just as you will not know theirs. Their identities will be revealed once they enter in combat."
 fit_content = true
+metadata/tr = "ui.rules.tab.0.text.2"
 
 [node name="TextureRect" type="TextureRect" parent="PopUp/TabContainer/Tab1" unique_id=1106262532]
 layout_mode = 0
 offset_left = 148.0
-offset_top = 357.0
+offset_top = 319.0
 offset_right = 180.0
-offset_bottom = 389.0
+offset_bottom = 351.0
 scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_3f65f")
 
 [node name="TextureRect2" type="TextureRect" parent="PopUp/TabContainer/Tab1" unique_id=281749090]
 layout_mode = 0
 offset_left = 228.0
-offset_top = 357.0
+offset_top = 319.0
 offset_right = 260.0
-offset_bottom = 389.0
+offset_bottom = 351.0
 scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_70de8")
 
 [node name="Arrow" type="TextureRect" parent="PopUp/TabContainer/Tab1" unique_id=78538648]
 layout_mode = 0
 offset_left = 317.0
-offset_top = 357.0
+offset_top = 319.0
 offset_right = 349.0
-offset_bottom = 389.0
+offset_bottom = 351.0
 scale = Vector2(2, 2)
 texture = ExtResource("3_2gm7s")
 flip_h = true
 
-[node name="Label3" type="Label" parent="PopUp/TabContainer/Tab1" unique_id=324478050]
+[node name="Label3" type="Label" parent="PopUp/TabContainer/Tab1" unique_id=324478050 groups=["translatable"]]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_left = 399.0
-offset_top = 364.0
+offset_top = 326.0
 offset_right = -412.0
-offset_bottom = 414.0
+offset_bottom = 376.0
 grow_horizontal = 2
 size_flags_vertical = 0
-theme_override_constants/outline_size = 6
 theme_override_font_sizes/font_size = 32
 text = "Combat"
 horizontal_alignment = 1
+metadata/tr = "ui.rules.tab.0.text.3"
 
 [node name="Arrow2" type="TextureRect" parent="PopUp/TabContainer/Tab1" unique_id=2058226409]
 layout_mode = 0
 offset_left = 583.0
-offset_top = 357.0
+offset_top = 319.0
 offset_right = 615.0
-offset_bottom = 389.0
+offset_bottom = 351.0
 scale = Vector2(2, 2)
 texture = ExtResource("3_2gm7s")
 flip_h = true
 
+[node name="TextureRect5" type="TextureRect" parent="PopUp/TabContainer/Tab1" unique_id=605493738]
+layout_mode = 0
+offset_left = 665.0
+offset_top = 314.0
+offset_right = 702.0
+offset_bottom = 351.0
+scale = Vector2(2, 2)
+texture = SubResource("AtlasTexture_4yjt8")
+
 [node name="TextureRect3" type="TextureRect" parent="PopUp/TabContainer/Tab1" unique_id=1145910416]
 layout_mode = 0
 offset_left = 670.0
-offset_top = 357.0
+offset_top = 319.0
 offset_right = 702.0
-offset_bottom = 389.0
+offset_bottom = 351.0
 scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_6h1ot")
 
 [node name="TextureRect4" type="TextureRect" parent="PopUp/TabContainer/Tab1" unique_id=1056506125]
 layout_mode = 0
 offset_left = 750.0
-offset_top = 357.0
+offset_top = 319.0
 offset_right = 782.0
-offset_bottom = 389.0
+offset_bottom = 351.0
 scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_6ncap")
+
+[node name="RichTextLabel5" type="RichTextLabel" parent="PopUp/TabContainer/Tab1" unique_id=466254276 groups=["translatable"]]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 178.0
+offset_top = 410.0
+offset_right = -163.0
+offset_bottom = 476.0
+grow_horizontal = 2
+size_flags_vertical = 0
+theme_override_font_sizes/normal_font_size = 20
+text = "The pieces of your side that are known to the enemy will be marked by an orange square. "
+fit_content = true
+metadata/tr = "ui.rules.tab.0.text.4"
 
 [node name="Tab2" type="Panel" parent="PopUp/TabContainer" unique_id=1438035175]
 visible = false
@@ -443,7 +464,7 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_smjmi")
 metadata/_tab_index = 1
 metadata/_tab_name = " Board "
 
-[node name="RichTextLabel" type="RichTextLabel" parent="PopUp/TabContainer/Tab2" unique_id=547062669]
+[node name="RichTextLabel" type="RichTextLabel" parent="PopUp/TabContainer/Tab2" unique_id=547062669 groups=["translatable"]]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -453,31 +474,31 @@ offset_right = 6.0
 offset_bottom = 71.0
 grow_horizontal = 2
 size_flags_vertical = 0
-theme_override_constants/outline_size = 6
 theme_override_font_sizes/normal_font_size = 20
 text = "At the start, you must place your pieces on the designated tiles. Once your placement is confirmed, the enemy will do the same, and the game will begin."
 fit_content = true
+metadata/tr = "ui.rules.tab.1.text.1"
 
-[node name="Label3" type="Label" parent="PopUp/TabContainer/Tab2" unique_id=1945888967]
+[node name="Label3" type="Label" parent="PopUp/TabContainer/Tab2" unique_id=1945888967 groups=["translatable"]]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -147.5
+offset_left = -183.0
 offset_top = -159.0
-offset_right = 147.5
+offset_right = 183.0
 offset_bottom = -109.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 0
-theme_override_constants/outline_size = 6
 theme_override_font_sizes/font_size = 32
 text = "Types of Tiles"
 horizontal_alignment = 1
+metadata/tr = "ui.rules.tab.1.text.2"
 
-[node name="Label4" type="Label" parent="PopUp/TabContainer/Tab2" unique_id=924782190]
+[node name="Label4" type="Label" parent="PopUp/TabContainer/Tab2" unique_id=924782190 groups=["translatable"]]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -491,12 +512,12 @@ offset_bottom = -18.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 0
-theme_override_constants/outline_size = 6
 theme_override_font_sizes/font_size = 24
 text = "Transitable"
 horizontal_alignment = 1
+metadata/tr = "ui.rules.tab.1.text.3"
 
-[node name="Label5" type="Label" parent="PopUp/TabContainer/Tab2" unique_id=2118968480]
+[node name="Label5" type="Label" parent="PopUp/TabContainer/Tab2" unique_id=2118968480 groups=["translatable"]]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -510,12 +531,12 @@ offset_bottom = -18.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 0
-theme_override_constants/outline_size = 6
 theme_override_font_sizes/font_size = 24
 text = "Untransitable"
 horizontal_alignment = 1
+metadata/tr = "ui.rules.tab.1.text.4"
 
-[node name="Label6" type="Label" parent="PopUp/TabContainer/Tab2" unique_id=1699556810]
+[node name="Label6" type="Label" parent="PopUp/TabContainer/Tab2" unique_id=1699556810 groups=["translatable"]]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -529,10 +550,10 @@ offset_bottom = -18.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 0
-theme_override_constants/outline_size = 6
 theme_override_font_sizes/font_size = 24
 text = "Deployment"
 horizontal_alignment = 1
+metadata/tr = "ui.rules.tab.1.text.5"
 
 [node name="TextureRect" type="TextureRect" parent="PopUp/TabContainer/Tab2" unique_id=1916317874]
 layout_mode = 0
@@ -711,54 +732,55 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_smjmi")
 metadata/_tab_index = 2
 metadata/_tab_name = " Movement "
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="PopUp/TabContainer/Tab3" unique_id=2122387933]
+[node name="RichTextLabel2" type="RichTextLabel" parent="PopUp/TabContainer/Tab3" unique_id=2122387933 groups=["translatable"]]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_left = 19.0
 offset_top = 5.0
-offset_right = -346.0
+offset_right = -319.0
 offset_bottom = 71.0
 grow_horizontal = 2
 size_flags_vertical = 0
-theme_override_constants/outline_size = 6
 theme_override_font_sizes/normal_font_size = 20
 text = "As a general rule, pieces move one square orthogonally (up, down, left, right). There is no diagonal movement."
 fit_content = true
+metadata/tr = "ui.rules.tab.2.text.1"
 
-[node name="RichTextLabel3" type="RichTextLabel" parent="PopUp/TabContainer/Tab3" unique_id=1229443189]
+[node name="RichTextLabel3" type="RichTextLabel" parent="PopUp/TabContainer/Tab3" unique_id=1229443189 groups=["translatable"]]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_left = 19.0
 offset_top = 115.0
-offset_right = -376.0
+offset_right = -336.0
 offset_bottom = 225.0
 grow_horizontal = 2
 size_flags_vertical = 0
-theme_override_constants/outline_size = 6
 theme_override_font_sizes/normal_font_size = 20
-text = "Your recognition unit (The SCOUT) can move any distance in a straight line, but if it advances more than one square, your opponent might be able to deduce what type of piece it is."
+bbcode_enabled = true
+text = "Your recognition unit (The [color=orange]Scout[/color]) can move any distance in a straight line, but if it advances more than one square, your opponent might be able to deduce what type of piece it is."
 fit_content = true
+metadata/tr = "ui.rules.tab.2.text.2"
 
-[node name="RichTextLabel4" type="RichTextLabel" parent="PopUp/TabContainer/Tab3" unique_id=1389558388]
+[node name="RichTextLabel4" type="RichTextLabel" parent="PopUp/TabContainer/Tab3" unique_id=1389558388 groups=["translatable"]]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_left = 19.0
 offset_top = 282.0
-offset_right = -376.0
+offset_right = -317.0
 offset_bottom = 458.0
 grow_horizontal = 2
 size_flags_vertical = 0
-theme_override_constants/outline_size = 6
 theme_override_font_sizes/normal_font_size = 20
 text = "Restrictions:
 
-- You cannot jump over pieces (your own or your opponent's). Carefull with this rule, you can stuck a piece for the next turn.
+1. You cannot jump over pieces (your own or your opponent's).
 
-- A piece cannot return to a square it has just left until after 3 turns."
+2. A piece cannot move back and force between more of 3 turns, at the 4th the pice can't go back until next turn."
 fit_content = true
+metadata/tr = "ui.rules.tab.2.text.3"
 
 [node name="GridContainer" type="GridContainer" parent="PopUp/TabContainer/Tab3" unique_id=122375494]
 layout_mode = 1
@@ -1074,155 +1096,95 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_smjmi")
 metadata/_tab_index = 3
 metadata/_tab_name = " Combat "
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="PopUp/TabContainer/Tab4" unique_id=1033289120]
+[node name="RichTextLabel2" type="RichTextLabel" parent="PopUp/TabContainer/Tab4" unique_id=1033289120 groups=["translatable"]]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_left = 19.0
 offset_top = 5.0
-offset_right = -31.0
-offset_bottom = 71.0
+offset_right = 3.0
+offset_bottom = 203.0
 grow_horizontal = 2
 size_flags_vertical = 0
-theme_override_constants/outline_size = 6
 theme_override_font_sizes/normal_font_size = 20
-text = "A combat begins when you move your piece to a tile occupied by the enemy, and vice versa. Both identities are revealed."
+text = "A combat begins when a piece moves to a tile occupied by the rival. Both identities are revealed. A combat is decided in the following way:
+
+1. The Higher Rank piece defeats the Lower Rank piece.
+2. If the ranks are equal, ends in a draw and both pieces are destroyed.
+3. In case of a special interaction, the other conditions will be ignored.
+
+The winner keeps the tile. If the attacker wins, they advance, and if the defender wins, they stay in their place.
+"
 fit_content = true
+metadata/tr = "ui.rules.tab.3.text.1"
 
-[node name="TextureRect" type="TextureRect" parent="PopUp/TabContainer/Tab4" unique_id=2065505159]
-layout_mode = 0
-offset_left = 804.0
-offset_top = 46.0
-offset_right = 852.0
-offset_bottom = 94.0
-texture = SubResource("AtlasTexture_tbltk")
-
-[node name="TextureRect2" type="TextureRect" parent="PopUp/TabContainer/Tab4/TextureRect" unique_id=1216052253]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -16.0
-offset_top = -16.0
-offset_right = 16.0
-offset_bottom = 16.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("AtlasTexture_s2mht")
-
-[node name="TextureRect3" type="TextureRect" parent="PopUp/TabContainer/Tab4" unique_id=693011043]
-layout_mode = 0
-offset_left = 852.0
-offset_top = 46.0
-offset_right = 900.0
-offset_bottom = 94.0
-texture = SubResource("AtlasTexture_tbltk")
-
-[node name="TextureRect2" type="TextureRect" parent="PopUp/TabContainer/Tab4/TextureRect3" unique_id=734503250]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -16.0
-offset_top = -16.0
-offset_right = 16.0
-offset_bottom = 16.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("AtlasTexture_a0vpd")
-
-[node name="Marker" type="AnimatedSprite2D" parent="PopUp/TabContainer/Tab4/TextureRect3" unique_id=219905717]
-modulate = Color(1, 0.14058948, 0.14805025, 1)
-z_index = 2
-position = Vector2(24, 24)
-sprite_frames = ExtResource("8_mvfy0")
-autoplay = "default"
-frame_progress = 0.5116953
-
-[node name="RichTextLabel3" type="RichTextLabel" parent="PopUp/TabContainer/Tab4" unique_id=1235044733]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_left = 19.0
-offset_top = 67.0
-offset_right = -28.0
-offset_bottom = 287.0
-grow_horizontal = 2
-size_flags_vertical = 0
-theme_override_constants/outline_size = 6
-theme_override_font_sizes/normal_font_size = 20
-text = "A combat is decided in the following way:
-
-- The Higher Rank piece defeats the Lower Rank piece.
-- If the ranks are equal, ends in a draw and both pieces are destroyed.
-- In case of a special interaction, the other conditions will be ignored.
-
-The winner keeps the tile. If the attacker wins, they advance, and if the defender wins, they stay in their place."
-fit_content = true
-
-[node name="Label" type="Label" parent="PopUp/TabContainer/Tab4" unique_id=512089666]
+[node name="Label" type="Label" parent="PopUp/TabContainer/Tab4" unique_id=512089666 groups=["translatable"]]
 layout_mode = 0
 offset_left = 46.0
-offset_top = 297.0
-offset_right = 253.0
-offset_bottom = 335.0
+offset_top = 281.0
+offset_right = 254.0
+offset_bottom = 319.0
 theme_override_font_sizes/font_size = 20
 text = "Combat by rank"
-
-[node name="Label2" type="Label" parent="PopUp/TabContainer/Tab4" unique_id=1993574700]
-layout_mode = 0
-offset_left = 328.0
-offset_top = 309.0
-offset_right = 521.0
-offset_bottom = 369.0
-theme_override_styles/normal = SubResource("StyleBoxEmpty_yrnu3")
-text = "Turret vs any piece
-(except saboteur)"
 horizontal_alignment = 1
-autowrap_mode = 3
+metadata/tr = "ui.rules.tab.3.text.3"
 
-[node name="Label3" type="Label" parent="PopUp/TabContainer/Tab4" unique_id=1642180513]
+[node name="Label2" type="RichTextLabel" parent="PopUp/TabContainer/Tab4" unique_id=644553005 groups=["translatable"]]
 layout_mode = 0
-offset_left = 768.0
-offset_top = 309.0
-offset_right = 961.0
-offset_bottom = 369.0
+offset_left = 313.0
+offset_top = 300.0
+offset_right = 544.0
+offset_bottom = 337.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_yrnu3")
-text = "Phantom attacks the War Machine
-(Not defend)"
+bbcode_enabled = true
+text = "[color=orange]Turret[/color] vs any piece
+(except [color=orange]saboteur[/color])"
 horizontal_alignment = 1
-autowrap_mode = 3
+metadata/tr = "ui.rules.tab.3.text.4"
 
-[node name="Label4" type="Label" parent="PopUp/TabContainer/Tab4" unique_id=446025150]
+[node name="Label3" type="RichTextLabel" parent="PopUp/TabContainer/Tab4" unique_id=645419953 groups=["translatable"]]
 layout_mode = 0
-offset_left = 545.0
-offset_top = 322.0
-offset_right = 738.0
-offset_bottom = 361.0
+offset_left = 746.0
+offset_top = 290.0
+offset_right = 987.0
+offset_bottom = 345.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_yrnu3")
-text = "Saboteur VS TURRET"
+bbcode_enabled = true
+text = "[color=orange]Phantom[/color] [color=crimson]attacks[/color]
+the [color=orange]War Machine[/color]
+(Not [color=skyblue]defend[/color])"
 horizontal_alignment = 1
-autowrap_mode = 3
+metadata/tr = "ui.rules.tab.3.text.6"
+
+[node name="Label4" type="RichTextLabel" parent="PopUp/TabContainer/Tab4" unique_id=1089610004 groups=["translatable"]]
+layout_mode = 0
+offset_left = 546.0
+offset_top = 291.0
+offset_right = 737.0
+offset_bottom = 345.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_yrnu3")
+bbcode_enabled = true
+text = "[color=orange]Saboteur[/color]
+VS
+[color=orange]turret[/color]"
+horizontal_alignment = 1
+metadata/tr = "ui.rules.tab.3.text.5"
 
 [node name="TextureRect25" type="TextureRect" parent="PopUp/TabContainer/Tab4" unique_id=881828506]
 layout_mode = 0
 offset_left = 353.0
-offset_top = 374.0
+offset_top = 358.0
 offset_right = 385.0
-offset_bottom = 406.0
+offset_bottom = 390.0
 scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_fqja6")
 
 [node name="TextureRect27" type="TextureRect" parent="PopUp/TabContainer/Tab4" unique_id=1710872348]
 layout_mode = 0
 offset_left = 430.0
-offset_top = 374.0
+offset_top = 358.0
 offset_right = 462.0
-offset_bottom = 406.0
+offset_bottom = 390.0
 scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_e5sy4")
 
@@ -1230,9 +1192,9 @@ texture = SubResource("AtlasTexture_e5sy4")
 modulate = Color(1, 0.9566903, 0.2957908, 1)
 layout_mode = 0
 offset_left = 361.99997
-offset_top = 442.0
+offset_top = 426.00003
 offset_right = 393.99997
-offset_bottom = 474.0
+offset_bottom = 458.00003
 scale = Vector2(1.4, 1.4)
 texture = ExtResource("9_yvu6n")
 
@@ -1240,36 +1202,37 @@ texture = ExtResource("9_yvu6n")
 modulate = Color(1, 0.25069177, 0.17597568, 1)
 layout_mode = 0
 offset_left = 439.0
-offset_top = 443.0
+offset_top = 427.0
 offset_right = 471.0
-offset_bottom = 475.0
+offset_bottom = 459.0
 scale = Vector2(1.4, 1.4)
 texture = ExtResource("10_7ibit")
 
-[node name="Label5" type="Label" parent="PopUp/TabContainer/Tab4" unique_id=1968956632]
+[node name="Label5" type="Label" parent="PopUp/TabContainer/Tab4" unique_id=1968956632 groups=["translatable"]]
 layout_mode = 0
 offset_left = 510.0
-offset_top = 262.0
-offset_right = 779.0
-offset_bottom = 300.0
+offset_top = 236.0
+offset_right = 785.0
+offset_bottom = 274.0
 theme_override_font_sizes/font_size = 20
 text = "Special interactions"
+metadata/tr = "ui.rules.tab.3.text.2"
 
 [node name="TextureRect30" type="TextureRect" parent="PopUp/TabContainer/Tab4" unique_id=461379292]
 layout_mode = 0
 offset_left = 574.0
-offset_top = 374.0
+offset_top = 358.0
 offset_right = 606.0
-offset_bottom = 406.0
+offset_bottom = 390.0
 scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_jih4g")
 
 [node name="TextureRect32" type="TextureRect" parent="PopUp/TabContainer/Tab4" unique_id=911015431]
 layout_mode = 0
 offset_left = 651.0
-offset_top = 374.0
+offset_top = 358.0
 offset_right = 683.0
-offset_bottom = 406.0
+offset_bottom = 390.0
 scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_qknee")
 
@@ -1277,9 +1240,9 @@ texture = SubResource("AtlasTexture_qknee")
 modulate = Color(1, 0.9566903, 0.2957908, 1)
 layout_mode = 0
 offset_left = 582.99994
-offset_top = 442.0
+offset_top = 426.00003
 offset_right = 614.99994
-offset_bottom = 474.0
+offset_bottom = 458.00003
 scale = Vector2(1.4, 1.4)
 texture = ExtResource("9_yvu6n")
 
@@ -1287,27 +1250,27 @@ texture = ExtResource("9_yvu6n")
 modulate = Color(1, 0.25069177, 0.17597568, 1)
 layout_mode = 0
 offset_left = 659.99994
-offset_top = 443.0
+offset_top = 427.0
 offset_right = 691.99994
-offset_bottom = 475.0
+offset_bottom = 459.0
 scale = Vector2(1.4, 1.4)
 texture = ExtResource("10_7ibit")
 
 [node name="TextureRect35" type="TextureRect" parent="PopUp/TabContainer/Tab4" unique_id=108182918]
 layout_mode = 0
 offset_left = 796.0
-offset_top = 374.0
+offset_top = 358.0
 offset_right = 828.0
-offset_bottom = 406.0
+offset_bottom = 390.0
 scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_koaka")
 
 [node name="TextureRect36" type="TextureRect" parent="PopUp/TabContainer/Tab4" unique_id=661110720]
 layout_mode = 0
 offset_left = 873.0
-offset_top = 374.0
+offset_top = 358.0
 offset_right = 905.0
-offset_bottom = 406.0
+offset_bottom = 390.0
 scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_xn6lu")
 
@@ -1315,9 +1278,9 @@ texture = SubResource("AtlasTexture_xn6lu")
 modulate = Color(1, 0.9566903, 0.2957908, 1)
 layout_mode = 0
 offset_left = 804.99994
-offset_top = 442.0
+offset_top = 426.00003
 offset_right = 836.99994
-offset_bottom = 474.0
+offset_bottom = 458.00003
 scale = Vector2(1.4, 1.4)
 texture = ExtResource("9_yvu6n")
 
@@ -1325,9 +1288,9 @@ texture = ExtResource("9_yvu6n")
 modulate = Color(1, 0.21871096, 0.22617161, 1)
 layout_mode = 0
 offset_left = 754.0
-offset_top = 383.0
+offset_top = 367.00003
 offset_right = 786.0
-offset_bottom = 415.0
+offset_bottom = 399.00003
 scale = Vector2(1.4, 1.4)
 texture = ExtResource("11_dxjg2")
 
@@ -1335,9 +1298,9 @@ texture = ExtResource("11_dxjg2")
 modulate = Color(1, 0.25069177, 0.17597568, 1)
 layout_mode = 0
 offset_left = 881.99994
-offset_top = 443.0
+offset_top = 427.0
 offset_right = 913.99994
-offset_bottom = 475.0
+offset_bottom = 459.0
 scale = Vector2(1.4, 1.4)
 texture = ExtResource("10_7ibit")
 
@@ -1354,18 +1317,18 @@ texture = ExtResource("12_dcdb4")
 [node name="TextureRect19" type="TextureRect" parent="PopUp/TabContainer/Tab4" unique_id=868370102]
 layout_mode = 0
 offset_left = 79.0
-offset_top = 344.0
+offset_top = 328.0
 offset_right = 111.0
-offset_bottom = 376.0
+offset_bottom = 360.0
 scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_ew2o3")
 
 [node name="TextureRect20" type="TextureRect" parent="PopUp/TabContainer/Tab4" unique_id=120348321]
 layout_mode = 0
 offset_left = 156.0
-offset_top = 344.0
+offset_top = 328.0
 offset_right = 188.0
-offset_bottom = 376.0
+offset_bottom = 360.0
 scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_dh8ri")
 
@@ -1373,9 +1336,9 @@ texture = SubResource("AtlasTexture_dh8ri")
 modulate = Color(1, 0.9566903, 0.2957908, 1)
 layout_mode = 0
 offset_left = 31.000008
-offset_top = 355.0
+offset_top = 339.0
 offset_right = 63.000004
-offset_bottom = 387.0
+offset_bottom = 371.0
 scale = Vector2(1.4, 1.4)
 texture = ExtResource("9_yvu6n")
 
@@ -1383,47 +1346,47 @@ texture = ExtResource("9_yvu6n")
 modulate = Color(1, 0.25069177, 0.17597568, 1)
 layout_mode = 0
 offset_left = 225.0
-offset_top = 352.0
+offset_top = 336.00003
 offset_right = 257.0
-offset_bottom = 384.0
+offset_bottom = 368.00003
 scale = Vector2(1.4, 1.4)
 texture = ExtResource("10_7ibit")
 
 [node name="TextureRect23" type="TextureRect" parent="PopUp/TabContainer/Tab4" unique_id=668213037]
 layout_mode = 0
 offset_left = 80.00003
-offset_top = 418.0
+offset_top = 402.0
 offset_right = 112.00003
-offset_bottom = 450.0
+offset_bottom = 434.0
 scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_tbva2")
 
 [node name="TextureRect24" type="TextureRect" parent="PopUp/TabContainer/Tab4" unique_id=1412923288]
 layout_mode = 0
 offset_left = 157.00003
-offset_top = 418.0
+offset_top = 402.0
 offset_right = 189.00003
-offset_bottom = 450.0
+offset_bottom = 434.0
 scale = Vector2(2, 2)
 texture = SubResource("AtlasTexture_tfno3")
 
 [node name="TextureRect26" type="TextureRect" parent="PopUp/TabContainer/Tab4" unique_id=1149952331]
 modulate = Color(1, 0.25069177, 0.17597568, 1)
 layout_mode = 0
-offset_left = 223.99998
-offset_top = 426.0
-offset_right = 255.99998
-offset_bottom = 458.0
+offset_left = 223.99997
+offset_top = 410.0
+offset_right = 255.99997
+offset_bottom = 442.0
 scale = Vector2(1.4, 1.4)
 texture = ExtResource("10_7ibit")
 
 [node name="TextureRect31" type="TextureRect" parent="PopUp/TabContainer/Tab4" unique_id=2109479850]
 modulate = Color(1, 0.25069177, 0.17597568, 1)
 layout_mode = 0
-offset_left = 31.0
-offset_top = 426.0
-offset_right = 63.0
-offset_bottom = 458.0
+offset_left = 30.999996
+offset_top = 410.0
+offset_right = 62.999996
+offset_bottom = 442.0
 scale = Vector2(1.4, 1.4)
 texture = ExtResource("10_7ibit")
 
@@ -1684,6 +1647,7 @@ grow_vertical = 2
 texture = SubResource("AtlasTexture_m88yg")
 
 [node name="PiecePanel0" type="Panel" parent="PopUp/TabContainer/Tab5" unique_id=1487374787]
+visible = false
 layout_mode = 0
 offset_left = 340.0
 offset_top = 5.0
@@ -1691,7 +1655,7 @@ offset_right = 972.0
 offset_bottom = 470.0
 theme_override_styles/panel = ExtResource("11_281x5")
 
-[node name="Label" type="Label" parent="PopUp/TabContainer/Tab5/PiecePanel0" unique_id=2120715410]
+[node name="Label" type="Label" parent="PopUp/TabContainer/Tab5/PiecePanel0" unique_id=2120715410 groups=["translatable"]]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -1704,8 +1668,9 @@ grow_horizontal = 2
 theme_override_font_sizes/font_size = 24
 text = "Energy core"
 horizontal_alignment = 1
+metadata/tr = "ui.rules.tab.4.piece.1.text.0"
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel0" unique_id=1714934289]
+[node name="RichTextLabel2" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel0" unique_id=1714934289 groups=["translatable"]]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -1715,16 +1680,17 @@ offset_right = -31.0
 offset_bottom = 181.0
 grow_horizontal = 2
 size_flags_vertical = 0
-theme_override_constants/outline_size = 6
 theme_override_font_sizes/normal_font_size = 20
-text = "Ammount: 1
+bbcode_enabled = true
+text = "Ammount:  [color=skyblue]1[/color]
 
-Can Move: No
+Can Move:  [color=red]No[/color]
 
-Rank: 0"
+Rank:  [color=orange]0[/color]"
 fit_content = true
+metadata/tr = "ui.rules.tab.4.piece.1.text.1"
 
-[node name="RichTextLabel3" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel0" unique_id=1677237496]
+[node name="RichTextLabel3" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel0" unique_id=1677237496 groups=["translatable"]]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -1734,14 +1700,15 @@ offset_right = -31.0
 offset_bottom = 351.0
 grow_horizontal = 2
 size_flags_vertical = 0
-theme_override_constants/outline_size = 6
 theme_override_font_sizes/normal_font_size = 20
-text = "The vital heart of each faction. It is immobile and defenseless.
+bbcode_enabled = true
+text = "The  vital  heart  of  each  faction.  It  is  immobile  and  defenseless.
 
-Its destruction results in an immediate power collapse and total defeat.
+[color=crimson]Its  destruction  results  in  an  immediate  power  collapse  and  total  defeat[/color].
 
-Protect it at all costs."
+Protect  it  at  all  costs."
 fit_content = true
+metadata/tr = "ui.rules.tab.4.piece.1.text.2"
 
 [node name="TextureRect" type="TextureRect" parent="PopUp/TabContainer/Tab5/PiecePanel0" unique_id=107828794]
 layout_mode = 1
@@ -1784,7 +1751,7 @@ offset_right = 972.0
 offset_bottom = 470.0
 theme_override_styles/panel = ExtResource("11_281x5")
 
-[node name="Label" type="Label" parent="PopUp/TabContainer/Tab5/PiecePanel1" unique_id=122644665]
+[node name="Label" type="Label" parent="PopUp/TabContainer/Tab5/PiecePanel1" unique_id=122644665 groups=["translatable"]]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -1797,27 +1764,29 @@ grow_horizontal = 2
 theme_override_font_sizes/font_size = 24
 text = "Phantom"
 horizontal_alignment = 1
+metadata/tr = "ui.rules.tab.4.piece.2.text.0"
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel1" unique_id=2084248686]
+[node name="RichTextLabel2" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel1" unique_id=2084248686 groups=["translatable"]]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
 offset_left = 19.0
 offset_top = 71.0
 offset_right = -31.0
-offset_bottom = 181.0
+offset_bottom = 93.0
 grow_horizontal = 2
 size_flags_vertical = 0
-theme_override_constants/outline_size = 6
 theme_override_font_sizes/normal_font_size = 20
-text = "Ammount: 1
+bbcode_enabled = true
+text = "Ammount:  [color=skyblue]1[/color]
 
-Can Move: Yes
+Can Move:  [color=green]Yes[/color]
 
-Rank: 1"
+Rank:  [color=orange]1[/color]"
 fit_content = true
+metadata/tr = "ui.rules.tab.4.piece.2.text.1"
 
-[node name="RichTextLabel3" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel1" unique_id=1969146738]
+[node name="RichTextLabel3" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel1" unique_id=1969146738 groups=["translatable"]]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -1827,14 +1796,15 @@ offset_right = -31.0
 offset_bottom = 351.0
 grow_horizontal = 2
 size_flags_vertical = 0
-theme_override_constants/outline_size = 6
 theme_override_font_sizes/normal_font_size = 20
-text = "An agile drone designed for a single purpose: high-level infiltration.
+bbcode_enabled = true
+text = "An  agile  drone  designed  for  a  single  purpose:  high-level  infiltration.
 
-While it is the weakest unit in a fair fight, it can instantly destroy the enemy C.O.R.E. if it strikes first.
+While  it  is  the  weakest  unit  in  a  fair  fight,  it  [color=crimson]can  instantly  destroy  the  enemy  [color=orange]War Machine[/color]  if  it  strikes  first[/color].
 
 Make it count."
 fit_content = true
+metadata/tr = "ui.rules.tab.4.piece.2.text.2"
 
 [node name="TextureRect" type="TextureRect" parent="PopUp/TabContainer/Tab5/PiecePanel1" unique_id=1271973990]
 layout_mode = 1
@@ -1877,7 +1847,7 @@ offset_right = 972.0
 offset_bottom = 470.0
 theme_override_styles/panel = ExtResource("11_281x5")
 
-[node name="Label" type="Label" parent="PopUp/TabContainer/Tab5/PiecePanel2" unique_id=364003366]
+[node name="Label" type="Label" parent="PopUp/TabContainer/Tab5/PiecePanel2" unique_id=364003366 groups=["translatable"]]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -1890,8 +1860,9 @@ grow_horizontal = 2
 theme_override_font_sizes/font_size = 24
 text = "Scout"
 horizontal_alignment = 1
+metadata/tr = "ui.rules.tab.4.piece.3.text.0"
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel2" unique_id=476015817]
+[node name="RichTextLabel2" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel2" unique_id=476015817 groups=["translatable"]]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -1901,16 +1872,17 @@ offset_right = -31.0
 offset_bottom = 181.0
 grow_horizontal = 2
 size_flags_vertical = 0
-theme_override_constants/outline_size = 6
 theme_override_font_sizes/normal_font_size = 20
-text = "Ammount: 8
+bbcode_enabled = true
+text = "Ammount:  [color=skyblue]8[/color]
 
-Can Move: Yes
+Can Move:  [color=green]Yes[/color]
 
-Rank: 2"
+Rank:  [color=orange]2[/color]"
 fit_content = true
+metadata/tr = "ui.rules.tab.4.piece.3.text.1"
 
-[node name="RichTextLabel3" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel2" unique_id=1918883664]
+[node name="RichTextLabel3" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel2" unique_id=1918883664 groups=["translatable"]]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -1920,16 +1892,17 @@ offset_right = -31.0
 offset_bottom = 351.0
 grow_horizontal = 2
 size_flags_vertical = 0
-theme_override_constants/outline_size = 6
 theme_override_font_sizes/normal_font_size = 20
-text = "Agile reconnaissance drones.
+bbcode_enabled = true
+text = "Agile  reconnaissance  drones.
 
-They can move any number of tiles in a straight line (horizontal or vertical).
+They  [color=crimson]can  move  any  number  of  tiles  in  a  straight  line[/color]  horizontal  or  vertical.
 
-However, moving more than one piece at a time will spoil her identity, since she is the only one who has that type of movement.
+However, [color=crimson]moving them more than one tile at a time will spoil their identity[/color], since she is the only one who has that type of movement.
 
 Use them strategically"
 fit_content = true
+metadata/tr = "ui.rules.tab.4.piece.3.text.2"
 
 [node name="TextureRect" type="TextureRect" parent="PopUp/TabContainer/Tab5/PiecePanel2" unique_id=626795065]
 layout_mode = 1
@@ -1972,7 +1945,7 @@ offset_right = 972.0
 offset_bottom = 470.0
 theme_override_styles/panel = ExtResource("11_281x5")
 
-[node name="Label" type="Label" parent="PopUp/TabContainer/Tab5/PiecePanel3" unique_id=2042554201]
+[node name="Label" type="Label" parent="PopUp/TabContainer/Tab5/PiecePanel3" unique_id=2042554201 groups=["translatable"]]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -1985,8 +1958,9 @@ grow_horizontal = 2
 theme_override_font_sizes/font_size = 24
 text = "Saboteur"
 horizontal_alignment = 1
+metadata/tr = "ui.rules.tab.4.piece.4.text.0"
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel3" unique_id=686260086]
+[node name="RichTextLabel2" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel3" unique_id=686260086 groups=["translatable"]]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -1996,16 +1970,17 @@ offset_right = -31.0
 offset_bottom = 181.0
 grow_horizontal = 2
 size_flags_vertical = 0
-theme_override_constants/outline_size = 6
 theme_override_font_sizes/normal_font_size = 20
-text = "Ammount: 5
+bbcode_enabled = true
+text = "Ammount:  [color=skyblue]5[/color]
 
-Can Move: Yes
+Can Move:  [color=green]Yes[/color]
 
-Rank: 3"
+Rank:  [color=orange]3[/color]"
 fit_content = true
+metadata/tr = "ui.rules.tab.4.piece.4.text.1"
 
-[node name="RichTextLabel3" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel3" unique_id=250416155]
+[node name="RichTextLabel3" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel3" unique_id=250416155 groups=["translatable"]]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -2015,14 +1990,15 @@ offset_right = -31.0
 offset_bottom = 351.0
 grow_horizontal = 2
 size_flags_vertical = 0
-theme_override_constants/outline_size = 6
 theme_override_font_sizes/normal_font_size = 20
-text = "Specialized units equipped with high-tech camouflage.
+bbcode_enabled = true
+text = "Specialized  units  equipped  with  high-tech  camouflage.
 
-They are the only pieces capable of safely dismantling automated Turrets, though they are weak in standard combat.
+They  are  the  only  pieces  [color=crimson]capable  of  safely  dismantling  automated  [color=orange]Turrets[/color][/color],  though  they  are  weak  in  standard  combat.
 
-It wouldn't be a good idea to risk putting them in an unknown combat."
+It  wouldn't  be  a  good  idea  to  put  them  in  an  unknown  combat."
 fit_content = true
+metadata/tr = "ui.rules.tab.4.piece.4.text.2"
 
 [node name="TextureRect" type="TextureRect" parent="PopUp/TabContainer/Tab5/PiecePanel3" unique_id=282748319]
 layout_mode = 1
@@ -2065,7 +2041,7 @@ offset_right = 972.0
 offset_bottom = 470.0
 theme_override_styles/panel = ExtResource("11_281x5")
 
-[node name="Label" type="Label" parent="PopUp/TabContainer/Tab5/PiecePanel4" unique_id=757537369]
+[node name="Label" type="Label" parent="PopUp/TabContainer/Tab5/PiecePanel4" unique_id=757537369 groups=["translatable"]]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -2078,8 +2054,9 @@ grow_horizontal = 2
 theme_override_font_sizes/font_size = 24
 text = "Soldier"
 horizontal_alignment = 1
+metadata/tr = "ui.rules.tab.4.piece.5.text.0"
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel4" unique_id=779627053]
+[node name="RichTextLabel2" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel4" unique_id=779627053 groups=["translatable"]]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -2089,16 +2066,17 @@ offset_right = -31.0
 offset_bottom = 181.0
 grow_horizontal = 2
 size_flags_vertical = 0
-theme_override_constants/outline_size = 6
 theme_override_font_sizes/normal_font_size = 20
-text = "Ammount: 4
+bbcode_enabled = true
+text = "Ammount:  [color=skyblue]4[/color]
 
-Can Move: Yes
+Can Move:  [color=green]Yes[/color]
 
-Rank: 4"
+Rank:  [color=orange]4[/color]"
 fit_content = true
+metadata/tr = "ui.rules.tab.4.piece.5.text.1"
 
-[node name="RichTextLabel3" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel4" unique_id=915841766]
+[node name="RichTextLabel3" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel4" unique_id=915841766 groups=["translatable"]]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -2108,12 +2086,12 @@ offset_right = -31.0
 offset_bottom = 351.0
 grow_horizontal = 2
 size_flags_vertical = 0
-theme_override_constants/outline_size = 6
 theme_override_font_sizes/normal_font_size = 20
-text = "Standard human reinforcements used to hold the frontline.
+text = "Standard  human  reinforcements  used  to  hold  the  frontline.
 
-No special properties, just the weakest normal unit."
+No  special  properties,  just  the  weakest  normal  unit."
 fit_content = true
+metadata/tr = "ui.rules.tab.4.piece.5.text.2"
 
 [node name="TextureRect" type="TextureRect" parent="PopUp/TabContainer/Tab5/PiecePanel4" unique_id=1832195693]
 layout_mode = 1
@@ -2156,7 +2134,7 @@ offset_right = 972.0
 offset_bottom = 470.0
 theme_override_styles/panel = ExtResource("11_281x5")
 
-[node name="Label" type="Label" parent="PopUp/TabContainer/Tab5/PiecePanel5" unique_id=1559183797]
+[node name="Label" type="Label" parent="PopUp/TabContainer/Tab5/PiecePanel5" unique_id=1559183797 groups=["translatable"]]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -2169,8 +2147,9 @@ grow_horizontal = 2
 theme_override_font_sizes/font_size = 24
 text = "Cyborg"
 horizontal_alignment = 1
+metadata/tr = "ui.rules.tab.4.piece.6.text.0"
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel5" unique_id=303368742]
+[node name="RichTextLabel2" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel5" unique_id=303368742 groups=["translatable"]]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -2180,16 +2159,17 @@ offset_right = -31.0
 offset_bottom = 181.0
 grow_horizontal = 2
 size_flags_vertical = 0
-theme_override_constants/outline_size = 6
 theme_override_font_sizes/normal_font_size = 20
-text = "Ammount: 4
+bbcode_enabled = true
+text = "Ammount:  [color=skyblue]4[/color]
 
-Can Move: Yes
+Can Move:  [color=green]Yes[/color]
 
-Rank: 5"
+Rank:  [color=orange]5[/color]"
 fit_content = true
+metadata/tr = "ui.rules.tab.4.piece.6.text.1"
 
-[node name="RichTextLabel3" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel5" unique_id=1482533037]
+[node name="RichTextLabel3" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel5" unique_id=1482533037 groups=["translatable"]]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -2199,12 +2179,12 @@ offset_right = -31.0
 offset_bottom = 351.0
 grow_horizontal = 2
 size_flags_vertical = 0
-theme_override_constants/outline_size = 6
 theme_override_font_sizes/normal_font_size = 20
-text = "Fast and efficient soldiers enhanced with light cybernetic implants.
+text = "Fast  and  efficient  soldiers  enhanced  with  light  cybernetic  implants.
 
-No special properties."
+No  special  properties."
 fit_content = true
+metadata/tr = "ui.rules.tab.4.piece.6.text.2"
 
 [node name="TextureRect" type="TextureRect" parent="PopUp/TabContainer/Tab5/PiecePanel5" unique_id=144580955]
 layout_mode = 1
@@ -2247,7 +2227,7 @@ offset_right = 972.0
 offset_bottom = 470.0
 theme_override_styles/panel = ExtResource("11_281x5")
 
-[node name="Label" type="Label" parent="PopUp/TabContainer/Tab5/PiecePanel6" unique_id=795660805]
+[node name="Label" type="Label" parent="PopUp/TabContainer/Tab5/PiecePanel6" unique_id=795660805 groups=["translatable"]]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -2260,8 +2240,9 @@ grow_horizontal = 2
 theme_override_font_sizes/font_size = 24
 text = "Canine"
 horizontal_alignment = 1
+metadata/tr = "ui.rules.tab.4.piece.7.text.0"
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel6" unique_id=883767753]
+[node name="RichTextLabel2" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel6" unique_id=883767753 groups=["translatable"]]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -2271,16 +2252,17 @@ offset_right = -31.0
 offset_bottom = 181.0
 grow_horizontal = 2
 size_flags_vertical = 0
-theme_override_constants/outline_size = 6
 theme_override_font_sizes/normal_font_size = 20
-text = "Ammount: 4
+bbcode_enabled = true
+text = "Ammount:  [color=skyblue]4[/color]
 
-Can Move: Yes
+Can Move:  [color=green]Yes[/color]
 
-Rank: 6"
+Rank:  [color=orange]6[/color]"
 fit_content = true
+metadata/tr = "ui.rules.tab.4.piece.7.text.1"
 
-[node name="RichTextLabel3" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel6" unique_id=1939239258]
+[node name="RichTextLabel3" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel6" unique_id=1939239258 groups=["translatable"]]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -2290,12 +2272,12 @@ offset_right = -31.0
 offset_bottom = 351.0
 grow_horizontal = 2
 size_flags_vertical = 0
-theme_override_constants/outline_size = 6
 theme_override_font_sizes/normal_font_size = 20
-text = "High mobility mechanical quadrupeds designed for rapid interception.
+text = "High  mobility  mechanical  quadrupeds  designed  for  rapid  interception.
 
-No special properties."
+No  special  properties."
 fit_content = true
+metadata/tr = "ui.rules.tab.4.piece.7.text.2"
 
 [node name="TextureRect" type="TextureRect" parent="PopUp/TabContainer/Tab5/PiecePanel6" unique_id=945112962]
 layout_mode = 1
@@ -2338,7 +2320,7 @@ offset_right = 972.0
 offset_bottom = 470.0
 theme_override_styles/panel = ExtResource("11_281x5")
 
-[node name="Label" type="Label" parent="PopUp/TabContainer/Tab5/PiecePanel7" unique_id=516681523]
+[node name="Label" type="Label" parent="PopUp/TabContainer/Tab5/PiecePanel7" unique_id=516681523 groups=["translatable"]]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -2351,8 +2333,9 @@ grow_horizontal = 2
 theme_override_font_sizes/font_size = 24
 text = "Sentinel"
 horizontal_alignment = 1
+metadata/tr = "ui.rules.tab.4.piece.8.text.0"
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel7" unique_id=173952088]
+[node name="RichTextLabel2" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel7" unique_id=173952088 groups=["translatable"]]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -2362,16 +2345,17 @@ offset_right = -31.0
 offset_bottom = 181.0
 grow_horizontal = 2
 size_flags_vertical = 0
-theme_override_constants/outline_size = 6
 theme_override_font_sizes/normal_font_size = 20
-text = "Ammount: 3
+bbcode_enabled = true
+text = "Ammount:  [color=skyblue]3[/color]
 
-Can Move: Yes
+Can Move:  [color=green]Yes[/color]
 
-Rank: 7"
+Rank:  [color=orange]7[/color]"
 fit_content = true
+metadata/tr = "ui.rules.tab.4.piece.8.text.1"
 
-[node name="RichTextLabel3" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel7" unique_id=2110304799]
+[node name="RichTextLabel3" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel7" unique_id=2110304799 groups=["translatable"]]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -2381,12 +2365,12 @@ offset_right = -31.0
 offset_bottom = 351.0
 grow_horizontal = 2
 size_flags_vertical = 0
-theme_override_constants/outline_size = 6
 theme_override_font_sizes/normal_font_size = 20
-text = "Mechanized assault units optimized for combat and possessing a structural resistance superior to any human,
+text = "Mechanized  assault  units  optimized  for  combat  and  possessing  a  structural  resistance  superior  to  any  human.
 
-No special properties."
+No  special  properties."
 fit_content = true
+metadata/tr = "ui.rules.tab.4.piece.8.text.2"
 
 [node name="TextureRect" type="TextureRect" parent="PopUp/TabContainer/Tab5/PiecePanel7" unique_id=1650532208]
 layout_mode = 1
@@ -2429,7 +2413,7 @@ offset_right = 972.0
 offset_bottom = 470.0
 theme_override_styles/panel = ExtResource("11_281x5")
 
-[node name="Label" type="Label" parent="PopUp/TabContainer/Tab5/PiecePanel8" unique_id=1700519335]
+[node name="Label" type="Label" parent="PopUp/TabContainer/Tab5/PiecePanel8" unique_id=1700519335 groups=["translatable"]]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -2442,8 +2426,9 @@ grow_horizontal = 2
 theme_override_font_sizes/font_size = 24
 text = "Mecha"
 horizontal_alignment = 1
+metadata/tr = "ui.rules.tab.4.piece.9.text.0"
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel8" unique_id=1530103648]
+[node name="RichTextLabel2" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel8" unique_id=1530103648 groups=["translatable"]]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -2453,16 +2438,17 @@ offset_right = -31.0
 offset_bottom = 181.0
 grow_horizontal = 2
 size_flags_vertical = 0
-theme_override_constants/outline_size = 6
 theme_override_font_sizes/normal_font_size = 20
-text = "Ammount: 2
+bbcode_enabled = true
+text = "Ammount:  [color=skyblue]2[/color]
 
-Can Move: Yes
+Can Move:  [color=green]Yes[/color]
 
-Rank: 8"
+Rank:  [color=orange]8[/color]"
 fit_content = true
+metadata/tr = "ui.rules.tab.4.piece.9.text.1"
 
-[node name="RichTextLabel3" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel8" unique_id=488570394]
+[node name="RichTextLabel3" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel8" unique_id=488570394 groups=["translatable"]]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -2472,12 +2458,12 @@ offset_right = -31.0
 offset_bottom = 351.0
 grow_horizontal = 2
 size_flags_vertical = 0
-theme_override_constants/outline_size = 6
 theme_override_font_sizes/normal_font_size = 20
-text = "Heavy-duty robots built to endure and dominate in direct engagement.
+text = "Heavy-duty  robots  built  to  endure  and  dominate  in  direct  engagement.
 
-No special properties."
+No  special  properties."
 fit_content = true
+metadata/tr = "ui.rules.tab.4.piece.9.text.2"
 
 [node name="TextureRect" type="TextureRect" parent="PopUp/TabContainer/Tab5/PiecePanel8" unique_id=714466131]
 layout_mode = 1
@@ -2520,7 +2506,7 @@ offset_right = 972.0
 offset_bottom = 470.0
 theme_override_styles/panel = ExtResource("11_281x5")
 
-[node name="Label" type="Label" parent="PopUp/TabContainer/Tab5/PiecePanel9" unique_id=900613853]
+[node name="Label" type="Label" parent="PopUp/TabContainer/Tab5/PiecePanel9" unique_id=900613853 groups=["translatable"]]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -2533,8 +2519,9 @@ grow_horizontal = 2
 theme_override_font_sizes/font_size = 24
 text = "Nova"
 horizontal_alignment = 1
+metadata/tr = "ui.rules.tab.4.piece.10.text.0"
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel9" unique_id=1772294108]
+[node name="RichTextLabel2" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel9" unique_id=1772294108 groups=["translatable"]]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -2544,16 +2531,17 @@ offset_right = -31.0
 offset_bottom = 181.0
 grow_horizontal = 2
 size_flags_vertical = 0
-theme_override_constants/outline_size = 6
 theme_override_font_sizes/normal_font_size = 20
-text = "Ammount: 1
+bbcode_enabled = true
+text = "Ammount:  [color=skyblue]1[/color]
 
-Can Move: Yes
+Can Move:  [color=green]Yes[/color]
 
-Rank: 9"
+Rank:  [color=orange]9[/color]"
 fit_content = true
+metadata/tr = "ui.rules.tab.4.piece.10.text.1"
 
-[node name="RichTextLabel3" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel9" unique_id=2092703980]
+[node name="RichTextLabel3" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel9" unique_id=2092703980 groups=["translatable"]]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -2563,12 +2551,12 @@ offset_right = -31.0
 offset_bottom = 351.0
 grow_horizontal = 2
 size_flags_vertical = 0
-theme_override_constants/outline_size = 6
 theme_override_font_sizes/normal_font_size = 20
-text = "A high-ranking cyborg guard with nearly non-existent organic parts.
+text = "A  high-ranking  cyborg  guard  with  nearly  non-existent  organic  parts.
 
-No special properties."
+No  special  properties."
 fit_content = true
+metadata/tr = "ui.rules.tab.4.piece.10.text.2"
 
 [node name="TextureRect" type="TextureRect" parent="PopUp/TabContainer/Tab5/PiecePanel9" unique_id=1157745864]
 layout_mode = 1
@@ -2611,7 +2599,7 @@ offset_right = 972.0
 offset_bottom = 470.0
 theme_override_styles/panel = ExtResource("11_281x5")
 
-[node name="Label" type="Label" parent="PopUp/TabContainer/Tab5/PiecePanel10" unique_id=1886975176]
+[node name="Label" type="Label" parent="PopUp/TabContainer/Tab5/PiecePanel10" unique_id=1886975176 groups=["translatable"]]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -2624,8 +2612,9 @@ grow_horizontal = 2
 theme_override_font_sizes/font_size = 24
 text = "War machine"
 horizontal_alignment = 1
+metadata/tr = "ui.rules.tab.4.piece.11.text.0"
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel10" unique_id=519336033]
+[node name="RichTextLabel2" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel10" unique_id=519336033 groups=["translatable"]]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -2635,16 +2624,17 @@ offset_right = -31.0
 offset_bottom = 181.0
 grow_horizontal = 2
 size_flags_vertical = 0
-theme_override_constants/outline_size = 6
 theme_override_font_sizes/normal_font_size = 20
-text = "Ammount: 1
+bbcode_enabled = true
+text = "Ammount:  [color=skyblue]1[/color]
 
-Can Move: Yes
+Can Move:  [color=green]Yes[/color]
 
-Rank: 10"
+Rank:  [color=orange]10[/color]"
 fit_content = true
+metadata/tr = "ui.rules.tab.4.piece.11.text.1"
 
-[node name="RichTextLabel3" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel10" unique_id=2019903822]
+[node name="RichTextLabel3" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel10" unique_id=2019903822 groups=["translatable"]]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -2654,12 +2644,13 @@ offset_right = -31.0
 offset_bottom = 351.0
 grow_horizontal = 2
 size_flags_vertical = 0
-theme_override_constants/outline_size = 6
 theme_override_font_sizes/normal_font_size = 20
-text = "Massive mecha piloted by the faction's supreme AI.
+bbcode_enabled = true
+text = "Massive  mecha  piloted  by  the  faction's  supreme  AI.
 
-The most powerful unit on the battlefield, vulnerable only to the Phantom's malware attack"
+The  most  powerful  unit  on  the  battlefield,  [color=crimson]vulnerable  only  to  the  [color=orange]Phantom's[/color]  malware  attack[/color]."
 fit_content = true
+metadata/tr = "ui.rules.tab.4.piece.11.text.2"
 
 [node name="TextureRect" type="TextureRect" parent="PopUp/TabContainer/Tab5/PiecePanel10" unique_id=343812281]
 layout_mode = 1
@@ -2694,7 +2685,6 @@ scale = Vector2(4, 4)
 texture = SubResource("AtlasTexture_oejmk")
 
 [node name="PiecePanel11" type="Panel" parent="PopUp/TabContainer/Tab5" unique_id=907867355]
-visible = false
 layout_mode = 0
 offset_left = 340.0
 offset_top = 5.0
@@ -2702,7 +2692,7 @@ offset_right = 972.0
 offset_bottom = 470.0
 theme_override_styles/panel = ExtResource("11_281x5")
 
-[node name="Label" type="Label" parent="PopUp/TabContainer/Tab5/PiecePanel11" unique_id=90303674]
+[node name="Label" type="Label" parent="PopUp/TabContainer/Tab5/PiecePanel11" unique_id=90303674 groups=["translatable"]]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -2715,8 +2705,9 @@ grow_horizontal = 2
 theme_override_font_sizes/font_size = 24
 text = "Turret"
 horizontal_alignment = 1
+metadata/tr = "ui.rules.tab.4.piece.12.text.0"
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel11" unique_id=794680992]
+[node name="RichTextLabel2" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel11" unique_id=794680992 groups=["translatable"]]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -2726,16 +2717,17 @@ offset_right = -31.0
 offset_bottom = 181.0
 grow_horizontal = 2
 size_flags_vertical = 0
-theme_override_constants/outline_size = 6
 theme_override_font_sizes/normal_font_size = 20
-text = "Ammount: 6
+bbcode_enabled = true
+text = "Ammount:  [color=skyblue]6[/color]
 
-Can Move: No
+Can Move:  [color=red]No[/color]
 
-Rank: No"
+Rank:  [color=orange]-[/color]"
 fit_content = true
+metadata/tr = "ui.rules.tab.4.piece.12.text.1"
 
-[node name="RichTextLabel3" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel11" unique_id=1327432194]
+[node name="RichTextLabel3" type="RichTextLabel" parent="PopUp/TabContainer/Tab5/PiecePanel11" unique_id=1327432194 groups=["translatable"]]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -2745,12 +2737,13 @@ offset_right = -31.0
 offset_bottom = 351.0
 grow_horizontal = 2
 size_flags_vertical = 0
-theme_override_constants/outline_size = 6
 theme_override_font_sizes/normal_font_size = 20
-text = "Static defensive systems.
+bbcode_enabled = true
+text = "Static  defensive  systems.
 
-They automatically destroy any unit that attacks them regardless of rank, except for Saboteurs who can bypass and disable them."
+They  automatically  [color=crimson]destroy  any  unit  that  attacks  them[/color]  regardless  of  rank,  except  for  [color=orange]Saboteurs[/color]  who  can  bypass  and  disable  them."
 fit_content = true
+metadata/tr = "ui.rules.tab.4.piece.12.text.2"
 
 [node name="TextureRect" type="TextureRect" parent="PopUp/TabContainer/Tab5/PiecePanel11" unique_id=1420517956]
 layout_mode = 1

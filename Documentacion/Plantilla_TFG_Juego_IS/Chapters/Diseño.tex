@@ -61,6 +61,25 @@ La \textbf{capa de datos e infraestructura} comprende los datos estáticos de co
 El flujo predominante de dependencias es descendente. Sin embargo, los nodos de Godot, en la capa de lógica, mantienen referencias directas a componentes de la capa de interfaz para coordinar la presentación de resultados y el flujo de partida. Estas dependencias inversas puntuales son una consecuencia del modelo de ciclo de vida de Godot, en el que la lógica debe suspender su ejecución hasta que las animaciones de interfaz terminan. No representan una violación del diseño en capas sino una adaptación pragmática al motor.
 
 % ─────────────────────────────────────────────────────────────────────────────
+\section{Diagrama de despliegue}
+% ─────────────────────────────────────────────────────────────────────────────
+
+El diagrama de despliegue de la Figura~\ref{fig:DiagramaDespliegue} describe los componentes físicos que conforman el sistema en tiempo de ejecución y cómo se distribuyen sobre el hardware del usuario.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{../Imagenes/DiagramaDespliegue}
+	\caption{Diagrama de despliegue de NeuroForge.}
+	\label{fig:DiagramaDespliegue}
+\end{figure}
+
+\textit{NeuroForge} se despliega como una aplicación de escritorio autocontenida que se ejecuta íntegramente en la máquina del jugador, sin dependencia de servidores externos ni conexión a red. El paquete de distribución final se reduce a dos elementos.
+
+El \textbf{ejecutable principal} (\texttt{NeuroForge.exe}) integra en un único archivo el motor de Godot compilado, la lógica del videojuego y todos los recursos del proyecto: escenas, sprites, efectos de sonido, música y demás assets. Esto es posible gracias a la opción de exportación de Godot que embebe el archivo \texttt{.pck} de recursos directamente dentro del binario, lo que simplifica al máximo la distribución y permite ejecutar el videojuego sin ningún tipo de instalación previa.
+
+El único archivo externo es el \textbf{modelo entrenado de la IA}, distribuido en formato \texttt{.zip}, que el sistema localiza y carga en tiempo de ejecución al iniciar una partida contra el bot inteligente. Mantenerlo separado del ejecutable permite actualizar o sustituir el modelo de forma independiente sin necesidad de redistribuir el resto del paquete.
+
+% ─────────────────────────────────────────────────────────────────────────────
 \section{Diseño de interfaz de usuario}
 % ─────────────────────────────────────────────────────────────────────────────
 
@@ -253,13 +272,6 @@ Esta decisión concentra en un único lugar todas las operaciones sobre el estad
 El patrón \textbf{Template Method} define el esqueleto de un algoritmo en una operación, dejando que subclases o extensiones concreten algunos de sus pasos sin cambiar la estructura general.
 
 En \texttt{SceneManager}, la clase interna \texttt{\_Bridge} aplica este patrón en los métodos \texttt{TransitionIn()} y \texttt{TransitionOut()}. Ambos fijan la secuencia invariante de cualquier transición de pantalla: bloquear la entrada del usuario, ejecutar el paso de animación correspondiente y, tras \texttt{TransitionOut()}, devolver el control al videojuego. Como ilustra la Figura~\ref{fig:PatronTemplateMethod}, el paso concreto de animación se selecciona mediante un \texttt{switch} sobre el tipo de transición (\texttt{Transition.Fade}, \texttt{Transition.SlideLeft}, etc.).
-
-%\begin{figure}[H]
-%	\centering
-%	\includegraphics[width=0.80\textwidth]{../Imagenes/PatronTemplateMethod}
-%	\caption{Patrón Template Method en \texttt{\_Bridge}: esqueleto fijo de transición con el paso de animación extensible por tipo.}
-%	\label{fig:PatronTemplateMethod}
-%\end{figure}
 
 En la forma canónica del patrón los pasos variables se delegan a subclases mediante herencia; aquí, al tratarse de una clase sellada (\texttt{sealed}), la variación se consigue mediante composición con el enumerado \texttt{Transition}. El efecto es equivalente, añadir un nuevo tipo de transición solo requiere incorporar un \texttt{case} adicional sin modificar el esqueleto del algoritmo ni las clases relacionadas.
 

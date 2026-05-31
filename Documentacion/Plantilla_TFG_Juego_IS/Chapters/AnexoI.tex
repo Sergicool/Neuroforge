@@ -1,2 +1,36 @@
 \chapter{Manual de instalación}
 
+\textit{NeuroForge} se distribuye como una aplicación de escritorio autocontenida para Windows. No requiere proceso de instalación ni dependencias externas; basta con descomprimir el paquete de distribución y ejecutar el archivo principal.
+
+\section{Requisitos del sistema}
+
+Antes de ejecutar el videojuego, se recomienda un equipo con las siguientes especificaciones:
+
+\begin{itemize}
+	\item \textbf{Sistema operativo:} Windows 10 o Windows 11 (64 bits).
+	\item \textbf{Procesador:} CPU de doble núcleo a 2,0~GHz o superior.
+	\item \textbf{Memoria RAM:} 8~GB.
+	\item \textbf{Tarjeta gráfica:} GPU compatible con OpenGL~3.3 o superior.
+	\item \textbf{Almacenamiento:} 200~MB de espacio libre en disco.
+\end{itemize}
+
+En cuanto a la memoria RAM y procesador no hace falta uno tan exigente como se especifica al ser un juego muy poco exigente.
+
+\section{Pasos de instalación}
+
+\begin{enumerate}
+	\item Descomprimir el archivo distribuido en la ubicación deseada del sistema de archivos.
+	\item Comprobar que el directorio resultante contiene los siguientes elementos:
+	\begin{itemize}
+		\item \texttt{NeuroForge.exe} — ejecutable principal del videojuego con todos los recursos embebidos.
+		\item \texttt{neuroforge\_bot\_vXXXXXX.zip} — modelo entrenado de la inteligencia artificial, necesario para el funcionamiento del bot inteligente.
+	\end{itemize}
+	\item Ejecutar \texttt{NeuroForge.exe} con doble clic para iniciar el videojuego. No se requiere ningún paso adicional.
+\end{enumerate}
+
+\section{Solución de problemas comunes}
+
+Si el videojuego no arranca o muestra un error al iniciarse, se recomienda verificar que la tarjeta gráfica del equipo es compatible con OpenGL~3.3 y que los controladores están actualizados. En equipos con tarjeta gráfica  integrada puede ser necesario forzar el uso de la GPU dedicada desde el panel de control del fabricante.
+
+Si el bot inteligente no responde durante la partida, verificar que el archivo \texttt{.zip} del modelo se encuentra en el mismo directorio que el ejecutable y que su nombre no ha sido modificado.
+

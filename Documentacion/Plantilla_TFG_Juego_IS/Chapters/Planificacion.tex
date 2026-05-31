@@ -156,7 +156,7 @@ El objetivo de esta última iteración es revisar el conjunto del sistema, corre
 \begin{itemize}
 	\item \textbf{Optimización del rendimiento} (4~h): Análisis y mejora del rendimiento del sistema, hilos de ejecución y consumos de recursos.
 	\item \textbf{Revisión del feedback al jugador} (4~h): Comprobación de que toda la información visual y sonora se transmite de forma limpia.
-	\item \textbf{Corrección de errores} (4~h): Detección y resolución de bugs o "edge cases" remanentes.
+	\item \textbf{Corrección de errores} (4~h): Detección y resolución de bugs.
 	\item \textbf{Pruebas de integración} (2~h): Verificación final del build completo del videojuego.
 \end{itemize}
 
@@ -407,11 +407,7 @@ Como consecuencia de esta reorganización, la planificación pasó de cuatro a c
 
 En cuanto a las desviaciones concretas registradas, las dos primeras iteraciones experimentaron retrasos respecto a sus fechas estimadas. La primera iteración, cuyo núcleo jugable estaba previsto para el 26 de febrero, no se completó hasta el 19 de marzo. El motivo principal fue la necesidad de revisar y rediseñar aspectos del modelo de datos que no habían sido contemplados con suficiente detalle durante la fase de diseño inicial: al comenzar la implementación se detectaron inconsistencias en la representación interna de las piezas y su relación con el tablero que obligaron a replantear parte de la arquitectura antes de poder continuar con el desarrollo. Esta revisión, aunque necesaria para garantizar la solidez del sistema, consumió tiempo no presupuestado y desplazó la fecha de entrega de la iteración.
 
-Como consecuencia directa de ese retraso, la segunda iteración, dedicada a la interfaz de usuario y el pulido visual, también se vio afectada. Al comenzar más tarde de lo previsto, su finalización se postergó del 5 de abril al 18 del mismo mes. En este caso no surgieron dificultades técnicas adicionales significativas, por lo que la desviación fue puramente arrastrada desde la iteración anterior. La tercera iteración, que arrancó justo tras la conclusión de la segunda, pudo completarse en la fecha inicialmente estimada al no presentar dependencias críticas con los cambios de diseño anteriores.
-
-(Escribir mas variaciones cuando se den)
-
-...
+Como consecuencia directa de ese retraso, la segunda iteración, dedicada a la interfaz de usuario y el pulido visual, también se vio afectada. Al comenzar más tarde de lo previsto, su finalización se postergó del 5 de abril al 18 del mismo mes. En este caso no surgieron dificultades técnicas adicionales significativas, por lo que la desviación fue puramente arrastrada desde la iteración anterior. La tercera iteración, que arrancó justo tras la conclusión de la segunda, pudo completarse en la fecha inicialmente estimada al no presentar dependencias críticas con los cambios de diseño anteriores. Las iteraciones cuarta y quinta se desarrollaron igualmente dentro de los márgenes previstos, sin desviaciones reseñables respecto al cronograma establecido.
 
 La Tabla~\ref{tab:variacion} recoge el resumen de las desviaciones producidas respecto a la planificación inicial en las iteraciones ya finalizadas.
 
@@ -431,9 +427,9 @@ La Tabla~\ref{tab:variacion} recoge el resumen de las desviaciones producidas re
 		\hline
 		3 & Mejoras audiovisuales & 2026-04-19 & 2026-04-19 \\
 		\hline
-		4 & Bot inteligente (IA) & 2026-05-31 & - \\
+		4 & Bot inteligente (IA) & 2026-05-31 & 2026-05-31 \\
 		\hline
-		5 & Pulido final & 2026-06-07 & - \\
+		5 & Pulido final & 2026-06-07 & 2026-06-07 \\
 		\hline
 	\end{tabular}
 	\caption{Variaciones respecto a la planificación inicial}

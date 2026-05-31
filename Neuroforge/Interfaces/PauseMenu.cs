@@ -97,14 +97,31 @@ public partial class PauseMenu : Control
     public async Task HideMenu()
     {
         await HideAndClose();
-
         Visible = false;
+    }
+
+    public async Task<bool> CloseOpenSubMenus()
+    {
+        if (_optionsOverlay != null && _optionsOverlay.Visible)
+        {
+            await _optionsOverlay.HideOverlay();
+            return true;
+        }
+
+        if (_rulesOverlay != null && _rulesOverlay.Visible)
+        {
+            await _rulesOverlay.HideOverlay();
+            return true;
+        }
+
+        return false;
     }
 
     private async Task AnimateIn()
     {
         _resume.Disabled = false;
         _rules.Disabled = false;
+        _options.Disabled = false;
         _menu.Disabled = false;
 
         _popup.PivotOffset = _popup.Size / 2f;
@@ -124,6 +141,7 @@ public partial class PauseMenu : Control
     {
         _resume.Disabled = true;
         _rules.Disabled = true;
+        _options.Disabled = true;
         _menu.Disabled = true;
 
         _popup.PivotOffset = _popup.Size / 2f;

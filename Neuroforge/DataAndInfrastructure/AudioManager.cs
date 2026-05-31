@@ -80,19 +80,19 @@ public partial class AudioManager
         await _bridge.WaitUntilReady();
     }
 
-    private static async Task<AudioStream> LoadAudio(string path)
+    private static Task<AudioStream> LoadAudio(string path)
     {
-        if (_cache.TryGetValue(path, out AudioStream cached)) return cached;
+        if (_cache.TryGetValue(path, out AudioStream cached)) return Task.FromResult(cached);
 
         if (!ResourceLoader.Exists(path))
         {
             GD.PushError($"[AudioManager] The file doesn't exists: {path}");
-            return null;
+            return Task.FromResult<AudioStream>(null);
         }
 
         var stream = GD.Load<AudioStream>(path);
         _cache[path] = stream;
-        return stream;
+        return Task.FromResult(stream);
     }
 
     // ── Bridge interno ────────────────────────────────────────────────────────

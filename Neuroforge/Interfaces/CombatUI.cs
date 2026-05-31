@@ -119,7 +119,7 @@ public partial class CombatUI : Control
     {
         SetSpriteRegion(spriteRect, piece, forceHidden: false);
         spriteRect.Modulate = COLOR_PIECE_NORMAL;
-        label.Text = GetPieceLabel(piece);
+        label.Text = TranslationSystem.Tr(GetPieceLabel(piece));
     }
 
     // ── Preparar UI ───────────────────────────────────────────────────────────
@@ -138,8 +138,8 @@ public partial class CombatUI : Control
         _attackerSprite.Modulate = COLOR_PIECE_NORMAL;
         _defenderSprite.Modulate = COLOR_PIECE_NORMAL;
 
-        _attackerLabel.Text = attackerHidden ? "" : GetPieceLabel(attacker);
-        _defenderLabel.Text = defenderHidden ? "" : GetPieceLabel(defender);
+        _attackerLabel.Text = attackerHidden ? "" : TranslationSystem.Tr(GetPieceLabel(attacker));
+        _defenderLabel.Text = defenderHidden ? "" : TranslationSystem.Tr(GetPieceLabel(defender));
 
         _attackerIcon.Modulate = _attackerIconColor;
         _defenderIcon.Modulate = _defenderIconColor;
@@ -190,7 +190,7 @@ public partial class CombatUI : Control
         tShow.TweenProperty(spriteRect, "modulate", COLOR_PIECE_NORMAL, BLINK_HALF * 2f);
         await ToSignal(tShow, Tween.SignalName.Finished);
 
-        label.Text = GetPieceLabel(piece);
+        label.Text = TranslationSystem.Tr(GetPieceLabel(piece));
     }
 
     // ── Resultado ─────────────────────────────────────────────────────────────
@@ -204,7 +204,7 @@ public partial class CombatUI : Control
 
         await Task.WhenAll(dimA, dimD);
 
-        _resultLabel.Text = GetResultMessage(attacker, defender, result);
+        _resultLabel.Text = TranslationSystem.Tr(GetResultMessage(attacker, defender, result));
     }
 
     private async Task DimLoser(TextureRect sprite, TextureRect icon)
@@ -273,35 +273,35 @@ public partial class CombatUI : Control
 
     private static string GetPieceLabel(Piece piece) => piece.Type switch
     {
-        PieceType.ENERGY_CORE => "Energy Core",
-        PieceType.TURRET => "Turret",
-        PieceType.WAR_MACHINE => "War Machine",
-        PieceType.NOVA => "Nova",
-        PieceType.MECHA => "Mecha",
-        PieceType.SENTINEL => "Sentinel",
-        PieceType.CANINE => "Canine",
-        PieceType.CYBORG => "Cyborg",
-        PieceType.SOLDIER => "Soldier",
-        PieceType.SABOTEUR => "Saboteur",
-        PieceType.SCOUT => "Scout",
-        PieceType.PHANTOM => "Phantom",
+        PieceType.ENERGY_CORE => "piece.name.energycore",
+        PieceType.TURRET => "piece.name.turret",
+        PieceType.WAR_MACHINE => "piece.name.warmachine",
+        PieceType.NOVA => "piece.name.nova",
+        PieceType.MECHA => "piece.name.mecha",
+        PieceType.SENTINEL => "piece.name.sentinel",
+        PieceType.CANINE => "piece.name.canine",
+        PieceType.CYBORG => "piece.name.cyborg",
+        PieceType.SOLDIER => "piece.name.soldier",
+        PieceType.SABOTEUR => "piece.name.saboteur",
+        PieceType.SCOUT => "piece.name.scout",
+        PieceType.PHANTOM => "piece.name.phantom",
         _ => piece.Type.ToString()
     };
 
-    private static string GetResultMessage(Piece attacker, Piece defender, CombatResult result)
+    private string GetResultMessage(Piece attacker, Piece defender, CombatResult result)
     {
         if (defender.Type == PieceType.TURRET && attacker.Type == PieceType.SABOTEUR)
-            return "Attacker wins - The saboteur disable the turret";
+            return TranslationSystem.Tr("combat.result.saboteur.turret");
         if (defender.Type == PieceType.TURRET)
-            return "Defender wins - The Turret stops the attack";
+            return TranslationSystem.Tr("combat.result.turret");
         if (attacker.Type == PieceType.PHANTOM && defender.Type == PieceType.WAR_MACHINE)
-            return "Attacker wins - The Phantom counters the War Machine";
+            return TranslationSystem.Tr("combat.result.phantom.machine");
 
         return result switch
         {
-            CombatResult.DEFENDER_DIES => "Attacker wins - Victory by rank",
-            CombatResult.ATTACKER_DIES => "Defender wins - Victory by rank",
-            CombatResult.BOTH_DIE => "Draw — Both pieces succumb",
+            CombatResult.DEFENDER_DIES => TranslationSystem.Tr("combat.result.attacker.win"),
+            CombatResult.ATTACKER_DIES => TranslationSystem.Tr("combat.result.defender.win"),
+            CombatResult.BOTH_DIE => TranslationSystem.Tr("combat.result.draw"),
             _ => ""
         };
     }

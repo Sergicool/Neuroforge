@@ -149,13 +149,13 @@ public partial class GameScene : Node
         // Chequeo de Energy cores
         if (!_board.HasEnergyCore(PieceOwner.PLAYER))
         {
-            endMessage = "DEFEAT!\nYour energy core has been destroyed";
+            endMessage = TranslationSystem.Tr("ui.endgame.defeat.core");
             gameResult = 0;
             isGameOver = true;
         }
         else if (!_board.HasEnergyCore(PieceOwner.BOT))
         {
-            endMessage = "VICTORY!\nYou have destroyed the enemy's energy core";
+            endMessage = TranslationSystem.Tr("ui.endgame.victory.core");
             gameResult = 1;
             isGameOver = true;
         }
@@ -173,18 +173,18 @@ public partial class GameScene : Node
                 {
                     if (CurrentTurn == PieceOwner.BOT)
                     {
-                        endMessage = "VICTORY!\nThe opponent has run out of moves.";
+                        endMessage = TranslationSystem.Tr("ui.endgame.victory.movements");
                         gameResult = 1;
                     }
                     else
                     {
-                        endMessage = "DEFEAT!\nYou've run out of moves";
+                        endMessage = TranslationSystem.Tr("ui.endgame.defeat.movements");
                         gameResult = 0;
                     }
                 }
                 else
                 {
-                    endMessage = "DRAW!\nNo one has any pieces left to move";
+                    endMessage = TranslationSystem.Tr("ui.endgame.draw");
                     gameResult = 2;
                 }
                 isGameOver = true;
@@ -225,14 +225,19 @@ public partial class GameScene : Node
     {
         if (@event.IsActionPressed("ui_cancel"))
         {
-            TryTogglePause();
+            _ = TryTogglePause();
         }
     }
 
-    private void TryTogglePause()
+    private async Task TryTogglePause()
     {
+
         if (_isPaused)
         {
+            bool subMenuCerrado = await _pauseMenu.CloseOpenSubMenus();
+            if (subMenuCerrado)
+                return;
+
             ResumeGame();
             return;
         }

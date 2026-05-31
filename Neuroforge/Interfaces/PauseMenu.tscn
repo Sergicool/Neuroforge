@@ -60,13 +60,14 @@ theme_override_constants/margin_bottom = 20
 layout_mode = 2
 theme_override_constants/separation = 10
 
-[node name="PlayButton" type="Button" parent="PopUp/MarginContainer/VBoxContainer" unique_id=545789163]
+[node name="PlayButton" type="Button" parent="PopUp/MarginContainer/VBoxContainer" unique_id=545789163 groups=["translatable"]]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 32
 text = "Resume"
+metadata/tr = "ui.pause.resume"
 
-[node name="Title" type="Label" parent="PopUp/MarginContainer/VBoxContainer/PlayButton" unique_id=946662481]
+[node name="Title" type="Label" parent="PopUp/MarginContainer/VBoxContainer/PlayButton" unique_id=946662481 groups=["translatable"]]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -81,25 +82,29 @@ theme_override_font_sizes/font_size = 48
 theme_override_styles/normal = ExtResource("4_ptdjk")
 text = "Pause"
 horizontal_alignment = 1
+metadata/tr = "ui.pause.title"
 
-[node name="RulesButton" type="Button" parent="PopUp/MarginContainer/VBoxContainer" unique_id=168947438]
+[node name="RulesButton" type="Button" parent="PopUp/MarginContainer/VBoxContainer" unique_id=168947438 groups=["translatable"]]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 32
 text = "Rules"
+metadata/tr = "ui.pause.rules"
 
-[node name="OptionsButton" type="Button" parent="PopUp/MarginContainer/VBoxContainer" unique_id=1618382970]
+[node name="OptionsButton" type="Button" parent="PopUp/MarginContainer/VBoxContainer" unique_id=1618382970 groups=["translatable"]]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 32
 text = "Options"
+metadata/tr = "ui.pause.options"
 
-[node name="ExitButton" type="Button" parent="PopUp/MarginContainer/VBoxContainer" unique_id=984851177]
+[node name="ExitButton" type="Button" parent="PopUp/MarginContainer/VBoxContainer" unique_id=984851177 groups=["translatable"]]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 32
 text = "Return to menu"
 expand_icon = true
+metadata/tr = "ui.pause.return"
 
 [node name="RulesOverlay" parent="." unique_id=247626373 instance=ExtResource("5_ptdjk")]
 visible = false
