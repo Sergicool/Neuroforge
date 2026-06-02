@@ -3,31 +3,34 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {4.1}{\ignorespaces Correspondencia entre las fases de la metodología y la ordenación de las tareas en la planificación}}{29}{table.caption.14}%
-\contentsline {table}{\numberline {4.2}{\ignorespaces Distribución ajustada de horas por tareas globales e iteraciones del proyecto}}{33}{table.caption.15}%
-\contentsline {table}{\numberline {4.3}{\ignorespaces Riesgos identificados y planes de contingencia}}{36}{table.caption.18}%
-\contentsline {table}{\numberline {4.4}{\ignorespaces Comparativa entre motores de desarrollo de videojuegos}}{39}{table.caption.19}%
-\contentsline {table}{\numberline {4.5}{\ignorespaces Herramientas empleadas en el desarrollo del proyecto}}{41}{table.caption.20}%
-\contentsline {table}{\numberline {4.6}{\ignorespaces Variaciones respecto a la planificación inicial}}{42}{table.caption.21}%
-\contentsline {table}{\numberline {4.7}{\ignorespaces Desglose de costes estimados en escenario individual y empresarial}}{44}{table.caption.22}%
+\contentsline {table}{\numberline {4.1}{\ignorespaces Correspondencia entre las fases de la metodología y la ordenación de las tareas en la planificación}}{29}{table.caption.15}%
+\contentsline {table}{\numberline {4.2}{\ignorespaces Distribución ajustada de horas por tareas globales e iteraciones del proyecto}}{33}{table.caption.16}%
+\contentsline {table}{\numberline {4.3}{\ignorespaces Riesgos identificados y planes de contingencia}}{36}{table.caption.19}%
+\contentsline {table}{\numberline {4.4}{\ignorespaces Comparativa entre motores de desarrollo de videojuegos}}{39}{table.caption.20}%
+\contentsline {table}{\numberline {4.5}{\ignorespaces Herramientas empleadas en el desarrollo del proyecto}}{41}{table.caption.21}%
+\contentsline {table}{\numberline {4.6}{\ignorespaces Variaciones respecto a la planificación inicial}}{42}{table.caption.22}%
+\contentsline {table}{\numberline {4.7}{\ignorespaces Desglose de costes estimados en escenario individual y empresarial}}{44}{table.caption.23}%
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {5.1}{\ignorespaces Lista de casos de uso del sistema}}{48}{table.caption.24}%
-\contentsline {table}{\numberline {5.2}{\ignorespaces CU-01: Jugar partida}}{49}{table.caption.25}%
-\contentsline {table}{\numberline {5.3}{\ignorespaces CU-01: Jugar partida}}{50}{table.caption.26}%
-\contentsline {table}{\numberline {5.4}{\ignorespaces CU-03: Resolver combate}}{51}{table.caption.27}%
-\contentsline {table}{\numberline {5.5}{\ignorespaces CU-04: Consultar reglas}}{52}{table.caption.28}%
-\contentsline {table}{\numberline {5.6}{\ignorespaces CU-05: Consultar opciones}}{53}{table.caption.29}%
+\contentsline {table}{\numberline {5.1}{\ignorespaces Lista de casos de uso del Sistema}}{49}{table.caption.25}%
+\contentsline {table}{\numberline {5.2}{\ignorespaces CU-01: Iniciar partida}}{49}{table.caption.26}%
+\contentsline {table}{\numberline {5.3}{\ignorespaces CU-02: Jugar ronda}}{50}{table.caption.27}%
+\contentsline {table}{\numberline {5.4}{\ignorespaces CU-03: Resolver combate}}{51}{table.caption.28}%
+\contentsline {table}{\numberline {5.5}{\ignorespaces CU-04: Pausar partida}}{52}{table.caption.29}%
+\contentsline {table}{\numberline {5.6}{\ignorespaces CU-05: Abandonar partida}}{53}{table.caption.30}%
+\contentsline {table}{\numberline {5.7}{\ignorespaces CU-06: Consultar reglas}}{53}{table.caption.31}%
+\contentsline {table}{\numberline {5.8}{\ignorespaces CU-07: Consultar opciones}}{54}{table.caption.32}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {8.1}{\ignorespaces Pruebas del bloque 1: Despliegue inicial (RF01, RF02, CU-01)}}{90}{table.caption.65}%
-\contentsline {table}{\numberline {8.2}{\ignorespaces Pruebas del bloque 2: Movimiento (RF03, RF04, RF07, CU-02)}}{91}{table.caption.66}%
-\contentsline {table}{\numberline {8.3}{\ignorespaces Pruebas del bloque 3: Combate (RF04, RF05, RF09, CU-03)}}{92}{table.caption.67}%
-\contentsline {table}{\numberline {8.4}{\ignorespaces Pruebas del bloque 4: Condiciones de victoria (RF08, CU-02)}}{93}{table.caption.68}%
-\contentsline {table}{\numberline {8.5}{\ignorespaces Pruebas del bloque 5: Interfaz y feedback (RF09, RF10, RNF04)}}{94}{table.caption.69}%
-\contentsline {table}{\numberline {8.6}{\ignorespaces Pruebas del bloque 6: Menús y navegación (RF11, RF12, RF13, CU-04, CU-05)}}{95}{table.caption.70}%
-\contentsline {table}{\numberline {8.7}{\ignorespaces Pruebas del bloque 7: Comportamiento del bot (RF06)}}{96}{table.caption.71}%
-\contentsline {table}{\numberline {8.8}{\ignorespaces Pruebas del bloque 8: Requisitos no funcionales (RNF01--RNF04)}}{97}{table.caption.72}%
+\contentsline {table}{\numberline {8.1}{\ignorespaces Pruebas del bloque 1: Despliegue inicial (RF01, RF02, CU-01)}}{80}{table.caption.53}%
+\contentsline {table}{\numberline {8.2}{\ignorespaces Pruebas del bloque 2: Movimiento (RF03, RF04, RF07, CU-02)}}{81}{table.caption.54}%
+\contentsline {table}{\numberline {8.3}{\ignorespaces Pruebas del bloque 3: Combate (RF04, RF05, RF09, CU-03)}}{82}{table.caption.55}%
+\contentsline {table}{\numberline {8.4}{\ignorespaces Pruebas del bloque 4: Condiciones de victoria (RF08, CU-02)}}{83}{table.caption.56}%
+\contentsline {table}{\numberline {8.5}{\ignorespaces Pruebas del bloque 5: Interfaz y feedback (RF09, RF10, RNF04)}}{84}{table.caption.57}%
+\contentsline {table}{\numberline {8.6}{\ignorespaces Pruebas del bloque 6: Menús y navegación (RF11, RF12, RF13, CU-04, CU-05)}}{85}{table.caption.58}%
+\contentsline {table}{\numberline {8.7}{\ignorespaces Pruebas del bloque 7: Comportamiento del bot (RF06)}}{86}{table.caption.59}%
+\contentsline {table}{\numberline {8.8}{\ignorespaces Pruebas del bloque 8: Requisitos no funcionales (RNF01--RNF04)}}{87}{table.caption.60}%
+\addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

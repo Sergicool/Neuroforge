@@ -1,6 +1,6 @@
 \chapter{Diseño}
 
-En este capítulo se describe el diseño técnico de NeuroForge a partir del código implementado. Se aborda la arquitectura general del sistema, los módulos que locomponen, el diseño de clases, la interfaz de usuario, los patrones de diseño aplicados y las consideraciones de seguridad y rendimiento.
+En este capítulo se describe el diseño técnico de \textit{NeuroForge} a partir del código implementado. Se aborda la arquitectura general del sistema basada en el modelo de Godot, la separación en tres capas para aislar la lógica del juego, los patrones de diseño aplicados, el flujo detallado de la interfaz de usuario y, por último, el diagrama de despliegue físico del ejecutable y el modelo de la IA.
 
 % ─────────────────────────────────────────────────────────────────────────────
 \section{Arquitectura del sistema}
@@ -61,23 +61,67 @@ La \textbf{capa de datos e infraestructura} comprende los datos estáticos de co
 El flujo predominante de dependencias es descendente. Sin embargo, los nodos de Godot, en la capa de lógica, mantienen referencias directas a componentes de la capa de interfaz para coordinar la presentación de resultados y el flujo de partida. Estas dependencias inversas puntuales son una consecuencia del modelo de ciclo de vida de Godot, en el que la lógica debe suspender su ejecución hasta que las animaciones de interfaz terminan. No representan una violación del diseño en capas sino una adaptación pragmática al motor.
 
 % ─────────────────────────────────────────────────────────────────────────────
-\section{Diagrama de despliegue}
+\section{Patrones de diseño aplicados}
 % ─────────────────────────────────────────────────────────────────────────────
 
-El diagrama de despliegue de la Figura~\ref{fig:DiagramaDespliegue} describe los componentes físicos que conforman el sistema en tiempo de ejecución y cómo se distribuyen sobre el hardware del usuario.
+A lo largo del desarrollo de NeuroForge se han aplicado varios patrones de diseño clásicos. En cada caso el patrón responde a un problema concreto del dominio.
+
+\subsection{Singleton}
+
+El patrón \textbf{Singleton} garantiza que una clase tenga una única instancia y proporciona un punto de acceso global a ella. En el proyecto aparece en dos formas distintas.
+
+\texttt{GameScene} mantiene una propiedad estática \texttt{Instance} que se asigna en \texttt{\_Ready()} cuando Godot instancia la escena. Cualquier clase del sistema puede consultar el estado de la partida o cambiar de fase a través de ese punto de acceso sin necesidad de mantener una referencia explícita.
+
+\texttt{SceneManager} adopta la variante de \textit{clase completamente estática}: todo su estado (historial de navegación, caché de escenas) vive en campos estáticos privados y se auto-inicializa la primera vez que se invoca cualquiera de sus métodos públicos. La unicidad no recae en una instancia sino en el propio espacio de nombres estático.
+
+Como muestra la Figura~\ref{fig:PatronSingleton}, en ambos casos se evita pasar referencias a través de múltiples capas de objetos, centralizando el acceso a los dos gestores de mayor alcance del sistema.
+
+\clearpage
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\textwidth]{../Imagenes/DiagramaDespliegue}
-	\caption{Diagrama de despliegue de NeuroForge.}
-	\label{fig:DiagramaDespliegue}
+	\includegraphics[width=0.80\textwidth]{../Imagenes/PatronSingleton}
+	\caption{Patrón Singleton aplicado en \texttt{GameScene} y \texttt{SceneManager}.}
+	\label{fig:PatronSingleton}
 \end{figure}
 
-\textit{NeuroForge} se despliega como una aplicación de escritorio autocontenida que se ejecuta íntegramente en la máquina del jugador, sin dependencia de servidores externos ni conexión a red. El paquete de distribución final se reduce a dos elementos.
+\subsection{Strategy}
 
-El \textbf{ejecutable principal} (\texttt{NeuroForge.exe}) integra en un único archivo el motor de Godot compilado, la lógica del videojuego y todos los recursos del proyecto: escenas, sprites, efectos de sonido, música y demás assets. Esto es posible gracias a la opción de exportación de Godot que embebe el archivo \texttt{.pck} de recursos directamente dentro del binario, lo que simplifica al máximo la distribución y permite ejecutar el videojuego sin ningún tipo de instalación previa.
+El patrón \textbf{Strategy} define una familia de algoritmos, encapsula cada uno de ellos y los hace intercambiables, permitiendo que el algoritmo varíe de forma independiente respecto a los clientes que lo utilizan.
 
-El único archivo externo es el \textbf{modelo entrenado de la IA}, distribuido en formato \texttt{.zip}, que el sistema localiza y carga en tiempo de ejecución al iniciar una partida contra el bot inteligente. Mantenerlo separado del ejecutable permite actualizar o sustituir el modelo de forma independiente sin necesidad de redistribuir el resto del paquete.
+En el proyecto, \texttt{MovementSystem} y \texttt{CombatSystem} son clases estáticas que encapsulan respectivamente la lógica de movimiento y la lógica de resolución de combate, actuando cada una como una estrategia concreta. \texttt{Board} delega en ellas sin conocer su implementación interna: para mover una pieza consulta \texttt{MovementSystem.GetAction()} y \texttt{MovementSystem.CanMove()}, y para resolver un enfrentamiento invoca \texttt{CombatSystem.Resolve()}. La Figura~\ref{fig:PatronStrategy} muestra esta relación de delegación.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.80\textwidth]{../Imagenes/PatronStrategy}
+	\caption{Patrón Strategy con \texttt{MovementSystem} y \texttt{CombatSystem} como estrategias delegadas desde \texttt{Board}.}
+	\label{fig:PatronStrategy}
+\end{figure}
+
+Cabe señalar que en esta implementación las estrategias no comparten una interfaz común explícita ni se intercambian en tiempo de ejecución, ya que el lenguaje C\# permite referenciar clases estáticas directamente. No obstante, la intención estructural del patrón se cumple, el algoritmo queda completamente aislado del contexto que lo usa, de modo que modificar o sustituir las reglas de movimiento o de combate no requiere alterar \texttt{Board} ni ninguna otra clase relacionada.
+
+\subsection{Fachada}
+
+El patrón \textbf{Fachada} proporciona una interfaz unificada y simplificada a un conjunto de interfaces de un subsistema, reduciendo el acoplamiento entre los clientes y dicho subsistema.
+
+\texttt{Board} actúa como fachada del subsistema de tablero. Tal como se aprecia en la Figura~\ref{fig:PatronFachada}, detrás de su interfaz pública agrupa la generación de la cuadrícula, la gestión de \texttt{Tile} y \texttt{Piece}, la delegación a \texttt{MovementSystem} y \texttt{CombatSystem}, y el controlador de input \texttt{BoardInputController}. Los clientes externos, \texttt{GameScene} y \texttt{BotController}, solo interactúan con \texttt{Board} a través de métodos de alto nivel como \texttt{MovePiece()}, \texttt{ResolveCombat()}, \texttt{SpawnPiece()} o \texttt{GetAllPossibleActions()}, sin necesidad de conocer la composición interna del subsistema.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.80\textwidth]{../Imagenes/PatronFachada}
+	\caption{Patrón Fachada con \texttt{Board} como punto de acceso unificado al subsistema de tablero.}
+	\label{fig:PatronFachada}
+\end{figure}
+
+Esta decisión concentra en un único lugar todas las operaciones sobre el estado del tablero y reduce a dos el número de clases que los clientes externos necesitan conocer.
+
+\subsection{Template Method}
+
+El patrón \textbf{Template Method} define el esqueleto de un algoritmo en una operación, dejando que subclases o extensiones concreten algunos de sus pasos sin cambiar la estructura general.
+
+En \texttt{SceneManager}, la clase interna \texttt{\_Bridge} aplica este patrón en los métodos \texttt{TransitionIn()} y \texttt{TransitionOut()}. Ambos fijan la secuencia invariante de cualquier transición de pantalla: bloquear la entrada del usuario, ejecutar el paso de animación correspondiente y, tras \texttt{TransitionOut()}, devolver el control al videojuego.
+
+En la forma canónica del patrón los pasos variables se delegan a subclases mediante herencia; aquí, al tratarse de una clase sellada (\texttt{sealed}), la variación se consigue mediante composición con el enumerado \texttt{Transition}. El efecto es equivalente, añadir un nuevo tipo de transición solo requiere incorporar un \texttt{case} adicional sin modificar el esqueleto del algoritmo ni las clases relacionadas.
 
 % ─────────────────────────────────────────────────────────────────────────────
 \section{Diseño de interfaz de usuario}
@@ -178,6 +222,8 @@ La secuencia acompaña al desarrollo del combate. Al emerger la ventana, si algu
 	\label{fig:MenuInterfazCombateResuelto}
 \end{figure}
 
+\clearpage
+
 \subsection{Fin de partida}
 
 Al concluir la partida, una ventana emergente informa del resultado, como se muestra en la Figura~\ref{fig:MenuFinPartida}. El mensaje principal aparece en un color que codifica el desenlace: verde para la victoria, rojo para la derrota y morado para el empate. Bajo el mensaje se indica el motivo concreto,
@@ -190,6 +236,8 @@ ya sea la destrucción del núcleo energético o el agotamiento de movimientos. 
 	\label{fig:MenuFinPartida}
 \end{figure}
 
+\clearpage
+
 \subsection{Menú de pausa}
 
 Durante el turno del jugador, este puede pausar la partida en cualquier momento, lo que provoca la aparición de una ventana emergente sobre el tablero. El menú presenta tres opciones dispuestas en vertical: \textit{Resume}, que cierra el menú y devuelve el control al jugador; \textit{Rules}, que abre el menú de reglas descrito anteriormente sin abandonar la partida; \textit{Options}, que abre el menú de opciones; y \textit{Return to Menu}, que abandona la partida en curso y regresa al menú principal.
@@ -200,6 +248,8 @@ Durante el turno del jugador, este puede pausar la partida en cualquier momento,
 	\caption{Menú que emerge al pausar durante una partida.}
 	\label{fig:MenuPausa}
 \end{figure}
+
+\clearpage
 
 \subsection{Menú de opciones}
 
@@ -214,64 +264,23 @@ El contenido se organiza en dos bloques. El primero controla el modo de visualiz
 	\label{fig:MenuOpciones}
 \end{figure}
 
+\clearpage
+
 % ─────────────────────────────────────────────────────────────────────────────
-\section{Patrones de diseño aplicados}
+\section{Diagrama de despliegue}
 % ─────────────────────────────────────────────────────────────────────────────
 
-A lo largo del desarrollo de NeuroForge se han aplicado varios patrones de diseño clásicos. En cada caso el patrón responde a un problema concreto del dominio.
-
-\subsection{Singleton}
-
-El patrón \textbf{Singleton} garantiza que una clase tenga una única instancia y proporciona un punto de acceso global a ella. En el proyecto aparece en dos formas distintas, ambas ilustradas en la Figura~\ref{fig:PatronSingleton}.
-
-\texttt{GameScene} mantiene una propiedad estática \texttt{Instance} que se asigna en \texttt{\_Ready()} cuando Godot instancia la escena. Cualquier clase del sistema puede consultar el estado de la partida o cambiar de fase a través de ese punto de acceso sin necesidad de mantener una referencia explícita.
-
-\texttt{SceneManager} adopta la variante de \textit{clase completamente estática}: todo su estado (historial de navegación, caché de escenas) vive en campos estáticos privados y se auto-inicializa la primera vez que se invoca cualquiera de sus métodos públicos. La unicidad no recae en una instancia sino en el propio espacio de nombres estático.
+El diagrama de despliegue de la Figura~\ref{fig:DiagramaDespliegue} describe los componentes físicos que conforman el sistema en tiempo de ejecución y cómo se distribuyen sobre el hardware del usuario.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.80\textwidth]{../Imagenes/PatronSingleton}
-	\caption{Patrón Singleton aplicado en \texttt{GameScene} y \texttt{SceneManager}.}
-	\label{fig:PatronSingleton}
+	\includegraphics[width=\textwidth]{../Imagenes/DiagramaDespliegue}
+	\caption{Diagrama de despliegue de NeuroForge.}
+	\label{fig:DiagramaDespliegue}
 \end{figure}
 
-Como muestra la figura, en ambos casos se evita pasar referencias a través de múltiples capas de objetos, centralizando el acceso a los dos gestores de mayor alcance del sistema.
+\textit{NeuroForge} se despliega como una aplicación de escritorio autocontenida que se ejecuta íntegramente en la máquina del jugador, sin dependencia de servidores externos ni conexión a red. El paquete de distribución final se reduce a dos elementos.
 
-\subsection{Strategy}
+El \textbf{ejecutable principal} (\texttt{NeuroForge.exe}) integra en un único archivo el motor de Godot compilado, la lógica del videojuego y todos los recursos del proyecto: escenas, sprites, efectos de sonido, música y demás assets. Esto es posible gracias a la opción de exportación de Godot que embebe el archivo \texttt{.pck} de recursos directamente dentro del binario, lo que simplifica al máximo la distribución y permite ejecutar el videojuego sin ningún tipo de instalación previa.
 
-El patrón \textbf{Strategy} define una familia de algoritmos, encapsula cada uno de ellos y los hace intercambiables, permitiendo que el algoritmo varíe de forma independiente respecto a los clientes que lo utilizan.
-
-En el proyecto, \texttt{MovementSystem} y \texttt{CombatSystem} son clases estáticas que encapsulan respectivamente la lógica de movimiento y la lógica de resolución de combate, actuando cada una como una estrategia concreta. \texttt{Board} delega en ellas sin conocer su implementación interna: para mover una pieza consulta \texttt{MovementSystem.GetAction()} y \texttt{MovementSystem.CanMove()}, y para resolver un enfrentamiento invoca \texttt{CombatSystem.Resolve()}. La Figura~\ref{fig:PatronStrategy} muestra esta relación de delegación.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.80\textwidth]{../Imagenes/PatronStrategy}
-	\caption{Patrón Strategy con \texttt{MovementSystem} y \texttt{CombatSystem} como estrategias delegadas desde \texttt{Board}.}
-	\label{fig:PatronStrategy}
-\end{figure}
-
-Cabe señalar que en esta implementación las estrategias no comparten una interfaz común explícita ni se intercambian en tiempo de ejecución, ya que el lenguaje C\# permite referenciar clases estáticas directamente. No obstante, la intención estructural del patrón se cumple, el algoritmo queda completamente aislado del contexto que lo usa, de modo que modificar o sustituir las reglas de movimiento o de combate no requiere alterar \texttt{Board} ni ninguna otra clase relacionada.
-
-\subsection{Fachada}
-
-El patrón \textbf{Fachada} proporciona una interfaz unificada y simplificada a un conjunto de interfaces de un subsistema, reduciendo el acoplamiento entre los clientes y dicho subsistema.
-
-\texttt{Board} actúa como fachada del subsistema de tablero. Tal como se aprecia en la Figura~\ref{fig:PatronFachada}, detrás de su interfaz pública agrupa la generación de la cuadrícula, la gestión de \texttt{Tile} y \texttt{Piece}, la delegación a \texttt{MovementSystem} y \texttt{CombatSystem}, y el controlador de input \texttt{BoardInputController}. Los clientes externos, \texttt{GameScene} y \texttt{BotController}, solo interactúan con \texttt{Board} a través de métodos de alto nivel como \texttt{MovePiece()}, \texttt{ResolveCombat()}, \texttt{SpawnPiece()} o \texttt{GetAllPossibleActions()}, sin necesidad de conocer la composición interna del subsistema.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=0.80\textwidth]{../Imagenes/PatronFachada}
-	\caption{Patrón Fachada con \texttt{Board} como punto de acceso unificado al subsistema de tablero.}
-	\label{fig:PatronFachada}
-\end{figure}
-
-Esta decisión concentra en un único lugar todas las operaciones sobre el estado del tablero y reduce a dos el número de clases que los clientes externos necesitan conocer.
-
-\subsection{Template Method}
-
-El patrón \textbf{Template Method} define el esqueleto de un algoritmo en una operación, dejando que subclases o extensiones concreten algunos de sus pasos sin cambiar la estructura general.
-
-En \texttt{SceneManager}, la clase interna \texttt{\_Bridge} aplica este patrón en los métodos \texttt{TransitionIn()} y \texttt{TransitionOut()}. Ambos fijan la secuencia invariante de cualquier transición de pantalla: bloquear la entrada del usuario, ejecutar el paso de animación correspondiente y, tras \texttt{TransitionOut()}, devolver el control al videojuego. Como ilustra la Figura~\ref{fig:PatronTemplateMethod}, el paso concreto de animación se selecciona mediante un \texttt{switch} sobre el tipo de transición (\texttt{Transition.Fade}, \texttt{Transition.SlideLeft}, etc.).
-
-En la forma canónica del patrón los pasos variables se delegan a subclases mediante herencia; aquí, al tratarse de una clase sellada (\texttt{sealed}), la variación se consigue mediante composición con el enumerado \texttt{Transition}. El efecto es equivalente, añadir un nuevo tipo de transición solo requiere incorporar un \texttt{case} adicional sin modificar el esqueleto del algoritmo ni las clases relacionadas.
-
+El único archivo externo es el \textbf{modelo entrenado de la IA}, distribuido en formato \texttt{.zip}, que el sistema localiza y carga en tiempo de ejecución al iniciar una partida contra el bot inteligente. Mantenerlo separado del ejecutable permite actualizar o sustituir el modelo de forma independiente sin necesidad de redistribuir el resto del paquete.

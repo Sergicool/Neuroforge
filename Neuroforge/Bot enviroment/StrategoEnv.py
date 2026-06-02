@@ -684,8 +684,8 @@ def find_recent_models(n=5):
 def objective(trial):
     params = {
         "learning_rate": trial.suggest_float("learning_rate", 1e-5, 1e-3, log=True),
-        "n_steps":       trial.suggest_categorical("n_steps", [256, 512, 1024]),
-        "batch_size":    trial.suggest_categorical("batch_size", [64, 128, 256]),
+        "n_steps": trial.suggest_categorical("n_steps", [512, 1024, 2048]),
+        "batch_size": trial.suggest_categorical("batch_size", [128, 256]),
         "n_epochs":      trial.suggest_int("n_epochs", 3, 10),
         "ent_coef":      trial.suggest_float("ent_coef", 0.01, 0.15),
         "gamma":         trial.suggest_float("gamma", 0.93, 0.999),
@@ -712,7 +712,7 @@ def objective(trial):
         **params,
     )
 
-    model.learn(total_timesteps=100_000)
+    model.learn(total_timesteps=300_000)
 
     if len(model.ep_info_buffer) == 0:
         return float("-inf")

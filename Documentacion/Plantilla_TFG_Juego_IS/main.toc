@@ -19,9 +19,9 @@
 \contentsline {subsection}{\numberline {3.2.5}Resolución de combates}{22}{subsection.3.2.5}%
 \contentsline {subsection}{\numberline {3.2.6}Condiciones de victoria}{23}{subsection.3.2.6}%
 \contentsline {subsection}{\numberline {3.2.7}Interacción y control}{23}{subsection.3.2.7}%
-\contentsline {section}{\numberline {3.3}Ambientación}{23}{section.3.3}%
+\contentsline {section}{\numberline {3.3}Ambientación}{24}{section.3.3}%
 \contentsline {subsection}{\numberline {3.3.1}Unidades y estructuras}{24}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}Escenario}{24}{subsection.3.3.2}%
+\contentsline {subsection}{\numberline {3.3.2}Escenario}{25}{subsection.3.3.2}%
 \contentsline {section}{\numberline {3.4}Diseño de niveles}{25}{section.3.4}%
 \contentsline {section}{\numberline {3.5}Audiencia}{25}{section.3.5}%
 \contentsline {chapter}{\numberline {4}Planificación}{27}{chapter.4}%
@@ -52,80 +52,83 @@
 \contentsline {subsection}{\numberline {5.2.2}Requisitos no funcionales}{46}{subsection.5.2.2}%
 \contentsline {subsection}{\numberline {5.2.3}Requisitos de información}{47}{subsection.5.2.3}%
 \contentsline {section}{\numberline {5.3}Casos de uso}{48}{section.5.3}%
-\contentsline {subsection}{\numberline {5.3.1}Lista de casos de uso}{48}{subsection.5.3.1}%
-\contentsline {subsection}{\numberline {5.3.2}CU-01: Jugar partida}{49}{subsection.5.3.2}%
-\contentsline {subsection}{\numberline {5.3.3}CU-02: Jugar turnos}{50}{subsection.5.3.3}%
+\contentsline {subsection}{\numberline {5.3.1}Lista de casos de uso}{49}{subsection.5.3.1}%
+\contentsline {subsection}{\numberline {5.3.2}CU-01: Iniciar partida}{49}{subsection.5.3.2}%
+\contentsline {subsection}{\numberline {5.3.3}CU-02: Jugar ronda}{50}{subsection.5.3.3}%
 \contentsline {subsection}{\numberline {5.3.4}CU-03: Resolver combate}{51}{subsection.5.3.4}%
-\contentsline {subsection}{\numberline {5.3.5}CU-04: Consultar reglas}{52}{subsection.5.3.5}%
-\contentsline {subsection}{\numberline {5.3.6}CU-05: Consultar opciones}{53}{subsection.5.3.6}%
-\contentsline {section}{\numberline {5.4}Modelo de dominio}{54}{section.5.4}%
-\contentsline {section}{\numberline {5.5}Modelo de proceso de negocio}{55}{section.5.5}%
-\contentsline {subsection}{\numberline {5.5.1}Actividad: Jugar partida}{55}{subsection.5.5.1}%
-\contentsline {subsection}{\numberline {5.5.2}Actividad: Jugar turnos}{56}{subsection.5.5.2}%
-\contentsline {subsection}{\numberline {5.5.3}Actividad: Resolver combate}{57}{subsection.5.5.3}%
-\contentsline {subsection}{\numberline {5.5.4}Actividad: Consultar opciones}{58}{subsection.5.5.4}%
+\contentsline {subsection}{\numberline {5.3.5}CU-04: Pausar partida}{52}{subsection.5.3.5}%
+\contentsline {subsection}{\numberline {5.3.6}CU-05: Abandonar partida}{53}{subsection.5.3.6}%
+\contentsline {subsection}{\numberline {5.3.7}CU-06: Consultar reglas}{53}{subsection.5.3.7}%
+\contentsline {subsection}{\numberline {5.3.8}CU-07: Consultar opciones}{54}{subsection.5.3.8}%
+\contentsline {section}{\numberline {5.4}Modelo de dominio}{55}{section.5.4}%
+\contentsline {section}{\numberline {5.5}Modelo de proceso de negocio}{56}{section.5.5}%
+\contentsline {subsection}{\numberline {5.5.1}Actividad: Iniciar partida}{56}{subsection.5.5.1}%
+\contentsline {subsection}{\numberline {5.5.2}Actividad: Jugar ronda}{57}{subsection.5.5.2}%
+\contentsline {subsection}{\numberline {5.5.3}Actividad: Resolver combate}{58}{subsection.5.5.3}%
 \contentsline {chapter}{\numberline {6}Diseño}{59}{chapter.6}%
 \contentsline {section}{\numberline {6.1}Arquitectura del sistema}{59}{section.6.1}%
 \contentsline {subsection}{\numberline {6.1.1}El modelo de ejecución de Godot}{59}{subsection.6.1.1}%
 \contentsline {subsection}{\numberline {6.1.2}Arquitectura de NeuroForge}{61}{subsection.6.1.2}%
-\contentsline {section}{\numberline {6.2}Diagrama de despliegue}{63}{section.6.2}%
-\contentsline {section}{\numberline {6.3}Diseño de interfaz de usuario}{64}{section.6.3}%
-\contentsline {subsection}{\numberline {6.3.1}Partida en curso}{67}{subsection.6.3.1}%
-\contentsline {subsection}{\numberline {6.3.2}Interfaz de combate}{69}{subsection.6.3.2}%
-\contentsline {subsection}{\numberline {6.3.3}Fin de partida}{69}{subsection.6.3.3}%
-\contentsline {subsection}{\numberline {6.3.4}Menú de pausa}{70}{subsection.6.3.4}%
-\contentsline {subsection}{\numberline {6.3.5}Menú de opciones}{71}{subsection.6.3.5}%
-\contentsline {section}{\numberline {6.4}Patrones de diseño aplicados}{72}{section.6.4}%
-\contentsline {subsection}{\numberline {6.4.1}Singleton}{72}{subsection.6.4.1}%
-\contentsline {subsection}{\numberline {6.4.2}Strategy}{73}{subsection.6.4.2}%
-\contentsline {subsection}{\numberline {6.4.3}Fachada}{74}{subsection.6.4.3}%
-\contentsline {subsection}{\numberline {6.4.4}Template Method}{74}{subsection.6.4.4}%
+\contentsline {section}{\numberline {6.2}Patrones de diseño aplicados}{63}{section.6.2}%
+\contentsline {subsection}{\numberline {6.2.1}Singleton}{63}{subsection.6.2.1}%
+\contentsline {subsection}{\numberline {6.2.2}Strategy}{64}{subsection.6.2.2}%
+\contentsline {subsection}{\numberline {6.2.3}Fachada}{64}{subsection.6.2.3}%
+\contentsline {subsection}{\numberline {6.2.4}Template Method}{65}{subsection.6.2.4}%
+\contentsline {section}{\numberline {6.3}Diseño de interfaz de usuario}{65}{section.6.3}%
+\contentsline {subsection}{\numberline {6.3.1}Partida en curso}{69}{subsection.6.3.1}%
+\contentsline {subsection}{\numberline {6.3.2}Interfaz de combate}{70}{subsection.6.3.2}%
+\contentsline {subsection}{\numberline {6.3.3}Fin de partida}{71}{subsection.6.3.3}%
+\contentsline {subsection}{\numberline {6.3.4}Menú de pausa}{72}{subsection.6.3.4}%
+\contentsline {subsection}{\numberline {6.3.5}Menú de opciones}{73}{subsection.6.3.5}%
+\contentsline {section}{\numberline {6.4}Diagrama de despliegue}{74}{section.6.4}%
 \contentsline {chapter}{\numberline {7}Implementación}{75}{chapter.7}%
 \contentsline {section}{\numberline {7.1}Organización del código}{75}{section.7.1}%
 \contentsline {section}{\numberline {7.2}Licencias requeridas}{76}{section.7.2}%
 \contentsline {subsection}{\numberline {7.2.1}Motor de Videojuegos: Godot Engine}{76}{subsection.7.2.1}%
-\contentsline {subsection}{\numberline {7.2.2}Recursos de Audio}{76}{subsection.7.2.2}%
+\contentsline {subsection}{\numberline {7.2.2}Recursos de Audio}{77}{subsection.7.2.2}%
 \contentsline {subsection}{\numberline {7.2.3}Recursos Gráficos}{77}{subsection.7.2.3}%
 \contentsline {subsection}{\numberline {7.2.4}Modificación de recursos}{77}{subsection.7.2.4}%
-\contentsline {section}{\numberline {7.3}Iteraciones y progreso del desarrollo}{78}{section.7.3}%
-\contentsline {subsection}{\numberline {7.3.1}Iteración 1: Núcleo jugable y lógica básica}{78}{subsection.7.3.1}%
-\contentsline {subsection}{\numberline {7.3.2}Iteración 2: Interfaz de usuario y pulido visual}{80}{subsection.7.3.2}%
-\contentsline {subsubsection}{Interfaz de partida}{81}{subsubsection*.54}%
-\contentsline {subsubsection}{Interfaz de combate y reglas}{83}{subsubsection*.58}%
-\contentsline {subsection}{\numberline {7.3.3}Iteración 3: Mejoras audiovisuales}{87}{subsection.7.3.3}%
-\contentsline {subsection}{\numberline {7.3.4}Iteración 4: Implementación del bot inteligente}{87}{subsection.7.3.4}%
-\contentsline {subsection}{\numberline {7.3.5}Iteración 5: Pulido final}{88}{subsection.7.3.5}%
-\contentsline {chapter}{\numberline {8}Pruebas}{89}{chapter.8}%
-\contentsline {section}{\numberline {8.1}Enfoque de pruebas}{89}{section.8.1}%
-\contentsline {section}{\numberline {8.2}Batería de pruebas}{90}{section.8.2}%
-\contentsline {subsection}{\numberline {8.2.1}Bloque 1 — Despliegue inicial}{90}{subsection.8.2.1}%
-\contentsline {subsection}{\numberline {8.2.2}Bloque 2 — Movimiento}{91}{subsection.8.2.2}%
-\contentsline {subsection}{\numberline {8.2.3}Bloque 3 — Combate}{92}{subsection.8.2.3}%
-\contentsline {subsection}{\numberline {8.2.4}Bloque 4 — Condiciones de victoria}{93}{subsection.8.2.4}%
-\contentsline {subsection}{\numberline {8.2.5}Bloque 5 — Interfaz y feedback visual/sonoro}{94}{subsection.8.2.5}%
-\contentsline {subsection}{\numberline {8.2.6}Bloque 6 — Menús y navegación}{95}{subsection.8.2.6}%
-\contentsline {subsection}{\numberline {8.2.7}Bloque 7 — Comportamiento del bot}{96}{subsection.8.2.7}%
-\contentsline {subsection}{\numberline {8.2.8}Bloque 8 — Requisitos no funcionales}{97}{subsection.8.2.8}%
-\contentsline {chapter}{\numberline {9}Conclusiones}{99}{chapter.9}%
-\contentsline {section}{\numberline {9.1}Valoración de objetivos}{99}{section.9.1}%
-\contentsline {section}{\numberline {9.2}Uso de inteligencia artificial}{100}{section.9.2}%
-\contentsline {section}{\numberline {9.3}Líneas futuras}{100}{section.9.3}%
-\contentsline {subsection}{\numberline {9.3.1}Guardado y carga de partidas}{100}{subsection.9.3.1}%
-\contentsline {subsection}{\numberline {9.3.2}Niveles de dificultad del bot}{101}{subsection.9.3.2}%
-\contentsline {subsection}{\numberline {9.3.3}Nuevas mecánicas y contenido}{101}{subsection.9.3.3}%
-\contentsline {subsection}{\numberline {9.3.4}Publicación y distribución}{101}{subsection.9.3.4}%
-\contentsline {chapter}{\numberline {A}Manual de instalación}{103}{appendix.Alph1}%
-\contentsline {section}{\numberline {A.1}Requisitos del sistema}{103}{section.Alph1.1}%
-\contentsline {section}{\numberline {A.2}Pasos de instalación}{103}{section.Alph1.2}%
-\contentsline {section}{\numberline {A.3}Solución de problemas comunes}{104}{section.Alph1.3}%
-\contentsline {chapter}{\numberline {B}Manual de usuario}{105}{appendix.Alph2}%
-\contentsline {section}{\numberline {B.1}Menú principal}{105}{section.Alph2.1}%
-\contentsline {section}{\numberline {B.2}Menú de reglas}{105}{section.Alph2.2}%
-\contentsline {section}{\numberline {B.3}Fase de despliegue}{105}{section.Alph2.3}%
-\contentsline {section}{\numberline {B.4}Partida en curso}{106}{section.Alph2.4}%
-\contentsline {section}{\numberline {B.5}Interfaz de combate}{106}{section.Alph2.5}%
-\contentsline {section}{\numberline {B.6}Menú de pausa}{106}{section.Alph2.6}%
-\contentsline {section}{\numberline {B.7}Menú de opciones}{106}{section.Alph2.7}%
-\contentsline {section}{\numberline {B.8}Fin de partida}{107}{section.Alph2.8}%
-\contentsline {chapter}{Bibliografía}{109}{section.Alph2.8}%
+\contentsline {section}{\numberline {7.3}Detalles de implementación relevantes}{78}{section.7.3}%
+\contentsline {subsection}{\numberline {7.3.1}Arquitectura del bot}{78}{subsection.7.3.1}%
+\contentsline {chapter}{\numberline {8}Pruebas}{79}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Enfoque de pruebas}{79}{section.8.1}%
+\contentsline {section}{\numberline {8.2}Batería de pruebas}{80}{section.8.2}%
+\contentsline {subsection}{\numberline {8.2.1}Bloque 1 — Despliegue inicial}{80}{subsection.8.2.1}%
+\contentsline {subsection}{\numberline {8.2.2}Bloque 2 — Movimiento}{81}{subsection.8.2.2}%
+\contentsline {subsection}{\numberline {8.2.3}Bloque 3 — Combate}{82}{subsection.8.2.3}%
+\contentsline {subsection}{\numberline {8.2.4}Bloque 4 — Condiciones de victoria}{83}{subsection.8.2.4}%
+\contentsline {subsection}{\numberline {8.2.5}Bloque 5 — Interfaz y feedback visual/sonoro}{84}{subsection.8.2.5}%
+\contentsline {subsection}{\numberline {8.2.6}Bloque 6 — Menús y navegación}{85}{subsection.8.2.6}%
+\contentsline {subsection}{\numberline {8.2.7}Bloque 7 — Comportamiento del bot}{86}{subsection.8.2.7}%
+\contentsline {subsection}{\numberline {8.2.8}Bloque 8 — Requisitos no funcionales}{87}{subsection.8.2.8}%
+\contentsline {chapter}{\numberline {9}Seguimiento del proyecto}{89}{chapter.9}%
+\contentsline {section}{\numberline {9.1}Iteración 1: Núcleo jugable y lógica básica}{89}{section.9.1}%
+\contentsline {section}{\numberline {9.2}Iteración 2: Interfaz de usuario y pulido visual}{92}{section.9.2}%
+\contentsline {subsubsection}{Interfaz de partida}{92}{subsubsection*.64}%
+\contentsline {subsection}{\numberline {9.2.1}Interfaz de combate y reglas}{94}{subsection.9.2.1}%
+\contentsline {subsection}{\numberline {9.2.2}Iteración 3: Mejoras audiovisuales}{98}{subsection.9.2.2}%
+\contentsline {section}{\numberline {9.3}Iteración 4: Implementación del bot inteligente}{98}{section.9.3}%
+\contentsline {section}{\numberline {9.4}Iteración 5: Pulido final}{99}{section.9.4}%
+\contentsline {chapter}{\numberline {10}Conclusiones}{101}{chapter.10}%
+\contentsline {section}{\numberline {10.1}Valoración de objetivos}{101}{section.10.1}%
+\contentsline {section}{\numberline {10.2}Uso de inteligencia artificial}{102}{section.10.2}%
+\contentsline {section}{\numberline {10.3}Líneas futuras}{102}{section.10.3}%
+\contentsline {subsection}{\numberline {10.3.1}Guardado y carga de partidas}{102}{subsection.10.3.1}%
+\contentsline {subsection}{\numberline {10.3.2}Niveles de dificultad del bot}{103}{subsection.10.3.2}%
+\contentsline {subsection}{\numberline {10.3.3}Nuevas mecánicas y contenido}{103}{subsection.10.3.3}%
+\contentsline {subsection}{\numberline {10.3.4}Publicación y distribución}{103}{subsection.10.3.4}%
+\contentsline {chapter}{\numberline {A}Manual de instalación}{105}{appendix.Alph1}%
+\contentsline {section}{\numberline {A.1}Requisitos del sistema}{105}{section.Alph1.1}%
+\contentsline {section}{\numberline {A.2}Pasos de instalación}{105}{section.Alph1.2}%
+\contentsline {section}{\numberline {A.3}Solución de problemas comunes}{106}{section.Alph1.3}%
+\contentsline {chapter}{\numberline {B}Manual de usuario}{107}{appendix.Alph2}%
+\contentsline {section}{\numberline {B.1}Menú principal}{107}{section.Alph2.1}%
+\contentsline {section}{\numberline {B.2}Menú de reglas}{107}{section.Alph2.2}%
+\contentsline {section}{\numberline {B.3}Fase de despliegue}{107}{section.Alph2.3}%
+\contentsline {section}{\numberline {B.4}Partida en curso}{108}{section.Alph2.4}%
+\contentsline {section}{\numberline {B.5}Interfaz de combate}{108}{section.Alph2.5}%
+\contentsline {section}{\numberline {B.6}Menú de pausa}{108}{section.Alph2.6}%
+\contentsline {section}{\numberline {B.7}Menú de opciones}{108}{section.Alph2.7}%
+\contentsline {section}{\numberline {B.8}Fin de partida}{109}{section.Alph2.8}%
+\contentsline {chapter}{Bibliografía}{111}{section.Alph2.8}%
 \contentsfinish 

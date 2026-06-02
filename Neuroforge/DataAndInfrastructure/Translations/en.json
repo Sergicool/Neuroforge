@@ -77,7 +77,7 @@
 
     "ui.rules.tab.2.text.1": "As a general rule, pieces move one square orthogonally (up, down, left, right). There is no diagonal movement.",
 	"ui.rules.tab.2.text.2": "Your recognition unit (The [color=orange]Scout[/color]) can move any distance in a straight line, but if it advances more than one square, your opponent might be able to deduce what type of piece it is.",
-	"ui.rules.tab.2.text.3": "Restrictions:\n\n1. You cannot jump over pieces (your own or your opponent's).\n\n2. A piece cannot move back and force between more of 3 turns, at the 4th the pice can't go back until next turn.",
+	"ui.rules.tab.2.text.3": "Restrictions:\n\n1. You cannot jump over pieces (your own or your opponent's).\n\n2. A piece cannot move back and force between more of 3 turns, at the next turn, the pice can't go back until another turn has passed.",
 
     "ui.rules.tab.3.text.1": "A combat begins when a piece moves to a tile occupied by the rival. Both identities are revealed. A combat is decided in the following way:\n\n1. The Higher Rank piece defeats the Lower Rank piece.\n2. If the ranks are equal, ends in a draw and both pieces are destroyed.\n3. In case of a special interaction, the other conditions will be ignored.\n\nThe winner keeps the tile. If the attacker wins, they advance, and if the defender wins, they stay in their place.",
     "ui.rules.tab.3.text.2": "Special interactions",
@@ -90,7 +90,7 @@
     "ui.rules.tab.4.piece.1.text.1": "Ammount:  [color=skyblue]1[/color]\n\nCan Move:  [color=red]No[/color]\n\nRank:  [color=orange]0[/color]",
     "ui.rules.tab.4.piece.1.text.2": "The  vital  heart  of  each  faction.  It  is  immobile  and  defenseless.\n\n[color=crimson]Its  destruction  results  in  an  immediate  power  collapse  and  total  defeat[/color].\n\nProtect  it  at  all  costs.",
     "ui.rules.tab.4.piece.2.text.0": "Phantom",
-    "ui.rules.tab.4.piece.2.text.1": "Ammount:  [color=skyblue]1[/color]\nCan Move:  [color=green]Yes[/color]\nRank:  [color=orange]1[/color]",
+    "ui.rules.tab.4.piece.2.text.1": "Ammount:  [color=skyblue]1[/color]\n\nCan Move:  [color=green]Yes[/color]\n\nRank:  [color=orange]1[/color]",
     "ui.rules.tab.4.piece.2.text.2": "An  agile  drone  designed  for  a  single  purpose:  high-level  infiltration.\n\nWhile  it  is  the  weakest  unit  in  a  fair  fight,  it  [color=crimson]can  instantly  destroy  the  enemy  [color=orange]War Machine[/color]  if  it  strikes  first[/color].\n\nMake it count.",
     "ui.rules.tab.4.piece.3.text.0": "Scout",
     "ui.rules.tab.4.piece.3.text.1": "Ammount:  [color=skyblue]8[/color]\n\nCan Move:  [color=green]Yes[/color]\n\nRank:  [color=orange]2[/color]",

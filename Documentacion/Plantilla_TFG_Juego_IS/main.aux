@@ -11,7 +11,33 @@
 \providecommand\HyField@AuxAddToCoFields[2]{}
 \providecommand \oddpage@label [2]{}
 \babel@aux{spanish}{}
-\newacro{ACRONIMO}[\AC@hyperlink{ACRONIMO}{ACRONIMO}]{Significado del acrónimo, del ingñes \textit  {Si prcediera del inglés}.}
+\newacro{API}[\AC@hyperlink{API}{API}]{Application Programming Interface (Interfaz de Programación de Aplicaciones)}
+\newacro{CPU}[\AC@hyperlink{CPU}{CPU}]{Central Processing Unit (Unidad Central de Procesamiento)}
+\newacro{CU}[\AC@hyperlink{CU}{CU}]{Caso de Uso}
+\newacro{DQN}[\AC@hyperlink{DQN}{DQN}]{Deep Q-Network}
+\newacro{EXE}[\AC@hyperlink{EXE}{EXE}]{Executable (Archivo Ejecutable de Windows)}
+\newacro{FOGASA}[\AC@hyperlink{FOGASA}{FOGASA}]{Fondo de Garantía Salarial}
+\newacro{GPU}[\AC@hyperlink{GPU}{GPU}]{Graphics Processing Unit (Unidad de Procesamiento Gráfico)}
+\newacro{HUD}[\AC@hyperlink{HUD}{HUD}]{Heads-Up Display}
+\newacro{IA}[\AC@hyperlink{IA}{IA}]{Inteligencia Artificial}
+\newacro{It.}[\AC@hyperlink{It.}{It.}]{Iteración}
+\newacro{MaskablePPO}[\AC@hyperlink{MaskablePPO}{MaskablePPO}]{Maskable Proximal Policy Optimization}
+\newacro{MCTS}[\AC@hyperlink{MCTS}{MCTS}]{Monte Carlo Tree Search (Búsqueda de Árboles de Montecarlo)}
+\newacro{MEI}[\AC@hyperlink{MEI}{MEI}]{Mecanismo de Equidad Intergeneracional}
+\newacro{OpenGL}[\AC@hyperlink{OpenGL}{OpenGL}]{Open Graphics Library}
+\newacro{PMBOK}[\AC@hyperlink{PMBOK}{PMBOK}]{Project Management Body of Knowledge}
+\newacro{PPO}[\AC@hyperlink{PPO}{PPO}]{Proximal Policy Optimization}
+\newacro{PVPC}[\AC@hyperlink{PVPC}{PVPC}]{Precio Voluntario para el Pequeño Consumidor}
+\newacro{RAM}[\AC@hyperlink{RAM}{RAM}]{Random Access Memory (Memoria de Acceso Aleatorio)}
+\newacro{RF}[\AC@hyperlink{RF}{RF}]{Requisito Funcional}
+\newacro{RI}[\AC@hyperlink{RI}{RI}]{Requisito de Información}
+\newacro{RL}[\AC@hyperlink{RL}{RL}]{Reinforcement Learning (Aprendizaje por Refuerzo)}
+\newacro{RNF}[\AC@hyperlink{RNF}{RNF}]{Requisito No Funcional}
+\newacro{TFG}[\AC@hyperlink{TFG}{TFG}]{Trabajo Fin de Grado}
+\newacro{UCB}[\AC@hyperlink{UCB}{UCB}]{Upper Confidence Bound}
+\newacro{UI}[\AC@hyperlink{UI}{UI}]{User Interface (Interfaz de Usuario)}
+\newacro{UVa}[\AC@hyperlink{UVa}{UVa}]{Universidad de Valladolid}
+\newacro{ZIP}[\AC@hyperlink{ZIP}{ZIP}]{Formatos de Almacenamiento y Compresión de Datos}
 \citation{newzoo2025}
 \citation{palaus2020}
 \citation{garcianaveira2018}
@@ -29,12 +55,12 @@
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{toc}{\contentsline {section}{\numberline {2.1}Evolución de los juegos de estrategia}{9}{section.2.1}\protected@file@percent }
-\citation{ChessHistory}
 \@writefile{lof}{\contentsline {figure}{\numberline {2.1}{\ignorespaces Tablero del Juego Real de Ur}}{10}{figure.caption.8}\protected@file@percent }
 \providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
 \newlabel{fig:JuegoRealDeUr}{{2.1}{10}{Tablero del Juego Real de Ur}{figure.caption.8}{}}
 \@writefile{lof}{\contentsline {figure}{\numberline {2.2}{\ignorespaces Tablero del juego Senet}}{10}{figure.caption.9}\protected@file@percent }
 \newlabel{fig:Senet}{{2.2}{10}{Tablero del juego Senet}{figure.caption.9}{}}
+\citation{ChessHistory}
 \citation{ChessVariantsDouShouQi}
 \citation{BAdaLAttaque}
 \@writefile{lof}{\contentsline {figure}{\numberline {2.3}{\ignorespaces Tablero del juego Dou Shou Qi}}{12}{figure.caption.10}\protected@file@percent }
@@ -71,11 +97,13 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2.3}Piezas}{21}{subsection.3.2.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2.4}Turnos}{21}{subsection.3.2.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2.5}Resolución de combates}{22}{subsection.3.2.5}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {3.2}{\ignorespaces Esquema del tablero}}{23}{figure.caption.13}\protected@file@percent }
+\newlabel{fig:DiagramaFlujoDeCombate}{{3.2}{23}{Esquema del tablero}{figure.caption.13}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2.6}Condiciones de victoria}{23}{subsection.3.2.6}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.2.7}Interacción y control}{23}{subsection.3.2.7}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {3.3}Ambientación}{23}{section.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3.3}Ambientación}{24}{section.3.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {3.3.1}Unidades y estructuras}{24}{subsection.3.3.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.2}Escenario}{24}{subsection.3.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3.2}Escenario}{25}{subsection.3.3.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {3.4}Diseño de niveles}{25}{section.3.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {3.5}Audiencia}{25}{section.3.5}\protected@file@percent }
 \citation{cabalar_metodologias}
@@ -84,11 +112,11 @@
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{toc}{\contentsline {section}{\numberline {4.1}Metodología empleada}{27}{section.4.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces Metáfora gráfica del desarrollo iterativo e incremental}}{28}{figure.caption.13}\protected@file@percent }
-\newlabel{fig:Metodologia}{{4.1}{28}{Metáfora gráfica del desarrollo iterativo e incremental}{figure.caption.13}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.1}{\ignorespaces Metáfora gráfica del desarrollo iterativo e incremental}}{28}{figure.caption.14}\protected@file@percent }
+\newlabel{fig:Metodologia}{{4.1}{28}{Metáfora gráfica del desarrollo iterativo e incremental}{figure.caption.14}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.1.1}Etapas de desarrollo y ordenación en la planificación}{28}{subsection.4.1.1}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {4.1}{\ignorespaces Correspondencia entre las fases de la metodología y la ordenación de las tareas en la planificación}}{29}{table.caption.14}\protected@file@percent }
-\newlabel{tab:fases_up}{{4.1}{29}{Correspondencia entre las fases de la metodología y la ordenación de las tareas en la planificación}{table.caption.14}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.1}{\ignorespaces Correspondencia entre las fases de la metodología y la ordenación de las tareas en la planificación}}{29}{table.caption.15}\protected@file@percent }
+\newlabel{tab:fases_up}{{4.1}{29}{Correspondencia entre las fases de la metodología y la ordenación de las tareas en la planificación}{table.caption.15}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {4.2}Planificación inicial}{29}{section.4.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.2.1}Tareas Globales Iniciales: Análisis y Diseño}{29}{subsection.4.2.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.2.2}Iteración 1: Núcleo jugable (Videojuego base)}{30}{subsection.4.2.2}\protected@file@percent }
@@ -96,15 +124,15 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.2.4}Iteración 3: Mejoras audiovisuales}{31}{subsection.4.2.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.2.5}Iteración 4: Implementación del bot inteligente}{32}{subsection.4.2.5}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.2.6}Iteración 5: Pulido final}{32}{subsection.4.2.6}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {4.2}{\ignorespaces Distribución ajustada de horas por tareas globales e iteraciones del proyecto}}{33}{table.caption.15}\protected@file@percent }
-\newlabel{tab:iteraciones}{{4.2}{33}{Distribución ajustada de horas por tareas globales e iteraciones del proyecto}{table.caption.15}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces Parte 1 del diagrama de Gantt general del desarrollo del TFG}}{34}{figure.caption.16}\protected@file@percent }
-\newlabel{fig:gantt1}{{4.2}{34}{Parte 1 del diagrama de Gantt general del desarrollo del TFG}{figure.caption.16}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces Parte 2 del diagrama de Gantt general del desarrollo del TFG}}{35}{figure.caption.17}\protected@file@percent }
-\newlabel{fig:gantt2}{{4.3}{35}{Parte 2 del diagrama de Gantt general del desarrollo del TFG}{figure.caption.17}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.2}{\ignorespaces Distribución ajustada de horas por tareas globales e iteraciones del proyecto}}{33}{table.caption.16}\protected@file@percent }
+\newlabel{tab:iteraciones}{{4.2}{33}{Distribución ajustada de horas por tareas globales e iteraciones del proyecto}{table.caption.16}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.2}{\ignorespaces Parte 1 del diagrama de Gantt general del desarrollo del TFG}}{34}{figure.caption.17}\protected@file@percent }
+\newlabel{fig:gantt1}{{4.2}{34}{Parte 1 del diagrama de Gantt general del desarrollo del TFG}{figure.caption.17}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {4.3}{\ignorespaces Parte 2 del diagrama de Gantt general del desarrollo del TFG}}{35}{figure.caption.18}\protected@file@percent }
+\newlabel{fig:gantt2}{{4.3}{35}{Parte 2 del diagrama de Gantt general del desarrollo del TFG}{figure.caption.18}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {4.3}Riesgos}{36}{section.4.3}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {4.3}{\ignorespaces Riesgos identificados y planes de contingencia}}{36}{table.caption.18}\protected@file@percent }
-\newlabel{tab:riesgos}{{4.3}{36}{Riesgos identificados y planes de contingencia}{table.caption.18}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.3}{\ignorespaces Riesgos identificados y planes de contingencia}}{36}{table.caption.19}\protected@file@percent }
+\newlabel{tab:riesgos}{{4.3}{36}{Riesgos identificados y planes de contingencia}{table.caption.19}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {4.4}Restricciones}{37}{section.4.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {4.5}Herramientas}{37}{section.4.5}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.5.1}Selección del Motor de Videojuegos}{37}{subsection.4.5.1}\protected@file@percent }
@@ -115,16 +143,16 @@
 \citation{godot_features}
 \citation{slayspire2_godot}
 \citation{slayspire2_launch}
-\@writefile{lot}{\contentsline {table}{\numberline {4.4}{\ignorespaces Comparativa entre motores de desarrollo de videojuegos}}{39}{table.caption.19}\protected@file@percent }
-\newlabel{tab:comparativa_motores}{{4.4}{39}{Comparativa entre motores de desarrollo de videojuegos}{table.caption.19}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.4}{\ignorespaces Comparativa entre motores de desarrollo de videojuegos}}{39}{table.caption.20}\protected@file@percent }
+\newlabel{tab:comparativa_motores}{{4.4}{39}{Comparativa entre motores de desarrollo de videojuegos}{table.caption.20}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.5.2}Otras herramientas utilizadas}{39}{subsection.4.5.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {4.6}Variación de planificación}{40}{section.4.6}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {4.5}{\ignorespaces Herramientas empleadas en el desarrollo del proyecto}}{41}{table.caption.20}\protected@file@percent }
-\newlabel{tab:Herramientas}{{4.5}{41}{Herramientas empleadas en el desarrollo del proyecto}{table.caption.20}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.5}{\ignorespaces Herramientas empleadas en el desarrollo del proyecto}}{41}{table.caption.21}\protected@file@percent }
+\newlabel{tab:Herramientas}{{4.5}{41}{Herramientas empleadas en el desarrollo del proyecto}{table.caption.21}{}}
 \citation{glassdoor_gamedeveloper}
 \citation{seguridad_social_costes}
-\@writefile{lot}{\contentsline {table}{\numberline {4.6}{\ignorespaces Variaciones respecto a la planificación inicial}}{42}{table.caption.21}\protected@file@percent }
-\newlabel{tab:variacion}{{4.6}{42}{Variaciones respecto a la planificación inicial}{table.caption.21}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.6}{\ignorespaces Variaciones respecto a la planificación inicial}}{42}{table.caption.22}\protected@file@percent }
+\newlabel{tab:variacion}{{4.6}{42}{Variaciones respecto a la planificación inicial}{table.caption.22}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {4.7}Costes del proyecto}{42}{section.4.7}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.7.1}Costes de personal}{42}{subsection.4.7.1}\protected@file@percent }
 \citation{astah_pricing}
@@ -137,8 +165,8 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.7.2}Costes de software e infraestructura}{43}{subsection.4.7.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.7.3}Distribución en Steam y punto de amortización}{43}{subsection.4.7.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.7.4}Resumen y punto de amortización}{43}{subsection.4.7.4}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {4.7}{\ignorespaces Desglose de costes estimados en escenario individual y empresarial}}{44}{table.caption.22}\protected@file@percent }
-\newlabel{tab:costes}{{4.7}{44}{Desglose de costes estimados en escenario individual y empresarial}{table.caption.22}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4.7}{\ignorespaces Desglose de costes estimados en escenario individual y empresarial}}{44}{table.caption.23}\protected@file@percent }
+\newlabel{tab:costes}{{4.7}{44}{Desglose de costes estimados en escenario individual y empresarial}{table.caption.23}{}}
 \@writefile{toc}{\contentsline {chapter}{\numberline {5}Análisis}{45}{chapter.5}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
@@ -148,181 +176,188 @@
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.2.2}Requisitos no funcionales}{46}{subsection.5.2.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.2.3}Requisitos de información}{47}{subsection.5.2.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {5.3}Casos de uso}{48}{section.5.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {5.1}{\ignorespaces Diagrama de casos de uso}}{48}{figure.caption.23}\protected@file@percent }
-\newlabel{fig:diagrama_cu}{{5.1}{48}{Diagrama de casos de uso}{figure.caption.23}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.1}Lista de casos de uso}{48}{subsection.5.3.1}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {5.1}{\ignorespaces Lista de casos de uso del sistema}}{48}{table.caption.24}\protected@file@percent }
-\newlabel{tab:casosdeuso}{{5.1}{48}{Lista de casos de uso del sistema}{table.caption.24}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.2}CU-01: Jugar partida}{49}{subsection.5.3.2}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {5.2}{\ignorespaces CU-01: Jugar partida}}{49}{table.caption.25}\protected@file@percent }
-\newlabel{tab:cu01}{{5.2}{49}{CU-01: Jugar partida}{table.caption.25}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.3}CU-02: Jugar turnos}{50}{subsection.5.3.3}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {5.3}{\ignorespaces CU-01: Jugar partida}}{50}{table.caption.26}\protected@file@percent }
-\newlabel{tab:cu02}{{5.3}{50}{CU-01: Jugar partida}{table.caption.26}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {5.1}{\ignorespaces Diagrama de casos de uso}}{48}{figure.caption.24}\protected@file@percent }
+\newlabel{fig:diagrama_cu}{{5.1}{48}{Diagrama de casos de uso}{figure.caption.24}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.1}Lista de casos de uso}{49}{subsection.5.3.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {5.1}{\ignorespaces Lista de casos de uso del Sistema}}{49}{table.caption.25}\protected@file@percent }
+\newlabel{tab:casosdeuso}{{5.1}{49}{Lista de casos de uso del Sistema}{table.caption.25}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.2}CU-01: Iniciar partida}{49}{subsection.5.3.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {5.2}{\ignorespaces CU-01: Iniciar partida}}{49}{table.caption.26}\protected@file@percent }
+\newlabel{tab:cu01}{{5.2}{49}{CU-01: Iniciar partida}{table.caption.26}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.3}CU-02: Jugar ronda}{50}{subsection.5.3.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {5.3}{\ignorespaces CU-02: Jugar ronda}}{50}{table.caption.27}\protected@file@percent }
+\newlabel{tab:cu02}{{5.3}{50}{CU-02: Jugar ronda}{table.caption.27}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.3.4}CU-03: Resolver combate}{51}{subsection.5.3.4}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {5.4}{\ignorespaces CU-03: Resolver combate}}{51}{table.caption.27}\protected@file@percent }
-\newlabel{tab:cu03}{{5.4}{51}{CU-03: Resolver combate}{table.caption.27}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.5}CU-04: Consultar reglas}{52}{subsection.5.3.5}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {5.5}{\ignorespaces CU-04: Consultar reglas}}{52}{table.caption.28}\protected@file@percent }
-\newlabel{tab:cu04}{{5.5}{52}{CU-04: Consultar reglas}{table.caption.28}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.6}CU-05: Consultar opciones}{53}{subsection.5.3.6}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {5.6}{\ignorespaces CU-05: Consultar opciones}}{53}{table.caption.29}\protected@file@percent }
-\newlabel{tab:cu05}{{5.6}{53}{CU-05: Consultar opciones}{table.caption.29}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.4}Modelo de dominio}{54}{section.5.4}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {5.2}{\ignorespaces Diagrama del modelo de dominio}}{54}{figure.caption.30}\protected@file@percent }
-\newlabel{fig:modelo_dominio}{{5.2}{54}{Diagrama del modelo de dominio}{figure.caption.30}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {5.5}Modelo de proceso de negocio}{55}{section.5.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.1}Actividad: Jugar partida}{55}{subsection.5.5.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {5.3}{\ignorespaces Diagrama de actividad: Jugar partida}}{55}{figure.caption.31}\protected@file@percent }
-\newlabel{fig:diagrama_actividad_1}{{5.3}{55}{Diagrama de actividad: Jugar partida}{figure.caption.31}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.2}Actividad: Jugar turnos}{56}{subsection.5.5.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {5.4}{\ignorespaces Diagrama de actividad: Jugar turnos}}{56}{figure.caption.32}\protected@file@percent }
-\newlabel{fig:diagrama_actividad_2}{{5.4}{56}{Diagrama de actividad: Jugar turnos}{figure.caption.32}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.3}Actividad: Resolver combate}{57}{subsection.5.5.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {5.5}{\ignorespaces Diagrama de actividad: Resolver combate}}{57}{figure.caption.33}\protected@file@percent }
-\newlabel{fig:diagrama_actividad_3}{{5.5}{57}{Diagrama de actividad: Resolver combate}{figure.caption.33}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.4}Actividad: Consultar opciones}{58}{subsection.5.5.4}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {5.6}{\ignorespaces Diagrama de actividad: Consultar opciones}}{58}{figure.caption.34}\protected@file@percent }
-\newlabel{fig:diagrama_actividad_5}{{5.6}{58}{Diagrama de actividad: Consultar opciones}{figure.caption.34}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {5.4}{\ignorespaces CU-03: Resolver combate}}{51}{table.caption.28}\protected@file@percent }
+\newlabel{tab:cu03}{{5.4}{51}{CU-03: Resolver combate}{table.caption.28}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.5}CU-04: Pausar partida}{52}{subsection.5.3.5}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {5.5}{\ignorespaces CU-04: Pausar partida}}{52}{table.caption.29}\protected@file@percent }
+\newlabel{tab:cu04}{{5.5}{52}{CU-04: Pausar partida}{table.caption.29}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.6}CU-05: Abandonar partida}{53}{subsection.5.3.6}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {5.6}{\ignorespaces CU-05: Abandonar partida}}{53}{table.caption.30}\protected@file@percent }
+\newlabel{tab:cu05}{{5.6}{53}{CU-05: Abandonar partida}{table.caption.30}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.7}CU-06: Consultar reglas}{53}{subsection.5.3.7}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {5.7}{\ignorespaces CU-06: Consultar reglas}}{53}{table.caption.31}\protected@file@percent }
+\newlabel{tab:cu06}{{5.7}{53}{CU-06: Consultar reglas}{table.caption.31}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3.8}CU-07: Consultar opciones}{54}{subsection.5.3.8}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {5.8}{\ignorespaces CU-07: Consultar opciones}}{54}{table.caption.32}\protected@file@percent }
+\newlabel{tab:cu07}{{5.8}{54}{CU-07: Consultar opciones}{table.caption.32}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.4}Modelo de dominio}{55}{section.5.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.2}{\ignorespaces Diagrama del modelo de dominio}}{55}{figure.caption.33}\protected@file@percent }
+\newlabel{fig:modelo_dominio}{{5.2}{55}{Diagrama del modelo de dominio}{figure.caption.33}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5.5}Modelo de proceso de negocio}{56}{section.5.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.1}Actividad: Iniciar partida}{56}{subsection.5.5.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.3}{\ignorespaces Diagrama de actividad: Iniciar partida}}{56}{figure.caption.34}\protected@file@percent }
+\newlabel{fig:DiagramaActividadIniciarPartida}{{5.3}{56}{Diagrama de actividad: Iniciar partida}{figure.caption.34}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.2}Actividad: Jugar ronda}{57}{subsection.5.5.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.4}{\ignorespaces Diagrama de actividad: Jugar ronda}}{57}{figure.caption.35}\protected@file@percent }
+\newlabel{fig:DiagramaActividadJugarTurno}{{5.4}{57}{Diagrama de actividad: Jugar ronda}{figure.caption.35}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5.3}Actividad: Resolver combate}{58}{subsection.5.5.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {5.5}{\ignorespaces Diagrama de actividad: Resolver combate}}{58}{figure.caption.36}\protected@file@percent }
+\newlabel{fig:DiagramaActividadResolverCombate}{{5.5}{58}{Diagrama de actividad: Resolver combate}{figure.caption.36}{}}
 \@writefile{toc}{\contentsline {chapter}{\numberline {6}Diseño}{59}{chapter.6}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{toc}{\contentsline {section}{\numberline {6.1}Arquitectura del sistema}{59}{section.6.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {6.1.1}El modelo de ejecución de Godot}{59}{subsection.6.1.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {6.1}{\ignorespaces Estructura de la escena \texttt  {Tile} en el editor de Godot}}{60}{figure.caption.35}\protected@file@percent }
-\newlabel{fig:EjemploEscena}{{6.1}{60}{Estructura de la escena \texttt {Tile} en el editor de Godot}{figure.caption.35}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6.2}{\ignorespaces Modelo de ejecución de Godot ilustrado con algunos nodos del proyecto.}}{61}{figure.caption.36}\protected@file@percent }
-\newlabel{fig:GodotModelo}{{6.2}{61}{Modelo de ejecución de Godot ilustrado con algunos nodos del proyecto}{figure.caption.36}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.1}{\ignorespaces Estructura de la escena \texttt  {Tile} en el editor de Godot}}{60}{figure.caption.37}\protected@file@percent }
+\newlabel{fig:EjemploEscena}{{6.1}{60}{Estructura de la escena \texttt {Tile} en el editor de Godot}{figure.caption.37}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.2}{\ignorespaces Modelo de ejecución de Godot ilustrado con algunos nodos del proyecto.}}{61}{figure.caption.38}\protected@file@percent }
+\newlabel{fig:GodotModelo}{{6.2}{61}{Modelo de ejecución de Godot ilustrado con algunos nodos del proyecto}{figure.caption.38}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {6.1.2}Arquitectura de NeuroForge}{61}{subsection.6.1.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {6.3}{\ignorespaces Vista simplificada de la arquitectura de NeuroForge en tres capas.}}{62}{figure.caption.37}\protected@file@percent }
-\newlabel{fig:ArquitecturaDelSistema}{{6.3}{62}{Vista simplificada de la arquitectura de NeuroForge en tres capas}{figure.caption.37}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {6.2}Diagrama de despliegue}{63}{section.6.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {6.4}{\ignorespaces Diagrama de despliegue de NeuroForge.}}{63}{figure.caption.38}\protected@file@percent }
-\newlabel{fig:DiagramaDespliegue}{{6.4}{63}{Diagrama de despliegue de NeuroForge}{figure.caption.38}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {6.3}Diseño de interfaz de usuario}{64}{section.6.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {6.5}{\ignorespaces Diagrama de navegación de las interfaces de NeuroForge.}}{64}{figure.caption.39}\protected@file@percent }
-\newlabel{fig:DiagramaNavegacion}{{6.5}{64}{Diagrama de navegación de las interfaces de NeuroForge}{figure.caption.39}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6.6}{\ignorespaces Menú principal de NeuroForge.}}{65}{figure.caption.40}\protected@file@percent }
-\newlabel{fig:MenuPrincipal}{{6.6}{65}{Menú principal de NeuroForge}{figure.caption.40}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6.7}{\ignorespaces Menú de reglas con la pestaña de piezas activa.}}{66}{figure.caption.41}\protected@file@percent }
-\newlabel{fig:MenuReglasPieces}{{6.7}{66}{Menú de reglas con la pestaña de piezas activa}{figure.caption.41}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {6.8}{\ignorespaces Fase de despliegue con algunas piezas ya colocadas en la zona del jugador.}}{66}{figure.caption.42}\protected@file@percent }
-\newlabel{fig:MenuDespliegueParcialmenteVacio}{{6.8}{66}{Fase de despliegue con algunas piezas ya colocadas en la zona del jugador}{figure.caption.42}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.1}Partida en curso}{67}{subsection.6.3.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {6.9}{\ignorespaces Pantalla de partida con una pieza seleccionada y sus acciones posibles resaltadas.}}{68}{figure.caption.43}\protected@file@percent }
-\newlabel{fig:MenuPartidaEnCurso}{{6.9}{68}{Pantalla de partida con una pieza seleccionada y sus acciones posibles resaltadas}{figure.caption.43}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.2}Interfaz de combate}{69}{subsection.6.3.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {6.10}{\ignorespaces Interfaz de combate tras la resolución: pieza perdedora oscurecida y mensaje de resultado visible.}}{69}{figure.caption.44}\protected@file@percent }
-\newlabel{fig:MenuInterfazCombateResuelto}{{6.10}{69}{Interfaz de combate tras la resolución: pieza perdedora oscurecida y mensaje de resultado visible}{figure.caption.44}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.3}Fin de partida}{69}{subsection.6.3.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {6.11}{\ignorespaces Pantalla de fin de partida con mensaje de victoria.}}{70}{figure.caption.45}\protected@file@percent }
-\newlabel{fig:MenuFinPartida}{{6.11}{70}{Pantalla de fin de partida con mensaje de victoria}{figure.caption.45}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.4}Menú de pausa}{70}{subsection.6.3.4}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {6.12}{\ignorespaces Menú que emerge al pausar durante una partida.}}{71}{figure.caption.46}\protected@file@percent }
-\newlabel{fig:MenuPausa}{{6.12}{71}{Menú que emerge al pausar durante una partida}{figure.caption.46}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.5}Menú de opciones}{71}{subsection.6.3.5}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {6.13}{\ignorespaces Menú de opciones donde configurar audio y resolución.}}{72}{figure.caption.47}\protected@file@percent }
-\newlabel{fig:MenuOpciones}{{6.13}{72}{Menú de opciones donde configurar audio y resolución}{figure.caption.47}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {6.4}Patrones de diseño aplicados}{72}{section.6.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.1}Singleton}{72}{subsection.6.4.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {6.14}{\ignorespaces Patrón Singleton aplicado en \texttt  {GameScene} y \texttt  {SceneManager}.}}{73}{figure.caption.48}\protected@file@percent }
-\newlabel{fig:PatronSingleton}{{6.14}{73}{Patrón Singleton aplicado en \texttt {GameScene} y \texttt {SceneManager}}{figure.caption.48}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.2}Strategy}{73}{subsection.6.4.2}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {6.15}{\ignorespaces Patrón Strategy con \texttt  {MovementSystem} y \texttt  {CombatSystem} como estrategias delegadas desde \texttt  {Board}.}}{73}{figure.caption.49}\protected@file@percent }
-\newlabel{fig:PatronStrategy}{{6.15}{73}{Patrón Strategy con \texttt {MovementSystem} y \texttt {CombatSystem} como estrategias delegadas desde \texttt {Board}}{figure.caption.49}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.3}Fachada}{74}{subsection.6.4.3}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {6.16}{\ignorespaces Patrón Fachada con \texttt  {Board} como punto de acceso unificado al subsistema de tablero.}}{74}{figure.caption.50}\protected@file@percent }
-\newlabel{fig:PatronFachada}{{6.16}{74}{Patrón Fachada con \texttt {Board} como punto de acceso unificado al subsistema de tablero}{figure.caption.50}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.4.4}Template Method}{74}{subsection.6.4.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6.3}{\ignorespaces Vista simplificada de la arquitectura de NeuroForge en tres capas.}}{62}{figure.caption.39}\protected@file@percent }
+\newlabel{fig:ArquitecturaDelSistema}{{6.3}{62}{Vista simplificada de la arquitectura de NeuroForge en tres capas}{figure.caption.39}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.2}Patrones de diseño aplicados}{63}{section.6.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.1}Singleton}{63}{subsection.6.2.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6.4}{\ignorespaces Patrón Singleton aplicado en \texttt  {GameScene} y \texttt  {SceneManager}.}}{64}{figure.caption.40}\protected@file@percent }
+\newlabel{fig:PatronSingleton}{{6.4}{64}{Patrón Singleton aplicado en \texttt {GameScene} y \texttt {SceneManager}}{figure.caption.40}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.2}Strategy}{64}{subsection.6.2.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6.5}{\ignorespaces Patrón Strategy con \texttt  {MovementSystem} y \texttt  {CombatSystem} como estrategias delegadas desde \texttt  {Board}.}}{64}{figure.caption.41}\protected@file@percent }
+\newlabel{fig:PatronStrategy}{{6.5}{64}{Patrón Strategy con \texttt {MovementSystem} y \texttt {CombatSystem} como estrategias delegadas desde \texttt {Board}}{figure.caption.41}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.3}Fachada}{64}{subsection.6.2.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6.6}{\ignorespaces Patrón Fachada con \texttt  {Board} como punto de acceso unificado al subsistema de tablero.}}{65}{figure.caption.42}\protected@file@percent }
+\newlabel{fig:PatronFachada}{{6.6}{65}{Patrón Fachada con \texttt {Board} como punto de acceso unificado al subsistema de tablero}{figure.caption.42}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2.4}Template Method}{65}{subsection.6.2.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6.3}Diseño de interfaz de usuario}{65}{section.6.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6.7}{\ignorespaces Diagrama de navegación de las interfaces de NeuroForge.}}{66}{figure.caption.43}\protected@file@percent }
+\newlabel{fig:DiagramaNavegacion}{{6.7}{66}{Diagrama de navegación de las interfaces de NeuroForge}{figure.caption.43}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.8}{\ignorespaces Menú principal de NeuroForge.}}{66}{figure.caption.44}\protected@file@percent }
+\newlabel{fig:MenuPrincipal}{{6.8}{66}{Menú principal de NeuroForge}{figure.caption.44}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.9}{\ignorespaces Menú de reglas con la pestaña de piezas activa.}}{67}{figure.caption.45}\protected@file@percent }
+\newlabel{fig:MenuReglasPieces}{{6.9}{67}{Menú de reglas con la pestaña de piezas activa}{figure.caption.45}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {6.10}{\ignorespaces Fase de despliegue con algunas piezas ya colocadas en la zona del jugador.}}{68}{figure.caption.46}\protected@file@percent }
+\newlabel{fig:MenuDespliegueParcialmenteVacio}{{6.10}{68}{Fase de despliegue con algunas piezas ya colocadas en la zona del jugador}{figure.caption.46}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.1}Partida en curso}{69}{subsection.6.3.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6.11}{\ignorespaces Pantalla de partida con una pieza seleccionada y sus acciones posibles resaltadas.}}{69}{figure.caption.47}\protected@file@percent }
+\newlabel{fig:MenuPartidaEnCurso}{{6.11}{69}{Pantalla de partida con una pieza seleccionada y sus acciones posibles resaltadas}{figure.caption.47}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.2}Interfaz de combate}{70}{subsection.6.3.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6.12}{\ignorespaces Interfaz de combate tras la resolución: pieza perdedora oscurecida y mensaje de resultado visible.}}{70}{figure.caption.48}\protected@file@percent }
+\newlabel{fig:MenuInterfazCombateResuelto}{{6.12}{70}{Interfaz de combate tras la resolución: pieza perdedora oscurecida y mensaje de resultado visible}{figure.caption.48}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.3}Fin de partida}{71}{subsection.6.3.3}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6.13}{\ignorespaces Pantalla de fin de partida con mensaje de victoria.}}{71}{figure.caption.49}\protected@file@percent }
+\newlabel{fig:MenuFinPartida}{{6.13}{71}{Pantalla de fin de partida con mensaje de victoria}{figure.caption.49}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.4}Menú de pausa}{72}{subsection.6.3.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6.14}{\ignorespaces Menú que emerge al pausar durante una partida.}}{72}{figure.caption.50}\protected@file@percent }
+\newlabel{fig:MenuPausa}{{6.14}{72}{Menú que emerge al pausar durante una partida}{figure.caption.50}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3.5}Menú de opciones}{73}{subsection.6.3.5}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6.15}{\ignorespaces Menú de opciones donde configurar audio y resolución.}}{73}{figure.caption.51}\protected@file@percent }
+\newlabel{fig:MenuOpciones}{{6.15}{73}{Menú de opciones donde configurar audio y resolución}{figure.caption.51}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6.4}Diagrama de despliegue}{74}{section.6.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {6.16}{\ignorespaces Diagrama de despliegue de NeuroForge.}}{74}{figure.caption.52}\protected@file@percent }
+\newlabel{fig:DiagramaDespliegue}{{6.16}{74}{Diagrama de despliegue de NeuroForge}{figure.caption.52}{}}
 \@writefile{toc}{\contentsline {chapter}{\numberline {7}Implementación}{75}{chapter.7}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
 \@writefile{toc}{\contentsline {section}{\numberline {7.1}Organización del código}{75}{section.7.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {7.2}Licencias requeridas}{76}{section.7.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {7.2.1}Motor de Videojuegos: Godot Engine}{76}{subsection.7.2.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.2.2}Recursos de Audio}{76}{subsection.7.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2.2}Recursos de Audio}{77}{subsection.7.2.2}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {7.2.3}Recursos Gráficos}{77}{subsection.7.2.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {7.2.4}Modificación de recursos}{77}{subsection.7.2.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {7.3}Iteraciones y progreso del desarrollo}{78}{section.7.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.3.1}Iteración 1: Núcleo jugable y lógica básica}{78}{subsection.7.3.1}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {7.1}{\ignorespaces Detalle de la interfaz de despliegue inicial basada en botones de texto.}}{79}{figure.caption.51}\protected@file@percent }
-\newlabel{fig:it1_interfaz}{{7.1}{79}{Detalle de la interfaz de despliegue inicial basada en botones de texto}{figure.caption.51}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7.2}{\ignorespaces Mensaje de final de partida en la Iteración 1}}{80}{figure.caption.52}\protected@file@percent }
-\newlabel{fig:it1_juego2}{{7.2}{80}{Mensaje de final de partida en la Iteración 1}{figure.caption.52}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7.3}{\ignorespaces Capturas del juego durante la Iteración 1.}}{80}{figure.caption.53}\protected@file@percent }
-\newlabel{fig:it1_juego1}{{7.3}{80}{Capturas del juego durante la Iteración 1}{figure.caption.53}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.3.2}Iteración 2: Interfaz de usuario y pulido visual}{80}{subsection.7.3.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsubsection}{Interfaz de partida}{81}{subsubsection*.54}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {7.4}{\ignorespaces Primer boceto de la interfaz de partida con indicadores laterales y texto de turno.}}{81}{figure.caption.55}\protected@file@percent }
-\newlabel{fig:boceto_partida_v1}{{7.4}{81}{Primer boceto de la interfaz de partida con indicadores laterales y texto de turno}{figure.caption.55}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7.5}{\ignorespaces Evolución del diseño de partida con indicadores visuales de turno.}}{82}{figure.caption.56}\protected@file@percent }
-\newlabel{fig:boceto_partida_v2}{{7.5}{82}{Evolución del diseño de partida con indicadores visuales de turno}{figure.caption.56}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7.6}{\ignorespaces Layout definitivo del boceto de la interfaz de partida.}}{83}{figure.caption.57}\protected@file@percent }
-\newlabel{fig:boceto_partida_v3}{{7.6}{83}{Layout definitivo del boceto de la interfaz de partida}{figure.caption.57}{}}
-\@writefile{toc}{\contentsline {subsubsection}{Interfaz de combate y reglas}{83}{subsubsection*.58}\protected@file@percent }
-\@writefile{lof}{\contentsline {figure}{\numberline {7.7}{\ignorespaces Boceto de inicio de combate: presentación de piezas.}}{84}{figure.caption.59}\protected@file@percent }
-\newlabel{fig:combate_estado1}{{7.7}{84}{Boceto de inicio de combate: presentación de piezas}{figure.caption.59}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7.8}{\ignorespaces Boceto de resolución: comparación de rangos.}}{84}{figure.caption.60}\protected@file@percent }
-\newlabel{fig:combate_estado2}{{7.8}{84}{Boceto de resolución: comparación de rangos}{figure.caption.60}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7.9}{\ignorespaces Boceto de fin de combate: pieza eliminada.}}{85}{figure.caption.61}\protected@file@percent }
-\newlabel{fig:combate_estado3}{{7.9}{85}{Boceto de fin de combate: pieza eliminada}{figure.caption.61}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7.10}{\ignorespaces Comparativa entre el diseño inicial de combate y el diseño final simplificado.}}{85}{figure.caption.62}\protected@file@percent }
-\newlabel{fig:boceto_comparacion_combate}{{7.10}{85}{Comparativa entre el diseño inicial de combate y el diseño final simplificado}{figure.caption.62}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7.11}{\ignorespaces Boceto del menú de pausa de la partida.}}{86}{figure.caption.63}\protected@file@percent }
-\newlabel{fig:boceto_pausa}{{7.11}{86}{Boceto del menú de pausa de la partida}{figure.caption.63}{}}
-\@writefile{lof}{\contentsline {figure}{\numberline {7.12}{\ignorespaces Boceto de la interfaz de reglas con sistema de navegación por viñetas.}}{86}{figure.caption.64}\protected@file@percent }
-\newlabel{fig:boceto_reglas}{{7.12}{86}{Boceto de la interfaz de reglas con sistema de navegación por viñetas}{figure.caption.64}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.3.3}Iteración 3: Mejoras audiovisuales}{87}{subsection.7.3.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.3.4}Iteración 4: Implementación del bot inteligente}{87}{subsection.7.3.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.3.5}Iteración 5: Pulido final}{88}{subsection.7.3.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {chapter}{\numberline {8}Pruebas}{89}{chapter.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7.3}Detalles de implementación relevantes}{78}{section.7.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.3.1}Arquitectura del bot}{78}{subsection.7.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {8}Pruebas}{79}{chapter.8}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {8.1}Enfoque de pruebas}{89}{section.8.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {8.2}Batería de pruebas}{90}{section.8.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.2.1}Bloque 1 — Despliegue inicial}{90}{subsection.8.2.1}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {8.1}{\ignorespaces Pruebas del bloque 1: Despliegue inicial (RF01, RF02, CU-01)}}{90}{table.caption.65}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.2.2}Bloque 2 — Movimiento}{91}{subsection.8.2.2}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {8.2}{\ignorespaces Pruebas del bloque 2: Movimiento (RF03, RF04, RF07, CU-02)}}{91}{table.caption.66}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.2.3}Bloque 3 — Combate}{92}{subsection.8.2.3}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {8.3}{\ignorespaces Pruebas del bloque 3: Combate (RF04, RF05, RF09, CU-03)}}{92}{table.caption.67}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.2.4}Bloque 4 — Condiciones de victoria}{93}{subsection.8.2.4}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {8.4}{\ignorespaces Pruebas del bloque 4: Condiciones de victoria (RF08, CU-02)}}{93}{table.caption.68}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.2.5}Bloque 5 — Interfaz y feedback visual/sonoro}{94}{subsection.8.2.5}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {8.5}{\ignorespaces Pruebas del bloque 5: Interfaz y feedback (RF09, RF10, RNF04)}}{94}{table.caption.69}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.2.6}Bloque 6 — Menús y navegación}{95}{subsection.8.2.6}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {8.6}{\ignorespaces Pruebas del bloque 6: Menús y navegación (RF11, RF12, RF13, CU-04, CU-05)}}{95}{table.caption.70}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.2.7}Bloque 7 — Comportamiento del bot}{96}{subsection.8.2.7}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {8.7}{\ignorespaces Pruebas del bloque 7: Comportamiento del bot (RF06)}}{96}{table.caption.71}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.2.8}Bloque 8 — Requisitos no funcionales}{97}{subsection.8.2.8}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {8.8}{\ignorespaces Pruebas del bloque 8: Requisitos no funcionales (RNF01--RNF04)}}{97}{table.caption.72}\protected@file@percent }
-\@writefile{toc}{\contentsline {chapter}{\numberline {9}Conclusiones}{99}{chapter.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {8.1}Enfoque de pruebas}{79}{section.8.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {8.2}Batería de pruebas}{80}{section.8.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.2.1}Bloque 1 — Despliegue inicial}{80}{subsection.8.2.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {8.1}{\ignorespaces Pruebas del bloque 1: Despliegue inicial (RF01, RF02, CU-01)}}{80}{table.caption.53}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.2.2}Bloque 2 — Movimiento}{81}{subsection.8.2.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {8.2}{\ignorespaces Pruebas del bloque 2: Movimiento (RF03, RF04, RF07, CU-02)}}{81}{table.caption.54}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.2.3}Bloque 3 — Combate}{82}{subsection.8.2.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {8.3}{\ignorespaces Pruebas del bloque 3: Combate (RF04, RF05, RF09, CU-03)}}{82}{table.caption.55}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.2.4}Bloque 4 — Condiciones de victoria}{83}{subsection.8.2.4}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {8.4}{\ignorespaces Pruebas del bloque 4: Condiciones de victoria (RF08, CU-02)}}{83}{table.caption.56}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.2.5}Bloque 5 — Interfaz y feedback visual/sonoro}{84}{subsection.8.2.5}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {8.5}{\ignorespaces Pruebas del bloque 5: Interfaz y feedback (RF09, RF10, RNF04)}}{84}{table.caption.57}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.2.6}Bloque 6 — Menús y navegación}{85}{subsection.8.2.6}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {8.6}{\ignorespaces Pruebas del bloque 6: Menús y navegación (RF11, RF12, RF13, CU-04, CU-05)}}{85}{table.caption.58}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.2.7}Bloque 7 — Comportamiento del bot}{86}{subsection.8.2.7}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {8.7}{\ignorespaces Pruebas del bloque 7: Comportamiento del bot (RF06)}}{86}{table.caption.59}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.2.8}Bloque 8 — Requisitos no funcionales}{87}{subsection.8.2.8}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {8.8}{\ignorespaces Pruebas del bloque 8: Requisitos no funcionales (RNF01--RNF04)}}{87}{table.caption.60}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {9}Seguimiento del proyecto}{89}{chapter.9}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {9.1}Valoración de objetivos}{99}{section.9.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {9.2}Uso de inteligencia artificial}{100}{section.9.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {9.3}Líneas futuras}{100}{section.9.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {9.3.1}Guardado y carga de partidas}{100}{subsection.9.3.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {9.3.2}Niveles de dificultad del bot}{101}{subsection.9.3.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {9.3.3}Nuevas mecánicas y contenido}{101}{subsection.9.3.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {9.3.4}Publicación y distribución}{101}{subsection.9.3.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {chapter}{\numberline {A}Manual de instalación}{103}{appendix.Alph1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {9.1}Iteración 1: Núcleo jugable y lógica básica}{89}{section.9.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {9.1}{\ignorespaces Detalle de la interfaz de despliegue inicial basada en botones de texto.}}{90}{figure.caption.61}\protected@file@percent }
+\newlabel{fig:it1_interfaz}{{9.1}{90}{Detalle de la interfaz de despliegue inicial basada en botones de texto}{figure.caption.61}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9.2}{\ignorespaces Mensaje de final de partida en la Iteración 1}}{91}{figure.caption.62}\protected@file@percent }
+\newlabel{fig:it1_juego2}{{9.2}{91}{Mensaje de final de partida en la Iteración 1}{figure.caption.62}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9.3}{\ignorespaces Capturas del juego durante la Iteración 1.}}{91}{figure.caption.63}\protected@file@percent }
+\newlabel{fig:it1_juego1}{{9.3}{91}{Capturas del juego durante la Iteración 1}{figure.caption.63}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {9.2}Iteración 2: Interfaz de usuario y pulido visual}{92}{section.9.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{Interfaz de partida}{92}{subsubsection*.64}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {9.4}{\ignorespaces Primer boceto de la interfaz de partida con indicadores laterales y texto de turno.}}{92}{figure.caption.65}\protected@file@percent }
+\newlabel{fig:boceto_partida_v1}{{9.4}{92}{Primer boceto de la interfaz de partida con indicadores laterales y texto de turno}{figure.caption.65}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9.5}{\ignorespaces Evolución del diseño de partida con indicadores visuales de turno.}}{93}{figure.caption.66}\protected@file@percent }
+\newlabel{fig:boceto_partida_v2}{{9.5}{93}{Evolución del diseño de partida con indicadores visuales de turno}{figure.caption.66}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9.6}{\ignorespaces Layout definitivo del boceto de la interfaz de partida.}}{94}{figure.caption.67}\protected@file@percent }
+\newlabel{fig:boceto_partida_v3}{{9.6}{94}{Layout definitivo del boceto de la interfaz de partida}{figure.caption.67}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.2.1}Interfaz de combate y reglas}{94}{subsection.9.2.1}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {9.7}{\ignorespaces Boceto de inicio de combate: presentación de piezas.}}{95}{figure.caption.68}\protected@file@percent }
+\newlabel{fig:combate_estado1}{{9.7}{95}{Boceto de inicio de combate: presentación de piezas}{figure.caption.68}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9.8}{\ignorespaces Boceto de resolución: comparación de rangos.}}{95}{figure.caption.69}\protected@file@percent }
+\newlabel{fig:combate_estado2}{{9.8}{95}{Boceto de resolución: comparación de rangos}{figure.caption.69}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9.9}{\ignorespaces Boceto de fin de combate: pieza eliminada.}}{96}{figure.caption.70}\protected@file@percent }
+\newlabel{fig:combate_estado3}{{9.9}{96}{Boceto de fin de combate: pieza eliminada}{figure.caption.70}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9.10}{\ignorespaces Comparativa entre el diseño inicial de combate y el diseño final simplificado.}}{96}{figure.caption.71}\protected@file@percent }
+\newlabel{fig:boceto_comparacion_combate}{{9.10}{96}{Comparativa entre el diseño inicial de combate y el diseño final simplificado}{figure.caption.71}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9.11}{\ignorespaces Boceto del menú de pausa de la partida.}}{97}{figure.caption.72}\protected@file@percent }
+\newlabel{fig:boceto_pausa}{{9.11}{97}{Boceto del menú de pausa de la partida}{figure.caption.72}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {9.12}{\ignorespaces Boceto de la interfaz de reglas con sistema de navegación por viñetas.}}{97}{figure.caption.73}\protected@file@percent }
+\newlabel{fig:boceto_reglas}{{9.12}{97}{Boceto de la interfaz de reglas con sistema de navegación por viñetas}{figure.caption.73}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.2.2}Iteración 3: Mejoras audiovisuales}{98}{subsection.9.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {9.3}Iteración 4: Implementación del bot inteligente}{98}{section.9.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {9.4}Iteración 5: Pulido final}{99}{section.9.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {10}Conclusiones}{101}{chapter.10}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {A.1}Requisitos del sistema}{103}{section.Alph1.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {A.2}Pasos de instalación}{103}{section.Alph1.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {A.3}Solución de problemas comunes}{104}{section.Alph1.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {chapter}{\numberline {B}Manual de usuario}{105}{appendix.Alph2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {10.1}Valoración de objetivos}{101}{section.10.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {10.2}Uso de inteligencia artificial}{102}{section.10.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {10.3}Líneas futuras}{102}{section.10.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.3.1}Guardado y carga de partidas}{102}{subsection.10.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.3.2}Niveles de dificultad del bot}{103}{subsection.10.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.3.3}Nuevas mecánicas y contenido}{103}{subsection.10.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {10.3.4}Publicación y distribución}{103}{subsection.10.3.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {A}Manual de instalación}{105}{appendix.Alph1}\protected@file@percent }
 \@writefile{lof}{\addvspace {10\p@ }}
 \@writefile{lot}{\addvspace {10\p@ }}
-\@writefile{toc}{\contentsline {section}{\numberline {B.1}Menú principal}{105}{section.Alph2.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {B.2}Menú de reglas}{105}{section.Alph2.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {B.3}Fase de despliegue}{105}{section.Alph2.3}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {B.4}Partida en curso}{106}{section.Alph2.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {B.5}Interfaz de combate}{106}{section.Alph2.5}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {B.6}Menú de pausa}{106}{section.Alph2.6}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {B.7}Menú de opciones}{106}{section.Alph2.7}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {B.8}Fin de partida}{107}{section.Alph2.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {A.1}Requisitos del sistema}{105}{section.Alph1.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {A.2}Pasos de instalación}{105}{section.Alph1.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {A.3}Solución de problemas comunes}{106}{section.Alph1.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{\numberline {B}Manual de usuario}{107}{appendix.Alph2}\protected@file@percent }
+\@writefile{lof}{\addvspace {10\p@ }}
+\@writefile{lot}{\addvspace {10\p@ }}
+\@writefile{toc}{\contentsline {section}{\numberline {B.1}Menú principal}{107}{section.Alph2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {B.2}Menú de reglas}{107}{section.Alph2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {B.3}Fase de despliegue}{107}{section.Alph2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {B.4}Partida en curso}{108}{section.Alph2.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {B.5}Interfaz de combate}{108}{section.Alph2.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {B.6}Menú de pausa}{108}{section.Alph2.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {B.7}Menú de opciones}{108}{section.Alph2.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {B.8}Fin de partida}{109}{section.Alph2.8}\protected@file@percent }
 \bibstyle{unsrt}
 \bibdata{bibliografia}
 \bibcite{newzoo2025}{1}
@@ -337,7 +372,7 @@
 \bibcite{BAdaLAttaque}{10}
 \bibcite{StrategoHistoryUltraBoardGames}{11}
 \bibcite{LuzhanqiHistory}{12}
-\@writefile{toc}{\contentsline {chapter}{Bibliografía}{109}{section.Alph2.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {chapter}{Bibliografía}{111}{section.Alph2.8}\protected@file@percent }
 \bibcite{Kushner2003}{13}
 \bibcite{GodotDocs}{14}
 \bibcite{vonNeumann1944}{15}
@@ -369,4 +404,4 @@
 \bibcite{steam_pricing}{41}
 \bibcite{pmi_contingency}{42}
 \ttl@finishall
-\gdef \@abspage@last{128}
+\gdef \@abspage@last{130}

@@ -77,7 +77,7 @@
 	
 	"ui.rules.tab.2.text.1": "Como regla general, las piezas se mueven una casilla en ortogonal (arriba, abajo, izquierda, derecha). No hay movimiento diagonal.",
 	"ui.rules.tab.2.text.2": "Tu unidad de reconocimiento (el [color=orange]Explorador[/color]) puede moverse cualquier distancia en linea recta, pero si avanza mas de una casilla, tu adversario podria deducir que tipo de pieza es.",
-	"ui.rules.tab.2.text.3": "Restricciones:\n\n1. No puedes saltar sobre piezas (propias ni del adversario).\n\n2. Una pieza no puede moverse de ida y vuelta mas de 3 turnos seguidos; al 4o turno no podra retroceder hasta el siguiente.",
+	"ui.rules.tab.2.text.3": "Restricciones:\n\n1. No puedes saltar sobre piezas (propias ni del adversario).\n\n2. Una pieza no puede moverse de ida y vuelta mas de 3 turnos seguidos; al siguiente turno, no podra retroceder hasta pasado otro turno.",
 
 	"ui.rules.tab.3.text.1": "Un combate comienza cuando una pieza se mueve a una casilla ocupada por el rival. Ambas identidades se revelan. El combate se resuelve asi:\n\n1. La pieza de mayor Rango derrota a la de menor Rango.\n2. Si los rangos son iguales, termina en empate y ambas piezas son destruidas.\n3. En caso de interaccion especial, el resto de condiciones se ignoran.\n\nEl ganador conserva la casilla. Si gana el atacante, avanza; si gana el defensor, permanece en su lugar.",
 	"ui.rules.tab.3.text.2": "Interacciones especiales",
