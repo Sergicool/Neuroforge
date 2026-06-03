@@ -90,12 +90,32 @@ public class DeploymentController
     // Genera las piezas del bot de forma aleatoria en sus casillas de despliegue
     private void SpawnBotArmy()
     {
-        List<PieceType> army  = BuildArmyList();
-        List<Tile>      tiles = GetBotDeploymentTiles();
-        Shuffle(tiles);
+        List<Tile> allTiles = GetBotDeploymentTiles();
+        Shuffle(allTiles);
 
-        for (int i = 0; i < tiles.Count && i < army.Count; i++)
-            _board.SpawnPiece(army[i], PieceOwner.BOT, tiles[i]);
+        int backRow = int.MaxValue;
+        foreach (Tile t in allTiles)
+            if (t.GridPosition.Y < backRow) backRow = t.GridPosition.Y;
+
+        List<Tile> backTiles = new();
+        List<Tile> frontTiles = new();
+        foreach (Tile t in allTiles)
+        {
+            if (t.GridPosition.Y <= backRow + 1)
+                backTiles.Add(t);
+            else
+                frontTiles.Add(t);
+        }
+
+        Tile coreTarget = backTiles[0]; // ya shuffleado
+        _board.SpawnPiece(PieceType.ENERGY_CORE, PieceOwner.BOT, coreTarget);
+        allTiles.Remove(coreTarget);
+
+        List<PieceType> army = BuildArmyList();
+        army.Remove(PieceType.ENERGY_CORE);
+
+        for (int i = 0; i < allTiles.Count && i < army.Count; i++)
+            _board.SpawnPiece(army[i], PieceOwner.BOT, allTiles[i]);
     }
 
     // Confirma el despliegue, genera el ejército del bot e inicia la partida

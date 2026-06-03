@@ -314,7 +314,7 @@ theme = ExtResource("2_281x5")
 theme_override_constants/tab_separation = 0
 theme_override_font_sizes/font_size = 20
 tab_alignment = 1
-current_tab = 0
+current_tab = 4
 tab_0/title = " Objective "
 tab_1/title = " Board "
 tab_2/title = " Movement "
@@ -322,6 +322,7 @@ tab_3/title = " Combat "
 tab_4/title = " Pieces "
 
 [node name="Tab1" type="Panel" parent="PopUp/TabContainer" unique_id=1043312812]
+visible = false
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_smjmi")
 metadata/_tab_index = 0
@@ -1391,7 +1392,6 @@ scale = Vector2(1.4, 1.4)
 texture = ExtResource("10_7ibit")
 
 [node name="Tab5" type="Panel" parent="PopUp/TabContainer" unique_id=1683429640]
-visible = false
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_smjmi")
 metadata/_tab_index = 4
@@ -1647,7 +1647,6 @@ grow_vertical = 2
 texture = SubResource("AtlasTexture_m88yg")
 
 [node name="PiecePanel0" type="Panel" parent="PopUp/TabContainer/Tab5" unique_id=1487374787]
-visible = false
 layout_mode = 0
 offset_left = 340.0
 offset_top = 5.0
@@ -2685,6 +2684,7 @@ scale = Vector2(4, 4)
 texture = SubResource("AtlasTexture_oejmk")
 
 [node name="PiecePanel11" type="Panel" parent="PopUp/TabContainer/Tab5" unique_id=907867355]
+visible = false
 layout_mode = 0
 offset_left = 340.0
 offset_top = 5.0

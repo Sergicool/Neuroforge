@@ -116,7 +116,7 @@
 \contentsline {section}{\numberline {10.1}Valoración de objetivos}{105}{section.10.1}%
 \contentsline {section}{\numberline {10.2}Uso de inteligencia artificial}{106}{section.10.2}%
 \contentsline {section}{\numberline {10.3}Líneas futuras}{106}{section.10.3}%
-\contentsline {subsection}{\numberline {10.3.1}Guardado y carga de partidas}{106}{subsection.10.3.1}%
+\contentsline {subsection}{\numberline {10.3.1}Guardado y carga de partidas}{107}{subsection.10.3.1}%
 \contentsline {subsection}{\numberline {10.3.2}Niveles de dificultad del bot}{107}{subsection.10.3.2}%
 \contentsline {subsection}{\numberline {10.3.3}Nuevas mecánicas y contenido}{107}{subsection.10.3.3}%
 \contentsline {subsection}{\numberline {10.3.4}Publicación y distribución}{107}{subsection.10.3.4}%
@@ -126,12 +126,12 @@
 \contentsline {section}{\numberline {A.3}Solución de problemas comunes}{110}{section.Alph1.3}%
 \contentsline {chapter}{\numberline {B}Manual de usuario}{111}{appendix.Alph2}%
 \contentsline {section}{\numberline {B.1}Menú principal}{111}{section.Alph2.1}%
-\contentsline {section}{\numberline {B.2}Menú de reglas}{111}{section.Alph2.2}%
-\contentsline {section}{\numberline {B.3}Fase de despliegue}{111}{section.Alph2.3}%
-\contentsline {section}{\numberline {B.4}Partida en curso}{112}{section.Alph2.4}%
-\contentsline {section}{\numberline {B.5}Interfaz de combate}{112}{section.Alph2.5}%
-\contentsline {section}{\numberline {B.6}Menú de pausa}{112}{section.Alph2.6}%
-\contentsline {section}{\numberline {B.7}Menú de opciones}{112}{section.Alph2.7}%
-\contentsline {section}{\numberline {B.8}Fin de partida}{113}{section.Alph2.8}%
-\contentsline {chapter}{Bibliografía}{115}{section.Alph2.8}%
+\contentsline {section}{\numberline {B.2}Menú de reglas}{112}{section.Alph2.2}%
+\contentsline {section}{\numberline {B.3}Fase de despliegue}{112}{section.Alph2.3}%
+\contentsline {section}{\numberline {B.4}Partida en curso}{114}{section.Alph2.4}%
+\contentsline {section}{\numberline {B.5}Interfaz de combate}{115}{section.Alph2.5}%
+\contentsline {section}{\numberline {B.6}Menú de pausa}{116}{section.Alph2.6}%
+\contentsline {section}{\numberline {B.7}Menú de opciones}{116}{section.Alph2.7}%
+\contentsline {section}{\numberline {B.8}Fin de partida}{116}{section.Alph2.8}%
+\contentsline {chapter}{Bibliografía}{117}{figure.caption.80}%
 \contentsfinish 

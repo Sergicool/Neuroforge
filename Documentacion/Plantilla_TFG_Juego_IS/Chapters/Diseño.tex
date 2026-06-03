@@ -206,6 +206,7 @@ Al comenzar la partida una vez desplegadas las piezas, la vista se actualiza a l
 	\item \textbf{Casilla transitable:} Casilla del tablero por la que se pueden mover las piezas, incluyendo las de despliegue de ambos bandos. 
 	\item \textbf{Casilla intransitable:} Casilla del tablero por la que no se puede mover ninguna pieza.
 	\item \textbf{Marcador de turno:} Panel que indica de quien es el turno actual, para el jugador es un símbolo de una persona, y una calavera para el jugador, Similar a las que hay en las casillas de sus despliegues.
+	\item \textbf{Pieza del jugador revelada para el bot:} Pieza del jugador rodeada por un borde naranja similar al color de las piezas del bot. Significa que la identidad de esta pieza es conocida por el bot, ya sea por que ha sobrevivido a un combate o porque haya hecho un movimiento que compromete su identidad.
 \end{enumerate}
 
 \subsection{Interfaz de combate}
@@ -255,7 +256,7 @@ Durante el turno del jugador, este puede pausar la partida en cualquier momento,
 
 Accesible tanto desde el menú principal como desde el menú de pausa, el menú de opciones emerge como una ventana sobre la pantalla activa. En la esquina superior izquierda se sitúa el botón \textit{Go Back} para cerrarlo y retornar al contexto anterior.
 
-El contenido se organiza en dos bloques. El primero controla el modo de visualización mediante un desplegable que permite alternar entre modo ventana y pantalla completa. El segundo bloque agrupa los controles de audio: cuatro sliders independientes que regulan el volumen de los canales \textit{Master}, \textit{Music}, \textit{SFX} y \textit{UI}, cada uno asociado a su propio bus de audio en el motor, de modo que pueden ajustarse de forma completamente independiente.
+El contenido se organiza en dos bloques. El primero tiene 2 desplegables, uno permite cambiar el idioma del juego, actualizando todos los textos del juego al instante, y otro controla el modo de visualización que permite alternar entre modo ventana y pantalla completa. El segundo bloque agrupa los controles de audio: cuatro sliders independientes que regulan el volumen de los canales \textit{Master}, \textit{Music}, \textit{SFX} y \textit{UI}, cada uno asociado a su propio bus de audio en el motor, de modo que pueden ajustarse de forma completamente independiente.
 
 \begin{figure}[H]
 	\centering
