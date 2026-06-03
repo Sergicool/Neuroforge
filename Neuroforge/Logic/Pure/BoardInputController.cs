@@ -11,6 +11,7 @@ public class BoardInputController
 
     private Piece _selectedPiece;
     private readonly List<Tile> _highlightedTiles = new();
+    private readonly List<Tile> _movableHints = new();
     private static bool IsValidPiece(Piece piece) => Godot.GodotObject.IsInstanceValid(piece) && piece.IsInsideTree();
 
     public BoardInputController(Board board, GameScene game)
@@ -23,15 +24,20 @@ public class BoardInputController
     public async Task HandleTileClick(Tile tile)
     {
         ClearHighlights();
+        ClearMovableHints();
+
         if (_selectedPiece != null && !IsValidPiece(_selectedPiece))
         {
             ClearSelection();
+            HighlightMovablePieces();
             return;
         }
 
         if (_selectedPiece == null)
         {
             TrySelectPiece(tile);
+            if (_selectedPiece == null)
+                HighlightMovablePieces();
             return;
         }
 
@@ -40,6 +46,11 @@ public class BoardInputController
             await ExecuteAction(tile);
             _game.EndTurn();
         }
+        else
+        {
+            HighlightMovablePieces();
+        }
+
         ClearSelection();
     }
 
@@ -47,9 +58,20 @@ public class BoardInputController
     private void TrySelectPiece(Tile tile)
     {
         if (!tile.IsOccupied) return;
-
         Piece piece = tile.Occupant;
         if (!_game.IsPlayersTurn(piece.PlayerOwner) || !piece.CanMove) return;
+
+        // Solo seleccionar si tiene al menos un movimiento disponible
+        bool hasMoves = false;
+        foreach (Tile target in _board.AllTiles)
+        {
+            if (MovementSystem.GetAction(piece, target, _game.TurnNumber, _board) != TileAction.NONE)
+            {
+                hasMoves = true;
+                break;
+            }
+        }
+        if (!hasMoves) return;
 
         _selectedPiece = piece;
         AudioManager.PlaySfx("res://assets/sounds/SelectPiece.wav");
@@ -97,5 +119,32 @@ public class BoardInputController
     private void ClearHighlights()
     {
         foreach (Tile t in _highlightedTiles) t.ClearHighlight();
+    }
+
+    public void HighlightMovablePieces()
+    {
+        ClearMovableHints();
+        foreach (Tile tile in _board.AllTiles)
+        {
+            if (!tile.IsOccupied) continue;
+            Piece piece = tile.Occupant;
+            if (!_game.IsPlayersTurn(piece.PlayerOwner) || !piece.CanMove) continue;
+
+            foreach (Tile target in _board.AllTiles)
+            {
+                if (MovementSystem.GetAction(piece, target, _game.TurnNumber, _board) != TileAction.NONE)
+                {
+                    tile.HighlightMovable();
+                    _movableHints.Add(tile);
+                    break;
+                }
+            }
+        }
+    }
+
+    private void ClearMovableHints()
+    {
+        foreach (Tile t in _movableHints) t.ClearHighlight();
+        _movableHints.Clear();
     }
 }

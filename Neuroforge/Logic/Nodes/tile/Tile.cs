@@ -4,6 +4,7 @@ public partial class Tile : Area2D
 {
     private static readonly Color MOVEMENT_MARKER_COLOR = new Color(0.598f, 1.0f, 0.226f);
     private static readonly Color ATTACK_MARKER_COLOR = new Color(1.0f, 0.004f, 0.071f);
+    private static readonly Color MOVABLE_HINT_COLOR = new Color(1f, 1f, 0.4f, 0.45f);
 
     private Board _board;
     private AnimatedSprite2D _marker;
@@ -52,6 +53,12 @@ public partial class Tile : Area2D
     public void HighlightAttack()
     {
         _marker.Modulate = ATTACK_MARKER_COLOR;
+        _marker.Visible = true;
+    }
+
+    public void HighlightMovable()
+    {
+        _marker.Modulate = MOVABLE_HINT_COLOR;
         _marker.Visible = true;
     }
 

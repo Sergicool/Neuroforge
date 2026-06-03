@@ -37,19 +37,20 @@
 \contentsline {figure}{\numberline {6.16}{\ignorespaces Diagrama de despliegue de NeuroForge.}}{74}{figure.caption.52}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
+\contentsline {figure}{\numberline {8.1}{\ignorespaces Resultado de la ejecución de las pruebas unitarias con NUnit.}}{92}{figure.caption.62}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {9.1}{\ignorespaces Detalle de la interfaz de despliegue inicial basada en botones de texto.}}{90}{figure.caption.61}%
-\contentsline {figure}{\numberline {9.2}{\ignorespaces Mensaje de final de partida en la Iteración 1}}{91}{figure.caption.62}%
-\contentsline {figure}{\numberline {9.3}{\ignorespaces Capturas del juego durante la Iteración 1.}}{91}{figure.caption.63}%
-\contentsline {figure}{\numberline {9.4}{\ignorespaces Primer boceto de la interfaz de partida con indicadores laterales y texto de turno.}}{92}{figure.caption.65}%
-\contentsline {figure}{\numberline {9.5}{\ignorespaces Evolución del diseño de partida con indicadores visuales de turno.}}{93}{figure.caption.66}%
-\contentsline {figure}{\numberline {9.6}{\ignorespaces Layout definitivo del boceto de la interfaz de partida.}}{94}{figure.caption.67}%
-\contentsline {figure}{\numberline {9.7}{\ignorespaces Boceto de inicio de combate: presentación de piezas.}}{95}{figure.caption.68}%
-\contentsline {figure}{\numberline {9.8}{\ignorespaces Boceto de resolución: comparación de rangos.}}{95}{figure.caption.69}%
-\contentsline {figure}{\numberline {9.9}{\ignorespaces Boceto de fin de combate: pieza eliminada.}}{96}{figure.caption.70}%
-\contentsline {figure}{\numberline {9.10}{\ignorespaces Comparativa entre el diseño inicial de combate y el diseño final simplificado.}}{96}{figure.caption.71}%
-\contentsline {figure}{\numberline {9.11}{\ignorespaces Boceto del menú de pausa de la partida.}}{97}{figure.caption.72}%
-\contentsline {figure}{\numberline {9.12}{\ignorespaces Boceto de la interfaz de reglas con sistema de navegación por viñetas.}}{97}{figure.caption.73}%
+\contentsline {figure}{\numberline {9.1}{\ignorespaces Detalle de la interfaz de despliegue inicial basada en botones de texto.}}{94}{figure.caption.63}%
+\contentsline {figure}{\numberline {9.2}{\ignorespaces Mensaje de final de partida en la Iteración 1}}{95}{figure.caption.64}%
+\contentsline {figure}{\numberline {9.3}{\ignorespaces Capturas del juego durante la Iteración 1.}}{95}{figure.caption.65}%
+\contentsline {figure}{\numberline {9.4}{\ignorespaces Primer boceto de la interfaz de partida con indicadores laterales y texto de turno.}}{96}{figure.caption.67}%
+\contentsline {figure}{\numberline {9.5}{\ignorespaces Evolución del diseño de partida con indicadores visuales de turno.}}{97}{figure.caption.68}%
+\contentsline {figure}{\numberline {9.6}{\ignorespaces Layout definitivo del boceto de la interfaz de partida.}}{98}{figure.caption.69}%
+\contentsline {figure}{\numberline {9.7}{\ignorespaces Boceto de inicio de combate: presentación de piezas.}}{99}{figure.caption.70}%
+\contentsline {figure}{\numberline {9.8}{\ignorespaces Boceto de resolución: comparación de rangos.}}{99}{figure.caption.71}%
+\contentsline {figure}{\numberline {9.9}{\ignorespaces Boceto de fin de combate: pieza eliminada.}}{100}{figure.caption.72}%
+\contentsline {figure}{\numberline {9.10}{\ignorespaces Comparativa entre el diseño inicial de combate y el diseño final simplificado.}}{100}{figure.caption.73}%
+\contentsline {figure}{\numberline {9.11}{\ignorespaces Boceto del menú de pausa de la partida.}}{101}{figure.caption.74}%
+\contentsline {figure}{\numberline {9.12}{\ignorespaces Boceto de la interfaz de reglas con sistema de navegación por viñetas.}}{101}{figure.caption.75}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }

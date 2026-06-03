@@ -33,7 +33,7 @@ mouse_cursor/custom_image="uid://bl8aaktc548ke"
 
 [dotnet]
 
-project/assembly_name="TFG Tests"
+project/assembly_name="Neuroforge"
 
 [file_customization]
 

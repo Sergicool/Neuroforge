@@ -3,7 +3,13 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-public partial class Piece : Node2D
+public interface ICombatant
+{
+    PieceType Type { get; }
+    int Rank { get; }
+}
+
+public partial class Piece : Node2D, ICombatant
 {
     private Sprite2D _sprite;
     private Sprite2D _spriteBorder;

@@ -90,6 +90,7 @@ public partial class GameScene : Node
         SetTurnIconImmediate(PieceOwner.PLAYER);
         State = GameState.WAITING_INPUT;
         CheckGameEnd();
+        _board.GetInputController().HighlightMovablePieces();
     }
 
     public async void EndTurn()
@@ -104,6 +105,9 @@ public partial class GameScene : Node
         if (CurrentTurn == PieceOwner.PLAYER) TurnNumber++;
 
         await BlinkTurnIcon(CurrentTurn);
+
+        if (CurrentTurn == PieceOwner.PLAYER)
+            _board.GetInputController().HighlightMovablePieces();
 
         State = GameState.WAITING_INPUT;
 

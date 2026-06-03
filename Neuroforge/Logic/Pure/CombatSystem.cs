@@ -1,7 +1,7 @@
 public static class CombatSystem
 {
     // Resuelve el combate entre un atacante y un defensor
-    public static CombatResult Resolve(Piece attacker, Piece defender)
+    public static CombatResult Resolve(ICombatant attacker, ICombatant defender)
     {
         // La torreta siempre gana como defensora, salvo contra el SABOTEUR
         if (defender.Type == PieceType.TURRET)

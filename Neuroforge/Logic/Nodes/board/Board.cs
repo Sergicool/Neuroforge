@@ -17,6 +17,7 @@ public partial class Board : Node2D
     private GameScene _game;
     private CombatUI _combatUI;
 
+    public BoardInputController GetInputController() => _input;
     // Lógica de selección de piezas delegada a InputController
     private BoardInputController _input;
 

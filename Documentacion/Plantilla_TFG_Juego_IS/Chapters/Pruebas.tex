@@ -239,3 +239,215 @@ En este apartado se recoge el conjunto de pruebas funcionales realizadas sobre e
 	\end{tabular}
 	\caption{Pruebas del bloque 8: Requisitos no funcionales (RNF01--RNF04)}
 \end{table}
+
+\clearpage
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Pruebas de usabilidad}
+% ─────────────────────────────────────────────────────────────────────────────
+
+Las pruebas de usabilidad tienen como objetivo evaluar en qué medida el videojuego resulta comprensible e intuitivo para usuarios que se enfrentan a él por primera vez, sin haber recibido instrucciones previas más allá de las que ofrece el propio sistema. A diferencia de las pruebas funcionales, que verifican la corrección del comportamiento del sistema, las pruebas de usabilidad miden la experiencia subjetiva del usuario y su capacidad para alcanzar los objetivos de juego de forma autónoma.
+
+Se realizaron sesiones de prueba con varios usuarios de perfil distinto: 1 usuario sin experiencia en videojuegos de estrategia y 2 usuario con experiencia media o habitual en juegos de estrategia por turnos. En cada sesión se pidió al participante que realizara las siguientes tareas sin ayuda externa: iniciar una partida, desplegar todas sus piezas, completar al menos tres turnos de movimiento y combate, y navegar por el menú de reglas y el menú de pausa. Durante las sesiones se registraron los errores cometidos, los momentos de bloqueo y los comentarios verbales espontáneos de los participantes.
+
+\begin{table}[H]
+	\centering
+	\small
+	\begin{tabular}{|>{\centering\arraybackslash}p{1cm}|>{\centering\arraybackslash}p{4cm}|>{\centering\arraybackslash}p{3cm}|>{\centering\arraybackslash}p{5cm}|>{\centering\arraybackslash}p{1.5cm}|}
+		\hline
+		\textbf{ID} & \textbf{Descripción} & \textbf{Método} &
+		\textbf{Resultado esperado} & \textbf{¿Pasa?} \\
+		\hline
+		PU-01 & El usuario comprende qué piezas puede mover sin leer las reglas &
+		Observación directa en primera partida &
+		El usuario selecciona una pieza propia y observa el resaltado de casillas
+		disponibles sin bloqueos prolongados & \cellcolor{green!40}Sí \\
+		\hline
+		PU-02 & El usuario identifica cuándo es su turno y cuándo es el turno del bot &
+		Observación directa &
+		Ningún participante intenta realizar acciones durante el turno del bot & \cellcolor{green!40}Sí \\
+		\hline
+		PU-03 & El usuario comprende el resultado de un combate sin instrucciones &
+		Observación y entrevista posterior &
+		Todos los participantes describen correctamente el resultado tras presenciar
+		la pantalla de resolución de combate & \cellcolor{green!40}Sí \\
+		\hline
+		PU-04 & El usuario es capaz de pausar la partida y retomar el juego &
+		Observación directa &
+		El participante localiza el botón de pausa y retoma la partida sin
+		dificultad & \cellcolor{green!40}Sí \\
+		\hline
+		PU-05 & El usuario valora positivamente la claridad de la interfaz &
+		Cuestionario post-sesión (escala 1--5) &
+		Puntuación media igual o superior a 4 sobre 5 en apartado visual &
+		\cellcolor{green!40}Sí \\
+		\hline
+	\end{tabular}
+	\caption{Pruebas de usabilidad (RNF03, RNF04)}
+\end{table}
+
+Los resultados de las sesiones fueron positivos en términos generales. El mecanismo de resaltado de casillas disponibles resultó ser el elemento más valorado, ya que permite al usuario descubrir las reglas de movimiento de forma inductiva sin necesidad de consultar la guía. El único punto de fricción recurrente fue la fase de despliegue inicial, donde el usuario sin experiencia tardó más tiempo en comprender cómo debía colocar todas las piezas antes de poder iniciar la partida. El botón de despliegue aleatorio indirectamente acabó ayudando en esa tarea, ya que los jugadores podrían utilizarlo por curiosidad y es entonces cuando verían que pueden quitar piezas, seleccionarlas a placer en la interfaz de despliegue y demás.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\subsection{Cuestionario de evaluación}
+% ─────────────────────────────────────────────────────────────────────────────
+
+Con el objetivo de obtener una valoración más amplia y estructurada por parte de
+usuarios externos, se diseñó un cuestionario de evaluación distribuido a través de
+Google Forms. El cuestionario se organiza en seis bloques temáticos: sonido,
+apartado visual, operabilidad, entretenimiento, inmersión y calificación global.
+En el momento de redacción de esta memoria se han recogido tres respuestas, que
+corresponden a los mismos participantes de las sesiones de observación descritas
+anteriormente; se esperan respuestas adicionales en los próximos días. Los resultados obtenidos hasta el momento son los siguientes:
+
+\textbf{Sonido.} Los tres participantes mantuvieron el audio activado durante toda
+la sesión. La valoración del apartado sonoro fue positiva: los tres respondieron
+que el sonido les resultó ``bastante'' agradable, y dos de ellos consideraron que
+``mejora mucho'' la experiencia de juego, mientras que el tercero indicó que
+``la mejora un poco''.
+
+\textbf{Apartado visual.} El estilo visual fue bien recibido: dos participantes
+lo calificaron de ``muchísimo'' atractivo y uno de ``mucho''. La paleta de colores
+obtuvo valoraciones de ``mucho'' y ``muchísimo'' a partes iguales. Respecto a la
+adecuación de los gráficos al estilo del juego, dos participantes los consideraron
+``adecuados'' y uno ``muy adecuados''.
+
+\textbf{Operabilidad.} Dos participantes encontraron los controles ``muy fáciles''
+y uno ``fáciles''. Los tres coincidieron en que las reglas ``están claras''. En
+cuanto a la legibilidad de los textos, un participante estuvo ``totalmente de
+acuerdo'' con que la fuente y el tamaño son adecuados, mientras que los otros dos
+se mostraron indiferentes, lo que sugiere un margen de mejora en la tipografía.
+Los tres participantes consideraron que los colores ``ayudan muchísimo'' a
+identificar los elementos del juego.
+
+\textbf{Entretenimiento.} Dos participantes calificaron el juego de ``divertido''
+y uno de ``muy divertido''. Los tres recomendarían el juego a otras personas.
+
+\textbf{Inmersión.} Dos participantes afirmaron haber quedado con ganas de jugar
+más al terminar la sesión, y uno estuvo totalmente de acuerdo con esa afirmación.
+Respecto a la atención inicial, dos respondieron estar ``totalmente de acuerdo''
+con que hay algo interesante al inicio que captura la atención. En cuanto a la
+percepción del tiempo, dos participantes indicaron que el tiempo pasó con
+normalidad y uno que perdió la noción del tiempo.
+
+\textbf{Calificación global.} Las notas otorgadas fueron 7, 9 y 9, lo que resulta
+en una media de 8,3 sobre 10.
+
+Entre los comentarios abiertos destacan dos observaciones recurrentes: la música
+ambiente es valorada como un elemento que favorece la reflexión y la inmersión, y
+varios participantes señalan que la dificultad actual es baja, sugiriendo que una
+inteligencia artificial más avanzada o la incorporación de un modo multijugador
+aumentarían considerablemente el reto y el enganche a largo plazo. Como única
+crítica concreta, un participante mencionó el formato de las reglas como aspecto
+mejorable.
+
+% ─────────────────────────────────────────────────────────────────────────────
+\section{Pruebas automatizadas con NUnit}
+% ─────────────────────────────────────────────────────────────────────────────
+
+Como se indicó en el enfoque de pruebas, la arquitectura del proyecto separa la lógica
+del videojuego en clases C\# puras independientes del motor Godot, lo que las hace
+directamente instanciables desde un proyecto de pruebas externo. Para ilustrar cómo
+se incorporarían pruebas automatizadas en el futuro, se ha desarrollado un proyecto
+de pruebas con \textit{NUnit} que verifica el comportamiento del sistema de resolución
+de combates, uno de los componentes con mayor número de casos especiales.
+
+Para su puesta en marcha, basta con crear un proyecto de tipo \texttt{NUnit Test
+	Project} en el directorio del repositorio mediante el comando:
+
+\begin{lstlisting}[language=bash]
+	dotnet new nunit -n NeuroForge.Tests
+\end{lstlisting}
+
+A continuación se referencia el ensamblado de lógica pura del proyecto principal y
+se añade el paquete \texttt{NUnit} como dependencia. Para desacoplar las pruebas del
+motor Godot, se define en el propio archivo de tests un tipo auxiliar \texttt{TestPiece}
+que implementa la interfaz \texttt{ICombatant}, la misma que acepta \texttt{CombatSystem.Resolve}.
+
+De este modo los tests no dependen del ciclo de vida de los nodos de Godot y pueden
+ejecutarse de forma completamente aislada. Los casos de prueba siguen el patrón
+\textit{Arrange--Act--Assert}: se construyen las piezas con el estado necesario,
+se invoca el método bajo prueba y se verifica el resultado mediante aserciones
+explícitas. El siguiente fragmento recoge los casos más representativos del sistema
+de combate:
+
+\begin{lstlisting}[language={[Sharp]C},
+	caption={Pruebas unitarias del sistema de resolución de combates con NUnit}]
+	using NUnit.Framework;
+	
+	public record TestPiece(PieceType Type = default, int Rank = 0) : ICombatant;
+	
+	[TestFixture]
+	public class CombatSystemTests
+	{
+		[Test]
+		public void HigherRank_Wins_AgainstLowerRank()
+		{
+			var result = CombatSystem.Resolve(
+			new TestPiece(Rank: 5),
+			new TestPiece(Rank: 3));
+			Assert.That(result, Is.EqualTo(CombatResult.DEFENDER_DIES));
+		}
+		
+		[Test]
+		public void LowerRank_Loses_AgainstHigherRank()
+		{
+			var result = CombatSystem.Resolve(
+			new TestPiece(Rank: 2),
+			new TestPiece(Rank: 7));
+			Assert.That(result, Is.EqualTo(CombatResult.ATTACKER_DIES));
+		}
+		
+		[Test]
+		public void SameRank_Results_InDraw()
+		{
+			var result = CombatSystem.Resolve(
+			new TestPiece(Rank: 4),
+			new TestPiece(Rank: 4));
+			Assert.That(result, Is.EqualTo(CombatResult.BOTH_DIE));
+		}
+		
+		[Test]
+		public void Saboteur_Always_Beats_Turret()
+		{
+			var result = CombatSystem.Resolve(
+			new TestPiece(Type: PieceType.SABOTEUR),
+			new TestPiece(Type: PieceType.TURRET));
+			Assert.That(result, Is.EqualTo(CombatResult.DEFENDER_DIES));
+		}
+		
+		[Test]
+		public void NonSaboteur_Loses_AgainstTurret()
+		{
+			var result = CombatSystem.Resolve(
+			new TestPiece(Rank: 9),
+			new TestPiece(Type: PieceType.TURRET));
+			Assert.That(result, Is.EqualTo(CombatResult.ATTACKER_DIES));
+		}
+		
+		[Test]
+		public void Phantom_Always_Beats_WarMachine()
+		{
+			var result = CombatSystem.Resolve(
+			new TestPiece(Type: PieceType.PHANTOM),
+			new TestPiece(Type: PieceType.WAR_MACHINE));
+			Assert.That(result, Is.EqualTo(CombatResult.DEFENDER_DIES));
+		}
+	}
+\end{lstlisting}
+
+La ejecución de la batería completa se lanza desde la terminal con:
+
+\begin{lstlisting}[language=bash]
+	dotnet test
+\end{lstlisting}
+
+La Figura~\ref{fig:nunit_results} muestra el resultado de ejecutar estos casos de
+prueba, donde todos superan la verificación sin errores.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{../Imagenes/nunit_results}
+	\caption{Resultado de la ejecución de las pruebas unitarias con NUnit.}
+	\label{fig:nunit_results}
+\end{figure}

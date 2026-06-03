@@ -101,34 +101,37 @@
 \contentsline {subsection}{\numberline {8.2.6}Bloque 6 — Menús y navegación}{85}{subsection.8.2.6}%
 \contentsline {subsection}{\numberline {8.2.7}Bloque 7 — Comportamiento del bot}{86}{subsection.8.2.7}%
 \contentsline {subsection}{\numberline {8.2.8}Bloque 8 — Requisitos no funcionales}{87}{subsection.8.2.8}%
-\contentsline {chapter}{\numberline {9}Seguimiento del proyecto}{89}{chapter.9}%
-\contentsline {section}{\numberline {9.1}Iteración 1: Núcleo jugable y lógica básica}{89}{section.9.1}%
-\contentsline {section}{\numberline {9.2}Iteración 2: Interfaz de usuario y pulido visual}{92}{section.9.2}%
-\contentsline {subsubsection}{Interfaz de partida}{92}{subsubsection*.64}%
-\contentsline {subsection}{\numberline {9.2.1}Interfaz de combate y reglas}{94}{subsection.9.2.1}%
-\contentsline {subsection}{\numberline {9.2.2}Iteración 3: Mejoras audiovisuales}{98}{subsection.9.2.2}%
-\contentsline {section}{\numberline {9.3}Iteración 4: Implementación del bot inteligente}{98}{section.9.3}%
-\contentsline {section}{\numberline {9.4}Iteración 5: Pulido final}{99}{section.9.4}%
-\contentsline {chapter}{\numberline {10}Conclusiones}{101}{chapter.10}%
-\contentsline {section}{\numberline {10.1}Valoración de objetivos}{101}{section.10.1}%
-\contentsline {section}{\numberline {10.2}Uso de inteligencia artificial}{102}{section.10.2}%
-\contentsline {section}{\numberline {10.3}Líneas futuras}{102}{section.10.3}%
-\contentsline {subsection}{\numberline {10.3.1}Guardado y carga de partidas}{102}{subsection.10.3.1}%
-\contentsline {subsection}{\numberline {10.3.2}Niveles de dificultad del bot}{103}{subsection.10.3.2}%
-\contentsline {subsection}{\numberline {10.3.3}Nuevas mecánicas y contenido}{103}{subsection.10.3.3}%
-\contentsline {subsection}{\numberline {10.3.4}Publicación y distribución}{103}{subsection.10.3.4}%
-\contentsline {chapter}{\numberline {A}Manual de instalación}{105}{appendix.Alph1}%
-\contentsline {section}{\numberline {A.1}Requisitos del sistema}{105}{section.Alph1.1}%
-\contentsline {section}{\numberline {A.2}Pasos de instalación}{105}{section.Alph1.2}%
-\contentsline {section}{\numberline {A.3}Solución de problemas comunes}{106}{section.Alph1.3}%
-\contentsline {chapter}{\numberline {B}Manual de usuario}{107}{appendix.Alph2}%
-\contentsline {section}{\numberline {B.1}Menú principal}{107}{section.Alph2.1}%
-\contentsline {section}{\numberline {B.2}Menú de reglas}{107}{section.Alph2.2}%
-\contentsline {section}{\numberline {B.3}Fase de despliegue}{107}{section.Alph2.3}%
-\contentsline {section}{\numberline {B.4}Partida en curso}{108}{section.Alph2.4}%
-\contentsline {section}{\numberline {B.5}Interfaz de combate}{108}{section.Alph2.5}%
-\contentsline {section}{\numberline {B.6}Menú de pausa}{108}{section.Alph2.6}%
-\contentsline {section}{\numberline {B.7}Menú de opciones}{108}{section.Alph2.7}%
-\contentsline {section}{\numberline {B.8}Fin de partida}{109}{section.Alph2.8}%
-\contentsline {chapter}{Bibliografía}{111}{section.Alph2.8}%
+\contentsline {section}{\numberline {8.3}Pruebas de usabilidad}{88}{section.8.3}%
+\contentsline {subsection}{\numberline {8.3.1}Cuestionario de evaluación}{89}{subsection.8.3.1}%
+\contentsline {section}{\numberline {8.4}Pruebas automatizadas con NUnit}{90}{section.8.4}%
+\contentsline {chapter}{\numberline {9}Seguimiento del proyecto}{93}{chapter.9}%
+\contentsline {section}{\numberline {9.1}Iteración 1: Núcleo jugable y lógica básica}{93}{section.9.1}%
+\contentsline {section}{\numberline {9.2}Iteración 2: Interfaz de usuario y pulido visual}{96}{section.9.2}%
+\contentsline {subsubsection}{Interfaz de partida}{96}{subsubsection*.66}%
+\contentsline {subsection}{\numberline {9.2.1}Interfaz de combate y reglas}{98}{subsection.9.2.1}%
+\contentsline {subsection}{\numberline {9.2.2}Iteración 3: Mejoras audiovisuales}{102}{subsection.9.2.2}%
+\contentsline {section}{\numberline {9.3}Iteración 4: Implementación del bot inteligente}{102}{section.9.3}%
+\contentsline {section}{\numberline {9.4}Iteración 5: Pulido final}{103}{section.9.4}%
+\contentsline {chapter}{\numberline {10}Conclusiones}{105}{chapter.10}%
+\contentsline {section}{\numberline {10.1}Valoración de objetivos}{105}{section.10.1}%
+\contentsline {section}{\numberline {10.2}Uso de inteligencia artificial}{106}{section.10.2}%
+\contentsline {section}{\numberline {10.3}Líneas futuras}{106}{section.10.3}%
+\contentsline {subsection}{\numberline {10.3.1}Guardado y carga de partidas}{106}{subsection.10.3.1}%
+\contentsline {subsection}{\numberline {10.3.2}Niveles de dificultad del bot}{107}{subsection.10.3.2}%
+\contentsline {subsection}{\numberline {10.3.3}Nuevas mecánicas y contenido}{107}{subsection.10.3.3}%
+\contentsline {subsection}{\numberline {10.3.4}Publicación y distribución}{107}{subsection.10.3.4}%
+\contentsline {chapter}{\numberline {A}Manual de instalación}{109}{appendix.Alph1}%
+\contentsline {section}{\numberline {A.1}Requisitos del sistema}{109}{section.Alph1.1}%
+\contentsline {section}{\numberline {A.2}Pasos de instalación}{109}{section.Alph1.2}%
+\contentsline {section}{\numberline {A.3}Solución de problemas comunes}{110}{section.Alph1.3}%
+\contentsline {chapter}{\numberline {B}Manual de usuario}{111}{appendix.Alph2}%
+\contentsline {section}{\numberline {B.1}Menú principal}{111}{section.Alph2.1}%
+\contentsline {section}{\numberline {B.2}Menú de reglas}{111}{section.Alph2.2}%
+\contentsline {section}{\numberline {B.3}Fase de despliegue}{111}{section.Alph2.3}%
+\contentsline {section}{\numberline {B.4}Partida en curso}{112}{section.Alph2.4}%
+\contentsline {section}{\numberline {B.5}Interfaz de combate}{112}{section.Alph2.5}%
+\contentsline {section}{\numberline {B.6}Menú de pausa}{112}{section.Alph2.6}%
+\contentsline {section}{\numberline {B.7}Menú de opciones}{112}{section.Alph2.7}%
+\contentsline {section}{\numberline {B.8}Fin de partida}{113}{section.Alph2.8}%
+\contentsline {chapter}{Bibliografía}{115}{section.Alph2.8}%
 \contentsfinish 
