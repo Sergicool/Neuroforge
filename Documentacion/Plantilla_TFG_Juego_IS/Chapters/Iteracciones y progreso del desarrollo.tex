@@ -35,6 +35,8 @@ El tablero utilizaba una codificación de colores básica para la retroalimentac
 
 La interacción era puramente lógica y carecía de retroalimentación visual. Los movimientos y combates eran instantáneos, sin animaciones de transición. Esta inmediatez provocaba problemas de seguimiento de la partida, ya que en ocasiones resultaba difícil saber que jugada realizado por el bot después del movimiento del jugador. 
 
+\clearpage
+
 Asimismo, no existía un flujo de partida completo, al finalizar el encuentro por la captura del núcleo, el sistema no mostraba pantallas de victoria o derrota, limitándose a imprimir un mensaje en la terminal de depuración de Godot y a detener la ejecución del videojuego como se puede observar en la Figura \ref{fig:it1_juego2}. Tampoco se implementaron menús de pausa, opciones ni efectos de sonido. En la Figura \ref{fig:it1_juego1} se pueden observar distintas partidas y situaciones del productor de la primera iteración. La iteración acabo dentro del plazo establecido.
 
 \begin{figure}[H]
@@ -56,7 +58,7 @@ Asimismo, no existía un flujo de partida completo, al finalizar el encuentro po
 % ─────────────────────────────────────────────────────────────────────────────
 En esta segunda fase, el desarrollo se centró en transformar los elementos provisionales de la iteración anterior en una interfaz de usuario (UI) coherente, intuitiva y visualmente atractiva. Para la planificación y el diseño de estas interfaces se utilizó la herramienta \textit{draw.io}, permitiendo bocetar la disposición de los elementos antes de su implementación definitiva en el motor.
 
-\subsubsection{Interfaz de partida}
+\subsection*{Interfaz de partida}
 
 La interfaz principal de videojuego se diseñó con el objetivo de centralizar toda la información necesaria para el jugador sin sobrecargar la vista. En su primera concepción, el boceto mostraba un tablero central rodeado por los indicadores de piezas restantes a ambos lados y un historial de movimientos situado en la esquina inferior izquierda. El estado del turno se indicaba mediante un texto descriptivo en la parte superior como se puede observar en la Figura \ref{fig:boceto_partida_v1}.
 
@@ -78,6 +80,8 @@ En una segunda revisión del diseño, se buscó una mayor limpieza visual. Se su
 
 Finalmente, la estructura definitiva eliminó el historial de movimientos. Se consideró que esta información resultaba redundante y generaba un exceso de ruido visual que no aportaba un valor crítico a la experiencia de juego, dejando como resultado final el boceto de la Figura \ref{fig:boceto_partida_v3}. En la implementación final, el marcador de turnos se simplificó de dos iconos que se iluminaban alternativamente a un único icono dinámico que cambia según el turno activo.
 
+\clearpage
+
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\textwidth]{../Imagenes/boceto_partida_v3}
@@ -86,12 +90,14 @@ Finalmente, la estructura definitiva eliminó el historial de movimientos. Se co
 \end{figure}
 
 % ─────────────────────────────────────────────────────────────────────────────
-\subsection{Interfaz de combate y reglas}
+\subsection*{Interfaz de combate y reglas}
 % ─────────────────────────────────────────────────────────────────────────────
 
 El diseño de la interfaz de combate siguió una lógica similar de simplificación. Inicialmente, se planteó como una estructura de contenedores anidados que separaban visualmente al atacante del defensor. Sin embargo, para la versión final se optó por eliminar los marcos contenedores externos, dejando los elementos de las piezas más libres y situando el mensaje del resultado del combate en la parte inferior de las mismas para no entorpecer la visión de la acción. Dicha diferencia puede apreciarse en los bocetos que aparecen en la Figura \ref{fig:boceto_comparacion_combate}.
 
 A continuación, se presentan los bocetos que detallan el funcionamiento de los distintos estados de resolución de un combate: en la Figura \ref{fig:combate_estado1} el inicio del combate, en la Figura \ref{fig:combate_estado2} la comparación entre piezas, y en la Figura \ref{fig:combate_estado3} el resultado final antes de cerrar la interfaz.
+
+\clearpage
 
 \begin{figure}[H]
 	\centering
@@ -140,7 +146,7 @@ Por último, se diseñó el menú de pausa de la Figura \ref{fig:boceto_pausa} y
 No se realizaron bocetos adicionales para los menús principal, de opciones o de fin de partida, dada su sencillez estructural. Cabe destacar que el diseño estético definitivo y la implementación final de todas estas interfaces que se desarrollaron a lo largo de esta iteración se detallan en el capítulo de Diseño. La iteración acabo antes del plazo establecido.
 
 % ─────────────────────────────────────────────────────────────────────────────
-\subsection{Iteración 3: Mejoras audiovisuales}
+\section{Iteración 3: Mejoras audiovisuales}
 % ─────────────────────────────────────────────────────────────────────────────
 
 Una vez consolidada la base visual y lógica, la tercera iteración se dedicó íntegramamente al apartado sonoro y al refuerzo del \textit{game feeling}. El objetivo principal fue eliminar la sensación de monotonía y vacío que presentaba el prototipo hasta el momento.
@@ -160,7 +166,7 @@ Finalmente, se incluyeron fondos coherentes entre el menú principal y la escena
 % ─────────────────────────────────────────────────────────────────────────────
 
 La cuarta iteración se dedicó al desarrollo del sistema de inteligencia artificial, constituyendo la parte técnicamente más exigente del proyecto. El trabajo se articuló en torno a un entorno de aprendizaje por refuerzo 
-implementado en Python mediante \textbf{Gymnasium} y entrenado con \textbf{MaskablePPO} de la biblioteca \textit{SB3-Contrib}.
+implementado en Python mediante \textit{Gymnasium} y entrenado con \textit{MaskablePPO} de la biblioteca \textit{SB3-Contrib}.
 
 El primer bloque de trabajo consistió en desarrollar el entorno de entrenamiento, que replica las reglas completas del videojuego de forma independiente al motor Godot. Este entorno define el espacio de observación mediante tres canales matriciales que codifican la identidad y rango de las piezas, la transitabilidad del tablero y la movilidad del agente en cada turno; así como el espacio de acciones, que cubre todos los movimientos posibles sobre el tablero. La máscara de acciones garantiza que el agente nunca seleccione un movimiento inválido durante el entrenamiento, lo que estabiliza considerablemente el proceso de aprendizaje.
 

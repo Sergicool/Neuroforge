@@ -26,7 +26,7 @@
 
 	"ui.deployment.remaining": "Restantes: {0}",
 	"ui.deployment.random.button": "Despliegue Aleatorio",
-	"ui.deployment.start.button": "Comentar batalla",
+	"ui.deployment.start.button": "Comenzar batalla",
 
 	"ui.endgame.play.button": "Jugar de nuevo",
 	"ui.endgame.menu.button": "Volver al menu",
@@ -56,6 +56,7 @@
 	"ui.game.title": "Piezas restantes",
 	"ui.game.opponent": "Oponente",
 	"ui.game.player": "Tu",
+	"ui.game.turnmarker": "Turno",
 	
 	"ui.rules.back": "Volver",
 	"ui.rules.tab.0": " Objetivo ",

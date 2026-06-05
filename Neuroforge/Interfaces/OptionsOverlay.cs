@@ -1,10 +1,10 @@
 using Godot;
 using System.Threading.Tasks;
 
-/// <summary>
-/// Overlay de opciones reutilizable: resolución de pantalla y volúmenes de audio.
-/// Uso: await _optionsOverlay.ShowOverlay();
-/// </summary>
+
+// Overlay de opciones reutilizable: resolución de pantalla y volúmenes de audio.
+// Uso:
+//  await _optionsOverlay.ShowOverlay();
 public partial class OptionsOverlay : Control
 {
     // ── Nodos ────────────────────────────────────────────────────────────────
@@ -53,7 +53,7 @@ public partial class OptionsOverlay : Control
         _resolutionDropdown.AddItem(TranslationSystem.Tr("ui.options.resolution.fullscreen"));
         SyncResolutionDropdown();
 
-        // Sliders — reemplaza los 4 InitSlider anteriores:
+        // Sliders
         InitSlider(_masterSlider, _masterNumber, AudioManager.Bus.Master);
         InitSlider(_musicSlider, _musicNumber, AudioManager.Bus.Music);
         InitSlider(_sfxSlider, _sfxNumber, AudioManager.Bus.Sfx);
@@ -72,7 +72,8 @@ public partial class OptionsOverlay : Control
         _resolutionDropdown.ItemSelected += OnResolutionSelected;
         _resolutionDropdown.MouseEntered += () => AudioManager.PlayUI("res://assets/sounds/HoverButton.wav");
         _resolutionDropdown.Pressed += () => AudioManager.PlayUI("res://assets/sounds/PressButton.wav");
-        // Señales de volumen — reemplaza las 4 ValueChanged anteriores:
+
+        // Señales de volumen
         _masterSlider.ValueChanged += v => OnVolumeChanged(AudioManager.Bus.Master, _masterNumber, (float)v);
         _masterSlider.MouseEntered += () => AudioManager.PlayUI("res://assets/sounds/HoverButton.wav");
         _masterSlider.DragStarted += () => AudioManager.PlayUI("res://assets/sounds/PressButton.wav");
@@ -87,7 +88,9 @@ public partial class OptionsOverlay : Control
         _uiSlider.DragStarted += () => AudioManager.PlayUI("res://assets/sounds/PressButton.wav");
     }
 
-    // ── API pública ──────────────────────────────────────────────────────────
+    // ─────────────────────────────────────────────────────────────────────────
+    //  API PÚBLICA
+    // ─────────────────────────────────────────────────────────────────────────
     public async Task ShowOverlay()
     {
         Visible = true;
@@ -124,9 +127,9 @@ public partial class OptionsOverlay : Control
         Visible = false;
     }
 
-    // ── Lógica interna ───────────────────────────────────────────────────────
-
-    // Reemplaza InitSlider por esta versión:
+    // ─────────────────────────────────────────────────────────────────────────
+    //  PRIVADO
+    // ─────────────────────────────────────────────────────────────────────────
     private void InitSlider(HSlider slider, Label numberLabel, AudioManager.Bus bus)
     {
         slider.MinValue = 0;

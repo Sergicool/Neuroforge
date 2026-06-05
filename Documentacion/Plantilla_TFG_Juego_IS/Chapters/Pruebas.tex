@@ -6,9 +6,11 @@ En este capítulo se describe la estrategia de verificación adoptada para valid
 \section{Enfoque de pruebas}
 % ─────────────────────────────────────────────────────────────────────────────
 
-En un entorno de desarrollo profesional, la verificación de un sistema software de esta naturaleza se abordaría mediante una estrategia de pruebas automatizadas estructurada en varios niveles. Las \textbf{pruebas unitarias} verificarían de forma aislada cada componente lógico del sistema, como el motor de reglas de movimiento o el sistema de resolución de combates, comprobando que producen el resultado esperado ante un conjunto exhaustivo de entradas. Las \textbf{pruebas de integración} validarían la interacción correcta entre componentes, asegurando por ejemplo que el controlador de input delega adecuadamente en el tablero y que este actualiza el estado de la partida de forma consistente. Finalmente, las \textbf{pruebas de sistema} o de extremo a extremo ejercitarían flujos completos de usuario, desde el despliegue inicial hasta la condición de victoria, simulando el comportamiento real del jugador. Herramientas como \textit{NUnit} o \textit{xUnit} en el ecosistema .NET, combinadas con un pipeline de integración continua, permitirían ejecutar esta batería de forma automática ante cada cambio en el código, detectando regresiones de manera inmediata.
+En un entorno de desarrollo profesional, la verificación de un sistema software de esta naturaleza se abordaría mediante una estrategia de pruebas automatizadas estructurada en varios niveles. Las pruebas unitarias verificarían de forma aislada cada componente lógico del sistema, como el motor de reglas de movimiento o el sistema de resolución de combates, comprobando que producen el resultado esperado ante un conjunto exhaustivo de entradas. Las pruebas de integración validarían la interacción correcta entre componentes, asegurando por ejemplo que el controlador de input delega adecuadamente en el tablero y que este actualiza el estado de la partida de forma consistente. Finalmente, las pruebas de sistema o de extremo a extremo ejercitarían flujos completos de usuario, desde el despliegue inicial hasta la condición de victoria, simulando el comportamiento real del jugador. Herramientas como \textit{NUnit} o \textit{xUnit} en el ecosistema .NET, combinadas con un pipeline de integración continua, permitirían ejecutar esta batería de forma automática ante cada cambio en el código, detectando regresiones de manera inmediata.
 
-Dado el carácter académico e individual del proyecto y las restricciones temporales inherentes a un TFG, la automatización completa de las pruebas queda fuera del alcance definido. No obstante, la arquitectura adoptada, con la lógica del videojuego separada en clases C\# puras e independientes del motor, facilita que dichas pruebas automatizadas puedan incorporarse en el futuro sin necesidad de modificar el código de producción. En su lugar, se ha llevado a cabo una batería de \textbf{pruebas de aceptación} organizadas por bloques temáticos, cubriendo todos los requisitos funcionales y no funcionales identificados en el análisis. Cada prueba define de forma explícita su precondición, la acción ejecutada y el resultado esperado, lo que permite reproducirlas de manera sistemática y trazarlas directamente con los requisitos del sistema.
+\clearpage
+
+Dado el carácter académico e individual del proyecto y las restricciones temporales inherentes a un TFG, la automatización completa de las pruebas queda fuera del alcance definido. No obstante, la arquitectura adoptada, con la lógica del videojuego separada en clases C\# puras e independientes del motor, facilita que dichas pruebas automatizadas puedan incorporarse en el futuro sin necesidad de modificar el código de producción. En su lugar, se ha llevado a cabo una batería de pruebas de aceptación organizadas por bloques temáticos, cubriendo todos los requisitos funcionales y no funcionales identificados en el análisis. Cada prueba define de forma explícita su precondición, la acción ejecutada y el resultado esperado, lo que permite reproducirlas de manera sistemática y trazarlas directamente con los requisitos del sistema.
 
 % ─────────────────────────────────────────────────────────────────────────────
 \section{Batería de pruebas}
@@ -36,7 +38,7 @@ En este apartado se recoge el conjunto de pruebas funcionales realizadas sobre e
 		PR-05 & Colocar todas las piezas y confirmar inicio & Todas las piezas del jugador colocadas & El bot despliega sus piezas y comienza el turno del jugador & \cellcolor{green!40}Sí \\
 		\hline
 	\end{tabular}
-	\caption{Pruebas del bloque 1: Despliegue inicial (RF01, RF02, CU-01)}
+	\caption{Pruebas del bloque 1: Despliegue inicial}
 \end{table}
 
 \clearpage
@@ -69,7 +71,7 @@ En este apartado se recoge el conjunto de pruebas funcionales realizadas sobre e
 		PR-14 & Intentar realizar una acción durante el turno del bot & Turno del bot en ejecución & El sistema ignora el input del jugador & \cellcolor{green!40}Sí \\
 		\hline
 	\end{tabular}
-	\caption{Pruebas del bloque 2: Movimiento (RF03, RF04, RF07, CU-02)}
+	\caption{Pruebas del bloque 2: Movimiento}
 \end{table}
 
 \clearpage
@@ -104,7 +106,7 @@ En este apartado se recoge el conjunto de pruebas funcionales realizadas sobre e
 		PR-24 & La interfaz de combate se muestra y cierra correctamente & Se produce un combate durante un turno & Se muestra la pantalla de resolución; al confirmar, se cierra y el juego continúa & \cellcolor{green!40}Sí \\
 		\hline
 	\end{tabular}
-	\caption{Pruebas del bloque 3: Combate (RF04, RF05, RF09, CU-03)}
+	\caption{Pruebas del bloque 3: Combate}
 \end{table}
 
 \clearpage
@@ -133,7 +135,7 @@ En este apartado se recoge el conjunto de pruebas funcionales realizadas sobre e
 		PR-31 & El jugador selecciona volver al menú principal desde la pantalla de fin & Pantalla de fin de partida visible & El sistema navega al menú principal & \cellcolor{green!40}Sí \\
 		\hline
 	\end{tabular}
-	\caption{Pruebas del bloque 4: Condiciones de victoria (RF08, CU-02)}
+	\caption{Pruebas del bloque 4: Condiciones de victoria}
 \end{table}
 
 \clearpage
@@ -156,7 +158,7 @@ En este apartado se recoge el conjunto de pruebas funcionales realizadas sobre e
 		PR-35 & Toda la interacción es posible exclusivamente con el ratón & El videojuego está en cualquier estado & Ninguna acción requiere el uso del teclado & \cellcolor{green!40}Sí \\
 		\hline
 	\end{tabular}
-	\caption{Pruebas del bloque 5: Interfaz y feedback (RF09, RF10, RNF04)}
+	\caption{Pruebas del bloque 5: Interfaz y feedback}
 \end{table}
 
 \clearpage
@@ -187,7 +189,7 @@ En este apartado se recoge el conjunto de pruebas funcionales realizadas sobre e
 		PR-43 & Acceder al menú de opciones desde el menú de pausa & Menú de pausa abierto & El menú de opciones se abre; al cerrarlo regresa al menú de pausa & \cellcolor{green!40}Sí \\
 		\hline
 	\end{tabular}
-	\caption{Pruebas del bloque 6: Menús y navegación (RF11, RF12, RF13, CU-04, CU-05)}
+	\caption{Pruebas del bloque 6: Menús y navegación}
 \end{table}
 
 \clearpage
@@ -212,7 +214,7 @@ En este apartado se recoge el conjunto de pruebas funcionales realizadas sobre e
 		PR-48 & El bot respeta las reglas especiales de combate & Turno del bot, situación con Torreta o Phantom & Los resultados de combate del bot siguen las mismas reglas especiales que las del jugador & \cellcolor{green!40}Sí \\
 		\hline
 	\end{tabular}
-	\caption{Pruebas del bloque 7: Comportamiento del bot (RF06)}
+	\caption{Pruebas del bloque 7: Comportamiento del bot}
 \end{table}
 
 \clearpage
@@ -237,7 +239,7 @@ En este apartado se recoge el conjunto de pruebas funcionales realizadas sobre e
 		PR-53 & Un jugador sin experiencia identifica qué piezas puede mover sin consultar las reglas & Primera partida del jugador, sin leer el menú de reglas & El jugador es capaz de seleccionar y mover una pieza correctamente gracias al resaltado de casillas & \cellcolor{green!40}Sí \\
 		\hline
 	\end{tabular}
-	\caption{Pruebas del bloque 8: Requisitos no funcionales (RNF01--RNF04)}
+	\caption{Pruebas del bloque 8: Requisitos no funcionales}
 \end{table}
 
 \clearpage
@@ -283,7 +285,7 @@ Se realizaron sesiones de prueba con varios usuarios de perfil distinto: 1 usuar
 		\cellcolor{green!40}Sí \\
 		\hline
 	\end{tabular}
-	\caption{Pruebas de usabilidad (RNF03, RNF04)}
+	\caption{Pruebas de usabilidad}
 \end{table}
 
 Los resultados de las sesiones fueron positivos en términos generales. El mecanismo de resaltado de casillas disponibles resultó ser el elemento más valorado, ya que permite al usuario descubrir las reglas de movimiento de forma inductiva sin necesidad de consultar la guía. El único punto de fricción recurrente fue la fase de despliegue inicial, donde el usuario sin experiencia tardó más tiempo en comprender cómo debía colocar todas las piezas antes de poder iniciar la partida. El botón de despliegue aleatorio indirectamente acabó ayudando en esa tarea, ya que los jugadores podrían utilizarlo por curiosidad y es entonces cuando verían que pueden quitar piezas, seleccionarlas a placer en la interfaz de despliegue y demás.

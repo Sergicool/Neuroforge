@@ -1,5 +1,3 @@
-using Godot;
-
 // Estado general del juego
 public enum GameState
 {

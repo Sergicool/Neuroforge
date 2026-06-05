@@ -20,23 +20,23 @@ public partial class Piece : Node2D, ICombatant
     public bool CanMove { get; private set; }
 
     // Controla el render: las piezas del jugador siempre son visibles para él en pantalla.
-    // Las piezas del bot se muestran ocultas hasta que combaten.
+    /// Las piezas del bot se muestran ocultas hasta que combaten.
     public bool IsVisibleToPlayer { get; private set; }
 
     // Controla el conocimiento real del bot: solo true tras haber combatido con la pieza.
-    // El bot NO conoce las piezas del jugador por el hecho de que estén visibles en pantalla.
+    /// El bot NO conoce las piezas del jugador por el hecho de que estén visibles en pantalla.
     public bool IsRevealedToBot { get; private set; }
 
     public Tile CurrentTile { get; set; }
 
     // Historial de los últimos movimientos: (origen, destino).
-    // Se guardan hasta 3 entradas (los 3 movimientos previos que nos interesan).
+    /// Se guardan hasta 3 entradas (los 3 movimientos previos que nos interesan).
     private const int MOVE_HISTORY_SIZE = 3;
     private readonly List<(Tile From, Tile To)> _moveHistory = new();
 
     // Número de turno global en el que se realizó cada movimiento del historial.
-    // Si entre dos entradas del historial hubo un turno en el que esta pieza NO movió,
-    // la racha de oscilación se considera interrumpida y se resetea.
+    /// Si entre dos entradas del historial hubo un turno en el que esta pieza NO movió,
+    /// la racha de oscilación se considera interrumpida y se resetea.
     private readonly List<int> _moveTurnNumbers = new();
 
     public override void _Ready()
@@ -60,8 +60,9 @@ public partial class Piece : Node2D, ICombatant
 
         // Las piezas del jugador siempre son visibles en pantalla para él.
         // El bot no conoce ninguna pieza del jugador hasta que combate con ella.
+        // Las propias del bot siempre las conoce
         IsVisibleToPlayer = owner == PieceOwner.PLAYER;
-        IsRevealedToBot = owner == PieceOwner.BOT; // Las propias del bot siempre las conoce
+        IsRevealedToBot = owner == PieceOwner.BOT;
 
         UpdateVisual();
     }
@@ -70,7 +71,7 @@ public partial class Piece : Node2D, ICombatant
     public CombatResult ResolveCombat(Piece defender) => CombatSystem.Resolve(this, defender);
 
     // Llamado al combatir: revela la pieza para ambos bandos.
-    // El jugador puede ver las piezas del bot, y el bot aprende el tipo/rango de las del jugador.
+    /// El jugador puede ver las piezas del bot, y el bot aprende el tipo/rango de las del jugador.
     public void Reveal()
     {
         if (IsVisibleToPlayer && IsRevealedToBot) return;
@@ -136,8 +137,7 @@ public partial class Piece : Node2D, ICombatant
         if (_moveHistory.Count < 3) return false;
 
         // 1. Verificación de Reseteo: 
-        // Si el último movimiento de ESTA pieza no fue en el turno anterior del jugador,
-        // la racha se ha roto. 
+        // Si el último movimiento de ESTA pieza no fue en el turno anterior del jugador, la racha se ha roto. 
         // Como TurnNumber aumenta cada vez que el Jugador empieza, la diferencia debe ser 1.
         int lastMoveTurn = _moveTurnNumbers[_moveTurnNumbers.Count - 1];
         if (currentTurn - lastMoveTurn > 1) return false;

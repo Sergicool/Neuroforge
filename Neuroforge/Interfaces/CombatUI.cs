@@ -123,7 +123,6 @@ public partial class CombatUI : Control
     }
 
     // ── Preparar UI ───────────────────────────────────────────────────────────
-
     private void PrepareUI(Piece attacker, Piece defender, bool attackerHidden, bool defenderHidden)
     {
         Visible = true;
@@ -148,7 +147,6 @@ public partial class CombatUI : Control
     }
 
     // ── Animación de entrada ──────────────────────────────────────────────────
-
     private async Task AnimateIn()
     {
         Tween bgTween = CreateTween();
@@ -164,7 +162,6 @@ public partial class CombatUI : Control
     }
 
     // ── Parpadeo de revelación ────────────────────────────────────────────────
-
     private async Task BlinkReveal(TextureRect spriteRect, Label label, Piece piece)
     {
         for (int i = 0; i < BLINK_COUNT; i++)
@@ -194,7 +191,6 @@ public partial class CombatUI : Control
     }
 
     // ── Resultado ─────────────────────────────────────────────────────────────
-
     private async Task ShowResult(Piece attacker, Piece defender, CombatResult result)
     {
         Task dimA = (result == CombatResult.ATTACKER_DIES || result == CombatResult.BOTH_DIE)
@@ -234,7 +230,6 @@ public partial class CombatUI : Control
     }
 
     // ── Cerrar ────────────────────────────────────────────────────────────────
-
     private async Task HideAndClose()
     {
         _popup.PivotOffset = _popup.Size / 2f;
@@ -253,7 +248,6 @@ public partial class CombatUI : Control
     }
 
     // ── Helpers ───────────────────────────────────────────────────────────────
-
     private void SetSpriteRegion(TextureRect rect, Piece piece, bool forceHidden)
     {
         int w = PiecesData.ATLAS_COLUMN_WIDTH;

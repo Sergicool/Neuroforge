@@ -10,12 +10,13 @@ En este apartado se identifican los actores que interactúan con el Sistema, ent
 
 El único actor del sistema es el \textbf{Jugador}, que corresponde a la persona que interactúa con el videojuego a través de la interfaz gráfica mediante el ratón. Es el actor principal y exclusivo, responsable de iniciar y configurar la partida, desplegar sus piezas en la fase inicial, realizar movimientos y ataques durante su turno, y pausar o abandonar la partida en cualquier momento. El resto de la lógica del videojuego, incluyendo las acciones del oponente, es gestionada internamente por el propio sistema sin intervención externa.
 
+\clearpage
+
 % ─────────────────────────────────────────────────────────────────────────────
 \section{Modelado de Requisitos}
 % ─────────────────────────────────────────────────────────────────────────────
 
-Los requisitos describen las condiciones, capacidades y restricciones que debe cumplir un sistema software para satisfacer las necesidades de sus usuarios y los objetivos de la organización. Se distinguen principalmente tres tipos de requisitos: los requisitos funcionales (RF), que especifican
-los servicios y comportamientos que debe ofrecer el sistema; los requisitos no funcionales (RNF), que establecen restricciones y propiedades de calidad como rendimiento, fiabilidad o usabilidad; y los requisitos de información (RI), que definen los datos que el sistema debe almacenar y gestionar para proporcionar dichos servicios.
+Los requisitos describen las condiciones, capacidades y restricciones que debe cumplir un sistema software para satisfacer las necesidades de sus usuarios y los objetivos de la organización. Se distinguen principalmente tres tipos de requisitos: los requisitos funcionales (RF), que especifican los servicios y comportamientos que debe ofrecer el sistema; los requisitos no funcionales (RNF), que establecen restricciones y propiedades de calidad como rendimiento, fiabilidad o usabilidad; y los requisitos de información (RI), que definen los datos que el sistema debe almacenar y gestionar para proporcionar dichos servicios.
 
 \subsection{Requisitos funcionales}
 
@@ -48,22 +49,21 @@ los servicios y comportamientos que debe ofrecer el sistema; los requisitos no f
 \end{itemize}
 
 \subsection{Requisitos no funcionales}
-
 \begin{itemize}
 	
-	\item \textbf{RNF01:} El sistema deberá ser compatible con los sistemas operativos Windows 10 y Windows 11.
+	\item \textbf{RNF01:} El sistema deberá ser compatible con Windows 10, Windows 11, y distribuciones de Linux lanzadas a partir de 2018.
 	
 	\item \textbf{RNF02:} El videojuego deberá ejecutarse correctamente en un equipo con las siguientes especificaciones mínimas de hardware:
 	\begin{itemize}
 		\item Procesador: CPU de doble núcleo a 2,0~GHz o superior.
-		\item Memoria RAM: 8~GB.
-		\item Tarjeta gráfica: GPU compatible con OpenGL 3.3 o superior.
+		\item Memoria RAM: 4~GB.
+		\item Tarjeta gráfica: GPU con soporte completo de Vulkan~1.0 (por ejemplo, Intel HD Graphics 510 o superior).
 		\item Almacenamiento: 200~MB de espacio libre en disco.
 	\end{itemize}
 	
-	\item \textbf{RNF03:} El Sistema deberá responder a las acciones del Jugador en un tiempo máximo de 2 segundos en condiciones normales de ejecución, garantizando una experiencia de juego fluida.
+	\item \textbf{RNF03:} El sistema deberá responder a las acciones del jugador en un tiempo máximo de 2 segundos en condiciones normales de ejecución, garantizando una experiencia de juego fluida.
 	
-	\item \textbf{RNF04:} La interfaz deberá ser suficientemente clara e intuitiva para que un Jugador sin experiencia previa en el videojuego pueda comprender las acciones disponibles en cada momento sin necesidad de consultar las reglas.
+	\item \textbf{RNF04:} La interfaz deberá ser suficientemente clara e intuitiva para que un jugador sin experiencia previa en el videojuego pueda comprender las acciones disponibles en cada momento sin necesidad de consultar las reglas.
 	
 	\item \textbf{RNF05:} La interfaz del videojuego será completamente manejable mediante ratón.
 	
@@ -81,14 +81,16 @@ los servicios y comportamientos que debe ofrecer el sistema; los requisitos no f
 		\item Conjunto de casillas que conforman el tablero.
 	\end{itemize}
 	
-	\item \textbf{RI03 --- Casilla:} Cada casilla del tablero almacenará la siguiente información:
+	\item \textbf{RI02 --- Casilla:} Cada casilla del tablero almacenará la siguiente información:
 	\begin{itemize}
 		\item Posición en la cuadrícula $(x, y)$.
 		\item Tipo (Pasable, no pasable, despliegue del Jugador y del bot).
 		\item Pieza que la ocupa, si la	hubiera.
 	\end{itemize}
 	
-	\item \textbf{RI04 --- Pieza:} El Sistema almacenará la siguiente información para cada pieza presente en la partida:
+\clearpage
+
+	\item \textbf{RI03 --- Pieza:} El Sistema almacenará la siguiente información para cada pieza presente en la partida:
 	\begin{itemize}
 		\item Tipo de pieza (Los 12 tipos de piezas que vienen recogidos en el capítulo de Diseño del videojuego).
 		\item Rango numérico que determina el resultado de los combates.

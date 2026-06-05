@@ -5,66 +5,64 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-/// <summary>
-/// <br/> Gestor de escenas estático (no requiere autoload ni configuración en el editor)
-/// <br/> Se auto-inicializa la primera vez que se usa.
-/// <br/>
-/// <br/> Uso básico:
-/// <code> await SceneManager.GoTo("res://scenes/Game.tscn", SceneManager.Transition.Fade, 0.4f); </code>
-/// <code> await SceneManager.GoBack(); </code>
-/// <code> await SceneManager.Preload("res://scenes/Game.tscn"); </code>
-/// </summary>
+// Gestor de escenas estático (no requiere autoload ni configuración en el editor)
+// Se auto-inicializa la primera vez que se usa.
+
+// Uso básico:
+//  await SceneManager.GoTo("res://scenes/Game.tscn", SceneManager.Transition.Fade, 0.4f);
+//  await SceneManager.GoBack();
+//  await SceneManager.Preload("res://scenes/Game.tscn");
 public partial class SceneManager
 {
     // ── Eventos ───────────────────────────────────────────────────────────────
     // Suscribirse con += y desuscribirse en _ExitTree con -= usando referencias
     // guardadas (no lambdas inline) para evitar ObjectDisposedException.
 
-    /// <summary> Se dispara al iniciar la carga de una escena, antes de la transición.</summary>
+    /// Se dispara al iniciar la carga de una escena, antes de la transición.
     public static event Action<string> OnSceneLoadStarted;
 
-    /// <summary> Progreso de carga entre 0.0 y 1.0. Solo útil si la escena no estaba en caché.</summary>
+    /// Progreso de carga entre 0.0 y 1.0. Solo útil si la escena no estaba en caché.
     public static event Action<float> OnSceneLoadProgress;
 
-    /// <summary> Se dispara cuando la nueva escena ya está activa y la transición de entrada terminó.</summary>
+    /// Se dispara cuando la nueva escena ya está activa y la transición de entrada terminó.
     public static event Action<string> OnSceneLoadFinished;
 
-    /// <summary> Se dispara justo antes de empezar la animación de salida.</summary>
+    /// Se dispara justo antes de empezar la animación de salida.
     public static event Action OnTransitionStarted;
 
-    /// <summary> Se dispara justo después de que termina la animación de entrada.</summary>
+    /// Se dispara justo después de que termina la animación de entrada.
     public static event Action OnTransitionFinished;
 
     // ── Tipos de transición ───────────────────────────────────────────────────
-    // La lógica de cada tipo vive en _Bridge.TransitionIn / TransitionOut.
-    // Para añadir un tipo nuevo: añadir el valor aquí y el case en los metodos de _Bridge.
+    /// La lógica de cada tipo vive en _Bridge.TransitionIn / TransitionOut.
+    /// Para añadir un tipo nuevo: añadir el valor aquí y el case en los metodos de _Bridge.
     public enum Transition { None, Fade }
 
     // ── Configuración pública ─────────────────────────────────────────────────
-    /// <summary> Duración usada cuando no se especifica una en GoTo / GoBack.</summary>
+    /// Duración usada cuando no se especifica una en GoTo / GoBack.
     public static float DefaultDuration = 0.0f;
 
-    /// <summary> Color del overlay de fade. Negro por defecto.</summary>
+    /// Color del overlay de fade. Negro por defecto
     public static Color FadeColor = Colors.Black;
 
     // ── Estado ────────────────────────────────────────────────────────────────
-    /// <summary> True si hay al menos una escena anterior en el historial.</summary>
+    /// True si hay al menos una escena anterior en el historial.
     public static bool CanGoBack => _history.Count > 1;
 
-    /// <summary> Ruta de la escena actualmente activa.</summary>
+    /// Ruta de la escena actualmente activa.
     public static string CurrentPath => _history.Count > 0 ? _history.Peek() : "";
 
-    // Historial de rutas navegadas. GoBack hace pop y navega al tope.
+    /// Historial de rutas navegadas. GoBack hace pop y navega al tope.
     private static readonly Stack<string> _history = new();
 
-    // Caché de PackedScene ya cargadas. GoTo y Preload las reutilizan.
+    /// Caché de PackedScene ya cargadas. GoTo y Preload las reutilizan.
     private static readonly Dictionary<string, PackedScene> _cache = new();
 
-    // Mutex simple: evita que dos GoTo corran en paralelo.
+    /// Mutex simple: evita que dos GoTo corran en paralelo.
     private static bool _isTransitioning = false;
 
-    // El único Node que SceneManager necesita para vivir en el SceneTree.
-    // Se crea automáticamente la primera vez que se llama a EnsureBridgeAsync.
+    /// El único Node que SceneManager necesita para vivir en el SceneTree.
+    /// Se crea automáticamente la primera vez que se llama a EnsureBridgeAsync.
     private static _Bridge _bridge;
 
     // ─────────────────────────────────────────────────────────────────────────
@@ -117,10 +115,7 @@ public partial class SceneManager
         OnTransitionFinished?.Invoke();
     }
 
-    /// <summary>
-    /// Vuelve a la escena anterior del historial.
-    /// No hace nada si no hay escena anterior (CanGoBack == false).
-    /// </summary>
+    // Vuelve a la escena anterior del historial. No hace nada si no hay escena anterior.
     public static async Task GoBack(Transition transition = Transition.None, float duration = -1f)
     {
         if (!CanGoBack) return;
@@ -128,11 +123,9 @@ public partial class SceneManager
         await GoTo(_history.Peek(), transition, duration, addToHistory: false);
     }
 
-    /// <summary>
-    /// Precarga una escena en background sin navegar a ella.
-    /// La siguiente llamada a GoTo con la misma ruta será instantánea.
-    /// Llámalo desde _Ready mientras el jugador está en el menú o pantalla de carga.
-    /// </summary>
+    // Precarga una escena en background sin navegar a ella.
+    // La siguiente llamada a GoTo con la misma ruta será instantánea.
+    // Llamarlo desde _Ready mientras el jugador está en el menú o pantalla de carga.
     public static async Task Preload(string path)
     {
         if (_cache.ContainsKey(path)) return;
@@ -141,10 +134,8 @@ public partial class SceneManager
         if (packed != null) _cache[path] = packed;
     }
 
-    /// <summary>
-    /// Precarga varias escenas en secuencia. onProgress recibe 0.0→1.0 por escena completada.
-    /// Útil para mostrar una barra de progreso en una pantalla de carga.
-    /// </summary>
+    // Precarga varias escenas en secuencia. onProgress recibe 0.0→1.0 por escena completada.
+    // Útil para mostrar una barra de progreso en una pantalla de carga.
     public static async Task PreloadBatch(string[] paths, Action<float> onProgress = null)
     {
         for (int i = 0; i < paths.Length; i++)
@@ -154,13 +145,11 @@ public partial class SceneManager
         }
     }
 
-    /// <summary>Elimina una escena de la caché para liberar memoria.</summary>
+    // Elimina una escena de la caché para liberar memoria.
     public static void EvictCache(string path) => _cache.Remove(path);
 
-    /// <summary>
-    /// Limpia el historial de navegación manteniendo solo la escena actual.
-    /// Útil al entrar al juego desde el menú para que GoBack no vuelva al menú.
-    /// </summary>
+    // Limpia el historial de navegación manteniendo solo la escena actual.
+    // Útil al entrar al juego desde el menú para que GoBack no vuelva al menú.
     public static void ClearHistory()
     {
         string current = CurrentPath;
@@ -172,11 +161,8 @@ public partial class SceneManager
     //  PRIVADO
     // ─────────────────────────────────────────────────────────────────────────
 
-    /// <summary>
-    /// Crea el bridge y lo añade al árbol si aún no existe.
-    /// Espera a que _Ready() haya corrido antes de devolver el control,
-    /// garantizando que GetTree() y el overlay son válidos cuando LoadScene los usa.
-    /// </summary>
+    // Crea el bridge y lo añade al árbol si aún no existe.
+    // Espera a que _Ready() haya corrido antes de devolver el control, garantizando que GetTree() y el overlay son válidos cuando LoadScene los usa.
     private static async Task EnsureBridgeAsync()
     {
         if (_bridge != null && GodotObject.IsInstanceValid(_bridge)) return;
@@ -184,24 +170,19 @@ public partial class SceneManager
         _bridge = new _Bridge();
         var tree = Engine.GetMainLoop() as SceneTree;
 
-        // CallDeferred sobre Root garantiza que AddChild ocurre al inicio
-        // del siguiente frame, cuando el árbol está en estado seguro.
+        /// CallDeferred sobre Root garantiza que AddChild ocurre al inicio el siguiente frame, cuando el árbol está en estado seguro.
         tree.Root.CallDeferred(Node.MethodName.AddChild, _bridge);
 
-        // Bloquear hasta que _Bridge._Ready() haya completado.
-        // Sin esto, NextFrame() crashea porque GetTree() devuelve null.
+        /// Bloquear hasta que _Bridge._Ready() haya completado. Sin esto, NextFrame() crashea porque GetTree() devuelve null.
         await _bridge.WaitUntilReady();
 
-        // Registrar la escena inicial en el historial (solo la primera vez)
+        /// Registrar la escena inicial en el historial (solo la primera vez)
         if (tree?.CurrentScene?.SceneFilePath is { Length: > 0 } p)
             _history.Push(p);
     }
 
-    /// <summary>
-    /// Carga una escena desde disco usando el loader threaded de Godot,
-    /// o la devuelve inmediatamente si ya estaba en caché.
-    /// Reporta progreso via OnSceneLoadProgress mientras carga.
-    /// </summary>
+    // Carga una escena desde disco usando el loader threaded de Godot, o la devuelve inmediatamente si ya estaba en caché.
+    // Reporta progreso via OnSceneLoadProgress mientras carga.
     private static async Task<PackedScene> LoadScene(string path)
     {
         if (_cache.TryGetValue(path, out PackedScene cached)) return cached;
@@ -229,13 +210,10 @@ public partial class SceneManager
         }
     }
 
-    /// <summary>
-    /// Sustituye la escena activa por la nueva.
-    /// QueueFree en lugar de Free para respetar el ciclo de vida de Godot.
-    /// </summary>
+    // Sustituye la escena activa por la nueva.
     private static void SwapScene(SceneTree tree, PackedScene packed, string path, bool addToHistory)
     {
-        tree.CurrentScene?.QueueFree();
+        tree.CurrentScene?.QueueFree(); /// QueueFree en lugar de Free para respetar el ciclo de vida de Godot.
         Node next = packed.Instantiate();
         tree.Root.AddChild(next);
         tree.CurrentScene = next;
@@ -262,28 +240,25 @@ public partial class SceneManager
             _overlay = new ColorRect
             {
                 Color = FadeColor,
-                Modulate = new Color(1, 1, 1, 0),   // invisible al inicio
-                MouseFilter = MouseFilterEnum.Ignore  // no bloquear input cuando no hay transición
+                Modulate = new Color(1, 1, 1, 0),       // invisible al inicio
+                MouseFilter = MouseFilterEnum.Ignore    // no bloquear input cuando no hay transición
             };
-            _overlay.SetAnchorsAndOffsetsPreset(Control.LayoutPreset.FullRect);
+            _overlay.SetAnchorsAndOffsetsPreset(LayoutPreset.FullRect);
             AddChild(_overlay);
 
-            _readyTcs.SetResult(); // desbloquear WaitUntilReady()
+            _readyTcs.SetResult();                      // desbloquear WaitUntilReady()
         }
 
-        /// <summary>Cede el control al motor durante un frame sin bloquear el hilo.</summary>
+        // Cede el control al motor durante un frame sin bloquear el hilo.
         public async Task NextFrame() =>
             await ToSignal(GetTree(), SceneTree.SignalName.ProcessFrame);
 
-        /// <summary>
-        /// Animación de salida: el overlay se vuelve opaco tapando la escena actual.
-        /// Se llama ANTES del swap de escena.
-        /// </summary>
+        // Animación de salida: el overlay se vuelve opaco tapando la escena actual. Se llama ANTES del swap de escena.
         public async Task TransitionIn(Transition t, float duration)
         {
             if (t == Transition.None) return;
 
-            _overlay.MouseFilter = MouseFilterEnum.Stop; // bloquear input durante transición
+            _overlay.MouseFilter = MouseFilterEnum.Stop;    // Bloquear input durante transición
             _overlay.Color = FadeColor;
 
             Tween tween = CreateTween();
@@ -291,10 +266,7 @@ public partial class SceneManager
             await ToSignal(tween, Tween.SignalName.Finished);
         }
 
-        /// <summary>
-        /// Animación de entrada: el overlay desaparece revelando la nueva escena.
-        /// Se llama DESPUÉS del swap de escena.
-        /// </summary>
+        // Animación de entrada: el overlay desaparece revelando la nueva escena. Se llama DESPUÉS del swap de escena.
         public async Task TransitionOut(Transition t, float duration)
         {
             if (t == Transition.None) return;
@@ -303,7 +275,7 @@ public partial class SceneManager
             tween.TweenProperty(_overlay, "modulate:a", 0.0f, duration);
             await ToSignal(tween, Tween.SignalName.Finished);
 
-            _overlay.MouseFilter = MouseFilterEnum.Ignore; // devolver input al juego
+            _overlay.MouseFilter = MouseFilterEnum.Ignore;  // Devolver input al juego
         }
     }
 }

@@ -2,10 +2,8 @@ using Godot;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-/// <summary>
-/// <br/> Gestor de escenas estático (no requiere autoload ni configuración en el editor)
-/// <br/> Se auto-inicializa la primera vez que se usa.
-/// </summary>
+// Gestor de escenas estático (no requiere autoload ni configuración en el editor)
+// Se auto-inicializa la primera vez que se usa.
 public partial class AudioManager
 {
     public enum Bus { Master, Music, Sfx, UI }
@@ -20,9 +18,7 @@ public partial class AudioManager
     //  API PÚBLICA
     // ─────────────────────────────────────────────────────────────────────────
 
-    /// <summary>
-    /// Reproduce música de fondo. Si ya hay música sonando, hace un crossfade.
-    /// </summary>
+    // Reproduce música de fondo. Si ya hay música sonando, hace un crossfade.
     public static async void PlayMusic(string path, float fadeDuration = -1f)
     {
         await EnsureBridgeAsync();
@@ -33,9 +29,7 @@ public partial class AudioManager
             _bridge.PlayMusic(stream, duration);
     }
 
-    /// <summary>
-    /// Reproduce un efecto de sonido puntual.
-    /// </summary>
+    // Reproduce un efecto de sonido puntual.
     public static async void PlaySfx(string path, float pitchVar = 0.0f)
     {
         await EnsureBridgeAsync();
@@ -44,9 +38,7 @@ public partial class AudioManager
             _bridge.PlayOneShot(stream, Bus.Sfx, pitchVar);
     }
 
-    /// <summary>
-    /// Reproduce un sonido de interfaz.
-    /// </summary>
+    // Reproduce un sonido de interfaz.
     public static async void PlayUI(string path)
     {
         await EnsureBridgeAsync();
@@ -55,9 +47,7 @@ public partial class AudioManager
             _bridge.PlayOneShot(stream, Bus.UI);
     }
 
-    /// <summary>
-    /// Cambia el volumen de un bus (0.0 a 1.0).
-    /// </summary>
+    // Cambia el volumen de un bus (0.0 a 1.0).
     public static void SetVolume(Bus bus, float volumeNormalized)
     {
         int index = AudioServer.GetBusIndex(bus.ToString());

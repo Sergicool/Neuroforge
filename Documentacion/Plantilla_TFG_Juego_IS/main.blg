@@ -9,45 +9,45 @@ Repeated entry---line 667 of file bibliografia.bib
  : @misc{notion_pricing
  :                     ,
 I'm skipping whatever remains of this entry
-You've used 42 entries,
+You've used 48 entries,
             1791 wiz_defined-function locations,
-            664 strings with 12338 characters,
-and the built_in function-call counts, 6094 in all, are:
-= -- 518
-> -- 265
+            687 strings with 13345 characters,
+and the built_in function-call counts, 6860 in all, are:
+= -- 582
+> -- 289
 < -- 0
-+ -- 113
-- -- 71
-* -- 100
-:= -- 979
-add.period$ -- 158
-call.type$ -- 42
-change.case$ -- 42
++ -- 125
+- -- 77
+* -- 104
+:= -- 1097
+add.period$ -- 176
+call.type$ -- 48
+change.case$ -- 48
 chr.to.int$ -- 0
-cite$ -- 42
-duplicate$ -- 210
-empty$ -- 757
-format.name$ -- 71
-if$ -- 1428
+cite$ -- 48
+duplicate$ -- 240
+empty$ -- 865
+format.name$ -- 77
+if$ -- 1612
 int.to.chr$ -- 0
-int.to.str$ -- 42
+int.to.str$ -- 48
 missing$ -- 0
-newline$ -- 245
-num.names$ -- 41
-pop$ -- 271
+newline$ -- 275
+num.names$ -- 47
+pop$ -- 305
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 94
+skip$ -- 116
 stack$ -- 0
 substring$ -- 0
-swap$ -- 42
+swap$ -- 48
 text.length$ -- 0
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 0
-while$ -- 41
-width$ -- 44
-write$ -- 477
+while$ -- 47
+width$ -- 50
+write$ -- 535
 (There was 1 error message)

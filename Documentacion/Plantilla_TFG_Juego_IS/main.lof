@@ -6,12 +6,12 @@
 \contentsline {figure}{\numberline {2.3}{\ignorespaces Tablero del juego Dou Shou Qi}}{12}{figure.caption.10}%
 \contentsline {figure}{\numberline {2.4}{\ignorespaces Tablero del juego Luzhanqi}}{14}{figure.caption.11}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Esquema del tablero}}{20}{figure.caption.12}%
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Esquema del tablero}}{23}{figure.caption.13}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Esquema del tablero}}{20}{figure.caption.13}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Esquema del tablero}}{23}{figure.caption.14}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Metáfora gráfica del desarrollo iterativo e incremental}}{28}{figure.caption.14}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Parte 1 del diagrama de Gantt general del desarrollo del TFG}}{34}{figure.caption.17}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Parte 2 del diagrama de Gantt general del desarrollo del TFG}}{35}{figure.caption.18}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Metáfora gráfica del desarrollo iterativo e incremental}}{28}{figure.caption.15}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Parte 1 del diagrama de Gantt general del desarrollo del TFG}}{34}{figure.caption.18}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Parte 2 del diagrama de Gantt general del desarrollo del TFG}}{35}{figure.caption.19}%
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {5.1}{\ignorespaces Diagrama de casos de uso}}{48}{figure.caption.24}%
 \contentsline {figure}{\numberline {5.2}{\ignorespaces Diagrama del modelo de dominio}}{55}{figure.caption.33}%
@@ -37,27 +37,27 @@
 \contentsline {figure}{\numberline {6.16}{\ignorespaces Diagrama de despliegue de NeuroForge.}}{74}{figure.caption.52}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {8.1}{\ignorespaces Resultado de la ejecución de las pruebas unitarias con NUnit.}}{92}{figure.caption.62}%
+\contentsline {figure}{\numberline {8.1}{\ignorespaces Resultado de la ejecución de las pruebas unitarias con NUnit.}}{94}{figure.caption.63}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {9.1}{\ignorespaces Detalle de la interfaz de despliegue inicial basada en botones de texto.}}{94}{figure.caption.63}%
-\contentsline {figure}{\numberline {9.2}{\ignorespaces Mensaje de final de partida en la Iteración 1}}{95}{figure.caption.64}%
-\contentsline {figure}{\numberline {9.3}{\ignorespaces Capturas del juego durante la Iteración 1.}}{95}{figure.caption.65}%
-\contentsline {figure}{\numberline {9.4}{\ignorespaces Primer boceto de la interfaz de partida con indicadores laterales y texto de turno.}}{96}{figure.caption.67}%
-\contentsline {figure}{\numberline {9.5}{\ignorespaces Evolución del diseño de partida con indicadores visuales de turno.}}{97}{figure.caption.68}%
-\contentsline {figure}{\numberline {9.6}{\ignorespaces Layout definitivo del boceto de la interfaz de partida.}}{98}{figure.caption.69}%
-\contentsline {figure}{\numberline {9.7}{\ignorespaces Boceto de inicio de combate: presentación de piezas.}}{99}{figure.caption.70}%
-\contentsline {figure}{\numberline {9.8}{\ignorespaces Boceto de resolución: comparación de rangos.}}{99}{figure.caption.71}%
-\contentsline {figure}{\numberline {9.9}{\ignorespaces Boceto de fin de combate: pieza eliminada.}}{100}{figure.caption.72}%
-\contentsline {figure}{\numberline {9.10}{\ignorespaces Comparativa entre el diseño inicial de combate y el diseño final simplificado.}}{100}{figure.caption.73}%
-\contentsline {figure}{\numberline {9.11}{\ignorespaces Boceto del menú de pausa de la partida.}}{101}{figure.caption.74}%
-\contentsline {figure}{\numberline {9.12}{\ignorespaces Boceto de la interfaz de reglas con sistema de navegación por viñetas.}}{101}{figure.caption.75}%
+\contentsline {figure}{\numberline {9.1}{\ignorespaces Detalle de la interfaz de despliegue inicial basada en botones de texto.}}{96}{figure.caption.64}%
+\contentsline {figure}{\numberline {9.2}{\ignorespaces Mensaje de final de partida en la Iteración 1}}{97}{figure.caption.65}%
+\contentsline {figure}{\numberline {9.3}{\ignorespaces Capturas del juego durante la Iteración 1.}}{97}{figure.caption.66}%
+\contentsline {figure}{\numberline {9.4}{\ignorespaces Primer boceto de la interfaz de partida con indicadores laterales y texto de turno.}}{98}{figure.caption.67}%
+\contentsline {figure}{\numberline {9.5}{\ignorespaces Evolución del diseño de partida con indicadores visuales de turno.}}{99}{figure.caption.68}%
+\contentsline {figure}{\numberline {9.6}{\ignorespaces Layout definitivo del boceto de la interfaz de partida.}}{100}{figure.caption.69}%
+\contentsline {figure}{\numberline {9.7}{\ignorespaces Boceto de inicio de combate: presentación de piezas.}}{101}{figure.caption.70}%
+\contentsline {figure}{\numberline {9.8}{\ignorespaces Boceto de resolución: comparación de rangos.}}{101}{figure.caption.71}%
+\contentsline {figure}{\numberline {9.9}{\ignorespaces Boceto de fin de combate: pieza eliminada.}}{102}{figure.caption.72}%
+\contentsline {figure}{\numberline {9.10}{\ignorespaces Comparativa entre el diseño inicial de combate y el diseño final simplificado.}}{102}{figure.caption.73}%
+\contentsline {figure}{\numberline {9.11}{\ignorespaces Boceto del menú de pausa de la partida.}}{103}{figure.caption.74}%
+\contentsline {figure}{\numberline {9.12}{\ignorespaces Boceto de la interfaz de reglas con sistema de navegación por viñetas.}}{103}{figure.caption.75}%
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {B.1}{\ignorespaces Menú principal de NeuroForge.}}{111}{figure.caption.76}%
-\contentsline {figure}{\numberline {B.2}{\ignorespaces Fase de despliegue con algunas piezas ya colocadas en la zona del jugador.}}{113}{figure.caption.77}%
-\contentsline {figure}{\numberline {B.3}{\ignorespaces Pantalla de partida con una pieza seleccionada y sus acciones posibles resaltadas.}}{114}{figure.caption.78}%
-\contentsline {figure}{\numberline {B.4}{\ignorespaces Interfaz de combate tras la resolución: pieza perdedora oscurecida y mensaje de resultado visible.}}{115}{figure.caption.79}%
-\contentsline {figure}{\numberline {B.5}{\ignorespaces Pantalla de fin de partida con mensaje de victoria.}}{116}{figure.caption.80}%
+\contentsline {figure}{\numberline {B.1}{\ignorespaces Menú principal de NeuroForge.}}{113}{figure.caption.76}%
+\contentsline {figure}{\numberline {B.2}{\ignorespaces Fase de despliegue con algunas piezas ya colocadas en la zona del jugador.}}{115}{figure.caption.77}%
+\contentsline {figure}{\numberline {B.3}{\ignorespaces Pantalla de partida con una pieza seleccionada y sus acciones posibles resaltadas.}}{116}{figure.caption.78}%
+\contentsline {figure}{\numberline {B.4}{\ignorespaces Interfaz de combate tras la resolución: pieza perdedora oscurecida y mensaje de resultado visible.}}{117}{figure.caption.79}%
+\contentsline {figure}{\numberline {B.5}{\ignorespaces Pantalla de fin de partida con mensaje de victoria.}}{118}{figure.caption.80}%
 \contentsfinish 
 \contentsfinish 

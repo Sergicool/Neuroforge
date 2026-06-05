@@ -56,6 +56,7 @@
     "ui.game.title": "Remaining pieces",
 	"ui.game.opponent": "Opponent",
 	"ui.game.player": "You",
+	"ui.game.turnmarker": "Turn",
 
 	"ui.rules.back": "Go back",
     "ui.rules.tab.0": " Objective ",

@@ -55,7 +55,7 @@ grow_horizontal = 0
 grow_vertical = 2
 theme_override_styles/panel = ExtResource("2_lg2j6")
 
-[node name="Label" type="Label" parent="CanvasLayer/PanelContainer" unique_id=91129030]
+[node name="Label" type="Label" parent="CanvasLayer/PanelContainer" unique_id=91129030 groups=["translatable"]]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -72,6 +72,7 @@ theme_override_styles/normal = ExtResource("3_y30xb")
 text = "Turn"
 horizontal_alignment = 1
 vertical_alignment = 1
+metadata/tr = "ui.game.turnmarker"
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/PanelContainer" unique_id=414240996]
 layout_mode = 1

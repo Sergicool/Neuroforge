@@ -32,8 +32,8 @@ public partial class RemainingPiecesUI : Control
 
             // Solo visual: desactivar toda interacción
             btn.Disabled = true;
-            btn.MouseFilter = Control.MouseFilterEnum.Ignore;
-            btn.FocusMode = Control.FocusModeEnum.None;
+            btn.MouseFilter = MouseFilterEnum.Ignore;
+            btn.FocusMode = FocusModeEnum.None;
 
             map[kv.Key] = btn;
         }

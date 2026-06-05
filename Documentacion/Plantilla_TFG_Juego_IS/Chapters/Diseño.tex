@@ -11,13 +11,13 @@ de diseño tomadas durante el desarrollo, ya que la arquitectura del sistema est
 
 \subsection{El modelo de ejecución de Godot}
 
-Para comprender las decisiones de diseño adoptadas en este proyecto es necesario entender primero cómo organiza Godot el contenido de un videojuego. Godot estructura toda la lógica y los elementos visuales en un \textbf{árbol de escenas} (\textit{SceneTree}): una jerarquía de objetos llamados \textbf{nodos}, donde cada nodo representa una unidad funcional del videojuego, ya sea un personaje, una casilla del tablero, un menú o el gestor de partida.
+Para comprender las decisiones de diseño adoptadas en este proyecto es necesario entender primero cómo organiza Godot el contenido de un videojuego. Godot estructura toda la lógica y los elementos visuales en un \textit{árbol de escenas} (\textit{SceneTree}), una jerarquía de objetos llamados \textit{nodos}, donde cada nodo representa una unidad funcional del videojuego, ya sea un personaje, una casilla del tablero, un menú o el gestor de partida.
 
-Cada nodo hereda, en última instancia, de la clase base \texttt{Node}. Esta es la unidad mínima funcional del motor; no posee posición ni representación visual, pero define el ciclo de vida compartido por todos los objetos del árbol: el método \texttt{Ready()} se ejecuta cuando el nodo entra al árbol y es el punto habitual de inicialización, mientras que \texttt{Process()} se invoca en cada fotograma para la lógica continua.
+Cada nodo hereda, en última instancia, de la clase base \texttt{Node}. Esta es la unidad mínima funcional del motor; no posee posición ni representación visual, pero define el ciclo de vida compartido por todos los objetos del árbol. El método \texttt{Ready()} se ejecuta cuando el nodo entra al árbol y es el punto habitual de inicialización, mientras que \texttt{Process()} se invoca en cada fotograma para la lógica continua.
 
-A partir de esta base, el proyecto utiliza especializaciones más complejas que expanden las capacidades del nodo raíz. Este mecanismo de \textbf{herencia} permite que, por ejemplo, \texttt{Node2D} añada propiedades de posición, rotación y escala para elementos en el mundo 2D (como las piezas y el tablero), mientras que \texttt{Control} se especializa en interfaces de usuario con gestión de anclajes y márgenes. Gracias a esta estructura, incluso los componentes de lógica pura pueden integrarse en el ciclo de vida del motor heredando simplemente de \texttt{Node}, evitando así la sobrecarga de datos espaciales que no requieren.
+A partir de esta base, el proyecto utiliza especializaciones más complejas que expanden las capacidades del nodo raíz. Este mecanismo de herencia permite que, por ejemplo, \texttt{Node2D} añada propiedades de posición, rotación y escala para elementos en el mundo 2D (como las piezas y el tablero), mientras que \texttt{Control} se especializa en interfaces de usuario con gestión de anclajes y márgenes. Gracias a esta estructura, incluso los componentes de lógica pura pueden integrarse en el ciclo de vida del motor heredando simplemente de \texttt{Node}, evitando así la sobrecarga de datos espaciales que no requieren.
 
-Dicha jerarquía de nodos se organiza de forma práctica mediante \textbf{escenas}, que funciona como un plano reutilizable compuesto por una rama de nodos. Una escena permite agrupar estos nodos especializados para que trabajen como una única entidad lógica dentro del árbol principal del videojuego.
+Dicha jerarquía de nodos se organiza de forma práctica mediante \textit{escenas}, que funciona como un plano reutilizable compuesto por una rama de nodos. Una escena permite agrupar estos nodos especializados para que trabajen como una única entidad lógica dentro del árbol principal del videojuego.
 
 Un ejemplo representativo en NeuroForge es la escena \texttt{Tile}, la cual dentro del editor se ve como en la Figura~\ref{fig:EjemploEscena}, encargada de las casillas del tablero. Como se observa en la imagen, el nodo raíz es un \texttt{Area2D}; este nodo no solo hereda las capacidades espaciales de \texttt{Node2D}, sino que aporta funcionalidades propias, como por ejemplo, permitir detectar eventos de ratón y colisiones. Bajo él, la escena se compone de hijos específicos: un \texttt{CollisionShape2D} para delimitar el área de interacción de dicho área (Especificamente los Areas2D necesitan un CollisionShape2D hijo para funcionar) y nodos \texttt{Sprite2D} para la representación visual. Esta composición ilustra cómo la suma de nodos permite construir objetos más complejos y funcionales.
 
@@ -28,7 +28,9 @@ Un ejemplo representativo en NeuroForge es la escena \texttt{Tile}, la cual dent
 	\label{fig:EjemploEscena}
 \end{figure}
 
-La comunicación entre nodos puede realizarse de tres formas. La primera es mediante \textbf{referencias directas}: un nodo obtiene acceso a otro con \texttt{GetNode()} y llama a sus métodos directamente. La segunda es mediante \textbf{señales}, el sistema de eventos nativo de Godot: un nodo emite una señal cuando ocurre algo relevante y otros nodos suscritos reaccionan sin necesidad de conocerse mutuamente. Para esta última he optado por utilizar los eventos de C\# estándar (event Action), utilizados para una comunicación más rápida y con tipado fuerte entre clases de lógica pura y controladores, reduciendo asi la dependencia con el editor de Godot. La tercera es mediante \textbf{clases	estáticas o instancias globales}, accesibles desde cualquier punto del código sin depender de la posición en el árbol. Una característica importante de Godot con C\# es que no toda clase tiene que ser un nodo: es válido definir clases C\# ordinarias que operen sobre los datos del árbol sin pertenecer a él, lo que permite aislar la lógica de negocio del ciclo de vida del motor.
+\clearpage
+
+La comunicación entre nodos puede realizarse de tres formas. La primera es mediante referencias directas, donde un nodo obtiene acceso a otro con \texttt{GetNode()} y llama a sus métodos directamente. La segunda es mediante señales, el sistema de eventos nativo de Godot, un nodo emite una señal cuando ocurre algo relevante y otros nodos suscritos reaccionan sin necesidad de conocerse mutuamente. Para esta última he optado por utilizar los eventos de C\# estándar (event Action), utilizados para una comunicación más rápida y con tipado fuerte entre clases de lógica pura y controladores, reduciendo asi la dependencia con el editor de Godot. La tercera es mediante clases	estáticas o instancias globales, accesibles desde cualquier punto del código sin depender de la posición en el árbol. Una característica importante de Godot con C\# es que no toda clase tiene que ser un nodo, es válido definir clases C\# ordinarias que operen sobre los datos del árbol sin pertenecer a él, lo que permite aislar la lógica de negocio del ciclo de vida del motor.
 
 La Figura~\ref{fig:GodotModelo} ilustra este modelo con un subconjunto representativo de los nodos del proyecto. No pretende recoger la totalidad del árbol de escenas, sino mostrar algunos tipos de nodos más relevantes, su jerarquía y algunos de los tres mecanismos de comunicación descritos.
 
@@ -39,9 +41,11 @@ La Figura~\ref{fig:GodotModelo} ilustra este modelo con un subconjunto represent
 	\label{fig:GodotModelo}
 \end{figure}
 
+\clearpage
+
 \subsection{Arquitectura de NeuroForge}
 
-Con este modelo en mente, el sistema se organiza en una \textbf{arquitectura en tres capas} que separa la representación visual de la lógica pura del videojuego y de los datos. Esta separación es una decisión de diseño para evitar que las reglas del videojuego queden entrelazadas con el código de renderizado o de interfaz.
+Con este modelo en mente, el sistema se organiza en una arquitectura en tres capas que separa la representación visual de la lógica pura del videojuego y de los datos. Esta separación es una decisión de diseño para evitar que las reglas del videojuego queden entrelazadas con el código de renderizado o de interfaz.
 
 La Figura~\ref{fig:ArquitecturaDelSistema} muestra una vista simplificada de los principales componentes de cada capa. Se incluyen los elementos más representativos de cada nivel.
 
@@ -52,11 +56,11 @@ La Figura~\ref{fig:ArquitecturaDelSistema} muestra una vista simplificada de los
 	\label{fig:ArquitecturaDelSistema}
 \end{figure}
 
-La \textbf{capa de interfaz} agrupa todos los nodos que heredan de \texttt{Control}. Su responsabilidad se limita a capturar las intenciones del jugador y reflejar el estado del videojuego visualmente. Ninguno de estos nodos toma decisiones de la lógica del videojuego, cuando el jugador pulsa un botón, la capa de presentación notifica a la capa de lógica mediante eventos C\# estándar (\texttt{event Action}), y espera recibir los datos actualizados para refrescar la vista. Algunos componentes de esta capa acceden además directamente a la capa de datos e infraestructura para consultar configuración estática o gestionar transiciones de escena.
+La capa de interfaz agrupa todos los nodos que heredan de \texttt{Control}. Su responsabilidad se limita a capturar las intenciones del jugador y reflejar el estado del videojuego visualmente. Ninguno de estos nodos toma decisiones de la lógica del videojuego, cuando el jugador pulsa un botón, la capa de presentación notifica a la capa de lógica mediante eventos C\# estándar (\texttt{event Action}), y espera recibir los datos actualizados para refrescar la vista. Algunos componentes de esta capa acceden además directamente a la capa de datos e infraestructura para consultar configuración estática o gestionar transiciones de escena.
 
-La \textbf{capa de lógica de videojuego} es el núcleo funcional del sistema. Aquí conviven dos tipos de clases con naturalezas distintas. Nodos de Godot, que necesitan estar en el árbol de escenas para gestionar el input del ratón, coordinar animaciones y participar en el ciclo de vida del motor. Y por otro lado, las clases C\# puras creadas e instanciadas desde \texttt{GameScene} o \texttt{Board}, independientes del motor y por tanto más ligeras y fáciles de reutilizar.
+La capa de lógica de videojuego es el núcleo funcional del sistema. Aquí conviven dos tipos de clases con naturalezas distintas. Nodos de Godot, que necesitan estar en el árbol de escenas para gestionar el input del ratón, coordinar animaciones y participar en el ciclo de vida del motor. Y por otro lado, las clases C\# puras creadas e instanciadas desde \texttt{GameScene} o \texttt{Board}, independientes del motor y por tanto más ligeras y fáciles de reutilizar.
 
-La \textbf{capa de datos e infraestructura} comprende los datos estáticos de configuración, estructuras de datos, el gestor de navegación entre escenas, el gestor de audio y los enums que definen los valores del dominio.
+La capa de datos e infraestructura comprende los datos estáticos de configuración, estructuras de datos, el gestor de navegación entre escenas, el gestor de audio y los enums que definen los valores del dominio.
 
 El flujo predominante de dependencias es descendente. Sin embargo, los nodos de Godot, en la capa de lógica, mantienen referencias directas a componentes de la capa de interfaz para coordinar la presentación de resultados y el flujo de partida. Estas dependencias inversas puntuales son una consecuencia del modelo de ciclo de vida de Godot, en el que la lógica debe suspender su ejecución hasta que las animaciones de interfaz terminan. No representan una violación del diseño en capas sino una adaptación pragmática al motor.
 
@@ -68,15 +72,13 @@ A lo largo del desarrollo de NeuroForge se han aplicado varios patrones de dise�
 
 \subsection{Singleton}
 
-El patrón \textbf{Singleton} garantiza que una clase tenga una única instancia y proporciona un punto de acceso global a ella. En el proyecto aparece en dos formas distintas.
+El patrón Singleton garantiza que una clase tenga una única instancia y proporciona un punto de acceso global a ella. En el proyecto aparece en dos formas distintas.
 
 \texttt{GameScene} mantiene una propiedad estática \texttt{Instance} que se asigna en \texttt{\_Ready()} cuando Godot instancia la escena. Cualquier clase del sistema puede consultar el estado de la partida o cambiar de fase a través de ese punto de acceso sin necesidad de mantener una referencia explícita.
 
-\texttt{SceneManager} adopta la variante de \textit{clase completamente estática}: todo su estado (historial de navegación, caché de escenas) vive en campos estáticos privados y se auto-inicializa la primera vez que se invoca cualquiera de sus métodos públicos. La unicidad no recae en una instancia sino en el propio espacio de nombres estático.
+\texttt{SceneManager} adopta la variante de \textit{clase completamente estática}, todo su estado (historial de navegación, caché de escenas) vive en campos estáticos privados y se auto-inicializa la primera vez que se invoca cualquiera de sus métodos públicos. La unicidad no recae en una instancia sino en el propio espacio de nombres estático.
 
 Como muestra la Figura~\ref{fig:PatronSingleton}, en ambos casos se evita pasar referencias a través de múltiples capas de objetos, centralizando el acceso a los dos gestores de mayor alcance del sistema.
-
-\clearpage
 
 \begin{figure}[H]
 	\centering
@@ -87,9 +89,9 @@ Como muestra la Figura~\ref{fig:PatronSingleton}, en ambos casos se evita pasar 
 
 \subsection{Strategy}
 
-El patrón \textbf{Strategy} define una familia de algoritmos, encapsula cada uno de ellos y los hace intercambiables, permitiendo que el algoritmo varíe de forma independiente respecto a los clientes que lo utilizan.
+El patrón Strategy define una familia de algoritmos, encapsula cada uno de ellos y los hace intercambiables, permitiendo que el algoritmo varíe de forma independiente respecto a los clientes que lo utilizan.
 
-En el proyecto, \texttt{MovementSystem} y \texttt{CombatSystem} son clases estáticas que encapsulan respectivamente la lógica de movimiento y la lógica de resolución de combate, actuando cada una como una estrategia concreta. \texttt{Board} delega en ellas sin conocer su implementación interna: para mover una pieza consulta \texttt{MovementSystem.GetAction()} y \texttt{MovementSystem.CanMove()}, y para resolver un enfrentamiento invoca \texttt{CombatSystem.Resolve()}. La Figura~\ref{fig:PatronStrategy} muestra esta relación de delegación.
+En el proyecto, \texttt{MovementSystem} y \texttt{CombatSystem} son clases estáticas que encapsulan respectivamente la lógica de movimiento y la lógica de resolución de combate, actuando cada una como una estrategia concreta. \texttt{Board} delega en ellas sin conocer su implementación interna, para mover una pieza consulta \texttt{MovementSystem.GetAction()} y \texttt{MovementSystem.CanMove()}, y para resolver un enfrentamiento invoca \texttt{CombatSystem.Resolve()}. La Figura~\ref{fig:PatronStrategy} muestra esta relación de delegación.
 
 \begin{figure}[H]
 	\centering
@@ -102,7 +104,7 @@ Cabe señalar que en esta implementación las estrategias no comparten una inter
 
 \subsection{Fachada}
 
-El patrón \textbf{Fachada} proporciona una interfaz unificada y simplificada a un conjunto de interfaces de un subsistema, reduciendo el acoplamiento entre los clientes y dicho subsistema.
+El patrón Fachada proporciona una interfaz unificada y simplificada a un conjunto de interfaces de un subsistema, reduciendo el acoplamiento entre los clientes y dicho subsistema.
 
 \texttt{Board} actúa como fachada del subsistema de tablero. Tal como se aprecia en la Figura~\ref{fig:PatronFachada}, detrás de su interfaz pública agrupa la generación de la cuadrícula, la gestión de \texttt{Tile} y \texttt{Piece}, la delegación a \texttt{MovementSystem} y \texttt{CombatSystem}, y el controlador de input \texttt{BoardInputController}. Los clientes externos, \texttt{GameScene} y \texttt{BotController}, solo interactúan con \texttt{Board} a través de métodos de alto nivel como \texttt{MovePiece()}, \texttt{ResolveCombat()}, \texttt{SpawnPiece()} o \texttt{GetAllPossibleActions()}, sin necesidad de conocer la composición interna del subsistema.
 
@@ -117,9 +119,9 @@ Esta decisión concentra en un único lugar todas las operaciones sobre el estad
 
 \subsection{Template Method}
 
-El patrón \textbf{Template Method} define el esqueleto de un algoritmo en una operación, dejando que subclases o extensiones concreten algunos de sus pasos sin cambiar la estructura general.
+El patrón Template Method define el esqueleto de un algoritmo en una operación, dejando que subclases o extensiones concreten algunos de sus pasos sin cambiar la estructura general.
 
-En \texttt{SceneManager}, la clase interna \texttt{\_Bridge} aplica este patrón en los métodos \texttt{TransitionIn()} y \texttt{TransitionOut()}. Ambos fijan la secuencia invariante de cualquier transición de pantalla: bloquear la entrada del usuario, ejecutar el paso de animación correspondiente y, tras \texttt{TransitionOut()}, devolver el control al videojuego.
+En \texttt{SceneManager}, la clase interna \texttt{\_Bridge} aplica este patrón en los métodos \texttt{TransitionIn()} y \texttt{TransitionOut()}. Ambos fijan la secuencia invariante de cualquier transición de pantalla, bloquear la entrada del usuario, ejecutar el paso de animación correspondiente y, tras \texttt{TransitionOut()}, devolver el control al videojuego.
 
 En la forma canónica del patrón los pasos variables se delegan a subclases mediante herencia; aquí, al tratarse de una clase sellada (\texttt{sealed}), la variación se consigue mediante composición con el enumerado \texttt{Transition}. El efecto es equivalente, añadir un nuevo tipo de transición solo requiere incorporar un \texttt{case} adicional sin modificar el esqueleto del algoritmo ni las clases relacionadas.
 
@@ -131,7 +133,7 @@ Para garantizar una experiencia de usuario fluida, la interfaz de NeuroForge se 
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\textwidth]{../Imagenes/DiagramaNavegacion}
+	\includegraphics[width=0.8\textwidth]{../Imagenes/DiagramaNavegacion}
 	\caption{Diagrama de navegación de las interfaces de NeuroForge.}
 	\label{fig:DiagramaNavegacion}
 \end{figure}
@@ -144,7 +146,7 @@ La pantalla de inicio presenta el título del videojuego y, bajo él, tres boton
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=\textwidth]{../Imagenes/MenuPrincipal}
+	\includegraphics[width=0.8\textwidth]{../Imagenes/MenuPrincipal}
 	\caption{Menú principal de NeuroForge.}
 	\label{fig:MenuPrincipal}
 \end{figure}
@@ -161,6 +163,8 @@ El contenido se organiza en cinco pestañas seleccionables en la parte superior 
 	\caption{Menú de reglas con la pestaña de piezas activa.}
 	\label{fig:MenuReglasPieces}
 \end{figure}
+
+\clearpage
 
 \subsection*{Fase de despliegue}
 
@@ -223,12 +227,9 @@ La secuencia acompaña al desarrollo del combate. Al emerger la ventana, si algu
 	\label{fig:MenuInterfazCombateResuelto}
 \end{figure}
 
-\clearpage
-
 \subsection{Fin de partida}
 
-Al concluir la partida, una ventana emergente informa del resultado, como se muestra en la Figura~\ref{fig:MenuFinPartida}. El mensaje principal aparece en un color que codifica el desenlace: verde para la victoria, rojo para la derrota y morado para el empate. Bajo el mensaje se indica el motivo concreto,
-ya sea la destrucción del núcleo energético o el agotamiento de movimientos. Dos botones en la parte inferior permiten al jugador reiniciar la partida directamente o regresar al menú principal.
+Al concluir la partida, una ventana emergente informa del resultado, como se muestra en la Figura~\ref{fig:MenuFinPartida}. El mensaje principal aparece en un color que codifica el desenlace: verde para la victoria, rojo para la derrota y morado para el empate. Bajo el mensaje se indica el motivo concreto, ya sea la destrucción del núcleo energético o el agotamiento de movimientos. Dos botones en la parte inferior permiten al jugador reiniciar la partida directamente o regresar al menú principal.
 
 \begin{figure}[H]
 	\centering
@@ -282,6 +283,6 @@ El diagrama de despliegue de la Figura~\ref{fig:DiagramaDespliegue} describe los
 
 \textit{NeuroForge} se despliega como una aplicación de escritorio autocontenida que se ejecuta íntegramente en la máquina del jugador, sin dependencia de servidores externos ni conexión a red. El paquete de distribución final se reduce a dos elementos.
 
-El \textbf{ejecutable principal} (\texttt{NeuroForge.exe}) integra en un único archivo el motor de Godot compilado, la lógica del videojuego y todos los recursos del proyecto: escenas, sprites, efectos de sonido, música y demás assets. Esto es posible gracias a la opción de exportación de Godot que embebe el archivo \texttt{.pck} de recursos directamente dentro del binario, lo que simplifica al máximo la distribución y permite ejecutar el videojuego sin ningún tipo de instalación previa.
+El ejecutable principal (\texttt{NeuroForge.exe}) integra en un único archivo el motor de Godot compilado, la lógica del videojuego y todos los recursos del proyecto: escenas, sprites, efectos de sonido, música y demás assets. Esto es posible gracias a la opción de exportación de Godot que embebe el archivo \texttt{.pck} de recursos directamente dentro del binario, lo que simplifica al máximo la distribución y permite ejecutar el videojuego sin ningún tipo de instalación previa.
 
-El único archivo externo es el \textbf{modelo entrenado de la IA}, distribuido en formato \texttt{.zip}, que el sistema localiza y carga en tiempo de ejecución al iniciar una partida contra el bot inteligente. Mantenerlo separado del ejecutable permite actualizar o sustituir el modelo de forma independiente sin necesidad de redistribuir el resto del paquete.
+El único archivo externo es el modelo entrenado de la IA, distribuido en formato \texttt{.zip}, que el sistema localiza y carga en tiempo de ejecución al iniciar una partida contra el bot inteligente. Mantenerlo separado del ejecutable permite actualizar o sustituir el modelo de forma independiente sin necesidad de redistribuir el resto del paquete.

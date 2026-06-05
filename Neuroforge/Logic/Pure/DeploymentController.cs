@@ -107,7 +107,7 @@ public class DeploymentController
                 frontTiles.Add(t);
         }
 
-        Tile coreTarget = backTiles[0]; // ya shuffleado
+        Tile coreTarget = backTiles[0];
         _board.SpawnPiece(PieceType.ENERGY_CORE, PieceOwner.BOT, coreTarget);
         allTiles.Remove(coreTarget);
 

@@ -3,32 +3,30 @@ using System;
 using System.Collections.Generic;
 using System.Text.Json;
 
-/// <summary>
-/// Sistema de traducción, sin autoload, sin configuración en el editor.
-/// Se auto-inicializa la primera vez que se usa.
-///
-/// ── Uso desde codigo ────────────────────────────────────────────────────────
+// Sistema de traducción, sin autoload, sin configuración en el editor.
+// Se auto-inicializa la primera vez que se usa.
+
+// ── Uso desde codigo ────────────────────────────────────────────────────────
 ///   string texto = TranslationSystem.Tr("ui.main.menu.play.button");
 ///   TranslationSystem.SetLocale("es");
-///
-/// ── Uso desde el editor ─────────────────────────────────────────────
+
+// ── Uso desde el editor ─────────────────────────────────────────────
 ///   1. Añade el nodo al grupo global "translatable"
 ///   2. Poner como metadata el string tr = (key) Por ejemplo: "ui.main.menu.play.button"
-///   Independientemente de lo que se ponga en el editor se traducira
-///
-/// ── Archivos JSON ───────────────────────────────────────────────────────────
+///   Independientemente de lo que se ponga en el texto del nodo en el editor, se traducira
+
+// ── Ejemplo de archivos JSON ───────────────────────────────────────────────────────────
 ///   res://DataAndInfrastructure/Translations/en.json
 ///   Formato: { 
 ///     "ui.main.menu.play.button": "Play",
 ///     ... 
 ///   }
+///   
 ///   res://DataAndInfrastructure/Translations/es.json
 ///   Formato: { 
 ///     "ui.main.menu.play.button": "Jugar",
 ///     ... 
 ///   }
-///   
-/// </summary>
 public partial class TranslationSystem
 {
     public static event Action OnLocaleChanged;
@@ -70,10 +68,8 @@ public partial class TranslationSystem
         return _strings.TryGetValue(key, out var value) ? value : fallbackValue;
     }
 
-    /// <summary>
-    /// Aplica la traducción de key al nodo indicado directamente.
-    /// Soporta Label, Button, RichTextLabel, LineEdit, TextEdit, Window.
-    /// </summary>
+    // Aplica la traducción de key al nodo indicado directamente.
+    // Soporta Label, Button, RichTextLabel, LineEdit, TextEdit, Window.
     public static void ApplyToNode(Node node, string key)
     {
         string text = Tr(key);
@@ -91,9 +87,7 @@ public partial class TranslationSystem
         }
     }
 
-    /// <summary>
-    /// Cambia el locale activo y reaplica todas las traducciones de la escena actual.
-    /// </summary>
+    // Cambia el locale activo y reaplica todas las traducciones de la escena actual.
     public static void SetLocale(string locale)
     {
         EnsureReady();
@@ -115,8 +109,7 @@ public partial class TranslationSystem
     {
         if (_bridge != null && GodotObject.IsInstanceValid(_bridge)) return;
 
-        // OS.GetLocaleLanguage() devuelve directamente "es", "en", "fr"...
-        // sin depender de que Godot haya inicializado el TranslationServer.
+        // OS.GetLocaleLanguage() devuelve directamente "es", "en", "fr"... sin depender de que Godot haya inicializado el TranslationServer.
         string locale = string.IsNullOrEmpty(_currentLocale)
             ? OS.GetLocaleLanguage()
             : _currentLocale;
@@ -183,7 +176,7 @@ public partial class TranslationSystem
 
     // ── Bridge interno ────────────────────────────────────────────────────────
     // Nodo mínimo y permanente que escucha NodeAdded en el SceneTree.
-    // Privado y sellado — nadie fuera de TranslationSystem puede instanciarlo.
+    // Es private sealed — nadie fuera de TranslationSystem puede instanciarlo.
     private sealed partial class _Bridge : Node
     {
         public override void _Ready()
@@ -191,9 +184,8 @@ public partial class TranslationSystem
             ProcessMode = ProcessModeEnum.Always;
             GetTree().NodeAdded += OnNodeAdded;
 
-            // Aplica a los nodos que ya están en escena cuando el bridge arranca
             if (GetTree().CurrentScene != null)
-                ApplyRecursive(GetTree().CurrentScene);
+                ApplyRecursive(GetTree().CurrentScene); // Aplica a los nodos que ya están en escena cuando el bridge arranca
         }
 
         private void OnNodeAdded(Node node)

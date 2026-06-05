@@ -35,7 +35,7 @@ public partial class EndGameUI : Control
 
         Color colorTarget = result switch
         {
-            1 => new Color(0.427f, 1.0f, 0.378f), // Verde
+            1 => new Color(0.427f, 1.0f, 0.378f),   // Verde
             0 => new Color(0.844f, 0.158f, 0.164f), // Rojo
             _ => new Color(0.454f, 0.425f, 0.746f)  // Morado
         };

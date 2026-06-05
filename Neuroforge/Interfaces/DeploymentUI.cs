@@ -57,7 +57,6 @@ public partial class DeploymentUI : Control
     }
 
     // ── Toggle exclusivo ──────────────────────────────────────────────────────
-
     private void OnPieceToggled(PieceType type, bool pressed)
     {
         if (!pressed)
@@ -81,7 +80,9 @@ public partial class DeploymentUI : Control
         _activeType = null;
     }
 
-    // ── API pública ───────────────────────────────────────────────────────────
+    // ─────────────────────────────────────────────────────────────────────────
+    //  API pública
+    // ─────────────────────────────────────────────────────────────────────────
 
     public void SetRemainingPieces(int remaining)
     {

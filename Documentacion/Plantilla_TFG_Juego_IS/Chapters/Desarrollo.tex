@@ -76,12 +76,37 @@ Entre todos los sistemas implementados, la arquitectura del bot constituye el co
 
 \subsection{Arquitectura del bot}
 
-El bot presenta dos modos de funcionamiento. El comportamiento por defecto, utilizado como \textit{fallback} cuando el modelo entrenado no está disponible o falla al cargar, consiste en la selección aleatoria de un movimiento válido entre todos los posibles en cada turno. Este modo garantiza que la partida siempre pueda completarse y sirve como línea base para evaluar la mejora que aporta el modelo de inteligencia artificial. Esto fue sencillo de hacer ya que además se utilizo el modelo aleatorio hecho desde godot durante toda la parte del desarrollo hasta que se implementó uno mas avanzado.
+El bot presenta dos modos de funcionamiento. El comportamiento por defecto, utilizado como \textit{fallback} cuando el modelo entrenado no está disponible o falla al cargar, consiste en la selección aleatoria de un movimiento válido entre todos los posibles en cada turno. Este modo garantiza que la partida siempre pueda completarse y sirvió además como oponente durante todo el desarrollo previo a la implementación del modelo de inteligencia artificial.
 
-El comportamiento avanzado se basa en un modelo de aprendizaje por refuerzo entrenado con \textbf{MaskablePPO} de la biblioteca \textit{SB3-Contrib} sobre un entorno \textbf{Gymnasium} que replica fielmente las reglas del videojuego de forma independiente al motor Godot. El espacio de observación se codifica mediante tres canales matriciales: el primero recoge la identidad y rango de cada pieza en el tablero, el segundo representa la transitabilidad de cada casilla, y el tercero indica la movilidad disponible para el agente en el turno actual. La máscara de acciones garantiza que el agente nunca explore movimientos inválidos durante el entrenamiento, lo que estabiliza considerablemente la convergencia. El entrenamiento emplea una estrategia de \textit{self-play}: el agente se enfrenta progresivamente a versiones anteriores de sí mismo, lo que le permite desarrollar de forma autónoma estrategias de engaño e inferencia sobre las piezas ocultas del rival.
+El comportamiento avanzado se apoya en tres decisiones principales: el algoritmo de aprendizaje, el enmascaramiento de acciones y la estrategia de entrenamiento mediante \textit{self-play}. El algoritmo empleado es \textit{Proximal Policy Optimization} (PPO), un método de aprendizaje por refuerzo de política en línea (\textit{on-policy}) que actualiza los parámetros del agente a partir de su propia experiencia. En cada iteración, el agente interactúa con el entorno durante un número fijo de pasos, acumula las transiciones observadas y actualiza su política intentando maximizar la recompensa esperada. Para evitar actualizaciones desestabilizadoras, PPO introduce una restricción de recorte (\textit{clipping}) que limita cuánto puede cambiar la política en cada paso de gradiente, lo que lo convierte en uno de los algoritmos más estables y ampliamente utilizados en tareas de control secuencial.
 
-La integración con Godot se realiza a través de un \texttt{BotController} en C\# que lanza un subproceso Python en segundo plano al iniciar la partida, carga el archivo \texttt{.zip} del modelo entrenado y se comunica con él mediante entrada y salida estándar para solicitar la acción correspondiente en cada turno. Si el subproceso no responde o el modelo no puede cargarse, el controlador activa automáticamente el modo aleatorio como fallback, garantizando la continuidad de la partida en todo momento.
+En dominios con espacios de acción grandes y mayoría de acciones inválidas, aplicar PPO directamente es ineficiente, ya que el agente desperdiciaría gran parte de su exploración en movimientos ilegales. Para resolver esto se utiliza \textit{MaskablePPO}, una extensión de PPO de la biblioteca \textit{SB3-Contrib} que incorpora enmascaramiento de acciones. En cada paso, el entorno proporciona una máscara binaria que indica qué acciones son legales en el estado actual; la distribución de probabilidad de la política se recalcula zerificando las acciones enmascaradas antes de aplicar \textit{softmax}, de modo que el agente únicamente explora y explota movimientos válidos. En \textit{NeuroForge}, donde el espacio de acciones codifica todos los pares origen-destino posibles sobre el tablero, esta restricción resulta indispensable para que el entrenamiento converja.
 
+Respecto a la estrategia de entrenamiento, el agente se entrena mediante \textit{self-play}: el oponente en cada sesión es una versión anterior del propio modelo, seleccionada aleatoriamente entre las más recientes. Esta estrategia, habitual en juegos de información imperfecta, evita que el agente se especialice en explotar los fallos de un rival fijo y fomenta el desarrollo de estrategias más generales y robustas. Al inicio del entrenamiento, cuando no existen versiones previas, el oponente es el bot aleatorio, que proporciona una señal de aprendizaje suficiente para arrancar la convergencia.
 
+\clearpage
+
+Los hiperparámetros del modelo se determinaron mediante una búsqueda bayesiana con \textit{Optuna}, una biblioteca de optimización automática de hiperparámetros. A diferencia de una búsqueda en rejilla exhaustiva, la optimización bayesiana construye un modelo probabilístico del espacio de hiperparámetros y dirige las pruebas hacia las regiones más prometedoras, reduciendo el número de evaluaciones necesarias. Tras 20 ensayos evaluando cada combinación con 200.000 pasos de entrenamiento, los hiperparámetros seleccionados fueron los recogidos en la Tabla~\ref{tab:hparams}.
+
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|l|r|}
+		\hline
+		\textbf{Hiperparámetro} & \textbf{Valor} \\
+		\hline
+		\texttt{learning\_rate} & $9{,}87 \times 10^{-5}$ \\
+		\texttt{n\_steps}       & 512    \\
+		\texttt{batch\_size}    & 128    \\
+		\texttt{n\_epochs}      & 5      \\
+		\texttt{ent\_coef}      & 0,032  \\
+		\texttt{gamma}          & 0,9585 \\
+		\texttt{clip\_range}    & 0,197  \\
+		\hline
+	\end{tabular}
+	\caption{Hiperparámetros del modelo MaskablePPO tras la búsqueda con Optuna}
+	\label{tab:hparams}
+\end{table}
+
+Finalmente, la integración con el motor se realiza a través de un \texttt{BotController} en C\# que lanza un subproceso Python en segundo plano al iniciar la partida, carga el modelo entrenado y se comunica con él mediante entrada y salida estándar para solicitar la acción correspondiente en cada turno. Si el subproceso no responde o el modelo no puede cargarse, el controlador activa automáticamente el modo aleatorio como \textit{fallback}, garantizando la continuidad de la partida en todo momento.
 
 

@@ -237,7 +237,7 @@ def valid_moves(piece: Piece, pos: tuple, pieces: dict, current_turn: int) -> li
         for dr, dc in DIRS:
             to = (pos[0] + dr, pos[1] + dc)
             if can_move(piece, pos, to, pieces, current_turn):
-                moves.append(to)
+                moves.append(to) 
     return moves
 
 # =============================================================================
@@ -317,8 +317,6 @@ def build_obs(pieces: dict, current_turn: int) -> np.ndarray:
     return obs
 
 # Genera el campo de observación desde la perspectiva del PLAYER.
-# FIX: Ahora usa 'revealed_to_player' (conocimiento real del PLAYER sobre piezas del BOT)
-# en lugar de 'revealed_to_bot', que es el conocimiento del BOT sobre piezas del PLAYER.
 # El tablero se voltea verticalmente para que el PLAYER siempre vea su zona en las filas 0-1.
 def build_obs_as_player(pieces: dict, current_turn: int) -> np.ndarray:
     obs = np.zeros((N_CH, ROWS, COLS), dtype=np.float32)
@@ -363,18 +361,18 @@ def build_obs_as_player(pieces: dict, current_turn: int) -> np.ndarray:
 # RECOMPENSAS
 # =============================================================================
 
-R_WIN            =  10.0    # TODO Revisar recompensa
-R_LOSE           = -10.0    # TODO Revisar recompensa
-R_TIE            =   0.0    # TODO Revisar recompensa
-R_NO_MOVES_WIN   =  10.0    # TODO Revisar recompensa
-R_NO_MOVES_LOSE  = -10.0    # TODO Revisar recompensa
+R_WIN            =  10.0
+R_LOSE           = -10.0
+R_TIE            =   0.0
+R_NO_MOVES_WIN   =  10.0
+R_NO_MOVES_LOSE  = -10.0
  
 # Penalización pequeña por cada paso sin hacer nada relevante.
 # Fuerza al BOT a avanzar en lugar de quedarse quieto.
-R_STEP_PENALTY = -0.01
+R_STEP_PENALTY = -0.005
 
 # Límite de turnos antes de forzar empate (evita partidas infinitas)
-MAX_TURNS = 400
+MAX_TURNS = 800
 
 def _combat_reward(piece: Piece) -> float:
     # Recompensa proporcional al rango o tipo de la pieza capturada.
@@ -496,6 +494,7 @@ class NeuroForgeEnv(gym.Env):
         # Penalización por paso + límite de turnos
         if self.turn >= MAX_TURNS:
             return build_obs(self.pieces, self.turn), reward + R_TIE, True, False, {}
+        
         return build_obs(self.pieces, self.turn), reward + end_r + R_STEP_PENALTY, ended, False, {}
  
     # ------------------------------------------------------------------
@@ -682,24 +681,28 @@ def find_recent_models(n=5):
 # ------------------------------------------------------------------
 
 def objective(trial):
+    # Sugiere hiperparámetros para probar en esta iteración (trial)
     params = {
         "learning_rate": trial.suggest_float("learning_rate", 1e-5, 1e-3, log=True),
-        "n_steps": trial.suggest_categorical("n_steps", [512, 1024, 2048]),
-        "batch_size": trial.suggest_categorical("batch_size", [128, 256]),
+        "n_steps":       trial.suggest_categorical("n_steps", [512, 1024, 2048]),
+        "batch_size":    trial.suggest_categorical("batch_size", [128, 256]),
         "n_epochs":      trial.suggest_int("n_epochs", 3, 10),
         "ent_coef":      trial.suggest_float("ent_coef", 0.01, 0.15),
         "gamma":         trial.suggest_float("gamma", 0.93, 0.999),
         "clip_range":    trial.suggest_float("clip_range", 0.1, 0.3),
     }
 
+    # Descarta combinaciones inválidas
     if params["batch_size"] >= params["n_steps"]:
         raise optuna.exceptions.TrialPruned()
 
+    # Inicializa el entorno y carga el último modelo guardado como rival (Self-Play)
     env = NeuroForgeEnv()
     latest = find_latest()
     if latest:
         env.opponent_model = MaskablePPO.load(latest)
 
+    # Instancia el agente PPO combinando la CNN personalizada y los parámetros sugeridos
     model = MaskablePPO(
         policy        = "CnnPolicy",
         env           = env,
@@ -712,29 +715,38 @@ def objective(trial):
         **params,
     )
 
-    model.learn(total_timesteps=300_000)
+    # Entrena el agente de forma silenciosa durante el número de pasos asignado
+    model.learn(total_timesteps=200_000)
 
-    if len(model.ep_info_buffer) == 0:
+    # Control de seguridad: penaliza si el entrenamiento terminó sin completar episodios
+    n_eps = len(model.ep_info_buffer)
+    if n_eps < 20:
         return float("-inf")
 
-    return float(np.mean([ep["r"] for ep in model.ep_info_buffer]))
+    # Retorna el reward medio de los últimos episodios; Optuna buscará maximizar este valor
+    victorias = sum(1 for ep in model.ep_info_buffer if ep["r"] > 5.0)
+    return victorias / n_eps
 
 
 def run_search(n_trials=30):
+    # Configura el estudio en SQLite: busca maximizar y usa un pruner para cortar trials malos
     study = optuna.create_study(
         direction    = "maximize",
-        pruner       = MedianPruner(n_startup_trials=5, n_warmup_steps=20_000),
+        pruner       = MedianPruner(n_startup_trials=5, n_warmup_steps=5_000),
         storage      = "sqlite:///neuroforge_optuna.db",
         study_name   = "neuroforge",
         load_if_exists = True,
     )
+    
+    # Lanza la optimización ejecutando la función 'objective' el número de veces indicado
     study.optimize(objective, n_trials=n_trials, show_progress_bar=True)
 
+    # Muestra en consola la mejor combinación ganadora encontrada
     print("\nMejores parametros:")
     for k, v in study.best_params.items():
         print(f"  {k}: {v}")
-    return study.best_params
 
+    return study.best_params
 
 # ------------------------------------------------------------------
 # MODO 2: ENTRENAMIENTO REAL con los mejores parámetros encontrados
@@ -780,20 +792,38 @@ def run_training(params: dict, total_timesteps=500_000):
 
 # "search"  → busca hiperparámetros óptimos (primera vez)
 # "train"   → entrena con los parámetros que de BEST_PARAMS
-MODE = "search"
+MODE = "train"
 
 # Cambiar con los resultados de "search" antes de cambiar a "train"
 BEST_PARAMS = {
-    "learning_rate": 1e-4,
+    "learning_rate": 9.87e-05,
     "n_steps":       512,
-    "batch_size":    64,
-    "n_epochs":      8,
-    "ent_coef":      0.05,
-    "gamma":         0.99,
-    "clip_range":    0.2,
+    "batch_size":    128,
+    "n_epochs":      5,
+    "ent_coef":      0.032,
+    "gamma":         0.9585,
+    "clip_range":    0.197,
 }
 
+def test_random_episode():
+    env = NeuroForgeEnv()
+    obs, _ = env.reset()
+    total_reward = 0
+    steps = 0
+    done = False
+    
+    while not done:
+        mask = env.action_masks()
+        valid = np.where(mask)[0]
+        action = np.random.choice(valid)
+        obs, reward, done, truncated, info = env.step(action)
+        total_reward += reward
+        steps += 1
+    
+    print(f"Episodio terminado en {steps} pasos | Reward total: {total_reward:.3f}")
+
 if __name__ == "__main__":
+    th.distributions.Distribution.set_default_validate_args(False)
     env = NeuroForgeEnv()
     print("Verificando entorno...")
     check_env(env, warn=False)
@@ -804,7 +834,39 @@ if __name__ == "__main__":
         print("\nPoner estos valores en BEST_PARAMS y cambiar MODE a 'train'")
 
     elif MODE == "train":
-        run_training(BEST_PARAMS, total_timesteps=500_000)
+        run_training(BEST_PARAMS, total_timesteps=1_000_000)
+
+    # Ejecutar varios para ver varianza
+    # for i in range(10):
+    #     test_random_episode()
 
 # Ver gráficas:      tensorboard --logdir=./logs/
 # Ver búsqueda:      optuna-dashboard sqlite:///neuroforge_optuna.db
+
+# (.venv) PS D:\Personal\Ingenieria Informatica\TFG\Neuroforge\Bot enviroment> python3 .\StrategoEnv.py
+# Verificando entorno...
+# OK
+
+# [I 2026-06-04 10:03:06,250] A new study created in RDB with name: neuroforge
+# [I 2026-06-04 10:42:32,767] Trial 0 finished with value: 0.38 and parameters: {'learning_rate': 1.967022427507304e-05, 'n_steps': 1024, 'batch_size': 128, 'n_epochs': 6, 'ent_coef': 0.054876540541665776, 'gamma': 0.9361063756299983, 'clip_range': 0.18047982353484598}. Best is trial 1 with value: 0.41.
+# [I 2026-06-04 11:19:07,181] Trial 3 finished with value: 0.4 and parameters: {'learning_rate': 0.00014556590930535267, 'n_steps': 512, 'batch_size': 256, 'n_epochs': 4, 'ent_coef': 0.08196827126110513, 'gamma': 0.965706422942382, 'clip_range': 0.13498864952570414}. Best is trial 1 with value: 0.41.
+# [I 2026-06-04 11:55:01,908] Trial 5 finished with value: 0.42 and parameters: {'learning_rate': 0.0007601511753290967, 'n_steps': 512, 'batch_size': 256, 'n_epochs': 3, 'ent_coef': 0.03137591840031607, 'gamma': 0.9726045784535009, 'clip_range': 0.2951216983129995}. Best is trial 5 with value: 0.42.
+# [I 2026-06-04 12:43:58,072] Trial 6 finished with value: 0.41 and parameters: {'learning_rate': 1.9896463667793014e-05, 'n_steps': 512, 'batch_size': 256, 'n_epochs': 8, 'ent_coef': 0.11390836380704479, 'gamma': 0.9361641117031282, 'clip_range': 0.14351950580918824}. Best is trial 5 with value: 0.42.
+# [I 2026-06-04 13:24:19,738] Trial 9 finished with value: 0.42 and parameters: {'learning_rate': 6.618138336241744e-05, 'n_steps': 2048, 'batch_size': 256, 'n_epochs': 5, 'ent_coef': 0.08595392336559181, 'gamma': 0.9739649819784092, 'clip_range': 0.1742394399803218}. Best is trial 5 with value: 0.42.
+# [I 2026-06-04 13:53:23,808] Trial 10 finished with value: 0.23 and parameters: {'learning_rate': 3.923518071232497e-05, 'n_steps': 512, 'batch_size': 256, 'n_epochs': 3, 'ent_coef': 0.09506023719146738, 'gamma': 0.9750207788622351, 'clip_range': 0.11491775487784711}. Best is trial 5 with value: 0.42.
+# [I 2026-06-04 14:20:21,281] Trial 12 finished with value: 0.37 and parameters: {'learning_rate': 0.00021358968086722678, 'n_steps': 2048, 'batch_size': 128, 'n_epochs': 3, 'ent_coef': 0.13907002810262167, 'gamma': 0.9943079050607497, 'clip_range': 0.2997251372372041}. Best is trial 5 with value: 0.42.
+# [I 2026-06-04 14:57:51,362] Trial 14 finished with value: 0.33 and parameters: {'learning_rate': 6.882553360663938e-05, 'n_steps': 2048, 'batch_size': 256, 'n_epochs': 5, 'ent_coef': 0.010235458554293267, 'gamma': 0.9968003527912013, 'clip_range': 0.24343840799263725}. Best is trial 5 with value: 0.42.
+# [I 2026-06-04 15:42:53,984] Trial 16 finished with value: 0.39 and parameters: {'learning_rate': 0.0004566997491930216, 'n_steps': 1024, 'batch_size': 256, 'n_epochs': 8, 'ent_coef': 0.05473415012938855, 'gamma': 0.984245335899831, 'clip_range': 0.2591786726655145}. Best is trial 15 with value: 0.45.
+# [I 2026-06-04 16:12:09,411] Trial 19 finished with value: 0.46 and parameters: {'learning_rate': 8.242302717132607e-05, 'n_steps': 512, 'batch_size': 128, 'n_epochs': 4, 'ent_coef': 0.03988569597120354, 'gamma': 0.956923243372468, 'clip_range': 0.23965717151685384}. Best is trial 19 with value: 0.46.
+# (.venv) PS D:\Personal\Ingenieria Informatica\TFG\Neuroforge\Bot enviroment> python3 .\StrategoEnv.py
+# Verificando entorno...
+# OK
+
+# Mejores parametros:
+#   learning_rate: 9.87213749402318e-05
+#   n_steps: 512
+#   batch_size: 128
+#   n_epochs: 5
+#   ent_coef: 0.03205739602247292
+#   gamma: 0.958507367819306
+#   clip_range: 0.19693260042319186
