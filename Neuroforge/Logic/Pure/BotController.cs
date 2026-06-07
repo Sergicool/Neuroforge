@@ -20,10 +20,17 @@ public class BotController
     private Process _pythonProcess;
     private bool _modelReady = false;
 
+    private Task _initTask;
+
     public BotController(Board board)
     {
         _board = board;
-        StartPythonProcess();
+        _initTask = Task.Run(StartPythonProcess);
+    }
+
+    public async Task WaitUntilReady()
+    {
+        if (_initTask != null) await _initTask;
     }
 
     private void StartPythonProcess()
@@ -43,11 +50,13 @@ public class BotController
             if (!System.IO.File.Exists(scriptPath))
             {
                 GD.PrintErr($"[BotController] Script no encontrado: {scriptPath}");
+                GD.Print("[BotController] Fallback aleatorio activo.");
                 return;
             }
             if (!System.IO.File.Exists(modelPath))
             {
                 GD.PrintErr($"[BotController] Modelo no encontrado: {modelPath}");
+                GD.Print("[BotController] Fallback aleatorio activo.");
                 return;
             }
 
@@ -105,7 +114,6 @@ public class BotController
         }
         else
         {
-            GD.Print("[BotController] Fallback aleatorio activo.");
             action = actions[_rng.Next(actions.Count)];
         }
 

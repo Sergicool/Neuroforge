@@ -17,6 +17,8 @@
 	"ui.main.menu.options.button": "Opciones",
 	"ui.main.menu.exit.button": "Salir",
 
+	"ui.loading": "Cargando",
+
 	"combat.result.saboteur.turret": "Atacante gana - El saboteador desactiva la torreta",
 	"combat.result.turret": "Defensor gana - La torreta detiene el ataque",
 	"combat.result.phantom.machine": "Atacante gana - El Fantasma contrarresta la Maquina belica",

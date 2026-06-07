@@ -58,6 +58,8 @@
 	"ui.game.player": "You",
 	"ui.game.turnmarker": "Turn",
 
+	"ui.loading": "Loading",
+
 	"ui.rules.back": "Go back",
     "ui.rules.tab.0": " Objective ",
     "ui.rules.tab.1": " Board ",

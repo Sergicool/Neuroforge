@@ -8,6 +8,9 @@ public partial class GameScene : Node
     [Export] private Texture2D PLAYER_ICON;
     [Export] private Texture2D BOT_ICON;
 
+    [Export] private Panel _loadingPanel;
+    [Export] private Label _loadingLabel;
+
     private readonly Color _playerColor = new Color(0.537f, 0.922f, 1f);
     private readonly Color _botColor = new Color(1f, 0.839f, 0.49f);
     private readonly Color _colorHidden = new Color(1f, 1f, 1f, 0f);
@@ -33,7 +36,7 @@ public partial class GameScene : Node
     public void SetState(GameState state) => State = state;
     public int TurnNumber { get; private set; } = 0;
 
-    public override void _Ready()
+    public override async void _Ready()
     {
         Instance = this;
         ProcessMode = ProcessModeEnum.Always;
@@ -68,9 +71,41 @@ public partial class GameScene : Node
         _board.SetCombatUI(_combatUI);
 
         _bot = new BotController(_board);
-        State = GameState.DEPLOYMENT;
 
+        // Mostrar loading mientras el bot carga
+        if (_loadingLabel != null && _loadingPanel != null)
+        {
+            _loadingLabel.Visible = true;
+            _loadingPanel.Visible = true;
+            _ = AnimateLoadingLabel(_loadingLabel);
+        }
+
+        await _bot.WaitUntilReady();
+
+        if (_loadingLabel != null && _loadingPanel != null)
+        {
+            _loadingLabel.Visible = false;
+            Tween fadeTween = CreateTween();
+            fadeTween.TweenProperty(_loadingPanel, "modulate:a", 0f, 0.35f);
+            await ToSignal(fadeTween, Tween.SignalName.Finished);
+            _loadingPanel.Visible = false;
+            _loadingPanel.Modulate = new Color(_loadingPanel.Modulate.R, _loadingPanel.Modulate.G, _loadingPanel.Modulate.B, 1f);
+        }
+
+        State = GameState.DEPLOYMENT;
         AudioManager.PlayMusic("res://assets/sounds/GameMusic.wav", 2);
+    }
+
+    private async Task AnimateLoadingLabel(Label label)
+    {
+        string[] frames = { " .", " . .", " . . ." };
+        int i = 0;
+        while (label.Visible)
+        {
+            label.Text = TranslationSystem.Tr("ui.loading") + frames[i % 3];
+            i++;
+            await ToSignal(GetTree().CreateTimer(0.4f), SceneTreeTimer.SignalName.Timeout);
+        }
     }
 
     // ==================== Getters ====================
