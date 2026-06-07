@@ -369,7 +369,7 @@ R_NO_MOVES_LOSE  = -10.0
  
 # Penalización pequeña por cada paso sin hacer nada relevante.
 # Fuerza al BOT a avanzar en lugar de quedarse quieto.
-R_STEP_PENALTY = -0.005
+R_STEP_PENALTY = -0.015
 
 # Límite de turnos antes de forzar empate (evita partidas infinitas)
 MAX_TURNS = 800
@@ -495,7 +495,7 @@ class NeuroForgeEnv(gym.Env):
         if self.turn >= MAX_TURNS:
             return build_obs(self.pieces, self.turn), reward + R_TIE, True, False, {}
         
-        return build_obs(self.pieces, self.turn), reward + end_r + R_STEP_PENALTY, ended, False, {}
+        return build_obs(self.pieces, self.turn), reward + end_r + R_STEP_PENALTY + self._advance_reward(BOT), ended, False, {}
  
     # ------------------------------------------------------------------
     # EJECUCIÓN DE MOVIMIENTO
@@ -583,6 +583,21 @@ class NeuroForgeEnv(gym.Env):
                 moves.append((pos, to))
         return moves
  
+    def _advance_reward(self, actor: int) -> float:
+        # Recompensa por tener piezas en la mitad del tablero o más allá
+        own_pieces = [(pos, p) for pos, p in self.pieces.items()
+                    if p.owner == actor and p.can_move]
+        if not own_pieces:
+            return 0.0
+        
+        # Para el BOT (filas 0-3 son suyas), avanzar significa ir a filas altas
+        # Para el PLAYER (filas 6-9 son suyas), avanzar significa ir a filas bajas
+        if actor == BOT:
+            advanced = sum(1 for pos, _ in own_pieces if pos[0] >= 5)
+        else:
+            advanced = sum(1 for pos, _ in own_pieces if pos[0] <= 4)
+        
+        return (advanced / len(own_pieces)) * 0.005
     # ------------------------------------------------------------------
     # OPONENTE
     # ------------------------------------------------------------------
@@ -758,7 +773,10 @@ def run_training(params: dict, total_timesteps=500_000):
     # Mezcla oponentes recientes para romper ciclos de self-play
     recent = find_recent_models(n=5)
     if recent:
-        chosen = recent[np.random.randint(len(recent))]
+        if len(recent) >= 3 and np.random.random() < 0.35:
+            chosen = recent[-1]  # el más antiguo, para no olvidar lo básico
+        else:
+            chosen = recent[0]   # el más reciente
         print(f"Oponente: {chosen}.zip")
         env.opponent_model = MaskablePPO.load(chosen)
     else:
@@ -842,31 +860,3 @@ if __name__ == "__main__":
 
 # Ver gráficas:      tensorboard --logdir=./logs/
 # Ver búsqueda:      optuna-dashboard sqlite:///neuroforge_optuna.db
-
-# (.venv) PS D:\Personal\Ingenieria Informatica\TFG\Neuroforge\Bot enviroment> python3 .\StrategoEnv.py
-# Verificando entorno...
-# OK
-
-# [I 2026-06-04 10:03:06,250] A new study created in RDB with name: neuroforge
-# [I 2026-06-04 10:42:32,767] Trial 0 finished with value: 0.38 and parameters: {'learning_rate': 1.967022427507304e-05, 'n_steps': 1024, 'batch_size': 128, 'n_epochs': 6, 'ent_coef': 0.054876540541665776, 'gamma': 0.9361063756299983, 'clip_range': 0.18047982353484598}. Best is trial 1 with value: 0.41.
-# [I 2026-06-04 11:19:07,181] Trial 3 finished with value: 0.4 and parameters: {'learning_rate': 0.00014556590930535267, 'n_steps': 512, 'batch_size': 256, 'n_epochs': 4, 'ent_coef': 0.08196827126110513, 'gamma': 0.965706422942382, 'clip_range': 0.13498864952570414}. Best is trial 1 with value: 0.41.
-# [I 2026-06-04 11:55:01,908] Trial 5 finished with value: 0.42 and parameters: {'learning_rate': 0.0007601511753290967, 'n_steps': 512, 'batch_size': 256, 'n_epochs': 3, 'ent_coef': 0.03137591840031607, 'gamma': 0.9726045784535009, 'clip_range': 0.2951216983129995}. Best is trial 5 with value: 0.42.
-# [I 2026-06-04 12:43:58,072] Trial 6 finished with value: 0.41 and parameters: {'learning_rate': 1.9896463667793014e-05, 'n_steps': 512, 'batch_size': 256, 'n_epochs': 8, 'ent_coef': 0.11390836380704479, 'gamma': 0.9361641117031282, 'clip_range': 0.14351950580918824}. Best is trial 5 with value: 0.42.
-# [I 2026-06-04 13:24:19,738] Trial 9 finished with value: 0.42 and parameters: {'learning_rate': 6.618138336241744e-05, 'n_steps': 2048, 'batch_size': 256, 'n_epochs': 5, 'ent_coef': 0.08595392336559181, 'gamma': 0.9739649819784092, 'clip_range': 0.1742394399803218}. Best is trial 5 with value: 0.42.
-# [I 2026-06-04 13:53:23,808] Trial 10 finished with value: 0.23 and parameters: {'learning_rate': 3.923518071232497e-05, 'n_steps': 512, 'batch_size': 256, 'n_epochs': 3, 'ent_coef': 0.09506023719146738, 'gamma': 0.9750207788622351, 'clip_range': 0.11491775487784711}. Best is trial 5 with value: 0.42.
-# [I 2026-06-04 14:20:21,281] Trial 12 finished with value: 0.37 and parameters: {'learning_rate': 0.00021358968086722678, 'n_steps': 2048, 'batch_size': 128, 'n_epochs': 3, 'ent_coef': 0.13907002810262167, 'gamma': 0.9943079050607497, 'clip_range': 0.2997251372372041}. Best is trial 5 with value: 0.42.
-# [I 2026-06-04 14:57:51,362] Trial 14 finished with value: 0.33 and parameters: {'learning_rate': 6.882553360663938e-05, 'n_steps': 2048, 'batch_size': 256, 'n_epochs': 5, 'ent_coef': 0.010235458554293267, 'gamma': 0.9968003527912013, 'clip_range': 0.24343840799263725}. Best is trial 5 with value: 0.42.
-# [I 2026-06-04 15:42:53,984] Trial 16 finished with value: 0.39 and parameters: {'learning_rate': 0.0004566997491930216, 'n_steps': 1024, 'batch_size': 256, 'n_epochs': 8, 'ent_coef': 0.05473415012938855, 'gamma': 0.984245335899831, 'clip_range': 0.2591786726655145}. Best is trial 15 with value: 0.45.
-# [I 2026-06-04 16:12:09,411] Trial 19 finished with value: 0.46 and parameters: {'learning_rate': 8.242302717132607e-05, 'n_steps': 512, 'batch_size': 128, 'n_epochs': 4, 'ent_coef': 0.03988569597120354, 'gamma': 0.956923243372468, 'clip_range': 0.23965717151685384}. Best is trial 19 with value: 0.46.
-# (.venv) PS D:\Personal\Ingenieria Informatica\TFG\Neuroforge\Bot enviroment> python3 .\StrategoEnv.py
-# Verificando entorno...
-# OK
-
-# Mejores parametros:
-#   learning_rate: 9.87213749402318e-05
-#   n_steps: 512
-#   batch_size: 128
-#   n_epochs: 5
-#   ent_coef: 0.03205739602247292
-#   gamma: 0.958507367819306
-#   clip_range: 0.19693260042319186

@@ -240,20 +240,26 @@ public partial class Board : Node2D
         return new Vector2(maxX * TILE_SIZE.X / 2f, maxY * TILE_SIZE.Y / 2f);
     }
 
+    private Vector2I _gridOffset = Vector2I.Zero;
+
     private void GenerateBoard()
     {
         var usedCells = _mapLayer.GetUsedCells();
 
+        // Calcular el rango real del tablero jugable (excluyendo borde)
+        // Las casillas jugables son las que tienen atlas 0-3 en Y=0
         foreach (Vector2I coords in usedCells)
         {
             Vector2I atlasCoords = _mapLayer.GetCellAtlasCoords(coords);
+
+            // Solo procesar casillas con tipos conocidos
+            bool isKnownType = atlasCoords.Y == 0 && atlasCoords.X >= 0 && atlasCoords.X <= 3;
+            if (!isKnownType) continue;
 
             Tile tile = TILE_SCENE.Instantiate<Tile>();
             tile.Initialize(this);
             tile.GridPosition = coords;
             tile.SetType(AtlasToTileType(atlasCoords));
-
-            // MapToLocal nos da el centro de la celda en coordenadas del mundo
             tile.Position = _mapLayer.MapToLocal(coords);
 
             _tilesManager.AddChild(tile);
@@ -279,8 +285,8 @@ public partial class Board : Node2D
     private const float NORM = 12f;
     private const float OBS_TURRET = 11f;
     private const float OBS_ENERGY = 12f;
-    private const int ROWS = 6;
-    private const int COLS = 6;
+    private const int ROWS = 10;
+    private const int COLS = 10;
 
     // Construye los 3 canales de observación tal como los espera el modelo Python.
     //
@@ -314,7 +320,14 @@ public partial class Board : Node2D
         // Paso 2: rellenar canales con la información de las piezas.
         foreach (var (coords, tile) in _grid)
         {
-            if (coords.Y >= ROWS || coords.X >= COLS) continue;
+            if (coords.Y >= ROWS || coords.X >= COLS)
+            {
+                GD.PrintErr($"[Board] Coordenada fuera de rango: {coords} (ROWS={ROWS}, COLS={COLS})");
+                continue;
+            }
+            if (tile.TileType == TileType.NO_PASSABLE)
+                channel1[coords.Y, coords.X] = -1.0f;
+
             if (!tile.IsOccupied) continue;
 
             Piece piece = tile.Occupant;

@@ -28,6 +28,7 @@ PLAYER_ICON = ExtResource("3_n77gc")
 BOT_ICON = ExtResource("4_xhjei")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=201207039]
+position = Vector2(240, 240)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=461224670]
 
@@ -110,7 +111,7 @@ visible = false
 visible = false
 
 [node name="InfiniteParallax" parent="." unique_id=2123673909 instance=ExtResource("14_kv1i7")]
-position = Vector2(-576, -324)
+position = Vector2(-336, -84)
 BaseSpeed = 30.0
 Layers = Array[Texture2D]([ExtResource("15_kv1i7"), ExtResource("16_ol8cn"), ExtResource("17_va8ux"), ExtResource("18_ao10d"), ExtResource("19_qm22d")])
 
@@ -120,10 +121,10 @@ z_index = -9
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -576.0
-offset_top = -324.0
-offset_right = -576.0
-offset_bottom = -324.0
+offset_left = -336.0
+offset_top = -84.0
+offset_right = -336.0
+offset_bottom = -84.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("20_kv1i7")

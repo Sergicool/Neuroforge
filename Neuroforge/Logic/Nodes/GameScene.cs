@@ -271,4 +271,9 @@ public partial class GameScene : Node
         _ = _pauseMenu.HideMenu();
     }
 
+    public override void _ExitTree()
+    {
+        _bot?.Dispose();
+    }
+
 }
