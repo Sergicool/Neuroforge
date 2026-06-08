@@ -369,16 +369,16 @@ R_NO_MOVES_LOSE  = -10.0
  
 # Penalización pequeña por cada paso sin hacer nada relevante.
 # Fuerza al BOT a avanzar en lugar de quedarse quieto.
-R_STEP_PENALTY = -0.015
+R_STEP_PENALTY = -0.02
 
 # Límite de turnos antes de forzar empate (evita partidas infinitas)
 MAX_TURNS = 800
 
 def _combat_reward(piece: Piece) -> float:
-    # Recompensa proporcional al rango o tipo de la pieza capturada.
-    if piece.piece_type == ENERGY_CORE: return 0.0 # Gestionado por R_WIN/R_LOSE
-    if piece.piece_type == TURRET:      return 0.3
-    return round(math.log2(piece.rank + 1) / math.log2(11), 3)
+    if piece.piece_type == ENERGY_CORE: return 0.0
+    if piece.piece_type == TURRET:      return 0.5
+    # Recompensa lineal en lugar de logarítmica, más diferencia entre rangos
+    return round(piece.rank / 10.0, 3)
 
 # =============================================================================
 # ENTORNO GYM
@@ -409,6 +409,9 @@ class NeuroForgeEnv(gym.Env):
         super().reset(seed=seed)
         self.pieces = {}
         self.turn   = 0
+        self.last_moved_pos = None      # posición de la última pieza movida
+        self.same_piece_count = 0       # cuántas veces seguidas se movió la misma pieza
+        self.recently_moved = set()  # posiciones de piezas movidas en los últimos turnos
         self._deploy()
         return build_obs(self.pieces, self.turn), {}
  
@@ -506,55 +509,80 @@ class NeuroForgeEnv(gym.Env):
         target = self.pieces.get(tp)
  
         if target is None:
-            # Movimiento simple
             r1, c1 = fp; r2, c2 = tp
             if piece.piece_type == SCOUT and abs(r1-r2)+abs(c1-c2) > 1:
-                # El Scout revela su identidad al moverse largas distancias
                 piece.revealed_to_bot    = True
                 piece.revealed_to_player = True
             piece.register_move(fp, tp, self.turn)
             self.pieces[tp] = piece
             del self.pieces[fp]
-            return 0.0, False
+
+            # Penalizar por mover siempre la misma pieza
+            repetition_penalty = 0.0
+            if actor == BOT:
+                if self.last_moved_pos == tp:  # tp es donde llegó, que es el nuevo fp
+                    self.same_piece_count += 1
+                    if self.same_piece_count >= 3:
+                        repetition_penalty = -0.03 * (self.same_piece_count - 2)
+                else:
+                    self.same_piece_count = 0
+                self.last_moved_pos = tp
+
+            diversity_bonus = 0.0
+            if actor == BOT:
+                if tp not in self.recently_moved:
+                    diversity_bonus = 0.01  # bonus pequeño por mover una pieza nueva
+                self.recently_moved.add(tp)
+                if len(self.recently_moved) > 8:  # ventana de las últimas 8 piezas
+                    self.recently_moved.pop()
+
+            return repetition_penalty + diversity_bonus, False
  
         # Combate: ambas piezas quedan reveladas para los dos bandos
         result = resolve_combat(piece, target)
-        piece.revealed_to_bot    = True
-        piece.revealed_to_player = True
-        target.revealed_to_bot   = True
+
+        # Bonus por ataque informado (solo BOT, solo cuando conoce la pieza enemiga)
+        informed_attack_bonus = 0.0
+        if actor == BOT and target.revealed_to_bot:
+            if result == DEFENDER_DIES:
+                informed_attack_bonus = 0.05
+            elif result == ATTACKER_DIES:
+                informed_attack_bonus = -0.05
+
+        piece.revealed_to_bot     = True
+        piece.revealed_to_player  = True
+        target.revealed_to_bot    = True
         target.revealed_to_player = True
- 
+
         if result == DEFENDER_DIES:
             if target.piece_type == ENERGY_CORE:
                 del self.pieces[fp]; del self.pieces[tp]
                 return (R_WIN if target.owner == PLAYER else R_LOSE), True
-            
+
             r = _combat_reward(target)
             reward = r if target.owner == PLAYER else -r
             del self.pieces[tp]
             piece.register_move(fp, tp, self.turn)
             self.pieces[tp] = piece
             del self.pieces[fp]
-            return reward, False
- 
+            return reward + informed_attack_bonus, False
+
         if result == ATTACKER_DIES:
-            # Nota: ENERGY_CORE tiene can_move=False, así que nunca debería ser atacante.
-            # Esta rama es defensiva por si la lógica cambia en el futuro.
             if piece.piece_type == ENERGY_CORE:
                 del self.pieces[fp]
                 return (R_LOSE if piece.owner == BOT else R_WIN), True
-            
+
             r = _combat_reward(piece)
             reward = -r if piece.owner == BOT else r
             del self.pieces[fp]
-            return reward, False
- 
+            return reward + informed_attack_bonus, False
+
         # BOTH_DIE
         r_att = _combat_reward(piece)
         r_def = _combat_reward(target)
         reward = (r_def - r_att) if piece.owner == BOT else (r_att - r_def)
         del self.pieces[fp]; del self.pieces[tp]
-        return reward, False
+        return reward + informed_attack_bonus, False
  
     # ------------------------------------------------------------------
     # FIN DE PARTIDA
@@ -771,16 +799,16 @@ def run_training(params: dict, total_timesteps=500_000):
     env = NeuroForgeEnv()
 
     # Mezcla oponentes recientes para romper ciclos de self-play
-    recent = find_recent_models(n=5)
-    if recent:
-        if len(recent) >= 3 and np.random.random() < 0.35:
-            chosen = recent[-1]  # el más antiguo, para no olvidar lo básico
-        else:
-            chosen = recent[0]   # el más reciente
-        print(f"Oponente: {chosen}.zip")
-        env.opponent_model = MaskablePPO.load(chosen)
-    else:
-        print("Sin modelo previo → oponente ALEATORIO")
+    # recent = find_recent_models(n=5)
+    # if recent:
+    #     if len(recent) >= 3 and np.random.random() < 0.35:
+    #         chosen = recent[-1]  # el más antiguo, para no olvidar lo básico
+    #     else:
+    #         chosen = recent[0]   # el más reciente
+    #     print(f"Oponente: {chosen}.zip")
+    #     env.opponent_model = MaskablePPO.load(chosen)
+    # else:
+    print("Sin modelo previo → oponente ALEATORIO")
 
     model = MaskablePPO(
         policy        = "CnnPolicy",

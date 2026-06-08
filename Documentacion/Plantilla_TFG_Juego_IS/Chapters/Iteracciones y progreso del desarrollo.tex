@@ -37,7 +37,7 @@ La interacción era puramente lógica y carecía de retroalimentación visual. L
 
 \clearpage
 
-Asimismo, no existía un flujo de partida completo, al finalizar el encuentro por la captura del núcleo, el sistema no mostraba pantallas de victoria o derrota, limitándose a imprimir un mensaje en la terminal de depuración de Godot y a detener la ejecución del videojuego como se puede observar en la Figura \ref{fig:it1_juego2}. Tampoco se implementaron menús de pausa, opciones ni efectos de sonido. En la Figura \ref{fig:it1_juego1} se pueden observar distintas partidas y situaciones del productor de la primera iteración. La iteración acabo dentro del plazo establecido.
+Asimismo, no existía un flujo de partida completo, al finalizar el encuentro por la captura del núcleo, el sistema no mostraba pantallas de victoria o derrota, limitándose a imprimir un mensaje en la terminal de depuración de Godot y a detener la ejecución del videojuego como se puede observar en la Figura \ref{fig:it1_juego2}. Tampoco se implementaron menús de pausa, opciones ni efectos de sonido. En la Figura \ref{fig:it1_juego1} se pueden observar distintas partidas y situaciones del productor de la primera iteración.
 
 \begin{figure}[H]
 	\centering
@@ -143,7 +143,7 @@ Por último, se diseñó el menú de pausa de la Figura \ref{fig:boceto_pausa} y
 	\label{fig:boceto_reglas}
 \end{figure}
 
-No se realizaron bocetos adicionales para los menús principal, de opciones o de fin de partida, dada su sencillez estructural. Cabe destacar que el diseño estético definitivo y la implementación final de todas estas interfaces que se desarrollaron a lo largo de esta iteración se detallan en el capítulo de Diseño. La iteración acabo antes del plazo establecido.
+No se realizaron bocetos adicionales para los menús principal, de opciones o de fin de partida, dada su sencillez estructural. Cabe destacar que el diseño estético definitivo y la implementación final de todas estas interfaces que se desarrollaron a lo largo de esta iteración se detallan en el capítulo de Diseño.
 
 % ─────────────────────────────────────────────────────────────────────────────
 \section{Iteración 3: Mejoras audiovisuales}
@@ -159,20 +159,21 @@ Para ello, se incorporaron pistas de música ambiental diferenciadas tanto para 
 	\item \textbf{Eventos de partida:} Sonidos específicos para la revelación de piezas, derrotas en combate o cambios de estado, proporcionando una respuesta inmediata a las acciones del jugador.
 \end{itemize}
 
-Finalmente, se incluyeron fondos coherentes entre el menú principal y la escena de la partida para unificar la estética y evitar que el transcurso de la partida se sintiera visualmente vacío. A estos fondos se les aplicó un ligero efecto de \textit{parallax}, lo que aporta profundidad y una mayor sensación de pulido a la experiencia. La iteración acabo dentro antes del plazo establecido.
+Finalmente, se incluyeron fondos coherentes entre el menú principal y la escena de la partida para unificar la estética y evitar que el transcurso de la partida se sintiera visualmente vacío. A estos fondos se les aplicó un ligero efecto de \textit{parallax}, lo que aporta profundidad y una mayor sensación de pulido a la experiencia.
 
 % ─────────────────────────────────────────────────────────────────────────────
 \section{Iteración 4: Implementación del bot inteligente}
 % ─────────────────────────────────────────────────────────────────────────────
 
-La cuarta iteración se dedicó al desarrollo del sistema de inteligencia artificial, constituyendo la parte técnicamente más exigente del proyecto. El trabajo se articuló en torno a un entorno de aprendizaje por refuerzo 
-implementado en Python mediante \textit{Gymnasium} y entrenado con \textit{MaskablePPO} de la biblioteca \textit{SB3-Contrib}.
+La cuarta iteración se dedicó al desarrollo del sistema de inteligencia artificial. El trabajo se realizó en Python utilizando la biblioteca \textit{Gymnasium} para crear el entorno de juego y el algoritmo \textit{MaskablePPO} para el entrenamiento.
 
-El primer bloque de trabajo consistió en desarrollar el entorno de entrenamiento, que replica las reglas completas del videojuego de forma independiente al motor Godot. Este entorno define el espacio de observación mediante tres canales matriciales que codifican la identidad y rango de las piezas, la transitabilidad del tablero y la movilidad del agente en cada turno; así como el espacio de acciones, que cubre todos los movimientos posibles sobre el tablero. La máscara de acciones garantiza que el agente nunca seleccione un movimiento inválido durante el entrenamiento, lo que estabiliza considerablemente el proceso de aprendizaje.
+El primer bloque consistió en programar el entorno de entrenamiento de forma independiente al motor Godot. Este entorno simula el tablero de juego mediante matrices de tres canales que representan las piezas, los obstáculos y los movimientos posibles. Además, incluye una máscara de acciones que impide al agente elegir jugadas ilegales, lo que ayuda a estabilizar el aprendizaje.
 
-El segundo bloque se centró en el entrenamiento del modelo mediante una estrategia de \textit{self-play}: el agente entrena progresivamente contra versiones anteriores de sí mismo, lo que le permite desarrollar estrategias de engaño, inferencia y gestión del riesgo de forma autónoma sin necesidad de diseñar manualmente una función de evaluación del tablero. Cada versión del modelo se guarda con una marca temporal y el entrenamiento puede reanudarse desde el último punto de control.
+El segundo bloque se centró en el entrenamiento mediante la estrategia de \textit{self-play}. En este modo, el agente juega contra versiones anteriores de sí mismo, lo que le permite aprender tácticas avanzadas de forma autónoma sin necesidad de programar manualmente las reglas de puntuación. Las versiones del modelo se guardaron periódicamente para poder retomar el proceso si fuera necesario.
 
-El tercer bloque consistió en la integración del modelo entrenado con el motor Godot. Se implementó un \texttt{BotController} en C\# que lanza un subproceso Python en segundo plano al iniciar la partida, carga el archivo \texttt{.zip} del modelo y se comunica con él mediante un canal de entrada y salida estándar para solicitar la acción del bot en cada turno. Esta arquitectura mantiene el entorno de inferencia completamente desacoplado del motor, de modo que actualizar el modelo no requiere modificar el código del videojuego. La iteración finalizó un día antes del plazo previsto.
+\clearpage
+
+El tercer bloque consistió en integrar el modelo con Godot de forma desacoplada. Para ello, se creó el script de Python \texttt{bot\_inference.py} y se programó la clase \texttt{BotController} en C\# dentro del juego. Al comenzar una partida, el código en C\# abre un subproceso para ejecutar el script de Python y comunicarse con él mediante mensajes JSON por la entrada y salida estándar. Durante las pruebas, se comprobó que el flujo de datos funcionaba de manera fluida y sin congelar la pantalla del juego. Esta separación permite actualizar el modelo de la IA sin tener que modificar ni volver a compilar el videojuego.
 
 % ─────────────────────────────────────────────────────────────────────────────
 \section{Iteración 5: Pulido final}
@@ -184,4 +185,4 @@ En el apartado de rendimiento, se revisaron los ciclos de actualización de los 
 
 La revisión del feedback al jugador permitió detectar y corregir varios casos en los que la respuesta visual o sonora a una acción no era suficientemente clara, especialmente en situaciones de combate entre piezas reveladas previamente y en la transición entre el turno del jugador y el del bot. Se ajustaron los tiempos de animación y se reforzaron los efectos sonoros asociados a estos momentos para mejorar la legibilidad de la partida.
 
-En cuanto a la corrección de errores, se resolvieron varios casos límite relacionados con la regla antioscilación en situaciones de tablero muy congestionado, y se corrigió un comportamiento incorrecto del explorador al intentar moverse a través de casillas ocupadas en determinadas configuraciones. Las pruebas de integración finales verificaron el comportamiento completo del sistema de principio a fin, desde el despliegue inicial hasta todas las condiciones de victoria posibles, sin detectar errores adicionales. La iteración se completó en la fecha prevista, cerrando el desarrollo del proyecto dentro del plazo establecido.
+En cuanto a la corrección de errores, se resolvieron varios casos límite relacionados con la regla antioscilación en situaciones de tablero muy congestionado, y se corrigió un comportamiento incorrecto del explorador al intentar moverse a través de casillas ocupadas en determinadas configuraciones. Las pruebas de integración finales verificaron el comportamiento completo del sistema de principio a fin, desde el despliegue inicial hasta todas las condiciones de victoria posibles, sin detectar errores adicionales.

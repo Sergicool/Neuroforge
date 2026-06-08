@@ -1,6 +1,6 @@
 \chapter{Implementación}
 
-En este capítulo se describe la implementación del sistema desarrollado, abordando tanto las decisiones técnicas adoptadas durante la codificación como los aspectos más relevantes o complejos del proceso. La exposición se organiza en torno a tres ejes principales: la estructura del código y la organización del proyecto, los detalles de implementación más significativos desde el punto de vista técnico, y el sistema de bot, que constituye la parte técnicamente más exigente del trabajo. Finalmente, se recogen las licencias de todos los recursos externos utilizados.
+En este capítulo se detallan los aspectos técnicos de la implementación de NeuroForge. Se describe la organización del código fuente en el motor Godot y la gestión de las licencias de los recursos de audio y gráficos empleados. Asimismo, se exponen los detalles de implementación más relevantes del proyecto, haciendo especial hincapié en la arquitectura técnica del bot inteligente y su integración con el modelo de IA.
 
 % ─────────────────────────────────────────────────────────────────────────────
 \section{Organización del código}
@@ -107,6 +107,8 @@ Los hiperparámetros del modelo se determinaron mediante una búsqueda bayesiana
 	\label{tab:hparams}
 \end{table}
 
-Finalmente, la integración con el motor se realiza a través de un \texttt{BotController} en C\# que lanza un subproceso Python en segundo plano al iniciar la partida, carga el modelo entrenado y se comunica con él mediante entrada y salida estándar para solicitar la acción correspondiente en cada turno. Si el subproceso no responde o el modelo no puede cargarse, el controlador activa automáticamente el modo aleatorio como \textit{fallback}, garantizando la continuidad de la partida en todo momento.
+Finalmente, la integración con el motor se realiza mediante el componente \texttt{BotController} en C\#. Al comenzar la partida, este controlador inicia un subproceso en segundo plano que ejecuta el script \texttt{bot\_inference.py}, pasándole la ruta del modelo \texttt{.zip} como argumento. A partir de este momento, ambos componentes se comunican continuamente intercambiando mensajes en formato JSON a través de los canales de entrada y salida estándar. Al arrancar, el script de Python carga el modelo con la función \texttt{MaskablePPO.load()} y escribe en su salida la palabra clave \texttt{READY} para avisar al juego de que ya está operativo. Durante la partida, cada vez que es el turno del bot, el motor le envía un JSON con el estado del tablero y la lista de movimientos permitidos (\texttt{valid\_moves}). El script procesa estos datos con la biblioteca \textit{NumPy}: transforma el tablero en una matriz de tres canales ($3 \times 10 \times 10$) y convierte los movimientos válidos en un vector de máscara booleana de $10.000$ posiciones. Con esta información preparada, el modelo realiza la predicción de forma determinista. Por último, el script traduce la acción numérica resultante de vuelta a coordenadas de juego (\textit{from}/\textit{to}) y las envía por la salida estándar hacia el controlador de C\#, el cual recibe la jugada y la ejecuta en el videojuego.
+
+Si el subproceso Python sufre una excepción catastrófica, no responde en el tiempo estipulado o el archivo del modelo está corrupto, el controlador de C\# intercepta el error y activa el modo aleatorio de \textit{fallback}, garantizando la continuidad de la ejecución del juego.
 
 

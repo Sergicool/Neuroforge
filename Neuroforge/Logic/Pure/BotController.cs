@@ -33,6 +33,20 @@ public class BotController
         if (_initTask != null) await _initTask;
     }
 
+    private static string FindLatestModel(string botDir)
+    {
+        if (!System.IO.Directory.Exists(botDir))
+            return null;
+
+        var zips = System.IO.Directory.GetFiles(botDir, "neuroforge_bot_v*.zip");
+        if (zips.Length == 0)
+            return null;
+
+        // Ordenar por nombre descendente (el timestamp en el nombre garantiza el orden)
+        System.Array.Sort(zips);
+        return zips[zips.Length - 1];
+    }
+
     private void StartPythonProcess()
     {
         try
@@ -44,8 +58,9 @@ public class BotController
 
             // En debug el ejecutable es el editor de Godot,
             // así que la ruta apunta a la raíz del proyecto
-            string scriptPath = System.IO.Path.Combine(baseDir, "Bot", "bot_inference.py");
-            string modelPath = System.IO.Path.Combine(baseDir, "Bot", "neuroforge_bot_v20260607_160715.zip");
+            string botDir = System.IO.Path.Combine(baseDir, "Bot");
+            string scriptPath = System.IO.Path.Combine(botDir, "bot_inference.py");
+            string modelPath = FindLatestModel(botDir);
 
             if (!System.IO.File.Exists(scriptPath))
             {
@@ -53,12 +68,14 @@ public class BotController
                 GD.Print("[BotController] Fallback aleatorio activo.");
                 return;
             }
-            if (!System.IO.File.Exists(modelPath))
+            if (modelPath == null)
             {
-                GD.PrintErr($"[BotController] Modelo no encontrado: {modelPath}");
+                GD.PrintErr($"[BotController] No se encontró ningún modelo en: {botDir}");
                 GD.Print("[BotController] Fallback aleatorio activo.");
                 return;
             }
+
+            GD.Print($"[BotController] Usando modelo: {System.IO.Path.GetFileName(modelPath)}");
 
             // Detectar si estamos en Windows o Linux/Mac
             string python = OperatingSystem.IsWindows() ? "python" : "python3";
