@@ -76,39 +76,35 @@ Entre todos los sistemas implementados, la arquitectura del bot constituye el co
 
 \subsection{Arquitectura del bot}
 
-El bot presenta dos modos de funcionamiento. El comportamiento por defecto, utilizado como \textit{fallback} cuando el modelo entrenado no está disponible o falla al cargar, consiste en la selección aleatoria de un movimiento válido entre todos los posibles en cada turno. Este modo garantiza que la partida siempre pueda completarse y sirvió además como oponente durante todo el desarrollo previo a la implementación del modelo de inteligencia artificial.
+El bot presenta dos modos de funcionamiento. El comportamiento por defecto, utilizado como \textit{fallback} cuando el modelo entrenado no está disponible o falla al cargar, consiste en la selección aleatoria de un movimiento válido entre todos los posibles en cada turno. Este modo garantiza que la partida siempre pueda completarse y sirvió además como oponente durante las primeras fases del entrenamiento.
 
-El comportamiento avanzado se apoya en tres decisiones principales: el algoritmo de aprendizaje, el enmascaramiento de acciones y la estrategia de entrenamiento mediante \textit{self-play}. El algoritmo empleado es \textit{Proximal Policy Optimization} (PPO), un método de aprendizaje por refuerzo de política en línea (\textit{on-policy}) que actualiza los parámetros del agente a partir de su propia experiencia. En cada iteración, el agente interactúa con el entorno durante un número fijo de pasos, acumula las transiciones observadas y actualiza su política intentando maximizar la recompensa esperada. Para evitar actualizaciones desestabilizadoras, PPO introduce una restricción de recorte (\textit{clipping}) que limita cuánto puede cambiar la política en cada paso de gradiente, lo que lo convierte en uno de los algoritmos más estables y ampliamente utilizados en tareas de control secuencial.
+El comportamiento avanzado se basa en \textit{MaskablePPO}, una extensión del algoritmo \textit{Proximal Policy Optimization} de la biblioteca \textit{SB3-Contrib} que incorpora enmascaramiento de acciones. En cada paso, el entorno proporciona una máscara binaria que indica qué movimientos son legales en el estado actual, de modo que el agente únicamente explora y explota acciones válidas. Dado que el espacio de acciones codifica todos los pares origen-destino posibles sobre el tablero ($10 \times 10 = 100$ casillas, resultando en $10.000$ acciones posibles), esta restricción resulta indispensable para que el entrenamiento converja.
 
-En dominios con espacios de acción grandes y mayoría de acciones inválidas, aplicar PPO directamente es ineficiente, ya que el agente desperdiciaría gran parte de su exploración en movimientos ilegales. Para resolver esto se utiliza \textit{MaskablePPO}, una extensión de PPO de la biblioteca \textit{SB3-Contrib} que incorpora enmascaramiento de acciones. En cada paso, el entorno proporciona una máscara binaria que indica qué acciones son legales en el estado actual; la distribución de probabilidad de la política se recalcula zerificando las acciones enmascaradas antes de aplicar \textit{softmax}, de modo que el agente únicamente explora y explota movimientos válidos. En \textit{NeuroForge}, donde el espacio de acciones codifica todos los pares origen-destino posibles sobre el tablero, esta restricción resulta indispensable para que el entrenamiento converja.
-
-Respecto a la estrategia de entrenamiento, el agente se entrena mediante \textit{self-play}: el oponente en cada sesión es una versión anterior del propio modelo, seleccionada aleatoriamente entre las más recientes. Esta estrategia, habitual en juegos de información imperfecta, evita que el agente se especialice en explotar los fallos de un rival fijo y fomenta el desarrollo de estrategias más generales y robustas. Al inicio del entrenamiento, cuando no existen versiones previas, el oponente es el bot aleatorio, que proporciona una señal de aprendizaje suficiente para arrancar la convergencia.
-
-\clearpage
-
-Los hiperparámetros del modelo se determinaron mediante una búsqueda bayesiana con \textit{Optuna}, una biblioteca de optimización automática de hiperparámetros. A diferencia de una búsqueda en rejilla exhaustiva, la optimización bayesiana construye un modelo probabilístico del espacio de hiperparámetros y dirige las pruebas hacia las regiones más prometedoras, reduciendo el número de evaluaciones necesarias. Tras 20 ensayos evaluando cada combinación con 200.000 pasos de entrenamiento, los hiperparámetros seleccionados fueron los recogidos en la Tabla~\ref{tab:hparams}.
+Los hiperparámetros del modelo se determinaron mediante una búsqueda bayesiana con \textit{Optuna} evaluando 20 combinaciones distintas. Los valores seleccionados, junto al espacio de búsqueda definido, se recogen en la Tabla~\ref{tab:hparams}.
 
 \begin{table}[H]
 	\centering
-	\begin{tabular}{|l|r|}
+	\begin{tabular}{|l|l|r|}
 		\hline
-		\textbf{Hiperparámetro} & \textbf{Valor} \\
+		\textbf{Hiperparámetro} & \textbf{Espacio de búsqueda} & \textbf{Valor óptimo} \\
 		\hline
-		\texttt{learning\_rate} & $9{,}87 \times 10^{-5}$ \\
-		\texttt{n\_steps}       & 512    \\
-		\texttt{batch\_size}    & 128    \\
-		\texttt{n\_epochs}      & 5      \\
-		\texttt{ent\_coef}      & 0,032  \\
-		\texttt{gamma}          & 0,9585 \\
-		\texttt{clip\_range}    & 0,197  \\
+		\texttt{learning\_rate} & Continuo $\left[10^{-5}, 10^{-3}\right]$ (Escala log) & $9{,}87 \times 10^{-5}$ \\
+		\texttt{n\_steps}       & Categorías: $\{512, 1024, 2048\}$                      & 2048   \\
+		\texttt{batch\_size}    & Categorías: $\{128, 256\}$                             & 256    \\
+		\texttt{n\_epochs}      & Entero $\left[3, 10\right]$                            & 5      \\
+		\texttt{ent\_coef}      & Continuo $\left[0{,}01, 0{,}15\right]$                 & 0,032  \\
+		\texttt{gamma}          & Continuo $\left[0{,}93, 0{,}999\right]$                & 0,9585 \\
+		\texttt{clip\_range}    & Continuo $\left[0{,}1, 0{,}3\right]$                   & 0,197  \\
 		\hline
 	\end{tabular}
-	\caption{Hiperparámetros del modelo MaskablePPO tras la búsqueda con Optuna}
+	\caption{Espacio de búsqueda e hiperparámetros finales del modelo MaskablePPO tras la optimización con Optuna}
 	\label{tab:hparams}
 \end{table}
 
-Finalmente, la integración con el motor se realiza mediante el componente \texttt{BotController} en C\#. Al comenzar la partida, este controlador inicia un subproceso en segundo plano que ejecuta el script \texttt{bot\_inference.py}, pasándole la ruta del modelo \texttt{.zip} como argumento. A partir de este momento, ambos componentes se comunican continuamente intercambiando mensajes en formato JSON a través de los canales de entrada y salida estándar. Al arrancar, el script de Python carga el modelo con la función \texttt{MaskablePPO.load()} y escribe en su salida la palabra clave \texttt{READY} para avisar al juego de que ya está operativo. Durante la partida, cada vez que es el turno del bot, el motor le envía un JSON con el estado del tablero y la lista de movimientos permitidos (\texttt{valid\_moves}). El script procesa estos datos con la biblioteca \textit{NumPy}: transforma el tablero en una matriz de tres canales ($3 \times 10 \times 10$) y convierte los movimientos válidos en un vector de máscara booleana de $10.000$ posiciones. Con esta información preparada, el modelo realiza la predicción de forma determinista. Por último, el script traduce la acción numérica resultante de vuelta a coordenadas de juego (\textit{from}/\textit{to}) y las envía por la salida estándar hacia el controlador de C\#, el cual recibe la jugada y la ejecuta en el videojuego.
+\clearpage
 
-Si el subproceso Python sufre una excepción catastrófica, no responde en el tiempo estipulado o el archivo del modelo está corrupto, el controlador de C\# intercepta el error y activa el modo aleatorio de \textit{fallback}, garantizando la continuidad de la ejecución del juego.
+El proceso de entrenamiento se desarrolló en varias fases iterativas. En primer lugar, el agente entrenó contra el bot aleatorio durante varios ciclos de entre 500.000 y 2.500.000 pasos, evaluando el modelo resultante tras cada ciclo mediante partidas de prueba. A lo largo de este proceso se ajustaron progresivamente la función de recompensa y las penalizaciones: se introdujo una penalización por paso para incentivar el avance, una recompensa proporcional al rango de las piezas capturadas, un bonus por atacar piezas enemigas cuya identidad ya era conocida, y una penalización por comportamientos oscilatorios que llevaban al agente a mover repetidamente la misma pieza entre dos casillas. Cada ajuste se validó comparando el \textit{winrate} real contra el oponente aleatorio y observando el comportamiento del agente dentro del propio videojuego.
 
+Una vez el agente alcanzó un \textit{winrate} estable del 40--50\% contra el oponente aleatorio, se pasó a una estrategia de \textit{self-play}: el oponente en cada sesión era una versión anterior del propio modelo, seleccionada aleatoriamente entre las más recientes para evitar que el agente se especializara en explotar los fallos de una única versión rival. Esta fase permitió alcanzar un \textit{winrate} del 50\% contra el oponente aleatorio, con una duración media de partida de aproximadamente 260 pasos.
 
+Finalmente, la integración con el motor se realiza mediante el componente \texttt{BotController} en C\#, que inicia un subproceso Python al comenzar la partida, carga el modelo \texttt{.zip} más reciente disponible en la carpeta de distribución y se comunica con él mediante mensajes JSON a través de los canales de entrada y salida estándar. En cada turno del bot, el motor envía el estado del tablero codificado como una matriz de tres canales ($3 \times 10 \times 10$) junto con la lista de movimientos válidos; el script Python construye la máscara de acciones, realiza la predicción de forma determinista y devuelve las coordenadas del movimiento elegido. Si el subproceso falla o el modelo no puede cargarse, el controlador activa automáticamente el modo aleatorio de \textit{fallback}, garantizando la continuidad de la partida en todo momento.

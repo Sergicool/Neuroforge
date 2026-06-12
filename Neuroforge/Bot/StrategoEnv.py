@@ -517,10 +517,21 @@ class NeuroForgeEnv(gym.Env):
             self.pieces[tp] = piece
             del self.pieces[fp]
 
-            # Penalizar por mover siempre la misma pieza
-            repetition_penalty = 0.0
+            oscillation_penalty = 0.0
+            repetition_penalty  = 0.0
+            diversity_bonus     = 0.0
+
             if actor == BOT:
-                if self.last_moved_pos == tp:  # tp es donde llegó, que es el nuevo fp
+                # Penalizar patrón oscilatorio A→B, B→A
+                if len(piece._history) >= 2:
+                    h = piece._history
+                    if h[-1] == (tp, fp):
+                        oscillation_penalty = -0.03
+                    if len(h) >= 3 and h[-2][0] == fp and h[-2][1] == tp and h[-1][0] == tp and h[-1][1] == fp:
+                        oscillation_penalty = -0.06
+
+                # Penalizar mover siempre la misma pieza
+                if self.last_moved_pos == tp:
                     self.same_piece_count += 1
                     if self.same_piece_count >= 3:
                         repetition_penalty = -0.03 * (self.same_piece_count - 2)
@@ -528,15 +539,14 @@ class NeuroForgeEnv(gym.Env):
                     self.same_piece_count = 0
                 self.last_moved_pos = tp
 
-            diversity_bonus = 0.0
-            if actor == BOT:
+                # Bonus por diversidad de piezas movidas
                 if tp not in self.recently_moved:
-                    diversity_bonus = 0.01  # bonus pequeño por mover una pieza nueva
+                    diversity_bonus = 0.01
                 self.recently_moved.add(tp)
-                if len(self.recently_moved) > 8:  # ventana de las últimas 8 piezas
+                if len(self.recently_moved) > 8:
                     self.recently_moved.pop()
 
-            return repetition_penalty + diversity_bonus, False
+            return oscillation_penalty + repetition_penalty + diversity_bonus, False
  
         # Combate: ambas piezas quedan reveladas para los dos bandos
         result = resolve_combat(piece, target)
@@ -799,16 +809,16 @@ def run_training(params: dict, total_timesteps=500_000):
     env = NeuroForgeEnv()
 
     # Mezcla oponentes recientes para romper ciclos de self-play
-    # recent = find_recent_models(n=5)
-    # if recent:
-    #     if len(recent) >= 3 and np.random.random() < 0.35:
-    #         chosen = recent[-1]  # el más antiguo, para no olvidar lo básico
-    #     else:
-    #         chosen = recent[0]   # el más reciente
-    #     print(f"Oponente: {chosen}.zip")
-    #     env.opponent_model = MaskablePPO.load(chosen)
-    # else:
-    print("Sin modelo previo → oponente ALEATORIO")
+    recent = find_recent_models(n=1)
+    if recent:
+        if len(recent) >= 3 and np.random.random() < 0.35:
+            chosen = recent[-1]  # el más antiguo, para no olvidar lo básico
+        else:
+            chosen = recent[0]   # el más reciente
+        print(f"Oponente: {chosen}.zip")
+        env.opponent_model = MaskablePPO.load(chosen)
+    else:
+        print("Sin modelo previo → oponente ALEATORIO")
 
     model = MaskablePPO(
         policy        = "CnnPolicy",
@@ -843,8 +853,8 @@ MODE = "train"
 # Cambiar con los resultados de "search" antes de cambiar a "train"
 BEST_PARAMS = {
     "learning_rate": 9.87e-05,
-    "n_steps":       512,
-    "batch_size":    128,
+    "n_steps":       2048,
+    "batch_size":    256,
     "n_epochs":      5,
     "ent_coef":      0.032,
     "gamma":         0.9585,
@@ -880,11 +890,11 @@ if __name__ == "__main__":
         print("\nPoner estos valores en BEST_PARAMS y cambiar MODE a 'train'")
 
     elif MODE == "train":
-        run_training(BEST_PARAMS, total_timesteps=1_000_000)
+        run_training(BEST_PARAMS, total_timesteps=2_500_000)
 
     # Ejecutar varios para ver varianza
     # for i in range(10):
     #     test_random_episode()
 
-# Ver gráficas:      tensorboard --logdir=./logs/
+# Ver gráficas:      .venv\Scripts\python.exe -m tensorboard.main --logdir=./logs/
 # Ver búsqueda:      optuna-dashboard sqlite:///neuroforge_optuna.db
