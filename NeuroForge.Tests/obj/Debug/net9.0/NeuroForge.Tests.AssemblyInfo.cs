@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NeuroForge.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+71e945e81917d28306cf5e567c448f62c94b8bcd")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7e8e80359e9ab2cae460f2bf19973efdec4d17b3")]
 [assembly: System.Reflection.AssemblyProductAttribute("NeuroForge.Tests")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NeuroForge.Tests")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
