@@ -905,11 +905,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Personal\\Ingenieria Informatica\\TFG\\NeuroForge.Tests\\NeuroForge.Tests.csproj",
+      "projectUniqueName": "D:\\Personal\\Ingenieria Informatica\\TFG Proyecto\\NeuroForge.Tests\\NeuroForge.Tests.csproj",
       "projectName": "NeuroForge.Tests",
-      "projectPath": "D:\\Personal\\Ingenieria Informatica\\TFG\\NeuroForge.Tests\\NeuroForge.Tests.csproj",
+      "projectPath": "D:\\Personal\\Ingenieria Informatica\\TFG Proyecto\\NeuroForge.Tests\\NeuroForge.Tests.csproj",
       "packagesPath": "C:\\Users\\Sergi\\.nuget\\packages\\",
-      "outputPath": "D:\\Personal\\Ingenieria Informatica\\TFG\\NeuroForge.Tests\\obj\\",
+      "outputPath": "D:\\Personal\\Ingenieria Informatica\\TFG Proyecto\\NeuroForge.Tests\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Sergi\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -926,8 +926,8 @@
         "net9.0": {
           "targetAlias": "net9.0",
           "projectReferences": {
-            "D:\\Personal\\Ingenieria Informatica\\TFG\\Neuroforge\\NeuroForge.csproj": {
-              "projectPath": "D:\\Personal\\Ingenieria Informatica\\TFG\\Neuroforge\\NeuroForge.csproj"
+            "D:\\Personal\\Ingenieria Informatica\\TFG Proyecto\\Neuroforge\\NeuroForge.csproj": {
+              "projectPath": "D:\\Personal\\Ingenieria Informatica\\TFG Proyecto\\Neuroforge\\NeuroForge.csproj"
             }
           }
         }

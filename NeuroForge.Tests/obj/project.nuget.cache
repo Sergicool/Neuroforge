@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "0M8kZpjNcWM=",
+  "dgSpecHash": "xxbUlA2xnDM=",
   "success": true,
-  "projectFilePath": "D:\\Personal\\Ingenieria Informatica\\TFG\\NeuroForge.Tests\\NeuroForge.Tests.csproj",
+  "projectFilePath": "D:\\Personal\\Ingenieria Informatica\\TFG Proyecto\\NeuroForge.Tests\\NeuroForge.Tests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Sergi\\.nuget\\packages\\coverlet.collector\\6.0.2\\coverlet.collector.6.0.2.nupkg.sha512",
     "C:\\Users\\Sergi\\.nuget\\packages\\godot.sourcegenerators\\4.6.1\\godot.sourcegenerators.4.6.1.nupkg.sha512",

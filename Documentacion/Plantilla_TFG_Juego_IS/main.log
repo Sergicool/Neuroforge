@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.11.6)  16 JUN 2026 14:27
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (MiKTeX 25.4) (preloaded format=pdflatex 2025.11.6)  24 JUN 2026 18:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1362,7 +1362,7 @@ Package hyperref Info: Link coloring ON on input line 16.
 \openout5 = `main.out'.
 
  (Chapters/Portada.tex
-<./Images/Principal_Negro.pdf, id=526, 227.85126pt x 135.50626pt>
+<./Images/Principal_Negro.pdf, id=514, 227.85126pt x 135.50626pt>
 File: ./Images/Principal_Negro.pdf Graphic file (type pdf)
 <use ./Images/Principal_Negro.pdf>
 Package pdftex.def Info: ./Images/Principal_Negro.pdf  used on input line 9.
@@ -1862,7 +1862,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [8]
 Cap\'{\i }tulo 2.
-<../Imagenes/JuegoRealDeUr.png, id=960, 1284.8pt x 1022.82124pt>
+<../Imagenes/JuegoRealDeUr.png, id=945, 1284.8pt x 1022.82124pt>
 File: ../Imagenes/JuegoRealDeUr.png Graphic file (type png)
 <use ../Imagenes/JuegoRealDeUr.png>
 Package pdftex.def Info: ../Imagenes/JuegoRealDeUr.png  used on input line 13.
@@ -1875,7 +1875,7 @@ LaTeX Warning: `!h' float specifier changed to `!ht'.
 [9
 
 ]
-<../Imagenes/Senet.png, id=971, 1284.8pt x 987.69pt>
+<../Imagenes/Senet.png, id=956, 1284.8pt x 987.69pt>
 File: ../Imagenes/Senet.png Graphic file (type png)
 <use ../Imagenes/Senet.png>
 Package pdftex.def Info: ../Imagenes/Senet.png  used on input line 24.
@@ -1906,7 +1906,7 @@ Underfull \hbox (badness 1622) in paragraph at lines 43--44
 gos de in-for-ma-ción com-ple-ta
  []
 
-<../Imagenes/DouShouQi.png, id=989, 360.59718pt x 442.65375pt>
+<../Imagenes/DouShouQi.png, id=974, 360.59718pt x 442.65375pt>
 File: ../Imagenes/DouShouQi.png Graphic file (type png)
 <use ../Imagenes/DouShouQi.png>
 Package pdftex.def Info: ../Imagenes/DouShouQi.png  used on input line 49.
@@ -1942,7 +1942,7 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <7> on input line 74.
 LaTeX Font Info:    External font `lmex10' loaded for size
 (Font)              <5> on input line 74.
-<../Imagenes/Luzhanqi.png, id=1007, 96.36pt x 133.6995pt>
+<../Imagenes/Luzhanqi.png, id=992, 96.36pt x 133.6995pt>
 File: ../Imagenes/Luzhanqi.png Graphic file (type png)
 <use ../Imagenes/Luzhanqi.png>
 Package pdftex.def Info: ../Imagenes/Luzhanqi.png  used on input line 80.
@@ -2012,7 +2012,7 @@ Cap\'{\i }tulo 3.
 
 {C:/Users/Sergi/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-rm.enc}{C:/
 Users/Sergi/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathsy.enc}]
-<../Imagenes/EsquemaTablero.png, id=1080, 321.2pt x 321.2pt>
+<../Imagenes/EsquemaTablero.png, id=1065, 321.2pt x 321.2pt>
 File: ../Imagenes/EsquemaTablero.png Graphic file (type png)
 <use ../Imagenes/EsquemaTablero.png>
 Package pdftex.def Info: ../Imagenes/EsquemaTablero.png  used on input line 35.
@@ -2050,7 +2050,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 [22
 
 ]
-<../Imagenes/DiagramaFlujoDeCombate.jpg, id=1096, 1022.31938pt x 547.2947pt>
+<../Imagenes/DiagramaFlujoDeCombate.jpg, id=1081, 1022.31938pt x 547.2947pt>
 File: ../Imagenes/DiagramaFlujoDeCombate.jpg Graphic file (type jpg)
 <use ../Imagenes/DiagramaFlujoDeCombate.jpg>
 Package pdftex.def Info: ../Imagenes/DiagramaFlujoDeCombate.jpg  used on input 
@@ -2113,7 +2113,7 @@ Cap\'{\i }tulo 4.
 [27
 
 ]
-<../Imagenes/Metodologia.png, id=1123, 620.3175pt x 387.4475pt>
+<../Imagenes/Metodologia.png, id=1108, 620.3175pt x 387.4475pt>
 File: ../Imagenes/Metodologia.png Graphic file (type png)
 <use ../Imagenes/Metodologia.png>
 Package pdftex.def Info: ../Imagenes/Metodologia.png  used on input line 26.
@@ -2194,12 +2194,12 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-3.35403pt}.
 
 [33]
-<../Imagenes/Gantt1.png, id=1158, 2409.0pt x 1453.43pt>
+<../Imagenes/Gantt1.png, id=1143, 2409.0pt x 1453.43pt>
 File: ../Imagenes/Gantt1.png Graphic file (type png)
 <use ../Imagenes/Gantt1.png>
 Package pdftex.def Info: ../Imagenes/Gantt1.png  used on input line 203.
 (pdftex.def)             Requested size: 766.0pt x 462.15749pt.
-<../Imagenes/Gantt2.png, id=1159, 2409.0pt x 971.63pt>
+<../Imagenes/Gantt2.png, id=1144, 2409.0pt x 971.63pt>
 File: ../Imagenes/Gantt2.png Graphic file (type png)
 <use ../Imagenes/Gantt2.png>
 Package pdftex.def Info: ../Imagenes/Gantt2.png  used on input line 209.
@@ -2367,7 +2367,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [47{C:/Users/Sergi/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/lm-mathit.e
 nc}]
-<../Imagenes/DiagramaCasosDeUso.png, id=1262, 901.86937pt x 626.34pt>
+<../Imagenes/DiagramaCasosDeUso.png, id=1247, 901.86937pt x 626.34pt>
 File: ../Imagenes/DiagramaCasosDeUso.png Graphic file (type png)
 <use ../Imagenes/DiagramaCasosDeUso.png>
 Package pdftex.def Info: ../Imagenes/DiagramaCasosDeUso.png  used on input line
@@ -2649,12 +2649,12 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 [54
 
 ]
-<../Imagenes/DiagramaModeloDominio.png, id=1318, 856.70062pt x 642.90187pt>
+<../Imagenes/DiagramaModeloDominio.png, id=1303, 885.3075pt x 641.39626pt>
 File: ../Imagenes/DiagramaModeloDominio.png Graphic file (type png)
 <use ../Imagenes/DiagramaModeloDominio.png>
 Package pdftex.def Info: ../Imagenes/DiagramaModeloDominio.png  used on input l
 ine 401.
-(pdftex.def)             Requested size: 497.92325pt x 373.65833pt.
+(pdftex.def)             Requested size: 497.92325pt x 360.74536pt.
 
 
 LaTeX Info: Redefining \. on input line 406.
@@ -2669,7 +2669,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 [55
 
  <../Imagenes/DiagramaModeloDominio.png>]
-<../Imagenes/DiagramaActividadIniciarPartida.png, id=1326, 686.565pt x 624.0815
+<../Imagenes/DiagramaActividadIniciarPartida.png, id=1311, 686.565pt x 624.0815
 6pt>
 File: ../Imagenes/DiagramaActividadIniciarPartida.png Graphic file (type png)
 <use ../Imagenes/DiagramaActividadIniciarPartida.png>
@@ -2688,7 +2688,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 [56
 
  <../Imagenes/DiagramaActividadIniciarPartida.png>]
-<../Imagenes/DiagramaActividadJugarTurno.png, id=1333, 827.34094pt x 647.41875p
+<../Imagenes/DiagramaActividadJugarTurno.png, id=1318, 827.34094pt x 647.41875p
 t>
 File: ../Imagenes/DiagramaActividadJugarTurno.png Graphic file (type png)
 <use ../Imagenes/DiagramaActividadJugarTurno.png>
@@ -2709,7 +2709,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 [57
 
  <../Imagenes/DiagramaActividadJugarTurno.png>]
-<../Imagenes/DiagramaActividadResolverCombate.jpg, id=1340, 913.16156pt x 620.3
+<../Imagenes/DiagramaActividadResolverCombate.jpg, id=1325, 913.16156pt x 620.3
 175pt>
 File: ../Imagenes/DiagramaActividadResolverCombate.jpg Graphic file (type jpg)
 <use ../Imagenes/DiagramaActividadResolverCombate.jpg>
@@ -2734,7 +2734,7 @@ Cap\'{\i }tulo 6.
 [59
 
 ]
-<../Imagenes/EjemploEscena.jpg, id=1350, 495.35063pt x 271.0125pt>
+<../Imagenes/EjemploEscena.jpg, id=1335, 495.35063pt x 271.0125pt>
 File: ../Imagenes/EjemploEscena.jpg Graphic file (type jpg)
 <use ../Imagenes/EjemploEscena.jpg>
 Package pdftex.def Info: ../Imagenes/EjemploEscena.jpg  used on input line 26.
@@ -2749,7 +2749,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [60 <../Imagenes/EjemploEscena.jpg>]
-<../Imagenes/GodotModelo.jpg, id=1356, 730.98094pt x 615.80063pt>
+<../Imagenes/GodotModelo.jpg, id=1341, 730.98094pt x 615.80063pt>
 File: ../Imagenes/GodotModelo.jpg Graphic file (type jpg)
 <use ../Imagenes/GodotModelo.jpg>
 Package pdftex.def Info: ../Imagenes/GodotModelo.jpg  used on input line 39.
@@ -2768,7 +2768,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 [61
 
  <../Imagenes/GodotModelo.jpg>]
-<../Imagenes/ArquitecturaDelSistema.jpg, id=1363, 581.92406pt x 649.67719pt>
+<../Imagenes/ArquitecturaDelSistema.jpg, id=1348, 581.92406pt x 649.67719pt>
 File: ../Imagenes/ArquitecturaDelSistema.jpg Graphic file (type jpg)
 <use ../Imagenes/ArquitecturaDelSistema.jpg>
 Package pdftex.def Info: ../Imagenes/ArquitecturaDelSistema.jpg  used on input 
@@ -2789,7 +2789,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 [62
 
  <../Imagenes/ArquitecturaDelSistema.jpg>]
-<../Imagenes/PatronSingleton.jpg, id=1369, 785.18344pt x 255.20343pt>
+<../Imagenes/PatronSingleton.jpg, id=1354, 785.18344pt x 255.20343pt>
 File: ../Imagenes/PatronSingleton.jpg Graphic file (type jpg)
 <use ../Imagenes/PatronSingleton.jpg>
 Package pdftex.def Info: ../Imagenes/PatronSingleton.jpg  used on input line 85
@@ -2813,7 +2813,7 @@ Underfull \hbox (badness 1137) in paragraph at lines 94--95
 -cap-su-lan
  []
 
-<../Imagenes/PatronStrategy.jpg, id=1375, 1037.37563pt x 237.13594pt>
+<../Imagenes/PatronStrategy.jpg, id=1360, 1037.37563pt x 237.13594pt>
 File: ../Imagenes/PatronStrategy.jpg Graphic file (type jpg)
 <use ../Imagenes/PatronStrategy.jpg>
 Package pdftex.def Info: ../Imagenes/PatronStrategy.jpg  used on input line 98.
@@ -2838,7 +2838,7 @@ mtt/m/n/12 MovementSystem \T1/lmr/m/n/12 y \T1/lmtt/m/n/12 CombatSystem\T1/lmr/
 m/n/12 , y el con-tro-la-dor de in-put
  []
 
-<../Imagenes/PatronFachada.jpg, id=1381, 863.47594pt x 429.10312pt>
+<../Imagenes/PatronFachada.jpg, id=1366, 863.47594pt x 429.10312pt>
 File: ../Imagenes/PatronFachada.jpg Graphic file (type jpg)
 <use ../Imagenes/PatronFachada.jpg>
 Package pdftex.def Info: ../Imagenes/PatronFachada.jpg  used on input line 113.
@@ -2862,13 +2862,13 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-3.35403pt}.
 
 [65 <../Imagenes/PatronFachada.jpg>]
-<../Imagenes/DiagramaNavegacion.jpg, id=1387, 859.71187pt x 293.59688pt>
+<../Imagenes/DiagramaNavegacion.jpg, id=1372, 859.71187pt x 293.59688pt>
 File: ../Imagenes/DiagramaNavegacion.jpg Graphic file (type jpg)
 <use ../Imagenes/DiagramaNavegacion.jpg>
 Package pdftex.def Info: ../Imagenes/DiagramaNavegacion.jpg  used on input line
  136.
 (pdftex.def)             Requested size: 398.3401pt x 136.0373pt.
-<../Imagenes/MenuPrincipal.jpg, id=1389, 1356.56813pt x 762.59906pt>
+<../Imagenes/MenuPrincipal.jpg, id=1374, 1356.56813pt x 762.59906pt>
 File: ../Imagenes/MenuPrincipal.jpg Graphic file (type jpg)
 <use ../Imagenes/MenuPrincipal.jpg>
 Package pdftex.def Info: ../Imagenes/MenuPrincipal.jpg  used on input line 149.
@@ -2884,7 +2884,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [66 <../Imagenes/DiagramaNavegacion.jpg> <../Imagenes/MenuPrincipal.jpg>]
-<../Imagenes/MenuReglasPieces.jpg, id=1395, 1358.82657pt x 745.28438pt>
+<../Imagenes/MenuReglasPieces.jpg, id=1380, 1358.82657pt x 745.28438pt>
 File: ../Imagenes/MenuReglasPieces.jpg Graphic file (type jpg)
 <use ../Imagenes/MenuReglasPieces.jpg>
 Package pdftex.def Info: ../Imagenes/MenuReglasPieces.jpg  used on input line 1
@@ -2902,7 +2902,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-3.35403pt}.
 
 [67 <../Imagenes/MenuReglasPieces.jpg>]
-<../Imagenes/MenuDespliegueParcialmenteVacio.jpg, id=1402, 1041.1397pt x 586.44
+<../Imagenes/MenuDespliegueParcialmenteVacio.jpg, id=1387, 1041.1397pt x 586.44
 093pt>
 File: ../Imagenes/MenuDespliegueParcialmenteVacio.jpg Graphic file (type jpg)
 <use ../Imagenes/MenuDespliegueParcialmenteVacio.jpg>
@@ -2921,7 +2921,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 [68
 
  <../Imagenes/MenuDespliegueParcialmenteVacio.jpg>]
-<../Imagenes/MenuPartidaEnCurso.jpg, id=1416, 1041.1397pt x 585.68813pt>
+<../Imagenes/MenuPartidaEnCurso.jpg, id=1401, 1041.1397pt x 585.68813pt>
 File: ../Imagenes/MenuPartidaEnCurso.jpg Graphic file (type jpg)
 <use ../Imagenes/MenuPartidaEnCurso.jpg>
 Package pdftex.def Info: ../Imagenes/MenuPartidaEnCurso.jpg  used on input line
@@ -2939,7 +2939,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-3.35403pt}.
 
 [69 <../Imagenes/MenuPartidaEnCurso.jpg>]
-<../Imagenes/MenuInterfazCombateResuelto.jpg, id=1428, 1357.32094pt x 761.09344
+<../Imagenes/MenuInterfazCombateResuelto.jpg, id=1413, 1357.32094pt x 761.09344
 pt>
 File: ../Imagenes/MenuInterfazCombateResuelto.jpg Graphic file (type jpg)
 <use ../Imagenes/MenuInterfazCombateResuelto.jpg>
@@ -2956,7 +2956,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [70 <../Imagenes/MenuInterfazCombateResuelto.jpg>]
-<../Imagenes/MenuFinPartida.jpg, id=1438, 1358.07375pt x 736.25063pt>
+<../Imagenes/MenuFinPartida.jpg, id=1423, 1358.07375pt x 736.25063pt>
 File: ../Imagenes/MenuFinPartida.jpg Graphic file (type jpg)
 <use ../Imagenes/MenuFinPartida.jpg>
 Package pdftex.def Info: ../Imagenes/MenuFinPartida.jpg  used on input line 236
@@ -2974,7 +2974,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-3.35403pt}.
 
 [71 <../Imagenes/MenuFinPartida.jpg>]
-<../Imagenes/MenuPausa.jpg, id=1443, 1355.0625pt x 753.5653pt>
+<../Imagenes/MenuPausa.jpg, id=1428, 1355.0625pt x 753.5653pt>
 File: ../Imagenes/MenuPausa.jpg Graphic file (type jpg)
 <use ../Imagenes/MenuPausa.jpg>
 Package pdftex.def Info: ../Imagenes/MenuPausa.jpg  used on input line 249.
@@ -2991,7 +2991,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 [72
 
  <../Imagenes/MenuPausa.jpg>]
-<../Imagenes/MenuOpciones.jpg, id=1448, 1357.32094pt x 755.82375pt>
+<../Imagenes/MenuOpciones.jpg, id=1433, 1357.32094pt x 755.82375pt>
 File: ../Imagenes/MenuOpciones.jpg Graphic file (type jpg)
 <use ../Imagenes/MenuOpciones.jpg>
 Package pdftex.def Info: ../Imagenes/MenuOpciones.jpg  used on input line 264.
@@ -3010,7 +3010,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 [73
 
  <../Imagenes/MenuOpciones.jpg>]
-<../Imagenes/DiagramaDespliegue.jpg, id=1455, 1202.24156pt x 615.80063pt>
+<../Imagenes/DiagramaDespliegue.jpg, id=1440, 1202.24156pt x 615.80063pt>
 File: ../Imagenes/DiagramaDespliegue.jpg Graphic file (type jpg)
 <use ../Imagenes/DiagramaDespliegue.jpg>
 Package pdftex.def Info: ../Imagenes/DiagramaDespliegue.jpg  used on input line
@@ -3549,7 +3549,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 [94
 
 ]
-<../Imagenes/nunit_results.png, id=1596, 466.74374pt x 207.77625pt>
+<../Imagenes/nunit_results.png, id=1581, 466.74374pt x 207.77625pt>
 File: ../Imagenes/nunit_results.png Graphic file (type png)
 <use ../Imagenes/nunit_results.png>
 Package pdftex.def Info: ../Imagenes/nunit_results.png  used on input line 459.
@@ -3585,7 +3585,7 @@ Cap\'{\i }tulo 9.
 [97
 
 ]
-<../Imagenes/it1_despliegue_cerca.png, id=1650, 1169.36874pt x 742.775pt>
+<../Imagenes/it1_despliegue_cerca.png, id=1635, 1169.36874pt x 742.775pt>
 File: ../Imagenes/it1_despliegue_cerca.png Graphic file (type png)
 <use ../Imagenes/it1_despliegue_cerca.png>
 Package pdftex.def Info: ../Imagenes/it1_despliegue_cerca.png  used on input li
@@ -3601,12 +3601,12 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
 [98 <../Imagenes/it1_despliegue_cerca.png>]
-<../Imagenes/it1_juego2.jpg, id=1658, 871.75688pt x 609.02531pt>
+<../Imagenes/it1_juego2.jpg, id=1643, 871.75688pt x 609.02531pt>
 File: ../Imagenes/it1_juego2.jpg Graphic file (type jpg)
 <use ../Imagenes/it1_juego2.jpg>
 Package pdftex.def Info: ../Imagenes/it1_juego2.jpg  used on input line 44.
 (pdftex.def)             Requested size: 497.92325pt x 347.8543pt.
-<../Imagenes/it1_juego1.jpg, id=1659, 1277.52281pt x 534.49687pt>
+<../Imagenes/it1_juego1.jpg, id=1644, 1277.52281pt x 534.49687pt>
 File: ../Imagenes/it1_juego1.jpg Graphic file (type jpg)
 <use ../Imagenes/it1_juego1.jpg>
 Package pdftex.def Info: ../Imagenes/it1_juego1.jpg  used on input line 51.
@@ -3625,13 +3625,13 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 [99
 
  <../Imagenes/it1_juego2.jpg> <../Imagenes/it1_juego1.jpg>]
-<../Imagenes/boceto_partida_v1.jpg, id=1665, 633.11531pt x 359.84438pt>
+<../Imagenes/boceto_partida_v1.jpg, id=1650, 633.11531pt x 359.84438pt>
 File: ../Imagenes/boceto_partida_v1.jpg Graphic file (type jpg)
 <use ../Imagenes/boceto_partida_v1.jpg>
 Package pdftex.def Info: ../Imagenes/boceto_partida_v1.jpg  used on input line 
 67.
 (pdftex.def)             Requested size: 497.92325pt x 283.01106pt.
-<../Imagenes/boceto_partida_v2.jpg, id=1667, 633.86812pt x 407.27156pt>
+<../Imagenes/boceto_partida_v2.jpg, id=1652, 633.86812pt x 407.27156pt>
 File: ../Imagenes/boceto_partida_v2.jpg Graphic file (type jpg)
 <use ../Imagenes/boceto_partida_v2.jpg>
 Package pdftex.def Info: ../Imagenes/boceto_partida_v2.jpg  used on input line 
@@ -3661,7 +3661,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                \addtolength{\topmargin}{-3.35403pt}.
 
 [101 <../Imagenes/boceto_partida_v2.jpg>]
-<../Imagenes/boceto_partida_v3.jpg, id=1677, 632.3625pt x 426.84468pt>
+<../Imagenes/boceto_partida_v3.jpg, id=1662, 632.3625pt x 426.84468pt>
 File: ../Imagenes/boceto_partida_v3.jpg Graphic file (type jpg)
 <use ../Imagenes/boceto_partida_v3.jpg>
 Package pdftex.def Info: ../Imagenes/boceto_partida_v3.jpg  used on input line 
@@ -3679,19 +3679,19 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 [102
 
  <../Imagenes/boceto_partida_v3.jpg>]
-<../Imagenes/combate_estado1.jpg, id=1686, 635.37375pt x 395.22656pt>
+<../Imagenes/combate_estado1.jpg, id=1671, 635.37375pt x 395.22656pt>
 File: ../Imagenes/combate_estado1.jpg Graphic file (type jpg)
 <use ../Imagenes/combate_estado1.jpg>
 Package pdftex.def Info: ../Imagenes/combate_estado1.jpg  used on input line 10
 4.
 (pdftex.def)             Requested size: 497.92325pt x 309.74092pt.
-<../Imagenes/combate_estado2.jpg, id=1687, 633.11531pt x 414.79968pt>
+<../Imagenes/combate_estado2.jpg, id=1672, 633.11531pt x 414.79968pt>
 File: ../Imagenes/combate_estado2.jpg Graphic file (type jpg)
 <use ../Imagenes/combate_estado2.jpg>
 Package pdftex.def Info: ../Imagenes/combate_estado2.jpg  used on input line 11
 1.
 (pdftex.def)             Requested size: 497.92325pt x 326.23242pt.
-<../Imagenes/combate_estado3.jpg, id=1688, 633.11531pt x 411.03563pt>
+<../Imagenes/combate_estado3.jpg, id=1673, 633.11531pt x 411.03563pt>
 File: ../Imagenes/combate_estado3.jpg Graphic file (type jpg)
 <use ../Imagenes/combate_estado3.jpg>
 Package pdftex.def Info: ../Imagenes/combate_estado3.jpg  used on input line 11
@@ -3714,14 +3714,14 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 [103
 
  <../Imagenes/combate_estado1.jpg> <../Imagenes/combate_estado2.jpg>]
-<../Imagenes/boceto_comparacion_combate.jpg, id=1694, 924.45375pt x 340.27126pt
+<../Imagenes/boceto_comparacion_combate.jpg, id=1679, 924.45375pt x 340.27126pt
 >
 File: ../Imagenes/boceto_comparacion_combate.jpg Graphic file (type jpg)
 <use ../Imagenes/boceto_comparacion_combate.jpg>
 Package pdftex.def Info: ../Imagenes/boceto_comparacion_combate.jpg  used on in
 put line 125.
 (pdftex.def)             Requested size: 497.92325pt x 183.27644pt.
-<../Imagenes/boceto_pausa.jpg, id=1697, 633.11531pt x 377.91188pt>
+<../Imagenes/boceto_pausa.jpg, id=1682, 633.11531pt x 377.91188pt>
 File: ../Imagenes/boceto_pausa.jpg Graphic file (type jpg)
 <use ../Imagenes/boceto_pausa.jpg>
 Package pdftex.def Info: ../Imagenes/boceto_pausa.jpg  used on input line 134.
@@ -3740,7 +3740,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 
 [104 <../Imagenes/combate_estado3.jpg> <../Imagenes/boceto_comparacion_combate.
 jpg>]
-<../Imagenes/boceto_reglas.jpg, id=1702, 633.11531pt x 389.20406pt>
+<../Imagenes/boceto_reglas.jpg, id=1687, 633.11531pt x 389.20406pt>
 File: ../Imagenes/boceto_reglas.jpg Graphic file (type jpg)
 <use ../Imagenes/boceto_reglas.jpg>
 Package pdftex.def Info: ../Imagenes/boceto_reglas.jpg  used on input line 141.
@@ -3793,14 +3793,8 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 ]
 Cap\'{\i }tulo 10.
 
-Underfull \hbox (badness 2653) in paragraph at lines 11--12
-\T1/lmr/m/n/12 im-ple-men-ta-das, el flu-jo de na-ve-ga-ción es in-tui-ti-vo y 
-el apar-ta-do au-dio-vi-sual re-fuer-za
- []
 
-
-
-[109]
+[109]) (Chapters/AnexoI.tex
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -3809,33 +3803,13 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[110]) (Chapters/AnexoI.tex
-
-LaTeX Info: Redefining \. on input line 1.
-LaTeX Info: Redefining \% on input line 1.
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 15.35403pt, for example:
-(fancyhdr)                \setlength{\headheight}{15.35403pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-3.35403pt}.
-
-[111]
-
-
-Package fancyhdr Warning: \headheight is too small (12.0pt): 
-(fancyhdr)                Make it at least 14.49998pt, for example:
-(fancyhdr)                \setlength{\headheight}{14.49998pt}.
-(fancyhdr)                You might also make \topmargin smaller:
-(fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
-
-[112
-
-]
+[110]
 Ap\'{e}ndice A.
 
 
-[113]
+[111
+
+]
 Underfull \hbox (badness 1383) in paragraph at lines 24--25
 []\T1/lmr/m/n/12 Descomprimir el ar-chi-vo com-pri-mi-do de la dis-tri-bu-ción 
 (\T1/lmtt/m/n/12 NeuroForgeWindows.zip \T1/lmr/m/n/12 o
@@ -3858,7 +3832,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[114
+[112
 
 ]
 Ap\'{e}ndice B.
@@ -3868,7 +3842,7 @@ Package pdftex.def Info: ../Imagenes/MenuPrincipal.jpg  used on input line 13.
 (pdftex.def)             Requested size: 497.92325pt x 279.8998pt.
 
 
-[115
+[113
 
 ]
 
@@ -3879,7 +3853,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[116]
+[114]
 File: ../Imagenes/MenuDespliegueParcialmenteVacio.jpg Graphic file (type jpg)
 <use ../Imagenes/MenuDespliegueParcialmenteVacio.jpg>
 Package pdftex.def Info: ../Imagenes/MenuDespliegueParcialmenteVacio.jpg  used 
@@ -3896,7 +3870,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-3.35403pt}.
 
-[117
+[115
 
 ]
 File: ../Imagenes/MenuPartidaEnCurso.jpg Graphic file (type jpg)
@@ -3913,7 +3887,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[118]
+[116]
 File: ../Imagenes/MenuInterfazCombateResuelto.jpg Graphic file (type jpg)
 <use ../Imagenes/MenuInterfazCombateResuelto.jpg>
 Package pdftex.def Info: ../Imagenes/MenuInterfazCombateResuelto.jpg  used on i
@@ -3930,7 +3904,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-3.35403pt}.
 
-[119]
+[117]
 File: ../Imagenes/MenuFinPartida.jpg Graphic file (type jpg)
 <use ../Imagenes/MenuFinPartida.jpg>
 Package pdftex.def Info: ../Imagenes/MenuFinPartida.jpg  used on input line 120
@@ -3945,9 +3919,9 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[120] (main.bbl
+[118] (main.bbl
 
-[121
+[119
 
 
 ]
@@ -3959,7 +3933,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[122]
+[120]
 
 LaTeX Info: Redefining \. on input line 254.
 LaTeX Info: Redefining \% on input line 254.
@@ -3970,7 +3944,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-3.35403pt}.
 
-[123])
+[121])
 
 
 Package fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -3979,7 +3953,7 @@ Package fancyhdr Warning: \headheight is too small (12.0pt):
 (fancyhdr)                You might also make \topmargin smaller:
 (fancyhdr)                \addtolength{\topmargin}{-2.49998pt}.
 
-[124] (main.aux
+[122] (main.aux
 LaTeX Info: Redefining \. on input line 13.
 LaTeX Info: Redefining \% on input line 13.
 )
@@ -3992,13 +3966,13 @@ L3 programming layer <2020/03/25>
 LaTeX Warning: There were undefined references.
 
 Package rerunfilecheck Info: File `main.out' has not changed.
-(rerunfilecheck)             Checksum: 617869192F6CF2FCE801BA60C5FFF8DE;23306.
+(rerunfilecheck)             Checksum: 265DC577C65198956B0C56CC6B131A1D;22773.
  ) 
 Here is how much of TeX's memory you used:
- 36046 strings out of 468079
- 697691 string characters out of 5425751
- 1478906 words of memory out of 5000000
- 63450 multiletter control sequences out of 15000+600000
+ 36038 strings out of 468079
+ 697858 string characters out of 5425751
+ 1478901 words of memory out of 5000000
+ 63447 multiletter control sequences out of 15000+600000
  730874 words of font info for 92 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  107i,14n,109p,1240b,2229s stack positions out of 10000i,1000n,20000p,200000b,200000s
@@ -4017,9 +3991,9 @@ Users/Sergi/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmsy8.pfb><C:/U
 sers/Sergi/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtk10.pfb><C:/U
 sers/Sergi/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt10.pfb><C:/U
 sers/Sergi/AppData/Local/Programs/MiKTeX/fonts/type1/public/lm/lmtt12.pfb>
-Output written on main.pdf (142 pages, 6511258 bytes).
+Output written on main.pdf (140 pages, 6506289 bytes).
 PDF statistics:
- 2107 PDF objects out of 2487 (max. 8388607)
- 564 named destinations out of 1000 (max. 500000)
- 1273 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 2084 PDF objects out of 2487 (max. 8388607)
+ 559 named destinations out of 1000 (max. 500000)
+ 1249 words of extra memory for PDF output out of 10000 (max. 10000000)
 
