@@ -72,26 +72,6 @@ public partial class GameScene : Node
 
         _bot = new BotController(_board);
 
-        // Mostrar loading mientras el bot carga
-        if (_loadingLabel != null && _loadingPanel != null)
-        {
-            _loadingLabel.Visible = true;
-            _loadingPanel.Visible = true;
-            _ = AnimateLoadingLabel(_loadingLabel);
-        }
-
-        await _bot.WaitUntilReady();
-
-        if (_loadingLabel != null && _loadingPanel != null)
-        {
-            _loadingLabel.Visible = false;
-            Tween fadeTween = CreateTween();
-            fadeTween.TweenProperty(_loadingPanel, "modulate:a", 0f, 0.35f);
-            await ToSignal(fadeTween, Tween.SignalName.Finished);
-            _loadingPanel.Visible = false;
-            _loadingPanel.Modulate = new Color(_loadingPanel.Modulate.R, _loadingPanel.Modulate.G, _loadingPanel.Modulate.B, 1f);
-        }
-
         State = GameState.DEPLOYMENT;
         AudioManager.PlayMusic("res://assets/sounds/GameMusic.wav", 2);
     }
@@ -304,11 +284,6 @@ public partial class GameScene : Node
         _isPaused = false;
         GetTree().Paused = false;
         _ = _pauseMenu.HideMenu();
-    }
-
-    public override void _ExitTree()
-    {
-        _bot?.Dispose();
     }
 
 }

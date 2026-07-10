@@ -1,8 +1,6 @@
 using Godot;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.Text.Json;
 using System.Threading.Tasks;
 
 // Accion que realiza el bot
@@ -12,103 +10,31 @@ public struct MovementAction
     public Vector2I To;
 }
 
-// Lógica de decisión del bot
+internal readonly struct HypotheticalPiece : ICombatant
+{
+    public PieceType Type { get; }
+    public int Rank { get; }
+
+    public HypotheticalPiece(PieceType type, int rank)
+    {
+        Type = type;
+        Rank = rank;
+    }
+}
+
+// Logica de decisión del bot
 public class BotController
 {
     private readonly Board _board;
     private readonly Random _rng = new();
-    private Process _pythonProcess;
-    private bool _modelReady = false;
 
-    private Task _initTask;
+    private const float ADVANCE_WEIGHT = 0.15f;
+    private const float NOISE_WEIGHT = 0.05f;
+    private const float ENERGY_CORE_VALUE = 500f;
 
     public BotController(Board board)
     {
         _board = board;
-        _initTask = Task.Run(StartPythonProcess);
-    }
-
-    public async Task WaitUntilReady()
-    {
-        if (_initTask != null) await _initTask;
-    }
-
-    private static string FindLatestModel(string botDir)
-    {
-        if (!System.IO.Directory.Exists(botDir))
-            return null;
-
-        var zips = System.IO.Directory.GetFiles(botDir, "neuroforge_bot_v*.zip");
-        if (zips.Length == 0)
-            return null;
-
-        // Ordenar por nombre descendente (el timestamp en el nombre garantiza el orden)
-        System.Array.Sort(zips);
-        return zips[zips.Length - 1];
-    }
-
-    private void StartPythonProcess()
-    {
-        try
-        {
-            // Ruta relativa al directorio de trabajo tanto en debug como en exe
-            string baseDir = System.IO.Path.GetDirectoryName(
-                OS.GetExecutablePath()
-            );
-
-            // En debug el ejecutable es el editor de Godot,
-            // así que la ruta apunta a la raíz del proyecto
-            string botDir = System.IO.Path.Combine(baseDir, "Bot");
-            string scriptPath = System.IO.Path.Combine(botDir, "bot_inference.py");
-            string modelPath = FindLatestModel(botDir);
-
-            if (!System.IO.File.Exists(scriptPath))
-            {
-                GD.PrintErr($"[BotController] Script no encontrado: {scriptPath}");
-                GD.Print("[BotController] Fallback aleatorio activo.");
-                return;
-            }
-            if (modelPath == null)
-            {
-                GD.PrintErr($"[BotController] No se encontró ningún modelo en: {botDir}");
-                GD.Print("[BotController] Fallback aleatorio activo.");
-                return;
-            }
-
-            GD.Print($"[BotController] Usando modelo: {System.IO.Path.GetFileName(modelPath)}");
-
-            // Detectar si estamos en Windows o Linux/Mac
-            string python = OperatingSystem.IsWindows() ? "python" : "python3";
-
-            _pythonProcess = new Process();
-            _pythonProcess.StartInfo = new ProcessStartInfo
-            {
-                FileName = python,
-                Arguments = $"\"{scriptPath}\" \"{modelPath}\"",
-                UseShellExecute = false,
-                RedirectStandardInput = true,
-                RedirectStandardOutput = true,
-                RedirectStandardError = true,
-                CreateNoWindow = true,
-            };
-
-            _pythonProcess.Start();
-
-            string response = _pythonProcess.StandardOutput.ReadLine();
-            _modelReady = response == "READY";
-
-            if (_modelReady)
-                GD.Print("[BotController] Modelo cargado correctamente.");
-            else
-                GD.PrintErr($"[BotController] Error al cargar modelo: {response}");
-
-        }
-        catch (Exception e)
-        {
-            GD.PrintErr($"[BotController] No se pudo iniciar Python: {e.Message}");
-            GD.Print("[BotController] Usando modo aleatorio como fallback.");
-            _modelReady = false;
-        }
     }
 
     public async void PlayTurn(GameScene game)
@@ -123,99 +49,145 @@ public class BotController
 
         game.SetState(GameState.EXECUTING_ACTION);
 
-        MovementAction action;
-
-        if (_modelReady)
-        {
-            action = await GetModelAction(actions);
-        }
-        else
-        {
-            action = actions[_rng.Next(actions.Count)];
-        }
+        MovementAction action = ChooseAction(actions);
 
         await _board.ExecuteBotAction(action);
         game.EndTurn();
     }
 
-    private async Task<MovementAction> GetModelAction(List<MovementAction> fallbackActions)
+
+
+    private MovementAction ChooseAction(List<MovementAction> actions)
     {
-        try
+        MovementAction bestAction = actions[0];
+        float bestScore = float.NegativeInfinity;
+
+        foreach (MovementAction action in actions)
         {
-            float[] state = _board.GetFlatState();
-
-            // Construir JSON manualmente para evitar problemas con tipos anónimos
-            var sb = new System.Text.StringBuilder();
-            sb.Append("{\"state\":[");
-            for (int i = 0; i < state.Length; i++)
+            float score = ScoreAction(action);
+            if (score > bestScore)
             {
-                sb.Append(state[i].ToString(System.Globalization.CultureInfo.InvariantCulture));
-                if (i < state.Length - 1) sb.Append(',');
+                bestScore = score;
+                bestAction = action;
             }
-            sb.Append("],\"valid_moves\":[");
-            for (int i = 0; i < fallbackActions.Count; i++)
-            {
-                var a = fallbackActions[i];
-                sb.Append($"{{\"from\":{{\"x\":{a.From.X},\"y\":{a.From.Y}}},\"to\":{{\"x\":{a.To.X},\"y\":{a.To.Y}}}}}");
-                if (i < fallbackActions.Count - 1) sb.Append(',');
-            }
-            sb.Append("]}");
-
-            string json = sb.ToString();
-
-            await _pythonProcess.StandardInput.WriteLineAsync(json);
-            await _pythonProcess.StandardInput.FlushAsync();
-
-            string response = await Task.Run(() =>
-                _pythonProcess.StandardOutput.ReadLine());
-
-            if (string.IsNullOrEmpty(response))
-            {
-                GD.PrintErr("[BotController] Respuesta vacía, usando fallback.");
-                return fallbackActions[_rng.Next(fallbackActions.Count)];
-            }
-
-            using var doc = JsonDocument.Parse(response);
-            var root = doc.RootElement;
-
-            if (root.TryGetProperty("error", out var err))
-            {
-                GD.PrintErr($"[BotController] Error del modelo: {err.GetString()}");
-                return fallbackActions[_rng.Next(fallbackActions.Count)];
-            }
-
-            var from = root.GetProperty("from");
-            var to = root.GetProperty("to");
-
-            return new MovementAction
-            {
-                From = new Vector2I(
-                    from.GetProperty("x").GetInt32(),
-                    from.GetProperty("y").GetInt32()),
-                To = new Vector2I(
-                    to.GetProperty("x").GetInt32(),
-                    to.GetProperty("y").GetInt32())
-            };
         }
-        catch (Exception e)
-        {
-            GD.PrintErr($"[BotController] Excepción en inferencia: {e.Message}");
-            GD.PrintErr($"[BotController] StackTrace: {e.StackTrace}");
-            return fallbackActions[_rng.Next(fallbackActions.Count)];
-        }
+
+        return bestAction;
     }
 
-    public void Dispose()
+    private float ScoreAction(MovementAction action)
     {
-        try
+        Tile fromTile = _board.GetTileAt(action.From);
+        Tile toTile = _board.GetTileAt(action.To);
+
+        if (fromTile == null || toTile == null || !fromTile.IsOccupied)
+            return float.NegativeInfinity;
+
+        Piece piece = fromTile.Occupant;
+
+        float score;
+
+        if (toTile.IsOccupied)
         {
-            if (_pythonProcess != null && !_pythonProcess.HasExited)
-            {
-                _pythonProcess.Kill();
-                _pythonProcess.Dispose();
-                GD.Print("[BotController] Proceso Python cerrado.");
-            }
+            // Es un ataque
+            Piece defender = toTile.Occupant;
+            score = defender.IsRevealedToBot
+                ? ScoreKnownAttack(piece, defender)
+                : ScoreUnknownAttack(piece);
         }
-        catch { }
+        else
+        {
+            // Es un movimiento simple
+            score = ScoreMove(action);
+        }
+
+        // Un poco de ruido para desempatar y no ser totalmente predecible
+        score += (float)_rng.NextDouble() * NOISE_WEIGHT;
+
+        return score;
+    }
+
+    private float ScoreKnownAttack(Piece attacker, Piece defender)
+    {
+        CombatResult result = CombatSystem.Resolve(attacker, defender);
+        return EvaluateResult(result, attacker.Type, defender.Type);
+    }
+
+    private float ScoreUnknownAttack(Piece attacker)
+    {
+        Dictionary<PieceType, int> hiddenCounts = GetHiddenEnemyCounts();
+
+        int total = 0;
+        foreach (int count in hiddenCounts.Values) total += count;
+
+        if (total == 0)
+            return 0f;
+
+        float expectedValue = 0f;
+
+        foreach (var kv in hiddenCounts)
+        {
+            if (kv.Value <= 0) continue;
+
+            PieceType type = kv.Key;
+            float probability = kv.Value / (float)total;
+
+            int rank = PiecesData.Data.TryGetValue(type, out var def) ? def.Rank : 0;
+            var hypotheticalDefender = new HypotheticalPiece(type, rank);
+
+            CombatResult result = CombatSystem.Resolve(attacker, hypotheticalDefender);
+            float outcomeValue = EvaluateResult(result, attacker.Type, type);
+
+            expectedValue += probability * outcomeValue;
+        }
+
+        return expectedValue;
+    }
+
+    private float EvaluateResult(CombatResult result, PieceType attackerType, PieceType defenderType)
+    {
+        float attackerValue = PieceValue(attackerType);
+        float defenderValue = PieceValue(defenderType);
+
+        return result switch
+        {
+            CombatResult.DEFENDER_DIES => defenderValue,
+            CombatResult.ATTACKER_DIES => -attackerValue,
+            CombatResult.BOTH_DIE => defenderValue - attackerValue,
+            _ => 0f,
+        };
+    }
+
+    private float ScoreMove(MovementAction action)
+    {
+        int advance = action.To.Y - action.From.Y;
+        return advance * ADVANCE_WEIGHT;
+    }
+
+    private static float PieceValue(PieceType type)
+    {
+        if (type == PieceType.ENERGY_CORE)
+            return ENERGY_CORE_VALUE;
+
+        return PiecesData.Data.TryGetValue(type, out var def) ? def.Rank : 1f;
+    }
+
+    private Dictionary<PieceType, int> GetHiddenEnemyCounts()
+    {
+        var counts = new Dictionary<PieceType, int>();
+        foreach (var kv in PiecesData.Data)
+            counts[kv.Key] = 0;
+
+        foreach (Tile tile in _board.AllTiles)
+        {
+            if (!tile.IsOccupied) continue;
+            Piece p = tile.Occupant;
+            if (p.PlayerOwner != PieceOwner.PLAYER) continue;
+            if (p.IsRevealedToBot) continue;
+
+            counts[p.Type]++;
+        }
+
+        return counts;
     }
 }
